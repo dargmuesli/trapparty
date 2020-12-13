@@ -11,7 +11,6 @@ ENV HUSKY_SKIP_INSTALL=1
 
 # Update and install dependencies.
 # - `git` is required by the `yarn` command
-# - `curl` is required by the healthcheck
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         git \
@@ -19,7 +18,6 @@ RUN apt-get update \
         libdbd-pg-perl \
         postgresql-client \
     && apt-get install --no-install-recommends -y \
-        curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -35,7 +33,6 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["dev", "--hostname", "0.0.0.0"]
-HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/healthcheck || exit 1
 
 
 ########################
@@ -95,4 +92,3 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["start", "--hostname", "0.0.0.0"]
-HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/healthcheck || exit 1
