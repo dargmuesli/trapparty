@@ -2,7 +2,7 @@
 # Serve Nuxt in development mode.
 
 # Should be the specific version of node:buster.
-# `node-zopfli-es` and `sqitch` require at least buster.
+# `node-zopfli-es` requires at least buster.
 # `node-zopfli-es` requires non-slim.
 FROM node:14.15.1-buster@sha256:72823f7d1f7803e72d9be1c690442f39b837515fc4c0f38ff083562b8a5639dd AS development
 
@@ -11,7 +11,6 @@ ENV HUSKY_SKIP_INSTALL=1
 
 # Update and install dependencies.
 # - `git` is required by the `yarn` command
-# - `sqitch` is required by the entrypoint
 # - `curl` is required by the healthcheck
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
@@ -19,7 +18,6 @@ RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         libdbd-pg-perl \
         postgresql-client \
-        sqitch \
     && apt-get install --no-install-recommends -y \
         curl \
     && apt-get clean \
@@ -33,7 +31,6 @@ RUN yarn install
 
 COPY ./nuxt/ ./
 
-COPY ./sqitch/ /srv/sqitch/
 COPY ./docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
@@ -45,7 +42,7 @@ HEALTHCHECK --interval=10s CMD curl -f http://localhost:3000/healthcheck || exit
 # Build Nuxt.
 
 # Should be the specific version of node:buster.
-# `node-zopfli-es` and `sqitch` require at least buster.
+# `node-zopfli-es` requires at least buster.
 # `node-zopfli-es` requires non-slim.
 FROM node:14.15.1-buster@sha256:72823f7d1f7803e72d9be1c690442f39b837515fc4c0f38ff083562b8a5639dd AS build
 
@@ -76,18 +73,15 @@ RUN yarn install
 # Requires node (cannot be static) as the server acts as backend too.
 
 # Should be the specific version of node:buster-slim.
-# sqitch requires at least buster.
 FROM node:14.15.1-buster-slim@sha256:4e3fb2a07ae01815771ee88e30458c63347c09597cb7291f58a05f5ed7a197d2 AS production
 
 ENV NODE_ENV=production
 
 # Update and install dependencies.
-# - `sqitch` is required by the entrypoint
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         libdbd-pg-perl \
         postgresql-client \
-        sqitch \
     && apt-get install --no-install-recommends -y \
         curl \
     && apt-get clean \
@@ -97,7 +91,6 @@ WORKDIR /srv/app/
 
 COPY --from=build /srv/app/ ./
 
-COPY ./sqitch/ /srv/sqitch/
 COPY ./docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
