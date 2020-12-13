@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dargmuesli/trapparty/compare/1.0.0...1.0.1) (2020-12-13)
+
+
+### Bug Fixes
+
+* **docker:** remove healthcheck ([d387743](https://github.com/dargmuesli/trapparty/commit/d387743c29d7527d3089b091cb15edaa786721dd))
+
 # 1.0.0 (2020-12-13)
 
 
