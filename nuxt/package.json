@@ -4,13 +4,15 @@
   "version": "2.6.23",
   "scheduleVersion": "2.6.23",
   "description": "TrapParty's online version.",
+  "packageManager": "pnpm@7.17.0",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
+    "lint": "pnpm lint:js && pnpm lint:style",
     "lint:js": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
-    "lint": "yarn lint:js && yarn lint:style"
+    "lint:staged": "pnpm lint-staged"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
