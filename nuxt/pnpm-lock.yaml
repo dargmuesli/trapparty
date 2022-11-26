@@ -72,7 +72,7 @@ specifiers:
   vue-chartjs: 4.1.2
   vue-sweetalert2: 5.0.5
   vuelidate: 0.7.7
-  vuex: 3.6.2
+  vuex: 4.1.0
   vuex-persistedstate: 4.1.0
   webpack: 4.46.0
 
@@ -107,7 +107,7 @@ dependencies:
   vue-chartjs: 4.1.2_chart.js@3.9.1+vue@2.7.14
   vue-sweetalert2: 5.0.5_vue@2.7.14
   vuelidate: 0.7.7
-  vuex-persistedstate: 4.1.0_vuex@3.6.2
+  vuex-persistedstate: 4.1.0_vuex@4.1.0
 
 devDependencies:
   '@babel/core': 7.20.2
@@ -151,7 +151,7 @@ devDependencies:
   stylelint-config-standard: 29.0.0_stylelint@14.15.0
   tailwindcss: 3.2.4_postcss@8.4.19
   typescript: 4.9.3
-  vuex: 3.6.2_vue@2.7.14
+  vuex: 4.1.0_vue@2.7.14
   webpack: 4.46.0
 
 packages:
@@ -4629,6 +4629,9 @@ packages:
       - walrus
       - whiskers
     dev: false
+
+  /@vue/devtools-api/6.4.5:
+    resolution: {integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==}
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
@@ -17340,7 +17343,7 @@ packages:
     engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
     dev: false
 
-  /vuex-persistedstate/4.1.0_vuex@3.6.2:
+  /vuex-persistedstate/4.1.0_vuex@4.1.0:
     resolution: {integrity: sha512-3SkEj4NqwM69ikJdFVw6gObeB0NHyspRYMYkR/EbhR0hbvAKyR5gksVhtAfY1UYuWUOCCA0QNGwv9pOwdj+XUQ==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     peerDependencies:
@@ -17348,7 +17351,7 @@ packages:
     dependencies:
       deepmerge: 4.2.2
       shvl: 2.0.3
-      vuex: 3.6.2_vue@2.7.14
+      vuex: 4.1.0_vue@2.7.14
     dev: false
 
   /vuex/3.6.2_vue@2.7.14:
@@ -17356,6 +17359,15 @@ packages:
     peerDependencies:
       vue: ^2.0.0
     dependencies:
+      vue: 2.7.14
+    dev: false
+
+  /vuex/4.1.0_vue@2.7.14:
+    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.4.5
       vue: 2.7.14
 
   /wait-on/6.0.0_debug@4.3.2:
