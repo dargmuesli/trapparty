@@ -1,0 +1,35 @@
+{
+  "data": {
+    "allEvents": {
+      "nodes": [
+        {
+          "nodeId": "WyJldmVudHMiLDJd",
+          "id": 2,
+          "name": "2021",
+          "start": "2021-12-18T18:00:00+00:00",
+          "end": null,
+          "discordInviteCode": null,
+          "streamUrl": null,
+          "commonDonationUrl": null,
+          "commonDonationIsLive": null,
+          "commonDonationAmount": null,
+          "__typename": "Event"
+        },
+        {
+          "nodeId": "WyJldmVudHMiLDFd",
+          "id": 1,
+          "name": "2020",
+          "start": "2020-12-19T18:00:00+00:00",
+          "end": null,
+          "discordInviteCode": "BqdQr59GcF",
+          "streamUrl": "https://www.mixcloud.com/live/creal/",
+          "commonDonationUrl": "https://streamlabs.com/dargmuesli",
+          "commonDonationIsLive": null,
+          "commonDonationAmount": 168.51,
+          "__typename": "Event"
+        }
+      ],
+      "__typename": "EventsConnection"
+    }
+  }
+}
