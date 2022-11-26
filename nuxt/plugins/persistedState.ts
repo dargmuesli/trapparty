@@ -1,15 +1,18 @@
-import { Context } from '@nuxt/types-edge'
 import createPersistedState from 'vuex-persistedstate'
 import Cookies from 'js-cookie'
-import { useCookie } from 'h3'
+import { getCookie } from 'h3'
 
-export default ({ store, req }: Context) => {
+import { defineNuxtPlugin, useRequestEvent } from '#app'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const event = useRequestEvent()
+
   createPersistedState({
     paths: ['participationData'],
     storage: {
       getItem: (key) => {
         if (process.server) {
-          return useCookie(req, key)
+          return getCookie(event, key)
         } else {
           return Cookies.get(key)
         }
@@ -18,5 +21,5 @@ export default ({ store, req }: Context) => {
         Cookies.set(key, value, { expires: 365, secure: true }),
       removeItem: (key) => Cookies.remove(key),
     },
-  })(store)
-}
+  })(nuxtApp.nuxt2Context.store)
+})
