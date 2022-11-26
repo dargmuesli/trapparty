@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/dargmuesli/trapparty/compare/2.6.23...2.7.0) (2022-11-26)
+
+
+### Features
+
+* **cypress:** add e2e test ([007f9e1](https://github.com/dargmuesli/trapparty/commit/007f9e11365c964e8e0377c206bf7caafd081870))
+* **docker:** update dockerfile ([9e0b507](https://github.com/dargmuesli/trapparty/commit/9e0b507715c7005a5b99e7cb63efbd91088b4357))
+* **package:** migrate to pnpm ([05b8549](https://github.com/dargmuesli/trapparty/commit/05b854997bc48382f53ad40dcf4e7391cc319a4c))
+
 ## [2.6.23](https://github.com/dargmuesli/trapparty/compare/2.6.22...2.6.23) (2022-11-14)
 
 
