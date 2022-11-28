@@ -1,207 +1,98 @@
-import { defineNuxtConfig } from '@nuxt/bridge'
-import compressionWithBrotli from 'compression-with-brotli'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-import { BASE_URL, STACK_DOMAIN } from './plugins/baseUrl'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import graphqlPlugin from '@rollup/plugin-graphql'
+
+const BASE_URL =
+  'https://' +
+  (process.env.NUXT_PUBLIC_STACK_DOMAIN ||
+    `${process.env.HOST || 'localhost'}:3000`)
 
 export default defineNuxtConfig({
-  alias: {
-    tslib: 'tslib/tslib.es6.js',
-    ws: 'ws/browser.js',
-  },
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    babel: {
-      presets() {
-        return [['@nuxt/babel-preset-app', { corejs: { version: 3 } }]]
-      },
-      plugins: ['@babel/plugin-proposal-numeric-separator'],
+  app: {
+    pageTransition: {
+      name: 'layout',
     },
-    /*
-     ** You can extend webpack config here
-     */
-    extractCSS: true,
-    optimization: {
-      runtimeChunk: true,
-      splitChunks: {
-        name: true,
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /.(css|vue)$/,
-            chunks: 'all',
-            enforce: true,
-          },
-        },
-      },
-    },
-    postcss: { plugins: { tailwindcss: {}, autoprefixer: {} } },
-    transpile: [
-      '@fortawesome/fontawesome-svg-core',
-      '@fortawesome/free-solid-svg-icons',
-      '@fortawesome/free-brands-svg-icons',
-      '@http-util/status-i18n',
-      'color',
-      'cross-fetch',
-      'graphql',
-      'hash.js',
-      'iterall',
-      'lodash',
-      'moment',
-      'node-fetch',
-      'subscriptions-transport-ws',
-      'tslib',
-      'universal-cookie',
-      'vue-chartjs',
-    ],
   },
-
-  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [
-    [
-      '@nuxtjs/fontawesome',
-      {
-        icons: {
-          brands: ['faYoutube'],
-          solid: [
-            'faBalanceScale',
-            'faBug',
-            'faChartBar',
-            'faDownload',
-            'faExclamationCircle',
-            'faHeart',
-            'faHome',
-            'faLink',
-            'faShareAlt',
-            'faSignInAlt',
-            'faTv',
-          ],
-        },
-        useLayers: false,
-        useLayersText: false,
-      },
-    ],
-    '@nuxtjs/html-validator',
-    // Doc: https://github.com/nuxt-community/moment-module
-    ['@nuxtjs/moment', { locales: ['de'] }],
-    // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
-  ],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
-
   css: ['@/assets/css/main.css'],
-
-  dir: {
-    static: 'public',
-  },
-
-  // Global page headers (https://go.nuxtjs.dev/config-head)
-  head() {
-    return {
-      bodyAttrs: { class: 'font-sans h-full dark-mode:text-white' },
-      htmlAttrs: { class: 'h-full' },
-      link: [
-        {
-          href: '/assets/static/favicon/apple-touch-icon.png',
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-        },
-        {
-          href: '/assets/static/favicon/favicon-16x16.png',
-          rel: 'icon',
-          sizes: '16x16',
-          type: 'image/png',
-        },
-        {
-          href: '/assets/static/favicon/favicon-32x32.png',
-          rel: 'icon',
-          sizes: '32x32',
-          type: 'image/png',
-        },
-        {
-          href: '/assets/static/favicon/favicon.ico',
-          rel: 'icon',
-          type: 'image/x-icon',
-        },
-        {
-          href: '/assets/static/favicon/site.webmanifest',
-          rel: 'manifest',
-        },
-        {
-          color: '#202020',
-          href: '/assets/static/favicon/safari-pinned-tab.svg',
-          rel: 'mask-icon',
-        },
-        {
-          href: '/assets/static/favicon/favicon.ico',
-          rel: 'shortcut icon',
-        },
-      ],
-      meta: [
-        { charset: 'utf-8' },
-        { content: 'width=device-width, initial-scale=1', name: 'viewport' },
-        {
-          hid: 'description',
-          name: 'description',
-          property: 'description',
-          content: this.$t('globalOgSeoDescription'),
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$t('globalOgSeoDescription'),
-        },
-        {
-          content: '/assets/static/favicon/browserconfig.xml',
-          name: 'msapplication-config',
-        },
-        {
-          content: '#161616',
-          name: 'msapplication-TileColor',
-        },
-        {
-          content: '#161616',
-          name: 'theme-color',
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: this.$baseUrl + '/assets/static/logos/trapparty.svg',
-        },
-        {
-          hid: 'og:image:alt',
-          property: 'og:image:alt',
-          content: this.$t('globalOgImageAlt'),
-        },
-        {
-          hid: 'og:type',
-          property: 'og:type',
-          content: 'website', // https://ogp.me/#types
-        },
-      ],
-      titleTemplate: (titleChunk: any) => {
-        return titleChunk ? `${titleChunk} · TrapParty` : 'TrapParty'
-      },
-    }
-  },
-
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    // [
+    //   '@dargmuesli/nuxt-cookie-control',
+    //   {
+    //     locales: ['en', 'de'],
+    //     necessary: [
+    //       {
+    //         name: {
+    //           de: 'Authentifizierungsdaten',
+    //           en: 'Authentication Data',
+    //         },
+    //         // cookies: ['JWT_NAME'],
+    //       },
+    //       {
+    //         name: {
+    //           de: 'Cookie-Präferenzen',
+    //           en: 'Cookie Preferences',
+    //         },
+    //         // cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies'],
+    //       },
+    //       {
+    //         name: {
+    //           de: 'Spracheinstellungen',
+    //           en: 'Language Settings',
+    //         },
+    //         // cookies: ['i18n_redirected'],
+    //       },
+    //     ],
+    //     optional: [
+    //       {
+    //         name: 'Google Analytics',
+    //         identifier: 'ga',
+    //         // cookies: ['_ga', '_gat', '_gid'],
+    //         accepted: () => {
+    //           const { $ga } = useNuxtApp()
+    //           $ga.enable()
+    //         },
+    //         declined: () => {
+    //           const { $ga } = useNuxtApp()
+    //           $ga.disable()
+    //         },
+    //       },
+    //     ],
+    //   },
+    // ],
+    // [
+    //   '@nuxtjs/fontawesome',
+    //   {
+    //     icons: {
+    //       brands: ['faYoutube'],
+    //       solid: [
+    //         'faBalanceScale',
+    //         'faBug',
+    //         'faChartBar',
+    //         'faDownload',
+    //         'faExclamationCircle',
+    //         'faHeart',
+    //         'faHome',
+    //         'faLink',
+    //         'faShareAlt',
+    //         'faSignInAlt',
+    //         'faTv',
+    //       ],
+    //     },
+    //     useLayers: false,
+    //     useLayersText: false,
+    //   },
+    // ],
     [
-      'nuxt-helmet',
+      '@nuxtjs/html-validator',
       {
-        hsts: {
-          maxAge: 31536000,
-          preload: true,
-        },
+        failOnError: true,
+        logLevel: 'warning',
       },
-    ], // Should be declared at the start of the array.
+    ],
     [
       '@nuxtjs/i18n',
       {
@@ -242,62 +133,41 @@ export default defineNuxtConfig({
               globalValidationRequired: 'Required.',
             },
           },
-          silentFallbackWarn: true,
+          fallbackWarn: false, // TODO: don't show incorrect warnings (https://github.com/intlify/vue-i18n-next/issues/776)
         },
-        vueI18nLoader: true,
+        // vueI18nLoader: true,
       },
     ],
-    [
-      '@nuxtjs/apollo',
-      {
-        clientConfigs: {
-          default: '~/plugins/apollo-config.ts',
-        },
-        defaultOptions: {
-          $query: {
-            fetchPolicy: 'cache-and-network',
-          },
-        },
-      },
-    ],
-    [
-      '@nuxtjs/robots',
-      {
-        Allow: ['/'],
-        Disallow: ['/robots.txt'], // https://webmasters.stackexchange.com/a/117537/70856
-        Sitemap: BASE_URL + '/sitemap.xml',
-      },
-    ],
-    'vue-sweetalert2/nuxt',
+    '@nuxtjs/robots',
     '@funken-studio/sitemap-nuxt-3', // Should be declared at the end of the array.
   ],
-
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    '~/plugins/baseUrl.ts',
-    '~/plugins/i18n.ts',
-    '~/plugins/persistedState.ts',
-    '~/plugins/util.ts',
-    '~/plugins/vuelidate.ts',
-  ],
-
-  render: {
-    compressor: compressionWithBrotli(),
-    csp: {
-      policies: {
-        'base-uri': ["'none'"], // Mozilla Observatory.
-        'connect-src': [`https://*.${STACK_DOMAIN}`],
-        'default-src': ["'none'"],
-        'font-src': ["'self'"],
-        'form-action': ["'self'"], // Mozilla Observatory.
-        'frame-ancestors': ["'none'"], // Mozilla Observatory.
-        'img-src': ['data:', `https://*.${STACK_DOMAIN}`, "'self'"],
-        'manifest-src': ["'self'"], // Chrome
-        'report-uri': 'https://dargmuesli.report-uri.com/r/d/csp/enforce',
-        'script-src': ["'self'", 'https://static.cloudflareinsights.com'],
-        'style-src': ["'self'", "'unsafe-inline'"], // Tailwind
+  nitro: {
+    compressPublicAssets: true,
+  },
+  postcss: {
+    plugins: { tailwindcss: {}, autoprefixer: {} },
+  },
+  typescript: {
+    shim: false,
+    strict: true,
+    tsConfig: {
+      compilerOptions: {
+        // esModuleInterop: true,
       },
-      reportOnly: false,
+      vueCompilerOptions: {
+        htmlAttributes: [], // https://github.com/johnsoncodehk/volar/issues/1970#issuecomment-1276994634
+      },
     },
+  },
+  vite: {
+    plugins: [
+      VueI18nPlugin({
+        include:
+          '!' +
+          resolve(dirname(fileURLToPath(import.meta.url)), './node_modules/**'), // https://github.com/intlify/bundle-tools/issues/168
+      }),
+      // @ts-ignore https://github.com/rollup/plugins/issues/1243
+      graphqlPlugin(),
+    ],
   },
 })
