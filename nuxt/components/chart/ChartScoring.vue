@@ -1,26 +1,25 @@
 <template>
   <section>
     <h1 class="text-center">
-      {{ $t('title') }}
+      {{ t('title') }}
     </h1>
-    <ChartTeamScore :event="event" />
-    <ChartTeamDonationAmount :event="event" />
-    <ChartTeamScoreTotal :event="event" />
+    <ChartTeamScore :trap-party-event="event" />
+    <ChartTeamDonationAmount :trap-party-event="event" />
+    <ChartTeamScoreTotal :trap-party-event="event" />
   </section>
 </template>
 
-<script>
-export default {
-  props: {
-    event: {
-      type: Object,
-      default: undefined,
-    },
-  },
+<script setup lang="ts">
+import { Event as TrapPartyEvent } from '~/types/trapparty'
+export interface Props {
+  event: TrapPartyEvent
 }
+withDefaults(defineProps<Props>(), {})
+
+const { t } = useI18n()
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
-  title: 'Teamwertung'
+  title: Teamwertung
 </i18n>

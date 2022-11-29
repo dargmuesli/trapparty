@@ -7,27 +7,21 @@
       class="rounded-full px-2 py-1 text-gray-900"
       :class="game.isActive ? 'bg-green-400' : 'bg-white'"
     >
-      {{ game.isActive ? $t('isActiveTrue') : $t('isActiveFalse') }}
+      {{ game.isActive ? t('isActiveTrue') : t('isActiveFalse') }}
     </span>
   </section>
 </template>
 
-<script lang="ts">
-import { defineNuxtComponent, PropType } from '@nuxt/bridge/dist/runtime'
-
+<script setup lang="ts">
 import { Game } from '~/types/trapparty'
 
-export default defineNuxtComponent({
-  props: {
-    game: {
-      required: true,
-      type: Object as PropType<Game>,
-    },
-  },
-})
+export interface Props {
+  game: Game
+}
+withDefaults(defineProps<Props>(), {})
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
   isActiveTrue: Aktiv
   isActiveFalse: Inaktiv

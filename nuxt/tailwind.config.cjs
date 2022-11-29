@@ -4,10 +4,13 @@ module.exports = {
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
-    './nuxt.config.js',
-    './nuxt.config.ts',
+    // './nuxt.config.js',
+    // './nuxt.config.ts',
   ],
   plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
     function ({ addBase, addComponents, addUtilities, theme }) {
       addBase({
         // '@font-face': {

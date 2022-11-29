@@ -2,7 +2,7 @@ import { IncomingMessage } from 'node:http'
 
 import isHTTPS from 'is-https'
 
-import { getHost } from './utils/util'
+import { getHost } from '~/utils/util'
 
 export default {
   'user-agent': '*', // must come before allow and disallow rules for Lighthouse check to pass

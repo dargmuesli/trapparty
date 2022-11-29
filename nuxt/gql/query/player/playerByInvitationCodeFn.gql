@@ -1,4 +1,4 @@
-query ($invitationCode: UUID!) {
+query playerByInvitationCodeFn ($invitationCode: UUID!) {
   playerByInvitationCodeFn(invitationCode: $invitationCode) {
     nodes {
       id

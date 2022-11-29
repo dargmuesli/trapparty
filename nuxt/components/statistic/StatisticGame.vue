@@ -8,16 +8,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from '#app'
+<script setup lang="ts">
 import { Game } from '~/types/trapparty'
 
-export default defineComponent({
-  props: {
-    game: {
-      required: true,
-      type: Object as PropType<Game>,
-    },
-  },
-})
+export interface Props {
+  game: Game
+}
+withDefaults(defineProps<Props>(), {})
 </script>

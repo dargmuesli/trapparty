@@ -52,6 +52,8 @@ export interface Player {
 
 export interface Team {
   id: number
+  charityOrganizationByCharityOrganizationId: CharityOrganization
   donationAmount: number
+  emoji: string
   name: string
 }

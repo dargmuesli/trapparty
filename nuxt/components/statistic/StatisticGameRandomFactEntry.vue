@@ -10,57 +10,44 @@
         highscores[2] !== undefined && value === highscores[2],
     }"
   >
-    {{ playerNameById }}: {{ value }}
+    {{ t('playerValue', { player: playerNameById, value }) }}
   </li>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import consola from 'consola'
 
-import { defineComponent, PropType } from '#app'
 import PLAYER_NAME_BY_ID_QUERY from '~/gql/query/player/playerNameById.gql'
 
-export default defineComponent({
-  apollo: {
-    playerNameById() {
-      return {
-        query: PLAYER_NAME_BY_ID_QUERY,
-        variables: {
-          id: this.playerId,
-        },
-        update: (data: any) => this.$util.getNested(data, 'playerNameById'),
-        error(error: any) {
-          consola.error(error)
-          this.graphqlError = error.message
-        },
-      }
-    },
-  },
-  props: {
-    highscores: {
-      required: true,
-      type: Array as PropType<Array<Number>>,
-    },
-    playerId: {
-      required: true,
-      type: Number,
-    },
-    value: {
-      required: true,
-      type: Number,
-    },
-  },
-  data() {
-    return {
-      graphqlError: undefined as string | undefined,
-      playerNameById: undefined as string | undefined,
-    }
-  },
-})
+// apollo: {
+//   playerNameById() {
+//     return {
+//       query: PLAYER_NAME_BY_ID_QUERY,
+//       variables: {
+//         id: playerId,
+//       },
+//       update: (data: any) => data.playerNameById,
+//       error(error: any) {
+//         consola.error(error)
+//         graphqlError = error.message
+//       },
+//     }
+//   },
+// },
+export interface Props {
+  highscores: number[]
+  playerId: number
+  value: number
+}
+const props = withDefaults(defineProps<Props>(), {})
+
+const { t } = useI18n()
+
+// data
+const playerNameById = ref<string>()
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
-  gameRandomFactsRoundNone: Keine Spielrunde vorhanden.
-  gameRandomFactsVoteNone: Keine Abstimmungen vorhanden.
+  playerValue: '{player}: {value}'
 </i18n>

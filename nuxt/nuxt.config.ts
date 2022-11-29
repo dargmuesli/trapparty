@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import graphqlPlugin from '@rollup/plugin-graphql'
 
+import localeDe from './locales/de.json'
+
 const BASE_URL =
   'https://' +
   (process.env.NUXT_PUBLIC_STACK_DOMAIN ||
@@ -116,22 +118,8 @@ export default defineNuxtConfig({
         ],
         vueI18n: {
           messages: {
-            de: {
-              globalLoading: 'Lade...',
-              globalOgImageAlt: 'TrapPartys Logo.',
-              globalOgSeoDescription: 'TrapPartys Online-Version.',
-              globalValidationFailed: 'Bitte überprüfe deine Eingaben 🙈',
-              globalValidationFormatIncorrect: 'Falsches Format.',
-              globalValidationRequired: 'Pflichtfeld.',
-            },
-            en: {
-              globalLoading: 'Loading...',
-              globalOgImageAlt: "TrapParty's logo.",
-              globalOgSeoDescription: "TrapParty's online version.",
-              globalValidationFailed: 'Please check your input 🙈',
-              globalValidationFormatIncorrect: 'Incorrect format.',
-              globalValidationRequired: 'Required.',
-            },
+            de: localeDe,
+            // en: localeEn,
           },
           fallbackWarn: false, // TODO: don't show incorrect warnings (https://github.com/intlify/vue-i18n-next/issues/776)
         },
@@ -139,6 +127,7 @@ export default defineNuxtConfig({
       },
     ],
     '@nuxtjs/robots',
+    '@pinia/nuxt',
     '@funken-studio/sitemap-nuxt-3', // Should be declared at the end of the array.
   ],
   nitro: {
