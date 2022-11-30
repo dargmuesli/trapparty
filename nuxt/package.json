@@ -65,7 +65,7 @@
     "@babel/plugin-proposal-numeric-separator": "7.18.6",
     "@babel/runtime-corejs3": "7.20.6",
     "@nuxt/babel-preset-app": "2.15.8",
-    "@nuxt/bridge": "npm:@nuxt/bridge-edge@3.0.0-27778503.de9e5c2",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@3.0.0-27830071.32c4527",
     "@nuxtjs/eslint-config-typescript": "11.0.0",
     "@nuxtjs/eslint-module": "3.1.0",
     "@nuxtjs/fontawesome": "1.1.2",
