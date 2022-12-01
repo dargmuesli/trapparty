@@ -1,7 +1,7 @@
 {
   "name": "trapparty",
   "private": true,
-  "version": "2.7.0",
+  "version": "2.7.1",
   "scheduleVersion": "2.6.23",
   "description": "TrapParty's online version.",
   "packageManager": "pnpm@7.17.1",
