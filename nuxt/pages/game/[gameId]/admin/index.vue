@@ -8,12 +8,20 @@
 import consola from 'consola'
 import Swal from 'sweetalert2'
 
-import GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsRound.gql'
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
-import { Player } from '~/types/trapparty'
+import {
+  PlayerByInvitationCodeFnQuery,
+  useCreateGameRandomFactsRoundMutation,
+} from '~/gql/generated'
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
+const createGameRandomFactsRoundMutation =
+  useCreateGameRandomFactsRoundMutation()
+
+// api data
+const api = getApiDataDefault()
 
 // data
 const isNfcWritableErrorMessage = ref<string>()
@@ -43,58 +51,54 @@ async function checkNfcErrors(): Promise<void> {
     }
   }
 }
-async function getPlayerByInvitationCode(
-  invitationCode: string
-): Promise<Player> {
-  const playerByInvitationCodeResult = await $apollo
-    .query({
-      query: PLAYER_BY_INVITATION_CODE_FN,
-      variables: {
-        invitationCode,
-      },
+async function getPlayerByInvitationCode(invitationCode: string) {
+  const result = await $urql.value
+    .query<PlayerByInvitationCodeFnQuery>(PLAYER_BY_INVITATION_CODE_FN, {
+      invitationCode,
     })
-    .catch((error) => {
-      graphqlError = error.message
-      consola.error(error)
-    })
+    .toPromise()
 
-  if (!playerByInvitationCodeResult)
+  if (result.error) {
+    api.value.errors.push(result.error)
+    consola.error(result.error)
+  }
+
+  if (!result)
     return Promise.reject(Error('No result for player by invitation code!'))
 
-  return playerByInvitationCodeResult.data.playerByInvitationCodeFn
-    .nodes[0] as Player
+  return result.data?.playerByInvitationCodeFn?.nodes[0]
 }
 async function gameRandomFactsRoundCreate(gameRandomFactsRoundInput: any) {
   const player = await getPlayerByInvitationCode(
     gameRandomFactsRoundInput.invitationCode
   )
 
+  if (!player) return
+
   delete gameRandomFactsRoundInput.invitationCode
   gameRandomFactsRoundInput.questionerName = player.name
 
-  await $apollo
-    .mutate({
-      mutation: GAME_RANDOM_FACTS_ROUND_CREATE_MUTATION,
-      variables: {
-        gameRandomFactsRoundInput,
-      },
+  const result = await createGameRandomFactsRoundMutation.executeMutation({
+    gameRandomFactsRoundInput,
+  })
+
+  if (result.error) {
+    Swal.fire({
+      icon: 'error',
+      title: t('globalStatusError'),
+      text: result.error.message,
     })
-    .then(() => {
-      Swal.fire({
-        icon: 'success',
-        showConfirmButton: false,
-        timer: 1500,
-      })
-    })
-    .catch((reason) => {
-      Swal.fire({
-        icon: 'error',
-        title: t('globalStatusError'),
-        text: reason,
-      })
-      graphqlError = reason
-      consola.error(reason)
-    })
+    api.value.errors.push(result.error)
+    consola.error(result.error)
+  }
+
+  if (!result.data) return
+
+  Swal.fire({
+    icon: 'success',
+    showConfirmButton: false,
+    timer: 1500,
+  })
 }
 async function nfcScan() {
   try {

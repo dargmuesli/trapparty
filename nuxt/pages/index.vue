@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <Loader :api="api" class="flex flex-1 flex-col">
     <div class="flex flex-1 flex-col">
       <section v-if="eventsUpcoming && eventsUpcoming.length > 0">
         <h2>
@@ -11,9 +11,9 @@
             :key="eventUpcoming.id"
             class="text-xl"
           >
-            <nuxt-link :to="localePath(`/event/${eventUpcoming.name}`)">
+            <AppLink :to="localePath(`/event/${eventUpcoming.name}`)">
               {{ `${t('title')} ${eventUpcoming.name}` }}
-            </nuxt-link>
+            </AppLink>
           </li>
         </ul>
       </section>
@@ -26,7 +26,7 @@
             {{ t('transcription') }}
           </span>
         </div>
-        <i18n-t class="prose text-2xl" keypath="description" tag="p">
+        <i18n-t class="text-2xl" keypath="description" tag="p">
           <template #author>
             <AppLink
               to="https://jonas-thelemann.de"
@@ -47,9 +47,9 @@
             :key="eventPast.id"
             class="text-xl"
           >
-            <nuxt-link :to="localePath(`/event/${eventPast.name}`)">
+            <AppLink :to="localePath(`/event/${eventPast.name}`)">
               {{ `${t('title')} ${eventPast.name}` }}
-            </nuxt-link>
+            </AppLink>
           </li>
         </ul>
       </section>
@@ -58,32 +58,39 @@
 </template>
 
 <script setup lang="ts">
-import ALL_EVENTS from '~/gql/query/event/allEvents.gql'
+import { useAllEventsQuery } from '~/gql/generated'
 
+const { $moment } = useNuxtApp()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-// apollo: {
-//   allEvents() {
-//     return {
-//       query: ALL_EVENTS,
-//       update: (data) => data.allEvents.nodes,
-//       error(error, _vm, _key, _type, _options) {
-//         graphqlError = error.message
-//       },
-//     }
-//   },
-// },
+// queries
+const allEventsQuery = await useAllEventsQuery()
+
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...allEventsQuery.data.value,
+    },
+    ...getApiMeta([allEventsQuery]),
+  })
+)
+const allEvents = computed(() => allEventsQuery.data.value?.allEvents?.nodes)
 
 // data
 const title = t('title')
 
 // computations
 const eventsPast = computed(() => {
-  return allEvents?.filter((event) => $moment(event.start).isBefore($moment()))
+  return arrayRemoveNulls(allEvents.value).filter((event) =>
+    $moment(event.start).isBefore($moment())
+  )
 })
 const eventsUpcoming = computed(() => {
-  return allEvents?.filter((event) => $moment(event.start).isAfter($moment()))
+  return arrayRemoveNulls(allEvents.value).filter((event) =>
+    $moment(event.start).isAfter($moment())
+  )
 })
 
 // initialization

@@ -5,9 +5,9 @@ query eventByName($eventName: String!) {
   eventByName(name: $eventName) {
     ...eventFields
     teamsByEventId {
-        nodes {
-          ...teamFields
-        }
+      nodes {
+        ...teamFields
       }
+    }
   }
 }

@@ -28,7 +28,7 @@ export const useStore = defineStore('trapparty', () => {
     jwt.value = jwtNew
     jwtDecoded.value = jwtDecodedNew
     signedInUsername.value =
-      jwtDecodedNew?.role === 'maevsi_account' &&
+      jwtDecodedNew?.role === 'trapparty_account' &&
       jwtDecodedNew.exp !== undefined &&
       jwtDecodedNew.exp > Math.floor(Date.now() / 1000)
         ? (jwtDecodedNew.username as string | undefined)

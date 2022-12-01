@@ -36,7 +36,7 @@ const { locale, t } = useI18n()
 
 // computations
 const statusReason = computed(() => {
-  return status(props.statusCode, locale.value) || (t('error') as string)
+  return status(props.statusCode, locale.value) || t('error')
 })
 </script>
 

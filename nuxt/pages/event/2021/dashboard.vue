@@ -16,7 +16,7 @@
           <GameTitle :game="game" />
           <div class="flex gap-4">
             <Button
-              v-if="game.isActive && store.participationData.role === 'player'"
+              v-if="game.isActive && store.participationData?.role === 'player'"
               :aria-label="t('gameLink')"
               :to="localePath(`/game/${game.id}`)"
             >
@@ -39,51 +39,59 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import EVENT_BY_NAME_QUERY from '~/gql/query/event/eventByName.gql'
 import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
-import { Game } from '~/types/trapparty'
+import { useEventByNameQuery, AllGamesQuery } from '~/gql/generated'
+import { useStore } from '~/store'
 
+const { $urql } = useNuxtApp()
 const localePath = useLocalePath()
 const { t } = useI18n()
+const store = useStore()
 
-// apollo: {
-//   trapPartyEvent() {
-//     return {
-//       query: EVENT_BY_NAME_QUERY,
-//       variables: {
-//         eventName: '2021',
-//       },
-//       update: (data) => data.eventByName,
-//       error(error, _vm, _key, _type, _options) {
-//         graphqlError = error.message
-//       },
-//     }
-//   },
-// },
+// queries
+const eventByNameQuery = await useEventByNameQuery({
+  variables: {
+    eventName: '2021',
+  },
+})
+
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...eventByNameQuery.data.value,
+    },
+    ...getApiMeta([eventByNameQuery]),
+  })
+)
+const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
+
 // data
-const games = ref<Game[]>()
+const games = ref<
+  NonNullable<ArrayElement<NonNullable<AllGamesQuery['allGames']>['nodes']>>[]
+>([])
 const title = t('title')
 
 // lifecycle
 watch(
-  () => trapPartyEvent,
-  (currentValue, _oldValue) => {
+  () => trapPartyEvent.value,
+  async (currentValue, _oldValue) => {
     if (!currentValue) return
 
-    $apollo
-      .query({
-        query: GAMES_ALL_QUERY,
-        variables: {
-          eventId: currentValue.id,
-        },
+    const result = await $urql.value
+      .query<AllGamesQuery>(GAMES_ALL_QUERY, {
+        eventId: currentValue.id,
       })
-      .then((data) => {
-        games.value = data.data.allGames.nodes
-      })
-      .catch((error: any) => {
-        graphqlError = error.message
-        consola.error(error)
-      })
+      .toPromise()
+
+    if (result.error) {
+      api.value.errors.push(result.error)
+      consola.error(result.error)
+    }
+
+    const allGames = arrayRemoveNulls(result.data?.allGames?.nodes)
+
+    games.value = allGames
   }
 )
 

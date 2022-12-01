@@ -1,5 +1,5 @@
 <template>
-  <div v-if="gameId">
+  <Loader :api="api">
     <ul
       v-if="leaderboard && leaderboard.length > 0"
       class="flex flex-wrap gap-2"
@@ -15,69 +15,95 @@
     <div v-else>
       {{ t('statisticNone') }}
     </div>
-  </div>
+  </Loader>
 </template>
 
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAME_RANDOM_FACTS_ROUNDS_ALL_QUERY from '~/gql/query/game/allGameRandomFactsRounds.gql'
 import GAME_RANDOM_FACTS_VOTES_ALL_QUERY from '~/gql/query/game/allGameRandomFactsVotes.gql'
 
-import { GameRandomFactsRound, GameRandomFactsVote } from '~/types/trapparty'
+import {
+  AllGameRandomFactsRoundsQuery,
+  GameRandomFactsVotesQuery,
+  useAllGameRandomFactsRoundsQuery,
+} from '~/gql/generated'
 
 export interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 
 // data
 const highscores = ref<number[]>([])
 const leaderboard = ref<Array<[string, number]>>([])
-const rounds = ref<GameRandomFactsRound[]>([])
-const votes = ref<GameRandomFactsVote[]>([])
+const rounds = ref<
+  NonNullable<
+    ArrayElement<
+      NonNullable<
+        AllGameRandomFactsRoundsQuery['allGameRandomFactsRounds']
+      >['nodes']
+    >
+  >[]
+>([])
+const votes = ref<
+  NonNullable<
+    ArrayElement<
+      NonNullable<GameRandomFactsVotesQuery['allGameRandomFactsVotes']>['nodes']
+    >
+  >[]
+>([])
 
-onMounted(async () => {
-  if (!props.gameId) return
+// queries
+const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
+  variables: {
+    gameId: props.gameId,
+  },
+})
 
-  const allGameRandomFactsRoundsResult = await $apollo
-    .query({
-      query: GAME_RANDOM_FACTS_ROUNDS_ALL_QUERY,
-      variables: {
-        gameId: props.gameId,
-      },
-      fetchPolicy: 'network-only',
-    })
-    .catch((error) => {
-      graphqlError = error.message
-      consola.error(error)
-    })
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...allGameRandomFactsRoundsQuery.data.value,
+    },
+    ...getApiMeta([allGameRandomFactsRoundsQuery]),
+  })
+)
+const allGameRandomFactsRoundsResult = computed(
+  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds
+)
 
-  if (!allGameRandomFactsRoundsResult) return
-  rounds.value =
-    allGameRandomFactsRoundsResult.data.allGameRandomFactsRounds.nodes
+// method
+async function init() {
+  // TODO: use single query
+  rounds.value = arrayRemoveNulls(allGameRandomFactsRoundsResult.value?.nodes)
 
   const leaderboardObject = {} as Record<string, number>
 
   for (const round of rounds.value) {
-    const allGameRandomFactsVotesResult = await $apollo
-      .query({
-        query: GAME_RANDOM_FACTS_VOTES_ALL_QUERY,
-        variables: {
+    const result = await $urql.value
+      .query<GameRandomFactsVotesQuery>(
+        GAME_RANDOM_FACTS_VOTES_ALL_QUERY,
+        {
           roundId: +round.id,
         },
-        fetchPolicy: 'network-only',
-      })
-      .catch((error) => {
-        graphqlError = error.message
-        consola.error(error)
-      })
+        {
+          fetchPolicy: 'network-only',
+        }
+      )
+      .toPromise()
 
-    if (!allGameRandomFactsVotesResult) return
-    votes.value =
-      allGameRandomFactsVotesResult.data.allGameRandomFactsVotes.nodes
+    if (result.error) {
+      api.value.errors.push(result.error)
+      consola.error(result.error)
+    }
+
+    if (!result) return
+    votes.value = arrayRemoveNulls(result.data?.allGameRandomFactsVotes?.nodes)
 
     for (const vote of votes.value) {
       if (!(vote.playerId in leaderboardObject)) {
@@ -105,7 +131,10 @@ onMounted(async () => {
 
     if (highscores.value.length === 3) break
   }
-})
+}
+
+// lifecycle
+await init()
 </script>
 
 <i18n lang="yaml">

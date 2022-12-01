@@ -1,16 +1,16 @@
 <template>
   <Loader :api="api" class="section-wrapper">
     <div>
-      <div v-if="participationData">
+      <div v-if="store.participationData">
         <section class="mt-8 text-center">
           <span
             v-if="
               store.participationData.role === 'player' &&
-              participationData.name
+              participationDataPlayer?.name
             "
             class="text-2xl"
           >
-            Hallo {{ participationData.name }}!
+            {{ t('hello', { name: participationDataPlayer.name }) }}
           </span>
           <h1>{{ title }}</h1>
         </section>
@@ -20,20 +20,23 @@
           </i18n-t>
           <ButtonHome />
         </section>
-        <section v-if="store.participationData.role === 'player'" class="prose">
+        <section
+          v-if="store.participationData.role === 'player'"
+          class="custom-prose-scheme"
+        >
           <h2>{{ t('teamTitle') }}</h2>
           <section>
             <h3>{{ t('teamCommunicationTitle') }}</h3>
             <p>
               {{ t('teamCommunicationDescription1') }}
-              <i18n
-                v-if="participationData.teamByTeamId.name"
-                path="teamDataName"
+              <i18n-t
+                v-if="participationDataPlayer?.teamByTeamId?.name"
+                keypath="teamDataName"
               >
                 <span class="font-bold">{{
-                  participationData.teamByTeamId.name
+                  participationDataPlayer.teamByTeamId.name
                 }}</span>
-              </i18n>
+              </i18n-t>
               <span v-else class="unready inline-block">
                 {{ t('teamDataNameDataless') }}
               </span>
@@ -49,13 +52,13 @@
               </Button>
               <Button
                 v-if="
-                  participationData.teamByTeamId.eventByEventId
-                    .discordInviteCode
+                  participationDataPlayer?.teamByTeamId?.eventByEventId
+                    ?.discordInviteCode
                 "
                 :aria-label="t('discordJoin')"
                 class="ml-4"
                 :icon-id="['fas', 'sign-in-alt']"
-                :to="`https://discord.gg/${participationData.teamByTeamId.eventByEventId.discordInviteCode}`"
+                :to="`https://discord.gg/${participationDataPlayer.teamByTeamId.eventByEventId.discordInviteCode}`"
               >
                 {{ t('discordJoin') }}
               </Button>
@@ -63,11 +66,11 @@
                 {{ t('dataless', { what: t('datalessDiscordCode') }) }}
               </span>
             </p>
-            <p v-if="participationData.teamByTeamId.emoji">
+            <p v-if="participationDataPlayer?.teamByTeamId?.emoji">
               {{
                 t('teamCommunicationDescription2', {
-                  emojiPrefix: participationData.teamByTeamId.emoji
-                    ? participationData.teamByTeamId.emoji + '-'
+                  emojiPrefix: participationDataPlayer.teamByTeamId.emoji
+                    ? participationDataPlayer.teamByTeamId.emoji + '-'
                     : '',
                 })
               }}
@@ -87,53 +90,55 @@
               {{ t('donationDescription') }}
               {{ t('donationDescriptionTeam') }}
             </p>
-            <i18n
+            <i18n-t
               v-if="
-                participationData.teamByTeamId
-                  .charityOrganizationByCharityOrganizationId.name
+                participationDataPlayer?.teamByTeamId
+                  ?.charityOrganizationByCharityOrganizationId?.name
               "
-              path="teamDataCharityOrganisation"
+              keypath="teamDataCharityOrganisation"
               tag="p"
             >
               <span class="font-bold">
                 <a
                   v-if="
-                    participationData.teamByTeamId
+                    participationDataPlayer.teamByTeamId
                       .charityOrganizationByCharityOrganizationId.url
                   "
                   :href="
-                    participationData.teamByTeamId
+                    participationDataPlayer.teamByTeamId
                       .charityOrganizationByCharityOrganizationId.url
                   "
                 >
                   {{
-                    participationData.teamByTeamId
+                    participationDataPlayer.teamByTeamId
                       .charityOrganizationByCharityOrganizationId.name
                   }}
                 </a>
                 <span v-else class="inline-block">
                   {{
-                    participationData.teamByTeamId
+                    participationDataPlayer.teamByTeamId
                       .charityOrganizationByCharityOrganizationId.name
                   }}
                 </span>
               </span>
-            </i18n>
+            </i18n-t>
             <p v-else>
               <span class="unready inline-block">
                 {{ t('teamDataCharityOrganisationDataless') }}
               </span>
             </p>
-            <p v-if="participationData.teamByTeamId.donationUrl">
-              <ButtonShare :url="participationData.teamByTeamId.donationUrl">
+            <p v-if="participationDataPlayer?.teamByTeamId?.donationUrl">
+              <ButtonShare
+                :url="participationDataPlayer.teamByTeamId.donationUrl"
+              >
                 <Button
                   :aria-label="t('donationButtonTeam')"
                   :icon-id="['fas', 'heart']"
-                  :to="participationData.teamByTeamId.donationUrl"
+                  :to="participationDataPlayer.teamByTeamId.donationUrl"
                 >
                   {{ t('donationButtonTeam') }}
                 </Button>
-                <template slot="unready">
+                <template #unready>
                   {{ t('dataless', { what: t('datalessDonationTeam') }) }}
                 </template>
               </ButtonShare>
@@ -142,29 +147,29 @@
         </section>
         <section
           v-if="store.participationData.role === 'watcher'"
-          class="prose"
+          class="custom-prose-scheme"
         >
           <h2>{{ t('donationTitle') }}</h2>
           <p>
             {{ t('donationDescription') }}
             {{ t('donationDescriptionCommon') }}
           </p>
-          <p v-if="participationData.commonDonationUrl">
-            <ButtonShare :url="participationData.commonDonationUrl">
+          <p v-if="trapPartyEvent?.commonDonationUrl">
+            <ButtonShare :url="trapPartyEvent.commonDonationUrl">
               <Button
                 :aria-label="t('donationButtonCommon')"
                 :icon-id="['fas', 'heart']"
-                :to="participationData.commonDonationUrl"
+                :to="trapPartyEvent.commonDonationUrl"
               >
                 {{ t('donationButtonCommon') }}
               </Button>
-              <template slot="unready">
+              <template #unready>
                 {{ t('dataless', { what: t('datalessDonationCommon') }) }}
               </template>
             </ButtonShare>
           </p>
         </section>
-        <section class="prose">
+        <section class="custom-prose-scheme">
           <h2>{{ t('streamTitle') }}</h2>
           <p>
             {{ t('streamDescription') }}
@@ -173,20 +178,26 @@
             </span>
           </p>
           <p>
-            <span v-if="event.streamUrl">
+            <span v-if="trapPartyEvent?.streamUrl">
               <Button
                 :aria-label="t('streamGoto')"
                 class="mr-4"
                 :icon-id="['fas', 'tv']"
-                :to="event.streamUrl"
+                :to="trapPartyEvent.streamUrl"
               >
                 {{ t('streamGoto') }}
               </Button>
-              <i18n-t v-if="event.start" keypath="streamDescriptionStart">
+              <i18n-t
+                v-if="trapPartyEvent.start"
+                keypath="streamDescriptionStart"
+              >
                 <span class="font-bold">
-                  {{ $moment(event.start).format('lll') }} ({{
-                    $moment(event.start).fromNow()
-                  }})
+                  {{
+                    t('startDuration', {
+                      start: $moment(trapPartyEvent.start).format('lll'),
+                      duration: $moment(trapPartyEvent.start).fromNow(),
+                    })
+                  }}
                 </span>
               </i18n-t>
             </span>
@@ -218,10 +229,11 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import __TYPENAME from '~/gql/query/__typename.gql'
-import EVENT_BY_NAME from '~/gql/query/event/eventByName.gql'
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
 import { useStore } from '~/store'
+import {
+  useEventByNameQuery,
+  usePlayerByInvitationCodeFnQuery,
+} from '~/gql/generated'
 
 definePageMeta({
   middleware: [
@@ -239,41 +251,36 @@ definePageMeta({
 const store = useStore()
 const { t } = useI18n()
 
-// apollo: {
-//   participationData() {
-//     switch (store.participationData.role) {
-//       case 'player':
-//         return {
-//           query: PLAYER_BY_INVITATION_CODE_FN,
-//           variables: {
-//             eventName: '2020',
-//             invitationCode:
-//               store.participationData.invitationCode,
-//           },
-//           update: (data) => data.playerByInvitationCodeFn.nodes[0],
-//           error(error, _vm, _key, _type, _options) {
-//             graphqlError = error.message
-//           },
-//         }
-//       case 'watcher':
-//         return {
-//           query: EVENT_BY_NAME,
-//           variables: {
-//             eventName: '2020',
-//           },
-//           update: (data) => data.eventByName,
-//           error(error, _vm, _key, _type, _options) {
-//             graphqlError = error.message
-//           },
-//         }
-//       default:
-//         consola.error(t('errorUnexpectedParticipationRole'))
-//         return {
-//           query: __TYPENAME,
-//         }
-//     }
-//   },
-// },
+// queries
+const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
+  variables: {
+    invitationCode: store.participationData?.invitationCode,
+  },
+})
+const eventByNameQuery = await useEventByNameQuery({
+  variables: {
+    eventName: '2020',
+  },
+})
+
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...playerByInvitationCodeFnQuery.data.value,
+      ...eventByNameQuery.data.value,
+    },
+    ...getApiMeta([playerByInvitationCodeFnQuery, eventByNameQuery]),
+  })
+)
+
+const participationDataPlayer = computed(
+  () =>
+    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn?.nodes[0]
+)
+const participationDataWatcher = computed(
+  () => eventByNameQuery.data.value?.eventByName
+)
 
 // data
 // participationData: {
@@ -296,12 +303,12 @@ const { t } = useI18n()
 const title = t('title')
 
 // computations
-const event = computed(() => {
+const trapPartyEvent = computed(() => {
   switch (store.participationData?.role) {
     case 'player':
-      return participationData.teamByTeamId.eventByEventId
+      return participationDataPlayer.value?.teamByTeamId?.eventByEventId
     case 'watcher':
-      return participationData
+      return participationDataWatcher.value
     default:
       alert(t('errorUnexpectedParticipationRole'))
   }
@@ -319,6 +326,14 @@ const intention = computed(() => {
   }
 
   return undefined
+})
+
+// lifecycle
+watch(playerByInvitationCodeFnQuery.error, (currentValue, _oldValue) => {
+  if (currentValue) consola.error(currentValue)
+})
+watch(eventByNameQuery.error, (currentValue, _oldValue) => {
+  if (currentValue) consola.error(currentValue)
 })
 
 // initialization
@@ -358,10 +373,12 @@ de:
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
   donationDescriptionTeam: 'Im Stream könnt ihr mehr Spenden für die von euch gewählte wohltätige Organisation sammeln und müsst den von euch gesammelten Spendenbetrag verteidigen. Der von euch gesammelte Betrag kann also auch zu Teilen wohltätigen Organisationen zugutekommen, die anderen Teams am Herzen liegen.'
   errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
+  hello: Hallo {name}!
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
   intentionRoleAnonymous: anonym teilzunehmen
   intentionRolePlayer: mitzumachen
   participationDataless: Konnte keine Teilnahmedaten laden.
+  startDuration: '{start} ({duration})'
   statisticsGoTo: Zu den Statistiken
   streamTitle: Zuschauen 📺
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'

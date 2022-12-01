@@ -18,57 +18,64 @@ import consola from 'consola'
 
 import EVENT_BY_NAME_QUERY from '~/gql/query/event/eventByName.gql'
 import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
+import { AllGamesQuery, EventByNameQuery } from '~/gql/generated'
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
+
+// api data
+const api = getApiDataDefault()
 
 // data
 const games = ref<Array<any>>()
 const isLoaded = ref(false)
 const title = t('title')
 
-onMounted(async () => {
-  const eventResult = await $apollo
-    .query({
-      query: EVENT_BY_NAME_QUERY,
-      variables: {
-        eventName: '2021',
-      },
+// methods
+async function init() {
+  const eventResult = await $urql.value
+    .query<EventByNameQuery>(EVENT_BY_NAME_QUERY, {
+      eventName: '2021',
     })
-    .catch((error) => {
-      graphqlError = error.message
-      consola.error(error)
-    })
+    .toPromise()
+
+  if (eventResult.error) {
+    api.value.errors.push(eventResult.error)
+    // TODO: add watcher instead
+    consola.error(eventResult.error)
+  }
 
   if (!eventResult) return loadingStop()
-  const event = eventResult.data.eventByName
+  const trapPartyEvent = eventResult.data?.eventByName
 
-  const gamesResult = await $apollo
-    .query({
-      query: GAMES_ALL_QUERY,
-      variables: {
-        eventId: +event.id,
-        type: 'RANDOM_FACTS',
-      },
+  if (!trapPartyEvent) return
+
+  const gamesResult = await $urql.value
+    .query<AllGamesQuery>(GAMES_ALL_QUERY, {
+      eventId: +trapPartyEvent.id,
+      type: 'RANDOM_FACTS',
     })
-    .catch((error) => {
-      graphqlError = error.message
-      consola.error(error)
-    })
+    .toPromise()
+
+  if (eventResult.error) {
+    api.value.errors.push(eventResult.error)
+    // TODO: add watcher instead
+    consola.error(eventResult.error)
+  }
 
   if (!gamesResult) return loadingStop()
 
-  games.value = gamesResult.data.allGames.nodes
+  games.value = gamesResult.data?.allGames?.nodes
 
   loadingStop()
-})
-
-// methods
+}
 function loadingStop() {
   isLoaded.value = true
 }
 
 // initialization
 useHeadDefault(title)
+await init()
 </script>
 
 <script lang="ts">

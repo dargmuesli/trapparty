@@ -58,7 +58,7 @@ const options = computed((): ChartOptions<'bar'> => {
       },
       y: {
         grid: {
-          borderColor: '#666',
+          // borderColor: '#666', // TODO: check if needed
           color: '#666',
         },
         stacked: true,
@@ -70,7 +70,7 @@ const options = computed((): ChartOptions<'bar'> => {
       },
     },
   }
-  return merge(optionsDefault, props.optionsAdditional)
+  return merge(optionsDefault, props.optionsAdditional) // TODO: replace with defu
 })
 
 // initialization

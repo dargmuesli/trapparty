@@ -13,12 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import { Game } from '~/types/trapparty'
-
 export interface Props {
-  game: Game
+  game: { isActive: boolean; name: string }
 }
 withDefaults(defineProps<Props>(), {})
+
+const { t } = useI18n()
 </script>
 
 <i18n lang="yaml">

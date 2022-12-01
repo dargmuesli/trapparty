@@ -16,11 +16,10 @@ import Color from 'color'
 import consola from 'consola'
 import Rainbow from 'rainbowvis.js'
 
-import { Event as TrapPartyEvent } from '~/types/trapparty'
 import { useStatsQuery } from '~/gql/generated'
 
 export interface Props {
-  trapPartyEvent: TrapPartyEvent
+  eventId: number
   height?: number
   options?: ChartOptions<'bar'>
   title?: string
@@ -34,9 +33,9 @@ const props = withDefaults(defineProps<Props>(), {
 const { t } = useI18n()
 
 // queries
-const statsQuery = useStatsQuery({
+const statsQuery = await useStatsQuery({
   variables: {
-    eventId: props.trapPartyEvent.id,
+    eventId: props.eventId,
   },
 })
 
@@ -93,7 +92,7 @@ function init() {
   }
 
   datasets.push({
-    label: t('title') as string,
+    label: t('title'),
     data: donationsPerHead,
     backgroundColor: Color(`#${rainbow.colorAt(0)}`)
       .desaturate(0.5)
@@ -109,10 +108,6 @@ function init() {
 
 // lifecycle
 onMounted(() => {
-  if (!props.trapPartyEvent) {
-    return
-  }
-
   window.addEventListener('resize', (e) => {
     horizontal.value =
       (e?.target as Window).outerWidth < CHART_DIRECTION_BREAKPOINT
