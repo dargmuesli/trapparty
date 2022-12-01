@@ -13,7 +13,7 @@ specifiers:
   '@intlify/eslint-plugin-vue-i18n': 2.0.0
   '@nuxtjs/color-mode': 3.2.0
   '@nuxtjs/eslint-config-typescript': 12.0.0
-  '@nuxtjs/html-validator': 1.2.0
+  '@nuxtjs/html-validator': 1.2.1
   '@nuxtjs/i18n': npm:@nuxtjs/i18n-edge@8.0.0-beta.6-27829608.54a157b
   '@nuxtjs/robots': 3.0.0
   '@nuxtjs/sitemap': 2.4.0
@@ -88,7 +88,7 @@ devDependencies:
   '@intlify/eslint-plugin-vue-i18n': 2.0.0_eslint@8.28.0
   '@nuxtjs/color-mode': 3.2.0_rollup@2.79.1
   '@nuxtjs/eslint-config-typescript': 12.0.0_hsf322ms6xhhd4b5ne6lb74y4a
-  '@nuxtjs/html-validator': 1.2.0_rollup@2.79.1
+  '@nuxtjs/html-validator': 1.2.1_rollup@2.79.1
   '@nuxtjs/i18n': /@nuxtjs/i18n-edge/8.0.0-beta.6-27829608.54a157b_rollup@2.79.1+vue@3.2.45
   '@nuxtjs/robots': 3.0.0_rollup@2.79.1
   '@nuxtjs/sitemap': 2.4.0
@@ -144,7 +144,7 @@ devDependencies:
   stylelint-config-recommended-vue: 1.4.0_qendsqix7hqecpnpx4fjs6qry4
   stylelint-config-standard: 29.0.0_stylelint@14.15.0
   sweetalert2: 11.6.15
-  tailwindcss: 3.2.4_ts-node@10.9.1
+  tailwindcss: 3.2.4_v776zzvn44o7tpgzieipaairwm
   ts-node: 10.9.1_eoe7put6ewfbqpy6gs36tihw6y
   typescript: 4.9.3
   vue: 3.2.45
@@ -2052,8 +2052,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxtjs/html-validator/1.2.0_rollup@2.79.1:
-    resolution: {integrity: sha512-WJCuqlqmTJdDUDkg/gdgNSNYaCiRtYI8f0l9A74KwIMYUFFY0QSaIzTd3uUe+1JdQz2N6RMKDrBKFpK/1fSpNA==}
+  /@nuxtjs/html-validator/1.2.1_rollup@2.79.1:
+    resolution: {integrity: sha512-DuzD4cEJYwmBYvDgcPGgO90dAPiyk9Zyk8G44wdjNvzXHzxa5n1HfDPZ63O/+U3VSgxgUBeeYRPjSZhI//FjhA==}
     dependencies:
       '@nuxt/kit': 3.0.0_rollup@2.79.1
       chalk: 5.1.2
@@ -2350,7 +2350,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.4_ts-node@10.9.1
+      tailwindcss: 3.2.4_v776zzvn44o7tpgzieipaairwm
     dev: true
 
   /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.4:
@@ -2358,7 +2358,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.4_ts-node@10.9.1
+      tailwindcss: 3.2.4_v776zzvn44o7tpgzieipaairwm
     dev: true
 
   /@tailwindcss/typography/0.5.8_tailwindcss@3.2.4:
@@ -2370,7 +2370,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.2.4_ts-node@10.9.1
+      tailwindcss: 3.2.4_v776zzvn44o7tpgzieipaairwm
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -9638,10 +9638,12 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/3.2.4_ts-node@10.9.1:
+  /tailwindcss/3.2.4_v776zzvn44o7tpgzieipaairwm:
     resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
