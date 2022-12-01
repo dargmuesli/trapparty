@@ -15,11 +15,11 @@ import { Ref, ref } from 'vue'
 import schema from '~/gql/introspection'
 import { GraphCacheConfig } from '~/gql/schema'
 
-import {
-  authenticationAnonymous,
-  getJwtFromCookie,
-  jwtRefresh,
-} from '~/utils/auth'
+// import {
+//   authenticationAnonymous,
+//   getJwtFromCookie,
+//   jwtRefresh,
+// } from '~/utils/auth'
 import { useStore } from '~/store'
 
 const ssrKey = '__URQL_DATA__'
@@ -65,7 +65,7 @@ const ssrKey = '__URQL_DATA__'
 //   return Array.isArray(value) && value.every((item) => typeof item === 'string')
 // }
 
-export default defineNuxtPlugin(async (nuxtApp) => {
+export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
   const host = useHost()
   const ssr = ssrExchange({
