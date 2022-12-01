@@ -109,18 +109,17 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import { Event as TrapPartyEvent } from '~/types/trapparty'
-import { CharityOrganization, Team, useStatsQuery } from '~/gql/generated'
+import { Team, useStatsQuery, StatsQuery } from '~/gql/generated'
 
 export interface Props {
-  trapPartyEvent: TrapPartyEvent
+  trapPartyEvent: { id: number; commonDonationAmount?: number | null }
 }
 const props = withDefaults(defineProps<Props>(), {})
 
 const { t } = useI18n()
 
 // queries
-const statsQuery = useStatsQuery({
+const statsQuery = await useStatsQuery({
   variables: {
     eventId: props.trapPartyEvent.id,
   },
@@ -143,12 +142,20 @@ const teamPlayerCount = computed(() => statsQuery.data.value?.teamPlayerCount)
 const DONATION_DISTRIBUTION_PERCENTAGE = 0.5
 
 // data
-const charityOrganizations = ref<CharityOrganization[]>([])
+const charityOrganizations = ref<
+  NonNullable<
+    NonNullable<
+      ArrayElement<NonNullable<StatsQuery['allTeams']>['nodes']>
+    >['charityOrganizationByCharityOrganizationId']
+  >[]
+>([])
 const charityOrganizationWeigths = ref<number[]>([])
 const distributionMatrix = ref<Array<Array<any>>>([])
 const distributionMatrixTotalsVertical = ref<number[]>([])
 const loading = ref(true)
-const teams = ref<Team[]>([])
+const teams = ref<
+  NonNullable<ArrayElement<NonNullable<StatsQuery['allTeams']>['nodes']>>[]
+>([])
 
 // methods
 function init() {
@@ -157,7 +164,7 @@ function init() {
   if (!allTeams.value || !allGames.value || !teamPlayerCount.value) return
 
   for (let i = 0; i < allTeams.value.nodes.length; i++) {
-    const team = allTeams.value.nodes[i]
+    const team = arrayRemoveNulls(allTeams.value.nodes)[i]
     const teamPlayerCountObject = teamPlayerCount.value.nodes[i]
 
     if (

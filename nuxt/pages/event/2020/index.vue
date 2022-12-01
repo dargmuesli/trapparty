@@ -46,7 +46,7 @@
                   type="text"
                   placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
                 />
-                <template slot="inputInfo">
+                <template #inputInfo>
                   <div v-if="route.query.ic">
                     {{ t('invitationCodeAutomatic') }}
                     <AppLink :to="localePath('/')">
@@ -54,19 +54,19 @@
                     </AppLink>
                   </div>
                 </template>
-                <template slot="inputError">
-                  <FormInputError
+                <template #inputError>
+                  <FormInputStateError
                     :form-input="v$.form.invitationCode"
                     validation-property="required"
                   >
                     {{ t('globalValidationRequired') }}
-                  </FormInputError>
-                  <FormInputError
+                  </FormInputStateError>
+                  <FormInputStateError
                     :form-input="v$.form.invitationCode"
                     validation-property="formatUuid"
                   >
                     {{ t('globalValidationFormatIncorrect') }}
-                  </FormInputError>
+                  </FormInputStateError>
                 </template>
               </FormInput>
             </Form>
@@ -75,7 +75,7 @@
             </div>
             <Form
               class="lg:w-2/12"
-              :form="v$.formAnonymous"
+              :form="v$Anonymous"
               :form-sent="isFormAnonymousSent"
               :submit-name="t('anonymous')"
               @submit.prevent="anonymous"
@@ -115,7 +115,7 @@ const store = useStore()
 const localePath = useLocalePath()
 
 // queries
-const eventByNameQuery = useEventByNameQuery({
+const eventByNameQuery = await useEventByNameQuery({
   variables: {
     eventName: '2020',
   },
@@ -134,21 +134,26 @@ const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
 
 // data
 const form = reactive({
-  invitationCode: ref<string | undefined>(
+  invitationCode: ref(
     Array.isArray(route.query.ic) || route.query.ic === null
       ? undefined
       : route.query.ic
   ),
 })
 const isFormSent = ref(false)
+const formAnonymous = reactive({})
 const isFormAnonymousSent = ref(false)
 const title = t('title')
 
 // computations
 const invitationCodeModel = computed({
   get() {
-    return route.query.ic !== undefined
-      ? route.query.ic
+    const routeQueryIc =
+      Array.isArray(route.query.ic) || route.query.ic === null
+        ? undefined
+        : route.query.ic
+    return routeQueryIc !== undefined
+      ? routeQueryIc
       : v$.value.form.invitationCode.$model
   },
   set(value) {
@@ -185,15 +190,14 @@ async function saveCode() {
 
 // vuelidate
 const rules = {
-  form: {
-    invitationCode: {
-      required,
-      formatUuid: VERIFICATION_FORMAT_UUID,
-    },
+  invitationCode: {
+    required,
+    formatUuid: VERIFICATION_FORMAT_UUID,
   },
-  formAnonymous: {},
 }
-const v$ = useVuelidate(rules, { form })
+const rulesAnonymous = {}
+const v$ = useVuelidate(rules, form)
+const v$Anonymous = useVuelidate(rulesAnonymous, formAnonymous)
 
 // lifecycle
 onMounted(() => {

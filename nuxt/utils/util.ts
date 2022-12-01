@@ -20,6 +20,10 @@ export function append(path: string, pathToAppend: string): string {
   return path + (path.endsWith('/') ? '' : '/') + pathToAppend
 }
 
+export function arrayRemoveNulls<T>(array?: Array<T>) {
+  return array?.flatMap((x: T) => (x ? [x] : [])) || []
+}
+
 export async function formPreSubmit(
   api: ApiData,
   v$: any,
@@ -72,10 +76,14 @@ export function getCombinedErrorMessages(
 export function getDomainTldPort(host: string) {
   const hostParts = host.split('.')
 
-  if (hostParts[hostParts.length - 2]) {
-    return `${hostParts[hostParts.length - 2]}.${
-      hostParts[hostParts.length - 1]
-    }`
+  if (hostParts.length >= 2) {
+    if (hostParts[hostParts.length - 1] === 'localhost') {
+      return 'localhost'
+    } else {
+      return `${hostParts[hostParts.length - 2]}.${
+        hostParts[hostParts.length - 1]
+      }`
+    }
   } else {
     return hostParts[hostParts.length - 1]
   }

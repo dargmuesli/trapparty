@@ -1,6 +1,7 @@
 fragment gameRandomFactsRoundFields on GameRandomFactsRound {
-    id
-    answerCorrect
-    gameId
-    questionerName
+  nodeId
+  id
+  answerCorrect
+  gameId
+  questionerName
 }

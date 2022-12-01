@@ -134,10 +134,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       }
     },
     url: config.public.stagingHost
-      ? `https://postgraphile.${config.public.stagingHost}/graphql`
+      ? `https://trapparty-postgraphile.${config.public.stagingHost}/graphql` // TODO: change to trapparty_postgraphile
       : process.server
-      ? 'http://postgraphile:5000/graphql'
-      : 'https://postgraphile.' + getDomainTldPort(host) + '/graphql',
+      ? 'http://trapparty_postgraphile:5000/graphql'
+      : 'https://trapparty_postgraphile.' + getDomainTldPort(host) + '/graphql',
     exchanges: [
       ...(config.public.isInProduction ? [] : [devtoolsExchange]),
       dedupExchange,
@@ -157,30 +157,30 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     provideClient($urql)
   })
 
-  // Either authenticate anonymously or refresh token on page load.
-  if (nuxtApp.ssrContext?.event) {
-    const store = useStore(nuxtApp.ssrContext.$pinia)
-    const jwtFromCookie = getJwtFromCookie({
-      req: nuxtApp.ssrContext.event.node.req,
-    })
+  // // Either authenticate anonymously or refresh token on page load.
+  // if (nuxtApp.ssrContext?.event) {
+  //   const store = useStore(nuxtApp.ssrContext.$pinia)
+  //   const jwtFromCookie = getJwtFromCookie({
+  //     req: nuxtApp.ssrContext.event.node.req,
+  //   })
 
-    if (jwtFromCookie?.jwtDecoded.id) {
-      await jwtRefresh({
-        client: client.value,
-        $urqlReset: urqlReset,
-        store,
-        res: nuxtApp.ssrContext.event.node.res,
-        id: jwtFromCookie.jwtDecoded.id as string,
-      })
-    } else {
-      await authenticationAnonymous({
-        client: client.value,
-        $urqlReset: urqlReset,
-        store,
-        res: nuxtApp.ssrContext.event.node.res,
-      })
-    }
-  }
+  //   if (jwtFromCookie?.jwtDecoded.id) {
+  //     await jwtRefresh({
+  //       client: client.value,
+  //       $urqlReset: urqlReset,
+  //       store,
+  //       res: nuxtApp.ssrContext.event.node.res,
+  //       id: jwtFromCookie.jwtDecoded.id as string,
+  //     })
+  //   } else {
+  //     await authenticationAnonymous({
+  //       client: client.value,
+  //       $urqlReset: urqlReset,
+  //       store,
+  //       res: nuxtApp.ssrContext.event.node.res,
+  //     })
+  //   }
+  // }
 
   return {
     provide: {

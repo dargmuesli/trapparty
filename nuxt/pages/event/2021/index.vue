@@ -46,7 +46,7 @@
                   type="text"
                   placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
                 />
-                <template slot="inputInfo">
+                <template #inputInfo>
                   <div v-if="route.query.ic">
                     {{ t('invitationCodeAutomatic') }}
                     <AppLink
@@ -60,19 +60,19 @@
                     </AppLink>
                   </div>
                 </template>
-                <template slot="inputError">
-                  <FormInputError
+                <template #inputError>
+                  <FormInputStateError
                     :form-input="v$.form.invitationCode"
                     validation-property="required"
                   >
                     {{ t('globalValidationRequired') }}
-                  </FormInputError>
-                  <FormInputError
+                  </FormInputStateError>
+                  <FormInputStateError
                     :form-input="v$.form.invitationCode"
                     validation-property="formatUuid"
                   >
                     {{ t('globalValidationFormatIncorrect') }}
-                  </FormInputError>
+                  </FormInputStateError>
                 </template>
               </FormInput>
             </Form>
@@ -81,8 +81,8 @@
             </div>
             <Form
               class="lg:w-2/12"
-              :form="v$.formAnonymous"
-              :form-sent="isFormSentAnonymous"
+              :form="v$Anonymous.form"
+              :form-sent="isFormAnonymousSent"
               :submit-name="t('anonymous')"
               @submit.prevent="anonymous"
             >
@@ -112,7 +112,7 @@ import { required } from '@vuelidate/validators'
 import consola from 'consola'
 
 import { useStore } from '~/store'
-import { useEventByNameQuery } from '~~/gql/generated'
+import { useEventByNameQuery } from '~/gql/generated'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -121,7 +121,7 @@ const store = useStore()
 const localePath = useLocalePath()
 
 // queries
-const eventByNameQuery = useEventByNameQuery({
+const eventByNameQuery = await useEventByNameQuery({
   variables: {
     eventName: '2021',
   },
@@ -141,18 +141,25 @@ const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
 // data
 const form = reactive({
   invitationCode: ref(
-    route.query.ic === undefined ? undefined : route.query.ic
+    Array.isArray(route.query.ic) || route.query.ic === null
+      ? undefined
+      : route.query.ic
   ),
 })
 const isFormSent = ref(false)
-const isFormSentAnonymous = ref(false)
+const formAnonymous = reactive({})
+const isFormAnonymousSent = ref(false)
 const title = t('title')
 
 // computations
 const invitationCodeModel = computed({
   get() {
-    return route.query.ic !== undefined
-      ? route.query.ic
+    const routeQueryIc =
+      Array.isArray(route.query.ic) || route.query.ic === null
+        ? undefined
+        : route.query.ic
+    return routeQueryIc !== undefined
+      ? routeQueryIc
       : v$.value.form.invitationCode.$model
   },
   set(value) {
@@ -195,9 +202,10 @@ const rules = {
       formatUuid: VERIFICATION_FORMAT_UUID,
     },
   },
-  formAnonymous: {},
 }
+const rulesAnonymous = {}
 const v$ = useVuelidate(rules, { form })
+const v$Anonymous = useVuelidate(rulesAnonymous, { form: formAnonymous })
 
 // lifecycle
 onMounted(() => {

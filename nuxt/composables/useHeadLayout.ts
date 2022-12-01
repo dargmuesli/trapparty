@@ -4,6 +4,8 @@ export const useHeadLayout = () => {
   const { t } = useI18n()
   const head = useLocaleHead({ addSeoAttributes: true })
 
+  const name = 'TrapParty'
+
   useHead(head.value)
   useHead({
     bodyAttrs: {
@@ -74,7 +76,7 @@ export const useHeadLayout = () => {
       {
         key: 'og:image',
         property: 'og:image',
-        content: `https://${host}/assets/static/logos/maevsi_with-text_open-graph.png`, // Does not support .svg as of 2021-06.
+        content: `https://${host}/assets/static/logos/open-graph.png`, // Does not support .svg as of 2021-06.
       },
       {
         key: 'og:image:alt',
@@ -94,7 +96,7 @@ export const useHeadLayout = () => {
       {
         key: 'og:site_name',
         property: 'og:site_name',
-        content: 'maevsi',
+        content: name,
       },
       {
         key: 'og:type',
@@ -104,7 +106,7 @@ export const useHeadLayout = () => {
       {
         key: 'og:title',
         property: 'og:title',
-        content: 'maevsi',
+        content: name,
       },
       {
         key: 'og:url',
@@ -124,29 +126,29 @@ export const useHeadLayout = () => {
       {
         key: 'twitter:image',
         property: 'twitter:image',
-        content: `https://${host}/assets/static/logos/maevsi_with-text_open-graph.png`, // Does not support .svg as of 2021-06.
+        content: `https://${host}/assets/static/logos/open-graph.png`, // Does not support .svg as of 2021-06.
       },
       {
         key: 'twitter:image:alt',
         property: 'twitter:image:alt',
         content: t('globalOgImageAlt'),
       },
-      // TODO: Get access to the @maevsi handle.
+      // TODO: Get access to the @trapparty handle.
       // {
       //   key: 'twitter:site',
       //   property: 'twitter:site',
-      //   content: '@maevsi',
+      //   content: '@${id}',
       // },
       {
         key: 'twitter:title',
         property: 'twitter:title',
-        content: 'maevsi',
+        content: name,
       },
     ],
     titleTemplate: (titleChunk?: string) => {
-      return titleChunk && titleChunk !== 'maevsi'
-        ? `${titleChunk} · maevsi`
-        : 'maevsi'
+      return titleChunk && titleChunk !== name
+        ? `${titleChunk} · ${name}`
+        : name
     },
   })
 }

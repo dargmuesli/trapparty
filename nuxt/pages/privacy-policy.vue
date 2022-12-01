@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <div class="jonas-thelemann-prose">
+    <div class="custom-prose-scheme">
       <h2>{{ t('summary') }}</h2>
       <h3>{{ t('generalNotesTitle') }}</h3>
       <p>{{ t('generalNotesDescription') }}</p>

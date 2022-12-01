@@ -1,7 +1,3 @@
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import graphqlPlugin from '@rollup/plugin-graphql'
 
 import localeDe from './locales/de.json'
@@ -17,8 +13,7 @@ export default defineNuxtConfig({
       name: 'layout',
     },
   },
-  css: ['@/assets/css/main.css'],
-
+  css: ['~/assets/css/main.css'],
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // [
@@ -65,29 +60,12 @@ export default defineNuxtConfig({
     //     ],
     //   },
     // ],
-    // [
-    //   '@nuxtjs/fontawesome',
-    //   {
-    //     icons: {
-    //       brands: ['faYoutube'],
-    //       solid: [
-    //         'faBalanceScale',
-    //         'faBug',
-    //         'faChartBar',
-    //         'faDownload',
-    //         'faExclamationCircle',
-    //         'faHeart',
-    //         'faHome',
-    //         'faLink',
-    //         'faShareAlt',
-    //         'faSignInAlt',
-    //         'faTv',
-    //       ],
-    //     },
-    //     useLayers: false,
-    //     useLayersText: false,
-    //   },
-    // ],
+    [
+      '@nuxtjs/color-mode',
+      {
+        classSuffix: '',
+      },
+    ],
     [
       '@nuxtjs/html-validator',
       {
@@ -104,6 +82,7 @@ export default defineNuxtConfig({
           cookieSecure: true,
           redirectOn: 'root',
         },
+        // legacy: false,
         locales: [
           // {
           //   code: 'en',
@@ -136,12 +115,22 @@ export default defineNuxtConfig({
   postcss: {
     plugins: { tailwindcss: {}, autoprefixer: {} },
   },
+  runtimeConfig: {
+    public: {
+      stagingHost:
+        process.env.NODE_ENV !== 'production' &&
+        !process.env.NUXT_PUBLIC_STACK_DOMAIN
+          ? 'jonas-thelemann.de'
+          : undefined,
+    },
+  },
   typescript: {
     shim: false,
     strict: true,
     tsConfig: {
       compilerOptions: {
         // esModuleInterop: true,
+        // noErrorTruncation: true,
       },
       vueCompilerOptions: {
         htmlAttributes: [], // https://github.com/johnsoncodehk/volar/issues/1970#issuecomment-1276994634
@@ -150,11 +139,6 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [
-      VueI18nPlugin({
-        include:
-          '!' +
-          resolve(dirname(fileURLToPath(import.meta.url)), './node_modules/**'), // https://github.com/intlify/bundle-tools/issues/168
-      }),
       // @ts-ignore https://github.com/rollup/plugins/issues/1243
       graphqlPlugin(),
     ],

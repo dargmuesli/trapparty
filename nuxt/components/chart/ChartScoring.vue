@@ -3,16 +3,15 @@
     <h1 class="text-center">
       {{ t('title') }}
     </h1>
-    <ChartTeamScore :trap-party-event="event" />
-    <ChartTeamDonationAmount :trap-party-event="event" />
-    <ChartTeamScoreTotal :trap-party-event="event" />
+    <ChartTeamScore :event-id="eventId" />
+    <ChartTeamDonationAmount :event-id="eventId" />
+    <ChartTeamScoreTotal :event-id="eventId" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { Event as TrapPartyEvent } from '~/types/trapparty'
 export interface Props {
-  event: TrapPartyEvent
+  eventId: number
 }
 withDefaults(defineProps<Props>(), {})
 

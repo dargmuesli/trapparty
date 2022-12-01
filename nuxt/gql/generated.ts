@@ -3488,16 +3488,17 @@ export type EventFieldsFragment = {
 
 export type GameFieldsFragment = {
   __typename?: 'Game'
+  nodeId: string
   id: number
   eventId: number
   isActive: boolean
   name: string
-  nodeId: string
   type: GameType
 }
 
 export type GameRandomFactsRoundFieldsFragment = {
   __typename?: 'GameRandomFactsRound'
+  nodeId: string
   id: number
   answerCorrect?: number | null
   gameId: number
@@ -3506,6 +3507,7 @@ export type GameRandomFactsRoundFieldsFragment = {
 
 export type GameRandomFactsVoteFieldsFragment = {
   __typename?: 'GameRandomFactsVote'
+  nodeId: string
   id: number
   answer: number
   playerId: number
@@ -3514,10 +3516,10 @@ export type GameRandomFactsVoteFieldsFragment = {
 
 export type PlayerFieldsFragment = {
   __typename?: 'Player'
+  nodeId: string
   id: number
   invitationCode: any
   name: string
-  nodeId: string
   teamId?: number | null
 }
 
@@ -3543,6 +3545,7 @@ export type CreateGameRandomFactsRoundMutation = {
     __typename?: 'CreateGameRandomFactsRoundPayload'
     gameRandomFactsRound?: {
       __typename?: 'GameRandomFactsRound'
+      nodeId: string
       id: number
       answerCorrect?: number | null
       gameId: number
@@ -3561,6 +3564,7 @@ export type CreateGameRandomFactsVoteMutation = {
     __typename?: 'CreateGameRandomFactsVotePayload'
     gameRandomFactsVote?: {
       __typename?: 'GameRandomFactsVote'
+      nodeId: string
       id: number
       answer: number
       playerId: number
@@ -3580,6 +3584,7 @@ export type UpdateGameRandomFactsRoundByIdMutation = {
     __typename?: 'UpdateGameRandomFactsRoundPayload'
     gameRandomFactsRound?: {
       __typename?: 'GameRandomFactsRound'
+      nodeId: string
       id: number
       answerCorrect?: number | null
       gameId: number
@@ -3655,6 +3660,7 @@ export type AllGameRandomFactsRoundsQuery = {
     __typename?: 'GameRandomFactsRoundsConnection'
     nodes: Array<{
       __typename?: 'GameRandomFactsRound'
+      nodeId: string
       id: number
       answerCorrect?: number | null
       gameId: number
@@ -3673,6 +3679,7 @@ export type GameRandomFactsVotesQuery = {
     __typename?: 'GameRandomFactsVotesConnection'
     nodes: Array<{
       __typename?: 'GameRandomFactsVote'
+      nodeId: string
       id: number
       answer: number
       playerId: number
@@ -3692,11 +3699,11 @@ export type AllGamesQuery = {
     __typename?: 'GamesConnection'
     nodes: Array<{
       __typename?: 'Game'
+      nodeId: string
       id: number
       eventId: number
       isActive: boolean
       name: string
-      nodeId: string
       type: GameType
     } | null>
   } | null
@@ -3710,11 +3717,11 @@ export type GameByIdQuery = {
   __typename?: 'Query'
   gameById?: {
     __typename?: 'Game'
+    nodeId: string
     id: number
     eventId: number
     isActive: boolean
     name: string
-    nodeId: string
     type: GameType
   } | null
 }
@@ -3728,6 +3735,7 @@ export type GameRandomFactsVoteByPlayerIdAndRoundIdQuery = {
   __typename?: 'Query'
   gameRandomFactsVoteByPlayerIdAndRoundId?: {
     __typename?: 'GameRandomFactsVote'
+    nodeId: string
     id: number
     answer: number
     playerId: number
@@ -3844,16 +3852,17 @@ export const EventFieldsFragmentDoc = gql`
 `
 export const GameFieldsFragmentDoc = gql`
   fragment gameFields on Game {
+    nodeId
     id
     eventId
     isActive
     name
-    nodeId
     type
   }
 `
 export const GameRandomFactsRoundFieldsFragmentDoc = gql`
   fragment gameRandomFactsRoundFields on GameRandomFactsRound {
+    nodeId
     id
     answerCorrect
     gameId
@@ -3862,6 +3871,7 @@ export const GameRandomFactsRoundFieldsFragmentDoc = gql`
 `
 export const GameRandomFactsVoteFieldsFragmentDoc = gql`
   fragment gameRandomFactsVoteFields on GameRandomFactsVote {
+    nodeId
     id
     answer
     playerId
@@ -3870,10 +3880,10 @@ export const GameRandomFactsVoteFieldsFragmentDoc = gql`
 `
 export const PlayerFieldsFragmentDoc = gql`
   fragment playerFields on Player {
+    nodeId
     id
     invitationCode
     name
-    nodeId
     teamId
   }
 `

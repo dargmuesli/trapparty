@@ -10,7 +10,7 @@
         </AppLink>
       </header>
       <div class="flex flex-1 flex-col">
-        <nuxt />
+        <slot />
       </div>
     </div>
     <footer>
@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 #logo {
-  background-image: url('/assets/static/logos/trapparty.svg');
+  background-image: url('/assets/static/logos/logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }

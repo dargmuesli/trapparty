@@ -58,13 +58,13 @@ import Swal from 'sweetalert2'
 
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import {
+  GameRandomFactsVoteByPlayerIdAndRoundIdQuery,
   useAllGameRandomFactsRoundsQuery,
   useCreateGameRandomFactsVoteMutation,
   usePlayerByInvitationCodeFnQuery,
   useUpdateGameRandomFactsRoundByIdMutation,
-} from '~~/gql/generated'
+} from '~/gql/generated'
 import { useStore } from '~/store'
-import { GameRandomFactsRound } from '~/types/trapparty'
 
 export interface Props {
   gameId: number
@@ -79,12 +79,12 @@ const updateGameRandomFactsRoundByIdMutation =
   useUpdateGameRandomFactsRoundByIdMutation()
 
 // queries
-const allGameRandomFactsRoundsQuery = useAllGameRandomFactsRoundsQuery({
+const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
   variables: {
     gameId: props.gameId,
   },
 })
-const playerByInvitationCodeFnQuery = usePlayerByInvitationCodeFnQuery({
+const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
   variables: {
     invitationCode: store.participationData?.invitationCode,
   },
@@ -116,14 +116,20 @@ const voteAnswer = ref<number>()
 
 // computations
 const round = computed(() => {
-  if (!allGameRandomFactsRounds) return
+  if (!allGameRandomFactsRounds.value) return
 
   const roundsActive = allGameRandomFactsRounds.value?.nodes.filter(
     (x) => x?.answerCorrect === null
-  ) as GameRandomFactsRound[]
+  )
+
+  if (!roundsActive) {
+    consola.error('There are no active rounds!')
+    return
+  }
 
   if (roundsActive.length > 1) {
     consola.error('There are more than one active rounds!')
+    return
   }
 
   return roundsActive[0]
@@ -131,7 +137,7 @@ const round = computed(() => {
 
 // methods
 async function choose(answer: number) {
-  await refresh()
+  allGameRandomFactsRoundsQuery.executeQuery()
 
   if (!player.value || !round.value || round.value.answerCorrect !== null)
     return
@@ -163,7 +169,7 @@ async function choose(answer: number) {
       icon: 'success',
       showConfirmButton: false,
       timer: 1500,
-      text: t('saved') as string,
+      text: t('saved'),
     })
     await voteFetch()
   }
@@ -196,19 +202,16 @@ async function choose(answer: number) {
       icon: 'success',
       showConfirmButton: false,
       timer: 1500,
-      text: t('saved') as string,
+      text: t('saved'),
     })
     await voteFetch()
   }
 }
-async function refresh() {
-  await $apollo.queries.allGameRandomFactsRounds.refetch()
-}
 async function voteFetch() {
-  if (!player || !round) return
+  if (!player.value || !round.value) return
 
   const result = await $urql.value
-    .query(
+    .query<GameRandomFactsVoteByPlayerIdAndRoundIdQuery>(
       GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID,
       {
         playerId: player.value?.id,
@@ -231,8 +234,8 @@ async function voteFetch() {
   }
 
   if (!result) return
-  voteAnswer.value = result.data.gameRandomFactsVoteByPlayerIdAndRoundId
-    .answer as number
+  voteAnswer.value =
+    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId?.answer
 }
 
 // lifecycle
