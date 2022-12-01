@@ -148,7 +148,7 @@ WORKDIR /srv/app/
 
 COPY --from=build /srv/app/.output ./.output
 COPY --from=lint /srv/app/package.json /tmp/lint/package.json
-COPY --from=test-unit /srv/app/package.json /tmp/test/package.json
+# COPY --from=test-unit /srv/app/package.json /tmp/test/package.json
 COPY --from=test-integration /srv/app/package.json /tmp/test/package.json
 
 
