@@ -20,6 +20,14 @@
 
 * drop nuxt 2
 
+## [2.7.1](https://github.com/dargmuesli/trapparty/compare/2.7.0...2.7.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* **docker:** correct entrypoint ([fe11be7](https://github.com/dargmuesli/trapparty/commit/fe11be739ec10b401068b7751603d3c7b74e3d1b))
+* **stack:** rename service ([022bd55](https://github.com/dargmuesli/trapparty/commit/022bd557d262683a44e46a1001f0ea17f69ddc0a))
+
 # [2.7.0](https://github.com/dargmuesli/trapparty/compare/2.6.23...2.7.0) (2022-11-26)
 
 
