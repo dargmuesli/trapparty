@@ -1,3 +1,16 @@
+# [3.0.0-alpha.2](https://github.com/dargmuesli/trapparty/compare/3.0.0-alpha.1...3.0.0-alpha.2) (2022-12-04)
+
+
+### Bug Fixes
+
+* **form:** correct vuelidate property ([b03161b](https://github.com/dargmuesli/trapparty/commit/b03161ba95f8b685f964acbf3be2be4dde9cb115))
+
+
+### Features
+
+* continue migration ([1142ef2](https://github.com/dargmuesli/trapparty/commit/1142ef29f829563ab8d929e44c8b6b85eca9b09c))
+* **footer:** add components ([36e9ce4](https://github.com/dargmuesli/trapparty/commit/36e9ce4f31983556fc948d7a487e46dcb9195da6))
+
 # [3.0.0-alpha.1](https://github.com/dargmuesli/trapparty/compare/2.7.0...3.0.0-alpha.1) (2022-12-02)
 
 
