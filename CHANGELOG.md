@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dargmuesli/trapparty/compare/3.0.0...3.0.1) (2022-12-04)
+
+
+### Bug Fixes
+
+* **postgraphile:** correct subdomain ([6fee7ab](https://github.com/dargmuesli/trapparty/commit/6fee7ab1ad6c1f59aaf03fd1dec42d49a9ee574c))
+
 # [3.0.0](https://github.com/dargmuesli/trapparty/compare/2.7.1...3.0.0) (2022-12-04)
 
 
