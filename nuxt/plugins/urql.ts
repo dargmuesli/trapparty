@@ -136,7 +136,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     url: config.public.stagingHost
       ? `https://trapparty-postgraphile.${config.public.stagingHost}/graphql`
       : process.server
-      ? 'http://trapparty-postgraphile:5000/graphql'
+      ? 'http://trapparty_postgraphile:5000/graphql'
       : 'https://trapparty-postgraphile.' + getDomainTldPort(host) + '/graphql',
     exchanges: [
       ...(config.public.isInProduction ? [] : [devtoolsExchange]),
