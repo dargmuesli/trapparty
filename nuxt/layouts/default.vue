@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto p-4 md:px-8" :data-is-loading="isLoading">
     <div class="container mx-auto flex min-h-screen flex-col p-4">
       <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="t('home')" :to="localePath('/')">
@@ -13,26 +13,24 @@
         <slot />
       </div>
     </div>
-    <footer>
-      <div class="container mx-auto flex justify-around p-4">
-        <div class="flex flex-col">
-          <AppLink :to="localePath('/imprint')">
-            {{ t('imprint') }}
-          </AppLink>
-          <AppLink :to="localePath('/privacy-policy')">
-            {{ t('privacyPolicy') }}
-          </AppLink>
-        </div>
-        <div class="flex flex-col">
-          <AppLink
-            :title="t('githubLinkTitle')"
-            to="https://github.com/dargmuesli/trapparty/"
-          >
-            {{ t('sourceCode') }}
-          </AppLink>
-        </div>
-      </div>
-    </footer>
+    <LayoutFooter>
+      <LayoutFooterCategory :heading="t('legal')">
+        <AppLink :to="localePath('/imprint')">
+          {{ t('imprint') }}
+        </AppLink>
+        <AppLink :to="localePath('/privacy-policy')">
+          {{ t('privacyPolicy') }}
+        </AppLink>
+      </LayoutFooterCategory>
+      <LayoutFooterCategory :heading="t('quickLinks')">
+        <AppLink
+          :title="t('githubLinkTitle')"
+          to="https://github.com/dargmuesli/trapparty/"
+        >
+          {{ t('sourceCode') }}
+        </AppLink>
+      </LayoutFooterCategory>
+    </LayoutFooter>
   </div>
 </template>
 
@@ -40,6 +38,12 @@
 const { $moment } = useNuxtApp()
 const localePath = useLocalePath()
 const { locale, t } = useI18n()
+
+const loadingId = Math.random()
+const loadingIds = useState('loadingIds', () => [loadingId])
+
+// computations
+const isLoading = computed(() => !!loadingIds.value.length)
 
 // initialization
 useHeadLayout()
@@ -65,12 +69,16 @@ de:
   githubLinkTitle: TrapParty auf GitHub
   home: Nach Hause
   imprint: Impressum
+  legal: Rechtliches
   privacyPolicy: Datenschutzerklärung
+  quickLinks: Quick Links
   sourceCode: Quellcode
 en:
   githubLinkTitle: TrapParty on GitHub
   home: Head home
   imprint: Imprint
+  legal: Legal
   privacyPolicy: Privacy Policy
+  quickLinks: Quick Links
   sourceCode: Quellcode
 </i18n>
