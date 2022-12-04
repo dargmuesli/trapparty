@@ -134,10 +134,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
     },
     url: config.public.stagingHost
-      ? `https://trapparty-postgraphile.${config.public.stagingHost}/graphql` // TODO: change to trapparty_postgraphile
+      ? `https://trapparty-postgraphile.${config.public.stagingHost}/graphql`
       : process.server
-      ? 'http://trapparty_postgraphile:5000/graphql'
-      : 'https://trapparty_postgraphile.' + getDomainTldPort(host) + '/graphql',
+      ? 'http://trapparty-postgraphile:5000/graphql'
+      : 'https://trapparty-postgraphile.' + getDomainTldPort(host) + '/graphql',
     exchanges: [
       ...(config.public.isInProduction ? [] : [devtoolsExchange]),
       dedupExchange,

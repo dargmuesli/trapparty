@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://trapparty_postgraphile.localhost/graphql"
+schema: "https://trapparty-postgraphile.localhost/graphql"
 documents: "gql/**/*.gql"
 # hooks:
 #   afterOneFileWrite:
