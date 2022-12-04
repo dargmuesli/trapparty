@@ -1,3 +1,26 @@
+# [3.0.0](https://github.com/dargmuesli/trapparty/compare/2.7.1...3.0.0) (2022-12-04)
+
+
+### Bug Fixes
+
+* **form:** correct vuelidate property ([b03161b](https://github.com/dargmuesli/trapparty/commit/b03161ba95f8b685f964acbf3be2be4dde9cb115))
+* **i18n:** downgrade dependency ([34f43c1](https://github.com/dargmuesli/trapparty/commit/34f43c19f1af77ee5ec078fd15b04349646a36e4))
+* **plugins:** correct typing ([c9cad43](https://github.com/dargmuesli/trapparty/commit/c9cad435155ed6f1964acc953b8244331b8e5b46))
+
+
+### Features
+
+* continue migration ([1142ef2](https://github.com/dargmuesli/trapparty/commit/1142ef29f829563ab8d929e44c8b6b85eca9b09c))
+* continue migration to nuxt 3 ([06753fb](https://github.com/dargmuesli/trapparty/commit/06753fb816a13eb1a15724903913896d91958de9))
+* **footer:** add components ([36e9ce4](https://github.com/dargmuesli/trapparty/commit/36e9ce4f31983556fc948d7a487e46dcb9195da6))
+* start migration to nuxt 3 ([e538e8f](https://github.com/dargmuesli/trapparty/commit/e538e8f0fee59b1de5a93160d01468bf43c0a322))
+* stash ([79da42e](https://github.com/dargmuesli/trapparty/commit/79da42e1e582108a38f7657157229b26d64dd989))
+
+
+### BREAKING CHANGES
+
+* drop nuxt 2
+
 # [3.0.0-alpha.2](https://github.com/dargmuesli/trapparty/compare/3.0.0-alpha.1...3.0.0-alpha.2) (2022-12-04)
 
 
