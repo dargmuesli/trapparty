@@ -1,7 +1,7 @@
 import { defineEventHandler } from 'h3'
 
 export default defineEventHandler((event) => {
-  const { res } = event
+  const { res } = event.node
   res.setHeader('Permissions-Policy', '')
   // // Disabled until there is better browser support (https://caniuse.com/?search=report-to)
   // res.setHeader(

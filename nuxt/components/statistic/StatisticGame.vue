@@ -8,16 +8,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from '#app'
-import { Game } from '~/types/trapparty'
+<script setup lang="ts">
+import { Game } from '~/gql/generated'
 
-export default defineComponent({
-  props: {
-    game: {
-      required: true,
-      type: Object as PropType<Game>,
-    },
-  },
-})
+export interface Props {
+  game: Pick<Game, 'id' | 'isActive' | 'name' | 'type'>
+}
+withDefaults(defineProps<Props>(), {})
 </script>

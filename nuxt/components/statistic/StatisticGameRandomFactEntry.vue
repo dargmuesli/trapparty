@@ -1,66 +1,63 @@
 <template>
-  <li
-    class="rounded-md bg-gray-300 p-2 dark:bg-gray-700"
-    :class="{
-      'border border-yellow-500':
-        highscores[0] !== undefined && value === highscores[0],
-      'border border-gray-500':
-        highscores[1] !== undefined && value === highscores[1],
-      'border border-yellow-700':
-        highscores[2] !== undefined && value === highscores[2],
-    }"
-  >
-    {{ playerNameById }}: {{ value }}
-  </li>
+  <Loader :api="api">
+    <li
+      class="rounded-md bg-gray-300 p-2 dark:bg-gray-700"
+      :class="{
+        'border border-yellow-500':
+          highscores[0] !== undefined && value === highscores[0],
+        'border border-gray-500':
+          highscores[1] !== undefined && value === highscores[1],
+        'border border-yellow-700':
+          highscores[2] !== undefined && value === highscores[2],
+      }"
+    >
+      {{ t('playerValue', { player: playerNameById, value }) }}
+    </li>
+  </Loader>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import consola from 'consola'
 
-import { defineComponent, PropType } from '#app'
-import PLAYER_NAME_BY_ID_QUERY from '~/gql/query/player/playerNameById.gql'
+import { usePlayerNameByIdQuery } from '~/gql/generated'
 
-export default defineComponent({
-  apollo: {
-    playerNameById() {
-      return {
-        query: PLAYER_NAME_BY_ID_QUERY,
-        variables: {
-          id: this.playerId,
-        },
-        update: (data: any) => this.$util.getNested(data, 'playerNameById'),
-        error(error: any) {
-          consola.error(error)
-          this.graphqlError = error.message
-        },
-      }
-    },
+export interface Props {
+  highscores: number[]
+  playerId: number
+  value: number
+}
+const props = withDefaults(defineProps<Props>(), {})
+
+const { t } = useI18n()
+
+// queries
+const playerNameByIdQuery = await usePlayerNameByIdQuery({
+  variables: {
+    id: props.playerId,
   },
-  props: {
-    highscores: {
-      required: true,
-      type: Array as PropType<Array<Number>>,
+})
+
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...playerNameByIdQuery.data.value,
     },
-    playerId: {
-      required: true,
-      type: Number,
-    },
-    value: {
-      required: true,
-      type: Number,
-    },
-  },
-  data() {
-    return {
-      graphqlError: undefined as string | undefined,
-      playerNameById: undefined as string | undefined,
-    }
-  },
+    ...getApiMeta([playerNameByIdQuery]),
+  })
+)
+const playerNameById = computed(
+  () => playerNameByIdQuery.data.value?.playerNameById
+)
+
+// lifecycle
+// TODO: add missing watches in other files
+watch(playerNameByIdQuery.error, (currentValue, _oldValue) => {
+  if (currentValue) consola.error(currentValue)
 })
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
-  gameRandomFactsRoundNone: Keine Spielrunde vorhanden.
-  gameRandomFactsVoteNone: Keine Abstimmungen vorhanden.
+  playerValue: '{player}: {value}'
 </i18n>

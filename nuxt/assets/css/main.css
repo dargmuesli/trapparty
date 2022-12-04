@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  a:focus {
+    @apply outline-none ring rounded;
+  }
+
+  button:focus {
+    @apply outline-none ring rounded;
+  }
+
+  thead {
+    @apply sticky top-0 z-10 jonas-thelemann-bg-darken;
+  }
+
+  tbody {
+    @apply divide-y jonas-thelemann-divide-darken;
+  }
+}
+
+@layer utilities {
+  .custom-prose {
+    @apply m-auto prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl; /* 2xl:prose-2xl */
+  }
+
+  .custom-prose-scheme {
+    @apply custom-prose dark:prose-invert;
+  }
+
+  .jonas-thelemann-divide-darken {
+    @apply divide-background-brighten dark:divide-background-darken
+  }
+
+  .jonas-thelemann-bg-darken {
+    @apply bg-background-brighten dark:bg-background-darken
+  }
+
+  .jonas-thelemann-border-darken {
+    @apply border-background-brighten dark:border-background-darken
+  }
+}
+
+/* @layer utilities {
+  .custom-prose {
+    @apply m-auto prose prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl; /* 2xl:prose-2xl *//*
+  }
+} */

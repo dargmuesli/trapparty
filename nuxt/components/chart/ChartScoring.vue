@@ -1,26 +1,24 @@
 <template>
   <section>
     <h1 class="text-center">
-      {{ $t('title') }}
+      {{ t('title') }}
     </h1>
-    <ChartTeamScore :event="event" />
-    <ChartTeamDonationAmount :event="event" />
-    <ChartTeamScoreTotal :event="event" />
+    <ChartTeamScore :event-id="eventId" />
+    <ChartTeamDonationAmount :event-id="eventId" />
+    <ChartTeamScoreTotal :event-id="eventId" />
   </section>
 </template>
 
-<script>
-export default {
-  props: {
-    event: {
-      type: Object,
-      default: undefined,
-    },
-  },
+<script setup lang="ts">
+export interface Props {
+  eventId: number
 }
+withDefaults(defineProps<Props>(), {})
+
+const { t } = useI18n()
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
-  title: 'Teamwertung'
+  title: Teamwertung
 </i18n>

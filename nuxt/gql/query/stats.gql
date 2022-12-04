@@ -1,12 +1,13 @@
-query ($eventId: Int!) {
+query stats ($eventId: Int!) {
   teamPlayerCount(eventId: $eventId) {
     nodes {
-      teamId
+      id
       playerCount
     }
   }
   allTeams(condition: {eventId: $eventId}, orderBy: ID_ASC) {
     nodes {
+      id
       name
       emoji
       charityOrganizationId
@@ -26,6 +27,7 @@ query ($eventId: Int!) {
       name
       gameTeamScoresByGameId(orderBy: TEAM_ID_ASC) {
         nodes {
+          id
           score
         }
       }

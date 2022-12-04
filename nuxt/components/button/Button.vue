@@ -1,78 +1,66 @@
 <template>
   <AppLink
     v-if="to"
-    ref="button"
-    :append="append"
     :aria-label="ariaLabel"
-    :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
+    :class="classes"
     :disabled="disabled"
     :is-colored="false"
+    :is-to-relative="isToRelative"
     :to="to"
+    @click="emit('click')"
   >
-    <FontAwesomeIcon
-      v-if="iconId"
-      :class="{ 'mr-2': $slots.default }"
-      :icon="iconId"
-    />
+    <slot name="prefix" />
     <slot />
+    <slot name="suffix" />
   </AppLink>
   <button
     v-else
-    ref="button"
     :aria-label="ariaLabel"
-    :class="['button', ...(buttonClass ? [buttonClass] : [])].join(' ')"
+    :class="classes"
     :disabled="disabled"
     :type="type"
-    @click="$emit('click')"
+    @click="emit('click')"
   >
-    <FontAwesomeIcon
-      v-if="iconId"
-      :class="{ 'mr-2': $slots.default }"
-      :icon="iconId"
-    />
+    <slot name="prefix" />
     <slot />
+    <slot name="suffix" />
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from '#app'
-
-export default defineComponent({
-  name: 'MaevsiButton',
-  props: {
-    append: {
-      default: false,
-      type: Boolean,
-    },
-    ariaLabel: {
-      required: true,
-      type: String,
-    },
-    buttonClass: {
-      default: undefined,
-      type: String as PropType<string | undefined>,
-    },
-    disabled: {
-      default: false,
-      type: Boolean,
-    },
-    iconId: {
-      default: undefined,
-      type: Array as PropType<string[] | undefined>,
-    },
-    to: {
-      default: undefined,
-      type: String as PropType<string | undefined>,
-    },
-    type: {
-      default: 'button',
-      type: String,
-    },
-  },
-  methods: {
-    click() {
-      ;(this.$refs.button as HTMLButtonElement).click()
-    },
-  },
+<script setup lang="ts">
+export interface Props {
+  ariaLabel: string
+  disabled?: boolean
+  isBlock?: boolean
+  isLinkColored?: boolean
+  isToRelative?: boolean
+  to?: string
+  type?: 'button' | 'submit' | 'reset'
+}
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+  isBlock: false,
+  isLinkColored: false,
+  isToRelative: false,
+  to: undefined,
+  type: 'button',
 })
+
+const emit = defineEmits<{
+  (e: 'click'): void
+}>()
+
+// computations
+const classes = computed(() => {
+  return [
+    ...(props.isBlock ? ['block'] : ['inline-flex items-center gap-2']),
+    ...(props.isLinkColored ? ['text-link-dark dark:text-link-bright'] : []),
+  ].join(' ')
+})
+</script>
+
+<script lang="ts">
+export default {
+  name: 'MaevsiButton',
+}
 </script>

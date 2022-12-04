@@ -1,257 +1,232 @@
 <template>
-  <Loader
-    v-if="$apollo.loading || graphqlError"
-    :error-message="graphqlError ? String(graphqlError) : undefined"
-  />
-  <div v-else class="text-justify text-3xl lg:text-8xl">
-    <div v-if="round && player">
-      <span class="text-gray-500">Vor dir steht</span>
-      {{ round.questionerName || $t('nobody')
-      }}<span class="text-gray-500">. Welcher</span>
-      random fact
-      <span class="text-gray-500">ist wahr? 🤔</span>
-      <div
-        class="m-4 flex flex-col justify-evenly gap-4 lg:m-16 lg:flex-row lg:gap-16"
-      >
-        <Button
-          :aria-label="$t('factA')"
-          class="px-4 py-8 lg:px-16"
-          :class="{
-            'ring-8 ring-yellow-500': voteAnswer === 0,
-            'bg-green-500':
-              voteAnswer !== undefined && round.answerCorrect === 0,
-          }"
-          :disabled="voteAnswer !== undefined"
-          @click="choose(0)"
+  <Loader :api="api">
+    <div class="text-justify text-3xl lg:text-8xl">
+      <div v-if="round && player">
+        <div>
+          <span class="text-gray-500">{{ t('namePrefix') }}</span>
+          {{ round.questionerName || t('nobody') }}
+          <span class="text-gray-500">{{ t('nameSuffix') }}</span>
+          <span class="text-gray-500">{{ t('randomFactPrefix') }}</span>
+          {{ t('randomFact') }}
+          <span class="text-gray-500">{{ t('randomFactSuffix') }}</span>
+        </div>
+        <div
+          class="m-4 flex flex-col justify-evenly gap-4 lg:m-16 lg:flex-row lg:gap-16"
         >
-          {{ $t('factA') }}
-        </Button>
-        <Button
-          :aria-label="$t('factB')"
-          class="px-4 py-8 lg:px-16"
-          :class="{
-            'ring-8 ring-yellow-500': voteAnswer === 1,
-            'bg-green-500':
-              voteAnswer !== undefined && round.answerCorrect === 1,
-          }"
-          :disabled="voteAnswer !== undefined"
-          @click="choose(1)"
-        >
-          {{ $t('factB') }}
-        </Button>
+          <Button
+            :aria-label="t('factA')"
+            class="px-4 py-8 lg:px-16"
+            :class="{
+              'ring-8 ring-yellow-500': voteAnswer === 0,
+              'bg-green-500':
+                voteAnswer !== undefined && round.answerCorrect === 0,
+            }"
+            :disabled="voteAnswer !== undefined"
+            @click="choose(0)"
+          >
+            {{ t('factA') }}
+          </Button>
+          <Button
+            :aria-label="t('factB')"
+            class="px-4 py-8 lg:px-16"
+            :class="{
+              'ring-8 ring-yellow-500': voteAnswer === 1,
+              'bg-green-500':
+                voteAnswer !== undefined && round.answerCorrect === 1,
+            }"
+            :disabled="voteAnswer !== undefined"
+            @click="choose(1)"
+          >
+            {{ t('factB') }}
+          </Button>
+        </div>
+      </div>
+      <div v-else>
+        <div>
+          <span class="text-gray-500">{{ t('voteNonePrefix') }}</span>
+          {{ t('voteNone')
+          }}<span class="text-gray-500">{{ t('voteNoneSuffix') }}</span>
+        </div>
       </div>
     </div>
-    <div v-else>
-      <span class="text-gray-500">Aktuell gibt es</span> keine Abstimmung<span
-        class="text-gray-500"
-        >.</span
-      >
-    </div>
-  </div>
+  </Loader>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import consola from 'consola'
 
-import { defineComponent } from '#app'
-import GAME_RANDOM_FACTS_VOTE_CREATE_MUTATION from '~/gql/mutation/game/createGameRandomFactsVote.gql'
-import GAME_RANDOM_FACTS_ROUND_UPDATE_MUTATION from '~/gql/mutation/game/updateGameRandomFactsRoundById.gql'
-import ALL_GAME_RANDOM_FACTS_ROUNDS_QUERY from '~/gql/query/game/allGameRandomFactsRounds.gql'
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
-import { GameRandomFactsRound, Player } from '~/types/trapparty'
+import {
+  GameRandomFactsVoteByPlayerIdAndRoundIdQuery,
+  useAllGameRandomFactsRoundsQuery,
+  useCreateGameRandomFactsVoteMutation,
+  usePlayerByInvitationCodeFnQuery,
+  useUpdateGameRandomFactsRoundByIdMutation,
+} from '~/gql/generated'
+import { useStore } from '~/store'
 
-export default defineComponent({
-  name: 'IndexPage',
-  apollo: {
-    allGameRandomFactsRounds() {
-      return {
-        query: ALL_GAME_RANDOM_FACTS_ROUNDS_QUERY,
-        variables: {
-          gameId: +this.gameId,
-        },
-        update: (data) =>
-          this.$util.getNested(data, 'allGameRandomFactsRounds', 'nodes'),
-        error(error: any) {
-          this.graphqlError = error.message
-          consola.error(error.message)
-        },
-      }
-    },
-  },
-  props: {
-    gameId: {
-      required: true,
-      type: Number,
-    },
-  },
-  data() {
-    return {
-      graphqlError: undefined,
-      player: undefined as Player | undefined,
-      voteAnswer: undefined as number | undefined,
-    }
-  },
-  computed: {
-    name(): string | undefined {
-      return this.$util.getNested(this.$store.state.participationData, 'name')
-    },
-    round() {
-      if (!this.allGameRandomFactsRounds) return
+export interface Props {
+  gameId: number
+}
+const props = withDefaults(defineProps<Props>(), {})
 
-      const roundsActive = (
-        this.allGameRandomFactsRounds as GameRandomFactsRound[]
-      ).filter(
-        (x: GameRandomFactsRound) => x.answerCorrect === null
-      ) as GameRandomFactsRound[]
+const { $urql } = useNuxtApp()
+const { t } = useI18n()
+const store = useStore()
+const fireError = useFireError()
+const createGameRandomFactsVoteMutation = useCreateGameRandomFactsVoteMutation()
+const updateGameRandomFactsRoundByIdMutation =
+  useUpdateGameRandomFactsRoundByIdMutation()
 
-      if (roundsActive.length > 1) {
-        consola.error('There are more than one active rounds!')
-      }
-
-      return roundsActive[0]
-    },
-  },
-  async mounted() {
-    const invitationCode = this.$util.getNested(
-      this.$store.state.participationData,
-      'invitationCode'
-    )
-
-    if (!invitationCode) return
-
-    const playerByInvitationCodeResult = await this.$apollo
-      .query({
-        query: PLAYER_BY_INVITATION_CODE_FN,
-        variables: {
-          invitationCode,
-        },
-      })
-      .catch((error) => {
-        this.graphqlError = error.message
-        consola.error(error)
-      })
-
-    if (!playerByInvitationCodeResult) return
-    this.player = this.$util.getNested(
-      playerByInvitationCodeResult,
-      'data',
-      'playerByInvitationCodeFn',
-      'nodes'
-    )[0] as Player
-
-    await this.voteFetch()
-  },
-  methods: {
-    async choose(answer: number) {
-      await this.refresh()
-
-      if (!this.player || !this.round || this.round.answerCorrect !== null)
-        return
-
-      await this.$apollo
-        .mutate({
-          mutation: GAME_RANDOM_FACTS_VOTE_CREATE_MUTATION,
-          variables: {
-            gameRandomFactsVoteInput: {
-              answer,
-              playerId: +this.player.id,
-              roundId: +this.round.id,
-            },
-          },
-        })
-        .then(async () => {
-          if (!this.player || !this.round) return
-
-          if (this.player.name !== this.round.questionerName) {
-            this.$swal({
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-              text: this.$t('saved') as string,
-            })
-            await this.voteFetch()
-          }
-        })
-        .catch((reason) => {
-          this.$swal({
-            icon: 'error',
-            title: this.$t('error'),
-            text: reason,
-          })
-          this.graphqlError = reason
-          consola.error(reason)
-        })
-
-      if (this.player.name === this.round.questionerName) {
-        await this.$apollo
-          .mutate({
-            mutation: GAME_RANDOM_FACTS_ROUND_UPDATE_MUTATION,
-            variables: {
-              gameRandomFactsRoundPatch: {
-                answerCorrect: answer,
-              },
-              id: +this.round.id,
-            },
-          })
-          .then(async () => {
-            this.$swal({
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500,
-              text: this.$t('saved') as string,
-            })
-            await this.voteFetch()
-          })
-          .catch((reason) => {
-            this.$swal({
-              icon: 'error',
-              title: this.$t('error'),
-              text: reason,
-            })
-            this.graphqlError = reason
-            consola.error(reason)
-          })
-      }
-    },
-    async refresh() {
-      await this.$apollo.queries.allGameRandomFactsRounds.refetch()
-    },
-    async voteFetch() {
-      if (!this.player || !this.round) return
-
-      const voteResult = await this.$apollo
-        .query({
-          query: GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID,
-          variables: {
-            playerId: this.player.id,
-            roundId: this.round.id,
-          },
-          fetchPolicy: 'network-only',
-        })
-        .catch((error) => {
-          this.graphqlError = error.message
-          consola.error(error)
-        })
-
-      if (!voteResult) return
-      this.voteAnswer = this.$util.getNested(
-        voteResult,
-        'data',
-        'gameRandomFactsVoteByPlayerIdAndRoundId',
-        'answer'
-      ) as number
-    },
+// queries
+const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
+  variables: {
+    gameId: props.gameId,
   },
 })
+const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
+  variables: {
+    invitationCode:
+      store.participationData.role === 'player' &&
+      store.participationData?.invitationCode,
+  },
+})
+
+// api data
+const api = computed(() =>
+  reactive({
+    data: {
+      ...allGameRandomFactsRoundsQuery.data.value,
+      ...playerByInvitationCodeFnQuery.data.value,
+    },
+    ...getApiMeta([
+      allGameRandomFactsRoundsQuery,
+      playerByInvitationCodeFnQuery,
+    ]),
+  })
+)
+const allGameRandomFactsRounds = computed(
+  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds
+)
+const player = computed(
+  () =>
+    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn?.nodes[0]
+)
+
+// data
+const voteAnswer = ref<number>()
+
+// computations
+const round = computed(() => {
+  if (!allGameRandomFactsRounds.value) return
+
+  const roundsActive = allGameRandomFactsRounds.value?.nodes.filter(
+    (x) => x?.answerCorrect === null
+  )
+
+  if (!roundsActive) {
+    consola.error('There are no active rounds!')
+    return
+  }
+
+  if (roundsActive.length > 1) {
+    consola.error('There are more than one active rounds!')
+    return
+  }
+
+  return roundsActive[0]
+})
+
+// methods
+async function choose(answer: number) {
+  allGameRandomFactsRoundsQuery.executeQuery()
+
+  if (!player.value || !round.value || round.value.answerCorrect !== null)
+    return
+
+  const result = await createGameRandomFactsVoteMutation.executeMutation({
+    gameRandomFactsVoteInput: {
+      answer,
+      playerId: +player.value.id,
+      roundId: +round.value.id,
+    },
+  })
+
+  if (result.error) fireError({ error: result.error }, api)
+
+  if (!result.data) return
+
+  if (player.value.name !== round.value.questionerName) {
+    showToast({ title: t('saved') })
+    await voteFetch()
+  }
+
+  if (player.value.name === round.value.questionerName) {
+    const result = await updateGameRandomFactsRoundByIdMutation.executeMutation(
+      {
+        gameRandomFactsRoundPatch: {
+          answerCorrect: answer,
+        },
+        id: +round.value.id,
+      }
+    )
+
+    if (result.error) fireError({ error: result.error }, api)
+
+    if (!result.data) return
+
+    showToast({ title: t('saved') })
+    await voteFetch()
+  }
+}
+async function voteFetch() {
+  if (!player.value || !round.value) return
+
+  const result = await $urql.value
+    .query<GameRandomFactsVoteByPlayerIdAndRoundIdQuery>(
+      GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID,
+      {
+        playerId: player.value?.id,
+        roundId: round.value?.id,
+      },
+      {
+        fetchPolicy: 'network-only',
+      }
+    )
+    .toPromise()
+
+  if (result.error) fireError({ error: result.error }, api)
+
+  if (!result) return
+
+  voteAnswer.value =
+    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId?.answer
+}
+
+// lifecycle
+watch(allGameRandomFactsRoundsQuery.error, (currentValue, _oldValue) => {
+  if (currentValue) consola.error(currentValue)
+})
+watch(playerByInvitationCodeFnQuery.error, (currentValue, _oldValue) => {
+  if (currentValue) consola.error(currentValue)
+})
+
+// initialization
+await voteFetch()
 </script>
 
-<i18n lang="yml">
+<i18n lang="yaml">
 de:
-  check: Überprüfen
   factA: Fakt A
   factB: Fakt B
+  namePrefix: Vor dir steht
+  nameSuffix: .
   nobody: niemand
-  roundNew: Neue Runde!
+  randomFact: random fact
+  randomFactPrefix: Welcher
+  randomFactSuffix: ist wahr? 🤔
   saved: Gespeichert.
+  voteNone: keine Abstimmung
+  voteNonePrefix: Aktuell gibt es.
+  voteNoneSuffix: .
 </i18n>
