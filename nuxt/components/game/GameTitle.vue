@@ -13,8 +13,10 @@
 </template>
 
 <script setup lang="ts">
+import { Game } from '~/gql/generated'
+
 export interface Props {
-  game: { isActive: boolean; name: string }
+  game: Pick<Game, 'isActive' | 'name'>
 }
 withDefaults(defineProps<Props>(), {})
 

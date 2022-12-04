@@ -109,10 +109,15 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import { Team, useStatsQuery, StatsQuery } from '~/gql/generated'
+import {
+  Event as TrapPartyEvent,
+  Team,
+  useStatsQuery,
+  StatsQuery,
+} from '~/gql/generated'
 
 export interface Props {
-  trapPartyEvent: { id: number; commonDonationAmount?: number | null }
+  trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
 }
 const props = withDefaults(defineProps<Props>(), {})
 
