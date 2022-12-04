@@ -18,7 +18,7 @@
           >
             <Form
               class="lg:w-8/12"
-              :form="v$.form"
+              :form="v$"
               :form-sent="isFormSent"
               :submit-name="t('save')"
               @submit.prevent="saveCode"
@@ -30,7 +30,7 @@
                 {{ t('participateDescription') }}
               </p>
               <FormInput
-                :error="v$.form.invitationCode.$error"
+                :error="v$.invitationCode.$error"
                 label-for="input-participation-code-trapparty"
                 :title="t('invitationCode')"
               >
@@ -62,13 +62,13 @@
                 </template>
                 <template #inputError>
                   <FormInputStateError
-                    :form-input="v$.form.invitationCode"
+                    :form-input="v$.invitationCode"
                     validation-property="required"
                   >
                     {{ t('globalValidationRequired') }}
                   </FormInputStateError>
                   <FormInputStateError
-                    :form-input="v$.form.invitationCode"
+                    :form-input="v$.invitationCode"
                     validation-property="formatUuid"
                   >
                     {{ t('globalValidationFormatIncorrect') }}
@@ -160,10 +160,10 @@ const invitationCodeModel = computed({
         : route.query.ic
     return routeQueryIc !== undefined
       ? routeQueryIc
-      : v$.value.form.invitationCode.$model
+      : v$.value.invitationCode.$model
   },
   set(value) {
-    v$.value.form.invitationCode.$model = value
+    v$.value.invitationCode.$model = value
   },
 })
 
@@ -181,7 +181,7 @@ async function saveCode() {
     return
   }
 
-  v$.value.form.$reset()
+  v$.value.$reset()
   store.participationDataSet({
     role: 'player',
     invitationCode:
@@ -210,7 +210,7 @@ const v$Anonymous = useVuelidate(rulesAnonymous, { form: formAnonymous })
 // lifecycle
 onMounted(() => {
   if (route.query.ic !== undefined) {
-    v$.value.form.invitationCode.$touch()
+    v$.value.invitationCode.$touch()
   }
 })
 watch(eventByNameQuery.error, (currentValue, _oldValue) => {
