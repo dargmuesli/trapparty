@@ -120,7 +120,7 @@ async function init() {
     ([, a], [, b]) => b - a
   )
 
-  for (const [, value] of Object.values(leaderboard)) {
+  for (const [, value] of Object.values(leaderboard.value)) {
     if (
       highscores.value[highscores.value.length] === undefined &&
       (highscores.value.length === 0 ||

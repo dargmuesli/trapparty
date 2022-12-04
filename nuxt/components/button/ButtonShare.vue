@@ -1,20 +1,18 @@
 <template>
-  <span v-if="url">
+  <div v-if="url" class="flex gap-2 items-center">
     <slot />
-    <Button
-      :aria-label="t('share')"
-      :icon-id="['fas', 'share-alt']"
-      @click="copy(url)"
-    />
-  </span>
-  <span v-else class="unready inline-block">
+    <ButtonColored :aria-label="t('share')" @click="copy(url)">
+      <template #prefix>
+        <IconShare />
+      </template>
+    </ButtonColored>
+  </div>
+  <div v-else class="unready inline-block">
     <slot name="unready" />
-  </span>
+  </div>
 </template>
 
 <script setup lang="ts">
-import Swal from 'sweetalert2'
-
 export interface Props {
   url: string
 }
@@ -23,24 +21,15 @@ withDefaults(defineProps<Props>(), {})
 const { t } = useI18n()
 
 // methods
-function copy(string: string) {
-  if (typeof window === 'undefined') {
-    return
-  }
+async function copy(string: string) {
+  if (typeof window === 'undefined') return
 
-  navigator.clipboard.writeText(string).then(
-    () => {
-      Swal.fire({
-        icon: 'success',
-        showConfirmButton: false,
-        timer: 1500,
-        title: t('donationUrlCopySuccess'),
-      })
-    },
-    (_err) => {
-      alert(t('donationUrlCopyError'))
-    }
-  )
+  try {
+    await navigator.clipboard.writeText(string)
+    showToast({ title: t('donationUrlCopySuccess') })
+  } catch (error: any) {
+    alert(t('donationUrlCopyError'))
+  }
 }
 </script>
 

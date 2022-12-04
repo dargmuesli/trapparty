@@ -3,18 +3,23 @@ import { decodeJwt, JWTPayload } from 'jose'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-interface ParticipationData {
-  invitationCode?: string
-  name?: string
-  role: string
+interface ParticipationDataWatcher {
+  role: 'watcher'
 }
+
+interface ParticipationDataPlayer {
+  invitationCode: string
+  role: 'player'
+}
+
+type ParticipationData = ParticipationDataWatcher | ParticipationDataPlayer
 
 export const useStore = defineStore('trapparty', () => {
   const jwt = ref<string>()
   const jwtDecoded = ref<JWTPayload>()
-  const participationData = useLocalStorage(
+  const participationData = useLocalStorage<ParticipationData>(
     'participation-data',
-    ref<ParticipationData>()
+    { role: 'watcher' }
   )
   const signedInUsername = ref<string>()
 

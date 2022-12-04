@@ -36,6 +36,7 @@
                 v-for="charityOrganization in charityOrganizations"
                 :key="`header-${charityOrganization.id || Math.random()}`"
                 class="border border-gray-700 p-2"
+                scope="col"
               >
                 {{ charityOrganization.name }}
               </th>
@@ -55,7 +56,7 @@
               ]"
               :key="team.id"
             >
-              <th class="border border-gray-700 p-2 font-bold">
+              <th class="border border-gray-700 p-2 font-bold" scope="row">
                 {{ `${team.name}${team.emoji ? ' ' + team.emoji : ''}` }}
               </th>
               <td
@@ -264,10 +265,10 @@ function init() {
           : (team.donationAmount || 0) *
               teamDonationWeighting *
               charityOrganizationWeigths.value[j] +
-              team.charityOrganizationByCharityOrganizationId.id ===
+            (team.charityOrganizationByCharityOrganizationId.id ===
             charityOrganization.id
-          ? (team.donationAmount || 0) * DONATION_DISTRIBUTION_PERCENTAGE
-          : 0
+              ? (team.donationAmount || 0) * DONATION_DISTRIBUTION_PERCENTAGE
+              : 0)
 
       distributionMatrix.value[i].push(teamCharityDonation)
 

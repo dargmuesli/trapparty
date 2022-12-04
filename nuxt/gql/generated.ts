@@ -2837,8 +2837,8 @@ export type TeamPlayerCountEdge = {
 /** The return type of our `teamPlayerCount` query. */
 export type TeamPlayerCountRecord = {
   __typename?: 'TeamPlayerCountRecord'
+  id?: Maybe<Scalars['Int']>
   playerCount?: Maybe<Scalars['BigInt']>
-  teamId?: Maybe<Scalars['Int']>
 }
 
 /** A connection to a list of `Team` values. */
@@ -3798,7 +3798,7 @@ export type StatsQuery = {
     __typename?: 'TeamPlayerCountConnection'
     nodes: Array<{
       __typename?: 'TeamPlayerCountRecord'
-      teamId?: number | null
+      id?: number | null
       playerCount?: any | null
     } | null>
   } | null
@@ -3830,7 +3830,11 @@ export type StatsQuery = {
       name: string
       gameTeamScoresByGameId: {
         __typename?: 'GameTeamScoresConnection'
-        nodes: Array<{ __typename?: 'GameTeamScore'; score: number } | null>
+        nodes: Array<{
+          __typename?: 'GameTeamScore'
+          id: number
+          score: number
+        } | null>
       }
     } | null>
   } | null
@@ -4168,7 +4172,7 @@ export const StatsDocument = gql`
   query stats($eventId: Int!) {
     teamPlayerCount(eventId: $eventId) {
       nodes {
-        teamId
+        id
         playerCount
       }
     }
@@ -4194,6 +4198,7 @@ export const StatsDocument = gql`
         name
         gameTeamScoresByGameId(orderBy: TEAM_ID_ASC) {
           nodes {
+            id
             score
           }
         }

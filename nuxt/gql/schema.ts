@@ -2841,8 +2841,8 @@ export type TeamPlayerCountEdge = {
 /** The return type of our `teamPlayerCount` query. */
 export type TeamPlayerCountRecord = {
   __typename?: 'TeamPlayerCountRecord'
+  id?: Maybe<Scalars['Int']>
   playerCount?: Maybe<Scalars['BigInt']>
-  teamId?: Maybe<Scalars['Int']>
 }
 
 /** A connection to a list of `Team` values. */
@@ -5202,15 +5202,15 @@ export type GraphCacheResolvers = {
     >
   }
   TeamPlayerCountRecord?: {
+    id?: GraphCacheResolver<
+      WithTypename<TeamPlayerCountRecord>,
+      Record<string, never>,
+      Scalars['Int'] | string
+    >
     playerCount?: GraphCacheResolver<
       WithTypename<TeamPlayerCountRecord>,
       Record<string, never>,
       Scalars['BigInt'] | string
-    >
-    teamId?: GraphCacheResolver<
-      WithTypename<TeamPlayerCountRecord>,
-      Record<string, never>,
-      Scalars['Int'] | string
     >
   }
   TeamsConnection?: {

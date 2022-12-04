@@ -2,7 +2,9 @@ import { IncomingMessage } from 'node:http'
 
 import { helpers } from '@vuelidate/validators'
 import { CombinedError } from '@urql/core'
+import Swal from 'sweetalert2'
 import { ComputedRef, Ref } from 'vue'
+
 import { REGEX_SLUG, REGEX_UUID } from './constants'
 
 export type BackendError = CombinedError | { errcode: string; message: string }
@@ -13,8 +15,8 @@ export type ApiData = ComputedRef<{
   isFetching: boolean
 }>
 
-export const VERIFICATION_FORMAT_SLUG = helpers.regex('slug', REGEX_SLUG)
-export const VERIFICATION_FORMAT_UUID = helpers.regex('uuid', REGEX_UUID)
+export const VERIFICATION_FORMAT_SLUG = helpers.regex(REGEX_SLUG)
+export const VERIFICATION_FORMAT_UUID = helpers.regex(REGEX_UUID)
 
 export function append(path: string, pathToAppend: string): string {
   return path + (path.endsWith('/') ? '' : '/') + pathToAppend
@@ -122,6 +124,22 @@ export const getApiMeta = (
     ? queries.reduce((p, c) => p || c.fetching.value, false)
     : false,
 })
+
+export function showToast({ title }: { title: string }) {
+  Swal.fire({
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    },
+    icon: 'success',
+    position: 'bottom-right',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    title,
+    toast: true,
+  })
+}
 
 export function xhrPromise(
   method: string,

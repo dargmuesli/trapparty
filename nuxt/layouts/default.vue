@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4 md:px-8" :data-is-loading="isLoading">
-    <div class="container mx-auto flex min-h-screen flex-col p-4">
+    <div class="flex flex-col min-h-screen pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="t('home')" :to="localePath('/')">
           <div id="logo" class="h-16 w-16" />

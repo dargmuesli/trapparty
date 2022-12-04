@@ -54,7 +54,6 @@
 
 <script setup lang="ts">
 import consola from 'consola'
-import Swal from 'sweetalert2'
 
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import {
@@ -74,6 +73,7 @@ const props = withDefaults(defineProps<Props>(), {})
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
+const fireError = useFireError()
 const createGameRandomFactsVoteMutation = useCreateGameRandomFactsVoteMutation()
 const updateGameRandomFactsRoundByIdMutation =
   useUpdateGameRandomFactsRoundByIdMutation()
@@ -86,7 +86,9 @@ const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
 })
 const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
   variables: {
-    invitationCode: store.participationData?.invitationCode,
+    invitationCode:
+      store.participationData.role === 'player' &&
+      store.participationData?.invitationCode,
   },
 })
 
@@ -150,27 +152,12 @@ async function choose(answer: number) {
     },
   })
 
-  if (result.error) {
-    Swal.fire({
-      icon: 'error',
-      title: t('error'),
-      text: result.error.message,
-    })
-    api.value.errors.push(result.error)
-    consola.error(result.error)
-  }
+  if (result.error) fireError({ error: result.error }, api)
 
-  if (!result.data) {
-    return
-  }
+  if (!result.data) return
 
   if (player.value.name !== round.value.questionerName) {
-    Swal.fire({
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1500,
-      text: t('saved'),
-    })
+    showToast({ title: t('saved') })
     await voteFetch()
   }
 
@@ -184,26 +171,11 @@ async function choose(answer: number) {
       }
     )
 
-    if (result.error) {
-      Swal.fire({
-        icon: 'error',
-        title: t('error'),
-        text: result.error.message,
-      })
-      api.value.errors.push(result.error)
-      consola.error(result.error)
-    }
+    if (result.error) fireError({ error: result.error }, api)
 
-    if (!result.data) {
-      return
-    }
+    if (!result.data) return
 
-    Swal.fire({
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1500,
-      text: t('saved'),
-    })
+    showToast({ title: t('saved') })
     await voteFetch()
   }
 }
@@ -223,17 +195,10 @@ async function voteFetch() {
     )
     .toPromise()
 
-  if (result.error) {
-    Swal.fire({
-      icon: 'error',
-      title: t('error'),
-      text: result.error.message,
-    })
-    api.value.errors.push(result.error)
-    consola.error(result.error)
-  }
+  if (result.error) fireError({ error: result.error }, api)
 
   if (!result) return
+
   voteAnswer.value =
     result.data?.gameRandomFactsVoteByPlayerIdAndRoundId?.answer
 }
@@ -252,7 +217,6 @@ await voteFetch()
 
 <i18n lang="yaml">
 de:
-  error: Fehler
   factA: Fakt A
   factB: Fakt B
   namePrefix: Vor dir steht

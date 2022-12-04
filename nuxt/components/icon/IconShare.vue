@@ -9,7 +9,7 @@
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+      d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
     />
   </IconContainer>
 </template>
@@ -25,7 +25,7 @@ const { t } = useI18n()
 
 <i18n lang="yaml">
 de:
-  title: Homepage
+  title: Einloggen
 en:
-  title: Homepage
+  title: Login
 </i18n>

@@ -1,5 +1,10 @@
 <template>
-  <Bar :chart-data="data" :chart-options="options" :height="height" />
+  <Bar
+    :chart-data="data"
+    :chart-id="id"
+    :chart-options="options"
+    :height="height"
+  />
 </template>
 
 <script setup lang="ts">
@@ -12,18 +17,19 @@ import {
   Title,
   Tooltip,
 } from 'chart.js'
-import type { ChartData, ChartOptions } from 'chart.js'
+import type { ChartOptions } from 'chart.js'
 import merge from 'lodash.merge'
-import { Bar } from 'vue-chartjs/legacy'
+import { Bar } from 'vue-chartjs/dist/index' // TODO: wait for vue-chartjs support chartjs v4 (https://github.com/apertureless/vue-chartjs/pull/934)
+import { TChartData } from 'vue-chartjs/dist/types'
 
 export interface Props {
-  data?: ChartData<'bar'>
+  id: string
+  data: TChartData<'bar', number[], unknown>
   height?: number
   horizontal?: boolean
   optionsAdditional?: ChartOptions<'bar'>
 }
 const props = withDefaults(defineProps<Props>(), {
-  data: undefined,
   height: 150,
   horizontal: true,
   optionsAdditional: undefined,

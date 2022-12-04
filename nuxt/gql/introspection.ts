@@ -6591,7 +6591,7 @@ export default {
         name: 'TeamPlayerCountRecord',
         fields: [
           {
-            name: 'playerCount',
+            name: 'id',
             type: {
               kind: 'SCALAR',
               name: 'Any',
@@ -6599,7 +6599,7 @@ export default {
             args: [],
           },
           {
-            name: 'teamId',
+            name: 'playerCount',
             type: {
               kind: 'SCALAR',
               name: 'Any',
