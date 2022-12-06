@@ -1,5 +1,5 @@
 {
-  "baseBranches": ["alpha", "beta"],
+  "baseBranches": ["alpha", "beta", "master"],
   "extends": [
     "github>dargmuesli/renovate-config"
   ],
