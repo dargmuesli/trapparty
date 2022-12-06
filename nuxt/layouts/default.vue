@@ -5,7 +5,11 @@
         <AppLink :aria-label="t('home')" :to="localePath('/')">
           <div id="logo" class="h-16 w-16" />
         </AppLink>
-        <AppLink class="text-gray-900 dark:text-white" :to="localePath('/')">
+        <AppLink
+          :aria-label="t('home')"
+          class="text-gray-900 dark:text-white"
+          :to="localePath('/')"
+        >
           <IconHome />
         </AppLink>
       </header>
@@ -15,15 +19,19 @@
     </div>
     <LayoutFooter>
       <LayoutFooterCategory :heading="t('legal')">
-        <AppLink :to="localePath('/imprint')">
+        <AppLink :aria-label="t('imprint')" :to="localePath('/imprint')">
           {{ t('imprint') }}
         </AppLink>
-        <AppLink :to="localePath('/privacy-policy')">
+        <AppLink
+          :aria-label="t('privacyPolicy')"
+          :to="localePath('/privacy-policy')"
+        >
           {{ t('privacyPolicy') }}
         </AppLink>
       </LayoutFooterCategory>
       <LayoutFooterCategory :heading="t('quickLinks')">
         <AppLink
+          :aria-label="t('sourceCode')"
           :title="t('githubLinkTitle')"
           to="https://github.com/dargmuesli/trapparty/"
         >

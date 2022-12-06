@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 export interface Props {
-  ariaLabel?: string
+  ariaLabel: string
   isColored?: boolean
   isToRelative?: boolean
   isUnderlined?: boolean
@@ -33,7 +33,6 @@ export interface Props {
   to: string
 }
 const props = withDefaults(defineProps<Props>(), {
-  ariaLabel: undefined,
   isColored: true,
   isToRelative: false,
   isUnderlined: false,

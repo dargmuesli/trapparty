@@ -169,7 +169,10 @@
       <p>{{ t('pluginsToolsYouTubeDescription6') }}</p>
       <i18n-t keypath="pluginsToolsYouTubeDescription7" tag="p">
         <template #linkPrivacy>
-          <AppLink :to="t('pluginsToolsYouTubeDescription7s')">
+          <AppLink
+            :aria-label="t('pluginsToolsYouTubeDescription7s')"
+            :to="t('pluginsToolsYouTubeDescription7s')"
+          >
             {{ t('pluginsToolsYouTubeDescription7s') }}
           </AppLink>
         </template>
@@ -179,12 +182,18 @@
       <p>{{ t('pluginsToolsGoogleWebFontsDescription1') }}</p>
       <i18n-t keypath="pluginsToolsGoogleWebFontsDescription2" tag="p">
         <template #linkFaq>
-          <AppLink :to="t('pluginsToolsGoogleWebFontsDescription2s1')">
+          <AppLink
+            :aria-label="t('pluginsToolsGoogleWebFontsDescription2s1')"
+            :to="t('pluginsToolsGoogleWebFontsDescription2s1')"
+          >
             {{ t('pluginsToolsGoogleWebFontsDescription2s1') }}
           </AppLink>
         </template>
         <template #linkPrivacy>
-          <AppLink :to="t('pluginsToolsGoogleWebFontsDescription2s2')">
+          <AppLink
+            :aria-label="t('pluginsToolsGoogleWebFontsDescription2s2')"
+            :to="t('pluginsToolsGoogleWebFontsDescription2s2')"
+          >
             {{ t('pluginsToolsGoogleWebFontsDescription2s2') }}
           </AppLink>
         </template>
@@ -194,7 +203,10 @@
       <p>{{ t('pluginsToolsFontAwesomeDescription1') }}</p>
       <i18n-t keypath="pluginsToolsFontAwesomeDescription2" tag="p">
         <template #linkPrivacy>
-          <AppLink :to="t('pluginsToolsFontAwesomeDescription2s')">
+          <AppLink
+            :aria-label="t('pluginsToolsFontAwesomeDescription2s')"
+            :to="t('pluginsToolsFontAwesomeDescription2s')"
+          >
             {{ t('pluginsToolsFontAwesomeDescription2s') }}
           </AppLink>
         </template>
@@ -207,6 +219,7 @@
       <i18n-t keypath="pluginsToolsGoogleMapsDescription4" tag="p">
         <template #linkGdpr>
           <AppLink
+            :aria-label="t('pluginsToolsGoogleMapsDescription4s1')"
             to="https://privacy.google.com/businesses/gdprcontrollerterms/"
           >
             {{ t('pluginsToolsGoogleMapsDescription4s1') }}
@@ -214,6 +227,7 @@
         </template>
         <template #linkGdprScss>
           <AppLink
+            :aria-label="t('pluginsToolsGoogleMapsDescription4s1')"
             to="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/"
           >
             {{ t('pluginsToolsGoogleMapsDescription4s2') }}
@@ -222,7 +236,10 @@
       </i18n-t>
       <i18n-t keypath="pluginsToolsGoogleMapsDescription5" tag="p">
         <template #linkPrivacy>
-          <AppLink :to="t('pluginsToolsGoogleMapsDescription5s')">
+          <AppLink
+            :aria-label="t('pluginsToolsGoogleMapsDescription5s')"
+            :to="t('pluginsToolsGoogleMapsDescription5s')"
+          >
             {{ t('pluginsToolsGoogleMapsDescription5s') }}
           </AppLink>
         </template>
@@ -235,18 +252,26 @@
       <p>{{ t('pluginsToolsGoogleReCaptchaDescription4') }}</p>
       <i18n-t keypath="pluginsToolsGoogleReCaptchaDescription5" tag="p">
         <template #linkPrivacy>
-          <AppLink :to="t('pluginsToolsGoogleReCaptchaDescription5s1')">
+          <AppLink
+            :aria-label="t('pluginsToolsGoogleReCaptchaDescription5s1')"
+            :to="t('pluginsToolsGoogleReCaptchaDescription5s1')"
+          >
             {{ t('pluginsToolsGoogleReCaptchaDescription5s1') }}
           </AppLink>
         </template>
         <template #linkTerms>
-          <AppLink :to="t('pluginsToolsGoogleReCaptchaDescription5s2')">
+          <AppLink
+            :aria-label="t('pluginsToolsGoogleReCaptchaDescription5s2')"
+            :to="t('pluginsToolsGoogleReCaptchaDescription5s2')"
+          >
             {{ t('pluginsToolsGoogleReCaptchaDescription5s2') }}
           </AppLink>
         </template>
       </i18n-t>
       <p>
-        <AppLink to="https://www.e-recht24.de">{{ t('source') }}</AppLink>
+        <AppLink :aria-label="t('source')" to="https://www.e-recht24.de">{{
+          t('source')
+        }}</AppLink>
       </p>
     </div>
   </div>

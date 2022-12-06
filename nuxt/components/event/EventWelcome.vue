@@ -43,6 +43,7 @@
                 <div v-if="route.query.ic">
                   {{ t('invitationCodeAutomatic') }}
                   <AppLink
+                    :aria-label="t('invitationCodeManual')"
                     :to="
                       localePath({
                         query: undefined,

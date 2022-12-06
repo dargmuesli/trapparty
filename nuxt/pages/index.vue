@@ -11,7 +11,10 @@
             :key="eventUpcoming.id"
             class="text-xl"
           >
-            <AppLink :to="localePath(`/event/${eventUpcoming.name}`)">
+            <AppLink
+              :aria-label="`${t('title')} ${eventUpcoming.name}`"
+              :to="localePath(`/event/${eventUpcoming.name}`)"
+            >
               {{ `${t('title')} ${eventUpcoming.name}` }}
             </AppLink>
           </li>
@@ -29,6 +32,7 @@
         <i18n-t class="text-2xl" keypath="description" tag="p">
           <template #author>
             <AppLink
+              :aria-label="t('authorName')"
               to="https://jonas-thelemann.de"
               :title="t('authorLinkTitle')"
             >
@@ -47,7 +51,10 @@
             :key="eventPast.id"
             class="text-xl"
           >
-            <AppLink :to="localePath(`/event/${eventPast.name}`)">
+            <AppLink
+              :aria-label="`${t('title')} ${eventPast.name}`"
+              :to="localePath(`/event/${eventPast.name}`)"
+            >
               {{ `${t('title')} ${eventPast.name}` }}
             </AppLink>
           </li>
