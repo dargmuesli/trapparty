@@ -3,7 +3,7 @@
     <div class="flex flex-col min-h-screen pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="t('home')" :to="localePath('/')">
-          <div id="logo" class="h-16 w-16" />
+          <Logo class="h-16 w-16" />
         </AppLink>
         <AppLink
           :aria-label="t('home')"
@@ -63,14 +63,6 @@ export default {
   name: 'IndexPage',
 }
 </script>
-
-<style scoped>
-#logo {
-  background-image: url('/assets/static/logos/logo.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-</style>
 
 <i18n lang="yaml">
 de:
