@@ -60,7 +60,7 @@ specifiers:
   postcss: 8.4.19
   postcss-html: 1.5.0
   prettier: 2.8.0
-  prettier-plugin-tailwindcss: 0.2.0
+  prettier-plugin-tailwindcss: 0.2.1
   rainbowvis.js: 1.1.1
   rollup: 2.79.1
   start-server-and-test: 1.14.0
@@ -135,7 +135,7 @@ devDependencies:
   postcss: 8.4.19
   postcss-html: 1.5.0
   prettier: 2.8.0
-  prettier-plugin-tailwindcss: 0.2.0_prettier@2.8.0
+  prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.0
   rainbowvis.js: 1.1.1
   rollup: 2.79.1
   start-server-and-test: 1.14.0
@@ -8632,8 +8632,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.0_prettier@2.8.0:
-    resolution: {integrity: sha512-Ruqig/mdWCSpqdq9WK44nrmqM4BFWTzBPhPGwC5NK3coV9eZntEQPB84MGZbjAg0XQU02jVRHXNRPREBzxvM+A==}
+  /prettier-plugin-tailwindcss/0.2.1_prettier@2.8.0:
+    resolution: {integrity: sha512-aIO8IguumORyRsmT+E7JfJ3A9FEoyhqZR7Au7TBOege3VZkgMvHJMkufeYp4zjnDK2iq4ktkvGMNOQR9T8lisQ==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
       prettier: '>=2.2.0'
