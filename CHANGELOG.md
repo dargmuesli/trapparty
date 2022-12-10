@@ -1,3 +1,14 @@
+## [3.0.3](https://github.com/dargmuesli/trapparty/compare/3.0.2...3.0.3) (2022-12-10)
+
+
+### Bug Fixes
+
+* **app-link:** correct aria label ([9bb5bce](https://github.com/dargmuesli/trapparty/commit/9bb5bce88d6e8cdc56302d9bbaf7240361eb2f50))
+* **docker:** correct stack domain ([e1a5c2b](https://github.com/dargmuesli/trapparty/commit/e1a5c2b38438e6375027edd4b331a412c88087c0))
+* **footer:** use svg image ([3ff102d](https://github.com/dargmuesli/trapparty/commit/3ff102d753147b1482492caeccfcf56de5c55286))
+* **package:** correct postinstall script ([c7cdc7d](https://github.com/dargmuesli/trapparty/commit/c7cdc7d1cfaf6c444fa77cbdb212bdee5ab20ba2))
+* **renovate:** add master to base branches ([e426561](https://github.com/dargmuesli/trapparty/commit/e4265610fc0c5347c185afd3cb37ef8a5296a919))
+
 ## [3.0.2](https://github.com/dargmuesli/trapparty/compare/3.0.1...3.0.2) (2022-12-04)
 
 
