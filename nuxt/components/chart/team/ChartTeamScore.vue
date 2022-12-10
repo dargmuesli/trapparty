@@ -12,11 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import type { ChartOptions } from 'chart.js'
+import type { ChartData, ChartOptions } from 'chart.js'
 import Color from 'color'
 import consola from 'consola'
 import Rainbow from 'rainbowvis.js'
-import { TChartData } from 'vue-chartjs/dist/types'
 
 import { useStatsQuery } from '~/gql/generated'
 
@@ -54,7 +53,7 @@ const allTeams = computed(() => statsQuery.data.value?.allTeams)
 const allGames = computed(() => statsQuery.data.value?.allGames)
 
 // data
-const data = ref<TChartData<'bar', number[], unknown> | null>(null)
+const data = ref<ChartData<'bar', number[], unknown> | null>(null)
 const horizontal = ref(true)
 const optionsDefault = ref<ChartOptions<'bar'>>({
   plugins: {

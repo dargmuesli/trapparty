@@ -148,7 +148,6 @@ export default defineNuxtConfig({
           '!' +
           resolve(dirname(fileURLToPath(import.meta.url)), './node_modules/**'), // https://github.com/intlify/bundle-tools/issues/168
       }),
-      // @ts-ignore https://github.com/rollup/plugins/issues/1243
       graphqlPlugin(),
     ],
   },
