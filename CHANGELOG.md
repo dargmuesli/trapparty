@@ -1,3 +1,11 @@
+## [3.0.4](https://github.com/dargmuesli/trapparty/compare/3.0.3...3.0.4) (2022-12-13)
+
+
+### Bug Fixes
+
+* **commitlint:** allow long body lines on ci ([23cd3d6](https://github.com/dargmuesli/trapparty/commit/23cd3d6809e743f3a476bcf5404c475dc6d15032))
+* **package:** install nuxt recursively ([2fe253f](https://github.com/dargmuesli/trapparty/commit/2fe253f2b3d9f7b018fa37b17ea0493662d3fb89))
+
 ## [3.0.3](https://github.com/dargmuesli/trapparty/compare/3.0.2...3.0.3) (2022-12-10)
 
 
