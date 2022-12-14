@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
+    "@dargmuesli/nuxt-cookie-control": "2.2.0",
     "@funken-studio/sitemap-nuxt-3": "4.0.4",
     "@graphql-codegen/cli": "2.16.1",
     "@graphql-codegen/typescript": "2.8.5",
@@ -47,7 +48,7 @@
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",
     "@nuxtjs/html-validator": "1.2.3",
-    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge@8.0.0-beta.1-27775490.1ee240a",
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge@8.0.0-beta.7-27847653.226e24b",
     "@nuxtjs/robots": "3.0.0",
     "@nuxtjs/sitemap": "2.4.0",
     "@pinia/nuxt": "0.4.6",
@@ -107,6 +108,13 @@
     "typescript": "4.9.4",
     "vue": "3.2.45",
     "vue-chartjs": "5.0.1"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "webpack"
+      ]
+    }
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",

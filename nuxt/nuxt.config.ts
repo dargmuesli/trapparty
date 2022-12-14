@@ -1,10 +1,7 @@
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import graphqlPlugin from '@rollup/plugin-graphql'
 
 import localeDe from './locales/de.json'
+import { JWT_NAME, LOCALES } from './utils/constants'
 
 const BASE_URL =
   'https://' +
@@ -20,50 +17,67 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // [
-    //   '@dargmuesli/nuxt-cookie-control',
-    //   {
-    //     locales: ['en', 'de'],
-    //     necessary: [
-    //       {
-    //         name: {
-    //           de: 'Authentifizierungsdaten',
-    //           en: 'Authentication Data',
-    //         },
-    //         // cookies: ['JWT_NAME'],
-    //       },
-    //       {
-    //         name: {
-    //           de: 'Cookie-Präferenzen',
-    //           en: 'Cookie Preferences',
-    //         },
-    //         // cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies'],
-    //       },
-    //       {
-    //         name: {
-    //           de: 'Spracheinstellungen',
-    //           en: 'Language Settings',
-    //         },
-    //         // cookies: ['i18n_redirected'],
-    //       },
-    //     ],
-    //     optional: [
-    //       {
-    //         name: 'Google Analytics',
-    //         identifier: 'ga',
-    //         // cookies: ['_ga', '_gat', '_gid'],
-    //         accepted: () => {
-    //           const { $ga } = useNuxtApp()
-    //           $ga.enable()
-    //         },
-    //         declined: () => {
-    //           const { $ga } = useNuxtApp()
-    //           $ga.disable()
-    //         },
-    //       },
-    //     ],
-    //   },
-    // ],
+    [
+      '@dargmuesli/nuxt-cookie-control',
+      {
+        cookies: {
+          necessary: [
+            {
+              description: {
+                de: 'Speichert die Zugriffsberechtigungen auf Daten.',
+                en: 'Saves the access permissions to data.',
+              },
+              name: {
+                de: 'Authentifizierungsdaten',
+                en: 'Authentication Data',
+              },
+              targetCookieIds: [JWT_NAME],
+            },
+            {
+              description: {
+                de: 'Speichert die Einstellungen, die in diesem Dialog getroffen werden.',
+                en: 'Saves the settings made in this dialog.',
+              },
+              name: {
+                de: 'Cookie-Präferenzen',
+                en: 'Cookie Preferences',
+              },
+              targetCookieIds: [
+                'cookie_control_consent',
+                'cookie_control_enabled_cookies',
+              ],
+            },
+            {
+              description: {
+                de: 'Speichert in welcher Sprache die Webseite angezeigt wird.',
+                en: 'Saves in which language the web page is displayed.',
+              },
+              name: {
+                de: 'Spracheinstellungen',
+                en: 'Language Settings',
+              },
+              targetCookieIds: ['i18n_redirected'],
+            },
+          ],
+          // optional: [
+          //   {
+          //     name: 'Google Analytics',
+          //     id: 'ga',
+          //     // targetCookieIds: ['_ga', '_gat', '_gid'],
+          //     accepted: () => {
+          //       const { $ga } = useNuxtApp()
+          //       $ga.enable()
+          //     },
+          //     declined: () => {
+          //       const { $ga } = useNuxtApp()
+          //       $ga.disable()
+          //     },
+          //   },
+          // ],
+        },
+        locales: ['en', 'de'],
+      },
+    ],
     [
       '@nuxtjs/color-mode',
       {
@@ -86,19 +100,7 @@ export default defineNuxtConfig({
           cookieSecure: true,
           redirectOn: 'root',
         },
-        // legacy: false,
-        locales: [
-          // {
-          //   code: 'en',
-          //   name: 'English',
-          //   iso: 'en', // Will be used as catchall locale by default.
-          // },
-          {
-            code: 'de',
-            name: 'Deutsch',
-            iso: 'de',
-          },
-        ],
+        locales: LOCALES,
         vueI18n: {
           messages: {
             de: localeDe,
@@ -106,7 +108,6 @@ export default defineNuxtConfig({
           },
           fallbackWarn: false, // TODO: don't show incorrect warnings (https://github.com/intlify/vue-i18n-next/issues/776)
         },
-        // vueI18nLoader: true,
       },
     ],
     '@nuxtjs/robots',
@@ -142,13 +143,6 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    plugins: [
-      VueI18nPlugin({
-        include:
-          '!' +
-          resolve(dirname(fileURLToPath(import.meta.url)), './node_modules/**'), // https://github.com/intlify/bundle-tools/issues/168
-      }),
-      graphqlPlugin(),
-    ],
+    plugins: [graphqlPlugin()],
   },
 })

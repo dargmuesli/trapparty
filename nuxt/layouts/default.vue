@@ -39,6 +39,7 @@
         </AppLink>
       </LayoutFooterCategory>
     </LayoutFooter>
+    <CookieControl :locale="locale" />
   </div>
 </template>
 
@@ -52,6 +53,9 @@ const loadingIds = useState('loadingIds', () => [loadingId])
 
 // computations
 const isLoading = computed(() => !!loadingIds.value.length)
+
+// lifecycle
+onMounted(() => loadingIds.value.splice(loadingIds.value.indexOf(loadingId), 1))
 
 // initialization
 useHeadLayout()
