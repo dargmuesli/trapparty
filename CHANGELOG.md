@@ -1,3 +1,17 @@
+# [3.1.0](https://github.com/dargmuesli/trapparty/compare/3.0.4...3.1.0) (2022-12-14)
+
+
+### Bug Fixes
+
+* **deps:** add missing dependencies ([7c236e3](https://github.com/dargmuesli/trapparty/commit/7c236e360b8564241cc58f487b4568025ad1a64d))
+* **docker:** prepare nuxt ([dec4011](https://github.com/dargmuesli/trapparty/commit/dec4011ffbbf793a9961ba6bf05c2c2d8ea417b4))
+
+
+### Features
+
+* **loader-image:** adapt from maevsi ([785f078](https://github.com/dargmuesli/trapparty/commit/785f078704c780e9f1cb6db160f27f40617f200a))
+* **nuxt:** add cookie module ([c5ae623](https://github.com/dargmuesli/trapparty/commit/c5ae62387e0349809729be36d44d56feb2b61417))
+
 ## [3.0.4](https://github.com/dargmuesli/trapparty/compare/3.0.3...3.0.4) (2022-12-13)
 
 
