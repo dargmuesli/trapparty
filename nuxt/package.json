@@ -30,7 +30,8 @@
     "test:integration:docker:br": "pnpm test:integration:docker:build && pnpm test:integration:docker:run",
     "test:integration:docker:dev": "pnpm test:integration:docker:br pnpm test:integration:dev",
     "test:integration:docker:prod": "pnpm test:integration:docker:br pnpm test:integration:prod",
-    "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config codegen.yml"
+    "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config codegen.yml",
+    "postinstall": "pnpm nuxt prepare"
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
