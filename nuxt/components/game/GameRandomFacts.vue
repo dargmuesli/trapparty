@@ -2,18 +2,24 @@
   <Loader :api="api">
     <div class="text-justify text-3xl lg:text-8xl">
       <div v-if="round && player">
-        <div>
-          <span class="text-gray-500">{{ t('namePrefix') }}</span>
-          {{ round.questionerName || t('nobody') }}
-          <span class="text-gray-500">{{ t('nameSuffix') }}</span>
-          <span class="text-gray-500">{{ t('randomFactPrefix') }}</span>
-          {{ t('randomFact') }}
-          <span class="text-gray-500">{{ t('randomFactSuffix') }}</span>
+        <div class="text-gray-500">
+          <i18n-t keypath="question">
+            <template #name>
+              <span class="text-text-bright">
+                {{ round.questionerName || t('nobody') }}
+              </span>
+            </template>
+            <template #randomFact>
+              <span class="text-text-bright">
+                {{ t('randomFact') }}
+              </span>
+            </template>
+          </i18n-t>
         </div>
         <div
           class="m-4 flex flex-col justify-evenly gap-4 lg:m-16 lg:flex-row lg:gap-16"
         >
-          <Button
+          <ButtonColored
             :aria-label="t('factA')"
             class="px-4 py-8 lg:px-16"
             :class="{
@@ -25,8 +31,8 @@
             @click="choose(0)"
           >
             {{ t('factA') }}
-          </Button>
-          <Button
+          </ButtonColored>
+          <ButtonColored
             :aria-label="t('factB')"
             class="px-4 py-8 lg:px-16"
             :class="{
@@ -38,15 +44,15 @@
             @click="choose(1)"
           >
             {{ t('factB') }}
-          </Button>
+          </ButtonColored>
         </div>
       </div>
-      <div v-else>
-        <div>
-          <span class="text-gray-500">{{ t('voteNonePrefix') }}</span>
-          {{ t('voteNone')
-          }}<span class="text-gray-500">{{ t('voteNoneSuffix') }}</span>
-        </div>
+      <div v-else class="text-gray-500">
+        <i18n-t keypath="voteNoneSentence">
+          <template #voteNone>
+            <span class="text-text-bright">{{ t('voteNone') }}</span>
+          </template>
+        </i18n-t>
       </div>
     </div>
   </Loader>
@@ -139,7 +145,7 @@ const round = computed(() => {
 
 // methods
 async function choose(answer: number) {
-  allGameRandomFactsRoundsQuery.executeQuery()
+  await allGameRandomFactsRoundsQuery.executeQuery()
 
   if (!player.value || !round.value || round.value.answerCorrect !== null)
     return
@@ -219,14 +225,10 @@ await voteFetch()
 de:
   factA: Fakt A
   factB: Fakt B
-  namePrefix: Vor dir steht
-  nameSuffix: .
+  question: Vor dir steht {name}. Welcher {randomFact} ist wahr? 🤔
   nobody: niemand
   randomFact: random fact
-  randomFactPrefix: Welcher
-  randomFactSuffix: ist wahr? 🤔
   saved: Gespeichert.
   voteNone: keine Abstimmung
-  voteNonePrefix: Aktuell gibt es.
-  voteNoneSuffix: .
+  voteNoneSentence: Aktuell gibt es {voteNone}.
 </i18n>

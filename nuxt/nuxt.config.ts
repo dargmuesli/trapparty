@@ -112,6 +112,7 @@ export default defineNuxtConfig({
     ],
     '@nuxtjs/robots',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     '@funken-studio/sitemap-nuxt-3', // Should be declared at the end of the array.
   ],
   nitro: {

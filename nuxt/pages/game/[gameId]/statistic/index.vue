@@ -5,7 +5,11 @@
   <div v-else-if="games && games.length > 0" class="flex flex-col gap-4">
     <h1 class="m-0">{{ t('games') }}</h1>
     <ol class="list-decimal">
-      <StatisticGame v-for="game in games" :key="game.id" :game="game" />
+      <StatisticGame
+        v-for="gameElement in games"
+        :key="gameElement.id"
+        :game="gameElement"
+      />
     </ol>
   </div>
   <div v-else>
@@ -16,15 +20,30 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import EVENT_BY_NAME_QUERY from '~/gql/query/event/eventByName.gql'
 import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
-import { AllGamesQuery, EventByNameQuery } from '~/gql/generated'
+import { AllGamesQuery, useGameByIdQuery } from '~/gql/generated'
 
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
+const route = useRoute()
+
+// queries
+const gameByIdQuery = await useGameByIdQuery({
+  variables: {
+    gameId: +route.params.gameId,
+  },
+})
 
 // api data
-const api = getApiDataDefault()
+const api = computed(() =>
+  reactive({
+    data: {
+      ...gameByIdQuery.data.value,
+    },
+    ...getApiMeta([gameByIdQuery]),
+  })
+)
+const game = computed(() => gameByIdQuery.data.value?.gameById)
 
 // data
 const games = ref<Array<any>>()
@@ -33,34 +52,19 @@ const title = t('title')
 
 // methods
 async function init() {
-  const eventResult = await $urql.value
-    .query<EventByNameQuery>(EVENT_BY_NAME_QUERY, {
-      eventName: '2021',
-    })
-    .toPromise()
-
-  if (eventResult.error) {
-    api.value.errors.push(eventResult.error)
-    // TODO: add watcher instead
-    consola.error(eventResult.error)
-  }
-
-  if (!eventResult) return loadingStop()
-  const trapPartyEvent = eventResult.data?.eventByName
-
-  if (!trapPartyEvent) return
+  if (!game.value) return
 
   const gamesResult = await $urql.value
     .query<AllGamesQuery>(GAMES_ALL_QUERY, {
-      eventId: +trapPartyEvent.id,
+      eventId: +game.value.eventId,
       type: 'RANDOM_FACTS',
     })
     .toPromise()
 
-  if (eventResult.error) {
-    api.value.errors.push(eventResult.error)
+  if (gamesResult.error) {
+    api.value.errors.push(gamesResult.error)
     // TODO: add watcher instead
-    consola.error(eventResult.error)
+    consola.error(gamesResult.error)
   }
 
   if (!gamesResult) return loadingStop()
