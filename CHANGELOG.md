@@ -1,3 +1,17 @@
+# [3.2.0](https://github.com/dargmuesli/trapparty/compare/3.1.0...3.2.0) (2022-12-15)
+
+
+### Bug Fixes
+
+* **game:** tweak random facts ([1c92cf3](https://github.com/dargmuesli/trapparty/commit/1c92cf33bab7d18fbe632e30dc7eadb44a34bc0a))
+* **sqitch:** allow duplicate names for games ([5f9f393](https://github.com/dargmuesli/trapparty/commit/5f9f3930208e83e17e1419dbffc10fc3695eda4d))
+
+
+### Features
+
+* **event:** add trapparty 2022 ([c7fffc6](https://github.com/dargmuesli/trapparty/commit/c7fffc603dfe79f6ae8d5bc791244e727b7d3c08))
+* **index:** add current event ([9bda35a](https://github.com/dargmuesli/trapparty/commit/9bda35a9bca4ecc1dfdb3585d076b0a2f521358d))
+
 # [3.1.0](https://github.com/dargmuesli/trapparty/compare/3.0.4...3.1.0) (2022-12-14)
 
 
