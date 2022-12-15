@@ -3,7 +3,7 @@
 
 # Should be the specific version of `node:slim`.
 # `sqitch` requires at least `buster`.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS development
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS development
 
 COPY ./docker/entrypoint.sh /usr/local/bin/
 
@@ -33,7 +33,7 @@ CMD ["pnpm", "run", "dev"]
 # Prepare Nuxt.
 
 # Should be the specific version of `node:slim`.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS prepare
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS prepare
 
 WORKDIR /srv/app/
 
@@ -53,7 +53,7 @@ RUN pnpm install --offline \
 
 # Should be the specific version of `node:slim`.
 # Could be the specific version of `node:alpine`, but the `prepare` stage uses slim too.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS build
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS build
 
 ARG CI=false
 ENV CI ${CI}
@@ -74,7 +74,7 @@ RUN npm install -g pnpm && \
 
 # Should be the specific version of `node:slim`.
 # Could be the specific version of `node:alpine`, but the `prepare` stage uses slim too.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS lint
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS lint
 
 WORKDIR /srv/app/
 
@@ -142,7 +142,7 @@ RUN pnpm test:integration:prod \
 # Collect build, lint and test results.
 
 # Should be the specific version of `node:slim`.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS collect
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS collect
 
 WORKDIR /srv/app/
 
@@ -158,7 +158,7 @@ COPY --from=test-integration /srv/app/package.json /tmp/test/package.json
 
 # Should be the specific version of `node:slim`.
 # `sqitch` requires at least `buster`.
-FROM node:19.2.0-slim@sha256:fe9b9561c21d74c0a3c49e3ff2e77322343bba2647d85758f302fe54bc4f47da AS production
+FROM node:19.3.0-slim@sha256:5f80db93d1e5072f646125b51cd5b6ff082e0722462634659243819fb5efdc35 AS production
 
 ENV NODE_ENV=production
 
