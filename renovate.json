@@ -1,13 +1,9 @@
 {
-  "baseBranches": ["alpha", "beta", "master"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>dargmuesli/renovate-config"
   ],
   "packageRules": [
-    {
-      "matchPackageNames": ["@rollup/plugin-graphql"],
-      "allowedVersions": "<2"
-    },
     {
       "matchPackageNames": ["rollup"],
       "allowedVersions": "<3"
