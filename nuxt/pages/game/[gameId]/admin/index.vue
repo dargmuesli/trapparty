@@ -26,11 +26,6 @@ const api = getApiDataDefault()
 // data
 const isNfcWritableErrorMessage = ref<string>()
 
-onMounted(() => {
-  checkNfcErrors().catch((err: Error) => {
-    isNfcWritableErrorMessage.value = err.message
-  })
-})
 // methods
 async function checkNfcErrors(): Promise<void> {
   if (!('NDEFReader' in window)) {
@@ -118,6 +113,13 @@ async function nfcScan() {
     }
   }
 }
+
+// lifecycle
+onMounted(() => {
+  checkNfcErrors().catch((err: Error) => {
+    isNfcWritableErrorMessage.value = err.message
+  })
+})
 </script>
 
 <script lang="ts">

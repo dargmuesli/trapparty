@@ -17,12 +17,13 @@
         class="flex flex-col items-start justify-between md:flex-row md:items-center"
       >
         <GameTitle :game="game" />
-        <Button
+        <ButtonColored
           :aria-label="t('gameLinkStatistic')"
+          :is-primary="false"
           :to="localePath(`/game/${game.id}/statistic`)"
         >
           {{ t('gameLinkStatistic') }}
-        </Button>
+        </ButtonColored>
       </div>
       <GameRandomFacts v-if="game.type === 'RANDOM_FACTS'" :game-id="game.id" />
       <div v-else>
