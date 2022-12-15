@@ -1,7 +1,7 @@
 <template>
   <Loader :api="api" class="flex flex-1 flex-col">
     <div class="flex flex-1 flex-col">
-      <section v-if="eventsUpcoming && eventsUpcoming.length > 0">
+      <section v-if="eventsUpcoming.length">
         <h2>
           {{ t('titleEventsUpcoming') }}
         </h2>
@@ -19,6 +19,19 @@
             </AppLink>
           </li>
         </ul>
+      </section>
+      <section v-if="eventCurrent">
+        <h2>
+          {{ t('titleEventCurrent') }}
+        </h2>
+        <span class="text-xl">
+          <AppLink
+            :aria-label="`${t('title')} ${eventCurrent.name}`"
+            :to="localePath(`/event/${eventCurrent.name}`)"
+          >
+            {{ `${t('title')} ${eventCurrent.name}` }}
+          </AppLink>
+        </span>
       </section>
       <div class="flex flex-1 flex-col justify-center font-serif">
         <div class="flex flex-col items-baseline md:flex-row">
@@ -41,7 +54,7 @@
           </template>
         </i18n-t>
       </div>
-      <section v-if="eventsPast && eventsPast.length > 0">
+      <section v-if="eventsPast.length">
         <h2>
           {{ t('titleEventsPast') }}
         </h2>
@@ -89,9 +102,19 @@ const allEvents = computed(() => allEventsQuery.data.value?.allEvents?.nodes)
 const title = t('title')
 
 // computations
+const eventCurrent = computed(() => {
+  return arrayRemoveNulls(allEvents.value).filter(
+    (event) =>
+      $moment().isAfter($moment(event.start)) &&
+      $moment().isBefore(
+        event.end ? $moment(event.end) : $moment().add(1, 'day')
+      )
+  )[0]
+})
 const eventsPast = computed(() => {
-  return arrayRemoveNulls(allEvents.value).filter((event) =>
-    $moment(event.start).isBefore($moment())
+  return arrayRemoveNulls(allEvents.value).filter(
+    (event) =>
+      $moment(event.start).isBefore($moment()) && event !== eventCurrent.value
   )
 })
 const eventsUpcoming = computed(() => {
@@ -116,6 +139,7 @@ de:
   authorName: Jonas Thelemann
   description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {author} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
   title: TrapParty
+  titleEventCurrent: Aktuelle TrapParty
   titleEventsPast: Vergangene TrapParties
   titleEventsUpcoming: Zukünftige TrapParties
   transcription: '[træp ˈpɑr-ti]'
