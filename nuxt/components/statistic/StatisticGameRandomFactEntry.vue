@@ -3,11 +3,12 @@
     <li
       class="rounded-md bg-gray-300 p-2 dark:bg-gray-700"
       :class="{
-        'border border-yellow-500':
+        /* highscores are number, so an explicit check for undefined is necessary */
+        'border xl:border-2 border-yellow-500':
           highscores[0] !== undefined && value === highscores[0],
-        'border border-gray-500':
+        'border xl:border-2 border-gray-400':
           highscores[1] !== undefined && value === highscores[1],
-        'border border-yellow-700':
+        'border xl:border-2 border-yellow-700':
           highscores[2] !== undefined && value === highscores[2],
       }"
     >

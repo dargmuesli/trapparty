@@ -1,6 +1,9 @@
 <template>
   <Loader :api="api">
-    <ul v-if="leaderboard.length" class="flex flex-wrap gap-2">
+    <ul
+      v-if="leaderboard.length"
+      class="flex flex-col gap-2 sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-6xl"
+    >
       <StatisticGameRandomFactEntry
         v-for="(array, index) in leaderboard"
         :key="index"

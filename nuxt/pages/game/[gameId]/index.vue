@@ -9,7 +9,7 @@
     <div v-else-if="!game.isActive">
       {{ t('gameActiveNone') }}
     </div>
-    <div v-else class="flex flex-col gap-4">
+    <div v-else class="flex flex-col gap-8">
       <!-- <span class="text-gray-500">
         {{ t('gameType', { type: gameTypeReadable }) }}
       </span> -->

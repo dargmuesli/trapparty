@@ -1,5 +1,5 @@
 <template>
-  <div v-if="game">
+  <div v-if="game" class="flex flex-col gap-8">
     <GameTitle :game="game" />
     <StatisticGameRandomFact
       v-if="game.type === 'RANDOM_FACTS'"
