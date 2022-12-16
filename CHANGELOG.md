@@ -1,3 +1,17 @@
+# [3.3.0](https://github.com/dargmuesli/trapparty/compare/3.2.0...3.3.0) (2022-12-16)
+
+
+### Bug Fixes
+
+* **button-colored:** revert span wrap ([3a33508](https://github.com/dargmuesli/trapparty/commit/3a335086173688e64cc7e74a40f31a627edc0926))
+* **index:** correct event timings ([93cf9a2](https://github.com/dargmuesli/trapparty/commit/93cf9a27c489b6eae0d4617b370a87ac5f1c839f))
+
+
+### Features
+
+* **game-random-facts:** improve style ([b91bb15](https://github.com/dargmuesli/trapparty/commit/b91bb15fc03cb9a0fbe6706dcf80d0da6f6fb41d))
+* **game-random-facts:** show missing player data ([e5f50d6](https://github.com/dargmuesli/trapparty/commit/e5f50d6477ad8a3eb15c3dcc4ba6f2bdd1f0efe8))
+
 # [3.2.0](https://github.com/dargmuesli/trapparty/compare/3.1.0...3.2.0) (2022-12-15)
 
 
