@@ -107,19 +107,22 @@ const eventCurrent = computed(() => {
     (event) =>
       $moment().isAfter($moment(event.start)) &&
       $moment().isBefore(
-        event.end ? $moment(event.end) : $moment().add(1, 'day')
+        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
       )
   )[0]
 })
 const eventsPast = computed(() => {
-  return arrayRemoveNulls(allEvents.value).filter(
-    (event) =>
-      $moment(event.start).isBefore($moment()) && event !== eventCurrent.value
+  return arrayRemoveNulls(allEvents.value).filter((event) =>
+    $moment().isAfter(
+      $moment(
+        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
+      )
+    )
   )
 })
 const eventsUpcoming = computed(() => {
   return arrayRemoveNulls(allEvents.value).filter((event) =>
-    $moment(event.start).isAfter($moment())
+    $moment().isBefore($moment(event.start))
   )
 })
 
