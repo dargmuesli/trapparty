@@ -1,7 +1,10 @@
 <template>
   <Loader :api="api">
-    <div class="text-justify text-3xl lg:text-8xl">
-      <div v-if="round && player">
+    <CardStateAlert v-if="!player">
+      {{ t('playerNone') }}
+    </CardStateAlert>
+    <div v-else class="text-justify text-3xl lg:text-8xl">
+      <div v-if="round" class="flex flex-col gap-8">
         <div class="text-gray-500">
           <i18n-t keypath="question">
             <template #name>
@@ -227,6 +230,7 @@ de:
   factB: Fakt B
   question: Vor dir steht {name}. Welcher {randomFact} ist wahr? 🤔
   nobody: niemand
+  playerNone: Spielerdaten konnten nicht gefunden werden.
   randomFact: random fact
   saved: Gespeichert.
   voteNone: keine Abstimmung
