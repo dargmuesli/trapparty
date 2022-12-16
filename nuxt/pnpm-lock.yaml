@@ -36,7 +36,7 @@ specifiers:
   '@vuelidate/core': 2.0.0
   '@vuelidate/validators': 2.0.0
   autoprefixer: 10.4.13
-  chart.js: 4.0.1
+  chart.js: 4.1.0
   color: 4.2.3
   consola: 2.15.3
   cookie: 0.5.0
@@ -117,7 +117,7 @@ devDependencies:
   '@vuelidate/core': 2.0.0_vue@3.2.45
   '@vuelidate/validators': 2.0.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.20
-  chart.js: 4.0.1
+  chart.js: 4.1.0
   color: 4.2.3
   consola: 2.15.3
   cookie: 0.5.0
@@ -159,7 +159,7 @@ devDependencies:
   ts-node: 10.9.1_ewfw2lwfc3dwdvz7r6yz2ssqyi
   typescript: 4.9.4
   vue: 3.2.45
-  vue-chartjs: 5.0.1_chart.js@4.0.1+vue@3.2.45
+  vue-chartjs: 5.0.1_chart.js@4.1.0+vue@3.2.45
   vue-tsc: 1.0.13_typescript@4.9.4
 
 packages:
@@ -1854,6 +1854,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
+  /@kurkle/color/0.3.1:
+    resolution: {integrity: sha512-hW0GwZj06z/ZFUW2Espl7toVDjghJN+EKqyXzPSV8NV89d5BYp5rRMBJoc+aUN0x5OXDMeRQHazejr2Xmqj2tw==}
     dev: true
 
   /@mapbox/node-pre-gyp/1.0.10:
@@ -3736,9 +3740,11 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
 
-  /chart.js/4.0.1:
-    resolution: {integrity: sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA==}
+  /chart.js/4.1.0:
+    resolution: {integrity: sha512-Xta4vonV3e1pwFGLTyUMqXk2aH03D6253DSt52pdS7247u2SpIpQb6kCewxNgx1JfeLBUnjaxHYbHpOv6w78Og==}
     engines: {pnpm: ^7.0.0}
+    dependencies:
+      '@kurkle/color': 0.3.1
     dev: true
 
   /check-more-types/2.24.0:
@@ -10448,13 +10454,13 @@ packages:
       ufo: 1.0.1
     dev: true
 
-  /vue-chartjs/5.0.1_chart.js@4.0.1+vue@3.2.45:
+  /vue-chartjs/5.0.1_chart.js@4.1.0+vue@3.2.45:
     resolution: {integrity: sha512-+0IfwyZ1U+oKU0CJmqgEMieov5K+c5AuZ7boJeDnhCC/qmtKTLId1jL7BID5poCaC38DOUbJu77vsA091aYeRw==}
     peerDependencies:
       chart.js: ^4.0.0
       vue: ^3.0.0-0 || ^2.6.0
     dependencies:
-      chart.js: 4.0.1
+      chart.js: 4.1.0
       vue: 3.2.45
     dev: true
 
