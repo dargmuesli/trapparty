@@ -78,7 +78,7 @@
     "cypress-visual-regression": "1.7.0",
     "dayjs": "2.0.0-alpha.4",
     "defu": "6.1.1",
-    "eslint": "8.29.0",
+    "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-prettier": "4.2.1",
