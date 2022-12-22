@@ -42,7 +42,7 @@ specifiers:
   cookie: 0.5.0
   cross-env: 7.0.3
   cypress: 12.2.0
-  cypress-visual-regression: 2.0.1
+  cypress-visual-regression: 2.1.0
   dayjs: 2.0.0-alpha.4
   defu: 6.1.1
   eslint: 8.30.0
@@ -123,7 +123,7 @@ devDependencies:
   cookie: 0.5.0
   cross-env: 7.0.3
   cypress: 12.2.0
-  cypress-visual-regression: 2.0.1_cypress@12.2.0
+  cypress-visual-regression: 2.1.0_cypress@12.2.0
   dayjs: 2.0.0-alpha.4
   defu: 6.1.1
   eslint: 8.30.0
@@ -4272,8 +4272,8 @@ packages:
     resolution: {integrity: sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==}
     dev: true
 
-  /cypress-visual-regression/2.0.1_cypress@12.2.0:
-    resolution: {integrity: sha512-bYQc/SPlXSqUoj8h8AqamLMZ9uoN3kbAN1EPbIZj0dj6cDyiKvRJB5w1jWENUbx/MSUu1J/kXInYLvKI+80mTQ==}
+  /cypress-visual-regression/2.1.0_cypress@12.2.0:
+    resolution: {integrity: sha512-fRBU529SMwlhl6TgJQuX8FmLMHKJ1yAcmVEpwCedxR+kxy9vudCMArL/uD2TILikOl8IWKMgHmhdX6Wgzjn+tQ==}
     peerDependencies:
       cypress: '>=9.7.0'
     dependencies:
