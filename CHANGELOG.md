@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/dargmuesli/trapparty/compare/3.3.1...3.3.2) (2023-01-02)
+
+
+### Bug Fixes
+
+* **cypress:** use testing timestamp ([9b55948](https://github.com/dargmuesli/trapparty/commit/9b55948030aea510d97757865f50c605ecde3c28))
+
 ## [3.3.1](https://github.com/dargmuesli/trapparty/compare/3.3.0...3.3.1) (2022-12-26)
 
 
