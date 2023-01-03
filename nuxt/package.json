@@ -30,7 +30,7 @@
     "test:integration:docker:br": "pnpm test:integration:docker:build && pnpm test:integration:docker:run",
     "test:integration:docker:dev": "pnpm test:integration:docker:br pnpm test:integration:dev",
     "test:integration:docker:prod": "pnpm test:integration:docker:br pnpm test:integration:prod",
-    "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config codegen.yml",
+    "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config .codegenrc",
     "postinstall": "pnpm nuxt prepare"
   },
   "devDependencies": {
@@ -106,6 +106,7 @@
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-recommended-vue": "1.4.0",
     "stylelint-config-standard": "29.0.0",
+    "stylelint-no-unsupported-browser-features": "6.0.1",
     "sweetalert2": "11.6.16",
     "tailwindcss": "3.2.4",
     "ts-node": "10.9.1",
@@ -120,9 +121,5 @@
         "webpack"
       ]
     }
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
   }
 }
