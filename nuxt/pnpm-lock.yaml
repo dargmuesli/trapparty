@@ -36,7 +36,7 @@ specifiers:
   '@vuelidate/core': 2.0.0
   '@vuelidate/validators': 2.0.0
   autoprefixer: 10.4.13
-  chart.js: 4.1.1
+  chart.js: 4.1.2
   color: 4.2.3
   consola: 2.15.3
   cookie: 0.5.0
@@ -118,7 +118,7 @@ devDependencies:
   '@vuelidate/core': 2.0.0_vue@3.2.45
   '@vuelidate/validators': 2.0.0_vue@3.2.45
   autoprefixer: 10.4.13_postcss@8.4.20
-  chart.js: 4.1.1
+  chart.js: 4.1.2
   color: 4.2.3
   consola: 2.15.3
   cookie: 0.5.0
@@ -161,7 +161,7 @@ devDependencies:
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   typescript: 4.9.4
   vue: 3.2.45
-  vue-chartjs: 5.1.0_chart.js@4.1.1+vue@3.2.45
+  vue-chartjs: 5.1.0_chart.js@4.1.2+vue@3.2.45
   vue-tsc: 1.0.22_typescript@4.9.4
 
 packages:
@@ -3782,8 +3782,8 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
 
-  /chart.js/4.1.1:
-    resolution: {integrity: sha512-P0pCosNXp+LR8zO/QTkZKT6Hb7p0DPFtypEeVOf+6x06hX13NIb75R0DXUA4Ksx/+48chDQKtCCmRCviQRTqsA==}
+  /chart.js/4.1.2:
+    resolution: {integrity: sha512-9L1w6WLPq6ztiWVVOYtDtpo0CUsBKDWPrUEdwChAyzczaikqeSwNKEv3QpJ7EO4ICcLSi6UDVhgvcnUhRJidRA==}
     engines: {pnpm: ^7.0.0}
     dependencies:
       '@kurkle/color': 0.3.1
@@ -10600,13 +10600,13 @@ packages:
       ufo: 1.0.1
     dev: true
 
-  /vue-chartjs/5.1.0_chart.js@4.1.1+vue@3.2.45:
+  /vue-chartjs/5.1.0_chart.js@4.1.2+vue@3.2.45:
     resolution: {integrity: sha512-O/VllsyZn1NzRJAYEbpgfbk/N+EB1nCHLsc/ullPNWuU2YRHxgF5SS8OwWc0K2IfVZNMw94Bp6HUqi2svDQzrQ==}
     peerDependencies:
       chart.js: ^4.1.1
       vue: ^3.0.0-0 || ^2.6.0
     dependencies:
-      chart.js: 4.1.1
+      chart.js: 4.1.2
       vue: 3.2.45
     dev: true
 
