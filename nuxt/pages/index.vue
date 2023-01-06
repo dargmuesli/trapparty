@@ -33,16 +33,18 @@
           </AppLink>
         </span>
       </section>
-      <div class="flex flex-1 flex-col justify-center font-serif">
+      <div
+        class="flex flex-1 flex-col justify-center font-serif gap-8 md:gap-4"
+      >
         <div class="flex flex-col items-baseline md:flex-row">
-          <h1 class="mb-0 inline text-6xl leading-normal md:mb-4">
+          <h1 class="mb-0 inline text-6xl leading-normal">
             {{ title }}
           </h1>
-          <span class="mb-4 ml-4 text-xl md:mb-0">
+          <span class="md:mb-4 md:ml-4 text-xl">
             {{ t('transcription') }}
           </span>
         </div>
-        <i18n-t class="text-2xl" keypath="description" tag="p">
+        <i18n-t class="text-xl md:text-2xl" keypath="description" tag="p">
           <template #author>
             <AppLink
               :aria-label="t('authorName')"
