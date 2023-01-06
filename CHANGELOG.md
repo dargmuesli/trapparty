@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/dargmuesli/trapparty/compare/3.3.2...3.4.0) (2023-01-06)
+
+
+### Features
+
+* add gtag ([d3c8902](https://github.com/dargmuesli/trapparty/commit/d3c89024a25ff6f2a26021c5cd06648b7907e644))
+
 ## [3.3.2](https://github.com/dargmuesli/trapparty/compare/3.3.1...3.3.2) (2023-01-02)
 
 
