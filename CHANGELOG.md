@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/dargmuesli/trapparty/compare/3.4.0...3.4.1) (2023-01-06)
+
+
+### Bug Fixes
+
+* **index:** correct text styling ([f3aa592](https://github.com/dargmuesli/trapparty/commit/f3aa5922f87ee4832043dce149f28cb01c828abe))
+
 # [3.4.0](https://github.com/dargmuesli/trapparty/compare/3.3.2...3.4.0) (2023-01-06)
 
 
