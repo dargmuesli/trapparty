@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/dargmuesli/trapparty/compare/3.4.1...3.4.2) (2023-01-08)
+
+
+### Bug Fixes
+
+* **favicon:** move to root ([68e6e3d](https://github.com/dargmuesli/trapparty/commit/68e6e3dbc606cd938ff799e9d891dd3b7a78ab76))
+
 ## [3.4.1](https://github.com/dargmuesli/trapparty/compare/3.4.0...3.4.1) (2023-01-06)
 
 
