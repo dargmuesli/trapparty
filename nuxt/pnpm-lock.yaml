@@ -60,7 +60,7 @@ specifiers:
   lodash-es: 4.17.21
   lodash.merge: 4.6.2
   nuxt: 3.0.0
-  pinia: 2.0.28
+  pinia: 2.0.29
   pnpm: 7.25.0
   postcss: 8.4.21
   postcss-html: 1.5.0
@@ -101,7 +101,7 @@ devDependencies:
   '@nuxtjs/i18n': /@nuxtjs/i18n-edge/8.0.0-beta.7-27893843.b72135e_rollup@2.79.1+vue@3.2.45
   '@nuxtjs/robots': 3.0.0_rollup@2.79.1
   '@nuxtjs/sitemap': 2.4.0
-  '@pinia-plugin-persistedstate/nuxt': 1.0.0_in7wrjovo4fruzgfljd4sof2ty
+  '@pinia-plugin-persistedstate/nuxt': 1.0.0_3cnrtowvg6qghxfh4gjkp3jfhe
   '@pinia/nuxt': 0.4.6_rnb65zy77kx66qnsvrpa2qz65q
   '@rollup/plugin-graphql': 2.0.2_wvgxa4tpgmyetagc7e4kukhube
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
@@ -143,7 +143,7 @@ devDependencies:
   lodash-es: 4.17.21
   lodash.merge: 4.6.2
   nuxt: 3.0.0_j3pwchhpm5swqhdrjlsltbemhi
-  pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+  pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
   pnpm: 7.25.0
   postcss: 8.4.21
   postcss-html: 1.5.0
@@ -2221,14 +2221,14 @@ packages:
       webcrypto-core: 1.7.5
     dev: true
 
-  /@pinia-plugin-persistedstate/nuxt/1.0.0_in7wrjovo4fruzgfljd4sof2ty:
+  /@pinia-plugin-persistedstate/nuxt/1.0.0_3cnrtowvg6qghxfh4gjkp3jfhe:
     resolution: {integrity: sha512-oBLnkFXy0mcP9wCR0NQj1SguhgalEoubDF302gpRr1lh0V34vSL2Nlw8XDwRrULq5v3eHt4da632YSjNny1+BA==}
     peerDependencies:
       '@pinia/nuxt': ^0.4.4
     dependencies:
       '@nuxt/kit': 3.0.0_rollup@2.79.1
       '@pinia/nuxt': 0.4.6_rnb65zy77kx66qnsvrpa2qz65q
-      pinia-plugin-persistedstate: 3.0.2_pinia@2.0.28
+      pinia-plugin-persistedstate: 3.0.2_pinia@2.0.29
     transitivePeerDependencies:
       - pinia
       - rollup
@@ -2239,7 +2239,7 @@ packages:
     resolution: {integrity: sha512-HjrYEfLdFpmsjhicPJgL36jVhzHWukIQPFFHGTSF84Cplu+f2nY2XHKqe9ToHzE9rLee2RjLOwAzOnXa/I/u6A==}
     dependencies:
       '@nuxt/kit': 3.0.0_rollup@2.79.1
-      pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+      pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
     transitivePeerDependencies:
       - '@vue/composition-api'
       - rollup
@@ -8397,16 +8397,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /pinia-plugin-persistedstate/3.0.2_pinia@2.0.28:
+  /pinia-plugin-persistedstate/3.0.2_pinia@2.0.29:
     resolution: {integrity: sha512-84vPyUhPA/8Pr+1mT1ioNb2d8z4tvdgYRqMQf8xyauOVBKjo0ZcRBwPQBV7ZAJG43Kwar43nXG2jU+ZMvAFFRQ==}
     peerDependencies:
       pinia: ^2.0.0
     dependencies:
-      pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+      pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
     dev: true
 
-  /pinia/2.0.28_prq2uz4lho2pwp6irk4cfkrxwu:
-    resolution: {integrity: sha512-YClq9DkqCblq9rlyUual7ezMu/iICWdBtfJrDt4oWU9Zxpijyz7xB2xTwx57DaBQ96UGvvTMORzALr+iO5PVMw==}
+  /pinia/2.0.29_prq2uz4lho2pwp6irk4cfkrxwu:
+    resolution: {integrity: sha512-5z/KpFecq/cIgfeTnulJXldiLcTITRkTe3N58RKYSj0Pc1EdR6oyCdnf5A9jLoVwBqX5LtHhd0kGlpzWvk9oiQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
