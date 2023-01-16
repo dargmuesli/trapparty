@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/dargmuesli/trapparty/compare/3.4.3...3.5.0) (2023-01-16)
+
+
+### Features
+
+* **cookie-control:** migrate to v3 ([0ef433f](https://github.com/dargmuesli/trapparty/commit/0ef433f16a65fcd9b1ec54a33c1a95bae565c7f0))
+
 ## [3.4.3](https://github.com/dargmuesli/trapparty/compare/3.4.2...3.4.3) (2023-01-16)
 
 
