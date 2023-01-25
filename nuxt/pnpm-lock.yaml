@@ -61,7 +61,7 @@ specifiers:
   lodash.merge: 4.6.2
   nuxt: 3.0.0
   pinia: 2.0.29
-  pnpm: 7.25.1
+  pnpm: 7.26.0
   postcss: 8.4.21
   postcss-html: 1.5.0
   prettier: 2.8.3
@@ -144,7 +144,7 @@ devDependencies:
   lodash.merge: 4.6.2
   nuxt: 3.0.0_ysq4q4xmg55qne5fqylxlrnwhm
   pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
-  pnpm: 7.25.1
+  pnpm: 7.26.0
   postcss: 8.4.21
   postcss-html: 1.5.0
   prettier: 2.8.3
@@ -8447,8 +8447,8 @@ packages:
     engines: {node: '>=12.13.0'}
     dev: true
 
-  /pnpm/7.25.1:
-    resolution: {integrity: sha512-y/jlADVxyk+scBwI0ALRf8QoUMgrWyONnD1voZaPTBI+D+aIXXiFG9pMk3eLhvEfc0nK8KUnnbDDBTywd7WsMw==}
+  /pnpm/7.26.0:
+    resolution: {integrity: sha512-ASNhFsTa9YpJoalnGa28IKMimZk/oBOt19oxvB6+iP2EVr1h+PYcsTty4mrgSE/LegWQPy4yphZinshKjxycOA==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
