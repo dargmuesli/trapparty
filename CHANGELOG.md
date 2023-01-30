@@ -1,3 +1,16 @@
+# [3.6.0](https://github.com/dargmuesli/trapparty/compare/3.5.0...3.6.0) (2023-01-30)
+
+
+### Bug Fixes
+
+* **constants:** set jwt name depending on environment ([842eb81](https://github.com/dargmuesli/trapparty/commit/842eb8177ff54d4c697d17f865785d35489afb6b))
+* **release:** schedule release ([ad2f7f0](https://github.com/dargmuesli/trapparty/commit/ad2f7f0e69af6871bf2de7eecfb4fe7020f68a39))
+
+
+### Features
+
+* **deps:** update dependency @dargmuesli/nuxt-cookie-control to v5-beta ([d0ad9ef](https://github.com/dargmuesli/trapparty/commit/d0ad9ef6a19e8e65397411dccf26f60a37589526))
+
 # [3.5.0](https://github.com/dargmuesli/trapparty/compare/3.4.3...3.5.0) (2023-01-16)
 
 
