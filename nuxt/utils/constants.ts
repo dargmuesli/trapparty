@@ -7,7 +7,8 @@ export const EVENT_NAME_MAXIMUM = 100
 export const EVENT_PLACE_MAXIMUM = 300
 export const EVENT_SLUG_MAXIMUM = 100
 export const ITEMS_PER_PAGE = 8
-export const JWT_NAME = '__Secure-jwt'
+export const JWT_NAME = () =>
+  `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}jwt`
 export const LOCALES: LocaleObject[] = [
   {
     code: 'en',
