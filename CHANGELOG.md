@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/dargmuesli/trapparty/compare/3.7.0...3.7.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* **privacy-policy:** readd source link ([29083a5](https://github.com/dargmuesli/trapparty/commit/29083a59d81d5244ff55482c32fd80465fcdb9e6))
+
 # [3.7.0](https://github.com/dargmuesli/trapparty/compare/3.6.0...3.7.0) (2023-02-12)
 
 
