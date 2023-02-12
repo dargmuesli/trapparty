@@ -19,8 +19,11 @@
     </div>
     <LayoutFooter>
       <LayoutFooterCategory :heading="t('legal')">
-        <AppLink :aria-label="t('imprint')" :to="localePath('/imprint')">
-          {{ t('imprint') }}
+        <AppLink
+          :aria-label="t('legalNotice')"
+          :to="localePath('/legal-notice')"
+        >
+          {{ t('legalNotice') }}
         </AppLink>
         <AppLink
           :aria-label="t('privacyPolicy')"
@@ -72,16 +75,16 @@ export default {
 de:
   githubLinkTitle: TrapParty auf GitHub
   home: Nach Hause
-  imprint: Impressum
   legal: Rechtliches
+  legalNotice: Impressum
   privacyPolicy: Datenschutzerklärung
   quickLinks: Quick Links
   sourceCode: Quellcode
 en:
   githubLinkTitle: TrapParty on GitHub
   home: Head home
-  imprint: Imprint
   legal: Legal
+  legalNotice: Legal notice
   privacyPolicy: Privacy Policy
   quickLinks: Quick Links
   sourceCode: Quellcode
