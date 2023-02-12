@@ -46,6 +46,7 @@ function getCsp(host: string): Record<string, Array<string>> {
       `ws://${hostName}:24678/_nuxt/`,
       `wss://${hostName}:24678/_nuxt/`,
     ],
+    'frame-src': ["'self'"], // Nuxt devtools
   }
 
   const production = {
