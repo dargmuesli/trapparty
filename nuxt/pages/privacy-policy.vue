@@ -262,12 +262,12 @@
             {{ t('pluginsToolsGoogleReCaptchaDescription5s2') }}
           </AppLink>
         </template>
-      </i18n-t>
+      </i18n-t> -->
       <p>
         <AppLink :aria-label="t('source')" to="https://www.e-recht24.de">{{
           t('source')
         }}</AppLink>
-      </p> -->
+      </p>
     </div>
   </div>
 </template>
@@ -429,7 +429,7 @@ de:
   # pluginsToolsYouTubeDescription7s: https://policies.google.com/privacy?hl=de
   # pluginsToolsYouTubeDescription7: 'Weitere Informationen über Datenschutz bei YouTube finden Sie in deren Datenschutzerklärung unter: {linkPrivacy}.'
   # pluginsToolsYouTubeTitle: YouTube mit erweitertem Datenschutz
-  # source: Quelle
+  source: Quelle
   summary: 1. Datenschutz auf einen Blick
   title: Datenschutzerklärung
 en:
@@ -578,7 +578,7 @@ en:
   # pluginsToolsYouTubeDescription7s: https://policies.google.com/privacy?hl=en
   # pluginsToolsYouTubeDescription7: 'For more information about privacy at YouTube, please see their privacy policy at: {linkPrivacy}.'
   # pluginsToolsYouTubeTitle: YouTube with enhanced privacy
-  # source: Source
+  source: Source
   summary: 1. Data protection at a glance
   title: Privacy Policy
 </i18n>
