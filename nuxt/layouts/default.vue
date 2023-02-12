@@ -8,6 +8,7 @@
         <AppLink
           :aria-label="t('home')"
           class="text-gray-900 dark:text-white"
+          :is-colored="false"
           :to="localePath('/')"
         >
           <IconHome />
