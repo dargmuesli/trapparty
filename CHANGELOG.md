@@ -1,3 +1,11 @@
+# [3.7.0](https://github.com/dargmuesli/trapparty/compare/3.6.0...3.7.0) (2023-02-12)
+
+
+### Features
+
+* **legal:** rename imprint ([b36b4c8](https://github.com/dargmuesli/trapparty/commit/b36b4c8eb5e286c62bb5fb403c48dba548ba7cc1))
+* **privacy-policy:** disable unneeded sections ([4978f49](https://github.com/dargmuesli/trapparty/commit/4978f499eab613b877f3da41051cb85b2934ab14))
+
 # [3.6.0](https://github.com/dargmuesli/trapparty/compare/3.5.0...3.6.0) (2023-01-30)
 
 
