@@ -1,3 +1,10 @@
+## [3.7.2](https://github.com/dargmuesli/trapparty/compare/3.7.1...3.7.2) (2023-02-15)
+
+
+### Performance Improvements
+
+* **docker:** run cypress in parallel ([136c27c](https://github.com/dargmuesli/trapparty/commit/136c27c02fed7367a84a3581dacc3e46e65c1157))
+
 ## [3.7.1](https://github.com/dargmuesli/trapparty/compare/3.7.0...3.7.1) (2023-02-12)
 
 
