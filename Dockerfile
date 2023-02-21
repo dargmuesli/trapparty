@@ -87,7 +87,7 @@ RUN corepack enable && \
 # Nuxt: test (integration)
 
 # Should be the specific version of `cypress/included`.
-FROM cypress/included:12.5.1@sha256:86a380ec706c4ebf647f24d0e2476f3b49ea36f858e47f36a441fac0410f59e3 AS test-integration_base
+FROM cypress/included:12.6.0@sha256:48e0fcdde8ef5350d7638b939f6f9fe3c3321044a02416e72f0f32fc6f8d93b5 AS test-integration_base
 
 ARG UNAME=cypress
 ARG UID=1000
