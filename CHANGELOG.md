@@ -1,3 +1,10 @@
+## [3.7.4](https://github.com/dargmuesli/trapparty/compare/3.7.3...3.7.4) (2023-02-21)
+
+
+### Bug Fixes
+
+* **docker:** do not ignore dockerfile ([3ceef45](https://github.com/dargmuesli/trapparty/commit/3ceef456eee60bc055b1a53ae1c7edb09e3147a6))
+
 ## [3.7.3](https://github.com/dargmuesli/trapparty/compare/3.7.2...3.7.3) (2023-02-21)
 
 
