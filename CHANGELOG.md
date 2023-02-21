@@ -1,3 +1,10 @@
+## [3.7.3](https://github.com/dargmuesli/trapparty/compare/3.7.2...3.7.3) (2023-02-21)
+
+
+### Performance Improvements
+
+* **docker:** align to jonas-thelemann ([1464630](https://github.com/dargmuesli/trapparty/commit/1464630d58c5527e4fd0e218fe3b2afa3be2fd73))
+
 ## [3.7.2](https://github.com/dargmuesli/trapparty/compare/3.7.1...3.7.2) (2023-02-15)
 
 
