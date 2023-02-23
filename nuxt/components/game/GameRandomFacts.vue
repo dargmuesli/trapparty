@@ -235,4 +235,14 @@ de:
   saved: Gespeichert.
   voteNone: keine Abstimmung
   voteNoneSentence: Aktuell gibt es {voteNone}.
+en:
+  factA: Fact A
+  factB: Fact B
+  question: In front of you is {name}. Which {randomFact} is true? 🤔
+  nobody: nobody
+  playerNone: Player data could not be found.
+  randomFact: random fact
+  saved: Saved.
+  voteNone: no vote
+  voteNoneSentence: Currently there is {voteNone}.
 </i18n>

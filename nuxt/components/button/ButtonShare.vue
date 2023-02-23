@@ -38,4 +38,8 @@ de:
   donationUrlCopyError: 'Fehler: Der Spendenlink konnte leider nicht in die Zwischenablage kopiert werden!'
   donationUrlCopySuccess: Der Spendenlink wurde in die Zwischenablage kopiert.
   share: Teilen
+en:
+  donationUrlCopyError: 'Error: Unfortunately, the donation link could not be copied to the clipboard!'
+  donationUrlCopySuccess: The donation link has been copied to the clipboard.
+  share: Share
 </i18n>

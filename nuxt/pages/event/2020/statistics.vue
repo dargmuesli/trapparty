@@ -59,4 +59,8 @@ de:
   datalessEvent: Kein Event gefunden!
   eventName: 'Für die Trapparty {name}.'
   title: Statistiken
+en:
+  datalessEvent: No event found!
+  eventName: 'For the trapparty {name}.'
+  title: Statistics
 </i18n>

@@ -223,4 +223,17 @@ de:
   participateDescription: Die Standard-Wahl für alle eingeladenen Gäste. Volle Power ins Abenteuer! 🥳🚀
   save: Zu meiner Übersichtsseite
   title: Willkommen!
+en:
+  anonymous: Participate anonymously
+  anonymousDescription: You just want to watch?
+  anonymousTitle: 👻
+  datalessEvent: Currently there are no dates available for an upcoming TrapParty.
+  greeting: "Glad you're here! 😊 Now you're ready to go."
+  invitationCode: Participation code
+  invitationCodeAutomatic: The participation code was automatically entered for you.
+  invitationCodeManual: Enter code yourself.
+  participate: Participate
+  participateDescription: The standard choice for all invited guests. Full power into the adventure! 🥳🚀
+  save: To my dashboard
+  title: Welcome!
 </i18n>

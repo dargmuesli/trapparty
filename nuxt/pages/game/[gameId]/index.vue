@@ -107,4 +107,11 @@ de:
   gameTypeUnexpected: Spieltyp konnte nicht angezeigt werden.
   playerNone: Du siehst nicht aus wie ein Spieler 🤔
   title: Spiel
+en:
+  gameActiveNone: Game is not active.
+  gameLinkStatistic: To the statistics
+  gameNone: No game available.
+  gameTypeUnexpected: Game type could not be displayed.
+  playerNone: You do not look like a player 🤔
+  title: Game
 </i18n>

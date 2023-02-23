@@ -133,4 +133,6 @@ init()
 <i18n lang="yaml">
 de:
   title: Punkte
+en:
+  title: Score
 </i18n>
