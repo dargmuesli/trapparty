@@ -27,4 +27,7 @@ const { t } = useI18n()
 de:
   isActiveTrue: Aktiv
   isActiveFalse: Inaktiv
+en:
+  isActiveTrue: Active
+  isActiveFalse: Inactive
 </i18n>

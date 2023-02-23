@@ -140,4 +140,6 @@ await init()
 <i18n lang="yaml">
 de:
   statisticNone: Keine Statistik vorhanden.
+en:
+  statisticNone: No statistics available.
 </i18n>

@@ -327,4 +327,10 @@ de:
   donationCommon: Stream-Spenden
   donationTeam: Team-Spenden
   donationTotal: Spenden insgesamt
+en:
+  title: Donations
+  titleDistribution: Distribution of donations to organizations
+  donationCommon: Stream donations
+  donationTeam: Team donations
+  donationTotal: Total donations
 </i18n>

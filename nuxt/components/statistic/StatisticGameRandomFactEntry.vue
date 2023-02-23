@@ -61,4 +61,6 @@ watch(playerNameByIdQuery.error, (currentValue, _oldValue) => {
 <i18n lang="yaml">
 de:
   playerValue: '{player}: {value}'
+en:
+  playerValue: '{player}: {value}'
 </i18n>

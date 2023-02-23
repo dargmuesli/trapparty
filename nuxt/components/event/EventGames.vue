@@ -131,4 +131,10 @@ de:
   gameLink: Zum Spiel
   gameLinkStatistic: Zur Statistik
   title: TrapParty {name}
+en:
+  games: Games
+  gamesNone: No games available.
+  gameLink: To the game
+  gameLinkStatistic: To the statistics
+  title: TrapParty {name}
 </i18n>

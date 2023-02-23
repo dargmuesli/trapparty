@@ -13,4 +13,6 @@ const { t } = useI18n()
 <i18n lang="yaml">
 de:
   disclaimer: Für die kommende Veranstaltung sind Coronaschutzmaßnahmen implementiert. Der Kontakt zu entsprechenden Behörden besteht.
+en:
+  disclaimer: Corona protection measures have been implemented for the upcoming event. We are in contact with the relevant authorities.
 </i18n>

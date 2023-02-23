@@ -93,4 +93,8 @@ de:
   games: Spiele
   gamesNone: Keine Spiele vorhanden.
   title: Statistiken
+en:
+  games: Games
+  gamesNone: No games available.
+  title: Statistics
 </i18n>

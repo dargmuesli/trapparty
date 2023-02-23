@@ -86,7 +86,7 @@ en:
   home: Head home
   legal: Legal
   legalNotice: Legal notice
-  privacyPolicy: Privacy Policy
+  privacyPolicy: Privacy policy
   quickLinks: Quick Links
-  sourceCode: Quellcode
+  sourceCode: Source code
 </i18n>

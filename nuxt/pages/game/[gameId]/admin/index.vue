@@ -132,4 +132,7 @@ export default {
 de:
   nfcRead: NFC scannen
   roundCreateSuccess: Neue Runde erstellt
+en:
+  nfcRead: Scan NFC
+  roundCreateSuccess: New round created
 </i18n>

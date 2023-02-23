@@ -164,4 +164,6 @@ init()
 <i18n lang="yaml">
 de:
   title: Gesamtwertung
+en:
+  title: Total score
 </i18n>

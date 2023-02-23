@@ -21,4 +21,6 @@ const { t } = useI18n()
 <i18n lang="yaml">
 de:
   title: Teamwertung
+en:
+  title: Team score
 </i18n>

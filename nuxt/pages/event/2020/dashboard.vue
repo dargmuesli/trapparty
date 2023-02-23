@@ -8,7 +8,10 @@
               <span class="font-bold">{{ intention }}</span>
             </i18n-t>
           </span>
-          <ButtonColored :aria-label="t('roleChange')" to="/event/2020">
+          <ButtonColored
+            :aria-label="t('roleChange')"
+            :to="localePath('/event/2020')"
+          >
             {{ t('roleChange') }}
           </ButtonColored>
         </CardStateInfo>
@@ -223,7 +226,7 @@
         <p>
           <ButtonColored
             :aria-label="t('statisticsGoTo')"
-            to="/event/2020/statistics"
+            :to="localePath('/event/2020/statistics')"
           >
             {{ t('statisticsGoTo') }}
             <template #prefix>
@@ -262,6 +265,7 @@ definePageMeta({
   ],
 })
 
+const localePath = useLocalePath()
 const store = useStore()
 const { t } = useI18n()
 
@@ -386,7 +390,7 @@ de:
   donationDescription: In diesem Jahr spenden wir gemeinsam für mehrere Organisationen.
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
   donationDescriptionTeam: 'Im Stream könnt ihr mehr Spenden für die von euch gewählte wohltätige Organisation sammeln und müsst den von euch gesammelten Spendenbetrag verteidigen. Der von euch gesammelte Betrag kann also auch zu Teilen wohltätigen Organisationen zugutekommen, die anderen Teams am Herzen liegen.'
-  errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
+  errorUnexpectedParticipationRole: 'Fehler: Unerwartete Teilnehmerrolle!'
   hello: Hallo {name}!
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
   intentionRoleAnonymous: anonym teilzunehmen
@@ -409,4 +413,42 @@ de:
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
   teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr Spenden sammeln wollt.'
   title: "So funktioniert's"
+en:
+  dataless: '{what} is not yet available.'
+  datalessDiscordCode: The participation code for the Discord server
+  datalessDonationCommon: The link to the donation page for spectators without team
+  datalessDonationTeam: The link to your team's donation page
+  datalessStream: The link to the stream
+  discordInstall: Install Discord
+  discordJoin: Join server
+  discordTutorial: Video tutorial by Santa Claus
+  donationButtonCommon: Donate to all organizations
+  donationButtonTeam: To the donation account of your team
+  donationTitle: Do good ❤️
+  donationDescription: This year we are donating to several organizations together.
+  donationDescriptionCommon: 'Since you clicked that you just want to watch, your donation will be split evenly between all the organizations that the different teams in the stream are fighting for!'
+  donationDescriptionTeam: 'In the stream, you will be able to collect more donations for your chosen charity and you will have to defend the amount of money you have collected. So the amount you raise can also be divided to benefit charities that other teams care about.'
+  errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
+  hello: Hello {name}!
+  intentionDescription: 'You have decided to {0} at the upcoming TrapParty.'
+  intentionRoleAnonymous: participate anonymously
+  intentionRolePlayer: participate
+  participationDataless: Could not load participation data.
+  roleChange: Change choice
+  startDuration: '{start} ({duration})'
+  statisticsGoTo: To the statistics
+  streamTitle: Watch 📺
+  streamDescription: 'You can expect a late-night show with games, fun and excitement 🥳'
+  streamDescriptionPlayer: As a player, you watch the stream while on Discord with your teammates at the same time.
+  streamDescriptionStart: 'Planned start: {0}'
+  streamGoto: To the stream
+  teamCommunicationTitle: Communication 📞
+  teamCommunicationDescription1: 'A Discord server has been set up for this event, allowing all guests to communicate with their team members and other participants.'
+  teamCommunicationDescription2: 'Once you have joined the server, you will need to click on your team''s {emojiPrefix} emoji in the "choose-a-group" text channel under the only message there. This will give you access to your team''s text & voice channel where you can interact with your team.'
+  teamTitle: Your team 👪
+  teamDataName: 'You are in team "{0}"!'
+  teamDataNameDataless: You still need to agree on your own team name.
+  teamDataCharityOrganisation: 'You are donating to {0}.'
+  teamDataCharityOrganisationDataless: You still need to agree on a charity to fundraise for.
+  title: This is how it works
 </i18n>

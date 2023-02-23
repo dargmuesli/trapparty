@@ -127,4 +127,6 @@ init()
 <i18n lang="yaml">
 de:
   title: Spenden pro Kopf
+en:
+  title: Donations per capita
 </i18n>
