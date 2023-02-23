@@ -15,6 +15,7 @@ jobs:
       DOCKER_HUB_USER_NAME: ${{ secrets.DOCKER_HUB_USER_NAME }}
     with:
       ARTIFACT_PATH: .output/public
+      BUILD_TARGET: build_cloudflare
   release-semantic:
     needs: build
     name: Release (semantic)

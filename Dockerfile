@@ -69,6 +69,26 @@ RUN corepack enable && \
 
 
 ########################
+# Build Nuxt for Cloudflare Pages.
+
+# Should be the specific version of `node:slim`.
+# Could be the specific version of `node:alpine`, but the `prepare` stage uses slim too.
+FROM node:19.6.1-slim@sha256:e684615bdfb71cb676b3d0dfcc538c416f7254697d8f9639bd87255062fd1681 AS build_cloudflare
+
+ARG NUXT_PUBLIC_STACK_DOMAIN=jonas-thelemann.de
+ENV NUXT_PUBLIC_STACK_DOMAIN=${NUXT_PUBLIC_STACK_DOMAIN}
+
+WORKDIR /srv/app/
+
+COPY --from=prepare /srv/app/ ./
+
+ENV NODE_ENV=production
+ENV NITRO_PRESET=cloudflare_pages
+RUN corepack enable && \
+    pnpm run build
+
+
+########################
 # Nuxt: lint
 
 # Should be the specific version of `node:slim`.

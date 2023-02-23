@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': 7.21.0
   '@dargmuesli/nuxt-cookie-control': 5.0.0-beta.2
   '@funken-studio/sitemap-nuxt-3': 4.0.4
-  '@graphql-codegen/cli': 3.1.0
+  '@graphql-codegen/cli': 3.2.0
   '@graphql-codegen/typescript': 3.0.1
   '@graphql-codegen/typescript-operations': 3.0.1
   '@graphql-codegen/typescript-urql-graphcache': 2.4.3
@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/color-mode': 3.2.0
   '@nuxtjs/eslint-config-typescript': 12.0.0
   '@nuxtjs/html-validator': 1.2.3
-  '@nuxtjs/i18n': npm:@nuxtjs/i18n-edge@8.0.0-beta.9-27948515.3db6367
+  '@nuxtjs/i18n': npm:@nuxtjs/i18n-edge@8.0.0-beta.10-27951316.85d7c70
   '@nuxtjs/robots': 3.0.0
   '@nuxtjs/sitemap': 2.4.0
   '@pinia-plugin-persistedstate/nuxt': 1.0.0
@@ -85,7 +85,7 @@ devDependencies:
   '@babel/core': 7.21.0
   '@dargmuesli/nuxt-cookie-control': 5.0.0-beta.2
   '@funken-studio/sitemap-nuxt-3': 4.0.4
-  '@graphql-codegen/cli': 3.1.0_savsl3g3pdaq3utprfj3oshmgm
+  '@graphql-codegen/cli': 3.2.0_savsl3g3pdaq3utprfj3oshmgm
   '@graphql-codegen/typescript': 3.0.1_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 3.0.1_graphql@16.6.0
   '@graphql-codegen/typescript-urql-graphcache': 2.4.3_augkor4gfvt5io7wvlisjx2v4u
@@ -96,7 +96,7 @@ devDependencies:
   '@nuxtjs/color-mode': 3.2.0
   '@nuxtjs/eslint-config-typescript': 12.0.0_7kw3g6rralp5ps6mg3uyzz6azm
   '@nuxtjs/html-validator': 1.2.3
-  '@nuxtjs/i18n': /@nuxtjs/i18n-edge/8.0.0-beta.9-27948515.3db6367_vue@3.2.47
+  '@nuxtjs/i18n': /@nuxtjs/i18n-edge/8.0.0-beta.10-27951316.85d7c70_vue@3.2.47
   '@nuxtjs/robots': 3.0.0
   '@nuxtjs/sitemap': 2.4.0
   '@pinia-plugin-persistedstate/nuxt': 1.0.0_zebqlokuyzf54u3x3a43v4cl4i
@@ -154,7 +154,7 @@ devDependencies:
   stylelint-config-standard: 30.0.1_stylelint@15.2.0
   stylelint-no-unsupported-browser-features: 6.1.0_stylelint@15.2.0
   sweetalert2: 11.7.2
-  tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
+  tailwindcss: 3.2.7_ts-node@10.9.1
   ts-node: 10.9.1_tncu2ai53lzgmizdedur7lbibe
   typescript: 4.9.5
   vue: 3.2.47
@@ -1344,8 +1344,8 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/cli/3.1.0_savsl3g3pdaq3utprfj3oshmgm:
-    resolution: {integrity: sha512-MUYyHkh/n8XVuONk7AYvJV/ObZDlPGwyevl8ch21jNFNj2M5PM39WViHKmIYwVw2n4fDmoh3BNdaeHQs1wb4HA==}
+  /@graphql-codegen/cli/3.2.0_savsl3g3pdaq3utprfj3oshmgm:
+    resolution: {integrity: sha512-o+oTOIMlBF4PE+JDo3m37W/xQNYUIASFOc5K9DHkWh4zW/qVHVkGyyu2fEgI8PbscODALyNYWG/ArGXoIAy2/A==}
     hasBin: true
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -1365,9 +1365,9 @@ packages:
       '@graphql-tools/prisma-loader': 7.2.63_dsrot7vgr22owbcoisakchg2na
       '@graphql-tools/url-loader': 7.17.12_dsrot7vgr22owbcoisakchg2na
       '@graphql-tools/utils': 9.2.1_graphql@16.6.0
+      '@parcel/watcher': 2.1.0
       '@whatwg-node/fetch': 0.8.1_@types+node@18.14.0
       chalk: 4.1.2
-      chokidar: 3.5.3
       cosmiconfig: 7.1.0
       cosmiconfig-typescript-loader: 4.3.0_6og66usasbupn3od2rlr5mhede
       debounce: 1.2.1
@@ -2641,8 +2641,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxtjs/i18n-edge/8.0.0-beta.9-27948515.3db6367_vue@3.2.47:
-    resolution: {integrity: sha512-iFSJmbkHvKJXZz53V3ZMq0CNhwlOPXmpABaGqZpkQkxf2sAeh35b5U0F3XsHify4u0Rox6fPrOmwu8NNFrRWIA==}
+  /@nuxtjs/i18n-edge/8.0.0-beta.10-27951316.85d7c70_vue@3.2.47:
+    resolution: {integrity: sha512-gHQg9biaPGVb0WlC2Xj+7dmJ2/sg8Uo5Wqjn1mh2F4guwjEjviLn0uOqZP0qCnrhC1Ax/DFa3r2pdgMU1rPWpA==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
       '@intlify/bundle-utils': 4.0.0_vue-i18n@9.3.0-beta.16
@@ -2697,6 +2697,17 @@ packages:
       lodash.unionby: 4.8.0
       minimatch: 3.1.2
       sitemap: 4.1.1
+    dev: true
+
+  /@parcel/watcher/2.1.0:
+    resolution: {integrity: sha512-8s8yYjd19pDSsBpbkOHnT6Z2+UJSuLQx61pCFM0s5wSRvKCEMDjd/cHY3/GI1szHIWbpXpsJdg3V6ISGGx9xDw==}
+    engines: {node: '>= 10.0.0'}
+    requiresBuild: true
+    dependencies:
+      is-glob: 4.0.3
+      micromatch: 4.0.5
+      node-addon-api: 3.2.1
+      node-gyp-build: 4.6.0
     dev: true
 
   /@peculiar/asn1-schema/2.3.3:
@@ -2991,7 +3002,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
+      tailwindcss: 3.2.7_ts-node@10.9.1
     dev: true
 
   /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.7:
@@ -2999,7 +3010,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
+      tailwindcss: 3.2.7_ts-node@10.9.1
     dev: true
 
   /@tailwindcss/typography/0.5.9_tailwindcss@3.2.7:
@@ -3011,7 +3022,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
+      tailwindcss: 3.2.7_ts-node@10.9.1
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -8296,6 +8307,10 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /node-addon-api/3.2.1:
+    resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
+    dev: true
+
   /node-domexception/1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
@@ -10498,12 +10513,10 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/3.2.7_aesdjsunmf4wiehhujt67my7tu:
+  /tailwindcss/3.2.7_ts-node@10.9.1:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
-    peerDependencies:
-      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
