@@ -41,9 +41,9 @@
               v-if="participationDataPlayer?.teamByTeamId?.name"
               keypath="teamDataName"
             >
-              <span class="font-bold">{{
-                participationDataPlayer.teamByTeamId.name
-              }}</span>
+              <span class="font-bold">
+                {{ participationDataPlayer.teamByTeamId.name }}
+              </span>
             </i18n-t>
             <span v-else class="unready inline-block">
               {{ t('teamDataNameDataless') }}
