@@ -1,15 +1,15 @@
 <template>
-  <div v-if="url" class="flex gap-2 items-center">
+  <span v-if="url" class="flex gap-2 items-center">
     <slot />
     <ButtonColored :aria-label="t('share')" @click="copy(url)">
       <template #prefix>
         <IconShare />
       </template>
     </ButtonColored>
-  </div>
-  <div v-else class="unready inline-block">
+  </span>
+  <span v-else class="unready inline-block">
     <slot name="unready" />
-  </div>
+  </span>
 </template>
 
 <script setup lang="ts">
