@@ -84,8 +84,9 @@ COPY --from=prepare /srv/app/ ./
 
 ENV NODE_ENV=production
 ENV NITRO_PRESET=cloudflare_pages
-RUN corepack enable && \
-    pnpm run build
+RUN corepack enable \
+    && pnpm run build \
+    && mv functions .output/public/
 
 
 ########################
