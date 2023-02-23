@@ -1,3 +1,16 @@
+# [3.8.0](https://github.com/dargmuesli/trapparty/compare/3.7.4...3.8.0) (2023-02-23)
+
+
+### Bug Fixes
+
+* correct html ([6f461a2](https://github.com/dargmuesli/trapparty/commit/6f461a2285766d021941b7ca1a4e65978482086f))
+* **gql:** always use ids ([43cc543](https://github.com/dargmuesli/trapparty/commit/43cc543e88bf8f07e2f4b04c39b954d51f172ef4))
+
+
+### Features
+
+* **i18n:** add English ([d7ccbf8](https://github.com/dargmuesli/trapparty/commit/d7ccbf81cc1f3704f9347fbddf1c22d53de0fbf5)), closes [#157](https://github.com/dargmuesli/trapparty/issues/157)
+
 ## [3.7.4](https://github.com/dargmuesli/trapparty/compare/3.7.3...3.7.4) (2023-02-21)
 
 
