@@ -4,14 +4,17 @@ query playerByInvitationCodeFn ($invitationCode: UUID!) {
       id
       name
       teamByTeamId {
+        id
         name
         emoji
         charityOrganizationByCharityOrganizationId {
+          id
           name
           url
         }
         donationUrl
         eventByEventId {
+          id
           name
           start
           end
