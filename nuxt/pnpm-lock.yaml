@@ -60,7 +60,7 @@ specifiers:
   lodash.merge: 4.6.2
   nuxt: 3.2.2
   pinia: 2.0.32
-  pnpm: 7.27.1
+  pnpm: 7.28.0
   postcss: 8.4.21
   postcss-html: 1.5.0
   prettier: 2.8.4
@@ -141,7 +141,7 @@ devDependencies:
   lodash.merge: 4.6.2
   nuxt: 3.2.2_mwnof7m2ejrdv4utdtvpg4ed4i
   pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
-  pnpm: 7.27.1
+  pnpm: 7.28.0
   postcss: 8.4.21
   postcss-html: 1.5.0
   prettier: 2.8.4
@@ -6224,6 +6224,16 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: true
+
   /follow-redirects/1.15.2_debug@4.3.4:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
@@ -6853,7 +6863,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -8931,8 +8941,8 @@ packages:
     engines: {node: '>=12.13.0'}
     dev: true
 
-  /pnpm/7.27.1:
-    resolution: {integrity: sha512-IpBeZ+71slENbuOXwbV4U6yxOMfEWEvlVuT6+ChZ1D80oF0eHyN4h/hc13UrzVXpXI3bf7sPfRWGb8TYkrvJUA==}
+  /pnpm/7.28.0:
+    resolution: {integrity: sha512-nbuY07S2519jEjaV9KLjSFmOwh0b6KIViIdc/RCJkgco8SZa2+ikQQe4N3CfNn5By5BH0dKVbZ8Ox1Mw8wItSA==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
