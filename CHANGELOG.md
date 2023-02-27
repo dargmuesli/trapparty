@@ -1,3 +1,10 @@
+# [3.9.0](https://github.com/dargmuesli/trapparty/compare/3.8.0...3.9.0) (2023-02-27)
+
+
+### Features
+
+* **nuxt-cookie-control:** migrate to v5 ([2845067](https://github.com/dargmuesli/trapparty/commit/28450672fcf295b4c57761f6f32ccba41a10f7a2))
+
 # [3.8.0](https://github.com/dargmuesli/trapparty/compare/3.7.4...3.8.0) (2023-02-23)
 
 
