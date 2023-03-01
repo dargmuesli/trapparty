@@ -1,4 +1,4 @@
-[![build status](https://github.com/dargmuesli/trapparty/workflows/CI/badge.svg)](https://github.com/dargmuesli/trapparty/actions?query=workflow%3ACI "build status")
+[![CI](https://github.com/dargmuesli/trapparty/actions/workflows/ci.yml/badge.svg)](https://github.com/dargmuesli/trapparty/actions/workflows/ci.yml)
 
 # TrapParty
 
