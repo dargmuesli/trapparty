@@ -27,7 +27,7 @@ const api = getApiDataDefault()
 const isNfcWritableErrorMessage = ref<string>()
 
 // methods
-async function checkNfcErrors(): Promise<void> {
+const checkNfcErrors = async () => {
   if (!('NDEFReader' in window)) {
     return Promise.reject(Error('Web NFC is not supported!'))
   }
@@ -46,7 +46,7 @@ async function checkNfcErrors(): Promise<void> {
     }
   }
 }
-async function getPlayerByInvitationCode(invitationCode: string) {
+const getPlayerByInvitationCode = async (invitationCode: string) => {
   const result = await $urql.value
     .query<PlayerByInvitationCodeFnQuery>(PLAYER_BY_INVITATION_CODE_FN, {
       invitationCode,
@@ -63,7 +63,7 @@ async function getPlayerByInvitationCode(invitationCode: string) {
 
   return result.data?.playerByInvitationCodeFn?.nodes[0]
 }
-async function gameRandomFactsRoundCreate(gameRandomFactsRoundInput: any) {
+const gameRandomFactsRoundCreate = async (gameRandomFactsRoundInput: any) => {
   const player = await getPlayerByInvitationCode(
     gameRandomFactsRoundInput.invitationCode
   )
@@ -83,7 +83,7 @@ async function gameRandomFactsRoundCreate(gameRandomFactsRoundInput: any) {
 
   showToast({ title: t('roundCreateSuccess') })
 }
-async function nfcScan() {
+const nfcScan = async () => {
   try {
     if (process.env.NODE_ENV === 'production') {
       const ndefReader = new NDEFReader()

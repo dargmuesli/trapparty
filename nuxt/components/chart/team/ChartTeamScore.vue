@@ -64,7 +64,7 @@ const optionsDefault = ref<ChartOptions<'bar'>>({
 })
 
 // methods
-function init() {
+const init = () => {
   const rainbow = new Rainbow()
   const labels = []
   const datasets = []

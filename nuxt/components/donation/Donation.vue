@@ -164,7 +164,7 @@ const teams = ref<
 >([])
 
 // methods
-function init() {
+const init = () => {
   const donationsPerHead = []
 
   if (!allTeams.value || !allGames.value || !teamPlayerCount.value) return
@@ -282,12 +282,11 @@ function init() {
     loading.value = false
   }
 }
-function numberFormat(n: number) {
-  return new Intl.NumberFormat('de-DE', {
+const numberFormat = (n: number) =>
+  new Intl.NumberFormat('de-DE', {
     style: 'currency',
     currency: 'EUR',
   }).format(n)
-}
 
 // computations
 const donationAmountSum = computed(() => {

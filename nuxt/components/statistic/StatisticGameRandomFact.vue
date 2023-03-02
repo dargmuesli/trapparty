@@ -78,7 +78,7 @@ const allGameRandomFactsRoundsResult = computed(
 )
 
 // method
-async function init() {
+const init = async () => {
   // TODO: use single query
   rounds.value = arrayRemoveNulls(allGameRandomFactsRoundsResult.value?.nodes)
 
