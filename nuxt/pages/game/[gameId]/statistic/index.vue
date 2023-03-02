@@ -51,7 +51,7 @@ const isLoaded = ref(false)
 const title = t('title')
 
 // methods
-async function init() {
+const init = async () => {
   if (!game.value) return
 
   const gamesResult = await $urql.value
@@ -73,9 +73,7 @@ async function init() {
 
   loadingStop()
 }
-function loadingStop() {
-  isLoaded.value = true
-}
+const loadingStop = () => (isLoaded.value = true)
 
 // initialization
 useHeadDefault(title)

@@ -147,7 +147,7 @@ const round = computed(() => {
 })
 
 // methods
-async function choose(answer: number) {
+const choose = async (answer: number) => {
   await allGameRandomFactsRoundsQuery.executeQuery()
 
   if (!player.value || !round.value || round.value.answerCorrect !== null)
@@ -188,7 +188,7 @@ async function choose(answer: number) {
     await voteFetch()
   }
 }
-async function voteFetch() {
+const voteFetch = async () => {
   if (!player.value || !round.value) return
 
   const result = await $urql.value

@@ -12,7 +12,7 @@ import AUTHENTICATE_MUTATION from '~/gql/mutation/account/accountAuthenticate.gq
 import JWT_REFRESH_MUTATION from '~/gql/mutation/account/accountJwtRefresh.gql'
 import { useStore } from '~/store'
 
-export async function authenticationAnonymous({
+export const authenticationAnonymous = async ({
   client,
   $urqlReset,
   store,
@@ -22,7 +22,7 @@ export async function authenticationAnonymous({
   $urqlReset: () => void
   store: Store
   res: ServerResponse
-}) {
+}) => {
   consola.trace('Authenticating anonymously...')
 
   const result = await client
@@ -48,7 +48,7 @@ export async function authenticationAnonymous({
   }
 }
 
-export function getJwtFromCookie({ req }: { req: IncomingMessage }) {
+export const getJwtFromCookie = ({ req }: { req: IncomingMessage }) => {
   if (req.headers.cookie) {
     const cookies = parse(req.headers.cookie)
 
@@ -71,7 +71,7 @@ export function getJwtFromCookie({ req }: { req: IncomingMessage }) {
   }
 }
 
-export async function jwtRefresh({
+export const jwtRefresh = async ({
   client,
   $urqlReset,
   store,
@@ -83,7 +83,7 @@ export async function jwtRefresh({
   store: Store
   res: ServerResponse
   id: string
-}) {
+}) => {
   consola.trace('Refreshing a JWT...')
 
   const result = await client.mutation(JWT_REFRESH_MUTATION, { id }).toPromise()
@@ -98,7 +98,7 @@ export async function jwtRefresh({
   }
 }
 
-export async function jwtStore({
+export const jwtStore = async ({
   $urqlReset,
   store,
   res,
@@ -108,7 +108,7 @@ export async function jwtStore({
   store: Store
   res?: ServerResponse
   jwt?: string
-}) {
+}) => {
   $urqlReset()
 
   consola.trace('Storing the following JWT: ' + jwt)
@@ -134,7 +134,7 @@ export async function jwtStore({
   }
 }
 
-export function useJwtStore() {
+export const useJwtStore = () => {
   const { $urqlReset } = useNuxtApp()
   const store = useStore()
   const event = useRequestEvent()
@@ -151,7 +151,7 @@ export function useJwtStore() {
   }
 }
 
-export async function signOut({
+export const signOut = async ({
   $urqlReset,
   store,
   res,
@@ -159,11 +159,9 @@ export async function signOut({
   $urqlReset: () => void
   store: Store
   res?: ServerResponse
-}) {
-  await jwtStore({ $urqlReset, store, res })
-}
+}) => await jwtStore({ $urqlReset, store, res })
 
-export function useSignOut() {
+export const useSignOut = () => {
   const { $urqlReset } = useNuxtApp()
   const store = useStore()
   const event = useRequestEvent()

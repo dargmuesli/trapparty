@@ -21,11 +21,9 @@ export const useStore = defineStore(
     const participationData = ref<ParticipationData>({ role: 'watcher' })
     const signedInUsername = ref<string>()
 
-    function jwtRemove() {
-      jwtSet(undefined)
-    }
+    const jwtRemove = () => jwtSet(undefined)
 
-    function jwtSet(jwtNew?: string) {
+    const jwtSet = (jwtNew?: string) => {
       const jwtDecodedNew = jwtNew !== undefined ? decodeJwt(jwtNew) : undefined
 
       jwt.value = jwtNew
@@ -38,9 +36,8 @@ export const useStore = defineStore(
           : undefined
     }
 
-    function participationDataSet(participationDataNew: ParticipationData) {
-      participationData.value = participationDataNew
-    }
+    const participationDataSet = (participationDataNew: ParticipationData) =>
+      (participationData.value = participationDataNew)
 
     return {
       jwt,

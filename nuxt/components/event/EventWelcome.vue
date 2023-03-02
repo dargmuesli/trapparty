@@ -153,13 +153,13 @@ const isFormAnonymousSent = ref(false)
 const title = t('title')
 
 // methods
-function anonymous() {
+const anonymous = () => {
   store.participationDataSet({ role: 'watcher' })
   router.push({
     path: append(route.path, 'dashboard'),
   })
 }
-async function saveCode() {
+const saveCode = async () => {
   if (!form.invitationCode) return
 
   try {

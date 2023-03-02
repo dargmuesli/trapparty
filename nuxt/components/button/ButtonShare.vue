@@ -21,7 +21,7 @@ withDefaults(defineProps<Props>(), {})
 const { t } = useI18n()
 
 // methods
-async function copy(string: string) {
+const copy = async (string: string) => {
   if (typeof window === 'undefined') return
 
   try {

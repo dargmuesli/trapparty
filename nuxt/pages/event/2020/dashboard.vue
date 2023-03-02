@@ -254,7 +254,7 @@ import {
 
 definePageMeta({
   middleware: [
-    function (_to: any, _from: any) {
+    (_to: any, _from: any) => {
       const { $localePath } = useNuxtApp()
       const store = useStore()
 
