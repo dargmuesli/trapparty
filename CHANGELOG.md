@@ -1,3 +1,10 @@
+## [3.9.1](https://github.com/dargmuesli/trapparty/compare/3.9.0...3.9.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* **nuxt:** add missing runtime configuration ([d57b21b](https://github.com/dargmuesli/trapparty/commit/d57b21b4f9399613efde408dfb8429c9d2dbc79e))
+
 # [3.9.0](https://github.com/dargmuesli/trapparty/compare/3.8.0...3.9.0) (2023-02-27)
 
 
