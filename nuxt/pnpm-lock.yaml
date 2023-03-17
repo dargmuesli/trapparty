@@ -18,7 +18,7 @@ specifiers:
   '@nuxtjs/i18n': npm:@nuxtjs/i18n-edge@8.0.0-beta.9-27948515.3db6367
   '@nuxtjs/robots': 3.0.0
   '@nuxtjs/sitemap': 2.4.0
-  '@pinia-plugin-persistedstate/nuxt': 1.0.0
+  '@pinia-plugin-persistedstate/nuxt': 1.1.1
   '@pinia/nuxt': 0.4.7
   '@rollup/plugin-graphql': 2.0.3
   '@tailwindcss/forms': 0.5.3
@@ -98,7 +98,7 @@ devDependencies:
   '@nuxtjs/i18n': /@nuxtjs/i18n-edge/8.0.0-beta.9-27948515.3db6367_vue@3.2.47
   '@nuxtjs/robots': 3.0.0
   '@nuxtjs/sitemap': 2.4.0
-  '@pinia-plugin-persistedstate/nuxt': 1.0.0_2fa6k6uov4i2t7fhwaa7f3r2li
+  '@pinia-plugin-persistedstate/nuxt': 1.1.1_2fa6k6uov4i2t7fhwaa7f3r2li
   '@pinia/nuxt': 0.4.7_hmuptsblhheur2tugfgucj7gc4
   '@rollup/plugin-graphql': 2.0.3_graphql@16.6.0
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
@@ -3026,13 +3026,14 @@ packages:
       webcrypto-core: 1.7.6
     dev: true
 
-  /@pinia-plugin-persistedstate/nuxt/1.0.0_2fa6k6uov4i2t7fhwaa7f3r2li:
-    resolution: {integrity: sha512-oBLnkFXy0mcP9wCR0NQj1SguhgalEoubDF302gpRr1lh0V34vSL2Nlw8XDwRrULq5v3eHt4da632YSjNny1+BA==}
+  /@pinia-plugin-persistedstate/nuxt/1.1.1_2fa6k6uov4i2t7fhwaa7f3r2li:
+    resolution: {integrity: sha512-b6ZNP3Re8COmfZEpj4KQmbp2TuDKrLggDFLZa8FiJF68xE/oCsPXIuXUvAt8E4ht/5sq4Z/grlA+iGXaI2aeKQ==}
     peerDependencies:
       '@pinia/nuxt': ^0.4.4
     dependencies:
       '@nuxt/kit': 3.2.3
       '@pinia/nuxt': 0.4.7_hmuptsblhheur2tugfgucj7gc4
+      defu: 6.1.2
       pinia-plugin-persistedstate: 3.1.0_pinia@2.0.33
     transitivePeerDependencies:
       - pinia
