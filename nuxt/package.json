@@ -6,7 +6,7 @@
   "description": "TrapParty's online version.",
   "type": "module",
   "engines": {
-    "node": "19"
+    "node": "18"
   },
   "packageManager": "pnpm@7.30.0",
   "scripts": {
