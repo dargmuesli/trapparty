@@ -8,10 +8,8 @@
 import consola from 'consola'
 
 import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
-import {
-  PlayerByInvitationCodeFnQuery,
-  useCreateGameRandomFactsRoundMutation,
-} from '~/gql/generated'
+import { PlayerByInvitationCodeFnQuery } from '~/gql/generated/graphql'
+import { useCreateGameRandomFactsRoundMutation } from '~/gql/documents/mutations/game/createGameRandomFactsRound'
 
 const { $urql } = useNuxtApp()
 const { t } = useI18n()

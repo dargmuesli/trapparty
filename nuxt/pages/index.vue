@@ -80,7 +80,8 @@
 </template>
 
 <script setup lang="ts">
-import { useAllEventsQuery } from '~/gql/generated'
+import { useAllEventsQuery } from '~/gql/documents/queries/event/allEvents'
+import { getEventItem } from '~/gql/documents/fragments/eventItem'
 
 const { $moment } = useNuxtApp()
 const { t } = useI18n()
@@ -105,7 +106,7 @@ const title = t('title')
 
 // computations
 const eventCurrent = computed(() => {
-  return arrayRemoveNulls(allEvents.value).filter(
+  return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
     (event) =>
       $moment().isAfter($moment(event.start)) &&
       $moment().isBefore(
@@ -114,17 +115,18 @@ const eventCurrent = computed(() => {
   )[0]
 })
 const eventsPast = computed(() => {
-  return arrayRemoveNulls(allEvents.value).filter((event) =>
-    $moment().isAfter(
-      $moment(
-        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
+  return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
+    (event) =>
+      $moment().isAfter(
+        $moment(
+          event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
+        )
       )
-    )
   )
 })
 const eventsUpcoming = computed(() => {
-  return arrayRemoveNulls(allEvents.value).filter((event) =>
-    $moment().isBefore($moment(event.start))
+  return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
+    (event) => $moment().isBefore($moment(event.start))
   )
 })
 

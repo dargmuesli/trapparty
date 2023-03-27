@@ -37,7 +37,8 @@
 import consola from 'consola'
 
 import { useStore } from '~/store'
-import { useGameByIdQuery } from '~/gql/generated'
+import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
+import { getGameItem } from '~/gql/documents/fragments/gameItem'
 
 const localePath = useLocalePath()
 const { t } = useI18n()
@@ -46,9 +47,7 @@ const route = useRoute()
 
 // queries
 const gameByIdQuery = await useGameByIdQuery({
-  variables: {
-    gameId: +route.params.gameId,
-  },
+  gameId: +route.params.gameId,
 })
 
 // api data
@@ -60,7 +59,7 @@ const api = computed(() =>
     ...getApiMeta([gameByIdQuery]),
   })
 )
-const game = computed(() => gameByIdQuery.data.value?.gameById)
+const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
 
 // data
 // questionerName: 'Jonas Thelemann',

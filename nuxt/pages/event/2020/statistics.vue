@@ -19,15 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { useEventByNameQuery } from '~/gql/generated'
+import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
+import { getEventItem } from '~/gql/documents/fragments/eventItem'
 
 const { t } = useI18n()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  variables: {
-    eventName: '2020',
-  },
+  eventName: '2020',
 })
 
 // api data
@@ -39,7 +38,9 @@ const api = computed(() =>
     ...getApiMeta([eventByNameQuery]),
   })
 )
-const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
+const trapPartyEvent = computed(() =>
+  getEventItem(eventByNameQuery.data.value?.eventByName)
+)
 
 // data
 const title = t('title')

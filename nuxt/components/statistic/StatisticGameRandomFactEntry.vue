@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import { usePlayerNameByIdQuery } from '~/gql/generated'
+import { usePlayerNameByIdQuery } from '~/gql/documents/queries/player/playerNameById'
 
 export interface Props {
   highscores: number[]
@@ -33,9 +33,7 @@ const { t } = useI18n()
 
 // queries
 const playerNameByIdQuery = await usePlayerNameByIdQuery({
-  variables: {
-    id: props.playerId,
-  },
+  id: props.playerId,
 })
 
 // api data

@@ -107,8 +107,9 @@ import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import consola from 'consola'
 
-import { useEventByNameQuery } from '~/gql/generated'
+import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
 import { useStore } from '~/store'
+import { getEventItem } from '~/gql/documents/fragments/eventItem'
 
 export interface Props {
   eventName: string
@@ -123,9 +124,7 @@ const localePath = useLocalePath()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  variables: {
-    eventName: props.eventName,
-  },
+  eventName: props.eventName,
 })
 
 // api data
@@ -137,7 +136,9 @@ const api = computed(() =>
     ...getApiMeta([eventByNameQuery]),
   })
 )
-const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
+const trapPartyEvent = computed(() =>
+  getEventItem(eventByNameQuery.data.value?.eventByName)
+)
 
 // data
 const form = reactive({

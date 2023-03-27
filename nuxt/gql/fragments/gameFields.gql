@@ -1,8 +1,0 @@
-fragment gameFields on Game {
-  nodeId
-  id
-  eventId
-  isActive
-  name
-  type
-}

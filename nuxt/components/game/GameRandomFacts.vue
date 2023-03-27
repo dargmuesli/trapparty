@@ -65,14 +65,14 @@
 import consola from 'consola'
 
 import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
-import {
-  GameRandomFactsVoteByPlayerIdAndRoundIdQuery,
-  useAllGameRandomFactsRoundsQuery,
-  useCreateGameRandomFactsVoteMutation,
-  usePlayerByInvitationCodeFnQuery,
-  useUpdateGameRandomFactsRoundByIdMutation,
-} from '~/gql/generated'
+import { useCreateGameRandomFactsVoteMutation } from '~/gql/documents/mutations/game/createGameRandomFactsVote'
+import { useUpdateGameRandomFactsRoundByIdMutation } from '~/gql/documents/mutations/game/updateGameRandomFactsRoundById'
+import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
+import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
+import { GameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
+import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
+import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
 
 export interface Props {
   gameId: number
@@ -89,16 +89,13 @@ const updateGameRandomFactsRoundByIdMutation =
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  variables: {
-    gameId: props.gameId,
-  },
+  gameId: props.gameId,
 })
 const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
-  variables: {
-    invitationCode:
-      store.participationData.role === 'player' &&
-      store.participationData?.invitationCode,
-  },
+  invitationCode:
+    store.participationData.role === 'player'
+      ? store.participationData?.invitationCode
+      : '',
 })
 
 // api data
@@ -129,9 +126,9 @@ const voteAnswer = ref<number>()
 const round = computed(() => {
   if (!allGameRandomFactsRounds.value) return
 
-  const roundsActive = allGameRandomFactsRounds.value?.nodes.filter(
-    (x) => x?.answerCorrect === null
-  )
+  const roundsActive = allGameRandomFactsRounds.value?.nodes
+    .map((x) => getGameRandomFactsRoundItem(x))
+    .filter((x) => x?.answerCorrect === null)
 
   if (!roundsActive) {
     consola.error('There are no active rounds!')
@@ -208,8 +205,9 @@ const voteFetch = async () => {
 
   if (!result) return
 
-  voteAnswer.value =
-    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId?.answer
+  voteAnswer.value = getGameRandomFactsVoteItem(
+    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId
+  )?.answer
 }
 
 // lifecycle

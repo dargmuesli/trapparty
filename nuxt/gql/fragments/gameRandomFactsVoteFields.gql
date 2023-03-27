@@ -1,7 +1,0 @@
-fragment gameRandomFactsVoteFields on GameRandomFactsVote {
-  nodeId
-  id
-  answer
-  playerId
-  roundId
-}

@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { Game } from '~/gql/generated'
+import { GameItemFragment } from '~/gql/generated/graphql'
 
 export interface Props {
-  game: Pick<Game, 'id' | 'isActive' | 'name' | 'type'>
+  game: GameItemFragment
 }
 withDefaults(defineProps<Props>(), {})
 </script>

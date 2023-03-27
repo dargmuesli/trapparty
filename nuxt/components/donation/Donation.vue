@@ -52,7 +52,7 @@
                   name: 'Stream',
                   donationAmount:
                     trapPartyEvent.commonDonationAmount,
-                } as Team,
+                } as TeamItemFragment,
               ]"
               :key="team.id"
             >
@@ -67,8 +67,9 @@
                 class="border border-gray-700 p-2"
                 :class="{
                   'font-bold':
-                    team.charityOrganizationByCharityOrganizationId?.id ===
-                    charityOrganization.id,
+                    getCharityOrganizationItem(
+                      team.charityOrganizationByCharityOrganizationId
+                    )?.id === charityOrganization.id,
                 }"
               >
                 {{
@@ -111,11 +112,13 @@
 import consola from 'consola'
 
 import {
+  CharityOrganizationItemFragment,
   Event as TrapPartyEvent,
-  Team,
-  useStatsQuery,
-  StatsQuery,
-} from '~/gql/generated'
+  TeamItemFragment,
+} from '~/gql/generated/graphql'
+import { useStatsQuery } from '~/gql/documents/queries/stats'
+import { getTeamItem } from '~/gql/documents/fragments/teamItem'
+import { getCharityOrganizationItem } from '~/gql/documents/fragments/charityOrganizationItem'
 
 export interface Props {
   trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
@@ -126,9 +129,7 @@ const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  variables: {
-    eventId: props.trapPartyEvent.id,
-  },
+  eventId: props.trapPartyEvent.id,
 })
 
 // api data
@@ -148,20 +149,12 @@ const teamPlayerCount = computed(() => statsQuery.data.value?.teamPlayerCount)
 const DONATION_DISTRIBUTION_PERCENTAGE = 0.5
 
 // data
-const charityOrganizations = ref<
-  NonNullable<
-    NonNullable<
-      ArrayElement<NonNullable<StatsQuery['allTeams']>['nodes']>
-    >['charityOrganizationByCharityOrganizationId']
-  >[]
->([])
+const charityOrganizations = ref<CharityOrganizationItemFragment[]>([])
 const charityOrganizationWeigths = ref<number[]>([])
 const distributionMatrix = ref<Array<Array<any>>>([])
 const distributionMatrixTotalsVertical = ref<number[]>([])
 const loading = ref(true)
-const teams = ref<
-  NonNullable<ArrayElement<NonNullable<StatsQuery['allTeams']>['nodes']>>[]
->([])
+const teams = ref<TeamItemFragment[]>([])
 
 // methods
 const init = () => {
@@ -170,20 +163,18 @@ const init = () => {
   if (!allTeams.value || !allGames.value || !teamPlayerCount.value) return
 
   for (let i = 0; i < allTeams.value.nodes.length; i++) {
-    const team = arrayRemoveNulls(allTeams.value.nodes)[i]
+    const team = arrayRemoveNulls(
+      allTeams.value.nodes.map((x) => getTeamItem(x))
+    )[i]
     const teamPlayerCountObject = teamPlayerCount.value.nodes[i]
-
-    if (
-      !team ||
-      !team.charityOrganizationByCharityOrganizationId ||
-      !teamPlayerCountObject
-    )
-      continue
-
-    teams.value.push(team)
-    charityOrganizations.value.push(
+    const charityOrganization = getCharityOrganizationItem(
       team.charityOrganizationByCharityOrganizationId
     )
+
+    if (!team || !charityOrganization || !teamPlayerCountObject) continue
+
+    teams.value.push(team)
+    charityOrganizations.value.push(charityOrganization)
     donationsPerHead.push(
       typeof teamPlayerCountObject === 'undefined'
         ? 0
@@ -244,7 +235,7 @@ const init = () => {
     {
       name: 'Stream',
       donationAmount: props.trapPartyEvent.commonDonationAmount,
-    } as Team,
+    } as TeamItemFragment,
   ]
 
   for (let i = 0; i < teamsWithStream.length; i++) {
@@ -265,8 +256,9 @@ const init = () => {
           : (team.donationAmount || 0) *
               teamDonationWeighting *
               charityOrganizationWeigths.value[j] +
-            (team.charityOrganizationByCharityOrganizationId.id ===
-            charityOrganization.id
+            (getCharityOrganizationItem(
+              team.charityOrganizationByCharityOrganizationId
+            )?.id === charityOrganization.id
               ? (team.donationAmount || 0) * DONATION_DISTRIBUTION_PERCENTAGE
               : 0)
 

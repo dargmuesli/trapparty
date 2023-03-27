@@ -47,8 +47,11 @@
 import consola from 'consola'
 import { UnwrapRef } from 'vue'
 
+import { getEventItem } from '~/gql/documents/fragments/eventItem'
+import { getGameItem } from '~/gql/documents/fragments/gameItem'
+import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
+import { AllGamesQuery, GameItemFragment } from '~/gql/generated/graphql'
 import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
-import { useEventByNameQuery, AllGamesQuery } from '~/gql/generated'
 import { useStore } from '~/store'
 
 export interface Props {
@@ -63,9 +66,7 @@ const store = useStore()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  variables: {
-    eventName: props.eventName,
-  },
+  eventName: props.eventName,
 })
 
 // api data
@@ -77,12 +78,12 @@ const api = computed(() =>
     ...getApiMeta([eventByNameQuery]),
   })
 )
-const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
+const trapPartyEvent = computed(() =>
+  getEventItem(eventByNameQuery.data.value?.eventByName)
+)
 
 // data
-const games = ref<
-  NonNullable<ArrayElement<NonNullable<AllGamesQuery['allGames']>['nodes']>>[]
->([])
+const games = ref<GameItemFragment[]>([])
 const title = t('title', { name: props.eventName })
 
 // methods
@@ -102,7 +103,9 @@ const fetchGames = async (
     consola.error(result.error)
   }
 
-  const allGames = arrayRemoveNulls(result.data?.allGames?.nodes)
+  const allGames = arrayRemoveNulls(
+    result.data?.allGames?.nodes.map((x) => getGameItem(x))
+  )
 
   games.value = allGames
 }

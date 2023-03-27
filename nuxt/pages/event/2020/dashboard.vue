@@ -247,10 +247,8 @@
 import consola from 'consola'
 
 import { useStore } from '~/store'
-import {
-  useEventByNameQuery,
-  usePlayerByInvitationCodeFnQuery,
-} from '~/gql/generated'
+import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
+import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
 
 definePageMeta({
   middleware: [
@@ -274,15 +272,11 @@ const playerByInvitationCodeFnQuery =
   store.participationData.role === 'player' &&
   store.participationData?.invitationCode
     ? await usePlayerByInvitationCodeFnQuery({
-        variables: {
-          invitationCode: store.participationData?.invitationCode,
-        },
+        invitationCode: store.participationData?.invitationCode,
       })
     : { data: ref(), error: ref(), fetching: ref(false) }
 const eventByNameQuery = await useEventByNameQuery({
-  variables: {
-    eventName: '2020',
-  },
+  eventName: '2020',
 })
 
 // api data
