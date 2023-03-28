@@ -1,8 +1,0 @@
-fragment GameItem on Game {
-  nodeId
-  id
-  eventId
-  isActive
-  name
-  type
-}

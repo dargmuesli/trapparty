@@ -64,22 +64,20 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import { useCreateGameRandomFactsVoteMutation } from '~/gql/documents/mutations/game/createGameRandomFactsVote'
 import { useUpdateGameRandomFactsRoundByIdMutation } from '~/gql/documents/mutations/game/updateGameRandomFactsRoundById'
 import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
 import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
-import { GameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
+import { useGameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
 export interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})
 
-const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
 const fireError = useFireError()
@@ -188,25 +186,19 @@ const choose = async (answer: number) => {
 const voteFetch = async () => {
   if (!player.value || !round.value) return
 
-  const result = await $urql.value
-    .query<GameRandomFactsVoteByPlayerIdAndRoundIdQuery>(
-      GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID,
-      {
-        playerId: player.value?.id,
-        roundId: round.value?.id,
-      },
-      {
-        fetchPolicy: 'network-only',
-      }
-    )
-    .toPromise()
+  const result = await useGameRandomFactsVoteByPlayerIdAndRoundIdQuery({
+    playerId: player.value?.id,
+    roundId: round.value?.id,
+  }).executeQuery({
+    fetchPolicy: 'network-only',
+  })
 
-  if (result.error) fireError({ error: result.error }, api)
+  if (result.error.value) fireError({ error: result.error.value }, api)
 
   if (!result) return
 
   voteAnswer.value = getGameRandomFactsVoteItem(
-    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId
+    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId
   )?.answer
 }
 

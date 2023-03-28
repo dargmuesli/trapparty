@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'node:http'
 
-import { Client } from '@urql/vue'
+// import { Client } from '@urql/vue'
 import consola from 'consola'
 import { parse, serialize } from 'cookie'
 import { decodeJwt } from 'jose'
@@ -8,45 +8,45 @@ import { Store } from 'pinia'
 
 import { JWT_NAME } from './constants'
 import { xhrPromise } from './util'
-import AUTHENTICATE_MUTATION from '~/gql/mutation/account/accountAuthenticate.gql'
-import JWT_REFRESH_MUTATION from '~/gql/mutation/account/accountJwtRefresh.gql'
+// import AUTHENTICATE_MUTATION from '~/gql/mutation/account/accountAuthenticate.gql'
+// import JWT_REFRESH_MUTATION from '~/gql/mutation/account/accountJwtRefresh.gql'
 import { useStore } from '~/store'
 
-export const authenticationAnonymous = async ({
-  client,
-  $urqlReset,
-  store,
-  res,
-}: {
-  client: Client
-  $urqlReset: () => void
-  store: Store
-  res: ServerResponse
-}) => {
-  consola.trace('Authenticating anonymously...')
+// export const authenticationAnonymous = async ({
+//   client,
+//   $urqlReset,
+//   store,
+//   res,
+// }: {
+//   client: Client
+//   $urqlReset: () => void
+//   store: Store
+//   res: ServerResponse
+// }) => {
+//   consola.trace('Authenticating anonymously...')
 
-  const result = await client
-    .mutation(AUTHENTICATE_MUTATION, {
-      username: '',
-      password: '',
-    })
-    .toPromise()
+//   const result = await client
+//     .mutation(AUTHENTICATE_MUTATION, {
+//       username: '',
+//       password: '',
+//     })
+//     .toPromise()
 
-  if (result.error) {
-    consola.error(result.error)
-  } else {
-    if (!result.data.authenticate) {
-      return
-    }
+//   if (result.error) {
+//     consola.error(result.error)
+//   } else {
+//     if (!result.data.authenticate) {
+//       return
+//     }
 
-    await jwtStore({
-      $urqlReset,
-      store,
-      res,
-      jwt: result.data.authenticate.jwt,
-    })
-  }
-}
+//     await jwtStore({
+//       $urqlReset,
+//       store,
+//       res,
+//       jwt: result.data.authenticate.jwt,
+//     })
+//   }
+// }
 
 export const getJwtFromCookie = ({ req }: { req: IncomingMessage }) => {
   if (req.headers.cookie) {
@@ -71,32 +71,32 @@ export const getJwtFromCookie = ({ req }: { req: IncomingMessage }) => {
   }
 }
 
-export const jwtRefresh = async ({
-  client,
-  $urqlReset,
-  store,
-  res,
-  id,
-}: {
-  client: Client
-  $urqlReset: () => void
-  store: Store
-  res: ServerResponse
-  id: string
-}) => {
-  consola.trace('Refreshing a JWT...')
+// export const jwtRefresh = async ({
+//   client,
+//   $urqlReset,
+//   store,
+//   res,
+//   id,
+// }: {
+//   client: Client
+//   $urqlReset: () => void
+//   store: Store
+//   res: ServerResponse
+//   id: string
+// }) => {
+//   consola.trace('Refreshing a JWT...')
 
-  const result = await client.mutation(JWT_REFRESH_MUTATION, { id }).toPromise()
+//   const result = await client.mutation(JWT_REFRESH_MUTATION, { id }).toPromise()
 
-  if (result.error) {
-    consola.error(result.error)
-    await signOut({ $urqlReset, store, res })
-  } else if (!result.data.jwtRefresh.jwt) {
-    await authenticationAnonymous({ client, $urqlReset, store, res })
-  } else {
-    await jwtStore({ $urqlReset, store, res, jwt: result.data.jwtRefresh.jwt })
-  }
-}
+//   if (result.error) {
+//     consola.error(result.error)
+//     await signOut({ $urqlReset, store, res })
+//   } else if (!result.data.jwtRefresh.jwt) {
+//     await authenticationAnonymous({ client, $urqlReset, store, res })
+//   } else {
+//     await jwtStore({ $urqlReset, store, res, jwt: result.data.jwtRefresh.jwt })
+//   }
+// }
 
 export const jwtStore = async ({
   $urqlReset,
