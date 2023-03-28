@@ -1,5 +1,3 @@
-import graphqlPlugin from '@rollup/plugin-graphql'
-
 import localeDe from './locales/de.json'
 import { JWT_NAME, LOCALES } from './utils/constants'
 
@@ -55,9 +53,6 @@ export default defineNuxtConfig({
         htmlAttributes: [], // https://github.com/johnsoncodehk/volar/issues/1970#issuecomment-1276994634
       },
     },
-  },
-  vite: {
-    plugins: [graphqlPlugin()],
   },
 
   // modules
