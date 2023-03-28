@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import PLAYER_BY_INVITATION_CODE_FN from '~/gql/query/player/playerByInvitationCodeFn.gql'
+import PLAYER_BY_INVITATION_CODE_FN from '~/gql/documents/queries/player/playerByInvitationCodeFn.gql'
 import { PlayerByInvitationCodeFnQuery } from '~/gql/generated/graphql'
 import { useCreateGameRandomFactsRoundMutation } from '~/gql/documents/mutations/game/createGameRandomFactsRound'
 

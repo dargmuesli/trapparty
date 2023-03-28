@@ -51,7 +51,7 @@ import { getEventItem } from '~/gql/documents/fragments/eventItem'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
 import { AllGamesQuery, GameItemFragment } from '~/gql/generated/graphql'
-import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
+import GAMES_ALL_QUERY from '~/gql/documents/queries/game/allGames.gql'
 import { useStore } from '~/store'
 
 export interface Props {

@@ -1,0 +1,11 @@
+query gameRandomFactsVoteByPlayerIdAndRoundId(
+  $playerId: Int!
+  $roundId: Int!
+) {
+  gameRandomFactsVoteByPlayerIdAndRoundId(
+    playerId: $playerId
+    roundId: $roundId
+  ) {
+    ...GameRandomFactsVoteItem
+  }
+}

@@ -1,0 +1,7 @@
+query gameRandomFactsVotes($roundId: Int!) {
+  allGameRandomFactsVotes(condition: { roundId: $roundId }) {
+    nodes {
+      ...GameRandomFactsVoteItem
+    }
+  }
+}

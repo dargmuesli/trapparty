@@ -64,7 +64,7 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
+import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
 import { useCreateGameRandomFactsVoteMutation } from '~/gql/documents/mutations/game/createGameRandomFactsVote'
 import { useUpdateGameRandomFactsRoundByIdMutation } from '~/gql/documents/mutations/game/updateGameRandomFactsRoundById'
 import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'

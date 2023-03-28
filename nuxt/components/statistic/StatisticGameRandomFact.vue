@@ -22,7 +22,7 @@
 import consola from 'consola'
 
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
-import GAME_RANDOM_FACTS_VOTES_ALL_QUERY from '~/gql/query/game/allGameRandomFactsVotes.gql'
+import GAME_RANDOM_FACTS_VOTES_ALL_QUERY from '~/gql/documents/queries/game/allGameRandomFactsVotes.gql'
 import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
 import {
   GameRandomFactsRoundItemFragment,

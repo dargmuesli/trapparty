@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
+import GAMES_ALL_QUERY from '~/gql/documents/queries/game/allGames.gql'
 import { AllGamesQuery } from '~/gql/generated/graphql'
 import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
