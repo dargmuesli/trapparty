@@ -1,3 +1,5 @@
+#import "../../fragments/gameItem.gql"
+
 query allGames($eventId: Int!, $type: GameType) {
   allGames(
     condition: { eventId: $eventId, type: $type }

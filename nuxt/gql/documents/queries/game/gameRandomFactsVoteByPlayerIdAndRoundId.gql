@@ -1,3 +1,5 @@
+#import "../../fragments/gameRandomFactsVoteItem.gql"
+
 query gameRandomFactsVoteByPlayerIdAndRoundId(
   $playerId: Int!
   $roundId: Int!

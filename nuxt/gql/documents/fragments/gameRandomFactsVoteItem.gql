@@ -1,0 +1,7 @@
+fragment GameRandomFactsVoteItem on GameRandomFactsVote {
+  nodeId
+  id
+  answer
+  playerId
+  roundId
+}
