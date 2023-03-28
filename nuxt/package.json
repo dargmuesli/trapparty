@@ -1,7 +1,7 @@
 {
   "name": "trapparty",
   "private": true,
-  "version": "3.9.2",
+  "version": "3.10.0",
   "description": "TrapParty's online version.",
   "type": "module",
   "engines": {

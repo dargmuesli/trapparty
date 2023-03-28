@@ -1,3 +1,16 @@
+# [3.10.0](https://github.com/dargmuesli/trapparty/compare/3.9.2...3.10.0) (2023-03-28)
+
+
+### Bug Fixes
+
+* **gql:** readd missing fragments ([e5a5d4f](https://github.com/dargmuesli/trapparty/commit/e5a5d4f348b7c6ec2ba75a2fb0f22b958668123d))
+* revert subset of gql file deletion ([3f1fc3c](https://github.com/dargmuesli/trapparty/commit/3f1fc3cbd0c4cd7dfe124d761ac09eb4086e7474))
+
+
+### Features
+
+* **gql:** migrate to document node ([1588352](https://github.com/dargmuesli/trapparty/commit/1588352f5083f06ab5ec2ad9b93fe62e43756910))
+
 ## [3.9.2](https://github.com/dargmuesli/trapparty/compare/3.9.1...3.9.2) (2023-03-20)
 
 
