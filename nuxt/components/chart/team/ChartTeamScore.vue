@@ -17,7 +17,8 @@ import Color from 'color'
 import consola from 'consola'
 import Rainbow from 'rainbowvis.js'
 
-import { useStatsQuery } from '~/gql/generated'
+import { useStatsQuery } from '~/gql/documents/queries/stats'
+import { getTeamItem } from '~/gql/documents/fragments/teamItem'
 
 export interface Props {
   eventId: number
@@ -35,9 +36,7 @@ const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  variables: {
-    eventId: props.eventId,
-  },
+  eventId: props.eventId,
 })
 
 // api data
@@ -72,7 +71,7 @@ const init = () => {
   if (!allTeams.value || !allGames.value) return
 
   for (let i = 0; i < allTeams.value.nodes.length; i++) {
-    const team = allTeams.value.nodes[i]
+    const team = getTeamItem(allTeams.value.nodes[i])
 
     if (!team) continue
 

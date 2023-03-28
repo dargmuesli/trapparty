@@ -13,18 +13,12 @@ devDependencies:
   '@graphql-codegen/cli':
     specifier: 3.2.2
     version: 3.2.2(@babel/core@7.21.3)(@types/node@18.15.10)(graphql@16.6.0)
-  '@graphql-codegen/typescript':
-    specifier: 3.0.2
-    version: 3.0.2(graphql@16.6.0)
-  '@graphql-codegen/typescript-operations':
-    specifier: 3.0.2
-    version: 3.0.2(graphql@16.6.0)
+  '@graphql-codegen/client-preset':
+    specifier: 2.1.1
+    version: 2.1.1(graphql@16.6.0)
   '@graphql-codegen/typescript-urql-graphcache':
     specifier: 2.4.4
-    version: 2.4.4(@urql/exchange-graphcache@5.0.9)(graphql-tag@2.12.6)(graphql@16.6.0)
-  '@graphql-codegen/typescript-vue-urql':
-    specifier: 2.3.6
-    version: 2.3.6(graphql-tag@2.12.6)(graphql@16.6.0)
+    version: 2.4.4(@urql/exchange-graphcache@5.2.0)(graphql-tag@2.12.6)(graphql@16.6.0)
   '@graphql-codegen/urql-introspection':
     specifier: 2.2.1
     version: 2.2.1(graphql@16.6.0)
@@ -58,9 +52,6 @@ devDependencies:
   '@pinia/nuxt':
     specifier: 0.4.7
     version: 0.4.7(typescript@5.0.2)(vue@3.2.47)
-  '@rollup/plugin-graphql':
-    specifier: 2.0.3
-    version: 2.0.3(graphql@16.6.0)
   '@tailwindcss/forms':
     specifier: 0.5.3
     version: 0.5.3(tailwindcss@3.2.7)
@@ -92,11 +83,11 @@ devDependencies:
     specifier: 2.0.3
     version: 2.0.3(@urql/core@3.2.2)(graphql@16.6.0)
   '@urql/exchange-graphcache':
-    specifier: 5.0.9
-    version: 5.0.9(graphql@16.6.0)
+    specifier: 5.2.0
+    version: 5.2.0(graphql@16.6.0)
   '@urql/vue':
-    specifier: 1.0.4
-    version: 1.0.4(graphql@16.6.0)(vue@3.2.47)
+    specifier: 1.0.5
+    version: 1.0.5(graphql@16.6.0)(vue@3.2.47)
   '@vuelidate/core':
     specifier: 2.0.1
     version: 2.0.1(vue@3.2.47)
@@ -1256,6 +1247,16 @@ packages:
       - supports-color
     dev: true
 
+  /@graphql-codegen/add@4.0.1(graphql@16.6.0):
+    resolution: {integrity: sha512-A7k+9eRfrKyyNfhWEN/0eKz09R5cp4XXxUuNLQAVm/aohmVI2xdMV4lM02rTlM6Pyou3cU/v0iZnhgo6IRpqeg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-codegen/plugin-helpers': 4.1.0(graphql@16.6.0)
+      graphql: 16.6.0
+      tslib: 2.5.0
+    dev: true
+
   /@graphql-codegen/cli@3.2.2(@babel/core@7.21.3)(@types/node@18.15.10)(graphql@16.6.0):
     resolution: {integrity: sha512-u+dm/SW1heLnUL4Tyf5Uv0AxOFhTCmUPHKwRLq2yE8MPhv7+Ti4vxxUP/XGoaMNRuHlN37wLI7tpFLV1Hhm22Q==}
     hasBin: true
@@ -1309,6 +1310,30 @@ packages:
       - utf-8-validate
     dev: true
 
+  /@graphql-codegen/client-preset@2.1.1(graphql@16.6.0):
+    resolution: {integrity: sha512-yDFiO2CimwjkH/YE5nwRcLkXoAVz31NC+WWvFQdyrR1UKQqe2tqV/bKLUifnSbBGS238ajHJ6AEzVlzIvI8OYQ==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@babel/helper-plugin-utils': 7.20.2
+      '@babel/template': 7.20.7
+      '@graphql-codegen/add': 4.0.1(graphql@16.6.0)
+      '@graphql-codegen/gql-tag-operations': 2.0.2(graphql@16.6.0)
+      '@graphql-codegen/plugin-helpers': 4.1.0(graphql@16.6.0)
+      '@graphql-codegen/typed-document-node': 3.0.2(graphql@16.6.0)
+      '@graphql-codegen/typescript': 3.0.2(graphql@16.6.0)
+      '@graphql-codegen/typescript-operations': 3.0.2(graphql@16.6.0)
+      '@graphql-codegen/visitor-plugin-common': 3.0.2(graphql@16.6.0)
+      '@graphql-tools/documents': 0.1.0(graphql@16.6.0)
+      '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
+      '@graphql-typed-document-node/core': 3.1.2(graphql@16.6.0)
+      graphql: 16.6.0
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: true
+
   /@graphql-codegen/core@3.1.0(graphql@16.6.0):
     resolution: {integrity: sha512-DH1/yaR7oJE6/B+c6ZF2Tbdh7LixF1K8L+8BoSubjNyQ8pNwR4a70mvc1sv6H7qgp6y1bPQ9tKE+aazRRshysw==}
     peerDependencies:
@@ -1319,6 +1344,22 @@ packages:
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       graphql: 16.6.0
       tslib: 2.5.0
+    dev: true
+
+  /@graphql-codegen/gql-tag-operations@2.0.2(graphql@16.6.0):
+    resolution: {integrity: sha512-FB4/Q0xP/lIjwnlxdeGAfGFAiL7AhzIJB9keNrosd4Xe9r8V8NuZ0+0/hGc7KdzHhojYF/ycmJD7V2JLWaf23Q==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-codegen/plugin-helpers': 4.1.0(graphql@16.6.0)
+      '@graphql-codegen/visitor-plugin-common': 3.0.2(graphql@16.6.0)
+      '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
+      auto-bind: 4.0.0
+      graphql: 16.6.0
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
     dev: true
 
   /@graphql-codegen/plugin-helpers@2.7.2(graphql@16.6.0):
@@ -1374,6 +1415,22 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@graphql-codegen/typed-document-node@3.0.2(graphql@16.6.0):
+    resolution: {integrity: sha512-RqX46y0GoMAcCfXjkUabOWpeSQ7tazpS5WyzWJNakpzXxNACx8NACaghU8zTEM+gjqtIp6YbFY/S92HQ34HbRQ==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-codegen/plugin-helpers': 4.1.0(graphql@16.6.0)
+      '@graphql-codegen/visitor-plugin-common': 3.0.2(graphql@16.6.0)
+      auto-bind: 4.0.0
+      change-case-all: 1.0.15
+      graphql: 16.6.0
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: true
+
   /@graphql-codegen/typescript-operations@3.0.2(graphql@16.6.0):
     resolution: {integrity: sha512-FYi5QcOsBZZvBKlzBQ+jpBCUxMo9g3fTYa2v1+rqooG6SiW/lQyk2CNL5tsYAt6TLmH3rws8rzSUil0DWNsflQ==}
     peerDependencies:
@@ -1390,7 +1447,7 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/typescript-urql-graphcache@2.4.4(@urql/exchange-graphcache@5.0.9)(graphql-tag@2.12.6)(graphql@16.6.0):
+  /@graphql-codegen/typescript-urql-graphcache@2.4.4(@urql/exchange-graphcache@5.2.0)(graphql-tag@2.12.6)(graphql@16.6.0):
     resolution: {integrity: sha512-bOkdt9bKJS1eRP5TJb+2aur1W/WvYnHfefdR94dZ7/9d4TfNPNx487RIstd9nJsBNM5HqmsaBZNQDER00gKkAw==}
     peerDependencies:
       '@urql/exchange-graphcache': ^4.1.1 || ^5.0.0
@@ -1399,27 +1456,9 @@ packages:
     dependencies:
       '@graphql-codegen/plugin-helpers': 3.1.2(graphql@16.6.0)
       '@graphql-codegen/visitor-plugin-common': 2.13.1(graphql@16.6.0)
-      '@urql/exchange-graphcache': 5.0.9(graphql@16.6.0)
+      '@urql/exchange-graphcache': 5.2.0(graphql@16.6.0)
       auto-bind: 4.0.0
       change-case-all: 1.0.15
-      graphql: 16.6.0
-      graphql-tag: 2.12.6(graphql@16.6.0)
-      tslib: 2.4.1
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: true
-
-  /@graphql-codegen/typescript-vue-urql@2.3.6(graphql-tag@2.12.6)(graphql@16.6.0):
-    resolution: {integrity: sha512-TjTEE0LGfnTGkohDq1x0z+9Iat5/1ffoDUnfaMWuMfr67FrZmjIBWGWVeRyBbZyZQ3+2AesbLsmNc26jpLT3OA==}
-    peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-      graphql-tag: ^2.0.0
-    dependencies:
-      '@graphql-codegen/plugin-helpers': 2.7.2(graphql@16.6.0)
-      '@graphql-codegen/visitor-plugin-common': 2.13.1(graphql@16.6.0)
-      auto-bind: 4.0.0
-      change-case-all: 1.0.14
       graphql: 16.6.0
       graphql-tag: 2.12.6(graphql@16.6.0)
       tslib: 2.4.1
@@ -1552,6 +1591,16 @@ packages:
       graphql: 16.6.0
       tslib: 2.5.0
       value-or-promise: 1.0.12
+    dev: true
+
+  /@graphql-tools/documents@0.1.0(graphql@16.6.0):
+    resolution: {integrity: sha512-1WQeovHv5S1M3xMzQxbSrG3yl6QOnsq2JUBnlg5/0aMM5R4GNMx6Ms+ROByez/dnuA81kstRuSK+2qpe+GaRIw==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      graphql: 16.6.0
+      lodash.sortby: 4.7.0
+      tslib: 2.5.0
     dev: true
 
   /@graphql-tools/executor-graphql-ws@0.0.12(graphql@16.6.0):
@@ -1734,7 +1783,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: true
 
   /@graphql-tools/prisma-loader@7.2.65(@types/node@18.15.10)(graphql@16.6.0):
@@ -1777,7 +1826,7 @@ packages:
       '@ardatan/relay-compiler': 12.0.0(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1835,7 +1884,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
+      '@graphql-typed-document-node/core': 3.1.2(graphql@16.6.0)
       graphql: 16.6.0
       tslib: 2.5.0
     dev: true
@@ -2248,7 +2297,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.2
       unimport: 3.0.4(rollup@3.20.2)
-      untyped: 1.3.2
+      untyped: 1.3.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2275,7 +2324,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.2
       unimport: 3.0.4(rollup@3.20.2)
-      untyped: 1.3.2
+      untyped: 1.3.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2297,7 +2346,7 @@ packages:
       std-env: 3.3.2
       ufo: 1.1.1
       unimport: 3.0.4(rollup@3.20.2)
-      untyped: 1.3.2
+      untyped: 1.3.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2319,7 +2368,7 @@ packages:
       std-env: 3.3.2
       ufo: 1.1.1
       unimport: 3.0.4(rollup@3.20.2)
-      untyped: 1.3.2
+      untyped: 1.3.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2654,21 +2703,6 @@ packages:
       is-reference: 1.2.1
       magic-string: 0.27.0
       rollup: 3.20.2
-    dev: true
-
-  /@rollup/plugin-graphql@2.0.3(graphql@16.6.0):
-    resolution: {integrity: sha512-IuuELo+0t29adRuLVg8izBFiUXFSFw8BmezespscynRfvfXSOV0S7g8RzQt75VzP6KHHVmNmlAgz+8qlkLur3w==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      graphql: '>=0.9.0'
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.20.2)
-      graphql: 16.6.0
-      graphql-tag: 2.12.6(graphql@16.6.0)
     dev: true
 
   /@rollup/plugin-inject@5.0.3(rollup@3.20.2):
@@ -3185,8 +3219,8 @@ packages:
       wonka: 6.3.0
     dev: true
 
-  /@urql/exchange-graphcache@5.0.9(graphql@16.6.0):
-    resolution: {integrity: sha512-GYhN4YDL+/alF6ci1OFOaL0Ze0GinmuYWrjQjpjl8kP/9ZbXY2LLN/3ZlRG9cCks1nxyea/9h4IS0mk5LS57lA==}
+  /@urql/exchange-graphcache@5.2.0(graphql@16.6.0):
+    resolution: {integrity: sha512-wHSTkp6TAhioauK/85DyiiQP5vz4EAJx7JQ+39OaHZ9TSdDqWkg4zs9VAhV3OzSopA9DNbihZVZ32w7q8BSUEA==}
     peerDependencies:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
@@ -3203,8 +3237,8 @@ packages:
       graphql: 16.6.0
     dev: true
 
-  /@urql/vue@1.0.4(graphql@16.6.0)(vue@3.2.47):
-    resolution: {integrity: sha512-soycMzRekSUCa+QQYSc9gF9qMOeIkfKnirFySVlW8mVhCRBwyjKvb37Z9eksRCqzGerKsn54zmdsgR66LKrGng==}
+  /@urql/vue@1.0.5(graphql@16.6.0)(vue@3.2.47):
+    resolution: {integrity: sha512-RiXiINAr/tBJTIRcbA+TPCwRvK/z3NJy7+NOQvXHV/c9nCDrmUgu7HqdVMtAmlh5jUIw3HR8nI8IrRUoJqchHw==}
     peerDependencies:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
       vue: ^2.7.0 || ^3.0.0
@@ -3790,7 +3824,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001472
+      caniuse-lite: 1.0.30001470
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3947,7 +3981,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001472
+      caniuse-lite: 1.0.30001470
       electron-to-chromium: 1.4.341
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10(browserslist@4.21.5)
@@ -4071,13 +4105,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001472
+      caniuse-lite: 1.0.30001470
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001472:
-    resolution: {integrity: sha512-xWC/0+hHHQgj3/vrKYY0AAzeIUgr7L9wlELIcAvZdDUHlhL/kNxMdnQLOSOQfP8R51ZzPhmHdyMkI0MMpmxCfg==}
+  /caniuse-lite@1.0.30001470:
+    resolution: {integrity: sha512-065uNwY6QtHCBOExzbV6m236DDhYCCtPmQUCoQtwkVqzud8v5QPidoMr6CoMkC2nfp6nksjttqWQRRh75LqUmA==}
     dev: true
 
   /capital-case@1.0.4:
@@ -4950,7 +4984,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001472
+      caniuse-lite: 1.0.30001470
       css-rule-stream: 1.1.0
       duplexer2: 0.0.2
       ldjson-stream: 1.2.1
@@ -7526,6 +7560,10 @@ packages:
     resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
     dev: true
 
+  /lodash.sortby@4.7.0:
+    resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
+    dev: true
+
   /lodash.template@4.5.0:
     resolution: {integrity: sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==}
     dependencies:
@@ -8218,7 +8256,7 @@ packages:
       unenv: 1.2.2
       unimport: 3.0.4(rollup@3.20.2)
       unplugin: 1.3.1
-      untyped: 1.3.2
+      untyped: 1.3.1
       vue: 3.2.47
       vue-bundle-renderer: 1.0.3
       vue-devtools-stub: 0.1.0
@@ -10678,8 +10716,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /untyped@1.3.2:
-    resolution: {integrity: sha512-z219Z65rOGD6jXIvIhpZFfwWdqQckB8sdZec2NO+TkcH1Bph7gL0hwLzRJs1KsOo4Jz4mF9guBXhsEnyEBGVfw==}
+  /untyped@1.3.1:
+    resolution: {integrity: sha512-kTEm6MsCrAtfMqwlXeoN++F3Z+xBZjS0jBVW/Kiq58BYsAP5aV5Qzfo2Yj+SFrVHeBNBtLfHhbTm+2OBuThKYg==}
     hasBin: true
     dependencies:
       '@babel/core': 7.21.3

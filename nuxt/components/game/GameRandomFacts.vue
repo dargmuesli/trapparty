@@ -64,22 +64,20 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID from '~/gql/query/game/gameRandomFactsVoteByPlayerIdAndRoundId.gql'
-import {
-  GameRandomFactsVoteByPlayerIdAndRoundIdQuery,
-  useAllGameRandomFactsRoundsQuery,
-  useCreateGameRandomFactsVoteMutation,
-  usePlayerByInvitationCodeFnQuery,
-  useUpdateGameRandomFactsRoundByIdMutation,
-} from '~/gql/generated'
+import { useCreateGameRandomFactsVoteMutation } from '~/gql/documents/mutations/game/createGameRandomFactsVote'
+import { useUpdateGameRandomFactsRoundByIdMutation } from '~/gql/documents/mutations/game/updateGameRandomFactsRoundById'
+import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
+import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
 import { useStore } from '~/store'
+import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
+import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
+import { useGameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
 export interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})
 
-const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
 const fireError = useFireError()
@@ -89,16 +87,13 @@ const updateGameRandomFactsRoundByIdMutation =
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  variables: {
-    gameId: props.gameId,
-  },
+  gameId: props.gameId,
 })
 const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
-  variables: {
-    invitationCode:
-      store.participationData.role === 'player' &&
-      store.participationData?.invitationCode,
-  },
+  invitationCode:
+    store.participationData.role === 'player'
+      ? store.participationData?.invitationCode
+      : '',
 })
 
 // api data
@@ -129,9 +124,9 @@ const voteAnswer = ref<number>()
 const round = computed(() => {
   if (!allGameRandomFactsRounds.value) return
 
-  const roundsActive = allGameRandomFactsRounds.value?.nodes.filter(
-    (x) => x?.answerCorrect === null
-  )
+  const roundsActive = allGameRandomFactsRounds.value?.nodes
+    .map((x) => getGameRandomFactsRoundItem(x))
+    .filter((x) => x?.answerCorrect === null)
 
   if (!roundsActive) {
     consola.error('There are no active rounds!')
@@ -156,8 +151,8 @@ const choose = async (answer: number) => {
   const result = await createGameRandomFactsVoteMutation.executeMutation({
     gameRandomFactsVoteInput: {
       answer,
-      playerId: +player.value.id,
-      roundId: +round.value.id,
+      playerId: player.value.id,
+      roundId: round.value.id,
     },
   })
 
@@ -176,7 +171,7 @@ const choose = async (answer: number) => {
         gameRandomFactsRoundPatch: {
           answerCorrect: answer,
         },
-        id: +round.value.id,
+        id: round.value.id,
       }
     )
 
@@ -191,25 +186,20 @@ const choose = async (answer: number) => {
 const voteFetch = async () => {
   if (!player.value || !round.value) return
 
-  const result = await $urql.value
-    .query<GameRandomFactsVoteByPlayerIdAndRoundIdQuery>(
-      GAME_RANDOM_FACTS_VOTE_BY_PLAYER_AND_ROUND_ID,
-      {
-        playerId: player.value?.id,
-        roundId: round.value?.id,
-      },
-      {
-        fetchPolicy: 'network-only',
-      }
-    )
-    .toPromise()
+  const result = await useGameRandomFactsVoteByPlayerIdAndRoundIdQuery({
+    playerId: player.value?.id,
+    roundId: round.value?.id,
+  }).executeQuery({
+    fetchPolicy: 'network-only',
+  })
 
-  if (result.error) fireError({ error: result.error }, api)
+  if (result.error.value) fireError({ error: result.error.value }, api)
 
   if (!result) return
 
-  voteAnswer.value =
-    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId?.answer
+  voteAnswer.value = getGameRandomFactsVoteItem(
+    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId
+  )?.answer
 }
 
 // lifecycle

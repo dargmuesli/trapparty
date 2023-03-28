@@ -1,7 +1,0 @@
-fragment gameRandomFactsRoundFields on GameRandomFactsRound {
-  nodeId
-  id
-  answerCorrect
-  gameId
-  questionerName
-}

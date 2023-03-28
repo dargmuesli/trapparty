@@ -20,18 +20,17 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
-import { AllGamesQuery, useGameByIdQuery } from '~/gql/generated'
+import { GameType } from '~/gql/generated/graphql'
+import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
+import { getGameItem } from '~/gql/documents/fragments/gameItem'
+import { useAllGamesQuery } from '~/gql/documents/queries/game/allGames'
 
-const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
 
 // queries
 const gameByIdQuery = await useGameByIdQuery({
-  variables: {
-    gameId: +route.params.gameId,
-  },
+  gameId: +route.params.gameId,
 })
 
 // api data
@@ -43,7 +42,7 @@ const api = computed(() =>
     ...getApiMeta([gameByIdQuery]),
   })
 )
-const game = computed(() => gameByIdQuery.data.value?.gameById)
+const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
 
 // data
 const games = ref<Array<any>>()
@@ -54,22 +53,20 @@ const title = t('title')
 const init = async () => {
   if (!game.value) return
 
-  const gamesResult = await $urql.value
-    .query<AllGamesQuery>(GAMES_ALL_QUERY, {
-      eventId: +game.value.eventId,
-      type: 'RANDOM_FACTS',
-    })
-    .toPromise()
+  const gamesResult = await useAllGamesQuery({
+    eventId: game.value.eventId,
+    type: GameType.RandomFacts,
+  }).executeQuery()
 
-  if (gamesResult.error) {
-    api.value.errors.push(gamesResult.error)
+  if (gamesResult.error.value) {
+    api.value.errors.push(gamesResult.error.value)
     // TODO: add watcher instead
     consola.error(gamesResult.error)
   }
 
   if (!gamesResult) return loadingStop()
 
-  games.value = gamesResult.data?.allGames?.nodes
+  games.value = gamesResult.data.value?.allGames?.nodes
 
   loadingStop()
 }

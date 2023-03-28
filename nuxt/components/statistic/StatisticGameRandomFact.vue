@@ -21,47 +21,31 @@
 <script setup lang="ts">
 import consola from 'consola'
 
-import GAME_RANDOM_FACTS_VOTES_ALL_QUERY from '~/gql/query/game/allGameRandomFactsVotes.gql'
-
+import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
+import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
 import {
-  AllGameRandomFactsRoundsQuery,
-  GameRandomFactsVotesQuery,
-  useAllGameRandomFactsRoundsQuery,
-} from '~/gql/generated'
+  GameRandomFactsRoundItemFragment,
+  GameRandomFactsVoteItemFragment,
+} from '~/gql/generated/graphql'
+import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
+import { useGameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
 
 export interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})
 
-const { $urql } = useNuxtApp()
 const { t } = useI18n()
 
 // data
 const highscores = ref<number[]>([])
 const leaderboard = ref<Array<[string, number]>>([])
-const rounds = ref<
-  NonNullable<
-    ArrayElement<
-      NonNullable<
-        AllGameRandomFactsRoundsQuery['allGameRandomFactsRounds']
-      >['nodes']
-    >
-  >[]
->([])
-const votes = ref<
-  NonNullable<
-    ArrayElement<
-      NonNullable<GameRandomFactsVotesQuery['allGameRandomFactsVotes']>['nodes']
-    >
-  >[]
->([])
+const rounds = ref<GameRandomFactsRoundItemFragment[]>([])
+const votes = ref<GameRandomFactsVoteItemFragment[]>([])
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  variables: {
-    gameId: props.gameId,
-  },
+  gameId: props.gameId,
 })
 
 // api data
@@ -80,30 +64,32 @@ const allGameRandomFactsRoundsResult = computed(
 // method
 const init = async () => {
   // TODO: use single query
-  rounds.value = arrayRemoveNulls(allGameRandomFactsRoundsResult.value?.nodes)
+  rounds.value = arrayRemoveNulls(
+    allGameRandomFactsRoundsResult.value?.nodes.map((x) =>
+      getGameRandomFactsRoundItem(x)
+    )
+  )
 
   const leaderboardObject = {} as Record<string, number>
 
   for (const round of rounds.value) {
-    const result = await $urql.value
-      .query<GameRandomFactsVotesQuery>(
-        GAME_RANDOM_FACTS_VOTES_ALL_QUERY,
-        {
-          roundId: +round.id,
-        },
-        {
-          fetchPolicy: 'network-only',
-        }
-      )
-      .toPromise()
+    const result = await useGameRandomFactsVotesQuery({
+      roundId: round.id,
+    }).executeQuery({
+      fetchPolicy: 'network-only',
+    })
 
-    if (result.error) {
-      api.value.errors.push(result.error)
-      consola.error(result.error)
+    if (result.error.value) {
+      api.value.errors.push(result.error.value)
+      consola.error(result.error.value)
     }
 
     if (!result) return
-    votes.value = arrayRemoveNulls(result.data?.allGameRandomFactsVotes?.nodes)
+    votes.value = arrayRemoveNulls(
+      result.data.value?.allGameRandomFactsVotes?.nodes.map((x) =>
+        getGameRandomFactsVoteItem(x)
+      )
+    )
 
     for (const vote of votes.value) {
       if (!(vote.playerId in leaderboardObject)) {

@@ -47,25 +47,25 @@
 import consola from 'consola'
 import { UnwrapRef } from 'vue'
 
-import GAMES_ALL_QUERY from '~/gql/query/game/allGames.gql'
-import { useEventByNameQuery, AllGamesQuery } from '~/gql/generated'
+import { getEventItem } from '~/gql/documents/fragments/eventItem'
+import { getGameItem } from '~/gql/documents/fragments/gameItem'
+import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
+import { GameItemFragment } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
+import { useAllGamesQuery } from '~~/gql/documents/queries/game/allGames'
 
 export interface Props {
   eventName: string
 }
 const props = withDefaults(defineProps<Props>(), {})
 
-const { $urql } = useNuxtApp()
 const localePath = useLocalePath()
 const { t } = useI18n()
 const store = useStore()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  variables: {
-    eventName: props.eventName,
-  },
+  eventName: props.eventName,
 })
 
 // api data
@@ -77,39 +77,39 @@ const api = computed(() =>
     ...getApiMeta([eventByNameQuery]),
   })
 )
-const trapPartyEvent = computed(() => eventByNameQuery.data.value?.eventByName)
+const trapPartyEvent = computed(() =>
+  getEventItem(eventByNameQuery.data.value?.eventByName)
+)
 
 // data
-const games = ref<
-  NonNullable<ArrayElement<NonNullable<AllGamesQuery['allGames']>['nodes']>>[]
->([])
+const games = ref<GameItemFragment[]>([])
 const title = t('title', { name: props.eventName })
 
 // methods
 const fetchGames = async (
   trapPartyEventLocal: UnwrapRef<typeof trapPartyEvent>
 ) => {
-  if (!trapPartyEventLocal) return
+  if (!trapPartyEventLocal?.id) return
 
-  const result = await $urql.value
-    .query<AllGamesQuery>(GAMES_ALL_QUERY, {
-      eventId: trapPartyEventLocal.id,
-    })
-    .toPromise()
+  const result = await useAllGamesQuery({
+    eventId: trapPartyEventLocal.id,
+  }).executeQuery()
 
-  if (result.error) {
-    api.value.errors.push(result.error)
-    consola.error(result.error)
+  if (result.error.value) {
+    api.value.errors.push(result.error.value)
+    consola.error(result.error.value)
   }
 
-  const allGames = arrayRemoveNulls(result.data?.allGames?.nodes)
+  const allGames = arrayRemoveNulls(
+    result.data.value?.allGames?.nodes.map((x) => getGameItem(x))
+  )
 
   games.value = allGames
 }
 
 // lifecycle
 watch(
-  () => trapPartyEvent.value,
+  trapPartyEvent,
   async (currentValue, _oldValue) => await fetchGames(currentValue)
 )
 

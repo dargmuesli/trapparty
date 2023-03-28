@@ -1,7 +1,0 @@
-fragment playerFields on Player {
-  nodeId
-  id
-  invitationCode
-  name
-  teamId
-}
