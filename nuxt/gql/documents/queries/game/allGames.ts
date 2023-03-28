@@ -1,11 +1,8 @@
 import { useQuery } from '@urql/vue'
 import { graphql } from '~/gql/generated'
-import { GameType } from '~/gql/generated/graphql'
+import { AllGamesQueryVariables } from '~/gql/generated/graphql'
 
-export const useAllGamesQuery = (variables: {
-  eventId: number
-  type: GameType
-}) =>
+export const useAllGamesQuery = (variables: AllGamesQueryVariables) =>
   useQuery({
     query: graphql(`
       query allGames($eventId: Int!, $type: GameType) {
