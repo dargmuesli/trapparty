@@ -625,17 +625,6 @@ export type DeleteGameByIdInput = {
   id: Scalars['Int']
 }
 
-/** All input for the `deleteGameByName` mutation. */
-export type DeleteGameByNameInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']>
-  /** The games's name. */
-  name: Scalars['String']
-}
-
 /** All input for the `deleteGame` mutation. */
 export type DeleteGameInput = {
   /**
@@ -1721,8 +1710,6 @@ export type Mutation = {
   deleteGameByEventIdAndName?: Maybe<DeleteGamePayload>
   /** Deletes a single `Game` using a unique key. */
   deleteGameById?: Maybe<DeleteGamePayload>
-  /** Deletes a single `Game` using a unique key. */
-  deleteGameByName?: Maybe<DeleteGamePayload>
   /** Deletes a single `GameRandomFactsRound` using its globally unique id. */
   deleteGameRandomFactsRound?: Maybe<DeleteGameRandomFactsRoundPayload>
   /** Deletes a single `GameRandomFactsRound` using a unique key. */
@@ -1775,8 +1762,6 @@ export type Mutation = {
   updateGameByEventIdAndName?: Maybe<UpdateGamePayload>
   /** Updates a single `Game` using a unique key and a patch. */
   updateGameById?: Maybe<UpdateGamePayload>
-  /** Updates a single `Game` using a unique key and a patch. */
-  updateGameByName?: Maybe<UpdateGamePayload>
   /** Updates a single `GameRandomFactsRound` using its globally unique id and a patch. */
   updateGameRandomFactsRound?: Maybe<UpdateGameRandomFactsRoundPayload>
   /** Updates a single `GameRandomFactsRound` using a unique key and a patch. */
@@ -1912,11 +1897,6 @@ export type MutationDeleteGameByIdArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameByNameArgs = {
-  input: DeleteGameByNameInput
-}
-
-/** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteGameRandomFactsRoundArgs = {
   input: DeleteGameRandomFactsRoundInput
 }
@@ -2044,11 +2024,6 @@ export type MutationUpdateGameByEventIdAndNameArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateGameByIdArgs = {
   input: UpdateGameByIdInput
-}
-
-/** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameByNameArgs = {
-  input: UpdateGameByNameInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2302,7 +2277,6 @@ export type Query = Node & {
   game?: Maybe<Game>
   gameByEventIdAndName?: Maybe<Game>
   gameById?: Maybe<Game>
-  gameByName?: Maybe<Game>
   /** Reads a single `GameRandomFactsRound` using its globally unique `ID`. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
   gameRandomFactsRoundById?: Maybe<GameRandomFactsRound>
@@ -2501,11 +2475,6 @@ export type QueryGameByEventIdAndNameArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryGameByIdArgs = {
   id: Scalars['Int']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryGameByNameArgs = {
-  name: Scalars['String']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3051,19 +3020,6 @@ export type UpdateGameByIdInput = {
   gamePatch: GamePatch
   /** The games's internal id. */
   id: Scalars['Int']
-}
-
-/** All input for the `updateGameByName` mutation. */
-export type UpdateGameByNameInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']>
-  /** An object where the defined keys will be set on the `Game` being updated. */
-  gamePatch: GamePatch
-  /** The games's name. */
-  name: Scalars['String']
 }
 
 /** All input for the `updateGame` mutation. */

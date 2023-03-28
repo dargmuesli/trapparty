@@ -3350,26 +3350,6 @@ export default {
             ],
           },
           {
-            name: 'deleteGameByName',
-            type: {
-              kind: 'OBJECT',
-              name: 'DeleteGamePayload',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'input',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
             name: 'deleteGameRandomFactsRound',
             type: {
               kind: 'OBJECT',
@@ -3871,26 +3851,6 @@ export default {
           },
           {
             name: 'updateGameById',
-            type: {
-              kind: 'OBJECT',
-              name: 'UpdateGamePayload',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'input',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'updateGameByName',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGamePayload',
@@ -5487,26 +5447,6 @@ export default {
             args: [
               {
                 name: 'id',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'gameByName',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'name',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
