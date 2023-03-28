@@ -56,7 +56,7 @@ const init = async () => {
 
   const gamesResult = await $urql.value
     .query<AllGamesQuery>(GAMES_ALL_QUERY, {
-      eventId: +game.value.eventId,
+      eventId: game.value.eventId,
       type: 'RANDOM_FACTS',
     })
     .toPromise()

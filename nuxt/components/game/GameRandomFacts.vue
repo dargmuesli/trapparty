@@ -153,8 +153,8 @@ const choose = async (answer: number) => {
   const result = await createGameRandomFactsVoteMutation.executeMutation({
     gameRandomFactsVoteInput: {
       answer,
-      playerId: +player.value.id,
-      roundId: +round.value.id,
+      playerId: player.value.id,
+      roundId: round.value.id,
     },
   })
 
@@ -173,7 +173,7 @@ const choose = async (answer: number) => {
         gameRandomFactsRoundPatch: {
           answerCorrect: answer,
         },
-        id: +round.value.id,
+        id: round.value.id,
       }
     )
 

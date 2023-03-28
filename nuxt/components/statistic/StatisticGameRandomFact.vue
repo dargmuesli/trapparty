@@ -79,7 +79,7 @@ const init = async () => {
       .query<GameRandomFactsVotesQuery>(
         GAME_RANDOM_FACTS_VOTES_ALL_QUERY,
         {
-          roundId: +round.id,
+          roundId: round.id,
         },
         {
           fetchPolicy: 'network-only',
