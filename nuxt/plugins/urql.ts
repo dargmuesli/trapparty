@@ -2,7 +2,6 @@ import { Pinia } from '@pinia/nuxt/dist/runtime/composables'
 import {
   createClient,
   ssrExchange,
-  dedupExchange,
   fetchExchange,
   ClientOptions,
 } from '@urql/core'
@@ -141,7 +140,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       : 'https://trapparty-postgraphile.' + getDomainTldPort(host) + '/graphql',
     exchanges: [
       ...(config.public.isInProduction ? [] : [devtoolsExchange]),
-      dedupExchange,
       cache,
       ssr, // `ssr` must be before `fetchExchange`
       fetchExchange,
