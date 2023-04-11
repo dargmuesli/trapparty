@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import type { ChartData, ChartOptions } from 'chart.js'
 import Color from 'color'
-import consola from 'consola'
+import { consola } from 'consola'
 import Rainbow from 'rainbowvis.js'
 
 import { useStatsQuery } from '~/gql/documents/queries/stats'

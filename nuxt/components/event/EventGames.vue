@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 import { UnwrapRef } from 'vue'
 
 import { getEventItem } from '~/gql/documents/fragments/eventItem'

@@ -244,7 +244,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { useStore } from '~/store'
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'

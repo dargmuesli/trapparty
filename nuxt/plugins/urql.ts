@@ -8,7 +8,7 @@ import {
 import { cacheExchange } from '@urql/exchange-graphcache'
 import { devtoolsExchange } from '@urql/devtools'
 import { provideClient } from '@urql/vue'
-import consola from 'consola'
+import { consola } from 'consola'
 import { ref } from 'vue'
 
 import schema from '~/gql/generated/introspection'

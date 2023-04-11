@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { useStore } from '~/store'
 import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
