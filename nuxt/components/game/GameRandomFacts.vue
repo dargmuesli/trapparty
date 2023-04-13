@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { useCreateGameRandomFactsVoteMutation } from '~/gql/documents/mutations/game/createGameRandomFactsVote'
 import { useUpdateGameRandomFactsRoundByIdMutation } from '~/gql/documents/mutations/game/updateGameRandomFactsRoundById'

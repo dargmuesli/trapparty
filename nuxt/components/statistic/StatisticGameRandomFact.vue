@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
 import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'

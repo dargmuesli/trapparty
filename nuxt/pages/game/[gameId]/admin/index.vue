@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { useCreateGameRandomFactsRoundMutation } from '~/gql/documents/mutations/game/createGameRandomFactsRound'
 import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'

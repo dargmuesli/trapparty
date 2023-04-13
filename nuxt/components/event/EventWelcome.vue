@@ -105,7 +105,7 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
 import { useStore } from '~/store'

@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import consola from 'consola'
+import { consola } from 'consola'
 
 import { usePlayerNameByIdQuery } from '~/gql/documents/queries/player/playerNameById'
 
