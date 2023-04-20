@@ -58,7 +58,7 @@
     "@types/lodash-es": "4.17.7",
     "@types/lodash.merge": "4.6.7",
     "@types/node": "18.15.12",
-    "@urql/core": "4.0.4",
+    "@urql/core": "4.0.6",
     "@urql/devtools": "2.0.3",
     "@urql/exchange-graphcache": "6.0.1",
     "@urql/vue": "1.1.0",
