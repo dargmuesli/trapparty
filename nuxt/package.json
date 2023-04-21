@@ -60,7 +60,7 @@
     "@types/node": "18.15.12",
     "@urql/core": "4.0.6",
     "@urql/devtools": "2.0.3",
-    "@urql/exchange-graphcache": "6.0.1",
+    "@urql/exchange-graphcache": "6.0.2",
     "@urql/vue": "1.1.0",
     "@vuelidate/core": "2.0.2",
     "@vuelidate/validators": "2.0.2",
