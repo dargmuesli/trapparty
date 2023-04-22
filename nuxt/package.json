@@ -85,7 +85,7 @@
     "lint-staged": "13.2.1",
     "lodash-es": "4.17.21",
     "lodash.merge": "4.6.2",
-    "nuxt": "3.4.1",
+    "nuxt": "3.4.2",
     "pinia": "2.0.34",
     "pnpm": "8.3.1",
     "postcss": "8.4.23",
