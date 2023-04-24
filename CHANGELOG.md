@@ -1,3 +1,10 @@
+## [3.10.3](https://github.com/dargmuesli/trapparty/compare/3.10.2...3.10.3) (2023-04-24)
+
+
+### Bug Fixes
+
+* **docker:** account for pnpm workspace ([f2e24ad](https://github.com/dargmuesli/trapparty/commit/f2e24adfe2631fdf0acc5747bc510d37e1a6f8d4))
+
 ## [3.10.2](https://github.com/dargmuesli/trapparty/compare/3.10.1...3.10.2) (2023-04-24)
 
 
