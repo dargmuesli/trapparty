@@ -13,7 +13,7 @@
     "start": "node .output/server/index.mjs",
     "lint": "pnpm lint:js && pnpm lint:ts && pnpm lint:style",
     "lint:js": "eslint --cache --ext .js,.ts,.vue --ignore-path .gitignore .",
-    "lint:ts": "pnpm nuxt typecheck",
+    "lint:ts": "nuxt typecheck",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "pnpm lint:js --fix && pnpm lint:ts --fix && pnpm lint:style --fix",
     "lint:quiet": "pnpm lint:js --quiet && pnpm lint:style --quiet",
@@ -29,7 +29,7 @@
     "test:integration:docker:dev": "pnpm test:integration:docker:br pnpm test:integration:dev",
     "test:integration:docker:prod": "pnpm test:integration:docker:br pnpm test:integration:prod",
     "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config .codegenrc.ts",
-    "prepare": "pnpm nuxt prepare"
+    "prepare": "nuxt prepare"
   },
   "devDependencies": {
     "@babel/core": "7.21.4",
