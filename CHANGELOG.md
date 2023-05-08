@@ -1,3 +1,10 @@
+## [3.10.5](https://github.com/dargmuesli/trapparty/compare/3.10.4...3.10.5) (2023-05-08)
+
+
+### Bug Fixes
+
+* schedule release ([e5a673b](https://github.com/dargmuesli/trapparty/commit/e5a673b21634fc1a6663d4957486aeb298a5c499))
+
 ## [3.10.4](https://github.com/dargmuesli/trapparty/compare/3.10.3...3.10.4) (2023-04-25)
 
 
