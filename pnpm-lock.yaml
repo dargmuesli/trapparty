@@ -20,8 +20,8 @@ importers:
         specifier: 7.21.8
         version: 7.21.8
       '@dargmuesli/nuxt-cookie-control':
-        specifier: 5.8.5
-        version: 5.8.5(webpack@5.82.0)
+        specifier: 5.9.0
+        version: 5.9.0(webpack@5.82.0)
       '@funken-studio/sitemap-nuxt-3':
         specifier: 4.0.4
         version: 4.0.4
@@ -1152,8 +1152,8 @@ packages:
       - supports-color
     dev: true
 
-  /@dargmuesli/nuxt-cookie-control@5.8.5(webpack@5.82.0):
-    resolution: {integrity: sha512-9GBFsNlHdYSdAfJe5Ktc4LonzEC8OON0xRdcfGQUjDUjwS0tcdJ8rLMRseP9hwsJg9CczotERzmOeLXuYaNJMg==}
+  /@dargmuesli/nuxt-cookie-control@5.9.0(webpack@5.82.0):
+    resolution: {integrity: sha512-BuddHgZWrt5TjZQlv8VfytTt4z22qb4gXW5zA9udDv8b4cq46+c5rBCqWVbv8xzeCdI3dFDpxAOSRRdct31+mg==}
     engines: {node: '>=16'}
     dependencies:
       '@nuxt/kit': 3.4.3
