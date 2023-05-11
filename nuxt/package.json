@@ -85,7 +85,7 @@
     "lodash.merge": "4.6.2",
     "nuxt": "3.4.3",
     "pinia": "2.0.36",
-    "pnpm": "8.4.0",
+    "pnpm": "8.5.0",
     "postcss": "8.4.23",
     "postcss-html": "1.5.0",
     "prettier": "2.8.8",
