@@ -2,7 +2,7 @@ import localeDe from './locales/de.json'
 import { JWT_NAME, LOCALES } from './utils/constants'
 
 const BASE_URL =
-  'https://' +
+  'https://trapparty.' +
   (process.env.NUXT_PUBLIC_STACK_DOMAIN ||
     `${process.env.HOST || 'localhost'}:3000`)
 
