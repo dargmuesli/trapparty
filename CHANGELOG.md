@@ -1,3 +1,12 @@
+## [3.10.8](https://github.com/dargmuesli/trapparty/compare/3.10.7...3.10.8) (2023-06-18)
+
+
+### Bug Fixes
+
+* **e2e:** correct cypress base ([43e983b](https://github.com/dargmuesli/trapparty/commit/43e983b58c9ba16fc68b35e67c39301cd3bbd168))
+* **legal:** update email address ([46626e4](https://github.com/dargmuesli/trapparty/commit/46626e43bbbfcda2f164ffd05de2eb10ecd2660a))
+* **nuxt:** correct base url ([6a42f08](https://github.com/dargmuesli/trapparty/commit/6a42f0899b4cee78daa727a9c844e6139a695f2c))
+
 ## [3.10.7](https://github.com/dargmuesli/trapparty/compare/3.10.6...3.10.7) (2023-06-05)
 
 
