@@ -1,3 +1,10 @@
+## [3.10.10](https://github.com/dargmuesli/trapparty/compare/3.10.9...3.10.10) (2023-06-18)
+
+
+### Performance Improvements
+
+* **i18n:** use lazy loading ([dba86ee](https://github.com/dargmuesli/trapparty/commit/dba86ee9a6bae17379cda0392fc4457d699b4ce5))
+
 ## [3.10.9](https://github.com/dargmuesli/trapparty/compare/3.10.8...3.10.9) (2023-06-18)
 
 
