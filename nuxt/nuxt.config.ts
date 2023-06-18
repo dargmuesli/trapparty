@@ -130,6 +130,6 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     },
     locales: LOCALES,
-    vueI18n: '~/i18n.config.ts',
+    vueI18n: './i18n.config.ts',
   },
 })
