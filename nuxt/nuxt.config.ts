@@ -1,4 +1,3 @@
-import localeDe from './locales/de.json'
 import { JWT_NAME, LOCALES } from './utils/constants'
 
 const BASE_URL =
@@ -32,6 +31,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       googleAnalyticsId: '', // set via environment variable `NUXT_PUBLIC_GOOGLE_ANALYTICS_ID` only
+      i18n: {
+        baseUrl: BASE_URL,
+      },
       isInProduction: process.env.NODE_ENV === 'production',
       isTesting: false, // set via environment variable `NUXT_PUBLIC_IS_TESTING` only
       stagingHost:
@@ -122,20 +124,12 @@ export default defineNuxtConfig({
     logLevel: 'warning',
   },
   i18n: {
-    baseUrl: BASE_URL,
     defaultLocale: 'de', // Must be set for the default prefix_except_default prefix strategy.
     detectBrowserLanguage: {
       cookieSecure: true,
       redirectOn: 'root',
     },
     locales: LOCALES,
-    vueI18n: {
-      messages: {
-        de: localeDe,
-        // en: localeEn,
-      },
-      fallbackWarn: false, // covered by linting
-      missingWarn: false, // covered by linting
-    },
+    vueI18n: './i18n.config.ts',
   },
 })
