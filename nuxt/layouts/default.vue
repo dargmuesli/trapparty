@@ -1,5 +1,9 @@
 <template>
-  <div class="container mx-auto p-4 md:px-8" :data-is-loading="isLoading">
+  <div
+    class="container mx-auto p-4 md:px-8"
+    :data-is-loading="isLoading"
+    data-testid="is-loading"
+  >
     <div class="flex flex-col min-h-screen pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="t('home')" :to="localePath('/')">
