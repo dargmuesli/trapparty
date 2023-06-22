@@ -22,11 +22,11 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const config = useRuntimeConfig()
+const runtimeConfig = useRuntimeConfig()
 
 // computations
 const year = computed(() =>
-  config.public.isTesting ? 1337 : new Date().getFullYear()
+  runtimeConfig.public.isTesting ? 1337 : new Date().getFullYear()
 )
 </script>
 
