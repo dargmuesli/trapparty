@@ -126,8 +126,8 @@ importers:
         specifier: 4.2.3
         version: 4.2.3
       consola:
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.2.0
+        version: 3.2.0
       cookie:
         specifier: 0.5.0
         version: 0.5.0
@@ -2700,7 +2700,7 @@ packages:
     dependencies:
       '@nuxt/schema': 3.5.3
       c12: 1.4.2
-      consola: 3.1.0
+      consola: 3.2.0
       defu: 6.1.2
       globby: 13.2.0
       hash-sum: 2.0.0
@@ -2726,7 +2726,7 @@ packages:
     dependencies:
       '@nuxt/schema': 3.6.0
       c12: 1.4.2
-      consola: 3.1.0
+      consola: 3.2.0
       defu: 6.1.2
       globby: 13.2.0
       hash-sum: 2.0.0
@@ -2752,7 +2752,7 @@ packages:
     dependencies:
       '@nuxt/schema': 3.6.1
       c12: 1.4.2
-      consola: 3.1.0
+      consola: 3.2.0
       defu: 6.1.2
       globby: 13.2.0
       hash-sum: 2.0.0
@@ -2833,7 +2833,7 @@ packages:
       '@nuxt/kit': 3.6.1
       chalk: 5.2.0
       ci-info: 3.8.0
-      consola: 3.1.0
+      consola: 3.2.0
       create-require: 1.1.1
       defu: 6.1.2
       destr: 1.2.2
@@ -2871,7 +2871,7 @@ packages:
       '@vitejs/plugin-vue-jsx': 3.0.1(vite@4.3.9)(vue@3.3.4)
       autoprefixer: 10.4.14(postcss@8.4.24)
       clear: 0.1.0
-      consola: 3.1.0
+      consola: 3.2.0
       cssnano: 6.0.1(postcss@8.4.24)
       defu: 6.1.2
       esbuild: 0.18.10
@@ -4905,8 +4905,8 @@ packages:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
     dev: true
 
-  /consola@3.1.0:
-    resolution: {integrity: sha512-rrrJE6rP0qzl/Srg+C9x/AE5Kxfux7reVm1Wh0wCjuXvih6DqZgqDZe8auTD28fzJ9TF0mHlSDrPpWlujQRo1Q==}
+  /consola@3.2.0:
+    resolution: {integrity: sha512-NLgzNbAYHKIeCi+wrymxkwZX42jAMBDB/8gtR+JCgHzegj92hXNoLmYrfA78mfmvopmg/z0PNgYyFAwY5emnZg==}
     dev: true
 
   /console-control-strings@1.1.0:
@@ -8310,7 +8310,7 @@ packages:
       chalk: 5.2.0
       chokidar: 3.5.3
       citty: 0.1.1
-      consola: 3.1.0
+      consola: 3.2.0
       cookie-es: 1.0.0
       defu: 6.1.2
       destr: 2.0.0
@@ -10869,7 +10869,7 @@ packages:
   /unenv@1.5.1:
     resolution: {integrity: sha512-tQHlmQUPyIoyGc2bF8phugmQd6wVatkVe5FqxxhM1vHfmPKWTiogSVTHA0mO8gNztDKZLpBEJx3M3CJrTZyExg==}
     dependencies:
-      consola: 3.1.0
+      consola: 3.2.0
       defu: 6.1.2
       mime: 3.0.0
       node-fetch-native: 1.2.0
