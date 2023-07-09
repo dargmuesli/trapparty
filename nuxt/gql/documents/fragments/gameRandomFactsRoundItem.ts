@@ -11,5 +11,5 @@ export const GameRandomFactsRoundItem = graphql(`
 `)
 
 export const getGameRandomFactsRoundItem = (
-  fragment?: FragmentType<typeof GameRandomFactsRoundItem> | null
+  fragment?: FragmentType<typeof GameRandomFactsRoundItem> | null,
 ) => useFragment(GameRandomFactsRoundItem, fragment)

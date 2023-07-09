@@ -3,7 +3,7 @@ import { graphql } from '~/gql/generated'
 import { PlayerNameByIdQueryVariables } from '~/gql/generated/graphql'
 
 export const usePlayerNameByIdQuery = (
-  variables: PlayerNameByIdQueryVariables
+  variables: PlayerNameByIdQueryVariables,
 ) =>
   useQuery({
     query: graphql(`

@@ -3,7 +3,7 @@ import { graphql } from '~/gql/generated'
 import { PlayerByInvitationCodeFnQueryVariables } from '~/gql/generated/graphql'
 
 export const usePlayerByInvitationCodeFnQuery = (
-  variables: PlayerByInvitationCodeFnQueryVariables
+  variables: PlayerByInvitationCodeFnQueryVariables,
 ) =>
   useQuery({
     query: graphql(`

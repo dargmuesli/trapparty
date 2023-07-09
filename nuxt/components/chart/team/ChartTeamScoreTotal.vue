@@ -46,7 +46,7 @@ const api = computed(() =>
       ...statsQuery.data.value,
     },
     ...getApiMeta([statsQuery]),
-  })
+  }),
 )
 const allTeams = computed(() => statsQuery.data.value?.allTeams)
 const allGames = computed(() => statsQuery.data.value?.allGames)
@@ -90,7 +90,7 @@ const init = () => {
     donationsPerHead.push(
       typeof teamPlayerCountObject === 'undefined'
         ? 0
-        : team.donationAmount / teamPlayerCountObject.playerCount
+        : team.donationAmount / teamPlayerCountObject.playerCount,
     )
   }
 
@@ -124,7 +124,7 @@ const init = () => {
     scoresTeamTotal.push(
       (scoresTeam[i] / 100) *
         (100 / donationsPerHeadLargest) *
-        donationsPerHead[i]
+        donationsPerHead[i],
     )
   }
 

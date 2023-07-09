@@ -59,7 +59,7 @@ const getPlayerByInvitationCode = async (invitationCode: string) => {
 }
 const gameRandomFactsRoundCreate = async (gameRandomFactsRoundInput: any) => {
   const player = await getPlayerByInvitationCode(
-    gameRandomFactsRoundInput.invitationCode
+    gameRandomFactsRoundInput.invitationCode,
   )
 
   if (!player) return

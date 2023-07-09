@@ -78,7 +78,7 @@ export default defineEventHandler((event) => {
   appendHeader(
     event,
     'NEL',
-    '\'{"report_to":"default","max_age":31536000,"include_subdomains":true}\''
+    '\'{"report_to":"default","max_age":31536000,"include_subdomains":true}\'',
   )
   appendHeader(event, 'Origin-Agent-Cluster', '?1')
   appendHeader(event, 'Permissions-Policy', '')
@@ -86,12 +86,12 @@ export default defineEventHandler((event) => {
   appendHeader(
     event,
     'Report-To',
-    '\'{"group":"default","max_age":31536000,"endpoints":[{"url":"https://dargmuesli.report-uri.com/a/d/g"}],"include_subdomains":true}\''
+    '\'{"group":"default","max_age":31536000,"endpoints":[{"url":"https://dargmuesli.report-uri.com/a/d/g"}],"include_subdomains":true}\'',
   )
   appendHeader(
     event,
     'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
+    'max-age=31536000; includeSubDomains; preload',
   )
   appendHeader(event, 'X-Content-Type-Options', 'nosniff')
   appendHeader(event, 'X-DNS-Prefetch-Control', 'off')

@@ -97,7 +97,7 @@ const api = computed(() =>
       ...allEventsQuery.data.value,
     },
     ...getApiMeta([allEventsQuery]),
-  })
+  }),
 )
 const allEvents = computed(() => allEventsQuery.data.value?.allEvents?.nodes)
 
@@ -110,8 +110,8 @@ const eventCurrent = computed(() => {
     (event) =>
       $moment().isAfter($moment(event.start)) &&
       $moment().isBefore(
-        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
-      )
+        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day'),
+      ),
   )[0]
 })
 const eventsPast = computed(() => {
@@ -119,14 +119,14 @@ const eventsPast = computed(() => {
     (event) =>
       $moment().isAfter(
         $moment(
-          event.end ? $moment(event.end) : $moment(event.start).add(1, 'day')
-        )
-      )
+          event.end ? $moment(event.end) : $moment(event.start).add(1, 'day'),
+        ),
+      ),
   )
 })
 const eventsUpcoming = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
-    (event) => $moment().isBefore($moment(event.start))
+    (event) => $moment().isBefore($moment(event.start)),
   )
 })
 

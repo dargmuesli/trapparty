@@ -49,5 +49,5 @@ export const useStore = defineStore(
       participationDataSet,
     }
   },
-  { persist: true }
+  { persist: true },
 )

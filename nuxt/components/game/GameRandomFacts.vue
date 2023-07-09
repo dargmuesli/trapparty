@@ -107,14 +107,15 @@ const api = computed(() =>
       allGameRandomFactsRoundsQuery,
       playerByInvitationCodeFnQuery,
     ]),
-  })
+  }),
 )
 const allGameRandomFactsRounds = computed(
-  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds
+  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds,
 )
 const player = computed(
   () =>
-    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn?.nodes[0]
+    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn
+      ?.nodes[0],
 )
 
 // data
@@ -172,7 +173,7 @@ const choose = async (answer: number) => {
           answerCorrect: answer,
         },
         id: round.value.id,
-      }
+      },
     )
 
     if (result.error) fireError({ error: result.error }, api)
@@ -198,7 +199,7 @@ const voteFetch = async () => {
   if (!result) return
 
   voteAnswer.value = getGameRandomFactsVoteItem(
-    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId
+    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId,
   )?.answer
 }
 

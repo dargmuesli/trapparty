@@ -43,10 +43,10 @@ const api = computed(() =>
       ...playerNameByIdQuery.data.value,
     },
     ...getApiMeta([playerNameByIdQuery]),
-  })
+  }),
 )
 const playerNameById = computed(
-  () => playerNameByIdQuery.data.value?.playerNameById
+  () => playerNameByIdQuery.data.value?.playerNameById,
 )
 
 // lifecycle

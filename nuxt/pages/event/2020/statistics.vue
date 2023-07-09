@@ -36,10 +36,10 @@ const api = computed(() =>
       ...eventByNameQuery.data.value,
     },
     ...getApiMeta([eventByNameQuery]),
-  })
+  }),
 )
 const trapPartyEvent = computed(() =>
-  getEventItem(eventByNameQuery.data.value?.eventByName)
+  getEventItem(eventByNameQuery.data.value?.eventByName),
 )
 
 // data

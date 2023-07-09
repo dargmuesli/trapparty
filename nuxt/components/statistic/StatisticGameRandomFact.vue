@@ -55,10 +55,10 @@ const api = computed(() =>
       ...allGameRandomFactsRoundsQuery.data.value,
     },
     ...getApiMeta([allGameRandomFactsRoundsQuery]),
-  })
+  }),
 )
 const allGameRandomFactsRoundsResult = computed(
-  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds
+  () => allGameRandomFactsRoundsQuery.data.value?.allGameRandomFactsRounds,
 )
 
 // method
@@ -66,8 +66,8 @@ const init = async () => {
   // TODO: use single query
   rounds.value = arrayRemoveNulls(
     allGameRandomFactsRoundsResult.value?.nodes.map((x) =>
-      getGameRandomFactsRoundItem(x)
-    )
+      getGameRandomFactsRoundItem(x),
+    ),
   )
 
   const leaderboardObject = {} as Record<string, number>
@@ -87,8 +87,8 @@ const init = async () => {
     if (!result) return
     votes.value = arrayRemoveNulls(
       result.data.value?.allGameRandomFactsVotes?.nodes.map((x) =>
-        getGameRandomFactsVoteItem(x)
-      )
+        getGameRandomFactsVoteItem(x),
+      ),
     )
 
     for (const vote of votes.value) {
@@ -103,7 +103,7 @@ const init = async () => {
   }
 
   leaderboard.value = Object.entries(leaderboardObject).sort(
-    ([, a], [, b]) => b - a
+    ([, a], [, b]) => b - a,
   )
 
   for (const [, value] of Object.values(leaderboard.value)) {

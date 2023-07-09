@@ -123,7 +123,7 @@ export const jwtStore = async ({
         path: '/',
         sameSite: 'lax', // Cannot be 'strict' to allow authentications after clicking on links within webmailers.
         secure: true,
-      })
+      }),
     )
   } else {
     try {

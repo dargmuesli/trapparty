@@ -46,7 +46,7 @@ const api = computed(() =>
       ...statsQuery.data.value,
     },
     ...getApiMeta([statsQuery]),
-  })
+  }),
 )
 const allTeams = computed(() => statsQuery.data.value?.allTeams)
 const allGames = computed(() => statsQuery.data.value?.allGames)
@@ -96,7 +96,7 @@ const init = () => {
       label: game.name,
       data: scores,
       backgroundColor: Color(
-        `#${rainbow.colorAt((100 / (allGames.value.totalCount - 1)) * i)}`
+        `#${rainbow.colorAt((100 / (allGames.value.totalCount - 1)) * i)}`,
       )
         .desaturate(0.5)
         .darken(0.25)
@@ -116,7 +116,7 @@ onMounted(() => {
     'resize',
     (e) =>
       (horizontal.value =
-        (e?.target as Window).outerWidth < CHART_DIRECTION_BREAKPOINT)
+        (e?.target as Window).outerWidth < CHART_DIRECTION_BREAKPOINT),
   )
 
   window.dispatchEvent(new Event('resize'))

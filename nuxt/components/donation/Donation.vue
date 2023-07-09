@@ -50,8 +50,7 @@
                 {
                   id: -1,
                   name: 'Stream',
-                  donationAmount:
-                    trapPartyEvent.commonDonationAmount,
+                  donationAmount: trapPartyEvent.commonDonationAmount,
                 } as TeamItemFragment,
               ]"
               :key="team.id"
@@ -68,13 +67,13 @@
                 :class="{
                   'font-bold':
                     getCharityOrganizationItem(
-                      team.charityOrganizationByCharityOrganizationId
+                      team.charityOrganizationByCharityOrganizationId,
                     )?.id === charityOrganization.id,
                 }"
               >
                 {{
                   numberFormat(
-                    distributionMatrix[teamIndex][charityOrganizationIndex]
+                    distributionMatrix[teamIndex][charityOrganizationIndex],
                   )
                 }}
               </td>
@@ -93,7 +92,7 @@
               >
                 {{
                   numberFormat(
-                    distributionMatrixTotalsVertical[charityOrganizationIndex]
+                    distributionMatrixTotalsVertical[charityOrganizationIndex],
                   )
                 }}
               </td>
@@ -139,7 +138,7 @@ const api = computed(() =>
       ...statsQuery.data.value,
     },
     ...getApiMeta([statsQuery]),
-  })
+  }),
 )
 const allTeams = computed(() => statsQuery.data.value?.allTeams)
 const allGames = computed(() => statsQuery.data.value?.allGames)
@@ -164,11 +163,11 @@ const init = () => {
 
   for (let i = 0; i < allTeams.value.nodes.length; i++) {
     const team = arrayRemoveNulls(
-      allTeams.value.nodes.map((x) => getTeamItem(x))
+      allTeams.value.nodes.map((x) => getTeamItem(x)),
     )[i]
     const teamPlayerCountObject = teamPlayerCount.value.nodes[i]
     const charityOrganization = getCharityOrganizationItem(
-      team.charityOrganizationByCharityOrganizationId
+      team.charityOrganizationByCharityOrganizationId,
     )
 
     if (!team || !charityOrganization || !teamPlayerCountObject) continue
@@ -178,7 +177,7 @@ const init = () => {
     donationsPerHead.push(
       typeof teamPlayerCountObject === 'undefined'
         ? 0
-        : (team.donationAmount || 0) / teamPlayerCountObject.playerCount
+        : (team.donationAmount || 0) / teamPlayerCountObject.playerCount,
     )
   }
 
@@ -226,7 +225,7 @@ const init = () => {
 
   for (let i = 0; i < teamScoreNormalizeds.length; i++) {
     charityOrganizationWeigths.value.push(
-      (1 / teamScoresNormalizedSum) * teamScoreNormalizeds[i]
+      (1 / teamScoresNormalizedSum) * teamScoreNormalizeds[i],
     )
   }
 
@@ -257,7 +256,7 @@ const init = () => {
               teamDonationWeighting *
               charityOrganizationWeigths.value[j] +
             (getCharityOrganizationItem(
-              team.charityOrganizationByCharityOrganizationId
+              team.charityOrganizationByCharityOrganizationId,
             )?.id === charityOrganization.id
               ? (team.donationAmount || 0) * DONATION_DISTRIBUTION_PERCENTAGE
               : 0)
@@ -291,7 +290,7 @@ const donationAmountTeamSum = computed(() => {
   return teams.value.length
     ? teams.value.reduce(
         (previous, current) => previous + (current.donationAmount || 0),
-        0
+        0,
       )
     : 0
 })

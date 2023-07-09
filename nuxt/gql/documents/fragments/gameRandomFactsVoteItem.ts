@@ -11,5 +11,5 @@ export const GameRandomFactsVoteItem = graphql(`
 `)
 
 export const getGameRandomFactsVoteItem = (
-  fragment?: FragmentType<typeof GameRandomFactsVoteItem> | null
+  fragment?: FragmentType<typeof GameRandomFactsVoteItem> | null,
 ) => useFragment(GameRandomFactsVoteItem, fragment)
