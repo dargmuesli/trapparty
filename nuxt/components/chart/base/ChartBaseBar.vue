@@ -80,6 +80,6 @@ Chart.register(
   CategoryScale,
   LinearScale,
   Title,
-  Tooltip
+  Tooltip,
 )
 </script>

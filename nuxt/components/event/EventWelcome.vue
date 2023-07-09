@@ -134,10 +134,10 @@ const api = computed(() =>
       ...eventByNameQuery.data.value,
     },
     ...getApiMeta([eventByNameQuery]),
-  })
+  }),
 )
 const trapPartyEvent = computed(() =>
-  getEventItem(eventByNameQuery.data.value?.eventByName)
+  getEventItem(eventByNameQuery.data.value?.eventByName),
 )
 
 // data
@@ -145,7 +145,7 @@ const form = reactive({
   invitationCode: ref(
     Array.isArray(route.query.ic) || route.query.ic === null
       ? undefined
-      : route.query.ic
+      : route.query.ic,
   ),
 })
 const isFormSent = ref(false)

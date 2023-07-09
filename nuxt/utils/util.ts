@@ -27,7 +27,7 @@ export const arrayRemoveNulls = <T>(array?: Array<T>) =>
 export const formPreSubmit = async (
   api: ApiData,
   v$: any,
-  isFormSent: Ref<boolean>
+  isFormSent: Ref<boolean>,
 ): Promise<boolean> => {
   api.value.errors = []
   v$.value.$touch()
@@ -44,7 +44,7 @@ export const formPreSubmit = async (
 
 export const getCombinedErrorMessages = (
   errors: BackendError[],
-  pgIds?: Record<string, string>
+  pgIds?: Record<string, string>,
 ) => {
   const errorMessages: string[] = []
 
@@ -100,14 +100,14 @@ export const getApiDataDefault = (): ApiData =>
     reactive({
       data: undefined,
       ...getApiMeta(),
-    })
+    }),
   )
 
 export const getApiMeta = (
   queries?: {
     error: Ref<CombinedError | undefined>
     fetching: Ref<boolean>
-  }[]
+  }[],
 ) => ({
   errors: queries
     ? queries.reduce((p, c) => {

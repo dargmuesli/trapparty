@@ -10,5 +10,5 @@ export const CharityOrganizationItem = graphql(`
 `)
 
 export const getCharityOrganizationItem = (
-  fragment?: FragmentType<typeof CharityOrganizationItem> | null
+  fragment?: FragmentType<typeof CharityOrganizationItem> | null,
 ) => useFragment(CharityOrganizationItem, fragment)

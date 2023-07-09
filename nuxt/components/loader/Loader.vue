@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 // computations
 const errorMessages = computed(() =>
-  getCombinedErrorMessages(props.api.errors, props.errorPgIds)
+  getCombinedErrorMessages(props.api.errors, props.errorPgIds),
 )
 </script>
 

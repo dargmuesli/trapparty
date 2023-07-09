@@ -3439,56 +3439,56 @@ export type WithTypename<T extends { __typename?: any }> = Partial<T> & {
 
 export type GraphCacheKeysConfig = {
   CharityOrganization?: (
-    data: WithTypename<CharityOrganization>
+    data: WithTypename<CharityOrganization>,
   ) => null | string
   CharityOrganizationsConnection?: (
-    data: WithTypename<CharityOrganizationsConnection>
+    data: WithTypename<CharityOrganizationsConnection>,
   ) => null | string
   CharityOrganizationsEdge?: (
-    data: WithTypename<CharityOrganizationsEdge>
+    data: WithTypename<CharityOrganizationsEdge>,
   ) => null | string
   CreateCharityOrganizationPayload?: (
-    data: WithTypename<CreateCharityOrganizationPayload>
+    data: WithTypename<CreateCharityOrganizationPayload>,
   ) => null | string
   CreateEventPayload?: (data: WithTypename<CreateEventPayload>) => null | string
   CreateGamePayload?: (data: WithTypename<CreateGamePayload>) => null | string
   CreateGameRandomFactsRoundPayload?: (
-    data: WithTypename<CreateGameRandomFactsRoundPayload>
+    data: WithTypename<CreateGameRandomFactsRoundPayload>,
   ) => null | string
   CreateGameRandomFactsVotePayload?: (
-    data: WithTypename<CreateGameRandomFactsVotePayload>
+    data: WithTypename<CreateGameRandomFactsVotePayload>,
   ) => null | string
   CreateGameTeamScorePayload?: (
-    data: WithTypename<CreateGameTeamScorePayload>
+    data: WithTypename<CreateGameTeamScorePayload>,
   ) => null | string
   CreateKvPayload?: (data: WithTypename<CreateKvPayload>) => null | string
   CreatePlayerPayload?: (
-    data: WithTypename<CreatePlayerPayload>
+    data: WithTypename<CreatePlayerPayload>,
   ) => null | string
   CreateTeamLeaderPayload?: (
-    data: WithTypename<CreateTeamLeaderPayload>
+    data: WithTypename<CreateTeamLeaderPayload>,
   ) => null | string
   CreateTeamPayload?: (data: WithTypename<CreateTeamPayload>) => null | string
   DeleteCharityOrganizationPayload?: (
-    data: WithTypename<DeleteCharityOrganizationPayload>
+    data: WithTypename<DeleteCharityOrganizationPayload>,
   ) => null | string
   DeleteEventPayload?: (data: WithTypename<DeleteEventPayload>) => null | string
   DeleteGamePayload?: (data: WithTypename<DeleteGamePayload>) => null | string
   DeleteGameRandomFactsRoundPayload?: (
-    data: WithTypename<DeleteGameRandomFactsRoundPayload>
+    data: WithTypename<DeleteGameRandomFactsRoundPayload>,
   ) => null | string
   DeleteGameRandomFactsVotePayload?: (
-    data: WithTypename<DeleteGameRandomFactsVotePayload>
+    data: WithTypename<DeleteGameRandomFactsVotePayload>,
   ) => null | string
   DeleteGameTeamScorePayload?: (
-    data: WithTypename<DeleteGameTeamScorePayload>
+    data: WithTypename<DeleteGameTeamScorePayload>,
   ) => null | string
   DeleteKvPayload?: (data: WithTypename<DeleteKvPayload>) => null | string
   DeletePlayerPayload?: (
-    data: WithTypename<DeletePlayerPayload>
+    data: WithTypename<DeletePlayerPayload>,
   ) => null | string
   DeleteTeamLeaderPayload?: (
-    data: WithTypename<DeleteTeamLeaderPayload>
+    data: WithTypename<DeleteTeamLeaderPayload>,
   ) => null | string
   DeleteTeamPayload?: (data: WithTypename<DeleteTeamPayload>) => null | string
   Event?: (data: WithTypename<Event>) => null | string
@@ -3496,26 +3496,26 @@ export type GraphCacheKeysConfig = {
   EventsEdge?: (data: WithTypename<EventsEdge>) => null | string
   Game?: (data: WithTypename<Game>) => null | string
   GameRandomFactsRound?: (
-    data: WithTypename<GameRandomFactsRound>
+    data: WithTypename<GameRandomFactsRound>,
   ) => null | string
   GameRandomFactsRoundsConnection?: (
-    data: WithTypename<GameRandomFactsRoundsConnection>
+    data: WithTypename<GameRandomFactsRoundsConnection>,
   ) => null | string
   GameRandomFactsRoundsEdge?: (
-    data: WithTypename<GameRandomFactsRoundsEdge>
+    data: WithTypename<GameRandomFactsRoundsEdge>,
   ) => null | string
   GameRandomFactsVote?: (
-    data: WithTypename<GameRandomFactsVote>
+    data: WithTypename<GameRandomFactsVote>,
   ) => null | string
   GameRandomFactsVotesConnection?: (
-    data: WithTypename<GameRandomFactsVotesConnection>
+    data: WithTypename<GameRandomFactsVotesConnection>,
   ) => null | string
   GameRandomFactsVotesEdge?: (
-    data: WithTypename<GameRandomFactsVotesEdge>
+    data: WithTypename<GameRandomFactsVotesEdge>,
   ) => null | string
   GameTeamScore?: (data: WithTypename<GameTeamScore>) => null | string
   GameTeamScoresConnection?: (
-    data: WithTypename<GameTeamScoresConnection>
+    data: WithTypename<GameTeamScoresConnection>,
   ) => null | string
   GameTeamScoresEdge?: (data: WithTypename<GameTeamScoresEdge>) => null | string
   GamesConnection?: (data: WithTypename<GamesConnection>) => null | string
@@ -3530,40 +3530,40 @@ export type GraphCacheKeysConfig = {
   Team?: (data: WithTypename<Team>) => null | string
   TeamLeader?: (data: WithTypename<TeamLeader>) => null | string
   TeamLeadersConnection?: (
-    data: WithTypename<TeamLeadersConnection>
+    data: WithTypename<TeamLeadersConnection>,
   ) => null | string
   TeamLeadersEdge?: (data: WithTypename<TeamLeadersEdge>) => null | string
   TeamPlayerCountConnection?: (
-    data: WithTypename<TeamPlayerCountConnection>
+    data: WithTypename<TeamPlayerCountConnection>,
   ) => null | string
   TeamPlayerCountEdge?: (
-    data: WithTypename<TeamPlayerCountEdge>
+    data: WithTypename<TeamPlayerCountEdge>,
   ) => null | string
   TeamPlayerCountRecord?: (
-    data: WithTypename<TeamPlayerCountRecord>
+    data: WithTypename<TeamPlayerCountRecord>,
   ) => null | string
   TeamsConnection?: (data: WithTypename<TeamsConnection>) => null | string
   TeamsEdge?: (data: WithTypename<TeamsEdge>) => null | string
   UpdateCharityOrganizationPayload?: (
-    data: WithTypename<UpdateCharityOrganizationPayload>
+    data: WithTypename<UpdateCharityOrganizationPayload>,
   ) => null | string
   UpdateEventPayload?: (data: WithTypename<UpdateEventPayload>) => null | string
   UpdateGamePayload?: (data: WithTypename<UpdateGamePayload>) => null | string
   UpdateGameRandomFactsRoundPayload?: (
-    data: WithTypename<UpdateGameRandomFactsRoundPayload>
+    data: WithTypename<UpdateGameRandomFactsRoundPayload>,
   ) => null | string
   UpdateGameRandomFactsVotePayload?: (
-    data: WithTypename<UpdateGameRandomFactsVotePayload>
+    data: WithTypename<UpdateGameRandomFactsVotePayload>,
   ) => null | string
   UpdateGameTeamScorePayload?: (
-    data: WithTypename<UpdateGameTeamScorePayload>
+    data: WithTypename<UpdateGameTeamScorePayload>,
   ) => null | string
   UpdateKvPayload?: (data: WithTypename<UpdateKvPayload>) => null | string
   UpdatePlayerPayload?: (
-    data: WithTypename<UpdatePlayerPayload>
+    data: WithTypename<UpdatePlayerPayload>,
   ) => null | string
   UpdateTeamLeaderPayload?: (
-    data: WithTypename<UpdateTeamLeaderPayload>
+    data: WithTypename<UpdateTeamLeaderPayload>,
   ) => null | string
   UpdateTeamPayload?: (data: WithTypename<UpdateTeamPayload>) => null | string
 }

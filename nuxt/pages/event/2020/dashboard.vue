@@ -287,15 +287,16 @@ const api = computed(() =>
       ...eventByNameQuery.data.value,
     },
     ...getApiMeta([playerByInvitationCodeFnQuery, eventByNameQuery]),
-  })
+  }),
 )
 
 const participationDataPlayer = computed(
   () =>
-    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn?.nodes[0]
+    playerByInvitationCodeFnQuery.data.value?.playerByInvitationCodeFn
+      ?.nodes[0],
 )
 const participationDataWatcher = computed(
-  () => eventByNameQuery.data.value?.eventByName
+  () => eventByNameQuery.data.value?.eventByName,
 )
 
 // data

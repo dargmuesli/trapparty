@@ -57,7 +57,7 @@ const api = computed(() =>
       ...gameByIdQuery.data.value,
     },
     ...getApiMeta([gameByIdQuery]),
-  })
+  }),
 )
 const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
 

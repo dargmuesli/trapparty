@@ -11,5 +11,5 @@ export const PlayerItem = graphql(`
 `)
 
 export const getPlayerItem = (
-  fragment?: FragmentType<typeof PlayerItem> | null
+  fragment?: FragmentType<typeof PlayerItem> | null,
 ) => useFragment(PlayerItem, fragment)

@@ -3,7 +3,7 @@ import { graphql } from '~/gql/generated'
 import { AllGameRandomFactsRoundsQueryVariables } from '~/gql/generated/graphql'
 
 export const useAllGameRandomFactsRoundsQuery = (
-  variables: AllGameRandomFactsRoundsQueryVariables
+  variables: AllGameRandomFactsRoundsQueryVariables,
 ) =>
   useQuery({
     query: graphql(`

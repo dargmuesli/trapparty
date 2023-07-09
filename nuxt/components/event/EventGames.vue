@@ -75,10 +75,10 @@ const api = computed(() =>
       ...eventByNameQuery.data.value,
     },
     ...getApiMeta([eventByNameQuery]),
-  })
+  }),
 )
 const trapPartyEvent = computed(() =>
-  getEventItem(eventByNameQuery.data.value?.eventByName)
+  getEventItem(eventByNameQuery.data.value?.eventByName),
 )
 
 // data
@@ -87,7 +87,7 @@ const title = t('title', { name: props.eventName })
 
 // methods
 const fetchGames = async (
-  trapPartyEventLocal: UnwrapRef<typeof trapPartyEvent>
+  trapPartyEventLocal: UnwrapRef<typeof trapPartyEvent>,
 ) => {
   if (!trapPartyEventLocal?.id) return
 
@@ -101,7 +101,7 @@ const fetchGames = async (
   }
 
   const allGames = arrayRemoveNulls(
-    result.data.value?.allGames?.nodes.map((x) => getGameItem(x))
+    result.data.value?.allGames?.nodes.map((x) => getGameItem(x)),
   )
 
   games.value = allGames
@@ -110,7 +110,7 @@ const fetchGames = async (
 // lifecycle
 watch(
   trapPartyEvent,
-  async (currentValue, _oldValue) => await fetchGames(currentValue)
+  async (currentValue, _oldValue) => await fetchGames(currentValue),
 )
 
 // initialization
