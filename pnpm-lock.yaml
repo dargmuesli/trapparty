@@ -27,8 +27,8 @@ importers:
         specifier: 7.22.8
         version: 7.22.8
       '@dargmuesli/nuxt-cookie-control':
-        specifier: 5.10.3
-        version: 5.10.3
+        specifier: 5.10.4
+        version: 5.10.4
       '@funken-studio/sitemap-nuxt-3':
         specifier: 4.0.4
         version: 4.0.4
@@ -1163,11 +1163,11 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: true
 
-  /@dargmuesli/nuxt-cookie-control@5.10.3:
-    resolution: {integrity: sha512-74Ld0FztS1unp0DOdYNrvoyONzoZON6a1MIAVGdT3MbApMq5X4IxgQOVR3/2aGLFB9P3jtrYJHfMTOjTF7XMQA==}
+  /@dargmuesli/nuxt-cookie-control@5.10.4:
+    resolution: {integrity: sha512-x6Px53PfsN/Wko6hY64B+kFbUwETogkO7wT8/GXwQUwF33YyOJ8l2HL5KhBuUVfSzwXoUjnR3y3fOlDNpyY3YQ==}
     engines: {node: '>=16'}
     dependencies:
-      '@nuxt/kit': 3.6.1
+      '@nuxt/kit': 3.6.2
       '@sindresorhus/slugify': 2.2.1
       css-vars-ponyfill: 2.4.8
       string-replace-loader: 3.1.0
@@ -2766,32 +2766,6 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/kit@3.6.1:
-    resolution: {integrity: sha512-7AoiKV0zAtyT3ZvjMfGislMcB+JMbBZxYw68/oWtkEPXCfGQMYuiMI9Ue246/0JT2Yp2KZclEgrJEJ6NLkqFcw==}
-    engines: {node: ^14.18.0 || >=16.10.0}
-    dependencies:
-      '@nuxt/schema': 3.6.1
-      c12: 1.4.2
-      consola: 3.2.3
-      defu: 6.1.2
-      globby: 13.2.0
-      hash-sum: 2.0.0
-      ignore: 5.2.4
-      jiti: 1.18.2
-      knitwork: 1.0.0
-      mlly: 1.4.0
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      scule: 1.0.0
-      semver: 7.5.3
-      unctx: 2.3.1
-      unimport: 3.0.10
-      untyped: 1.3.2
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
-
   /@nuxt/kit@3.6.2:
     resolution: {integrity: sha512-X1WN76izsILva6TvQVTfJCHG7TXCwsB6jsxZKcU3qSog26jer5dildDb5ZmKL3e+IFD6BwK4ShO/py8VZcT6OA==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -2820,24 +2794,6 @@ packages:
 
   /@nuxt/schema@3.6.0:
     resolution: {integrity: sha512-6/nq+W77JODDfhMBZTi7HCD3hT5oHegsasAzUnDmvwWuY1io7BXX9x2mDhL8E3LhVzQuN5vhi3GBgwHwCfdKEA==}
-    engines: {node: ^14.18.0 || >=16.10.0}
-    dependencies:
-      defu: 6.1.2
-      hookable: 5.5.3
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      postcss-import-resolver: 2.0.0
-      std-env: 3.3.3
-      ufo: 1.1.2
-      unimport: 3.0.14(rollup@3.26.1)
-      untyped: 1.3.2
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
-
-  /@nuxt/schema@3.6.1:
-    resolution: {integrity: sha512-+4pr0lkcPP5QqprYV+/ujmBkt2JHmi/v5vaxCrMhElUFgifvJAfT89BkGFn6W7pz0b8Vd3GcByFUWI7/wX/Pcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -10991,24 +10947,6 @@ packages:
       '@unhead/schema': 1.1.30
       '@unhead/shared': 1.1.30
       hookable: 5.5.3
-    dev: true
-
-  /unimport@3.0.10:
-    resolution: {integrity: sha512-rKxlbbjxVQR+6dL7OxJSuVOu96MtTvoRY0VBasGQTgZGTzKPrawZ4zMv7bmhLHRmUqG/CUAJ4uNZlaip+F/6+A==}
-    dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.1)
-      escape-string-regexp: 5.0.0
-      fast-glob: 3.3.0
-      local-pkg: 0.4.3
-      magic-string: 0.30.0
-      mlly: 1.4.0
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      scule: 1.0.0
-      strip-literal: 1.0.1
-      unplugin: 1.3.1
-    transitivePeerDependencies:
-      - rollup
     dev: true
 
   /unimport@3.0.14(rollup@3.26.1):
