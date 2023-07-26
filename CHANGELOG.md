@@ -1,3 +1,10 @@
+## [3.10.14](https://github.com/dargmuesli/trapparty/compare/3.10.13...3.10.14) (2023-07-26)
+
+
+### Bug Fixes
+
+* **typescript:** readd vue compiler options to configuration ([ff6fdab](https://github.com/dargmuesli/trapparty/commit/ff6fdab1c04d17f741113889db2f18332206e6f0))
+
 ## [3.10.13](https://github.com/dargmuesli/trapparty/compare/3.10.12...3.10.13) (2023-07-24)
 
 
