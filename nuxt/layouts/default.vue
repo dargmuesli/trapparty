@@ -47,11 +47,13 @@
         </AppLink>
       </LayoutFooterCategory>
     </LayoutFooter>
-    <CookieControl :locale="locale" />
+    <CookieControl :locale="locale as Locale" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
+
 const { $moment } = useNuxtApp()
 const localePath = useLocalePath()
 const { locale, t } = useI18n()
