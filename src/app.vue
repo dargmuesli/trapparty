@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 const cookieControl = useCookieControl()
+const { t } = useI18n()
 
 // lifecycle
 watch(
@@ -21,4 +22,14 @@ watch(
   },
   { deep: true },
 )
+
+// initialization
+updateSiteConfig({
+  description: t('globalOgSeoDescription'),
+})
+defineOgImage({
+  alt: t('globalOgImageAlt'),
+  // component: props.ogImageComponent,
+  description: t('globalOgSeoDescription'),
+})
 </script>
