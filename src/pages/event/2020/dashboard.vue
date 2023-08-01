@@ -212,8 +212,8 @@
               <span class="font-bold">
                 {{
                   t('startDuration', {
-                    start: $moment(trapPartyEvent.start).format('lll'),
-                    duration: $moment(trapPartyEvent.start).fromNow(),
+                    start: $dayjs(trapPartyEvent.start).format('lll'),
+                    duration: $dayjs(trapPartyEvent.start).fromNow(),
                   })
                 }}
               </span>
@@ -263,6 +263,7 @@ definePageMeta({
   ],
 })
 
+const { $dayjs } = useNuxtApp()
 const localePath = useLocalePath()
 const store = useStore()
 const { t } = useI18n()

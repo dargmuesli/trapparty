@@ -54,7 +54,7 @@
 <script setup lang="ts">
 import { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
 
-const { $moment } = useNuxtApp()
+const { $dayjs } = useNuxtApp()
 const localePath = useLocalePath()
 const { locale, t } = useI18n()
 
@@ -69,7 +69,7 @@ onMounted(() => loadingIds.value.splice(loadingIds.value.indexOf(loadingId), 1))
 
 // initialization
 useHeadLayout()
-$moment.locale(locale.value)
+$dayjs.locale(locale.value)
 </script>
 
 <script lang="ts">
