@@ -26,6 +26,7 @@ export const PASSWORD_LENGTH_MINIMUM = 8
 export const REGEX_SLUG = /^[-A-Za-z0-9]+$/
 export const REGEX_UUID =
   /^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/
+export const SITE_NAME = 'TrapParty'
 
 export type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never

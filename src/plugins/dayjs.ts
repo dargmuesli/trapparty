@@ -17,7 +17,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
 
   return {
     provide: {
-      moment: dayjs,
+      dayjs,
     },
   }
 })

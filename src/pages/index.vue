@@ -83,7 +83,7 @@
 import { useAllEventsQuery } from '~/gql/documents/queries/event/allEvents'
 import { getEventItem } from '~/gql/documents/fragments/eventItem'
 
-const { $moment } = useNuxtApp()
+const { $dayjs } = useNuxtApp()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
@@ -108,25 +108,25 @@ const title = t('title')
 const eventCurrent = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
     (event) =>
-      $moment().isAfter($moment(event.start)) &&
-      $moment().isBefore(
-        event.end ? $moment(event.end) : $moment(event.start).add(1, 'day'),
+      $dayjs().isAfter($dayjs(event.start)) &&
+      $dayjs().isBefore(
+        event.end ? $dayjs(event.end) : $dayjs(event.start).add(1, 'day'),
       ),
   )[0]
 })
 const eventsPast = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
     (event) =>
-      $moment().isAfter(
-        $moment(
-          event.end ? $moment(event.end) : $moment(event.start).add(1, 'day'),
+      $dayjs().isAfter(
+        $dayjs(
+          event.end ? $dayjs(event.end) : $dayjs(event.start).add(1, 'day'),
         ),
       ),
   )
 })
 const eventsUpcoming = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
-    (event) => $moment().isBefore($moment(event.start)),
+    (event) => $dayjs().isBefore($dayjs(event.start)),
   )
 })
 

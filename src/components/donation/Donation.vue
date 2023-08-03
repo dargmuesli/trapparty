@@ -123,12 +123,13 @@ export interface Props {
   trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
 }
 const props = withDefaults(defineProps<Props>(), {})
+const trapPartyEventIdProp = toRef(() => props.trapPartyEvent.id)
 
 const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  eventId: props.trapPartyEvent.id,
+  eventId: trapPartyEventIdProp.value,
 })
 
 // api data

@@ -30,6 +30,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   classes: undefined,
 })
+const srcProp = toRef(() => props.src)
 
 const { t } = useI18n()
 
@@ -39,7 +40,7 @@ const isError = ref(false)
 const isLoading = ref(false)
 const loadingId = Math.random()
 const loadingIds = useState('loadingIds', () => [] as number[])
-const srcWhenLoaded = ref<string | undefined>(props.src)
+const srcWhenLoaded = ref<string | undefined>(srcProp.value)
 
 // methods
 const loadOnClient = () => {

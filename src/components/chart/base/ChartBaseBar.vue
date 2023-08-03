@@ -13,7 +13,7 @@ import {
   Tooltip,
 } from 'chart.js'
 import type { ChartData, ChartOptions } from 'chart.js'
-import merge from 'lodash.merge'
+import { merge } from 'lodash-es'
 import { Bar } from 'vue-chartjs'
 
 export interface Props {

@@ -1,4 +1,4 @@
-import { JWT_NAME, LOCALES } from './utils/constants'
+import { JWT_NAME, LOCALES, SITE_NAME } from './utils/constants'
 
 const BASE_URL =
   'https://trapparty.' +
@@ -11,6 +11,13 @@ const BASE_URL =
 
 export default defineNuxtConfig({
   app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en', // fallback data to prevent invalid html at generation
+      },
+      titleTemplate: `%s`,
+      title: SITE_NAME, // fallback data to prevent invalid html at generation
+    },
     pageTransition: {
       name: 'layout',
     },
@@ -21,10 +28,9 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/html-validator',
     '@nuxtjs/i18n',
-    '@nuxtjs/robots',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@funken-studio/sitemap-nuxt-3', // Should be declared at the end of the array.
+    'nuxt-seo-kit-module',
   ],
   nitro: {
     compressPublicAssets: true,
@@ -128,11 +134,17 @@ export default defineNuxtConfig({
     defaultLocale: 'de', // Must be set for the default prefix_except_default prefix strategy.
     detectBrowserLanguage: {
       cookieSecure: true,
-      redirectOn: 'root',
     },
     langDir: 'locales',
     lazy: true,
     locales: LOCALES,
-    vueI18n: './i18n.config.ts',
+  },
+  seoKit: {
+    splash: false,
+  },
+  site: {
+    debug: process.env.NODE_ENV === 'development',
+    name: SITE_NAME,
+    url: BASE_URL,
   },
 })

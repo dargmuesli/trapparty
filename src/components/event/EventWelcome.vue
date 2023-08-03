@@ -115,6 +115,7 @@ export interface Props {
   eventName: string
 }
 const props = withDefaults(defineProps<Props>(), {})
+const eventNameProp = toRef(() => props.eventName)
 
 const route = useRoute()
 const { t } = useI18n()
@@ -124,7 +125,7 @@ const localePath = useLocalePath()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  eventName: props.eventName,
+  eventName: eventNameProp.value,
 })
 
 // api data
