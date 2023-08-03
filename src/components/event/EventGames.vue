@@ -58,6 +58,7 @@ export interface Props {
   eventName: string
 }
 const props = withDefaults(defineProps<Props>(), {})
+const eventNameProp = toRef(() => props.eventName)
 
 const localePath = useLocalePath()
 const { t } = useI18n()
@@ -65,7 +66,7 @@ const store = useStore()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  eventName: props.eventName,
+  eventName: eventNameProp.value,
 })
 
 // api data
@@ -83,7 +84,7 @@ const trapPartyEvent = computed(() =>
 
 // data
 const games = ref<GameItemFragment[]>([])
-const title = t('title', { name: props.eventName })
+const title = t('title', { name: eventNameProp.value })
 
 // methods
 const fetchGames = async (

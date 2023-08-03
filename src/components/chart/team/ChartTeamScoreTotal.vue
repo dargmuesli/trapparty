@@ -31,12 +31,14 @@ const props = withDefaults(defineProps<Props>(), {
   options: undefined,
   title: undefined,
 })
+const eventIdProp = toRef(() => props.eventId)
+const titleProp = toRef(() => props.title)
 
 const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  eventId: props.eventId,
+  eventId: eventIdProp.value,
 })
 
 // api data
@@ -58,7 +60,7 @@ const horizontal = ref(true)
 const optionsDefault = ref<ChartOptions<'bar'>>({
   plugins: {
     title: {
-      text: props.title || t('title'),
+      text: titleProp.value || t('title'),
     },
   },
 })

@@ -34,6 +34,7 @@ export interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})
+const gameIdProp = toRef(() => props.gameId)
 
 const { t } = useI18n()
 
@@ -45,7 +46,7 @@ const votes = ref<GameRandomFactsVoteItemFragment[]>([])
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  gameId: props.gameId,
+  gameId: gameIdProp.value,
 })
 
 // api data

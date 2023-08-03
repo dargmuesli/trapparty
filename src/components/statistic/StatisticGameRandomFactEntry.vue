@@ -28,12 +28,13 @@ export interface Props {
   value: number
 }
 const props = withDefaults(defineProps<Props>(), {})
+const playerIdProp = toRef(() => props.playerId)
 
 const { t } = useI18n()
 
 // queries
 const playerNameByIdQuery = await usePlayerNameByIdQuery({
-  id: props.playerId,
+  id: playerIdProp.value,
 })
 
 // api data
