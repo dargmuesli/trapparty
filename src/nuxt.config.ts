@@ -1,4 +1,9 @@
-import { JWT_NAME, LOCALES, SITE_NAME } from './utils/constants'
+import {
+  I18N_COOKIE_NAME,
+  JWT_NAME,
+  LOCALES,
+  SITE_NAME,
+} from './utils/constants'
 
 const BASE_URL =
   'https://trapparty.' +
@@ -102,7 +107,7 @@ export default defineNuxtConfig({
             de: 'Sprache',
             en: 'Language',
           },
-          targetCookieIds: ['i18n_redirected'],
+          targetCookieIds: [I18N_COOKIE_NAME],
         },
       ],
       optional: [
@@ -133,6 +138,7 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'de', // Must be set for the default prefix_except_default prefix strategy.
     detectBrowserLanguage: {
+      cookieKey: I18N_COOKIE_NAME,
       cookieSecure: true,
     },
     langDir: 'locales',

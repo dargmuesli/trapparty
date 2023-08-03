@@ -1,6 +1,7 @@
 import { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 
 export const CHART_DIRECTION_BREAKPOINT = 768
+export const I18N_COOKIE_NAME = 'i18n_r'
 export const EVENT_DESCRIPTION_MAXIMUM = 10000
 export const EVENT_NAME_MAXIMUM = 100
 export const EVENT_PLACE_MAXIMUM = 300
