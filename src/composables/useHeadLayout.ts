@@ -4,6 +4,8 @@ export const useHeadLayout = () => {
   const { t } = useI18n()
   const head = useLocaleHead({ addSeoAttributes: true })
 
+  const polyfills =
+    'https://polyfill.io/v3/polyfill.min.js?features=Promise&flags=gated'
   const name = 'TrapParty'
 
   useHead(head.value)
@@ -13,6 +15,13 @@ export const useHeadLayout = () => {
         'bg-background-bright dark:bg-background-dark font-sans text-text-dark dark:text-text-bright',
     },
     link: [
+      {
+        rel: 'preload',
+        href: polyfills,
+        crossorigin: 'anonymous',
+        as: 'script',
+        'data-testid': 'polyfill-preload',
+      },
       {
         href: '/assets/static/favicon/apple-touch-icon.png?v=MSnhWw3hXS',
         rel: 'apple-touch-icon',
@@ -54,12 +63,12 @@ export const useHeadLayout = () => {
         key: 'description',
         name: 'description',
         property: 'description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         key: 'og:description',
         property: 'og:description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         content: '/assets/static/favicon/browserconfig.xml?v=MSnhWw3hXS',
@@ -81,7 +90,7 @@ export const useHeadLayout = () => {
       {
         key: 'og:image:alt',
         property: 'og:image:alt',
-        content: t('globalOgImageAlt'),
+        content: t('globalSeoOgImageAlt'),
       },
       {
         key: 'og:image:height',
@@ -121,7 +130,7 @@ export const useHeadLayout = () => {
       {
         key: 'twitter:description',
         property: 'twitter:description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         key: 'twitter:image',
@@ -131,7 +140,7 @@ export const useHeadLayout = () => {
       {
         key: 'twitter:image:alt',
         property: 'twitter:image:alt',
-        content: t('globalOgImageAlt'),
+        content: t('globalSeoOgImageAlt'),
       },
       // TODO: Get access to the @trapparty handle.
       // {
@@ -143,6 +152,13 @@ export const useHeadLayout = () => {
         key: 'twitter:title',
         property: 'twitter:title',
         content: name,
+      },
+    ],
+    script: [
+      {
+        src: polyfills,
+        crossorigin: 'anonymous',
+        'data-testid': 'polyfill-script',
       },
     ],
     titleTemplate: (titleChunk?: string) => {

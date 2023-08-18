@@ -25,11 +25,11 @@ watch(
 
 // initialization
 updateSiteConfig({
-  description: t('globalOgSeoDescription'),
+  description: t('globalSeoSiteDescription'),
 })
 defineOgImage({
-  alt: t('globalOgImageAlt'),
+  alt: t('globalSeoOgImageAlt'),
   // component: props.ogImageComponent,
-  description: t('globalOgSeoDescription'),
+  description: t('globalSeoSiteDescription'),
 })
 </script>

@@ -1,6 +1,6 @@
 <template>
   <LoaderIndicator class="animate-pulse">
-    {{ t('globalLoading') }}
+    {{ t('globalStatusLoading') }}
   </LoaderIndicator>
 </template>
 
