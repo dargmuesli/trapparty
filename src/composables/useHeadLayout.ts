@@ -54,12 +54,12 @@ export const useHeadLayout = () => {
         key: 'description',
         name: 'description',
         property: 'description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         key: 'og:description',
         property: 'og:description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         content: '/assets/static/favicon/browserconfig.xml?v=MSnhWw3hXS',
@@ -81,7 +81,7 @@ export const useHeadLayout = () => {
       {
         key: 'og:image:alt',
         property: 'og:image:alt',
-        content: t('globalOgImageAlt'),
+        content: t('globalSeoOgImageAlt'),
       },
       {
         key: 'og:image:height',
@@ -121,7 +121,7 @@ export const useHeadLayout = () => {
       {
         key: 'twitter:description',
         property: 'twitter:description',
-        content: t('globalOgSeoDescription'),
+        content: t('globalSeoSiteDescription'),
       },
       {
         key: 'twitter:image',
@@ -131,7 +131,7 @@ export const useHeadLayout = () => {
       {
         key: 'twitter:image:alt',
         property: 'twitter:image:alt',
-        content: t('globalOgImageAlt'),
+        content: t('globalSeoOgImageAlt'),
       },
       // TODO: Get access to the @trapparty handle.
       // {

@@ -53,7 +53,7 @@
             <FormInputIconWrapper v-if="validationProperty.$pending">
               <IconHourglass
                 class="text-blue-600"
-                :title="t('globalLoading')"
+                :title="t('globalStatusLoading')"
               />
             </FormInputIconWrapper>
             <FormInputIconWrapper
@@ -91,7 +91,7 @@
       <div class="md:w-2/3">
         <slot name="stateInfo" />
         <FormInputStateInfo v-if="value?.$pending">
-          {{ t('globalLoading') }}
+          {{ t('globalStatusLoading') }}
         </FormInputStateInfo>
       </div>
       <div class="md:w-1/3" />
