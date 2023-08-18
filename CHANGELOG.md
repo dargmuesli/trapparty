@@ -1,3 +1,10 @@
+# [3.11.0](https://github.com/dargmuesli/trapparty/compare/3.10.15...3.11.0) (2023-08-18)
+
+
+### Features
+
+* load polyfills ([69f948f](https://github.com/dargmuesli/trapparty/commit/69f948fe25115874942e592151fd8a955accb5ad))
+
 ## [3.10.15](https://github.com/dargmuesli/trapparty/compare/3.10.14...3.10.15) (2023-08-07)
 
 
