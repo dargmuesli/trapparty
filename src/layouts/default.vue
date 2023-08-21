@@ -4,7 +4,7 @@
     :data-is-loading="isLoading"
     data-testid="is-loading"
   >
-    <div class="flex flex-col min-h-screen pb-32">
+    <div class="flex min-h-screen flex-col pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <AppLink :aria-label="t('home')" :to="localePath('/')">
           <Logo class="h-16 w-16" />

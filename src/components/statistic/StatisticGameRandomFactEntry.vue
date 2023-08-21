@@ -4,11 +4,11 @@
       class="rounded-md bg-gray-300 p-2 dark:bg-gray-700"
       :class="{
         /* highscores are number, so an explicit check for undefined is necessary */
-        'border xl:border-2 border-yellow-500':
+        'border border-yellow-500 xl:border-2':
           highscores[0] !== undefined && value === highscores[0],
-        'border xl:border-2 border-gray-400':
+        'border border-gray-400 xl:border-2':
           highscores[1] !== undefined && value === highscores[1],
-        'border xl:border-2 border-yellow-700':
+        'border border-yellow-700 xl:border-2':
           highscores[2] !== undefined && value === highscores[2],
       }"
     >

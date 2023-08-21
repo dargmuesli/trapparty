@@ -34,13 +34,13 @@
         </span>
       </section>
       <div
-        class="flex flex-1 flex-col justify-center font-serif gap-8 md:gap-4"
+        class="flex flex-1 flex-col justify-center gap-8 font-serif md:gap-4"
       >
         <div class="flex flex-col items-baseline md:flex-row">
           <h1 class="mb-0 inline text-6xl leading-normal">
             {{ title }}
           </h1>
-          <span class="md:mb-4 md:ml-4 text-xl">
+          <span class="text-xl md:mb-4 md:ml-4">
             {{ t('transcription') }}
           </span>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <span v-if="url" class="flex gap-2 items-center">
+  <span v-if="url" class="flex items-center gap-2">
     <slot />
     <ButtonColored :aria-label="t('share')" @click="copy(url)">
       <template #prefix>

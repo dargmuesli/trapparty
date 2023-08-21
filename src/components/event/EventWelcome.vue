@@ -70,7 +70,7 @@
               </template>
             </FormInput>
           </Form>
-          <div class="flex self-stretch px-8 py-8 lg:w-1/12 justify-center">
+          <div class="flex justify-center self-stretch px-8 py-8 lg:w-1/12">
             <div class="h-0 w-full border border-gray-300 lg:h-full lg:w-0" />
           </div>
           <Form

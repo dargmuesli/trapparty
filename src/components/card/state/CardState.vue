@@ -1,7 +1,7 @@
 <template>
   <Card
     :background-color="backgroundColor"
-    class="flex justify-center items-center gap-4 text-white"
+    class="flex items-center justify-center gap-4 text-white"
     :class="{ 'rounded-none': isEdgy }"
   >
     <slot />
