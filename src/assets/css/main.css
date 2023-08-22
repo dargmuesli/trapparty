@@ -1,49 +1,58 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
 
+/* doiuse-disable css-cascade-layers */
 @layer base {
+  /* doiuse-enable css-cascade-layers */
   a:focus {
-    @apply outline-none ring rounded;
+    /* doiuse-disable css-nesting */
+    @apply rounded outline-none ring; /* doiuse-enable css-nesting */
   }
 
   button:focus {
-    @apply outline-none ring rounded;
+    /* doiuse-disable css-nesting */
+    @apply rounded outline-none ring; /* doiuse-enable css-nesting */
   }
 
   thead {
-    @apply sticky top-0 z-10 jonas-thelemann-bg-darken;
+    /* doiuse-disable css-nesting */
+    @apply jonas-thelemann-bg-darken sticky top-0 z-10; /* doiuse-enable css-nesting */
   }
 
   tbody {
-    @apply divide-y jonas-thelemann-divide-darken;
+    /* doiuse-disable css-nesting */
+    @apply jonas-thelemann-divide-darken divide-y; /* doiuse-enable css-nesting */
   }
 }
 
+/* doiuse-disable css-cascade-layers */
 @layer utilities {
+  /* doiuse-enable css-cascade-layers */
   .custom-prose {
-    @apply m-auto prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl; /* 2xl:prose-2xl */
+    /* doiuse-disable css-nesting */
+    @apply prose prose-sm m-auto sm:prose-base lg:prose-lg xl:prose-xl; /* 2xl:prose-2xl */ /* doiuse-enable css-nesting */
   }
 
   .custom-prose-scheme {
-    @apply custom-prose dark:prose-invert;
+    /* doiuse-disable css-nesting */
+    @apply custom-prose dark:prose-invert; /* doiuse-enable css-nesting */
   }
 
   .jonas-thelemann-divide-darken {
-    @apply divide-background-brighten dark:divide-background-darken
+    /* doiuse-disable css-nesting */
+    @apply divide-background-brighten dark:divide-background-darken; /* doiuse-enable css-nesting */
   }
 
   .jonas-thelemann-bg-darken {
-    @apply bg-background-brighten dark:bg-background-darken
+    /* doiuse-disable css-nesting */
+    @apply bg-background-brighten dark:bg-background-darken; /* doiuse-enable css-nesting */
   }
 
   .jonas-thelemann-border-darken {
-    @apply border-background-brighten dark:border-background-darken
+    /* doiuse-disable css-nesting */
+    @apply border-background-brighten dark:border-background-darken; /* doiuse-enable css-nesting */
   }
 }
-
-/* @layer utilities {
-  .custom-prose {
-    @apply m-auto prose prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-xl; /* 2xl:prose-2xl *//*
-  }
-} */
