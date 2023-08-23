@@ -28,6 +28,12 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
+  devtools: {
+    enabled: process.env.NODE_ENV === 'development',
+    timeline: {
+      enabled: true,
+    },
+  },
   modules: [
     '@dargmuesli/nuxt-cookie-control',
     '@nuxtjs/color-mode',
