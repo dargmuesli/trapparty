@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="container mx-auto p-4 md:px-8"
-    :data-is-loading="isLoading"
-    data-testid="is-loading"
-  >
+  <div class="container mx-auto p-4 md:px-8">
     <div class="flex min-h-screen flex-col pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <VioLink :aria-label="t('home')" :to="localePath('/')">
@@ -59,17 +55,8 @@ const localePath = useLocalePath()
 const i18n = useI18n()
 const { t } = i18n
 
-const loadingId = Math.random()
-const loadingIds = useState('loadingIds', () => [loadingId])
-
 // data
 const locale = i18n.locale as WritableComputedRef<Locale>
-
-// computations
-const isLoading = computed(() => !!loadingIds.value.length)
-
-// lifecycle
-onMounted(() => loadingIds.value.splice(loadingIds.value.indexOf(loadingId), 1))
 </script>
 
 <script lang="ts">
