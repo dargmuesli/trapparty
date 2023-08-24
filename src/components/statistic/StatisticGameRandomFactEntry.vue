@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <li
       class="rounded-md bg-gray-300 p-2 dark:bg-gray-700"
       :class="{
@@ -14,7 +14,7 @@
     >
       {{ t('playerValue', { player: playerNameById, value }) }}
     </li>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">

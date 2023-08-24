@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <ul
       v-if="leaderboard.length"
       class="flex flex-col gap-2 sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-6xl"
@@ -15,7 +15,7 @@
     <div v-else>
       {{ t('statisticNone') }}
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -28,7 +28,7 @@ import {
   GameRandomFactsVoteItemFragment,
 } from '~/gql/generated/graphql'
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
-import { useGameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
+import { gameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
 
 export interface Props {
   gameId: number
@@ -36,6 +36,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const gameIdProp = toRef(() => props.gameId)
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 
 // data
@@ -74,20 +75,26 @@ const init = async () => {
   const leaderboardObject = {} as Record<string, number>
 
   for (const round of rounds.value) {
-    const result = await useGameRandomFactsVotesQuery({
-      roundId: round.id,
-    }).executeQuery({
-      fetchPolicy: 'network-only',
-    })
+    const result = await $urql.value
+      .query(
+        gameRandomFactsVotesQuery,
+        {
+          roundId: round.id,
+        },
+        {
+          fetchPolicy: 'network-only',
+        },
+      )
+      .toPromise()
 
-    if (result.error.value) {
-      api.value.errors.push(result.error.value)
-      consola.error(result.error.value)
+    if (result.error) {
+      api.value.errors.push(result.error)
+      consola.error(result.error)
     }
 
     if (!result) return
     votes.value = arrayRemoveNulls(
-      result.data.value?.allGameRandomFactsVotes?.nodes.map((x) =>
+      result.data?.allGameRandomFactsVotes?.nodes.map((x) =>
         getGameRandomFactsVoteItem(x),
       ),
     )

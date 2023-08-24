@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <div v-if="store.participationData?.role !== 'player'">
       {{ t('playerNone') }}
     </div>
@@ -17,20 +17,20 @@
         class="flex flex-col items-start justify-between md:flex-row md:items-center"
       >
         <GameTitle :game="game" />
-        <ButtonColored
+        <VioButtonColored
           :aria-label="t('gameLinkStatistic')"
           :is-primary="false"
           :to="localePath(`/game/${game.id}/statistic`)"
         >
           {{ t('gameLinkStatistic') }}
-        </ButtonColored>
+        </VioButtonColored>
       </div>
       <GameRandomFacts v-if="game.type === 'RANDOM_FACTS'" :game-id="game.id" />
       <div v-else>
         {{ t('gameTypeUnexpected') }}
       </div>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -86,7 +86,7 @@ watch(gameByIdQuery.error, (currentValue, _oldValue) => {
 })
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 </script>
 
 <script lang="ts">

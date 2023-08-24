@@ -3,13 +3,15 @@ import { graphql } from '~/gql/generated'
 
 export const useAllEventsQuery = () =>
   useQuery({
-    query: graphql(`
-      query allEvents {
-        allEvents(orderBy: START_DESC) {
-          nodes {
-            ...EventItem
-          }
-        }
-      }
-    `),
+    query: allEventsQuery,
   })
+
+export const allEventsQuery = graphql(`
+  query allEvents {
+    allEvents(orderBy: START_DESC) {
+      nodes {
+        ...EventItem
+      }
+    }
+  }
+`)

@@ -1,9 +1,4 @@
 {
-  "globalStatusLoading": "Lade...",
   "globalSeoOgImageAlt": "TrapPartys Logo.",
-  "globalSeoSiteDescription": "TrapPartys Online-Version.",
-  "globalStatusError": "Fehler",
-  "globalValidationFailed": "Bitte überprüfe deine Eingaben 🙈",
-  "globalValidationFormatIncorrect": "Falsches Format",
-  "globalValidationRequired": "Pflichtfeld"
+  "globalSeoSiteDescription": "TrapPartys Online-Version."
 }

@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <div class="text-center">
       <h1>
         {{
@@ -12,8 +12,10 @@
         <p>
           {{ t('greeting') }}
         </p>
-        <Card class="my-8 flex flex-col items-center lg:flex-row lg:flex-wrap">
-          <Form
+        <VioCard
+          class="my-8 flex flex-col items-center lg:flex-row lg:flex-wrap"
+        >
+          <VioForm
             class="lg:w-8/12"
             :form="v$"
             :form-sent="isFormSent"
@@ -30,7 +32,7 @@
               The id's suffix `-trapparty` makes browser suggest inputs just
               for this service.
             -->
-            <FormInput
+            <VioFormInput
               id-label="input-participation-code-trapparty"
               :is-disabled="!!route.query.ic"
               :title="t('invitationCode')"
@@ -42,7 +44,7 @@
               <template #stateInfo>
                 <div v-if="route.query.ic">
                   {{ t('invitationCodeAutomatic') }}
-                  <AppLink
+                  <VioLink
                     :aria-label="t('invitationCodeManual')"
                     :to="
                       localePath({
@@ -51,29 +53,29 @@
                     "
                   >
                     {{ t('invitationCodeManual') }}
-                  </AppLink>
+                  </VioLink>
                 </div>
               </template>
               <template #stateError>
-                <FormInputStateError
+                <VioFormInputStateError
                   :form-input="v$.invitationCode"
                   validation-property="required"
                 >
                   {{ t('globalValidationRequired') }}
-                </FormInputStateError>
-                <FormInputStateError
+                </VioFormInputStateError>
+                <VioFormInputStateError
                   :form-input="v$.invitationCode"
                   validation-property="formatUuid"
                 >
                   {{ t('globalValidationFormatIncorrect') }}
-                </FormInputStateError>
+                </VioFormInputStateError>
               </template>
-            </FormInput>
-          </Form>
+            </VioFormInput>
+          </VioForm>
           <div class="flex justify-center self-stretch px-8 py-8 lg:w-1/12">
             <div class="h-0 w-full border border-gray-300 lg:h-full lg:w-0" />
           </div>
-          <Form
+          <VioForm
             class="lg:w-2/12"
             :form="v$Anonymous"
             :form-sent="isFormAnonymousSent"
@@ -86,20 +88,20 @@
             <p>
               {{ t('anonymousDescription') }}
             </p>
-          </Form>
+          </VioForm>
           <p
             v-if="$slots.disclaimer"
             class="w-full text-center text-sm opacity-50"
           >
             <slot name="disclaimer" />
           </p>
-        </Card>
+        </VioCard>
       </div>
-      <CardStateInfo v-else>
+      <VioCardStateInfo v-else>
         {{ t('datalessEvent') }}
-      </CardStateInfo>
+      </VioCardStateInfo>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -202,7 +204,7 @@ watch(eventByNameQuery.error, (currentValue, _oldValue) => {
 })
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 </script>
 
 <script lang="ts">

@@ -6,10 +6,12 @@ export const usePlayerNameByIdQuery = (
   variables: PlayerNameByIdQueryVariables,
 ) =>
   useQuery({
-    query: graphql(`
-      query playerNameById($id: Int!) {
-        playerNameById(id: $id)
-      }
-    `),
+    query: playerNameByIdQuery,
     variables,
   })
+
+export const playerNameByIdQuery = graphql(`
+  query playerNameById($id: Int!) {
+    playerNameById(id: $id)
+  }
+`)

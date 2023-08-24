@@ -1,13 +1,16 @@
 import { defu } from 'defu'
 import { appendHeader, defineEventHandler } from 'h3'
 
-import { getDomainTldPort, getHost } from '~/utils/util'
+import {
+  getDomainTldPort,
+  getHost,
+} from '@dargmuesli/nuxt-vio/utils/networking'
 
 const getCsp = (host: string): Record<string, Array<string>> => {
   const hostName = host.replace(/:[0-9]+$/, '')
-  const config = useRuntimeConfig()
+  const runtimeConfig = useRuntimeConfig()
 
-  const stagingHostOrHost = config.public.stagingHost || host
+  const stagingHostOrHost = runtimeConfig.public.vio.stagingHost || host
 
   const base = {
     'base-uri': ["'none'"], // Mozilla Observatory.
@@ -61,50 +64,14 @@ const getCsp = (host: string): Record<string, Array<string>> => {
     'connect-src': [`https://${stagingHostOrHost}/cdn-cgi/rum`],
   }
 
-  return defu(base, config.public.isInProduction ? production : development)
-}
-
-const getCspAsString = (host: string) => {
-  const csp = getCsp(host)
-  let result = ''
-
-  Object.keys(csp).forEach((key) => {
-    result += `${key} ${csp[key].join(' ')};`
-  })
-
-  return result
+  return defu(
+    base,
+    runtimeConfig.public.vio.isInProduction ? production : development,
+  )
 }
 
 export default defineEventHandler((event) => {
   const host = getHost(event.node.req)
 
-  appendHeader(event, 'Content-Security-Policy', getCspAsString(host))
-  // appendHeader(event, 'Cross-Origin-Embedder-Policy', 'require-corp') // https://stackoverflow.com/questions/71904052/getting-notsameoriginafterdefaultedtosameoriginbycoep-error-with-helmet
-  appendHeader(event, 'Cross-Origin-Opener-Policy', 'same-origin')
-  appendHeader(event, 'Cross-Origin-Resource-Policy', 'same-origin')
-  // appendHeader(event, 'Expect-CT', 'max-age=0') // deprecated (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT)
-  appendHeader(
-    event,
-    'NEL',
-    '\'{"report_to":"default","max_age":31536000,"include_subdomains":true}\'',
-  )
-  appendHeader(event, 'Origin-Agent-Cluster', '?1')
-  appendHeader(event, 'Permissions-Policy', '')
-  appendHeader(event, 'Referrer-Policy', 'no-referrer')
-  appendHeader(
-    event,
-    'Report-To',
-    '\'{"group":"default","max_age":31536000,"endpoints":[{"url":"https://dargmuesli.report-uri.com/a/d/g"}],"include_subdomains":true}\'',
-  )
-  appendHeader(
-    event,
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload',
-  )
-  appendHeader(event, 'X-Content-Type-Options', 'nosniff')
-  appendHeader(event, 'X-DNS-Prefetch-Control', 'off')
-  appendHeader(event, 'X-Download-Options', 'noopen')
-  appendHeader(event, 'X-Frame-Options', 'SAMEORIGIN')
-  appendHeader(event, 'X-Permitted-Cross-Domain-Policies', 'none')
-  appendHeader(event, 'X-XSS-Protection', '0')
+  appendHeader(event, 'Content-Security-Policy', getCspAsString(getCsp(host)))
 })

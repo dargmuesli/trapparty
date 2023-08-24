@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <div class="text-center">
       <h1>
         {{ title }}
@@ -16,7 +16,7 @@
           >
             <GameTitle :game="game" />
             <div class="flex gap-4">
-              <ButtonColored
+              <VioButtonColored
                 v-if="
                   game.isActive && store.participationData?.role === 'player'
                 "
@@ -24,23 +24,23 @@
                 :to="localePath(`/game/${game.id}`)"
               >
                 {{ t('gameLink') }}
-              </ButtonColored>
-              <ButtonColored
+              </VioButtonColored>
+              <VioButtonColored
                 :aria-label="t('gameLinkStatistic')"
                 :is-primary="false"
                 :to="localePath(`/game/${game.id}/statistic`)"
               >
                 {{ t('gameLinkStatistic') }}
-              </ButtonColored>
+              </VioButtonColored>
             </div>
           </li>
         </ul>
       </div>
-      <CardStateInfo v-else>
+      <VioCardStateInfo v-else>
         {{ t('gamesNone') }}
-      </CardStateInfo>
+      </VioCardStateInfo>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -52,7 +52,7 @@ import { getGameItem } from '~/gql/documents/fragments/gameItem'
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
 import { GameItemFragment } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
-import { useAllGamesQuery } from '~~/gql/documents/queries/game/allGames'
+import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 
 export interface Props {
   eventName: string
@@ -60,6 +60,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const eventNameProp = toRef(() => props.eventName)
 
+const { $urql } = useNuxtApp()
 const localePath = useLocalePath()
 const { t } = useI18n()
 const store = useStore()
@@ -92,17 +93,19 @@ const fetchGames = async (
 ) => {
   if (!trapPartyEventLocal?.id) return
 
-  const result = await useAllGamesQuery({
-    eventId: trapPartyEventLocal.id,
-  }).executeQuery()
+  const result = await $urql.value
+    .query(allGamesQuery, {
+      eventId: trapPartyEventLocal.id,
+    })
+    .toPromise()
 
-  if (result.error.value) {
-    api.value.errors.push(result.error.value)
-    consola.error(result.error.value)
+  if (result.error) {
+    api.value.errors.push(result.error)
+    consola.error(result.error)
   }
 
   const allGames = arrayRemoveNulls(
-    result.data.value?.allGames?.nodes.map((x) => getGameItem(x)),
+    result.data?.allGames?.nodes.map((x) => getGameItem(x)),
   )
 
   games.value = allGames
@@ -115,7 +118,7 @@ watch(
 )
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 fetchGames(trapPartyEvent.value)
 </script>
 

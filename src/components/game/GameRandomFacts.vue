@@ -1,8 +1,8 @@
 <template>
-  <Loader :api="api">
-    <CardStateAlert v-if="!player">
+  <VioLoader :api="api">
+    <VioCardStateAlert v-if="!player">
       {{ t('playerNone') }}
-    </CardStateAlert>
+    </VioCardStateAlert>
     <div v-else class="text-justify text-3xl lg:text-8xl">
       <div v-if="round" class="flex flex-col gap-8">
         <div class="text-gray-500">
@@ -22,7 +22,7 @@
         <div
           class="m-4 flex flex-col justify-evenly gap-4 lg:m-16 lg:flex-row lg:gap-16"
         >
-          <ButtonColored
+          <VioButtonColored
             :aria-label="t('factA')"
             class="px-4 py-8 lg:px-16"
             :class="{
@@ -34,8 +34,8 @@
             @click="choose(0)"
           >
             {{ t('factA') }}
-          </ButtonColored>
-          <ButtonColored
+          </VioButtonColored>
+          <VioButtonColored
             :aria-label="t('factB')"
             class="px-4 py-8 lg:px-16"
             :class="{
@@ -47,7 +47,7 @@
             @click="choose(1)"
           >
             {{ t('factB') }}
-          </ButtonColored>
+          </VioButtonColored>
         </div>
       </div>
       <div v-else class="text-gray-500">
@@ -58,7 +58,7 @@
         </i18n-t>
       </div>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -71,7 +71,7 @@ import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player
 import { useStore } from '~/store'
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
-import { useGameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
+import { gameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
 export interface Props {
   gameId: number
@@ -79,6 +79,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const gameIdProp = toRef(() => props.gameId)
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
 const fireError = useFireError()
@@ -188,19 +189,25 @@ const choose = async (answer: number) => {
 const voteFetch = async () => {
   if (!player.value || !round.value) return
 
-  const result = await useGameRandomFactsVoteByPlayerIdAndRoundIdQuery({
-    playerId: player.value?.id,
-    roundId: round.value?.id,
-  }).executeQuery({
-    fetchPolicy: 'network-only',
-  })
+  const result = await $urql.value
+    .query(
+      gameRandomFactsVoteByPlayerIdAndRoundIdQuery,
+      {
+        playerId: player.value?.id,
+        roundId: round.value?.id,
+      },
+      {
+        fetchPolicy: 'network-only',
+      },
+    )
+    .toPromise()
 
-  if (result.error.value) fireError({ error: result.error.value }, api)
+  if (result.error) fireError({ error: result.error }, api)
 
   if (!result) return
 
   voteAnswer.value = getGameRandomFactsVoteItem(
-    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId,
+    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId,
   )?.answer
 }
 
