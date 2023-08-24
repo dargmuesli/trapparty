@@ -8,7 +8,9 @@ import {
   SSRData,
 } from '@urql/core'
 import { devtoolsExchange } from '@urql/devtools'
+// import type { Data } from '@urql/exchange-graphcache'
 import { cacheExchange } from '@urql/exchange-graphcache'
+// import { relayPagination } from '@urql/exchange-graphcache/extras'
 import { provideClient } from '@urql/vue'
 import { consola } from 'consola'
 import { ref } from 'vue'
@@ -16,17 +18,13 @@ import { ref } from 'vue'
 import schema from '~/gql/generated/introspection'
 import { GraphCacheConfig } from '~/gql/generated/graphcache'
 
-// import {
-//   authenticationAnonymous,
-//   getJwtFromCookie,
-//   jwtRefresh,
-// } from '~/utils/auth'
+// import { useAuthStore } from '~/store'
 
 const ssrKey = '__URQL_DATA__'
 // const invalidateCache = (
 //   cache: Cache,
 //   name: string,
-//   args?: { input: { id: any } }
+//   args?: { input: { id: any } },
 // ) =>
 //   args
 //     ? cache.invalidate({ __typename: name, id: args.input.id })
@@ -157,25 +155,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // // Either authenticate anonymously or refresh token on page load.
   // if (nuxtApp.ssrContext?.event) {
-  //   const store = useStore(nuxtApp.ssrContext.$pinia)
-  //   const jwtFromCookie = getJwtFromCookie({
-  //     req: nuxtApp.ssrContext.event.node.req,
-  //   })
+  //   const store = useAuthStore(nuxtApp.ssrContext.$pinia)
+  //   const jwtFromCookie = getJwtFromCookie()
 
-  //   if (jwtFromCookie?.jwtDecoded.id) {
+  //   if (jwtFromCookie?.jwtDecoded?.id) {
   //     await jwtRefresh({
-  //       client: client.value,
   //       $urqlReset: urqlReset,
-  //       store,
-  //       res: nuxtApp.ssrContext.event.node.res,
+  //       client: client.value,
+  //       event: nuxtApp.ssrContext.event,
   //       id: jwtFromCookie.jwtDecoded.id as string,
+  //       store,
   //     })
   //   } else {
   //     await authenticationAnonymous({
-  //       client: client.value,
   //       $urqlReset: urqlReset,
+  //       client: client.value,
+  //       event: nuxtApp.ssrContext.event,
   //       store,
-  //       res: nuxtApp.ssrContext.event.node.res,
   //     })
   //   }
   // }

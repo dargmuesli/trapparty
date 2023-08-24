@@ -6,14 +6,16 @@ export const useGameRandomFactsVotesQuery = (
   variables: GameRandomFactsVotesQueryVariables,
 ) =>
   useQuery({
-    query: graphql(`
-      query gameRandomFactsVotes($roundId: Int!) {
-        allGameRandomFactsVotes(condition: { roundId: $roundId }) {
-          nodes {
-            ...GameRandomFactsVoteItem
-          }
-        }
-      }
-    `),
+    query: gameRandomFactsVotesQuery,
     variables,
   })
+
+export const gameRandomFactsVotesQuery = graphql(`
+  query gameRandomFactsVotes($roundId: Int!) {
+    allGameRandomFactsVotes(condition: { roundId: $roundId }) {
+      nodes {
+        ...GameRandomFactsVoteItem
+      }
+    }
+  }
+`)

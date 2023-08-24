@@ -71,7 +71,7 @@ import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player
 import { useStore } from '~/store'
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
-import { useGameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
+import { gameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
 export interface Props {
   gameId: number
@@ -79,6 +79,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const gameIdProp = toRef(() => props.gameId)
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
 const fireError = useFireError()
@@ -188,19 +189,25 @@ const choose = async (answer: number) => {
 const voteFetch = async () => {
   if (!player.value || !round.value) return
 
-  const result = await useGameRandomFactsVoteByPlayerIdAndRoundIdQuery({
-    playerId: player.value?.id,
-    roundId: round.value?.id,
-  }).executeQuery({
-    fetchPolicy: 'network-only',
-  })
+  const result = await $urql.value
+    .query(
+      gameRandomFactsVoteByPlayerIdAndRoundIdQuery,
+      {
+        playerId: player.value?.id,
+        roundId: round.value?.id,
+      },
+      {
+        fetchPolicy: 'network-only',
+      },
+    )
+    .toPromise()
 
-  if (result.error.value) fireError({ error: result.error.value }, api)
+  if (result.error) fireError({ error: result.error }, api)
 
   if (!result) return
 
   voteAnswer.value = getGameRandomFactsVoteItem(
-    result.data.value?.gameRandomFactsVoteByPlayerIdAndRoundId,
+    result.data?.gameRandomFactsVoteByPlayerIdAndRoundId,
   )?.answer
 }
 

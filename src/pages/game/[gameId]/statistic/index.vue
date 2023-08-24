@@ -23,8 +23,9 @@ import { consola } from 'consola'
 import { GameType } from '~/gql/generated/graphql'
 import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
-import { useAllGamesQuery } from '~/gql/documents/queries/game/allGames'
+import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
 
@@ -53,20 +54,22 @@ const title = t('title')
 const init = async () => {
   if (!game.value) return
 
-  const gamesResult = await useAllGamesQuery({
-    eventId: game.value.eventId,
-    type: GameType.RandomFacts,
-  }).executeQuery()
+  const gamesResult = await $urql.value
+    .query(allGamesQuery, {
+      eventId: game.value.eventId,
+      type: GameType.RandomFacts,
+    })
+    .toPromise()
 
-  if (gamesResult.error.value) {
-    api.value.errors.push(gamesResult.error.value)
+  if (gamesResult.error) {
+    api.value.errors.push(gamesResult.error)
     // TODO: add watcher instead
     consola.error(gamesResult.error)
   }
 
   if (!gamesResult) return loadingStop()
 
-  games.value = gamesResult.data.value?.allGames?.nodes
+  games.value = gamesResult.data?.allGames?.nodes
 
   loadingStop()
 }

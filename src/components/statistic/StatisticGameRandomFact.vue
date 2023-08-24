@@ -28,7 +28,7 @@ import {
   GameRandomFactsVoteItemFragment,
 } from '~/gql/generated/graphql'
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
-import { useGameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
+import { gameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
 
 export interface Props {
   gameId: number
@@ -36,6 +36,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const gameIdProp = toRef(() => props.gameId)
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 
 // data
@@ -74,20 +75,26 @@ const init = async () => {
   const leaderboardObject = {} as Record<string, number>
 
   for (const round of rounds.value) {
-    const result = await useGameRandomFactsVotesQuery({
-      roundId: round.id,
-    }).executeQuery({
-      fetchPolicy: 'network-only',
-    })
+    const result = await $urql.value
+      .query(
+        gameRandomFactsVotesQuery,
+        {
+          roundId: round.id,
+        },
+        {
+          fetchPolicy: 'network-only',
+        },
+      )
+      .toPromise()
 
-    if (result.error.value) {
-      api.value.errors.push(result.error.value)
-      consola.error(result.error.value)
+    if (result.error) {
+      api.value.errors.push(result.error)
+      consola.error(result.error)
     }
 
     if (!result) return
     votes.value = arrayRemoveNulls(
-      result.data.value?.allGameRandomFactsVotes?.nodes.map((x) =>
+      result.data?.allGameRandomFactsVotes?.nodes.map((x) =>
         getGameRandomFactsVoteItem(x),
       ),
     )

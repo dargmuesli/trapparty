@@ -4,17 +4,16 @@ import { AllGamesQueryVariables } from '~/gql/generated/graphql'
 
 export const useAllGamesQuery = (variables: AllGamesQueryVariables) =>
   useQuery({
-    query: graphql(`
-      query allGames($eventId: Int!, $type: GameType) {
-        allGames(
-          condition: { eventId: $eventId, type: $type }
-          orderBy: ID_ASC
-        ) {
-          nodes {
-            ...GameItem
-          }
-        }
-      }
-    `),
+    query: allGamesQuery,
     variables,
   })
+
+export const allGamesQuery = graphql(`
+  query allGames($eventId: Int!, $type: GameType) {
+    allGames(condition: { eventId: $eventId, type: $type }, orderBy: ID_ASC) {
+      nodes {
+        ...GameItem
+      }
+    }
+  }
+`)

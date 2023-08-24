@@ -8,8 +8,9 @@
 import { consola } from 'consola'
 
 import { useCreateGameRandomFactsRoundMutation } from '~/gql/documents/mutations/game/createGameRandomFactsRound'
-import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
+import { playerByInvitationCodeFnQuery } from '~/gql/documents/queries/player/playerByInvitationCodeFn'
 
+const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
 const fireError = useFireError()
@@ -43,19 +44,21 @@ const checkNfcErrors = async () => {
   }
 }
 const getPlayerByInvitationCode = async (invitationCode: string) => {
-  const result = await usePlayerByInvitationCodeFnQuery({
-    invitationCode,
-  }).executeQuery()
+  const result = await $urql.value
+    .query(playerByInvitationCodeFnQuery, {
+      invitationCode,
+    })
+    .toPromise()
 
-  if (result.error.value) {
-    api.value.errors.push(result.error.value)
-    consola.error(result.error.value)
+  if (result.error) {
+    api.value.errors.push(result.error)
+    consola.error(result.error)
   }
 
   if (!result)
     return Promise.reject(Error('No result for player by invitation code!'))
 
-  return result.data.value?.playerByInvitationCodeFn?.nodes[0]
+  return result.data?.playerByInvitationCodeFn?.nodes[0]
 }
 const gameRandomFactsRoundCreate = async (gameRandomFactsRoundInput: any) => {
   const player = await getPlayerByInvitationCode(

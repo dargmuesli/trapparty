@@ -6,17 +6,16 @@ export const useAllGameRandomFactsRoundsQuery = (
   variables: AllGameRandomFactsRoundsQueryVariables,
 ) =>
   useQuery({
-    query: graphql(`
-      query allGameRandomFactsRounds($gameId: Int!) {
-        allGameRandomFactsRounds(
-          condition: { gameId: $gameId }
-          orderBy: ID_DESC
-        ) {
-          nodes {
-            ...GameRandomFactsRoundItem
-          }
-        }
-      }
-    `),
+    query: allGameRandomFactsRoundsQuery,
     variables,
   })
+
+export const allGameRandomFactsRoundsQuery = graphql(`
+  query allGameRandomFactsRounds($gameId: Int!) {
+    allGameRandomFactsRounds(condition: { gameId: $gameId }, orderBy: ID_DESC) {
+      nodes {
+        ...GameRandomFactsRoundItem
+      }
+    }
+  }
+`)

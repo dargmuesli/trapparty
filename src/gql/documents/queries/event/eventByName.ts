@@ -4,17 +4,19 @@ import { EventByNameQueryVariables } from '~/gql/generated/graphql'
 
 export const useEventByNameQuery = (variables: EventByNameQueryVariables) =>
   useQuery({
-    query: graphql(`
-      query eventByName($eventName: String!) {
-        eventByName(name: $eventName) {
-          ...EventItem
-          teamsByEventId {
-            nodes {
-              ...TeamItem
-            }
-          }
-        }
-      }
-    `),
+    query: eventByNameQuery,
     variables,
   })
+
+export const eventByNameQuery = graphql(`
+  query eventByName($eventName: String!) {
+    eventByName(name: $eventName) {
+      ...EventItem
+      teamsByEventId {
+        nodes {
+          ...TeamItem
+        }
+      }
+    }
+  }
+`)

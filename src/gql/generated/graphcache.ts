@@ -18,44 +18,53 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>
 }
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never }
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
+    }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string
-  String: string
-  Boolean: boolean
-  Int: number
-  Float: number
-  BigInt: any
-  Cursor: any
-  Datetime: any
-  UUID: any
+  ID: { input: string; output: string }
+  String: { input: string; output: string }
+  Boolean: { input: boolean; output: boolean }
+  Int: { input: number; output: number }
+  Float: { input: number; output: number }
+  BigInt: { input: any; output: any }
+  Cursor: { input: any; output: any }
+  Datetime: { input: any; output: any }
+  UUID: { input: any; output: any }
 }
 
 /** Charity organizations. */
 export type CharityOrganization = Node & {
   __typename?: 'CharityOrganization'
   /** The charity organization's department. */
-  department?: Maybe<Scalars['String']>
+  department?: Maybe<Scalars['String']['output']>
   /** The charity organization's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** The charity organization's name. */
-  name: Scalars['String']
+  name: Scalars['String']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads and enables pagination through a set of `Team`. */
   teamsByCharityOrganizationId: TeamsConnection
   /** The charity organization's url. */
-  url: Scalars['String']
+  url: Scalars['String']['output']
 }
 
 /** Charity organizations. */
 export type CharityOrganizationTeamsByCharityOrganizationIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamsOrderBy>>
 }
 
@@ -65,37 +74,37 @@ export type CharityOrganizationTeamsByCharityOrganizationIdArgs = {
  */
 export type CharityOrganizationCondition = {
   /** Checks for equality with the object’s `department` field. */
-  department?: InputMaybe<Scalars['String']>
+  department?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `url` field. */
-  url?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']['input']>
 }
 
 /** An input for mutations affecting `CharityOrganization` */
 export type CharityOrganizationInput = {
   /** The charity organization's department. */
-  department?: InputMaybe<Scalars['String']>
+  department?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The charity organization's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
   /** The charity organization's url. */
-  url: Scalars['String']
+  url: Scalars['String']['input']
 }
 
 /** Represents an update to a `CharityOrganization`. Fields that are set will be updated. */
 export type CharityOrganizationPatch = {
   /** The charity organization's department. */
-  department?: InputMaybe<Scalars['String']>
+  department?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The charity organization's name. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's url. */
-  url?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']['input']>
 }
 
 /** A connection to a list of `CharityOrganization` values. */
@@ -108,14 +117,14 @@ export type CharityOrganizationsConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `CharityOrganization` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `CharityOrganization` edge in the connection. */
 export type CharityOrganizationsEdge = {
   __typename?: 'CharityOrganizationsEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `CharityOrganization` at the end of the edge. */
   node?: Maybe<CharityOrganization>
 }
@@ -143,7 +152,7 @@ export type CreateCharityOrganizationInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
 }
 
 /** The output of our create `CharityOrganization` mutation. */
@@ -157,7 +166,7 @@ export type CreateCharityOrganizationPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -173,7 +182,7 @@ export type CreateEventInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `Event` to be created by this mutation. */
   event: EventInput
 }
@@ -185,7 +194,7 @@ export type CreateEventPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Event` that was created by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
@@ -205,7 +214,7 @@ export type CreateGameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `Game` to be created by this mutation. */
   game: GameInput
 }
@@ -217,7 +226,7 @@ export type CreateGamePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Event` that is related to this `Game`. */
   eventByEventId?: Maybe<Event>
   /** The `Game` that was created by this mutation. */
@@ -239,7 +248,7 @@ export type CreateGameRandomFactsRoundInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `GameRandomFactsRound` to be created by this mutation. */
   gameRandomFactsRound: GameRandomFactsRoundInput
 }
@@ -251,7 +260,7 @@ export type CreateGameRandomFactsRoundPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
   gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was created by this mutation. */
@@ -273,7 +282,7 @@ export type CreateGameRandomFactsVoteInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `GameRandomFactsVote` to be created by this mutation. */
   gameRandomFactsVote: GameRandomFactsVoteInput
 }
@@ -285,7 +294,7 @@ export type CreateGameRandomFactsVotePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
   gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was created by this mutation. */
@@ -309,7 +318,7 @@ export type CreateGameTeamScoreInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `GameTeamScore` to be created by this mutation. */
   gameTeamScore: GameTeamScoreInput
 }
@@ -321,7 +330,7 @@ export type CreateGameTeamScorePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Game` that is related to this `GameTeamScore`. */
   gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was created by this mutation. */
@@ -345,7 +354,7 @@ export type CreateKvInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `Kv` to be created by this mutation. */
   kv: KvInput
 }
@@ -357,7 +366,7 @@ export type CreateKvPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Kv` that was created by this mutation. */
   kv?: Maybe<Kv>
   /** An edge for our `Kv`. May be used by Relay 1. */
@@ -377,7 +386,7 @@ export type CreatePlayerInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `Player` to be created by this mutation. */
   player: PlayerInput
 }
@@ -389,7 +398,7 @@ export type CreatePlayerPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Player` that was created by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
@@ -411,7 +420,7 @@ export type CreateTeamInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `Team` to be created by this mutation. */
   team: TeamInput
 }
@@ -422,7 +431,7 @@ export type CreateTeamLeaderInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The `TeamLeader` to be created by this mutation. */
   teamLeader: TeamLeaderInput
 }
@@ -434,7 +443,7 @@ export type CreateTeamLeaderPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Player` that is related to this `TeamLeader`. */
   playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
@@ -461,7 +470,7 @@ export type CreateTeamPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Event` that is related to this `Team`. */
   eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
@@ -483,9 +492,9 @@ export type DeleteCharityOrganizationByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteCharityOrganizationByName` mutation. */
@@ -494,9 +503,9 @@ export type DeleteCharityOrganizationByNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** All input for the `deleteCharityOrganizationByUrl` mutation. */
@@ -505,9 +514,9 @@ export type DeleteCharityOrganizationByUrlInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's url. */
-  url: Scalars['String']
+  url: Scalars['String']['input']
 }
 
 /** All input for the `deleteCharityOrganization` mutation. */
@@ -516,9 +525,9 @@ export type DeleteCharityOrganizationInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `CharityOrganization` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `CharityOrganization` mutation. */
@@ -532,8 +541,8 @@ export type DeleteCharityOrganizationPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedCharityOrganizationId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedCharityOrganizationId?: Maybe<Scalars['ID']['output']>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -549,9 +558,9 @@ export type DeleteEventByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The events's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteEventByName` mutation. */
@@ -560,8 +569,8 @@ export type DeleteEventByNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
-  name: Scalars['String']
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  name: Scalars['String']['input']
 }
 
 /** All input for the `deleteEvent` mutation. */
@@ -570,9 +579,9 @@ export type DeleteEventInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Event` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `Event` mutation. */
@@ -582,8 +591,8 @@ export type DeleteEventPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedEventId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedEventId?: Maybe<Scalars['ID']['output']>
   /** The `Event` that was deleted by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
@@ -603,11 +612,11 @@ export type DeleteGameByEventIdAndNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The game's internal event id */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['input']
   /** The games's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** All input for the `deleteGameById` mutation. */
@@ -616,9 +625,9 @@ export type DeleteGameByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The games's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGame` mutation. */
@@ -627,9 +636,9 @@ export type DeleteGameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Game` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `Game` mutation. */
@@ -639,8 +648,8 @@ export type DeleteGamePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedGameId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `Event` that is related to this `Game`. */
   eventByEventId?: Maybe<Event>
   /** The `Game` that was deleted by this mutation. */
@@ -662,9 +671,9 @@ export type DeleteGameRandomFactsRoundByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The round's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameRandomFactsRound` mutation. */
@@ -673,9 +682,9 @@ export type DeleteGameRandomFactsRoundInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameRandomFactsRound` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameRandomFactsRound` mutation. */
@@ -685,8 +694,8 @@ export type DeleteGameRandomFactsRoundPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedGameRandomFactsRoundId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameRandomFactsRoundId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
   gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was deleted by this mutation. */
@@ -708,9 +717,9 @@ export type DeleteGameRandomFactsVoteByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The vote's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameRandomFactsVoteByPlayerIdAndRoundId` mutation. */
@@ -719,11 +728,11 @@ export type DeleteGameRandomFactsVoteByPlayerIdAndRoundIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The vote's internal player id */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['input']
   /** The vote's internal round id. */
-  roundId: Scalars['Int']
+  roundId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameRandomFactsVote` mutation. */
@@ -732,9 +741,9 @@ export type DeleteGameRandomFactsVoteInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameRandomFactsVote` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameRandomFactsVote` mutation. */
@@ -744,8 +753,8 @@ export type DeleteGameRandomFactsVotePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedGameRandomFactsVoteId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameRandomFactsVoteId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
   gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was deleted by this mutation. */
@@ -769,9 +778,9 @@ export type DeleteGameTeamScoreByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The game score's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameTeamScore` mutation. */
@@ -780,9 +789,9 @@ export type DeleteGameTeamScoreInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameTeamScore` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameTeamScore` mutation. */
@@ -792,8 +801,8 @@ export type DeleteGameTeamScorePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedGameTeamScoreId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameTeamScoreId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `Game` that is related to this `GameTeamScore`. */
   gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was deleted by this mutation. */
@@ -817,9 +826,9 @@ export type DeleteKvByKeyInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The key. */
-  key: Scalars['String']
+  key: Scalars['String']['input']
 }
 
 /** The output of our delete `Kv` mutation. */
@@ -829,8 +838,8 @@ export type DeleteKvPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedKvId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedKvId?: Maybe<Scalars['ID']['output']>
   /** The `Kv` that was deleted by this mutation. */
   kv?: Maybe<Kv>
   /** An edge for our `Kv`. May be used by Relay 1. */
@@ -850,9 +859,9 @@ export type DeletePlayerByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The players's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deletePlayerByInvitationCode` mutation. */
@@ -861,9 +870,9 @@ export type DeletePlayerByInvitationCodeInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The player's invitation code. */
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['input']
 }
 
 /** All input for the `deletePlayerByTeamIdAndInvitationCode` mutation. */
@@ -872,11 +881,11 @@ export type DeletePlayerByTeamIdAndInvitationCodeInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The player's invitation code. */
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['input']
   /** The player's internal team id. */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['input']
 }
 
 /** All input for the `deletePlayer` mutation. */
@@ -885,9 +894,9 @@ export type DeletePlayerInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Player` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `Player` mutation. */
@@ -897,8 +906,8 @@ export type DeletePlayerPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedPlayerId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedPlayerId?: Maybe<Scalars['ID']['output']>
   /** The `Player` that was deleted by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
@@ -920,9 +929,9 @@ export type DeleteTeamByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteTeam` mutation. */
@@ -931,9 +940,9 @@ export type DeleteTeamInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Team` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** All input for the `deleteTeamLeaderById` mutation. */
@@ -942,9 +951,9 @@ export type DeleteTeamLeaderByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team leaders's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `deleteTeamLeader` mutation. */
@@ -953,9 +962,9 @@ export type DeleteTeamLeaderInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `TeamLeader` to be deleted. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our delete `TeamLeader` mutation. */
@@ -965,8 +974,8 @@ export type DeleteTeamLeaderPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedTeamLeaderId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedTeamLeaderId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `Player` that is related to this `TeamLeader`. */
   playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
@@ -993,8 +1002,8 @@ export type DeleteTeamPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
-  deletedTeamId?: Maybe<Scalars['ID']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedTeamId?: Maybe<Scalars['ID']['output']>
   /** Reads a single `Event` that is related to this `Team`. */
   eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
@@ -1014,114 +1023,114 @@ export type DeleteTeamPayloadTeamEdgeArgs = {
 export type Event = Node & {
   __typename?: 'Event'
   /** The event's common donation amount. */
-  commonDonationAmount?: Maybe<Scalars['Float']>
+  commonDonationAmount?: Maybe<Scalars['Float']['output']>
   /** Indicates whether the event's common donations are featured in the stream. */
-  commonDonationIsLive?: Maybe<Scalars['Boolean']>
+  commonDonationIsLive?: Maybe<Scalars['Boolean']['output']>
   /** The event's common donation url. */
-  commonDonationUrl?: Maybe<Scalars['String']>
+  commonDonationUrl?: Maybe<Scalars['String']['output']>
   /** The event's discord code. */
-  discordInviteCode?: Maybe<Scalars['String']>
+  discordInviteCode?: Maybe<Scalars['String']['output']>
   /** The event's end timestamp. */
-  end?: Maybe<Scalars['Datetime']>
+  end?: Maybe<Scalars['Datetime']['output']>
   /** Reads and enables pagination through a set of `Game`. */
   gamesByEventId: GamesConnection
   /** The events's internal id. */
-  id: Scalars['Int']
-  name: Scalars['String']
+  id: Scalars['Int']['output']
+  name: Scalars['String']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** The event's start timestamp. */
-  start: Scalars['Datetime']
+  start: Scalars['Datetime']['output']
   /** The event's stream url. */
-  streamUrl?: Maybe<Scalars['String']>
+  streamUrl?: Maybe<Scalars['String']['output']>
   /** Reads and enables pagination through a set of `Team`. */
   teamsByEventId: TeamsConnection
 }
 
 /** Events. */
 export type EventGamesByEventIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GamesOrderBy>>
 }
 
 /** Events. */
 export type EventTeamsByEventIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamsOrderBy>>
 }
 
 /** A condition to be used against `Event` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type EventCondition = {
   /** Checks for equality with the object’s `commonDonationAmount` field. */
-  commonDonationAmount?: InputMaybe<Scalars['Float']>
+  commonDonationAmount?: InputMaybe<Scalars['Float']['input']>
   /** Checks for equality with the object’s `commonDonationIsLive` field. */
-  commonDonationIsLive?: InputMaybe<Scalars['Boolean']>
+  commonDonationIsLive?: InputMaybe<Scalars['Boolean']['input']>
   /** Checks for equality with the object’s `commonDonationUrl` field. */
-  commonDonationUrl?: InputMaybe<Scalars['String']>
+  commonDonationUrl?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `discordInviteCode` field. */
-  discordInviteCode?: InputMaybe<Scalars['String']>
+  discordInviteCode?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `end` field. */
-  end?: InputMaybe<Scalars['Datetime']>
+  end?: InputMaybe<Scalars['Datetime']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `start` field. */
-  start?: InputMaybe<Scalars['Datetime']>
+  start?: InputMaybe<Scalars['Datetime']['input']>
   /** Checks for equality with the object’s `streamUrl` field. */
-  streamUrl?: InputMaybe<Scalars['String']>
+  streamUrl?: InputMaybe<Scalars['String']['input']>
 }
 
 /** An input for mutations affecting `Event` */
 export type EventInput = {
   /** The event's common donation amount. */
-  commonDonationAmount?: InputMaybe<Scalars['Float']>
+  commonDonationAmount?: InputMaybe<Scalars['Float']['input']>
   /** Indicates whether the event's common donations are featured in the stream. */
-  commonDonationIsLive?: InputMaybe<Scalars['Boolean']>
+  commonDonationIsLive?: InputMaybe<Scalars['Boolean']['input']>
   /** The event's common donation url. */
-  commonDonationUrl?: InputMaybe<Scalars['String']>
+  commonDonationUrl?: InputMaybe<Scalars['String']['input']>
   /** The event's discord code. */
-  discordInviteCode?: InputMaybe<Scalars['String']>
+  discordInviteCode?: InputMaybe<Scalars['String']['input']>
   /** The event's end timestamp. */
-  end?: InputMaybe<Scalars['Datetime']>
+  end?: InputMaybe<Scalars['Datetime']['input']>
   /** The events's internal id. */
-  id?: InputMaybe<Scalars['Int']>
-  name: Scalars['String']
+  id?: InputMaybe<Scalars['Int']['input']>
+  name: Scalars['String']['input']
   /** The event's start timestamp. */
-  start: Scalars['Datetime']
+  start: Scalars['Datetime']['input']
   /** The event's stream url. */
-  streamUrl?: InputMaybe<Scalars['String']>
+  streamUrl?: InputMaybe<Scalars['String']['input']>
 }
 
 /** Represents an update to a `Event`. Fields that are set will be updated. */
 export type EventPatch = {
   /** The event's common donation amount. */
-  commonDonationAmount?: InputMaybe<Scalars['Float']>
+  commonDonationAmount?: InputMaybe<Scalars['Float']['input']>
   /** Indicates whether the event's common donations are featured in the stream. */
-  commonDonationIsLive?: InputMaybe<Scalars['Boolean']>
+  commonDonationIsLive?: InputMaybe<Scalars['Boolean']['input']>
   /** The event's common donation url. */
-  commonDonationUrl?: InputMaybe<Scalars['String']>
+  commonDonationUrl?: InputMaybe<Scalars['String']['input']>
   /** The event's discord code. */
-  discordInviteCode?: InputMaybe<Scalars['String']>
+  discordInviteCode?: InputMaybe<Scalars['String']['input']>
   /** The event's end timestamp. */
-  end?: InputMaybe<Scalars['Datetime']>
+  end?: InputMaybe<Scalars['Datetime']['input']>
   /** The events's internal id. */
-  id?: InputMaybe<Scalars['Int']>
-  name?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['Int']['input']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** The event's start timestamp. */
-  start?: InputMaybe<Scalars['Datetime']>
+  start?: InputMaybe<Scalars['Datetime']['input']>
   /** The event's stream url. */
-  streamUrl?: InputMaybe<Scalars['String']>
+  streamUrl?: InputMaybe<Scalars['String']['input']>
 }
 
 /** A connection to a list of `Event` values. */
@@ -1134,14 +1143,14 @@ export type EventsConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Event` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `Event` edge in the connection. */
 export type EventsEdge = {
   __typename?: 'EventsEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Event` at the end of the edge. */
   node?: Maybe<Event>
 }
@@ -1177,55 +1186,55 @@ export type Game = Node & {
   /** Reads a single `Event` that is related to this `Game`. */
   eventByEventId?: Maybe<Event>
   /** The game's internal event id */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameRandomFactsRound`. */
   gameRandomFactsRoundsByGameId: GameRandomFactsRoundsConnection
   /** Reads and enables pagination through a set of `GameTeamScore`. */
   gameTeamScoresByGameId: GameTeamScoresConnection
   /** The games's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** The games's activeness. */
-  isActive: Scalars['Boolean']
+  isActive: Scalars['Boolean']['output']
   /** The games's name. */
-  name: Scalars['String']
+  name: Scalars['String']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** The game's type */
   type: GameType
 }
 
 /** Games. */
 export type GameGameRandomFactsRoundsByGameIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameRandomFactsRoundCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
 }
 
 /** Games. */
 export type GameGameTeamScoresByGameIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameTeamScoreCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
 }
 
 /** A condition to be used against `Game` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type GameCondition = {
   /** Checks for equality with the object’s `eventId` field. */
-  eventId?: InputMaybe<Scalars['Int']>
+  eventId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `isActive` field. */
-  isActive?: InputMaybe<Scalars['Boolean']>
+  isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `type` field. */
   type?: InputMaybe<GameType>
 }
@@ -1233,13 +1242,13 @@ export type GameCondition = {
 /** An input for mutations affecting `Game` */
 export type GameInput = {
   /** The game's internal event id */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['input']
   /** The games's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The games's activeness. */
-  isActive?: InputMaybe<Scalars['Boolean']>
+  isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** The games's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
   /** The game's type */
   type: GameType
 }
@@ -1247,13 +1256,13 @@ export type GameInput = {
 /** Represents an update to a `Game`. Fields that are set will be updated. */
 export type GamePatch = {
   /** The game's internal event id */
-  eventId?: InputMaybe<Scalars['Int']>
+  eventId?: InputMaybe<Scalars['Int']['input']>
   /** The games's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The games's activeness. */
-  isActive?: InputMaybe<Scalars['Boolean']>
+  isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** The games's name. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** The game's type */
   type?: InputMaybe<GameType>
 }
@@ -1262,29 +1271,29 @@ export type GamePatch = {
 export type GameRandomFactsRound = Node & {
   __typename?: 'GameRandomFactsRound'
   /** The round's correct answer. */
-  answerCorrect?: Maybe<Scalars['Int']>
+  answerCorrect?: Maybe<Scalars['Int']['output']>
   /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
   gameByGameId?: Maybe<Game>
   /** The round's internal game id */
-  gameId: Scalars['Int']
+  gameId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
   gameRandomFactsVotesByRoundId: GameRandomFactsVotesConnection
   /** The round's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** The round's questioner name */
-  questionerName: Scalars['String']
+  questionerName: Scalars['String']['output']
 }
 
 /** A round of a random facts game. */
 export type GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameRandomFactsVoteCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
 }
 
@@ -1294,37 +1303,37 @@ export type GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs = {
  */
 export type GameRandomFactsRoundCondition = {
   /** Checks for equality with the object’s `answerCorrect` field. */
-  answerCorrect?: InputMaybe<Scalars['Int']>
+  answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `gameId` field. */
-  gameId?: InputMaybe<Scalars['Int']>
+  gameId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `questionerName` field. */
-  questionerName?: InputMaybe<Scalars['String']>
+  questionerName?: InputMaybe<Scalars['String']['input']>
 }
 
 /** An input for mutations affecting `GameRandomFactsRound` */
 export type GameRandomFactsRoundInput = {
   /** The round's correct answer. */
-  answerCorrect?: InputMaybe<Scalars['Int']>
+  answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** The round's internal game id */
-  gameId: Scalars['Int']
+  gameId: Scalars['Int']['input']
   /** The round's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The round's questioner name */
-  questionerName: Scalars['String']
+  questionerName: Scalars['String']['input']
 }
 
 /** Represents an update to a `GameRandomFactsRound`. Fields that are set will be updated. */
 export type GameRandomFactsRoundPatch = {
   /** The round's correct answer. */
-  answerCorrect?: InputMaybe<Scalars['Int']>
+  answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** The round's internal game id */
-  gameId?: InputMaybe<Scalars['Int']>
+  gameId?: InputMaybe<Scalars['Int']['input']>
   /** The round's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The round's questioner name */
-  questionerName?: InputMaybe<Scalars['String']>
+  questionerName?: InputMaybe<Scalars['String']['input']>
 }
 
 /** A connection to a list of `GameRandomFactsRound` values. */
@@ -1337,14 +1346,14 @@ export type GameRandomFactsRoundsConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameRandomFactsRound` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `GameRandomFactsRound` edge in the connection. */
 export type GameRandomFactsRoundsEdge = {
   __typename?: 'GameRandomFactsRoundsEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameRandomFactsRound` at the end of the edge. */
   node?: Maybe<GameRandomFactsRound>
 }
@@ -1368,19 +1377,19 @@ export enum GameRandomFactsRoundsOrderBy {
 export type GameRandomFactsVote = Node & {
   __typename?: 'GameRandomFactsVote'
   /** The vote's answer. */
-  answer: Scalars['Int']
+  answer: Scalars['Int']['output']
   /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
   gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The vote's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads a single `Player` that is related to this `GameRandomFactsVote`. */
   playerByPlayerId?: Maybe<Player>
   /** The vote's internal player id */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['output']
   /** The vote's internal round id. */
-  roundId: Scalars['Int']
+  roundId: Scalars['Int']['output']
 }
 
 /**
@@ -1389,37 +1398,37 @@ export type GameRandomFactsVote = Node & {
  */
 export type GameRandomFactsVoteCondition = {
   /** Checks for equality with the object’s `answer` field. */
-  answer?: InputMaybe<Scalars['Int']>
+  answer?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `playerId` field. */
-  playerId?: InputMaybe<Scalars['Int']>
+  playerId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `roundId` field. */
-  roundId?: InputMaybe<Scalars['Int']>
+  roundId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** An input for mutations affecting `GameRandomFactsVote` */
 export type GameRandomFactsVoteInput = {
   /** The vote's answer. */
-  answer: Scalars['Int']
+  answer: Scalars['Int']['input']
   /** The vote's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal player id */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['input']
   /** The vote's internal round id. */
-  roundId: Scalars['Int']
+  roundId: Scalars['Int']['input']
 }
 
 /** Represents an update to a `GameRandomFactsVote`. Fields that are set will be updated. */
 export type GameRandomFactsVotePatch = {
   /** The vote's answer. */
-  answer?: InputMaybe<Scalars['Int']>
+  answer?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal player id */
-  playerId?: InputMaybe<Scalars['Int']>
+  playerId?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal round id. */
-  roundId?: InputMaybe<Scalars['Int']>
+  roundId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `GameRandomFactsVote` values. */
@@ -1432,14 +1441,14 @@ export type GameRandomFactsVotesConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameRandomFactsVote` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `GameRandomFactsVote` edge in the connection. */
 export type GameRandomFactsVotesEdge = {
   __typename?: 'GameRandomFactsVotesEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameRandomFactsVote` at the end of the edge. */
   node?: Maybe<GameRandomFactsVote>
 }
@@ -1465,17 +1474,17 @@ export type GameTeamScore = Node & {
   /** Reads a single `Game` that is related to this `GameTeamScore`. */
   gameByGameId?: Maybe<Game>
   /** The score's internal game id */
-  gameId: Scalars['Int']
+  gameId: Scalars['Int']['output']
   /** The game score's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** The score. */
-  score: Scalars['Int']
+  score: Scalars['Int']['output']
   /** Reads a single `Team` that is related to this `GameTeamScore`. */
   teamByTeamId?: Maybe<Team>
   /** The score's internal team id */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['output']
 }
 
 /**
@@ -1484,37 +1493,37 @@ export type GameTeamScore = Node & {
  */
 export type GameTeamScoreCondition = {
   /** Checks for equality with the object’s `gameId` field. */
-  gameId?: InputMaybe<Scalars['Int']>
+  gameId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `score` field. */
-  score?: InputMaybe<Scalars['Int']>
+  score?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `teamId` field. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** An input for mutations affecting `GameTeamScore` */
 export type GameTeamScoreInput = {
   /** The score's internal game id */
-  gameId: Scalars['Int']
+  gameId: Scalars['Int']['input']
   /** The game score's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The score. */
-  score: Scalars['Int']
+  score: Scalars['Int']['input']
   /** The score's internal team id */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['input']
 }
 
 /** Represents an update to a `GameTeamScore`. Fields that are set will be updated. */
 export type GameTeamScorePatch = {
   /** The score's internal game id */
-  gameId?: InputMaybe<Scalars['Int']>
+  gameId?: InputMaybe<Scalars['Int']['input']>
   /** The game score's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The score. */
-  score?: InputMaybe<Scalars['Int']>
+  score?: InputMaybe<Scalars['Int']['input']>
   /** The score's internal team id */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `GameTeamScore` values. */
@@ -1527,14 +1536,14 @@ export type GameTeamScoresConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameTeamScore` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `GameTeamScore` edge in the connection. */
 export type GameTeamScoresEdge = {
   __typename?: 'GameTeamScoresEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameTeamScore` at the end of the edge. */
   node?: Maybe<GameTeamScore>
 }
@@ -1570,14 +1579,14 @@ export type GamesConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Game` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `Game` edge in the connection. */
 export type GamesEdge = {
   __typename?: 'GamesEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Game` at the end of the edge. */
   node?: Maybe<Game>
 }
@@ -1603,33 +1612,33 @@ export enum GamesOrderBy {
 export type Kv = {
   __typename?: 'Kv'
   /** The key. */
-  key?: Maybe<Scalars['String']>
+  key?: Maybe<Scalars['String']['output']>
   /** A value. */
-  value?: Maybe<Scalars['String']>
+  value?: Maybe<Scalars['String']['output']>
 }
 
 /** A condition to be used against `Kv` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type KvCondition = {
   /** Checks for equality with the object’s `key` field. */
-  key?: InputMaybe<Scalars['String']>
+  key?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `value` field. */
-  value?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']['input']>
 }
 
 /** An input for mutations affecting `Kv` */
 export type KvInput = {
   /** The key. */
-  key?: InputMaybe<Scalars['String']>
+  key?: InputMaybe<Scalars['String']['input']>
   /** A value. */
-  value?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']['input']>
 }
 
 /** Represents an update to a `Kv`. Fields that are set will be updated. */
 export type KvPatch = {
   /** The key. */
-  key?: InputMaybe<Scalars['String']>
+  key?: InputMaybe<Scalars['String']['input']>
   /** A value. */
-  value?: InputMaybe<Scalars['String']>
+  value?: InputMaybe<Scalars['String']['input']>
 }
 
 /** A connection to a list of `Kv` values. */
@@ -1642,14 +1651,14 @@ export type KvsConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Kv` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `Kv` edge in the connection. */
 export type KvsEdge = {
   __typename?: 'KvsEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Kv` at the end of the edge. */
   node?: Maybe<Kv>
 }
@@ -2105,20 +2114,20 @@ export type MutationUpdateTeamLeaderByIdArgs = {
 /** An object with a globally unique `ID`. */
 export type Node = {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
 }
 
 /** Information about pagination in a connection. */
 export type PageInfo = {
   __typename?: 'PageInfo'
   /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['Cursor']>
+  endCursor?: Maybe<Scalars['Cursor']['output']>
   /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean']
+  hasNextPage: Scalars['Boolean']['output']
   /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean']
+  hasPreviousPage: Scalars['Boolean']['output']
   /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['Cursor']>
+  startCursor?: Maybe<Scalars['Cursor']['output']>
 }
 
 /** Players. */
@@ -2127,77 +2136,77 @@ export type Player = Node & {
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
   gameRandomFactsVotesByPlayerId: GameRandomFactsVotesConnection
   /** The players's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** The player's invitation code. */
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['output']
   /** The player's name. */
-  name: Scalars['String']
+  name: Scalars['String']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads a single `Team` that is related to this `Player`. */
   teamByTeamId?: Maybe<Team>
   /** The player's internal team id. */
-  teamId?: Maybe<Scalars['Int']>
+  teamId?: Maybe<Scalars['Int']['output']>
   /** Reads and enables pagination through a set of `TeamLeader`. */
   teamLeadersByPlayerId: TeamLeadersConnection
 }
 
 /** Players. */
 export type PlayerGameRandomFactsVotesByPlayerIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameRandomFactsVoteCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
 }
 
 /** Players. */
 export type PlayerTeamLeadersByPlayerIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamLeaderCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
 }
 
 /** A condition to be used against `Player` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type PlayerCondition = {
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `invitationCode` field. */
-  invitationCode?: InputMaybe<Scalars['UUID']>
+  invitationCode?: InputMaybe<Scalars['UUID']['input']>
   /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `teamId` field. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** An input for mutations affecting `Player` */
 export type PlayerInput = {
   /** The players's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The player's invitation code. */
-  invitationCode?: InputMaybe<Scalars['UUID']>
+  invitationCode?: InputMaybe<Scalars['UUID']['input']>
   /** The player's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
   /** The player's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Represents an update to a `Player`. Fields that are set will be updated. */
 export type PlayerPatch = {
   /** The players's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The player's invitation code. */
-  invitationCode?: InputMaybe<Scalars['UUID']>
+  invitationCode?: InputMaybe<Scalars['UUID']['input']>
   /** The player's name. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
   /** The player's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `Player` values. */
@@ -2210,14 +2219,14 @@ export type PlayersConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Player` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `Player` edge in the connection. */
 export type PlayersEdge = {
   __typename?: 'PlayersEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Player` at the end of the edge. */
   node?: Maybe<Player>
 }
@@ -2287,7 +2296,7 @@ export type Query = Node & {
   /** Fetches an object given its globally unique `ID`. */
   node?: Maybe<Node>
   /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads a single `Player` using its globally unique `ID`. */
   player?: Maybe<Player>
   playerById?: Maybe<Player>
@@ -2296,7 +2305,7 @@ export type Query = Node & {
   playerByInvitationCodeFn?: Maybe<PlayersConnection>
   playerByTeamIdAndInvitationCode?: Maybe<Player>
   /** Retrieves player name by player id. */
-  playerNameById?: Maybe<Scalars['String']>
+  playerNameById?: Maybe<Scalars['String']['output']>
   /**
    * Exposes the root query type nested one level down. This is helpful for Relay 1
    * which can only query top level fields if they are in a particular form.
@@ -2314,275 +2323,275 @@ export type Query = Node & {
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllCharityOrganizationsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<CharityOrganizationCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<CharityOrganizationsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllEventsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<EventCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<EventsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllGameRandomFactsRoundsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameRandomFactsRoundCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllGameRandomFactsVotesArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameRandomFactsVoteCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllGameTeamScoresArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameTeamScoreCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllGamesArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GamesOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllKvsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<KvCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<KvsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllPlayersArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<PlayerCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<PlayersOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllTeamLeadersArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamLeaderCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAllTeamsArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationByNameArgs = {
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationByUrlArgs = {
-  url: Scalars['String']
+  url: Scalars['String']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryEventArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryEventByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryEventByNameArgs = {
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameByEventIdAndNameArgs = {
-  eventId: Scalars['Int']
-  name: Scalars['String']
+  eventId: Scalars['Int']['input']
+  name: Scalars['String']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsRoundArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsRoundByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsVoteArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsVoteByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
-  playerId: Scalars['Int']
-  roundId: Scalars['Int']
+  playerId: Scalars['Int']['input']
+  roundId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameTeamScoreArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameTeamScoreByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryKvByKeyArgs = {
-  key: Scalars['String']
+  key: Scalars['String']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryNodeArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerByInvitationCodeArgs = {
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerByInvitationCodeFnArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
-  first?: InputMaybe<Scalars['Int']>
-  invitationCode: Scalars['UUID']
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  invitationCode: Scalars['UUID']['input']
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerByTeamIdAndInvitationCodeArgs = {
-  invitationCode: Scalars['UUID']
-  teamId: Scalars['Int']
+  invitationCode: Scalars['UUID']['input']
+  teamId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerNameByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamLeaderArgs = {
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamLeaderByIdArgs = {
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamPlayerCountArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
-  eventId: Scalars['Int']
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  eventId: Scalars['Int']['input']
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Teams. */
@@ -2591,25 +2600,25 @@ export type Team = Node & {
   /** Reads a single `CharityOrganization` that is related to this `Team`. */
   charityOrganizationByCharityOrganizationId?: Maybe<CharityOrganization>
   /** The team's internal charity organization id. */
-  charityOrganizationId?: Maybe<Scalars['Int']>
+  charityOrganizationId?: Maybe<Scalars['Int']['output']>
   /** The team's donation amount. */
-  donationAmount?: Maybe<Scalars['Float']>
+  donationAmount?: Maybe<Scalars['Float']['output']>
   /** The team's donation url. */
-  donationUrl?: Maybe<Scalars['String']>
+  donationUrl?: Maybe<Scalars['String']['output']>
   /** The team's emoji. */
-  emoji: Scalars['String']
+  emoji: Scalars['String']['output']
   /** Reads a single `Event` that is related to this `Team`. */
   eventByEventId?: Maybe<Event>
   /** The team's internal event reference. */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameTeamScore`. */
   gameTeamScoresByTeamId: GameTeamScoresConnection
   /** The team's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** The team's name. */
-  name: Scalars['String']
+  name: Scalars['String']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads and enables pagination through a set of `Player`. */
   playersByTeamId: PlayersConnection
   /** Reads and enables pagination through a set of `TeamLeader`. */
@@ -2618,88 +2627,88 @@ export type Team = Node & {
 
 /** Teams. */
 export type TeamGameTeamScoresByTeamIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<GameTeamScoreCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
 }
 
 /** Teams. */
 export type TeamPlayersByTeamIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<PlayerCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<PlayersOrderBy>>
 }
 
 /** Teams. */
 export type TeamTeamLeadersByTeamIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']>
-  before?: InputMaybe<Scalars['Cursor']>
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
   condition?: InputMaybe<TeamLeaderCondition>
-  first?: InputMaybe<Scalars['Int']>
-  last?: InputMaybe<Scalars['Int']>
-  offset?: InputMaybe<Scalars['Int']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
 }
 
 /** A condition to be used against `Team` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type TeamCondition = {
   /** Checks for equality with the object’s `charityOrganizationId` field. */
-  charityOrganizationId?: InputMaybe<Scalars['Int']>
+  charityOrganizationId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `donationAmount` field. */
-  donationAmount?: InputMaybe<Scalars['Float']>
+  donationAmount?: InputMaybe<Scalars['Float']['input']>
   /** Checks for equality with the object’s `donationUrl` field. */
-  donationUrl?: InputMaybe<Scalars['String']>
+  donationUrl?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `emoji` field. */
-  emoji?: InputMaybe<Scalars['String']>
+  emoji?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `eventId` field. */
-  eventId?: InputMaybe<Scalars['Int']>
+  eventId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
 }
 
 /** An input for mutations affecting `Team` */
 export type TeamInput = {
   /** The team's internal charity organization id. */
-  charityOrganizationId?: InputMaybe<Scalars['Int']>
+  charityOrganizationId?: InputMaybe<Scalars['Int']['input']>
   /** The team's donation amount. */
-  donationAmount?: InputMaybe<Scalars['Float']>
+  donationAmount?: InputMaybe<Scalars['Float']['input']>
   /** The team's donation url. */
-  donationUrl?: InputMaybe<Scalars['String']>
+  donationUrl?: InputMaybe<Scalars['String']['input']>
   /** The team's emoji. */
-  emoji: Scalars['String']
+  emoji: Scalars['String']['input']
   /** The team's internal event reference. */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['input']
   /** The team's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The team's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** Leaders. */
 export type TeamLeader = Node & {
   __typename?: 'TeamLeader'
   /** The team leaders's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['output']
   /** Reads a single `Player` that is related to this `TeamLeader`. */
   playerByPlayerId?: Maybe<Player>
   /** The team leader's internal player id. */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['output']
   /** Reads a single `Team` that is related to this `TeamLeader`. */
   teamByTeamId?: Maybe<Team>
   /** The team leader's internal team id. */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['output']
 }
 
 /**
@@ -2708,31 +2717,31 @@ export type TeamLeader = Node & {
  */
 export type TeamLeaderCondition = {
   /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `playerId` field. */
-  playerId?: InputMaybe<Scalars['Int']>
+  playerId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `teamId` field. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** An input for mutations affecting `TeamLeader` */
 export type TeamLeaderInput = {
   /** The team leaders's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The team leader's internal player id. */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['input']
   /** The team leader's internal team id. */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['input']
 }
 
 /** Represents an update to a `TeamLeader`. Fields that are set will be updated. */
 export type TeamLeaderPatch = {
   /** The team leaders's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The team leader's internal player id. */
-  playerId?: InputMaybe<Scalars['Int']>
+  playerId?: InputMaybe<Scalars['Int']['input']>
   /** The team leader's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']>
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `TeamLeader` values. */
@@ -2745,14 +2754,14 @@ export type TeamLeadersConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `TeamLeader` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `TeamLeader` edge in the connection. */
 export type TeamLeadersEdge = {
   __typename?: 'TeamLeadersEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `TeamLeader` at the end of the edge. */
   node?: Maybe<TeamLeader>
 }
@@ -2773,19 +2782,19 @@ export enum TeamLeadersOrderBy {
 /** Represents an update to a `Team`. Fields that are set will be updated. */
 export type TeamPatch = {
   /** The team's internal charity organization id. */
-  charityOrganizationId?: InputMaybe<Scalars['Int']>
+  charityOrganizationId?: InputMaybe<Scalars['Int']['input']>
   /** The team's donation amount. */
-  donationAmount?: InputMaybe<Scalars['Float']>
+  donationAmount?: InputMaybe<Scalars['Float']['input']>
   /** The team's donation url. */
-  donationUrl?: InputMaybe<Scalars['String']>
+  donationUrl?: InputMaybe<Scalars['String']['input']>
   /** The team's emoji. */
-  emoji?: InputMaybe<Scalars['String']>
+  emoji?: InputMaybe<Scalars['String']['input']>
   /** The team's internal event reference. */
-  eventId?: InputMaybe<Scalars['Int']>
+  eventId?: InputMaybe<Scalars['Int']['input']>
   /** The team's internal id. */
-  id?: InputMaybe<Scalars['Int']>
+  id?: InputMaybe<Scalars['Int']['input']>
   /** The team's name. */
-  name?: InputMaybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']['input']>
 }
 
 /** A connection to a list of `TeamPlayerCountRecord` values. */
@@ -2796,14 +2805,14 @@ export type TeamPlayerCountConnection = {
   /** A list of `TeamPlayerCountRecord` objects. */
   nodes: Array<Maybe<TeamPlayerCountRecord>>
   /** The count of *all* `TeamPlayerCountRecord` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `TeamPlayerCountRecord` edge in the connection. */
 export type TeamPlayerCountEdge = {
   __typename?: 'TeamPlayerCountEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `TeamPlayerCountRecord` at the end of the edge. */
   node?: Maybe<TeamPlayerCountRecord>
 }
@@ -2811,8 +2820,8 @@ export type TeamPlayerCountEdge = {
 /** The return type of our `teamPlayerCount` query. */
 export type TeamPlayerCountRecord = {
   __typename?: 'TeamPlayerCountRecord'
-  id?: Maybe<Scalars['Int']>
-  playerCount?: Maybe<Scalars['BigInt']>
+  id?: Maybe<Scalars['Int']['output']>
+  playerCount?: Maybe<Scalars['BigInt']['output']>
 }
 
 /** A connection to a list of `Team` values. */
@@ -2825,14 +2834,14 @@ export type TeamsConnection = {
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Team` you could get from the connection. */
-  totalCount: Scalars['Int']
+  totalCount: Scalars['Int']['output']
 }
 
 /** A `Team` edge in the connection. */
 export type TeamsEdge = {
   __typename?: 'TeamsEdge'
   /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']>
+  cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Team` at the end of the edge. */
   node?: Maybe<Team>
 }
@@ -2866,9 +2875,9 @@ export type UpdateCharityOrganizationByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateCharityOrganizationByName` mutation. */
@@ -2879,9 +2888,9 @@ export type UpdateCharityOrganizationByNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** All input for the `updateCharityOrganizationByUrl` mutation. */
@@ -2892,9 +2901,9 @@ export type UpdateCharityOrganizationByUrlInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's url. */
-  url: Scalars['String']
+  url: Scalars['String']['input']
 }
 
 /** All input for the `updateCharityOrganization` mutation. */
@@ -2905,9 +2914,9 @@ export type UpdateCharityOrganizationInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `CharityOrganization` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `CharityOrganization` mutation. */
@@ -2921,7 +2930,7 @@ export type UpdateCharityOrganizationPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -2937,11 +2946,11 @@ export type UpdateEventByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `Event` being updated. */
   eventPatch: EventPatch
   /** The events's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateEventByName` mutation. */
@@ -2950,10 +2959,10 @@ export type UpdateEventByNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `Event` being updated. */
   eventPatch: EventPatch
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** All input for the `updateEvent` mutation. */
@@ -2962,11 +2971,11 @@ export type UpdateEventInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `Event` being updated. */
   eventPatch: EventPatch
   /** The globally unique `ID` which will identify a single `Event` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `Event` mutation. */
@@ -2976,7 +2985,7 @@ export type UpdateEventPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Event` that was updated by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
@@ -2996,13 +3005,13 @@ export type UpdateGameByEventIdAndNameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The game's internal event id */
-  eventId: Scalars['Int']
+  eventId: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `Game` being updated. */
   gamePatch: GamePatch
   /** The games's name. */
-  name: Scalars['String']
+  name: Scalars['String']['input']
 }
 
 /** All input for the `updateGameById` mutation. */
@@ -3011,11 +3020,11 @@ export type UpdateGameByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `Game` being updated. */
   gamePatch: GamePatch
   /** The games's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateGame` mutation. */
@@ -3024,11 +3033,11 @@ export type UpdateGameInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `Game` being updated. */
   gamePatch: GamePatch
   /** The globally unique `ID` which will identify a single `Game` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `Game` mutation. */
@@ -3038,7 +3047,7 @@ export type UpdateGamePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Event` that is related to this `Game`. */
   eventByEventId?: Maybe<Event>
   /** The `Game` that was updated by this mutation. */
@@ -3060,11 +3069,11 @@ export type UpdateGameRandomFactsRoundByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameRandomFactsRound` being updated. */
   gameRandomFactsRoundPatch: GameRandomFactsRoundPatch
   /** The round's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameRandomFactsRound` mutation. */
@@ -3073,11 +3082,11 @@ export type UpdateGameRandomFactsRoundInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameRandomFactsRound` being updated. */
   gameRandomFactsRoundPatch: GameRandomFactsRoundPatch
   /** The globally unique `ID` which will identify a single `GameRandomFactsRound` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `GameRandomFactsRound` mutation. */
@@ -3087,7 +3096,7 @@ export type UpdateGameRandomFactsRoundPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
   gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was updated by this mutation. */
@@ -3109,11 +3118,11 @@ export type UpdateGameRandomFactsVoteByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
   gameRandomFactsVotePatch: GameRandomFactsVotePatch
   /** The vote's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameRandomFactsVoteByPlayerIdAndRoundId` mutation. */
@@ -3122,13 +3131,13 @@ export type UpdateGameRandomFactsVoteByPlayerIdAndRoundIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
   gameRandomFactsVotePatch: GameRandomFactsVotePatch
   /** The vote's internal player id */
-  playerId: Scalars['Int']
+  playerId: Scalars['Int']['input']
   /** The vote's internal round id. */
-  roundId: Scalars['Int']
+  roundId: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameRandomFactsVote` mutation. */
@@ -3137,11 +3146,11 @@ export type UpdateGameRandomFactsVoteInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
   gameRandomFactsVotePatch: GameRandomFactsVotePatch
   /** The globally unique `ID` which will identify a single `GameRandomFactsVote` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `GameRandomFactsVote` mutation. */
@@ -3151,7 +3160,7 @@ export type UpdateGameRandomFactsVotePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
   gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was updated by this mutation. */
@@ -3175,11 +3184,11 @@ export type UpdateGameTeamScoreByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameTeamScore` being updated. */
   gameTeamScorePatch: GameTeamScorePatch
   /** The game score's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameTeamScore` mutation. */
@@ -3188,11 +3197,11 @@ export type UpdateGameTeamScoreInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameTeamScore` being updated. */
   gameTeamScorePatch: GameTeamScorePatch
   /** The globally unique `ID` which will identify a single `GameTeamScore` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
 }
 
 /** The output of our update `GameTeamScore` mutation. */
@@ -3202,7 +3211,7 @@ export type UpdateGameTeamScorePayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Game` that is related to this `GameTeamScore`. */
   gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was updated by this mutation. */
@@ -3226,9 +3235,9 @@ export type UpdateKvByKeyInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The key. */
-  key: Scalars['String']
+  key: Scalars['String']['input']
   /** An object where the defined keys will be set on the `Kv` being updated. */
   kvPatch: KvPatch
 }
@@ -3240,7 +3249,7 @@ export type UpdateKvPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Kv` that was updated by this mutation. */
   kv?: Maybe<Kv>
   /** An edge for our `Kv`. May be used by Relay 1. */
@@ -3260,9 +3269,9 @@ export type UpdatePlayerByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The players's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
 }
@@ -3273,9 +3282,9 @@ export type UpdatePlayerByInvitationCodeInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The player's invitation code. */
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
 }
@@ -3286,13 +3295,13 @@ export type UpdatePlayerByTeamIdAndInvitationCodeInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The player's invitation code. */
-  invitationCode: Scalars['UUID']
+  invitationCode: Scalars['UUID']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
   /** The player's internal team id. */
-  teamId: Scalars['Int']
+  teamId: Scalars['Int']['input']
 }
 
 /** All input for the `updatePlayer` mutation. */
@@ -3301,9 +3310,9 @@ export type UpdatePlayerInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Player` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
 }
@@ -3315,7 +3324,7 @@ export type UpdatePlayerPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Player` that was updated by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
@@ -3337,9 +3346,9 @@ export type UpdateTeamByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `Team` being updated. */
   teamPatch: TeamPatch
 }
@@ -3350,9 +3359,9 @@ export type UpdateTeamInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Team` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `Team` being updated. */
   teamPatch: TeamPatch
 }
@@ -3363,9 +3372,9 @@ export type UpdateTeamLeaderByIdInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team leaders's internal id. */
-  id: Scalars['Int']
+  id: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `TeamLeader` being updated. */
   teamLeaderPatch: TeamLeaderPatch
 }
@@ -3376,9 +3385,9 @@ export type UpdateTeamLeaderInput = {
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
-  clientMutationId?: InputMaybe<Scalars['String']>
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `TeamLeader` to be updated. */
-  nodeId: Scalars['ID']
+  nodeId: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `TeamLeader` being updated. */
   teamLeaderPatch: TeamLeaderPatch
 }
@@ -3390,7 +3399,7 @@ export type UpdateTeamLeaderPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Player` that is related to this `TeamLeader`. */
   playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
@@ -3417,7 +3426,7 @@ export type UpdateTeamPayload = {
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
-  clientMutationId?: Maybe<Scalars['String']>
+  clientMutationId?: Maybe<Scalars['String']['output']>
   /** Reads a single `Event` that is related to this `Team`. */
   eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
