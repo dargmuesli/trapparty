@@ -1,3 +1,15 @@
+# [3.12.0](https://github.com/dargmuesli/trapparty/compare/3.11.0...3.12.0) (2023-08-24)
+
+
+### Bug Fixes
+
+* **setup:** access `urql` dynamically via client only ([18fcb5c](https://github.com/dargmuesli/trapparty/commit/18fcb5c84c9cf5f956075318a77be9ef6c4b7e95))
+
+
+### Features
+
+* migrate to vio ([10b9aa4](https://github.com/dargmuesli/trapparty/commit/10b9aa462a0a6d37f3268d8203280adea36e1bb1))
+
 # [3.11.0](https://github.com/dargmuesli/trapparty/compare/3.10.15...3.11.0) (2023-08-18)
 
 
