@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <section class="mb-4 text-center">
       <h1>{{ t('title') }}</h1>
       <div
@@ -104,7 +104,7 @@
         </table>
       </div>
     </section>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">

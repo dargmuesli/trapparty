@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api" class="flex flex-1 flex-col">
+  <VioLoader :api="api" class="flex flex-1 flex-col">
     <div class="flex flex-1 flex-col">
       <section v-if="eventsUpcoming.length">
         <h2>
@@ -11,12 +11,12 @@
             :key="eventUpcoming.id"
             class="text-xl"
           >
-            <AppLink
+            <VioLink
               :aria-label="`${t('title')} ${eventUpcoming.name}`"
               :to="localePath(`/event/${eventUpcoming.name}`)"
             >
               {{ `${t('title')} ${eventUpcoming.name}` }}
-            </AppLink>
+            </VioLink>
           </li>
         </ul>
       </section>
@@ -25,12 +25,12 @@
           {{ t('titleEventCurrent') }}
         </h2>
         <span class="text-xl">
-          <AppLink
+          <VioLink
             :aria-label="`${t('title')} ${eventCurrent.name}`"
             :to="localePath(`/event/${eventCurrent.name}`)"
           >
             {{ `${t('title')} ${eventCurrent.name}` }}
-          </AppLink>
+          </VioLink>
         </span>
       </section>
       <div
@@ -46,13 +46,13 @@
         </div>
         <i18n-t class="text-xl md:text-2xl" keypath="description" tag="p">
           <template #author>
-            <AppLink
+            <VioLink
               :aria-label="t('authorName')"
               to="https://jonas-thelemann.de"
               :title="t('authorLinkTitle')"
             >
               {{ t('authorName') }}
-            </AppLink>
+            </VioLink>
           </template>
         </i18n-t>
       </div>
@@ -66,17 +66,17 @@
             :key="eventPast.id"
             class="text-xl"
           >
-            <AppLink
+            <VioLink
               :aria-label="`${t('title')} ${eventPast.name}`"
               :to="localePath(`/event/${eventPast.name}`)"
             >
               {{ `${t('title')} ${eventPast.name}` }}
-            </AppLink>
+            </VioLink>
           </li>
         </ul>
       </section>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -131,7 +131,7 @@ const eventsUpcoming = computed(() => {
 })
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 </script>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <ul
       v-if="leaderboard.length"
       class="flex flex-col gap-2 sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-6xl"
@@ -15,7 +15,7 @@
     <div v-else>
       {{ t('statisticNone') }}
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">

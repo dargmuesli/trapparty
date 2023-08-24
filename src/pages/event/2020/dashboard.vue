@@ -1,20 +1,20 @@
 <template>
-  <Loader :api="api" class="section-wrapper">
+  <VioLoader :api="api" class="section-wrapper">
     <div v-if="store.participationData">
       <section>
-        <CardStateInfo>
+        <VioCardStateInfo>
           <span>
             <i18n-t keypath="intentionDescription">
               <span class="font-bold">{{ intention }}</span>
             </i18n-t>
           </span>
-          <ButtonColored
+          <VioButtonColored
             :aria-label="t('roleChange')"
             :to="localePath('/event/2020')"
           >
             {{ t('roleChange') }}
-          </ButtonColored>
-        </CardStateInfo>
+          </VioButtonColored>
+        </VioCardStateInfo>
       </section>
       <section class="mt-8 text-center">
         <span
@@ -30,7 +30,7 @@
       </section>
       <section
         v-if="store.participationData.role === 'player'"
-        class="custom-prose-scheme"
+        class="vio-prose"
       >
         <h2>{{ t('teamTitle') }}</h2>
         <section>
@@ -50,17 +50,17 @@
             </span>
           </p>
           <p>
-            <ButtonColored
+            <VioButtonColored
               :aria-label="t('discordInstall')"
               class="mr-4"
               to="https://discord.com/download"
             >
               {{ t('discordInstall') }}
               <template #prefix>
-                <IconDownload />
+                <VioIconDownload />
               </template>
-            </ButtonColored>
-            <ButtonColored
+            </VioButtonColored>
+            <VioButtonColored
               v-if="
                 participationDataPlayer?.teamByTeamId?.eventByEventId
                   ?.discordInviteCode
@@ -71,9 +71,9 @@
             >
               {{ t('discordJoin') }}
               <template #prefix>
-                <IconSignIn />
+                <VioIconSignIn />
               </template>
-            </ButtonColored>
+            </VioButtonColored>
             <span v-else class="unready inline-block">
               {{ t('dataless', { what: t('datalessDiscordCode') }) }}
             </span>
@@ -87,14 +87,14 @@
               })
             }}
           </p>
-          <ButtonColored
+          <VioButtonColored
             :aria-label="t('discordTutorial')"
             class="ml-4"
             :icon-id="['fab', 'youtube']"
             to="https://youtu.be/NJijHNL4yEo"
           >
             {{ t('discordTutorial') }}
-          </ButtonColored>
+          </VioButtonColored>
         </section>
         <section>
           <h3>{{ t('donationTitle') }}</h3>
@@ -140,28 +140,28 @@
             </span>
           </p>
           <p v-if="participationDataPlayer?.teamByTeamId?.donationUrl">
-            <ButtonShare
+            <VioButtonShare
               :url="participationDataPlayer.teamByTeamId.donationUrl"
             >
-              <ButtonColored
+              <VioButtonColored
                 :aria-label="t('donationButtonTeam')"
                 :to="participationDataPlayer.teamByTeamId.donationUrl"
               >
                 {{ t('donationButtonTeam') }}
                 <template #prefix>
-                  <IconHeart />
+                  <VioIconHeart />
                 </template>
-              </ButtonColored>
+              </VioButtonColored>
               <template #unready>
                 {{ t('dataless', { what: t('datalessDonationTeam') }) }}
               </template>
-            </ButtonShare>
+            </VioButtonShare>
           </p>
         </section>
       </section>
       <section
         v-if="store.participationData.role === 'watcher'"
-        class="custom-prose-scheme"
+        class="vio-prose"
       >
         <h2>{{ t('donationTitle') }}</h2>
         <p>
@@ -169,23 +169,23 @@
           {{ t('donationDescriptionCommon') }}
         </p>
         <p v-if="trapPartyEvent?.commonDonationUrl">
-          <ButtonShare :url="trapPartyEvent.commonDonationUrl">
-            <ButtonColored
+          <VioButtonShare :url="trapPartyEvent.commonDonationUrl">
+            <VioButtonColored
               :aria-label="t('donationButtonCommon')"
               :to="trapPartyEvent.commonDonationUrl"
             >
               {{ t('donationButtonCommon') }}
               <template #prefix>
-                <IconHeart />
+                <VioIconHeart />
               </template>
-            </ButtonColored>
+            </VioButtonColored>
             <template #unready>
               {{ t('dataless', { what: t('datalessDonationCommon') }) }}
             </template>
-          </ButtonShare>
+          </VioButtonShare>
         </p>
       </section>
-      <section class="custom-prose-scheme">
+      <section class="vio-prose">
         <h2>{{ t('streamTitle') }}</h2>
         <p>
           {{ t('streamDescription') }}
@@ -195,16 +195,16 @@
         </p>
         <p>
           <span v-if="trapPartyEvent?.streamUrl">
-            <ButtonColored
+            <VioButtonColored
               :aria-label="t('streamGoto')"
               class="mr-4"
               :to="trapPartyEvent.streamUrl"
             >
               {{ t('streamGoto') }}
               <template #prefix>
-                <IconTv />
+                <VioIconTv />
               </template>
-            </ButtonColored>
+            </VioButtonColored>
             <i18n-t
               v-if="trapPartyEvent.start"
               keypath="streamDescriptionStart"
@@ -224,23 +224,23 @@
           </span>
         </p>
         <p>
-          <ButtonColored
+          <VioButtonColored
             :aria-label="t('statisticsGoTo')"
             :to="localePath('/event/2020/statistics')"
           >
             {{ t('statisticsGoTo') }}
             <template #prefix>
-              <IconChartBar />
+              <VioIconChartBar />
             </template>
-          </ButtonColored>
+          </VioButtonColored>
         </p>
       </section>
     </div>
-    <CardStateAlert v-else>
+    <VioCardStateAlert v-else>
       {{ t('participationDataless') }}
-      <ButtonHome />
-    </CardStateAlert>
-  </Loader>
+      <VioButtonHome />
+    </VioCardStateAlert>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -351,7 +351,7 @@ watch(eventByNameQuery.error, (currentValue, _oldValue) => {
 })
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 </script>
 
 <script lang="ts">

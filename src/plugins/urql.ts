@@ -1,3 +1,4 @@
+import { useVioAuthStore } from '@dargmuesli/nuxt-vio/store/auth'
 import { Pinia } from '@pinia/nuxt/dist/runtime/composables'
 import {
   createClient,
@@ -6,8 +7,8 @@ import {
   ClientOptions,
   SSRData,
 } from '@urql/core'
-import { cacheExchange } from '@urql/exchange-graphcache'
 import { devtoolsExchange } from '@urql/devtools'
+import { cacheExchange } from '@urql/exchange-graphcache'
 import { provideClient } from '@urql/vue'
 import { consola } from 'consola'
 import { ref } from 'vue'
@@ -20,7 +21,6 @@ import { GraphCacheConfig } from '~/gql/generated/graphcache'
 //   getJwtFromCookie,
 //   jwtRefresh,
 // } from '~/utils/auth'
-import { useStore } from '~/store'
 
 const ssrKey = '__URQL_DATA__'
 // const invalidateCache = (
@@ -66,7 +66,7 @@ const ssrKey = '__URQL_DATA__'
 // }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig()
+  const runtimeConfig = useRuntimeConfig()
   const host = useHost()
   const ssr = ssrExchange({
     isClient: process.client,
@@ -121,7 +121,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     requestPolicy: 'cache-and-network',
     fetchOptions: () => {
       const { $pinia } = useNuxtApp()
-      const store = useStore($pinia as Pinia) // TODO: remove `as` (https://github.com/vuejs/pinia/issues/2071)
+      const store = useVioAuthStore($pinia as Pinia) // TODO: remove `as` (https://github.com/vuejs/pinia/issues/2071)
       const jwt = store.jwt
 
       if (jwt) {
@@ -134,13 +134,13 @@ export default defineNuxtPlugin((nuxtApp) => {
         return {}
       }
     },
-    url: config.public.stagingHost
-      ? `https://trapparty-postgraphile.${config.public.stagingHost}/graphql`
+    url: runtimeConfig.public.vio.stagingHost
+      ? `https://trapparty-postgraphile.${runtimeConfig.public.vio.stagingHost}/graphql`
       : process.server
       ? 'http://trapparty_postgraphile:5000/graphql'
       : 'https://trapparty-postgraphile.' + getDomainTldPort(host) + '/graphql',
     exchanges: [
-      ...(config.public.isInProduction ? [] : [devtoolsExchange]),
+      ...(runtimeConfig.public.vio.isInProduction ? [] : [devtoolsExchange]),
       cache,
       ssr, // `ssr` must be before `fetchExchange`
       fetchExchange,

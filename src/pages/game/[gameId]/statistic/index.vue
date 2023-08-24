@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isLoaded">
-    <LoaderIndicatorSpinner class="h-16 w-16" />
+    <VioLoaderIndicatorSpinner class="h-16 w-16" />
   </div>
   <div v-else-if="games && games.length > 0" class="flex flex-col gap-4">
     <h1 class="m-0">{{ t('games') }}</h1>
@@ -73,7 +73,7 @@ const init = async () => {
 const loadingStop = () => (isLoaded.value = true)
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 await init()
 </script>
 

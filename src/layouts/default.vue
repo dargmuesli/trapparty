@@ -6,70 +6,70 @@
   >
     <div class="flex min-h-screen flex-col pb-32">
       <header class="relative mb-4 flex items-center justify-between">
-        <AppLink :aria-label="t('home')" :to="localePath('/')">
-          <Logo class="h-16 w-16" />
-        </AppLink>
-        <AppLink
+        <VioLink :aria-label="t('home')" :to="localePath('/')">
+          <IconLogo class="h-16 w-16" />
+        </VioLink>
+        <VioLink
           :aria-label="t('home')"
           class="text-gray-900 dark:text-white"
           :is-colored="false"
           :to="localePath('/')"
         >
-          <IconHome />
-        </AppLink>
+          <VioIconHome />
+        </VioLink>
       </header>
       <div class="flex flex-1 flex-col">
         <slot />
       </div>
     </div>
-    <LayoutFooter>
-      <LayoutFooterCategory :heading="t('legal')">
-        <AppLink
+    <VioLayoutFooter>
+      <VioLayoutFooterCategory :heading="t('legal')">
+        <VioLink
           :aria-label="t('legalNotice')"
           :to="localePath('/legal-notice')"
         >
           {{ t('legalNotice') }}
-        </AppLink>
-        <AppLink
+        </VioLink>
+        <VioLink
           :aria-label="t('privacyPolicy')"
           :to="localePath('/privacy-policy')"
         >
           {{ t('privacyPolicy') }}
-        </AppLink>
-      </LayoutFooterCategory>
-      <LayoutFooterCategory :heading="t('quickLinks')">
-        <AppLink
+        </VioLink>
+      </VioLayoutFooterCategory>
+      <VioLayoutFooterCategory :heading="t('quickLinks')">
+        <VioLink
           :aria-label="t('sourceCode')"
           :title="t('githubLinkTitle')"
           to="https://github.com/dargmuesli/trapparty/"
         >
           {{ t('sourceCode') }}
-        </AppLink>
-      </LayoutFooterCategory>
-    </LayoutFooter>
-    <CookieControl :locale="locale as Locale" />
+        </VioLink>
+      </VioLayoutFooterCategory>
+    </VioLayoutFooter>
+    <CookieControl :locale="locale" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
+import { WritableComputedRef } from 'vue'
 
-const { $dayjs } = useNuxtApp()
 const localePath = useLocalePath()
-const { locale, t } = useI18n()
+const i18n = useI18n()
+const { t } = i18n
 
 const loadingId = Math.random()
 const loadingIds = useState('loadingIds', () => [loadingId])
+
+// data
+const locale = i18n.locale as WritableComputedRef<Locale>
 
 // computations
 const isLoading = computed(() => !!loadingIds.value.length)
 
 // lifecycle
 onMounted(() => loadingIds.value.splice(loadingIds.value.indexOf(loadingId), 1))
-
-// initialization
-useHeadLayout()
-$dayjs.locale(locale.value)
 </script>
 
 <script lang="ts">

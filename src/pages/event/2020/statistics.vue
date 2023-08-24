@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <div>
       <h1 class="text-center">
         {{ title }}
@@ -15,7 +15,7 @@
         {{ t('datalessEvent') }}
       </CardStateAlert>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -46,7 +46,7 @@ const trapPartyEvent = computed(() =>
 const title = t('title')
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 </script>
 
 <script lang="ts">

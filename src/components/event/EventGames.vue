@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <div class="text-center">
       <h1>
         {{ title }}
@@ -16,7 +16,7 @@
           >
             <GameTitle :game="game" />
             <div class="flex gap-4">
-              <ButtonColored
+              <VioButtonColored
                 v-if="
                   game.isActive && store.participationData?.role === 'player'
                 "
@@ -24,23 +24,23 @@
                 :to="localePath(`/game/${game.id}`)"
               >
                 {{ t('gameLink') }}
-              </ButtonColored>
-              <ButtonColored
+              </VioButtonColored>
+              <VioButtonColored
                 :aria-label="t('gameLinkStatistic')"
                 :is-primary="false"
                 :to="localePath(`/game/${game.id}/statistic`)"
               >
                 {{ t('gameLinkStatistic') }}
-              </ButtonColored>
+              </VioButtonColored>
             </div>
           </li>
         </ul>
       </div>
-      <CardStateInfo v-else>
+      <VioCardStateInfo v-else>
         {{ t('gamesNone') }}
-      </CardStateInfo>
+      </VioCardStateInfo>
     </div>
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">
@@ -115,7 +115,7 @@ watch(
 )
 
 // initialization
-useHeadDefault(title)
+useHeadDefault({ title })
 fetchGames(trapPartyEvent.value)
 </script>
 

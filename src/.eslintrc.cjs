@@ -36,9 +36,14 @@ module.exports = {
     'yml/quotes': ['error', { prefer: 'single' }],
   },
   settings: {
-    polyfills: ['Promise'],
+    // polyfills: ['Promise'],
     'vue-i18n': {
-      localeDir: './locales/*.json',
+      localeDir: [
+        { pattern: './locales/*.json' },
+        {
+          pattern: './node_modules/@dargmuesli/nuxt-vio/locales/*.json',
+        },
+      ],
       messageSyntaxVersion: '^9.0.0',
     },
   },

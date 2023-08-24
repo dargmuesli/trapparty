@@ -89,9 +89,3 @@ withDefaults(defineProps<Props>(), {
   backgroundFill: '#161616',
 })
 </script>
-
-<script lang="ts">
-export default {
-  name: 'TrapPartyLogo',
-}
-</script>

@@ -1,5 +1,5 @@
 <template>
-  <Loader :api="api">
+  <VioLoader :api="api">
     <ChartBaseBar
       v-if="data"
       id="chart-team-score-total"
@@ -8,7 +8,7 @@
       :horizontal="horizontal"
       :options-additional="optionsDefault"
     />
-  </Loader>
+  </VioLoader>
 </template>
 
 <script setup lang="ts">

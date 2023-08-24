@@ -1,9 +1,4 @@
 {
-  "globalStatusLoading": "Loading...",
   "globalSeoOgImageAlt": "TrapParty's logo.",
-  "globalSeoSiteDescription": "TrapParty's online version.",
-  "globalStatusError": "Error",
-  "globalValidationFailed": "Please check your input 🙈",
-  "globalValidationFormatIncorrect": "Incorrect format",
-  "globalValidationRequired": "Required"
+  "globalSeoSiteDescription": "TrapParty's online version."
 }

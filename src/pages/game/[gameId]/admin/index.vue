@@ -1,7 +1,7 @@
 <template>
-  <ButtonColored :aria-label="t('nfcRead')" @click="nfcScan">
+  <VioButtonColored :aria-label="t('nfcRead')" @click="nfcScan">
     {{ t('nfcRead') }}
-  </ButtonColored>
+  </VioButtonColored>
 </template>
 
 <script setup lang="ts">
