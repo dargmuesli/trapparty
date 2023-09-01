@@ -44,7 +44,7 @@
     "@playwright/test": "1.37.1",
     "@types/color": "3.0.3",
     "@types/lodash-es": "4.17.9",
-    "@types/node": "20.5.7",
+    "@types/node": "20.5.8",
     "@urql/core": "4.1.2",
     "@urql/devtools": "2.0.3",
     "@urql/exchange-graphcache": "6.3.2",
