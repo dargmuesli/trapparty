@@ -47,7 +47,7 @@
     "@types/node": "20.5.9",
     "@urql/core": "4.1.2",
     "@urql/devtools": "2.0.3",
-    "@urql/exchange-graphcache": "6.3.2",
+    "@urql/exchange-graphcache": "6.3.3",
     "@urql/vue": "1.1.2",
     "chart.js": "4.4.0",
     "color": "4.2.3",
