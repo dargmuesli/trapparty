@@ -15,6 +15,7 @@
         </VioLink>
       </header>
       <div class="flex flex-1 flex-col">
+        <NuxtLoadingIndicator color="#fff" />
         <slot />
       </div>
     </div>
