@@ -1,7 +1,7 @@
 {
   "name": "trapparty",
   "private": true,
-  "version": "3.12.2",
+  "version": "3.12.3",
   "description": "TrapParty's website.",
   "author": "Jonas Thelemann",
   "type": "module",

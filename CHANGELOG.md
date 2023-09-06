@@ -1,3 +1,10 @@
+## [3.12.3](https://github.com/dargmuesli/trapparty/compare/3.12.2...3.12.3) (2023-09-06)
+
+
+### Bug Fixes
+
+* **app:** drop content wrapping div on layout ([c77dc2a](https://github.com/dargmuesli/trapparty/commit/c77dc2a2f580c111162db2b224ce65aac14233e1))
+
 ## [3.12.2](https://github.com/dargmuesli/trapparty/compare/3.12.1...3.12.2) (2023-09-04)
 
 
