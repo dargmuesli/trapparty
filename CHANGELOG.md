@@ -1,3 +1,10 @@
+## [3.12.6](https://github.com/dargmuesli/trapparty/compare/3.12.5...3.12.6) (2023-09-07)
+
+
+### Bug Fixes
+
+* **docker:** correct start command ([b4fc053](https://github.com/dargmuesli/trapparty/commit/b4fc053545a68ae6765163029aa576e3623dee7d))
+
 ## [3.12.5](https://github.com/dargmuesli/trapparty/compare/3.12.4...3.12.5) (2023-09-07)
 
 
