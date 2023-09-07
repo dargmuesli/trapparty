@@ -50,7 +50,6 @@ const getCsp = (host: string): Record<string, Array<string>> => {
       `ws://${hostName}:24678/_nuxt/`,
       `wss://${hostName}:24678/_nuxt/`,
     ],
-    'default-src': ["'self'"], // nuxt-og-image
     'font-src': ['https://fonts.gstatic.com/s/inter/v12/'], // nuxt-og-image
     'frame-ancestors': ["'self'"], // nuxt-og-image
     'frame-src': ["'self'"], // Nuxt devtools

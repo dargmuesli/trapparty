@@ -14,6 +14,7 @@ const cookieControl = useCookieControl()
 
 const loadingId = Math.random()
 const loadingIds = useState('loadingIds', () => [loadingId])
+const siteConfig = useSiteConfig()
 
 // methods
 const init = () => {
@@ -59,12 +60,13 @@ updateSiteConfig({
 defineOgImage({
   alt: t('globalSeoOgImageAlt'),
   // component: props.ogImageComponent,
+  description: t('globalSeoSiteDescription'),
 })
 useSchemaOrg([
   defineWebSite({
     description: t('globalSeoSiteDescription'),
     inLanguage: locale,
-    name: SITE_NAME,
+    name: siteConfig.name,
   }),
   defineWebPage(),
 ])
