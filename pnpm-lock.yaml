@@ -31,8 +31,8 @@ importers:
         specifier: 4.7.3
         version: 4.7.3(playwright-core@1.37.1)
       '@dargmuesli/nuxt-vio':
-        specifier: 3.5.1
-        version: 3.5.1(@nuxt/devtools@0.8.3)(@unhead/shared@1.5.3)(graphql@16.8.0)(nuxt@3.7.1)(playwright-core@1.37.1)(postcss@8.4.29)(tailwindcss@3.3.3)(ts-node@10.9.1)(typescript@5.2.2)(unhead@1.5.3)(vite@4.4.9)(vue@3.3.4)(webpack@5.88.2)
+        specifier: 3.6.0
+        version: 3.6.0(@nuxt/devtools@0.8.3)(@unhead/shared@1.5.3)(graphql@16.8.0)(nuxt@3.7.1)(playwright-core@1.37.1)(postcss@8.4.29)(tailwindcss@3.3.3)(ts-node@10.9.1)(typescript@5.2.2)(unhead@1.5.3)(vite@4.4.9)(vue@3.3.4)(webpack@5.88.2)
       '@graphql-codegen/cli':
         specifier: 5.0.0
         version: 5.0.0(@types/node@20.5.9)(graphql@16.8.0)(typescript@5.2.2)
@@ -1085,8 +1085,8 @@ packages:
       - webpack
     dev: true
 
-  /@dargmuesli/nuxt-vio@3.5.1(@nuxt/devtools@0.8.3)(@unhead/shared@1.5.3)(graphql@16.8.0)(nuxt@3.7.1)(playwright-core@1.37.1)(postcss@8.4.29)(tailwindcss@3.3.3)(ts-node@10.9.1)(typescript@5.2.2)(unhead@1.5.3)(vite@4.4.9)(vue@3.3.4)(webpack@5.88.2):
-    resolution: {integrity: sha512-GHOsCeHeGpX5Mj1JK5WpSdlFHDUifDGzETmqoezUBDkxT/K8pKJK9DMWAEO7dRCJd9ZnfB97lTFwWJy7jTn6Bw==}
+  /@dargmuesli/nuxt-vio@3.6.0(@nuxt/devtools@0.8.3)(@unhead/shared@1.5.3)(graphql@16.8.0)(nuxt@3.7.1)(playwright-core@1.37.1)(postcss@8.4.29)(tailwindcss@3.3.3)(ts-node@10.9.1)(typescript@5.2.2)(unhead@1.5.3)(vite@4.4.9)(vue@3.3.4)(webpack@5.88.2):
+    resolution: {integrity: sha512-518Gp1hzNC0GNX3YxeafMRcmaEqb5DoLtREWBcY5AYYTUg/ywPk7ljiCvh6eUkvZW+WVA4doCmTggZ99YSG+8Q==}
     engines: {node: '20'}
     peerDependencies:
       playwright-core: 1.37.1
@@ -1116,7 +1116,7 @@ packages:
       cookie: 0.5.0
       dayjs: 2.0.0-alpha.4
       is-https: 4.0.0
-      jiti: 1.19.3
+      jiti: 1.20.0
       jose: 4.14.6
       lodash-es: 4.17.21
       pinia: 2.1.6(typescript@5.2.2)(vue@3.3.4)
@@ -3438,6 +3438,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -5638,6 +5639,7 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    requiresBuild: true
     dev: true
 
   /batch@0.6.1:
@@ -5748,6 +5750,7 @@ packages:
 
   /buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    requiresBuild: true
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -5866,7 +5869,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /camelcase-css@2.0.1:
@@ -5929,7 +5932,7 @@ packages:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
       upper-case-first: 2.0.2
     dev: true
 
@@ -6343,7 +6346,7 @@ packages:
     resolution: {integrity: sha512-I2hSBi7Vvs7BEuJDr5dDHfzb/Ruj3FyvFyh7KLilAjNQw3Be+xgqUBA2W6scVEcL0hL1dwPRtIqEPVUCKkSsyQ==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
       upper-case: 2.0.2
     dev: true
 
@@ -7027,7 +7030,7 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /dot-prop@5.3.0:
@@ -8706,7 +8709,7 @@ packages:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /hex-rgb@4.3.0:
@@ -8953,6 +8956,7 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+    requiresBuild: true
     dev: true
 
   /ignore-walk@6.0.3:
@@ -9529,6 +9533,11 @@ packages:
 
   /jiti@1.19.3:
     resolution: {integrity: sha512-5eEbBDQT/jF1xg6l36P+mWGGoH9Spuy0PCdSr2dtWRDGC6ph/w9ZCL4lmESW8f8F7MwT3XKescfP0wnZWAKL9w==}
+    hasBin: true
+    dev: true
+
+  /jiti@1.20.0:
+    resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
     hasBin: true
     dev: true
 
@@ -10614,6 +10623,10 @@ packages:
     dev: true
     optional: true
 
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+    dev: true
+
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -10720,7 +10733,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /node-abi@3.47.0:
@@ -11614,7 +11627,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /parent-module@1.0.1:
@@ -11699,14 +11712,14 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /path-case@3.0.4:
     resolution: {integrity: sha512-qO4qCFjXqVTrcbPt/hQfhTQ+VhFsqNKOPtytgNKkKxSoEp3XPUQ8ObFuePylOIok5gjn69ry8XiULxCwot3Wfg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /path-exists@4.0.0:
@@ -13126,7 +13139,7 @@ packages:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
       upper-case-first: 2.0.2
     dev: true
 
@@ -13349,7 +13362,7 @@ packages:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.6.2
     dev: true
 
   /socks-proxy-agent@5.0.1:
@@ -13958,7 +13971,7 @@ packages:
       fast-glob: 3.3.1
       glob-parent: 6.0.2
       is-glob: 4.0.3
-      jiti: 1.19.3
+      jiti: 1.20.0
       lilconfig: 2.1.0
       micromatch: 4.0.5
       normalize-path: 3.0.0
@@ -14450,7 +14463,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.7.6
       defu: 6.1.2
-      jiti: 1.19.3
+      jiti: 1.20.0
       mlly: 1.4.2
     dev: true
 
