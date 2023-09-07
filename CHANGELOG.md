@@ -1,3 +1,10 @@
+## [3.12.7](https://github.com/dargmuesli/trapparty/compare/3.12.6...3.12.7) (2023-09-07)
+
+
+### Bug Fixes
+
+* **docker:** enable corepack for production ([be3af21](https://github.com/dargmuesli/trapparty/commit/be3af21724b30463e3a6bbf77bbffec474ef4d95))
+
 ## [3.12.6](https://github.com/dargmuesli/trapparty/compare/3.12.5...3.12.6) (2023-09-07)
 
 
