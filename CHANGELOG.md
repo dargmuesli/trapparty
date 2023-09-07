@@ -1,3 +1,10 @@
+## [3.12.5](https://github.com/dargmuesli/trapparty/compare/3.12.4...3.12.5) (2023-09-07)
+
+
+### Bug Fixes
+
+* **headers:** correct event parameter ([b897611](https://github.com/dargmuesli/trapparty/commit/b897611f193e7535b2ed1229d413d81bd1198d75))
+
 ## [3.12.4](https://github.com/dargmuesli/trapparty/compare/3.12.3...3.12.4) (2023-09-07)
 
 
