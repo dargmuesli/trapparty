@@ -1,3 +1,10 @@
+## [3.12.4](https://github.com/dargmuesli/trapparty/compare/3.12.3...3.12.4) (2023-09-07)
+
+
+### Bug Fixes
+
+* **open-graph:** correct image translations ([8d1ae21](https://github.com/dargmuesli/trapparty/commit/8d1ae2140157a530e03b498e49de3e763b47059d))
+
 ## [3.12.3](https://github.com/dargmuesli/trapparty/compare/3.12.2...3.12.3) (2023-09-06)
 
 
