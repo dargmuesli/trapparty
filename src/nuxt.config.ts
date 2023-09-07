@@ -1,6 +1,5 @@
 import {
   VIO_NUXT_BASE_CONFIG,
-  // I18N_COOKIE_NAME,
   JWT_NAME,
 } from '@dargmuesli/nuxt-vio/utils/constants'
 import { defu } from 'defu'
