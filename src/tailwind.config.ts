@@ -1,7 +1,6 @@
-import type { Config } from 'tailwindcss'
+import type { ModuleOptions } from '@nuxtjs/tailwindcss'
 
 export default {
-  content: [],
   theme: {
     extend: {
       colors: {
@@ -11,4 +10,4 @@ export default {
       },
     },
   },
-} as Config
+} as ModuleOptions['config']
