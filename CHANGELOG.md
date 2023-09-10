@@ -1,3 +1,11 @@
+## [3.13.0](https://github.com/dargmuesli/trapparty/compare/3.12.7...3.13.0) (2023-09-10)
+
+
+### Features
+
+* **environment:** rework variables ([93e181c](https://github.com/dargmuesli/trapparty/commit/93e181c4af299ec74228503b3c9e3293dafc8fe0))
+* **site:** add identity and twitter ([2838675](https://github.com/dargmuesli/trapparty/commit/2838675b9920ccc53b95034c5bf2a57ee6162a22))
+
 ## [3.12.7](https://github.com/dargmuesli/trapparty/compare/3.12.6...3.12.7) (2023-09-07)
 
 
