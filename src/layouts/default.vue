@@ -53,11 +53,10 @@ import { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
 import { WritableComputedRef } from 'vue'
 
 const localePath = useLocalePath()
-const i18n = useI18n()
-const { t } = i18n
+const { t, locale: i18nLocale } = useI18n()
 
 // data
-const locale = i18n.locale as WritableComputedRef<Locale>
+const locale = i18nLocale as WritableComputedRef<Locale>
 </script>
 
 <script lang="ts">
