@@ -1,3 +1,10 @@
+## [3.13.1](https://github.com/dargmuesli/trapparty/compare/3.13.0...3.13.1) (2023-09-12)
+
+
+### Bug Fixes
+
+* migrate to vio 4 ([d3e6426](https://github.com/dargmuesli/trapparty/commit/d3e6426d2c4fa5514d49129db12f422d2327fd35))
+
 ## [3.13.0](https://github.com/dargmuesli/trapparty/compare/3.12.7...3.13.0) (2023-09-10)
 
 
