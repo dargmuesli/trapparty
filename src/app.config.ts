@@ -38,9 +38,6 @@ export default defineAppConfig({
         },
       },
     },
-    seoMeta: {
-      twitterSite: '@dargmuesli',
-    },
     themeColor: '#161616',
   },
 })
