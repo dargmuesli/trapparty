@@ -1,3 +1,10 @@
+## [3.13.2](https://github.com/dargmuesli/trapparty/compare/3.13.1...3.13.2) (2023-09-12)
+
+
+### Bug Fixes
+
+* **docker:** correct start script ([ac9959a](https://github.com/dargmuesli/trapparty/commit/ac9959ae613da0648a76a1c45bf0009cb06185be))
+
 ## [3.13.1](https://github.com/dargmuesli/trapparty/compare/3.13.0...3.13.1) (2023-09-12)
 
 
