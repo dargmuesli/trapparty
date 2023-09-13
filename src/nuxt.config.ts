@@ -1,6 +1,5 @@
 import {
   JWT_NAME,
-  SITE_URL,
   VIO_NUXT_BASE_CONFIG,
 } from '@dargmuesli/nuxt-vio/utils/constants'
 import { defu } from 'defu'
@@ -35,7 +34,6 @@ export default defineNuxtConfig(
       },
     },
     VIO_NUXT_BASE_CONFIG({
-      siteUrl: SITE_URL,
       siteName: SITE_NAME,
       stagingHost: 'jonas-thelemann.de',
     }),
