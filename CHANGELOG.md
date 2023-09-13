@@ -1,3 +1,10 @@
+## [3.13.3](https://github.com/dargmuesli/trapparty/compare/3.13.2...3.13.3) (2023-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update ([e718db5](https://github.com/dargmuesli/trapparty/commit/e718db5eeb1316de1420975e9dd47d886b967dfb))
+
 ## [3.13.2](https://github.com/dargmuesli/trapparty/compare/3.13.1...3.13.2) (2023-09-12)
 
 
