@@ -40,7 +40,7 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@dargmuesli/nuxt-vio": "5.0.1",
+    "@dargmuesli/nuxt-vio": "5.0.2",
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/client-preset": "4.1.0",
     "@graphql-codegen/typescript-urql-graphcache": "2.4.5",
