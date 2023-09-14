@@ -167,7 +167,7 @@ const saveCode = async () => {
   if (!form.invitationCode) return
 
   try {
-    await formPreSubmit(api, v$, isFormSent)
+    await isFormValid({ v$, isFormSent })
   } catch (error) {
     return
   }
