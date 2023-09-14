@@ -39,7 +39,9 @@ module.exports = {
     // polyfills: ['Promise'],
     'vue-i18n': {
       localeDir: [
-        { pattern: './locales/*.json' },
+        {
+          pattern: './locales/*.json',
+        },
         {
           pattern: './node_modules/@dargmuesli/nuxt-vio/locales/*.json',
         },
