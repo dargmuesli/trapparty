@@ -45,7 +45,7 @@
     "@graphql-codegen/client-preset": "4.1.0",
     "@graphql-codegen/typescript-urql-graphcache": "2.4.5",
     "@graphql-codegen/urql-introspection": "2.2.1",
-    "@pinia-plugin-persistedstate/nuxt": "1.1.1",
+    "@pinia-plugin-persistedstate/nuxt": "1.1.2",
     "@types/color": "3.0.4",
     "chart.js": "4.4.0",
     "color": "4.2.3",

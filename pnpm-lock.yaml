@@ -39,8 +39,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1(graphql@16.8.0)
       '@pinia-plugin-persistedstate/nuxt':
-        specifier: 1.1.1
-        version: 1.1.1(@pinia/nuxt@0.4.11)(pinia@2.1.6)
+        specifier: 1.1.2
+        version: 1.1.2(@pinia/nuxt@0.4.11)(pinia@2.1.6)
       '@types/color':
         specifier: 3.0.4
         version: 3.0.4
@@ -3568,8 +3568,8 @@ packages:
       webcrypto-core: 1.7.7
     dev: true
 
-  /@pinia-plugin-persistedstate/nuxt@1.1.1(@pinia/nuxt@0.4.11)(pinia@2.1.6):
-    resolution: {integrity: sha512-b6ZNP3Re8COmfZEpj4KQmbp2TuDKrLggDFLZa8FiJF68xE/oCsPXIuXUvAt8E4ht/5sq4Z/grlA+iGXaI2aeKQ==}
+  /@pinia-plugin-persistedstate/nuxt@1.1.2(@pinia/nuxt@0.4.11)(pinia@2.1.6):
+    resolution: {integrity: sha512-3deRNiIlFoFGO/K8Sz+yc53ayMzElR8ack7RnGka80zBgp6Fs9GWjoLJiy+ToIc7qVa6wrQcoLDsxcnvzX4T0g==}
     peerDependencies:
       '@pinia/nuxt': ^0.4.4
     dependencies:
@@ -10562,6 +10562,7 @@ packages:
 
   /napi-wasm@1.1.0:
     resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+    requiresBuild: true
     dev: true
 
   /natural-compare@1.4.0:
