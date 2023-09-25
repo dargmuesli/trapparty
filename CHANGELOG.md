@@ -1,3 +1,10 @@
+## [3.13.4](https://github.com/dargmuesli/trapparty/compare/3.13.3...3.13.4) (2023-09-25)
+
+
+### Bug Fixes
+
+* schedule release ([5be5c65](https://github.com/dargmuesli/trapparty/commit/5be5c652999219a3c67201cae2e7a5bff749782f))
+
 ## [3.13.3](https://github.com/dargmuesli/trapparty/compare/3.13.2...3.13.3) (2023-09-13)
 
 
