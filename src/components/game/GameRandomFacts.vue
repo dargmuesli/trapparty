@@ -73,7 +73,7 @@ import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRando
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
 import { gameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
-export interface Props {
+interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})

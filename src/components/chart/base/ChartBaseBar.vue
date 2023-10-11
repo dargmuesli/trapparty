@@ -16,7 +16,7 @@ import type { ChartData, ChartOptions } from 'chart.js'
 import { merge } from 'lodash-es'
 import { Bar } from 'vue-chartjs'
 
-export interface Props {
+interface Props {
   id: string
   data: ChartData<'bar', number[], unknown>
   height?: number

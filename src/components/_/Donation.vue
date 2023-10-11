@@ -119,7 +119,7 @@ import { useStatsQuery } from '~/gql/documents/queries/stats'
 import { getTeamItem } from '~/gql/documents/fragments/teamItem'
 import { getCharityOrganizationItem } from '~/gql/documents/fragments/charityOrganizationItem'
 
-export interface Props {
+interface Props {
   trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
 }
 const props = withDefaults(defineProps<Props>(), {})

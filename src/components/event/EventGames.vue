@@ -54,7 +54,7 @@ import { GameItemFragment } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
 import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 
-export interface Props {
+interface Props {
   eventName: string
 }
 const props = withDefaults(defineProps<Props>(), {})

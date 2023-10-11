@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-export interface Props {
+interface Props {
   backgroundFill?: string
 }
 withDefaults(defineProps<Props>(), {

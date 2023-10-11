@@ -113,7 +113,7 @@ import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
 import { useStore } from '~/store'
 import { getEventItem } from '~/gql/documents/fragments/eventItem'
 
-export interface Props {
+interface Props {
   eventName: string
 }
 const props = withDefaults(defineProps<Props>(), {})

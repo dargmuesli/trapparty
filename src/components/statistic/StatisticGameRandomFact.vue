@@ -30,7 +30,7 @@ import {
 import { getGameRandomFactsVoteItem } from '~/gql/documents/fragments/gameRandomFactsVoteItem'
 import { gameRandomFactsVotesQuery } from '~/gql/documents/queries/game/allGameRandomFactsVotes'
 
-export interface Props {
+interface Props {
   gameId: number
 }
 const props = withDefaults(defineProps<Props>(), {})

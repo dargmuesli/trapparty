@@ -20,7 +20,7 @@ import Rainbow from 'rainbowvis.js'
 import { useStatsQuery } from '~/gql/documents/queries/stats'
 import { getTeamItem } from '~/gql/documents/fragments/teamItem'
 
-export interface Props {
+interface Props {
   eventId: number
   height?: number
   options?: ChartOptions<'bar'>

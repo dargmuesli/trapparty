@@ -22,7 +22,7 @@ import { consola } from 'consola'
 
 import { usePlayerNameByIdQuery } from '~/gql/documents/queries/player/playerNameById'
 
-export interface Props {
+interface Props {
   highscores: number[]
   playerId: number
   value: number

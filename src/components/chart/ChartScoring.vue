@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-export interface Props {
+interface Props {
   eventId: number
 }
 withDefaults(defineProps<Props>(), {})

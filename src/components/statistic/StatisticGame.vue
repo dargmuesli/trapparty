@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { GameItemFragment } from '~/gql/generated/graphql'
 
-export interface Props {
+interface Props {
   game: GameItemFragment
 }
 withDefaults(defineProps<Props>(), {})
