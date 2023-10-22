@@ -1,3 +1,10 @@
+## [3.13.6](https://github.com/dargmuesli/trapparty/compare/3.13.5...3.13.6) (2023-10-22)
+
+
+### Bug Fixes
+
+* correct packages ([318009a](https://github.com/dargmuesli/trapparty/commit/318009a55c88f36eb4601db251cf9d0ba4bc4bfd))
+
 ## [3.13.5](https://github.com/dargmuesli/trapparty/compare/3.13.4...3.13.5) (2023-10-09)
 
 
