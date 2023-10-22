@@ -23,7 +23,7 @@ import { consola } from 'consola'
 
 import { getGameRandomFactsRoundItem } from '~/gql/documents/fragments/gameRandomFactsRoundItem'
 import { useAllGameRandomFactsRoundsQuery } from '~/gql/documents/queries/game/allGameRandomFactsRounds'
-import {
+import type {
   GameRandomFactsRoundItemFragment,
   GameRandomFactsVoteItemFragment,
 } from '~/gql/generated/graphql'

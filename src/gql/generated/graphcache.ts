@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 import {
-  Resolver as GraphCacheResolver,
-  UpdateResolver as GraphCacheUpdateResolver,
-  OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
-  StorageAdapter as GraphCacheStorageAdapter,
-  CacheExchangeOpts,
+  type Resolver as GraphCacheResolver,
+  type UpdateResolver as GraphCacheUpdateResolver,
+  type OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
+  type StorageAdapter as GraphCacheStorageAdapter,
+  type CacheExchangeOpts,
 } from '@urql/exchange-graphcache'
 
 export type Maybe<T> = T | null

@@ -1,4 +1,4 @@
-import { FragmentType, graphql, useFragment } from '~/gql/generated'
+import { type FragmentType, graphql, useFragment } from '~/gql/generated'
 
 export const PlayerItem = graphql(`
   fragment PlayerItem on Player {

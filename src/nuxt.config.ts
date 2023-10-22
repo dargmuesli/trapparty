@@ -32,6 +32,16 @@ export default defineNuxtConfig(
           optional: [],
         },
       },
+      security: {
+        headers: {
+          contentSecurityPolicy: {
+            'connect-src': [
+              'https://trapparty-postgraphile.jonas-thelemann.de', // TODO: use `getDomainTldPort(stagingHostOrHost)` (https://github.com/Baroshem/nuxt-security/pull/233)
+            ],
+            'report-uri': ['https://dargmuesli.report-uri.com/r/d/csp/enforce'],
+          },
+        },
+      },
     },
     VIO_NUXT_BASE_CONFIG({
       siteName: SITE_NAME,

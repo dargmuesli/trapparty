@@ -1,4 +1,4 @@
-import { FragmentType, graphql, useFragment } from '~/gql/generated'
+import { type FragmentType, graphql, useFragment } from '~/gql/generated'
 
 export const GameRandomFactsVoteItem = graphql(`
   fragment GameRandomFactsVoteItem on GameRandomFactsVote {

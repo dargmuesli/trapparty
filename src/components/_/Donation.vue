@@ -110,7 +110,7 @@
 <script setup lang="ts">
 import { consola } from 'consola'
 
-import {
+import type {
   CharityOrganizationItemFragment,
   Event as TrapPartyEvent,
   TeamItemFragment,
