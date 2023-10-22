@@ -45,12 +45,12 @@
 
 <script setup lang="ts">
 import { consola } from 'consola'
-import { UnwrapRef } from 'vue'
+import type { UnwrapRef } from 'vue'
 
 import { getEventItem } from '~/gql/documents/fragments/eventItem'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
-import { GameItemFragment } from '~/gql/generated/graphql'
+import type { GameItemFragment } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
 import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 

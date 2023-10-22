@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { ParticipationData } from '../types/trapparty'
+import type { ParticipationData } from '../types/trapparty'
 
 export const useStore = defineStore(
   'trapparty',

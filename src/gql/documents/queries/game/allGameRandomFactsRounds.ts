@@ -1,6 +1,6 @@
 import { useQuery } from '@urql/vue'
 import { graphql } from '~/gql/generated'
-import { AllGameRandomFactsRoundsQueryVariables } from '~/gql/generated/graphql'
+import { type AllGameRandomFactsRoundsQueryVariables } from '~/gql/generated/graphql'
 
 export const useAllGameRandomFactsRoundsQuery = (
   variables: AllGameRandomFactsRoundsQueryVariables,

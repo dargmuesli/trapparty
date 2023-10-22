@@ -1,6 +1,6 @@
 import { useQuery } from '@urql/vue'
 import { graphql } from '~/gql/generated'
-import { PlayerByInvitationCodeFnQueryVariables } from '~/gql/generated/graphql'
+import { type PlayerByInvitationCodeFnQueryVariables } from '~/gql/generated/graphql'
 
 export const usePlayerByInvitationCodeFnQuery = (
   variables: PlayerByInvitationCodeFnQueryVariables,

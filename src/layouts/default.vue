@@ -49,8 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
-import { WritableComputedRef } from 'vue'
+import type { Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
+import type { WritableComputedRef } from 'vue'
 
 const localePath = useLocalePath()
 const { t, locale: i18nLocale } = useI18n()

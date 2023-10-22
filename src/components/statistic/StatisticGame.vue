@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { GameItemFragment } from '~/gql/generated/graphql'
+import type { GameItemFragment } from '~/gql/generated/graphql'
 
 interface Props {
   game: GameItemFragment
