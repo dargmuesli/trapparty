@@ -24,8 +24,8 @@ importers:
         specifier: 7.0.1
         version: 7.0.1(webpack@5.89.0)
       '@dargmuesli/nuxt-vio':
-        specifier: 8.3.3
-        version: 8.3.3(@types/node@18.18.6)(@unhead/shared@1.7.4)(graphql@16.8.1)(playwright-core@1.39.0)(postcss-html@1.5.0)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)(vite@4.5.0)(webpack@5.89.0)
+        specifier: 8.3.4
+        version: 8.3.4(@types/node@18.18.6)(@unhead/shared@1.7.4)(graphql@16.8.1)(playwright-core@1.39.0)(postcss-html@1.5.0)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)(vite@4.5.0)(webpack@5.89.0)
       '@graphql-codegen/cli':
         specifier: 5.0.0
         version: 5.0.0(@types/node@18.18.6)(graphql@16.8.1)(typescript@5.2.2)
@@ -1097,8 +1097,8 @@ packages:
       - webpack
     dev: true
 
-  /@dargmuesli/nuxt-vio@8.3.3(@types/node@18.18.6)(@unhead/shared@1.7.4)(graphql@16.8.1)(playwright-core@1.39.0)(postcss-html@1.5.0)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)(vite@4.5.0)(webpack@5.89.0):
-    resolution: {integrity: sha512-6oUuNHWKLBNuBmsBQt7boLJgmZl3+iBTDkcAmNt+ADv3go+KvTTDJu22eTWyqlJK89OXDyvx/rSWZgQ3mSIBTw==}
+  /@dargmuesli/nuxt-vio@8.3.4(@types/node@18.18.6)(@unhead/shared@1.7.4)(graphql@16.8.1)(playwright-core@1.39.0)(postcss-html@1.5.0)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)(vite@4.5.0)(webpack@5.89.0):
+    resolution: {integrity: sha512-6qwtjXCyhtwEYyvANT4OPk4/SB2cpf7r5uUJ0rY6aBI5lS/H5z075avX0OVDDi6S31+nLymin7XhKYSS8x4/bA==}
     engines: {node: '20'}
     peerDependencies:
       playwright-core: 1.39.0
@@ -5781,7 +5781,7 @@ packages:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.3.0
+      chalk: 5.0.1
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
