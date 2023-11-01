@@ -54,7 +54,7 @@
     "@playwright/test": "1.39.0",
     "@types/color": "3.0.5",
     "@types/lodash-es": "4.17.10",
-    "@unhead/vue": "1.8.1",
+    "@unhead/vue": "1.8.2",
     "@urql/core": "4.1.4",
     "@urql/devtools": "2.0.3",
     "@urql/exchange-graphcache": "6.3.3",
