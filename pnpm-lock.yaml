@@ -126,8 +126,8 @@ importers:
         specifier: 15.11.0
         version: 15.11.0(typescript@5.2.2)
       unhead:
-        specifier: 1.8.1
-        version: 1.8.1
+        specifier: 1.8.2
+        version: 1.8.2
       vue:
         specifier: 3.3.7
         version: 3.3.7(typescript@5.2.2)
@@ -5774,6 +5774,7 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    requiresBuild: true
     dev: true
 
   /basic-auth@2.0.1:
@@ -5887,6 +5888,7 @@ packages:
 
   /buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    requiresBuild: true
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -8903,6 +8905,7 @@ packages:
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+    requiresBuild: true
     dev: true
 
   /ignore-walk@6.0.3:
@@ -14302,15 +14305,6 @@ packages:
       '@unhead/dom': 1.7.4
       '@unhead/schema': 1.7.4
       '@unhead/shared': 1.7.4
-      hookable: 5.5.3
-    dev: true
-
-  /unhead@1.8.1:
-    resolution: {integrity: sha512-hidjRl/irt/kvbJmyA+oED8xh+VnlQqfye3oxoZEuGr+JEKnU7keWNyiQxkSWpo9z5rwg52CKgCmY7oMuPMtmw==}
-    dependencies:
-      '@unhead/dom': 1.8.1
-      '@unhead/schema': 1.8.1
-      '@unhead/shared': 1.8.1
       hookable: 5.5.3
     dev: true
 
