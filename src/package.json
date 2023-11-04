@@ -75,7 +75,7 @@
     "playwright-core": "1.39.0",
     "rainbowvis.js": "1.1.1",
     "stylelint": "15.11.0",
-    "unhead": "1.8.2",
+    "unhead": "1.8.3",
     "vue": "3.3.7",
     "vue-chartjs": "5.2.0",
     "vue-router": "4.2.5",
