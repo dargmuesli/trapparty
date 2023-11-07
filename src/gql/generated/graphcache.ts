@@ -1,10 +1,9 @@
 /* eslint-disable no-use-before-define */
 import {
+  offlineExchange,
   type Resolver as GraphCacheResolver,
   type UpdateResolver as GraphCacheUpdateResolver,
   type OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
-  type StorageAdapter as GraphCacheStorageAdapter,
-  type CacheExchangeOpts,
 } from '@urql/exchange-graphcache'
 
 export type Maybe<T> = T | null
@@ -5737,6 +5736,205 @@ export type GraphCacheOptimisticUpdaters = {
 }
 
 export type GraphCacheUpdaters = {
+  Query?: {
+    allCharityOrganizations?: GraphCacheUpdateResolver<
+      {
+        allCharityOrganizations: Maybe<
+          WithTypename<CharityOrganizationsConnection>
+        >
+      },
+      QueryAllCharityOrganizationsArgs
+    >
+    allEvents?: GraphCacheUpdateResolver<
+      { allEvents: Maybe<WithTypename<EventsConnection>> },
+      QueryAllEventsArgs
+    >
+    allGameRandomFactsRounds?: GraphCacheUpdateResolver<
+      {
+        allGameRandomFactsRounds: Maybe<
+          WithTypename<GameRandomFactsRoundsConnection>
+        >
+      },
+      QueryAllGameRandomFactsRoundsArgs
+    >
+    allGameRandomFactsVotes?: GraphCacheUpdateResolver<
+      {
+        allGameRandomFactsVotes: Maybe<
+          WithTypename<GameRandomFactsVotesConnection>
+        >
+      },
+      QueryAllGameRandomFactsVotesArgs
+    >
+    allGameTeamScores?: GraphCacheUpdateResolver<
+      { allGameTeamScores: Maybe<WithTypename<GameTeamScoresConnection>> },
+      QueryAllGameTeamScoresArgs
+    >
+    allGames?: GraphCacheUpdateResolver<
+      { allGames: Maybe<WithTypename<GamesConnection>> },
+      QueryAllGamesArgs
+    >
+    allKvs?: GraphCacheUpdateResolver<
+      { allKvs: Maybe<WithTypename<KvsConnection>> },
+      QueryAllKvsArgs
+    >
+    allPlayers?: GraphCacheUpdateResolver<
+      { allPlayers: Maybe<WithTypename<PlayersConnection>> },
+      QueryAllPlayersArgs
+    >
+    allTeamLeaders?: GraphCacheUpdateResolver<
+      { allTeamLeaders: Maybe<WithTypename<TeamLeadersConnection>> },
+      QueryAllTeamLeadersArgs
+    >
+    allTeams?: GraphCacheUpdateResolver<
+      { allTeams: Maybe<WithTypename<TeamsConnection>> },
+      QueryAllTeamsArgs
+    >
+    charityOrganization?: GraphCacheUpdateResolver<
+      { charityOrganization: Maybe<WithTypename<CharityOrganization>> },
+      QueryCharityOrganizationArgs
+    >
+    charityOrganizationById?: GraphCacheUpdateResolver<
+      { charityOrganizationById: Maybe<WithTypename<CharityOrganization>> },
+      QueryCharityOrganizationByIdArgs
+    >
+    charityOrganizationByName?: GraphCacheUpdateResolver<
+      { charityOrganizationByName: Maybe<WithTypename<CharityOrganization>> },
+      QueryCharityOrganizationByNameArgs
+    >
+    charityOrganizationByUrl?: GraphCacheUpdateResolver<
+      { charityOrganizationByUrl: Maybe<WithTypename<CharityOrganization>> },
+      QueryCharityOrganizationByUrlArgs
+    >
+    event?: GraphCacheUpdateResolver<
+      { event: Maybe<WithTypename<Event>> },
+      QueryEventArgs
+    >
+    eventById?: GraphCacheUpdateResolver<
+      { eventById: Maybe<WithTypename<Event>> },
+      QueryEventByIdArgs
+    >
+    eventByName?: GraphCacheUpdateResolver<
+      { eventByName: Maybe<WithTypename<Event>> },
+      QueryEventByNameArgs
+    >
+    game?: GraphCacheUpdateResolver<
+      { game: Maybe<WithTypename<Game>> },
+      QueryGameArgs
+    >
+    gameByEventIdAndName?: GraphCacheUpdateResolver<
+      { gameByEventIdAndName: Maybe<WithTypename<Game>> },
+      QueryGameByEventIdAndNameArgs
+    >
+    gameById?: GraphCacheUpdateResolver<
+      { gameById: Maybe<WithTypename<Game>> },
+      QueryGameByIdArgs
+    >
+    gameRandomFactsRound?: GraphCacheUpdateResolver<
+      { gameRandomFactsRound: Maybe<WithTypename<GameRandomFactsRound>> },
+      QueryGameRandomFactsRoundArgs
+    >
+    gameRandomFactsRoundById?: GraphCacheUpdateResolver<
+      { gameRandomFactsRoundById: Maybe<WithTypename<GameRandomFactsRound>> },
+      QueryGameRandomFactsRoundByIdArgs
+    >
+    gameRandomFactsVote?: GraphCacheUpdateResolver<
+      { gameRandomFactsVote: Maybe<WithTypename<GameRandomFactsVote>> },
+      QueryGameRandomFactsVoteArgs
+    >
+    gameRandomFactsVoteById?: GraphCacheUpdateResolver<
+      { gameRandomFactsVoteById: Maybe<WithTypename<GameRandomFactsVote>> },
+      QueryGameRandomFactsVoteByIdArgs
+    >
+    gameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
+      {
+        gameRandomFactsVoteByPlayerIdAndRoundId: Maybe<
+          WithTypename<GameRandomFactsVote>
+        >
+      },
+      QueryGameRandomFactsVoteByPlayerIdAndRoundIdArgs
+    >
+    gameTeamScore?: GraphCacheUpdateResolver<
+      { gameTeamScore: Maybe<WithTypename<GameTeamScore>> },
+      QueryGameTeamScoreArgs
+    >
+    gameTeamScoreById?: GraphCacheUpdateResolver<
+      { gameTeamScoreById: Maybe<WithTypename<GameTeamScore>> },
+      QueryGameTeamScoreByIdArgs
+    >
+    kvByKey?: GraphCacheUpdateResolver<
+      { kvByKey: Maybe<WithTypename<Kv>> },
+      QueryKvByKeyArgs
+    >
+    node?: GraphCacheUpdateResolver<
+      {
+        node: Maybe<
+          | WithTypename<CharityOrganization>
+          | WithTypename<Event>
+          | WithTypename<Game>
+          | WithTypename<GameRandomFactsRound>
+          | WithTypename<GameRandomFactsVote>
+          | WithTypename<GameTeamScore>
+          | WithTypename<Player>
+          | WithTypename<Query>
+          | WithTypename<Team>
+          | WithTypename<TeamLeader>
+        >
+      },
+      QueryNodeArgs
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      { nodeId: Scalars['ID'] },
+      Record<string, never>
+    >
+    player?: GraphCacheUpdateResolver<
+      { player: Maybe<WithTypename<Player>> },
+      QueryPlayerArgs
+    >
+    playerById?: GraphCacheUpdateResolver<
+      { playerById: Maybe<WithTypename<Player>> },
+      QueryPlayerByIdArgs
+    >
+    playerByInvitationCode?: GraphCacheUpdateResolver<
+      { playerByInvitationCode: Maybe<WithTypename<Player>> },
+      QueryPlayerByInvitationCodeArgs
+    >
+    playerByInvitationCodeFn?: GraphCacheUpdateResolver<
+      { playerByInvitationCodeFn: Maybe<WithTypename<PlayersConnection>> },
+      QueryPlayerByInvitationCodeFnArgs
+    >
+    playerByTeamIdAndInvitationCode?: GraphCacheUpdateResolver<
+      { playerByTeamIdAndInvitationCode: Maybe<WithTypename<Player>> },
+      QueryPlayerByTeamIdAndInvitationCodeArgs
+    >
+    playerNameById?: GraphCacheUpdateResolver<
+      { playerNameById: Maybe<Scalars['String']> },
+      QueryPlayerNameByIdArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      { query: WithTypename<Query> },
+      Record<string, never>
+    >
+    team?: GraphCacheUpdateResolver<
+      { team: Maybe<WithTypename<Team>> },
+      QueryTeamArgs
+    >
+    teamById?: GraphCacheUpdateResolver<
+      { teamById: Maybe<WithTypename<Team>> },
+      QueryTeamByIdArgs
+    >
+    teamLeader?: GraphCacheUpdateResolver<
+      { teamLeader: Maybe<WithTypename<TeamLeader>> },
+      QueryTeamLeaderArgs
+    >
+    teamLeaderById?: GraphCacheUpdateResolver<
+      { teamLeaderById: Maybe<WithTypename<TeamLeader>> },
+      QueryTeamLeaderByIdArgs
+    >
+    teamPlayerCount?: GraphCacheUpdateResolver<
+      { teamPlayerCount: Maybe<WithTypename<TeamPlayerCountConnection>> },
+      QueryTeamPlayerCountArgs
+    >
+  }
   Mutation?: {
     createCharityOrganization?: GraphCacheUpdateResolver<
       {
@@ -6088,13 +6286,1383 @@ export type GraphCacheUpdaters = {
     >
   }
   Subscription?: {}
+  CharityOrganization?: {
+    department?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      Record<string, never>
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      Record<string, never>
+    >
+    name?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      Record<string, never>
+    >
+    teamsByCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      CharityOrganizationTeamsByCharityOrganizationIdArgs
+    >
+    url?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganization>>,
+      Record<string, never>
+    >
+  }
+  CharityOrganizationsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Record<string, never>
+    >
+  }
+  CharityOrganizationsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CharityOrganizationsEdge>>,
+      Record<string, never>
+    >
+  }
+  CreateCharityOrganizationPayload?: {
+    charityOrganization?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    charityOrganizationEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateCharityOrganizationPayload>>,
+      CreateCharityOrganizationPayloadCharityOrganizationEdgeArgs
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+  }
+  CreateEventPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateEventPayload>>,
+      Record<string, never>
+    >
+    event?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateEventPayload>>,
+      Record<string, never>
+    >
+    eventEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateEventPayload>>,
+      CreateEventPayloadEventEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateEventPayload>>,
+      Record<string, never>
+    >
+  }
+  CreateGamePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGamePayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGamePayload>>,
+      Record<string, never>
+    >
+    game?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGamePayload>>,
+      Record<string, never>
+    >
+    gameEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGamePayload>>,
+      CreateGamePayloadGameEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGamePayload>>,
+      Record<string, never>
+    >
+  }
+  CreateGameRandomFactsRoundPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRound?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
+      CreateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+  }
+  CreateGameRandomFactsVotePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVote?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVoteEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      CreateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+  }
+  CreateGameTeamScorePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScore?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScoreEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      CreateGameTeamScorePayloadGameTeamScoreEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+  }
+  CreateKvPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateKvPayload>>,
+      Record<string, never>
+    >
+    kv?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateKvPayload>>,
+      Record<string, never>
+    >
+    kvEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateKvPayload>>,
+      CreateKvPayloadKvEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateKvPayload>>,
+      Record<string, never>
+    >
+  }
+  CreatePlayerPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreatePlayerPayload>>,
+      Record<string, never>
+    >
+    player?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreatePlayerPayload>>,
+      Record<string, never>
+    >
+    playerEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreatePlayerPayload>>,
+      CreatePlayerPayloadPlayerEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreatePlayerPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreatePlayerPayload>>,
+      Record<string, never>
+    >
+  }
+  CreateTeamLeaderPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeader?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeaderEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamLeaderPayload>>,
+      CreateTeamLeaderPayloadTeamLeaderEdgeArgs
+    >
+  }
+  CreateTeamPayload?: {
+    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      Record<string, never>
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      Record<string, never>
+    >
+    team?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      Record<string, never>
+    >
+    teamEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<CreateTeamPayload>>,
+      CreateTeamPayloadTeamEdgeArgs
+    >
+  }
+  DeleteCharityOrganizationPayload?: {
+    charityOrganization?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    charityOrganizationEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteCharityOrganizationPayload>>,
+      DeleteCharityOrganizationPayloadCharityOrganizationEdgeArgs
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    deletedCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteEventPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteEventPayload>>,
+      Record<string, never>
+    >
+    deletedEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteEventPayload>>,
+      Record<string, never>
+    >
+    event?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteEventPayload>>,
+      Record<string, never>
+    >
+    eventEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteEventPayload>>,
+      DeleteEventPayloadEventEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteEventPayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteGamePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      Record<string, never>
+    >
+    deletedGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      Record<string, never>
+    >
+    game?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      Record<string, never>
+    >
+    gameEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      DeleteGamePayloadGameEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGamePayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteGameRandomFactsRoundPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    deletedGameRandomFactsRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRound?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      DeleteGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteGameRandomFactsVotePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    deletedGameRandomFactsVoteId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVote?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVoteEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      DeleteGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteGameTeamScorePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    deletedGameTeamScoreId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScore?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScoreEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      DeleteGameTeamScorePayloadGameTeamScoreEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteKvPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteKvPayload>>,
+      Record<string, never>
+    >
+    deletedKvId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteKvPayload>>,
+      Record<string, never>
+    >
+    kv?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteKvPayload>>,
+      Record<string, never>
+    >
+    kvEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteKvPayload>>,
+      DeleteKvPayloadKvEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteKvPayload>>,
+      Record<string, never>
+    >
+  }
+  DeletePlayerPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      Record<string, never>
+    >
+    deletedPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      Record<string, never>
+    >
+    player?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      Record<string, never>
+    >
+    playerEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      DeletePlayerPayloadPlayerEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeletePlayerPayload>>,
+      Record<string, never>
+    >
+  }
+  DeleteTeamLeaderPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    deletedTeamLeaderId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeader?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeaderEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
+      DeleteTeamLeaderPayloadTeamLeaderEdgeArgs
+    >
+  }
+  DeleteTeamPayload?: {
+    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    deletedTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    team?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      Record<string, never>
+    >
+    teamEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<DeleteTeamPayload>>,
+      DeleteTeamPayloadTeamEdgeArgs
+    >
+  }
+  Event?: {
+    commonDonationAmount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    commonDonationIsLive?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    commonDonationUrl?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    discordInviteCode?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    end?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    gamesByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      EventGamesByEventIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    name?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    start?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    streamUrl?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      Record<string, never>
+    >
+    teamsByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Event>>,
+      EventTeamsByEventIdArgs
+    >
+  }
+  EventsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsConnection>>,
+      Record<string, never>
+    >
+  }
+  EventsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<EventsEdge>>,
+      Record<string, never>
+    >
+  }
+  Game?: {
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    eventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundsByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      GameGameRandomFactsRoundsByGameIdArgs
+    >
+    gameTeamScoresByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      GameGameTeamScoresByGameIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    isActive?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    name?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+    type?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsRound?: {
+    answerCorrect?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+    gameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+    gameRandomFactsVotesByRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+    questionerName?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsRoundsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsRoundsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRoundsEdge>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsVote?: {
+    answer?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    playerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+    roundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsVotesConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Record<string, never>
+    >
+  }
+  GameRandomFactsVotesEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVotesEdge>>,
+      Record<string, never>
+    >
+  }
+  GameTeamScore?: {
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    gameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    score?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+    teamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScore>>,
+      Record<string, never>
+    >
+  }
+  GameTeamScoresConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Record<string, never>
+    >
+  }
+  GameTeamScoresEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameTeamScoresEdge>>,
+      Record<string, never>
+    >
+  }
+  GamesConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesConnection>>,
+      Record<string, never>
+    >
+  }
+  GamesEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GamesEdge>>,
+      Record<string, never>
+    >
+  }
+  Kv?: {
+    key?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Kv>>,
+      Record<string, never>
+    >
+    value?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Kv>>,
+      Record<string, never>
+    >
+  }
+  KvsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsConnection>>,
+      Record<string, never>
+    >
+  }
+  KvsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<KvsEdge>>,
+      Record<string, never>
+    >
+  }
+  PageInfo?: {
+    endCursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PageInfo>>,
+      Record<string, never>
+    >
+    hasNextPage?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PageInfo>>,
+      Record<string, never>
+    >
+    hasPreviousPage?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PageInfo>>,
+      Record<string, never>
+    >
+    startCursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PageInfo>>,
+      Record<string, never>
+    >
+  }
+  Player?: {
+    gameRandomFactsVotesByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      PlayerGameRandomFactsVotesByPlayerIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    invitationCode?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    name?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    teamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      Record<string, never>
+    >
+    teamLeadersByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Player>>,
+      PlayerTeamLeadersByPlayerIdArgs
+    >
+  }
+  PlayersConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersConnection>>,
+      Record<string, never>
+    >
+  }
+  PlayersEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<PlayersEdge>>,
+      Record<string, never>
+    >
+  }
+  Team?: {
+    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    charityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    donationAmount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    donationUrl?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    emoji?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    eventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    gameTeamScoresByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      TeamGameTeamScoresByTeamIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    name?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      Record<string, never>
+    >
+    playersByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      TeamPlayersByTeamIdArgs
+    >
+    teamLeadersByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<Team>>,
+      TeamTeamLeadersByTeamIdArgs
+    >
+  }
+  TeamLeader?: {
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    nodeId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    playerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    teamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+  }
+  TeamLeadersConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersConnection>>,
+      Record<string, never>
+    >
+  }
+  TeamLeadersEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeadersEdge>>,
+      Record<string, never>
+    >
+  }
+  TeamPlayerCountConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountConnection>>,
+      Record<string, never>
+    >
+  }
+  TeamPlayerCountEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountEdge>>,
+      Record<string, never>
+    >
+  }
+  TeamPlayerCountRecord?: {
+    id?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountRecord>>,
+      Record<string, never>
+    >
+    playerCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountRecord>>,
+      Record<string, never>
+    >
+  }
+  TeamsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsConnection>>,
+      Record<string, never>
+    >
+  }
+  TeamsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamsEdge>>,
+      Record<string, never>
+    >
+  }
+  UpdateCharityOrganizationPayload?: {
+    charityOrganization?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    charityOrganizationEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateCharityOrganizationPayload>>,
+      UpdateCharityOrganizationPayloadCharityOrganizationEdgeArgs
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateCharityOrganizationPayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateEventPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateEventPayload>>,
+      Record<string, never>
+    >
+    event?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateEventPayload>>,
+      Record<string, never>
+    >
+    eventEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateEventPayload>>,
+      UpdateEventPayloadEventEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateEventPayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateGamePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGamePayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGamePayload>>,
+      Record<string, never>
+    >
+    game?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGamePayload>>,
+      Record<string, never>
+    >
+    gameEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGamePayload>>,
+      UpdateGamePayloadGameEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGamePayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateGameRandomFactsRoundPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRound?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
+      UpdateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateGameRandomFactsVotePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVote?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    gameRandomFactsVoteEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      UpdateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateGameTeamScorePayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameByGameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScore?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    gameTeamScoreEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      UpdateGameTeamScorePayloadGameTeamScoreEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateKvPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateKvPayload>>,
+      Record<string, never>
+    >
+    kv?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateKvPayload>>,
+      Record<string, never>
+    >
+    kvEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateKvPayload>>,
+      UpdateKvPayloadKvEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateKvPayload>>,
+      Record<string, never>
+    >
+  }
+  UpdatePlayerPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdatePlayerPayload>>,
+      Record<string, never>
+    >
+    player?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdatePlayerPayload>>,
+      Record<string, never>
+    >
+    playerEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdatePlayerPayload>>,
+      UpdatePlayerPayloadPlayerEdgeArgs
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdatePlayerPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdatePlayerPayload>>,
+      Record<string, never>
+    >
+  }
+  UpdateTeamLeaderPayload?: {
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    playerByPlayerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamByTeamId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeader?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      Record<string, never>
+    >
+    teamLeaderEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
+      UpdateTeamLeaderPayloadTeamLeaderEdgeArgs
+    >
+  }
+  UpdateTeamPayload?: {
+    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      Record<string, never>
+    >
+    clientMutationId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      Record<string, never>
+    >
+    eventByEventId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      Record<string, never>
+    >
+    query?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      Record<string, never>
+    >
+    team?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      Record<string, never>
+    >
+    teamEdge?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<UpdateTeamPayload>>,
+      UpdateTeamPayloadTeamEdgeArgs
+    >
+  }
 }
 
-export type GraphCacheConfig = {
-  schema?: CacheExchangeOpts['schema']
+export type GraphCacheConfig = Parameters<typeof offlineExchange>[0] & {
   updates?: GraphCacheUpdaters
   keys?: GraphCacheKeysConfig
   optimistic?: GraphCacheOptimisticUpdaters
   resolvers?: GraphCacheResolvers
-  storage?: GraphCacheStorageAdapter
 }

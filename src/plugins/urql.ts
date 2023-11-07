@@ -9,14 +9,13 @@ import {
 } from '@urql/core'
 import { devtoolsExchange } from '@urql/devtools'
 // import type { Data } from '@urql/exchange-graphcache'
-import { cacheExchange } from '@urql/exchange-graphcache'
+import { offlineExchange } from '@urql/exchange-graphcache'
 // import { relayPagination } from '@urql/exchange-graphcache/extras'
 import { provideClient } from '@urql/vue'
 import { consola } from 'consola'
 import { ref } from 'vue'
 
 import schema from '~/gql/generated/introspection'
-import type { GraphCacheConfig } from '~/gql/generated/graphcache'
 
 // import { useAuthStore } from '~/store'
 
@@ -63,9 +62,10 @@ const ssrKey = '__URQL_DATA__'
 //   return Array.isArray(value) && value.every((item) => typeof item === 'string')
 // }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const runtimeConfig = useRuntimeConfig()
-  const host = useHost()
+  const getServiceHref = useGetServiceHref()
+
   const ssr = ssrExchange({
     isClient: process.client,
   })
@@ -82,38 +82,48 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  const cacheConfig: GraphCacheConfig = {
-    schema,
-    resolvers: {
-      Query: {
-        // allContacts: relayPagination(),
-        // allEvents: relayPagination(),
-        // allInvitations: relayPagination(),
-        // allUploads: relayPagination(),
-      },
-    },
-    updates: {
-      Mutation: {
-        // // create
-        // createContact: (_parent, _args, cache, _info) =>
-        //   invalidateCache(cache, 'allContacts'),
-        // createInvitation: (_parent, _args, cache, _info) =>
-        //   invalidateCache(cache, 'allInvitations'),
-        // // TODO: create manual updates that do not require invalidation (https://github.com/maevsi/maevsi/issues/720)
-        // // listPush(cache, 'allInvitations', parent.createInvitation),
-        // // update
-        // profilePictureSet: (_parent, _args, cache, _info) =>
-        //   invalidateCache(cache, 'profilePictureByUsername'),
-        // // delete
-        // deleteContactById: (_parent, args, cache, _info) =>
-        //   invalidateCache(cache, 'Contact', args),
-        // deleteInvitationById: (_parent, args, cache, _info) =>
-        //   invalidateCache(cache, 'Invitation', args),
-      },
-    },
-  }
+  // const cacheConfig: GraphCacheConfig = {
+  //   schema,
+  //   resolvers: {
+  //     Query: {
+  //       // allContacts: relayPagination(),
+  //       // allEvents: relayPagination(),
+  //       // allInvitations: relayPagination(),
+  //       // allUploads: relayPagination(),
+  //     },
+  //   },
+  //   storage: makeDefaultStorage(),
+  //   updates: {
+  //     Mutation: {
+  //       // // create
+  //       // createContact: (_parent, _args, cache, _info) =>
+  //       //   invalidateCache(cache, 'allContacts'),
+  //       // createInvitation: (_parent, _args, cache, _info) =>
+  //       //   invalidateCache(cache, 'allInvitations'),
+  //       // // TODO: create manual updates that do not require invalidation (https://github.com/maevsi/maevsi/issues/720)
+  //       // // listPush(cache, 'allInvitations', parent.createInvitation),
+  //       // // update
+  //       // profilePictureSet: (_parent, _args, cache, _info) =>
+  //       //   invalidateCache(cache, 'profilePictureByUsername'),
+  //       // // delete
+  //       // deleteContactById: (_parent, args, cache, _info) =>
+  //       //   invalidateCache(cache, 'Contact', args),
+  //       // deleteInvitationById: (_parent, args, cache, _info) =>
+  //       //   invalidateCache(cache, 'Invitation', args),
+  //     },
+  //   },
+  // }
 
-  const cache = cacheExchange(cacheConfig)
+  // const cache = offlineExchange(cacheConfig)
+
+  const cache = process.client
+    ? offlineExchange({
+        schema,
+        storage: (
+          await import('@urql/exchange-graphcache/default-storage')
+        ).makeDefaultStorage(),
+      })
+    : undefined
 
   const options: ClientOptions = {
     requestPolicy: 'cache-and-network',
@@ -132,14 +142,12 @@ export default defineNuxtPlugin((nuxtApp) => {
         return {}
       }
     },
-    url: runtimeConfig.public.vio.stagingHost
-      ? `https://trapparty-postgraphile.${runtimeConfig.public.vio.stagingHost}/graphql`
-      : process.server
-      ? 'http://trapparty_postgraphile:5000/graphql'
-      : 'https://trapparty-postgraphile.' + getDomainTldPort(host) + '/graphql',
+    url:
+      getServiceHref({ name: 'trapparty-postgraphile', port: 5000 }) +
+      '/graphql',
     exchanges: [
       ...(runtimeConfig.public.vio.isInProduction ? [] : [devtoolsExchange]),
-      cache,
+      ...(cache ? [cache] : []),
       ssr, // `ssr` must be before `fetchExchange`
       fetchExchange,
     ],
