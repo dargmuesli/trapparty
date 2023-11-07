@@ -1,3 +1,10 @@
+## [3.14.1](https://github.com/dargmuesli/trapparty/compare/3.14.0...3.14.1) (2023-11-07)
+
+
+### Performance Improvements
+
+* **ci:** speed up dockerfile ([aadfd33](https://github.com/dargmuesli/trapparty/commit/aadfd33871699e2bf0b21c3173906cc2b0f64d19))
+
 ## [3.14.0](https://github.com/dargmuesli/trapparty/compare/3.13.7...3.14.0) (2023-11-07)
 
 
