@@ -1,3 +1,10 @@
+## [3.14.0](https://github.com/dargmuesli/trapparty/compare/3.13.7...3.14.0) (2023-11-07)
+
+
+### Features
+
+* **urql:** use offline exchange ([684e926](https://github.com/dargmuesli/trapparty/commit/684e926d562f45cfdb16a74ae22bd9179fe7fa80))
+
 ## [3.13.7](https://github.com/dargmuesli/trapparty/compare/3.13.6...3.13.7) (2023-10-30)
 
 
