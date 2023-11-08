@@ -1,29 +1,37 @@
 import { useVioAuthStore } from '@dargmuesli/nuxt-vio/store/auth'
-import type { Pinia } from '@pinia/nuxt/dist/runtime/composables'
 import {
   createClient,
-  ssrExchange,
+  ssrExchange as getSsrExchange,
   fetchExchange,
   type ClientOptions,
   type SSRData,
 } from '@urql/core'
-import { devtoolsExchange } from '@urql/devtools'
 // import type { Data } from '@urql/exchange-graphcache'
-import { offlineExchange } from '@urql/exchange-graphcache'
+import {
+  /* Cache, */ offlineExchange as getOfflineExchange,
+} from '@urql/exchange-graphcache'
+// import { makeDefaultStorage } from '@urql/exchange-graphcache/default-storage'
 // import { relayPagination } from '@urql/exchange-graphcache/extras'
+import { devtoolsExchange } from '@urql/devtools'
 import { provideClient } from '@urql/vue'
 import { consola } from 'consola'
 import { ref } from 'vue'
 
 import schema from '~/gql/generated/introspection'
+// import type { GraphCacheConfig } from '~/gql/generated/graphcache'
+// import { cacheExchange } from '@urql/exchange-graphcache'
 
-// import { useAuthStore } from '~/store'
+// import {
+//   authenticationAnonymous,
+//   getJwtFromCookie,
+//   jwtRefresh,
+// } from '~/utils/auth'
 
-const ssrKey = '__URQL_DATA__'
+const SSR_KEY = '__URQL_DATA__'
 // const invalidateCache = (
 //   cache: Cache,
 //   name: string,
-//   args?: { input: { id: any } },
+//   args?: { input: { id: any } }
 // ) =>
 //   args
 //     ? cache.invalidate({ __typename: name, id: args.input.id })
@@ -66,58 +74,58 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   const runtimeConfig = useRuntimeConfig()
   const getServiceHref = useGetServiceHref()
 
-  const ssr = ssrExchange({
+  const ssrExchange = getSsrExchange({
     isClient: process.client,
   })
 
   if (process.client) {
     nuxtApp.hook('app:created', () => {
-      ssr.restoreData(nuxtApp.payload[ssrKey] as SSRData)
+      ssrExchange.restoreData(nuxtApp.payload[SSR_KEY] as SSRData)
     })
   }
 
   if (process.server) {
     nuxtApp.hook('app:rendered', () => {
-      nuxtApp.payload[ssrKey] = ssr.extractData()
+      nuxtApp.payload[SSR_KEY] = ssrExchange.extractData()
     })
   }
 
   // const cacheConfig: GraphCacheConfig = {
   //   schema,
-  //   resolvers: {
-  //     Query: {
-  //       // allContacts: relayPagination(),
-  //       // allEvents: relayPagination(),
-  //       // allInvitations: relayPagination(),
-  //       // allUploads: relayPagination(),
-  //     },
-  //   },
+  //   // resolvers: {
+  //   //   Query: {
+  //   //     allContacts: relayPagination(),
+  //   //     allEvents: relayPagination(),
+  //   //     allInvitations: relayPagination(),
+  //   //     allUploads: relayPagination(),
+  //   //   },
+  //   // },
   //   storage: makeDefaultStorage(),
-  //   updates: {
-  //     Mutation: {
-  //       // // create
-  //       // createContact: (_parent, _args, cache, _info) =>
-  //       //   invalidateCache(cache, 'allContacts'),
-  //       // createInvitation: (_parent, _args, cache, _info) =>
-  //       //   invalidateCache(cache, 'allInvitations'),
-  //       // // TODO: create manual updates that do not require invalidation (https://github.com/maevsi/maevsi/issues/720)
-  //       // // listPush(cache, 'allInvitations', parent.createInvitation),
-  //       // // update
-  //       // profilePictureSet: (_parent, _args, cache, _info) =>
-  //       //   invalidateCache(cache, 'profilePictureByUsername'),
-  //       // // delete
-  //       // deleteContactById: (_parent, args, cache, _info) =>
-  //       //   invalidateCache(cache, 'Contact', args),
-  //       // deleteInvitationById: (_parent, args, cache, _info) =>
-  //       //   invalidateCache(cache, 'Invitation', args),
-  //     },
-  //   },
+  //   // updates: {
+  //   //   Mutation: {
+  //   //     // create
+  //   //     createContact: (_parent, _args, cache, _info) =>
+  //   //       invalidateCache(cache, 'allContacts'),
+  //   //     createInvitation: (_parent, _args, cache, _info) =>
+  //   //       invalidateCache(cache, 'allInvitations'),
+  //   //     // TODO: create manual updates that do not require invalidation (https://github.com/maevsi/maevsi/issues/720)
+  //   //     // listPush(cache, 'allInvitations', parent.createInvitation),
+
+  //   //     // update
+  //   //     profilePictureSet: (_parent, _args, cache, _info) =>
+  //   //       invalidateCache(cache, 'profilePictureByUsername'),
+
+  //   //     // delete
+  //   //     deleteContactById: (_parent, args, cache, _info) =>
+  //   //       invalidateCache(cache, 'Contact', args),
+  //   //     deleteInvitationById: (_parent, args, cache, _info) =>
+  //   //       invalidateCache(cache, 'Invitation', args),
+  //   //   },
+  //   // },
   // }
 
-  // const cache = offlineExchange(cacheConfig)
-
-  const cache = process.client
-    ? offlineExchange({
+  const cacheExchange = process.client
+    ? getOfflineExchange({
         schema,
         storage: (
           await import('@urql/exchange-graphcache/default-storage')
@@ -125,36 +133,36 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       })
     : undefined
 
-  const options: ClientOptions = {
+  const clientOptions: ClientOptions = {
     requestPolicy: 'cache-and-network',
     fetchOptions: () => {
       const { $pinia } = useNuxtApp()
-      const store = useVioAuthStore($pinia as Pinia) // TODO: remove `as` (https://github.com/vuejs/pinia/issues/2071)
+      const store = useVioAuthStore($pinia)
+      const headers = {} as Record<string, any>
       const jwt = store.jwt
 
       if (jwt) {
         consola.trace('GraphQL request authenticated with: ' + jwt)
-        return {
-          headers: { authorization: `Bearer ${jwt}` },
-        }
+        headers.authorization = `Bearer ${jwt}`
       } else {
         consola.trace('GraphQL request without authentication.')
-        return {}
       }
+
+      return { headers }
     },
     url:
       getServiceHref({ name: 'trapparty-postgraphile', port: 5000 }) +
       '/graphql',
     exchanges: [
       ...(runtimeConfig.public.vio.isInProduction ? [] : [devtoolsExchange]),
-      ...(cache ? [cache] : []),
-      ssr, // `ssr` must be before `fetchExchange`
+      ...(cacheExchange ? [cacheExchange] : []),
+      ssrExchange, // `ssr` must be before `fetchExchange`
       fetchExchange,
     ],
   }
-  const client = ref(createClient(options))
+  const client = ref(createClient(clientOptions))
 
-  const urqlReset = () => (client.value = createClient(options))
+  const urqlReset = () => (client.value = createClient(clientOptions))
 
   nuxtApp.hook('vue:setup', () => {
     const { $urql } = useNuxtApp()
@@ -163,23 +171,25 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
   // // Either authenticate anonymously or refresh token on page load.
   // if (nuxtApp.ssrContext?.event) {
-  //   const store = useAuthStore(nuxtApp.ssrContext.$pinia)
-  //   const jwtFromCookie = getJwtFromCookie()
+  //   const store = useStore(nuxtApp.ssrContext.$pinia)
+  //   const jwtFromCookie = getJwtFromCookie({
+  //     req: nuxtApp.ssrContext.event.node.req,
+  //   })
 
-  //   if (jwtFromCookie?.jwtDecoded?.id) {
+  //   if (jwtFromCookie?.jwtDecoded.id) {
   //     await jwtRefresh({
-  //       $urqlReset: urqlReset,
   //       client: client.value,
-  //       event: nuxtApp.ssrContext.event,
-  //       id: jwtFromCookie.jwtDecoded.id as string,
+  //       $urqlReset: urqlReset,
   //       store,
+  //       res: nuxtApp.ssrContext.event.node.res,
+  //       id: jwtFromCookie.jwtDecoded.id as string,
   //     })
   //   } else {
   //     await authenticationAnonymous({
-  //       $urqlReset: urqlReset,
   //       client: client.value,
-  //       event: nuxtApp.ssrContext.event,
+  //       $urqlReset: urqlReset,
   //       store,
+  //       res: nuxtApp.ssrContext.event.node.res,
   //     })
   //   }
   // }
