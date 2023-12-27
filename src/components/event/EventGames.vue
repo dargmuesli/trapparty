@@ -12,7 +12,7 @@
           <li
             v-for="game in games"
             :key="game.id"
-            class="rounded border border-gray-900 px-8 py-4 dark:border-white md:px-16 md:py-8"
+            class="rounded border border-gray-900 px-8 py-4 md:px-16 md:py-8 dark:border-white"
           >
             <GameTitle :game="game" />
             <div class="flex gap-4">
