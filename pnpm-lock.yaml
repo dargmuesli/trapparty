@@ -24,8 +24,8 @@ importers:
         specifier: 4.8.3
         version: 4.8.3(playwright-core@1.41.0)
       '@dargmuesli/nuxt-cookie-control':
-        specifier: 7.2.3
-        version: 7.2.3(rollup@4.9.5)(webpack@5.89.0)
+        specifier: 7.2.4
+        version: 7.2.4(rollup@4.9.5)(webpack@5.89.0)
       '@dargmuesli/nuxt-vio':
         specifier: 10.2.1
         version: 10.2.1(@unhead/shared@1.8.9)(@vue/compiler-core@3.4.14)(graphql@16.8.1)(h3@1.10.0)(nuxt@3.9.1)(playwright-core@1.41.0)(postcss@8.4.33)(rollup@4.9.5)(tailwindcss@3.4.1)(typescript@5.3.3)(unhead@1.8.10)(vite@5.0.11)(vue-router@4.2.5)(vue@3.4.14)(webpack@5.89.0)
@@ -1211,8 +1211,8 @@ packages:
       postcss-selector-parser: 6.0.15
     dev: true
 
-  /@dargmuesli/nuxt-cookie-control@7.2.3(rollup@4.9.5)(webpack@5.89.0):
-    resolution: {integrity: sha512-GfdZ4KFbZFfM+celBTmuFx9aJUMhqW5GugzFhS8QQbdeM7ZHXeqoroKy5FqQ6fnGBKkxhZyvFiwDDskwISCTEg==}
+  /@dargmuesli/nuxt-cookie-control@7.2.4(rollup@4.9.5)(webpack@5.89.0):
+    resolution: {integrity: sha512-exXTFzsPtYCWwYDacXtZVQNh35PPE7UKpXsVILGrfci0XEmfcRX56noxhZb5zVjrgSWWZSkrC9ErG3NNzutwTw==}
     engines: {node: '>=16'}
     dependencies:
       '@nuxt/kit': 3.9.1(rollup@4.9.5)
