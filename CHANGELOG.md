@@ -1,3 +1,10 @@
+## [3.14.7](https://github.com/dargmuesli/trapparty/compare/3.14.6...3.14.7) (2024-01-25)
+
+
+### Performance Improvements
+
+* **urql:** remove inline import ([1463bd8](https://github.com/dargmuesli/trapparty/commit/1463bd83d72c87b0d3c904398a6e7c1105704570))
+
 ## [3.14.6](https://github.com/dargmuesli/trapparty/compare/3.14.5...3.14.6) (2024-01-15)
 
 
