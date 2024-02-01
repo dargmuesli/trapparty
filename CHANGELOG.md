@@ -1,3 +1,10 @@
+## [3.14.8](https://github.com/dargmuesli/trapparty/compare/3.14.7...3.14.8) (2024-02-01)
+
+
+### Bug Fixes
+
+* **og-image:** correct locales ([0f8531c](https://github.com/dargmuesli/trapparty/commit/0f8531c04bfb3023c75ca7f5b3f4e11d3d50ae68))
+
 ## [3.14.7](https://github.com/dargmuesli/trapparty/compare/3.14.6...3.14.7) (2024-01-25)
 
 
