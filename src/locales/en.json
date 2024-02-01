@@ -1,4 +1,6 @@
 {
   "globalSeoOgImageAlt": "TrapParty's logo.",
-  "globalSeoSiteDescription": "TrapParty's online version."
+  "nuxtSiteConfig": {
+    "description": "TrapParty's online version."
+  }
 }
