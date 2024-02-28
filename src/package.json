@@ -63,7 +63,7 @@
     "@urql/vue": "1.1.2",
     "@vuelidate/core": "2.0.3",
     "@vuelidate/validators": "2.0.4",
-    "chart.js": "4.4.1",
+    "chart.js": "4.4.2",
     "color": "4.2.3",
     "consola": "3.2.3",
     "cross-env": "7.0.3",
