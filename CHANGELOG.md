@@ -1,3 +1,10 @@
+## [3.14.14](https://github.com/dargmuesli/trapparty/compare/3.14.13...3.14.14) (2024-04-08)
+
+
+### Bug Fixes
+
+* schedule release ([3c9e1f1](https://github.com/dargmuesli/trapparty/commit/3c9e1f1074c2c972390acba3f6d78137926149df))
+
 ## [3.14.13](https://github.com/dargmuesli/trapparty/compare/3.14.12...3.14.13) (2024-03-25)
 
 
