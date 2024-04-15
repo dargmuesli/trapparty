@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { consola } from 'consola'
 
-import { GameType } from '~/gql/generated/graphql'
+import { GameType, type GameItemFragment } from '~/gql/generated/graphql'
 import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
 import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
@@ -46,7 +46,7 @@ const api = computed(() =>
 const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
 
 // data
-const games = ref<Array<any>>()
+const games = ref<Array<GameItemFragment>>()
 const isLoaded = ref(false)
 const title = t('title')
 
@@ -69,7 +69,10 @@ const init = async () => {
 
   if (!gamesResult) return loadingStop()
 
-  games.value = gamesResult.data?.allGames?.nodes
+  games.value =
+    gamesResult.data?.allGames?.nodes
+      .map((x) => getGameItem(x))
+      .filter(isNeitherNullNorUndefined) || []
 
   loadingStop()
 }

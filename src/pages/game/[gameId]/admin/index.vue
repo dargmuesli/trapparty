@@ -60,18 +60,22 @@ const getPlayerByInvitationCode = async (invitationCode: string) => {
 
   return result.data?.playerByInvitationCodeFn?.nodes[0]
 }
-const gameRandomFactsRoundCreate = async (gameRandomFactsRoundInput: any) => {
-  const player = await getPlayerByInvitationCode(
-    gameRandomFactsRoundInput.invitationCode,
-  )
+const gameRandomFactsRoundCreate = async ({
+  gameId,
+  invitationCode,
+}: {
+  gameId: number
+  invitationCode: string
+}) => {
+  const player = await getPlayerByInvitationCode(invitationCode)
 
   if (!player) return
 
-  delete gameRandomFactsRoundInput.invitationCode
-  gameRandomFactsRoundInput.questionerName = player.name
-
   const result = await createGameRandomFactsRoundMutation.executeMutation({
-    gameRandomFactsRoundInput,
+    gameRandomFactsRoundInput: {
+      gameId: gameId,
+      questionerName: player.name,
+    },
   })
 
   if (result.error) fireError({ error: result.error }, api)
@@ -86,7 +90,7 @@ const nfcScan = async () => {
       const ndefReader = new NDEFReader()
       await ndefReader.scan()
 
-      ndefReader.onreading = async (event: any) => {
+      ndefReader.onreading = async (event) => {
         const decoder = new TextDecoder()
 
         for (const record of event.message.records) {
@@ -102,7 +106,7 @@ const nfcScan = async () => {
         invitationCode: 'f10ea826-3c0d-11eb-805b-af16ca5c3a48',
       })
     }
-  } catch (error: any) {
+  } catch (error) {
     if (error instanceof Error) {
       fireError({ error })
     } else {
