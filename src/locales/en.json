@@ -1,5 +1,6 @@
 {
   "globalSeoOgImageAlt": "TrapParty's logo.",
+  "globalValidationFormatIncorrect": "Incorrect format",
   "nuxtSiteConfig": {
     "description": "TrapParty's online version."
   }
