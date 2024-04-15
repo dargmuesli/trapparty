@@ -151,7 +151,7 @@ const DONATION_DISTRIBUTION_PERCENTAGE = 0.5
 // data
 const charityOrganizations = ref<CharityOrganizationItemFragment[]>([])
 const charityOrganizationWeigths = ref<number[]>([])
-const distributionMatrix = ref<Array<Array<any>>>([])
+const distributionMatrix = ref<Array<Array<number>>>([])
 const distributionMatrixTotalsVertical = ref<number[]>([])
 const loading = ref(true)
 const teams = ref<TeamItemFragment[]>([])
