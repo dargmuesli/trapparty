@@ -1,3 +1,10 @@
+## [3.14.16](https://github.com/dargmuesli/trapparty/compare/3.14.15...3.14.16) (2024-04-17)
+
+
+### Bug Fixes
+
+* **gtag:** add id ([165162e](https://github.com/dargmuesli/trapparty/commit/165162ee47786030849cf495bbca21a5a4d45861))
+
 ## [3.14.15](https://github.com/dargmuesli/trapparty/compare/3.14.14...3.14.15) (2024-04-15)
 
 
