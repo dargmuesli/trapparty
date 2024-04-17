@@ -4,7 +4,7 @@ import {
 } from '@dargmuesli/nuxt-vio/utils/constants'
 import { defu } from 'defu'
 
-import { SITE_NAME } from './utils/constants'
+import { SITE_NAME } from '../utils/constants'
 
 export default defineNuxtConfig(
   defu(
@@ -31,6 +31,9 @@ export default defineNuxtConfig(
           ],
           optional: [],
         },
+      },
+      gtag: {
+        id: 'G-K4R41W62BR',
       },
       security: {
         headers: {
