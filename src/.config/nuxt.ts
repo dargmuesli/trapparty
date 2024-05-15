@@ -11,6 +11,11 @@ export default defineNuxtConfig(
     {
       extends: ['@dargmuesli/nuxt-vio'],
       modules: ['@pinia-plugin-persistedstate/nuxt'],
+      vite: {
+        optimizeDeps: {
+          include: ['@dargmuesli/nuxt-vio/utils/constants', '@vuelidate/core'],
+        },
+      },
 
       // modules
       cookieControl: {
