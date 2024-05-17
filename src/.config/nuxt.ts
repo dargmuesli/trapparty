@@ -13,7 +13,7 @@ export default defineNuxtConfig(
       modules: ['@pinia-plugin-persistedstate/nuxt'],
       vite: {
         optimizeDeps: {
-          include: ['@dargmuesli/nuxt-vio/utils/constants'],
+          include: ['@dargmuesli/nuxt-vio/utils/constants', '@vuelidate/core'],
         },
       },
 
