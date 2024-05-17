@@ -1,3 +1,10 @@
+## [3.15.0](https://github.com/dargmuesli/trapparty/compare/3.14.18...3.15.0) (2024-05-17)
+
+
+### Features
+
+* **csp:** report to sentry ([3c4a4bc](https://github.com/dargmuesli/trapparty/commit/3c4a4bcfab8c45fe3b7cf9b98eecbecb7c0b1a79))
+
 ## [3.14.18](https://github.com/dargmuesli/trapparty/compare/3.14.17...3.14.18) (2024-05-13)
 
 
