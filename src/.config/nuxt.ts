@@ -11,6 +11,11 @@ export default defineNuxtConfig(
     {
       extends: ['@dargmuesli/nuxt-vio'],
       modules: ['@pinia-plugin-persistedstate/nuxt'],
+      vite: {
+        optimizeDeps: {
+          include: ['@dargmuesli/nuxt-vio/utils/constants'],
+        },
+      },
 
       // modules
       cookieControl: {
@@ -41,7 +46,9 @@ export default defineNuxtConfig(
             'connect-src': [
               'https://trapparty-postgraphile.jonas-thelemann.de', // TODO: use `getDomainTldPort(stagingHostOrHost)` (https://github.com/Baroshem/nuxt-security/pull/233)
             ],
-            'report-uri': ['https://dargmuesli.report-uri.com/r/d/csp/enforce'],
+            'report-to': 'csp-endpoint',
+            'report-uri':
+              'https://o4507259039973376.ingest.sentry.io/api/4507260561653840/security/?sentry_key=1e53178c1dba9b39147de4a21853a3e3',
           },
         },
       },
