@@ -3,18 +3,28 @@ import {
   VIO_NUXT_BASE_CONFIG,
   SITE_URL,
 } from '@dargmuesli/nuxt-vio/utils/constants'
-import { getDomainTldPort } from '@dargmuesli/nuxt-vio/utils/networking'
 import { defu } from 'defu'
 
-import { SITE_NAME } from '../utils/constants'
-
-const siteUrl = new URL(SITE_URL)
+import { SITE_NAME, GET_CSP } from '../utils/constants'
 
 export default defineNuxtConfig(
   defu(
     {
       extends: ['@dargmuesli/nuxt-vio'],
-      modules: ['@pinia-plugin-persistedstate/nuxt'],
+      modules: [
+        '@pinia-plugin-persistedstate/nuxt',
+        // nuxt-security: apply content security policy at build time
+        (_options, nuxt) => {
+          if (nuxt.options._generate) {
+            if (nuxt.options.security.headers) {
+              nuxt.options.security.headers.contentSecurityPolicy = defu(
+                GET_CSP(SITE_URL),
+                nuxt.options.security.headers.contentSecurityPolicy,
+              )
+            }
+          }
+        },
+      ],
       vite: {
         optimizeDeps: {
           include: ['@dargmuesli/nuxt-vio/utils/constants', '@vuelidate/core'],
@@ -43,18 +53,6 @@ export default defineNuxtConfig(
       },
       gtag: {
         id: 'G-K4R41W62BR',
-      },
-      security: {
-        headers: {
-          contentSecurityPolicy: {
-            'connect-src': [
-              `https://trapparty-postgraphile.${getDomainTldPort(siteUrl.host)}/graphql`,
-            ],
-            'report-to': 'csp-endpoint',
-            'report-uri':
-              'https://o4507259039973376.ingest.sentry.io/api/4507260561653840/security/?sentry_key=1e53178c1dba9b39147de4a21853a3e3',
-          },
-        },
       },
     },
     VIO_NUXT_BASE_CONFIG({

@@ -71,6 +71,7 @@
     "lint-staged": "15.2.2",
     "lodash-es": "4.17.21",
     "nuxt": "3.11.2",
+    "nuxt-security": "2.0.0-beta.5",
     "playwright-core": "1.44.0",
     "prettier-plugin-tailwindcss": "0.5.14",
     "rainbowvis.js": "1.1.1",
