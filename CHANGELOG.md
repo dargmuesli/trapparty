@@ -1,3 +1,10 @@
+## [3.15.3](https://github.com/dargmuesli/trapparty/compare/3.15.2...3.15.3) (2024-05-20)
+
+
+### Bug Fixes
+
+* **csp:** set dynamically ([835feff](https://github.com/dargmuesli/trapparty/commit/835fefffe93ea307c7f18e51be40e12445765f7d))
+
 ## [3.15.2](https://github.com/dargmuesli/trapparty/compare/3.15.1...3.15.2) (2024-05-20)
 
 
