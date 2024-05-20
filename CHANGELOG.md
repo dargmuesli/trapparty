@@ -1,3 +1,10 @@
+## [3.15.1](https://github.com/dargmuesli/trapparty/compare/3.15.0...3.15.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* **content-security-policy:** use site url ([03a6819](https://github.com/dargmuesli/trapparty/commit/03a6819e2b83347ea89203557ae57b63c712930b))
+
 ## [3.15.0](https://github.com/dargmuesli/trapparty/compare/3.14.18...3.15.0) (2024-05-17)
 
 
