@@ -1,10 +1,14 @@
 import {
   JWT_NAME,
   VIO_NUXT_BASE_CONFIG,
+  SITE_URL,
 } from '@dargmuesli/nuxt-vio/utils/constants'
+import { getDomainTldPort } from '@dargmuesli/nuxt-vio/utils/networking'
 import { defu } from 'defu'
 
 import { SITE_NAME } from '../utils/constants'
+
+const siteUrl = new URL(SITE_URL)
 
 export default defineNuxtConfig(
   defu(
@@ -44,7 +48,7 @@ export default defineNuxtConfig(
         headers: {
           contentSecurityPolicy: {
             'connect-src': [
-              'https://trapparty-postgraphile.jonas-thelemann.de', // TODO: use `getDomainTldPort(stagingHostOrHost)` (https://github.com/Baroshem/nuxt-security/pull/233)
+              `https://trapparty-postgraphile.${getDomainTldPort(siteUrl.host)}/graphql`,
             ],
             'report-to': 'csp-endpoint',
             'report-uri':
