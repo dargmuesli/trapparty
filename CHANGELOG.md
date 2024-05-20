@@ -1,3 +1,10 @@
+## [3.15.2](https://github.com/dargmuesli/trapparty/compare/3.15.1...3.15.2) (2024-05-20)
+
+
+### Bug Fixes
+
+* **urql:** correct service name ([775527c](https://github.com/dargmuesli/trapparty/commit/775527c99fa104539b5c88056f69ee56b7dbdc96))
+
 ## [3.15.1](https://github.com/dargmuesli/trapparty/compare/3.15.0...3.15.1) (2024-05-20)
 
 
