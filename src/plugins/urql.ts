@@ -149,7 +149,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       return { headers }
     },
     url:
-      getServiceHref({ name: 'trapparty-postgraphile', port: 5000 }) +
+      getServiceHref({ name: 'trapparty_postgraphile', port: 5000 }) +
       '/graphql',
     exchanges: [
       ...(runtimeConfig.public.vio.isInProduction ? [] : [devtoolsExchange]),
