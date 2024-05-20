@@ -110,6 +110,9 @@ importers:
       nuxt:
         specifier: 3.11.2
         version: 3.11.2(@opentelemetry/api@1.8.0)(@parcel/watcher@2.4.1)(@types/node@20.12.12)(@unocss/reset@0.60.2)(change-case@4.1.2)(encoding@0.1.13)(eslint@9.3.0)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.17.2))(vue@3.4.27(typescript@5.4.5)))(fuse.js@7.0.0)(ioredis@5.4.1)(optionator@0.9.4)(rollup@4.17.2)(sass@1.77.2)(stylelint@16.5.0(typescript@5.4.5))(terser@5.31.0)(typescript@5.4.5)(unocss@0.60.2(@unocss/webpack@0.60.2(rollup@4.17.2)(webpack@5.91.0(esbuild@0.20.2)))(postcss@8.4.38)(rollup@4.17.2)(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0)))(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0))
+      nuxt-security:
+        specifier: 2.0.0-beta.5
+        version: 2.0.0-beta.5(rollup@4.17.2)
       playwright-core:
         specifier: 1.44.0
         version: 1.44.0
@@ -5482,6 +5485,9 @@ packages:
 
   nuxt-security@1.4.3:
     resolution: {integrity: sha512-Fd2GqXPgXj0UOJ0ZnQgVpPeIoCX+P9PhUcGB9Or92aYPDoOAGdFbGrRCJZsBM8txMZQHmxQDcva/5xyWeVWyLQ==}
+
+  nuxt-security@2.0.0-beta.5:
+    resolution: {integrity: sha512-C0XV/X06cBv0yzR6B5j6q1T3vxI6zoMNSpW+wBUP7VlclsYVbuB0c6cc/ZnaZ6z3cpK1ZafcOZCbSxKBRdLDrw==}
 
   nuxt-seo-experiments@4.0.0-rc.5:
     resolution: {integrity: sha512-aXRTYEvqJh/r8Wgu+FNi1NZujHHXFB5sncButJ+5VoVa7Z251xIS7a6pHFUVzcLvV9ePkpsynO9h/EkSEk1MCA==}
@@ -14487,6 +14493,20 @@ snapshots:
       - webpack
 
   nuxt-security@1.4.3(rollup@4.17.2):
+    dependencies:
+      '@nuxt/kit': 3.11.2(rollup@4.17.2)
+      basic-auth: 2.0.1
+      cheerio: 1.0.0-rc.12
+      defu: 6.1.4
+      nuxt-csurf: 1.5.2(rollup@4.17.2)
+      pathe: 1.1.2
+      unplugin-remove: 1.0.2(rollup@4.17.2)
+      xss: 1.0.15
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+
+  nuxt-security@2.0.0-beta.5(rollup@4.17.2):
     dependencies:
       '@nuxt/kit': 3.11.2(rollup@4.17.2)
       basic-auth: 2.0.1
