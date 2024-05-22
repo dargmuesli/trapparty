@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.9.1",
-    "@dargmuesli/nuxt-cookie-control": "8.3.2",
+    "@dargmuesli/nuxt-cookie-control": "8.3.3",
     "@dargmuesli/nuxt-vio": "12.0.4",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/client-preset": "4.2.6",
@@ -68,7 +68,7 @@
     "defu": "6.1.4",
     "graphql": "16.8.1",
     "jiti": "1.21.0",
-    "lint-staged": "15.2.2",
+    "lint-staged": "15.2.4",
     "lodash-es": "4.17.21",
     "nuxt": "3.11.2",
     "nuxt-security": "2.0.0-beta.5",
@@ -82,7 +82,7 @@
     "stylelint-config-standard": "36.0.0",
     "stylelint-no-unsupported-browser-features": "8.0.1",
     "tailwindcss": "3.4.3",
-    "unhead": "1.9.10",
+    "unhead": "1.9.11",
     "vue": "3.4.27",
     "vue-chartjs": "5.3.1",
     "vue-router": "4.3.2"
