@@ -68,7 +68,7 @@
     "defu": "6.1.4",
     "graphql": "16.8.1",
     "jiti": "1.21.0",
-    "lint-staged": "15.2.4",
+    "lint-staged": "15.2.5",
     "lodash-es": "4.17.21",
     "nuxt": "3.11.2",
     "nuxt-security": "2.0.0-beta.5",
