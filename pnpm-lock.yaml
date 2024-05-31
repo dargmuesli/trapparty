@@ -72,8 +72,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0(@urql/core@5.0.3(graphql@16.8.1))(graphql@16.8.1)
       '@urql/vue':
-        specifier: 1.2.0
-        version: 1.2.0(@urql/core@5.0.3(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))
+        specifier: 1.2.1
+        version: 1.2.1(@urql/core@5.0.3(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))
       '@vuelidate/core':
         specifier: 2.0.3
         version: 2.0.3(vue@3.4.27(typescript@5.4.5))
@@ -111,14 +111,14 @@ importers:
         specifier: 3.11.2
         version: 3.11.2(@opentelemetry/api@1.8.0)(@parcel/watcher@2.4.1)(@types/node@20.12.12)(@unocss/reset@0.60.3)(change-case@4.1.2)(encoding@0.1.13)(eslint@9.3.0)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.18.0))(vue@3.4.27(typescript@5.4.5)))(fuse.js@7.0.0)(ioredis@5.4.1)(optionator@0.9.4)(rollup@4.18.0)(sass@1.77.2)(stylelint@16.6.1(typescript@5.4.5))(terser@5.31.0)(typescript@5.4.5)(unocss@0.60.3(@unocss/webpack@0.60.3(rollup@4.18.0)(webpack@5.91.0(esbuild@0.20.2)))(postcss@8.4.38)(rollup@4.18.0)(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0)))(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0))
       nuxt-security:
-        specifier: 2.0.0-rc.3
-        version: 2.0.0-rc.3(rollup@4.18.0)
+        specifier: 2.0.0-rc.6
+        version: 2.0.0-rc.6(rollup@4.18.0)
       playwright-core:
         specifier: 1.44.1
         version: 1.44.1
       prettier-plugin-tailwindcss:
-        specifier: 0.6.0
-        version: 0.6.0(prettier@3.2.5)
+        specifier: 0.6.1
+        version: 0.6.1(prettier@3.2.5)
       rainbowvis.js:
         specifier: 1.1.1
         version: 1.1.1
@@ -2470,8 +2470,8 @@ packages:
     peerDependencies:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
 
-  '@urql/vue@1.2.0':
-    resolution: {integrity: sha512-JQH+C4PRbRIaTLPABNHymp9ndvWtfD5vjsPKN5w2hnJOtNY8OhAnbS2dPioZ+7Qd+8qNGhHQkZUE39/LygtaOQ==}
+  '@urql/vue@1.2.1':
+    resolution: {integrity: sha512-PmzY6V+ekgLt+H3qQX3OJ7k4ZOG8ZiKFAfJ5D+x7zHjCcnWC9lEEAugnly5HVJlNNQZeIhvPdzPh9WN191ut3g==}
     peerDependencies:
       '@urql/core': ^5.0.0
       vue: ^2.7.0 || ^3.0.0
@@ -5493,8 +5493,8 @@ packages:
   nuxt-security@1.4.3:
     resolution: {integrity: sha512-Fd2GqXPgXj0UOJ0ZnQgVpPeIoCX+P9PhUcGB9Or92aYPDoOAGdFbGrRCJZsBM8txMZQHmxQDcva/5xyWeVWyLQ==}
 
-  nuxt-security@2.0.0-rc.3:
-    resolution: {integrity: sha512-c7iXDDWBXPkaMnRv1BKHf/RlJUYhT9ZfEtsoGMGYJmMi3hfJ9zvC3e0CzlaTohuugVlp2RVjSAGKJln4zjdp8Q==}
+  nuxt-security@2.0.0-rc.6:
+    resolution: {integrity: sha512-f88P5ym07SJN30YO0hVrv8emvDplfd/lsGznmqC+jbx9vynaiuyj/i5Aes3yWYaxPxQdEZtyuOQAr4S1tTUVPg==}
 
   nuxt-seo-experiments@4.0.0-rc.5:
     resolution: {integrity: sha512-aXRTYEvqJh/r8Wgu+FNi1NZujHHXFB5sncButJ+5VoVa7Z251xIS7a6pHFUVzcLvV9ePkpsynO9h/EkSEk1MCA==}
@@ -6049,8 +6049,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier-plugin-tailwindcss@0.6.0:
-    resolution: {integrity: sha512-l5F3iG54XbOq/2DOPP/YA+c6VE3/qXrcBccntq2v7PSxtEc+J6SwsuTyDHxoFK1+jAlcU/hECBfzn6MON6ENBg==}
+  prettier-plugin-tailwindcss@0.6.1:
+    resolution: {integrity: sha512-AnbeYZu0WGj+QgKciUgdMnRxrqcxltleZPgdwfA5104BHM3siBLONN/HLW1yS2HvzSNkzpQ/JAj+LN0jcJO+0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -10879,7 +10879,7 @@ snapshots:
     dependencies:
       graphql: 16.8.1
 
-  '@urql/vue@1.2.0(@urql/core@5.0.3(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))':
+  '@urql/vue@1.2.1(@urql/core@5.0.3(graphql@16.8.1))(vue@3.4.27(typescript@5.4.5))':
     dependencies:
       '@urql/core': 5.0.3(graphql@16.8.1)
       vue: 3.4.27(typescript@5.4.5)
@@ -14513,7 +14513,7 @@ snapshots:
       - rollup
       - supports-color
 
-  nuxt-security@2.0.0-rc.3(rollup@4.18.0):
+  nuxt-security@2.0.0-rc.6(rollup@4.18.0):
     dependencies:
       '@nuxt/kit': 3.11.2(rollup@4.18.0)
       basic-auth: 2.0.1
@@ -15309,7 +15309,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-tailwindcss@0.6.0(prettier@3.2.5):
+  prettier-plugin-tailwindcss@0.6.1(prettier@3.2.5):
     dependencies:
       prettier: 3.2.5
 
