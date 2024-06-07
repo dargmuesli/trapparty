@@ -73,7 +73,7 @@
     "nuxt": "3.11.2",
     "nuxt-security": "2.0.0-rc.6",
     "playwright-core": "1.44.1",
-    "prettier-plugin-tailwindcss": "0.6.1",
+    "prettier-plugin-tailwindcss": "0.6.2",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.3",
     "sharp": "0.33.4",
