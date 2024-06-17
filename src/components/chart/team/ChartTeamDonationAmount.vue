@@ -54,7 +54,7 @@ const allTeams = computed(() => statsQuery.data.value?.allTeams)
 const teamPlayerCount = computed(() => statsQuery.data.value?.teamPlayerCount)
 
 // data
-const data = ref<ChartData<'bar', number[], unknown> | null>(null)
+const data = ref<ChartData<'bar', number[], unknown> | undefined>(undefined)
 const horizontal = ref(true)
 const optionsDefault = ref<ChartOptions<'bar'>>({
   plugins: {

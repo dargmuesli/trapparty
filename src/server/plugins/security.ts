@@ -1,6 +1,6 @@
 import { defu } from 'defu'
 import type { NuxtOptions } from 'nuxt/schema'
-import { GET_CSP } from '../../utils/constants'
+import { GET_CSP } from '../../server/utils/constants'
 
 // remove invalid `'none'`s and duplicates // TODO: import from vio
 const cleanupCsp = (
