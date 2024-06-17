@@ -1,11 +1,9 @@
-import {
-  JWT_NAME,
-  VIO_NUXT_BASE_CONFIG,
-  SITE_URL,
-} from '@dargmuesli/nuxt-vio/utils/constants'
+import { JWT_NAME, SITE_URL } from '@dargmuesli/nuxt-vio/utils/constants'
+import { VIO_NUXT_BASE_CONFIG } from '@dargmuesli/nuxt-vio/utils/nuxt'
 import { defu } from 'defu'
 
-import { SITE_NAME, GET_CSP } from '../utils/constants'
+import { SITE_NAME } from '../utils/constants'
+import { GET_CSP } from '../server/utils/constants'
 
 export default defineNuxtConfig(
   defu(
