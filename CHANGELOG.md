@@ -1,3 +1,9 @@
+## [3.15.6](https://github.com/dargmuesli/trapparty/compare/3.15.5...3.15.6) (2024-06-28)
+
+### Bug Fixes
+
+* **polyfills:** remove ([59f74d1](https://github.com/dargmuesli/trapparty/commit/59f74d1883dcff80f981f491d3b0de5a9753d3c9))
+
 ## [3.15.5](https://github.com/dargmuesli/trapparty/compare/3.15.4...3.15.5) (2024-06-17)
 
 
