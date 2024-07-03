@@ -1,3 +1,9 @@
+## [3.15.8](https://github.com/dargmuesli/trapparty/compare/3.15.7...3.15.8) (2024-07-03)
+
+### Bug Fixes
+
+* **sentry:** correct url ([01092cd](https://github.com/dargmuesli/trapparty/commit/01092cdc81e9ff4a97374c5e22c7d6744392c34b))
+
 ## [3.15.7](https://github.com/dargmuesli/trapparty/compare/3.15.6...3.15.7) (2024-06-28)
 
 ### Bug Fixes
