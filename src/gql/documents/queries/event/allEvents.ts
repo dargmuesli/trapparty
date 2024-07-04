@@ -1,9 +1,12 @@
 import { useQuery } from '@urql/vue'
-import { graphql } from '~/gql/generated'
 
-export const useAllEventsQuery = () =>
+import { graphql } from '~/gql/generated'
+import type { AllEventsQueryVariables } from '~/gql/generated/graphql'
+
+export const useAllEventsQuery = (variables?: AllEventsQueryVariables) =>
   useQuery({
     query: allEventsQuery,
+    variables,
   })
 
 export const allEventsQuery = graphql(`

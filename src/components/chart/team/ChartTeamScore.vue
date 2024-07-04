@@ -1,5 +1,6 @@
 <template>
   <VioLoader :api="api">
+    <!-- @vue-expect-error TODO: https://github.com/chartjs/Chart.js/issues/10896 -->
     <ChartBaseBar
       v-if="data"
       id="chart-team-score"
