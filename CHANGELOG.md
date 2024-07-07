@@ -1,3 +1,9 @@
+## [3.15.10](https://github.com/dargmuesli/trapparty/compare/3.15.9...3.15.10) (2024-07-07)
+
+### Bug Fixes
+
+* **deps:** update vio ([6b5f4f3](https://github.com/dargmuesli/trapparty/commit/6b5f4f35e9575cbd9da5a86f41de6328936cdfc9))
+
 ## [3.15.9](https://github.com/dargmuesli/trapparty/compare/3.15.8...3.15.9) (2024-07-05)
 
 ### Bug Fixes
