@@ -48,8 +48,8 @@ importers:
   src:
     devDependencies:
       '@dargmuesli/nuxt-cookie-control':
-        specifier: 8.4.4
-        version: 8.4.4(magicast@0.3.4)(rollup@4.18.0)(webpack@5.92.1(esbuild@0.21.5))
+        specifier: 8.4.5
+        version: 8.4.5(magicast@0.3.4)(rollup@4.18.0)(webpack@5.92.1(esbuild@0.21.5))
       '@dargmuesli/nuxt-vio':
         specifier: 13.2.1
         version: 13.2.1(@lezer/common@1.2.1)(@types/eslint@8.56.10)(@unocss/webpack@0.61.3(rollup@4.18.0)(webpack@5.92.1(esbuild@0.21.5)))(@vue/compiler-core@3.4.31)(change-case@4.1.2)(graphql@16.9.0)(h3@1.12.0)(ioredis@5.4.1)(magicast@0.3.4)(nuxt@3.12.3(@parcel/watcher@2.4.1)(@types/node@20.14.10)(eslint@9.6.0)(ioredis@5.4.1)(magicast@0.3.4)(optionator@0.9.4)(rollup@4.18.0)(sass@1.77.6)(stylelint@16.6.1(typescript@5.4.5))(terser@5.31.1)(typescript@5.4.5)(vite@5.3.3(@types/node@20.14.10)(sass@1.77.6)(terser@5.31.1))(vue-tsc@2.0.26(typescript@5.4.5)))(postcss@8.4.39)(prettier@3.3.2)(rollup@4.18.0)(tailwindcss@3.4.4)(typescript@5.4.5)(vite@5.3.3(@types/node@20.14.10)(sass@1.77.6)(terser@5.31.1))(vue-router@4.4.0(vue@3.4.31(typescript@5.4.5)))(vue@3.4.31(typescript@5.4.5))(webpack@5.92.1(esbuild@0.21.5))
@@ -790,6 +790,10 @@ packages:
 
   '@dargmuesli/nuxt-cookie-control@8.4.4':
     resolution: {integrity: sha512-fvHiPd3/n6Nx4zkGkKPAqnGmYSYda1KoZGVzRsoiTKDtGuBb/NMLwaqrjfbTpWPju95yiPn9aD9bWRAQszvoNQ==}
+    engines: {node: '>=16'}
+
+  '@dargmuesli/nuxt-cookie-control@8.4.5':
+    resolution: {integrity: sha512-qtFNNF77gXw6GJmhJ4Wtij8K0fXi6OSDZMRS77K2sVfMIUne2uQ1PvZnl1FCcysmevzZ8tIjN/tSmKuY5G3pjg==}
     engines: {node: '>=16'}
 
   '@dargmuesli/nuxt-vio-testing@13.2.1':
@@ -9013,6 +9017,18 @@ snapshots:
       postcss-selector-parser: 6.1.0
 
   '@dargmuesli/nuxt-cookie-control@8.4.4(magicast@0.3.4)(rollup@4.18.0)(webpack@5.92.1(esbuild@0.21.5))':
+    dependencies:
+      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.18.0)
+      css-vars-ponyfill: 2.4.9
+      defu: 6.1.4
+      string-replace-loader: 3.1.0(webpack@5.92.1(esbuild@0.21.5))
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - webpack
+
+  '@dargmuesli/nuxt-cookie-control@8.4.5(magicast@0.3.4)(rollup@4.18.0)(webpack@5.92.1(esbuild@0.21.5))':
     dependencies:
       '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.18.0)
       css-vars-ponyfill: 2.4.9
