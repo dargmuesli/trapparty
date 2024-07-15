@@ -1,3 +1,9 @@
+## [3.15.11](https://github.com/dargmuesli/trapparty/compare/3.15.10...3.15.11) (2024-07-15)
+
+### Bug Fixes
+
+* schedule release ([0d3896a](https://github.com/dargmuesli/trapparty/commit/0d3896a81e7e965a494a0b0ef0bb215493116ddc))
+
 ## [3.15.10](https://github.com/dargmuesli/trapparty/compare/3.15.9...3.15.10) (2024-07-07)
 
 ### Bug Fixes
