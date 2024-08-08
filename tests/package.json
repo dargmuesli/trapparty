@@ -29,7 +29,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
     "jiti": "1.21.6",
-    "typescript": "5.4.5",
+    "typescript": "5.5.4",
     "typescript-eslint": "8.0.1"
   },
   "peerDependencies": {
