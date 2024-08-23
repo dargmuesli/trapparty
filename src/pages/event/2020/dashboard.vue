@@ -253,11 +253,11 @@ import { usePlayerByInvitationCodeFnQuery } from '~/gql/documents/queries/player
 definePageMeta({
   middleware: [
     (_to, _from) => {
-      const { $localePath } = useNuxtApp()
+      const localePath = useLocalePath()
       const store = useStore()
 
       if (store.participationData === null) {
-        return navigateTo($localePath('/'))
+        return navigateTo(localePath('/'))
       }
     },
   ],
