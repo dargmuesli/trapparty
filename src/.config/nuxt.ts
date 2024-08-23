@@ -25,7 +25,11 @@ export default defineNuxtConfig(
       ],
       vite: {
         optimizeDeps: {
-          include: ['@dargmuesli/nuxt-vio/utils/constants', '@vuelidate/core'],
+          include: [
+            '@dargmuesli/nuxt-vio/utils/constants',
+            '@vuelidate/core',
+            '@vuelidate/validators',
+          ],
         },
       },
 

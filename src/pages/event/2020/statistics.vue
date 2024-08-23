@@ -11,9 +11,9 @@
         <Donation class="mb-8" :trap-party-event="trapPartyEvent" />
         <ChartScoring class="mb-8" :event-id="trapPartyEvent.id" />
       </div>
-      <CardStateAlert v-else>
+      <VioCardStateAlert v-else>
         {{ t('datalessEvent') }}
-      </CardStateAlert>
+      </VioCardStateAlert>
     </div>
   </VioLoader>
 </template>
