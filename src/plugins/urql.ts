@@ -14,7 +14,9 @@ import { makeDefaultStorage } from '@urql/exchange-graphcache/default-storage'
 // import { relayPagination } from '@urql/exchange-graphcache/extras'
 import { devtoolsExchange } from '@urql/devtools'
 import { provideClient } from '@urql/vue'
+import type { Client } from '@urql/vue'
 import { consola } from 'consola'
+import type { Pinia } from 'pinia'
 import { ref } from 'vue'
 
 import schema from '~/gql/generated/introspection'
@@ -135,7 +137,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     requestPolicy: 'cache-and-network',
     fetchOptions: () => {
       const { $pinia } = useNuxtApp()
-      const store = useVioAuthStore($pinia)
+      const store = useVioAuthStore($pinia as Pinia) // TODO: remove typecast
       const headers = {} as Record<string, string>
       const jwt = store.jwt
 
@@ -199,3 +201,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
   }
 })
+
+declare module '#app' {
+  interface NuxtApp {
+    $urql: Ref<Client>
+    urqlReset: () => Client
+  }
+}
