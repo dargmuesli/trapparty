@@ -1,3 +1,11 @@
+## [3.15.14](https://github.com/dargmuesli/trapparty/compare/3.15.13...3.15.14) (2024-08-23)
+
+### Bug Fixes
+
+* **2020:** correct component name ([6f11c6d](https://github.com/dargmuesli/trapparty/commit/6f11c6df2d4828efe44fd463135caf1bc430c227))
+* **plugin:** define types ([4598536](https://github.com/dargmuesli/trapparty/commit/45985364b7647e4473aec6e4b99f410fb0c3a4dc))
+* **urql:** correct reset method type ([d426cd6](https://github.com/dargmuesli/trapparty/commit/d426cd69674139d41603a7d27e6a383d768e1459))
+
 ## [3.15.13](https://github.com/dargmuesli/trapparty/compare/3.15.12...3.15.13) (2024-08-12)
 
 ### Bug Fixes
