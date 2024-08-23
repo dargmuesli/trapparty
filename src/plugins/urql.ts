@@ -205,6 +205,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 declare module '#app' {
   interface NuxtApp {
     $urql: Ref<Client>
-    urqlReset: () => Client
+    $urqlReset: () => Client
   }
 }
