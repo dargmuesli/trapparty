@@ -1,3 +1,9 @@
+## [3.16.0](https://github.com/dargmuesli/trapparty/compare/3.15.15...3.16.0) (2024-09-13)
+
+### Features
+
+* **polyfills:** reenable ([908d00d](https://github.com/dargmuesli/trapparty/commit/908d00dc37699fb73598704de93228f82ccf0741))
+
 ## [3.15.15](https://github.com/dargmuesli/trapparty/compare/3.15.14...3.15.15) (2024-09-02)
 
 ### Bug Fixes
