@@ -188,8 +188,8 @@ importers:
         specifier: 1.47.1
         version: 1.47.1
       '@types/node':
-        specifier: 20.16.5
-        version: 20.16.5
+        specifier: 22.5.4
+        version: 22.5.4
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -2343,9 +2343,6 @@ packages:
 
   '@types/minimatch@3.0.5':
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
-
-  '@types/node@20.16.5':
-    resolution: {integrity: sha512-VwYCweNo3ERajwy0IUlqqcyZ8/A7Zwa9ZP3MnENWcB11AejO+tLy3pu850goUW2FC/IJMdZUfKpX/yxL1gymCA==}
 
   '@types/node@22.5.4':
     resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
@@ -10588,7 +10585,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/eslint@9.6.1':
     dependencies:
@@ -10600,7 +10597,7 @@ snapshots:
 
   '@types/http-proxy@1.17.15':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/js-yaml@4.0.9': {}
 
@@ -10613,10 +10610,6 @@ snapshots:
   '@types/lodash@4.17.7': {}
 
   '@types/minimatch@3.0.5': {}
-
-  '@types/node@20.16.5':
-    dependencies:
-      undici-types: 6.19.8
 
   '@types/node@22.5.4':
     dependencies:
@@ -10632,7 +10625,7 @@ snapshots:
 
   '@types/ws@8.5.12':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@typescript-eslint/eslint-plugin@8.5.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2))(eslint@9.10.0(jiti@1.21.6))(typescript@5.6.2)':
     dependencies:
@@ -13584,7 +13577,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
