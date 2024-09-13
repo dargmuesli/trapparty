@@ -3,7 +3,7 @@
   "description": "TrapParty's website.",
   "devDependencies": {
     "@dargmuesli/nuxt-cookie-control": "8.4.10",
-    "@dargmuesli/nuxt-vio": "13.2.8",
+    "@dargmuesli/nuxt-vio": "13.3.0",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/client-preset": "4.3.3",
     "@graphql-codegen/typescript-urql-graphcache": "3.1.0",
@@ -44,7 +44,7 @@
     "vue-router": "4.4.5"
   },
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "name": "trapparty",
   "private": true,
