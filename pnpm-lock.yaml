@@ -179,8 +179,8 @@ importers:
         specifier: 4.10.0
         version: 4.10.0(playwright-core@1.47.1)
       '@dargmuesli/nuxt-vio-testing':
-        specifier: 13.3.0
-        version: 13.3.0(playwright-core@1.47.1)
+        specifier: 14.0.0
+        version: 14.0.0(playwright-core@1.47.1)
       '@eslint/js':
         specifier: 9.10.0
         version: 9.10.0
@@ -680,11 +680,11 @@ packages:
     resolution: {integrity: sha512-8nODHpj3TVUXJStSm5B5U1aLZdLVdPcQWWslK59MG1zLTAVpxW9SSkGJBdRySRdoCt+lvLvmEWeswvUZes9p+w==}
     engines: {node: '>=16'}
 
-  '@dargmuesli/nuxt-vio-testing@13.3.0':
-    resolution: {integrity: sha512-MGUZ+KTxo+7AIX7nydXzqfieh7np0CY32cwn2JDNVyqGUYY0+KOWM3Tb9YKJBKzLoj9fQuGobwsjgoJ3htKr/g==}
+  '@dargmuesli/nuxt-vio-testing@14.0.0':
+    resolution: {integrity: sha512-lYY16GEC0UliUnn/WTH4gXgUjUi4LDzBp39Oowqa0KZFMP5x7LdsaKdxrgg+v9AUxNJD084cb3yqzu2wzMfEXg==}
     engines: {node: '22'}
     peerDependencies:
-      playwright-core: 1.47.0
+      playwright-core: 1.47.1
 
   '@dargmuesli/nuxt-vio@13.3.0':
     resolution: {integrity: sha512-VRXUy3gfxLMTDJJLnbJUkKrDp5h3D1p5D7nbWavIkI5dOzrpJLqXYc3yuMkhMLYI6YkAIG08gVFHuKu7wpZFig==}
@@ -1654,6 +1654,7 @@ packages:
   '@koa/router@12.0.1':
     resolution: {integrity: sha512-ribfPYfHb+Uw3b27Eiw6NPqjhIhTpVFzEWLwyc/1Xp+DCdwRRyIlAUODX+9bPARF6aQtUu1+/PHzdNvRzcs/+Q==}
     engines: {node: '>= 12'}
+    deprecated: Use v12.0.2 or higher to fix the vulnerability issue
 
   '@kurkle/color@0.3.2':
     resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
@@ -8517,7 +8518,7 @@ snapshots:
       - webpack
       - webpack-sources
 
-  '@dargmuesli/nuxt-vio-testing@13.3.0(playwright-core@1.47.1)':
+  '@dargmuesli/nuxt-vio-testing@14.0.0(playwright-core@1.47.1)':
     dependencies:
       playwright-core: 1.47.1
 
