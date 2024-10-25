@@ -11,7 +11,7 @@
     "@graphql-typed-document-node/core": "3.2.0",
     "@pinia-plugin-persistedstate/nuxt": "1.2.1",
     "@pinia/nuxt": "0.5.5",
-    "@types/color": "3.0.6",
+    "@types/color": "4.2.0",
     "@types/lodash-es": "4.17.12",
     "@urql/core": "5.0.8",
     "@urql/devtools": "2.0.3",
