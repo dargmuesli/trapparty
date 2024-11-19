@@ -5,17 +5,17 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/commit-analyzer": "13.0.0",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "11.0.0",
+    "@semantic-release/github": "11.0.1",
     "@semantic-release/npm": "12.0.1",
     "@semantic-release/release-notes-generator": "14.0.1",
-    "husky": "9.1.6",
+    "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "semantic-release": "24.2.0"
   },
   "engines": {
     "node": "22"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.13.2",
   "private": true,
   "scripts": {
     "build": "pnpm --dir src run build",
@@ -40,6 +40,11 @@
     "test:e2e:server:dev": "pnpm --dir src run test:e2e:server:dev",
     "test:e2e:server:node": "pnpm --dir src run test:e2e:server:node",
     "test:e2e:server:static": "pnpm --dir src run test:e2e:server:static"
+  },
+  "pnpm": {
+    "overrides": {
+      "@pinia/nuxt": "0.5.5"
+    }
   },
   "type": "module"
 }
