@@ -5,7 +5,7 @@
     "@dargmuesli/nuxt-cookie-control": "8.4.17",
     "@dargmuesli/nuxt-vio": "14.1.0",
     "@graphql-codegen/cli": "5.0.3",
-    "@graphql-codegen/client-preset": "4.5.0",
+    "@graphql-codegen/client-preset": "4.5.1",
     "@graphql-codegen/typescript-urql-graphcache": "3.1.0",
     "@graphql-codegen/urql-introspection": "3.0.0",
     "@graphql-typed-document-node/core": "3.2.0",
@@ -26,7 +26,7 @@
     "graphql": "16.9.0",
     "lodash-es": "4.17.21",
     "nuxt": "3.14.1592",
-    "nuxt-security": "2.1.2",
+    "nuxt-security": "2.1.4",
     "prettier-plugin-tailwindcss": "0.6.9",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.4",
@@ -37,10 +37,10 @@
     "stylelint-no-unsupported-browser-features": "8.0.2",
     "sweetalert2": "11.14.5",
     "tailwindcss": "3.4.15",
-    "unhead": "1.11.11",
+    "unhead": "1.11.13",
     "vue": "3.5.13",
     "vue-chartjs": "5.3.2",
-    "vue-router": "4.4.5"
+    "vue-router": "4.5.0"
   },
   "engines": {
     "node": "22"
