@@ -26,7 +26,7 @@
     "graphql": "16.9.0",
     "lodash-es": "4.17.21",
     "nuxt": "3.14.1592",
-    "nuxt-security": "2.1.4",
+    "nuxt-security": "2.1.5",
     "prettier-plugin-tailwindcss": "0.6.9",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.4",
