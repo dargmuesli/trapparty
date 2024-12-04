@@ -2,7 +2,7 @@
   "author": "Jonas Thelemann",
   "description": "TrapParty's website.",
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "8.4.17",
+    "@dargmuesli/nuxt-cookie-control": "8.4.18",
     "@dargmuesli/nuxt-vio": "14.1.2",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/client-preset": "4.5.1",
