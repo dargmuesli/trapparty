@@ -1,6 +1,5 @@
-/* eslint-disable no-use-before-define */
+import { cacheExchange } from '@urql/exchange-graphcache'
 import {
-  offlineExchange,
   type Resolver as GraphCacheResolver,
   type UpdateResolver as GraphCacheUpdateResolver,
   type OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
@@ -7660,7 +7659,7 @@ export type GraphCacheUpdaters = {
   }
 }
 
-export type GraphCacheConfig = Parameters<typeof offlineExchange>[0] & {
+export type GraphCacheConfig = Parameters<typeof cacheExchange>[0] & {
   updates?: GraphCacheUpdaters
   keys?: GraphCacheKeysConfig
   optimistic?: GraphCacheOptimisticUpdaters
