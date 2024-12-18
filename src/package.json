@@ -6,6 +6,7 @@
     "@dargmuesli/nuxt-vio": "15.0.3",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/client-preset": "4.5.1",
+    "@graphql-codegen/typescript": "4.1.2",
     "@graphql-codegen/typescript-urql-graphcache": "3.1.0",
     "@graphql-codegen/urql-introspection": "3.0.0",
     "@graphql-typed-document-node/core": "3.2.0",
