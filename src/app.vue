@@ -11,7 +11,7 @@
 <script setup lang="ts">
 const { $dayjs } = useNuxtApp()
 const { t, locale } = useI18n()
-const cookieControl = useCookieControl()
+const siteConfig = useSiteConfig()
 
 const { loadingIds, indicateLoadingDone } = useLoadingDoneIndicator('app')
 
@@ -38,12 +38,23 @@ const isLoading = computed(() => !!loadingIds.value.length)
 onMounted(() => indicateLoadingDone())
 
 // initialization
+defineOgImageComponent(
+  'Default',
+  {
+    description: siteConfig.description,
+  },
+  {
+    alt: t('globalSeoOgImageAlt'),
+  },
+)
 useAppLayout()
 useFavicons()
 usePolyfills()
-defineOgImage({
-  alt: t('globalSeoOgImageAlt'),
-  // component: props.ogImageComponent,
-})
+useSchemaOrg([
+  defineWebSite({
+    description: siteConfig.description,
+  }),
+])
+useVioGtag()
 init()
 </script>
