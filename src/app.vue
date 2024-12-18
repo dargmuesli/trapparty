@@ -13,8 +13,7 @@ const { $dayjs } = useNuxtApp()
 const { t, locale } = useI18n()
 const cookieControl = useCookieControl()
 
-const loadingId = Math.random()
-const loadingIds = useState('loadingIds', () => [loadingId])
+const { loadingIds, indicateLoadingDone } = useLoadingDoneIndicator('app')
 
 // methods
 const init = () => {
@@ -36,19 +35,7 @@ const init = () => {
 const isLoading = computed(() => !!loadingIds.value.length)
 
 // lifecycle
-onMounted(() => loadingIds.value.splice(loadingIds.value.indexOf(loadingId), 1))
-watch(
-  () => cookieControl.cookiesEnabledIds.value,
-  (current, previous) => {
-    if (
-      (!previous?.includes('ga') && current?.includes('ga')) ||
-      (previous?.includes('ga') && !current?.includes('ga'))
-    ) {
-      window.location.reload()
-    }
-  },
-  { deep: true },
-)
+onMounted(() => indicateLoadingDone())
 
 // initialization
 useAppLayout()
