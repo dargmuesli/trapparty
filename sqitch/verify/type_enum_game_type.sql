@@ -1,5 +1,3 @@
--- Verify trapparty:type_enum_game_type on pg
-
 BEGIN;
 
 DO $$

@@ -1,9 +1,3 @@
--- Deploy trapparty:table_team_leader to pg
--- requires: schema_public
--- requires: table_team
--- requires: table_player
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.team_leader (

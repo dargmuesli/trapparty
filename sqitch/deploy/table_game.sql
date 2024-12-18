@@ -1,9 +1,3 @@
--- Deploy trapparty:table_game to pg
--- requires: schema_public
--- requires: table_event
--- requires: type_enum_game_type
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.game (

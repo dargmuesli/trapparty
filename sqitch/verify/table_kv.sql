@@ -1,5 +1,3 @@
--- Verify trapparty:table_kv on pg
-
 BEGIN;
 
 SELECT "key",

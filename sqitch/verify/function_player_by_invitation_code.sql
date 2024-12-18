@@ -1,5 +1,3 @@
--- Verify trapparty:function_player_by_invitation_code on pg
-
 BEGIN;
 
 DO $$

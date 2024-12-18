@@ -1,5 +1,3 @@
--- Verify trapparty:table_event on pg
-
 BEGIN;
 
 SELECT id,

@@ -1,6 +1,3 @@
--- Deploy trapparty:extension_uuid-ossp to pg
--- requires: schema
-
 BEGIN;
 
 CREATE EXTENSION "uuid-ossp" WITH SCHEMA trapparty;

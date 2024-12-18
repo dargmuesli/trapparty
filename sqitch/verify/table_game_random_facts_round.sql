@@ -1,5 +1,3 @@
--- Verify trapparty:table_game_random_facts_round on pg
-
 BEGIN;
 
 SELECT id,

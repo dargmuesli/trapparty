@@ -1,9 +1,3 @@
--- Deploy trapparty:table_game_team_score to pg
--- requires: schema_public
--- requires: table_game
--- requires: table_team
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.game_team_score (

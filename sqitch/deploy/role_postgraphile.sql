@@ -1,5 +1,3 @@
--- Deploy trapparty:role_postgraphile to pg
-
 BEGIN;
 
 DROP ROLE IF EXISTS trapparty_postgraphile;

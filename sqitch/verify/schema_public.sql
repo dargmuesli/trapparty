@@ -1,5 +1,3 @@
--- Verify trapparty:schema_public on pg
-
 BEGIN;
 
 DO $$

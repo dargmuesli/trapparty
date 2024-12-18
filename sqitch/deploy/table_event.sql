@@ -1,7 +1,3 @@
--- Deploy trapparty:table_event to pg
--- requires: schema_public
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.event (

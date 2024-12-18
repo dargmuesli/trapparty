@@ -1,5 +1,3 @@
--- Verify trapparty:table_charity_organization on pg
-
 BEGIN;
 
 SELECT id,
