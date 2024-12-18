@@ -1,10 +1,3 @@
--- Deploy trapparty:function_player_by_invitation_code to pg
--- requires: privilege_execute_revoke
--- requires: schema_public
--- requires: extension_uuid-ossp
--- requires: table_player
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE FUNCTION trapparty.player_by_invitation_code(invitation_code UUID)

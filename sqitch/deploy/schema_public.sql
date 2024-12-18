@@ -1,6 +1,3 @@
--- Deploy trapparty:schema_public to pg
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE SCHEMA trapparty;

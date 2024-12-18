@@ -1,8 +1,3 @@
--- Deploy trapparty:table_player to pg
--- requires: schema_public
--- requires: table_team
--- requires: extension_uuid-ossp
-
 BEGIN;
 
 CREATE TABLE trapparty.player (

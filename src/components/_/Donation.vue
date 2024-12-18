@@ -307,7 +307,7 @@ init()
 
 <script lang="ts">
 export default {
-  name: 'MaevsiDonation',
+  name: 'TrapPartyDonation',
 }
 </script>
 

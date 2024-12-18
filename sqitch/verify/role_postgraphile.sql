@@ -1,5 +1,3 @@
--- Verify trapparty:role_postgraphile on pg
-
 BEGIN;
 
 DO $$

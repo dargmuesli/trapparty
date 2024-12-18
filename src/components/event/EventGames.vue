@@ -1,6 +1,6 @@
 <template>
   <VioLoader :api="api">
-    <div class="text-center">
+    <div class="flex flex-col gap-4 text-center">
       <h1>
         {{ title }}
       </h1>

@@ -1,10 +1,3 @@
--- Deploy trapparty:function_team_player_count to pg
--- requires: privilege_execute_revoke
--- requires: schema_public
--- requires: table_team
--- requires: table_player
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE FUNCTION trapparty.team_player_count(event_id INT)

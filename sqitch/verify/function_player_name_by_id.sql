@@ -1,5 +1,3 @@
--- Verify trapparty:function_player_name_by_id on pg
-
 BEGIN;
 
 DO $$

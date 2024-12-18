@@ -1,7 +1,3 @@
--- Deploy trapparty:table_charity_organization to pg
--- requires: schema_public
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.charity_organization (

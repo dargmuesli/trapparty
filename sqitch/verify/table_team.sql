@@ -1,5 +1,3 @@
--- Verify trapparty:table_team on pg
-
 BEGIN;
 
 SELECT id,

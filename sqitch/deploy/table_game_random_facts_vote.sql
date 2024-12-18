@@ -1,9 +1,3 @@
--- Deploy trapparty:table_game_random_facts_vote to pg
--- requires: schema_public
--- requires: table_player
--- requires: table_game_random_facts_round
--- requires: role_anonymous
-
 BEGIN;
 
 CREATE TABLE trapparty.game_random_facts_vote (

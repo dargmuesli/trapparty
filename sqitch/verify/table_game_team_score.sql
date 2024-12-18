@@ -1,5 +1,3 @@
--- Verify trapparty:table_game_team_score on pg
-
 BEGIN;
 
 SELECT id,

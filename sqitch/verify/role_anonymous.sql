@@ -1,5 +1,3 @@
--- Verify trapparty:role_anonymous on pg
-
 BEGIN;
 
 DO $$

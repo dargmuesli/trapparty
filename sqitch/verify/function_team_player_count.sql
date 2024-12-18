@@ -1,5 +1,3 @@
--- Verify trapparty:function_team_player_count on pg
-
 BEGIN;
 
 DO $$
