@@ -2,12 +2,10 @@
   <VioLoader :api="api" class="section-wrapper">
     <div v-if="store.participationData">
       <section>
-        <VioCardStateInfo>
-          <span>
-            <i18n-t keypath="intentionDescription">
-              <span class="font-bold">{{ intention }}</span>
-            </i18n-t>
-          </span>
+        <VioCardStateInfo class="flex items-center justify-center gap-2">
+          <i18n-t keypath="intentionDescription" tag="span">
+            <span class="font-bold">{{ intention }}</span>
+          </i18n-t>
           <VioButtonColored
             :aria-label="t('roleChange')"
             :to="localePath('/event/2020')"

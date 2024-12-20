@@ -13,6 +13,15 @@ export const eventByNameQuery = graphql(`
   query eventByName($eventName: String!) {
     eventByName(name: $eventName) {
       ...EventItem
+      gamesByEventId {
+        nodes {
+          nodeId
+          id
+          isActive
+          name
+          type
+        }
+      }
       teamsByEventId {
         nodes {
           ...TeamItem

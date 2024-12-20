@@ -5,6 +5,10 @@
       v-if="game.type === 'RANDOM_FACTS'"
       :game-id="+game.id"
     />
+    <StatisticGameEstimationNumeric
+      v-if="game.type === 'ESTIMATION_NUMERIC'"
+      :game-id="+game.id"
+    />
   </li>
 </template>
 

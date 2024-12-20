@@ -1,31 +1,28 @@
 <template>
-  <div v-if="!isLoaded">
+  <div v-if="api.isFetching">
     <VioLoaderIndicatorSpinner class="h-16 w-16" />
   </div>
-  <div v-else-if="games && games.length > 0" class="flex flex-col gap-4">
-    <h1 class="m-0">{{ t('games') }}</h1>
+  <!-- s?.length -->
+  <div v-else-if="game" class="flex flex-col gap-4">
+    <h1 class="m-0">{{ t('game') }}</h1>
     <ol class="list-decimal">
-      <StatisticGame
-        v-for="gameElement in games"
-        :key="gameElement.id"
-        :game="gameElement"
-      />
+      <StatisticGame :game="game" />
     </ol>
   </div>
   <div v-else>
-    {{ t('gamesNone') }}
+    {{ t('gameNone') }}
   </div>
 </template>
 
 <script setup lang="ts">
-import { consola } from 'consola'
+// import { consola } from 'consola'
 
-import { GameType, type GameItemFragment } from '~/gql/generated/graphql'
+// import { GameType, type GameItemFragment } from '~/gql/generated/graphql'
 import { useGameByIdQuery } from '~/gql/documents/queries/game/gameById'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
-import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
+// import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 
-const { $urql } = useNuxtApp()
+// const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
 
@@ -46,41 +43,41 @@ const api = computed(() =>
 const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
 
 // data
-const games = ref<Array<GameItemFragment>>()
-const isLoaded = ref(false)
+// const games = ref<Array<GameItemFragment>>()
+// const isLoaded = ref(false)
 const title = t('title')
 
-// methods
-const init = async () => {
-  if (!game.value) return
+// // methods
+// const init = async () => {
+//   if (!game.value) return
 
-  const gamesResult = await $urql.value
-    .query(allGamesQuery, {
-      eventId: game.value.eventId,
-      type: GameType.RandomFacts,
-    })
-    .toPromise()
+//   const gamesResult = await $urql.value
+//     .query(allGamesQuery, {
+//       eventId: game.value.eventId,
+//       type: GameType.RandomFacts,
+//     })
+//     .toPromise()
 
-  if (gamesResult.error) {
-    api.value.errors.push(gamesResult.error)
-    // TODO: add watcher instead
-    consola.error(gamesResult.error)
-  }
+//   if (gamesResult.error) {
+//     api.value.errors.push(gamesResult.error)
+//     // TODO: add watcher instead
+//     consola.error(gamesResult.error)
+//   }
 
-  if (!gamesResult) return loadingStop()
+//   if (!gamesResult) return loadingStop()
 
-  games.value =
-    gamesResult.data?.allGames?.nodes
-      .map((x) => getGameItem(x))
-      .filter(isNeitherNullNorUndefined) || []
+//   games.value =
+//     gamesResult.data?.allGames?.nodes
+//       .map((x) => getGameItem(x))
+//       .filter(isNeitherNullNorUndefined) || []
 
-  loadingStop()
-}
-const loadingStop = () => (isLoaded.value = true)
+//   loadingStop()
+// }
+// const loadingStop = () => (isLoaded.value = true)
 
 // initialization
 useHeadDefault({ title })
-await init()
+// await init()
 </script>
 
 <script lang="ts">
@@ -91,11 +88,11 @@ export default {
 
 <i18n lang="yaml">
 de:
-  games: Spiele
-  gamesNone: Keine Spiele vorhanden.
+  game: Spiel
+  gameNone: Kein Spiele vorhanden.
   title: Statistiken
 en:
-  games: Games
-  gamesNone: No games available.
+  game: Game
+  gameNone: No games available.
   title: Statistics
 </i18n>

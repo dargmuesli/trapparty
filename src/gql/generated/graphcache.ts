@@ -707,7 +707,6 @@ export type DeleteGameEstimationNumericRoundByIdInput = {
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The round's internal id. */
   id: Scalars['Int']['input']
 }
 
@@ -754,7 +753,6 @@ export type DeleteGameEstimationNumericVoteByIdInput = {
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The vote's internal id. */
   id: Scalars['Int']['input']
 }
 
@@ -1431,11 +1429,65 @@ export type GameCondition = {
   type?: InputMaybe<GameType>
 }
 
+/** Retrieves the leaderboard for a numeric estimation game. */
+export type GameEstimationNumericLeaderboardView = {
+  __typename?: 'GameEstimationNumericLeaderboardView'
+  gameId?: Maybe<Scalars['Int']['output']>
+  playerName?: Maybe<Scalars['String']['output']>
+  totalPoints?: Maybe<Scalars['Int']['output']>
+}
+
+/**
+ * A condition to be used against `GameEstimationNumericLeaderboardView` object
+ * types. All fields are tested for equality and combined with a logical ‘and.’
+ */
+export type GameEstimationNumericLeaderboardViewCondition = {
+  /** Checks for equality with the object’s `gameId` field. */
+  gameId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `playerName` field. */
+  playerName?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `totalPoints` field. */
+  totalPoints?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameEstimationNumericLeaderboardView` values. */
+export type GameEstimationNumericLeaderboardViewsConnection = {
+  __typename?: 'GameEstimationNumericLeaderboardViewsConnection'
+  /** A list of edges which contains the `GameEstimationNumericLeaderboardView` and cursor to aid in pagination. */
+  edges: Array<GameEstimationNumericLeaderboardViewsEdge>
+  /** A list of `GameEstimationNumericLeaderboardView` objects. */
+  nodes: Array<Maybe<GameEstimationNumericLeaderboardView>>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameEstimationNumericLeaderboardView` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameEstimationNumericLeaderboardView` edge in the connection. */
+export type GameEstimationNumericLeaderboardViewsEdge = {
+  __typename?: 'GameEstimationNumericLeaderboardViewsEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameEstimationNumericLeaderboardView` at the end of the edge. */
+  node?: Maybe<GameEstimationNumericLeaderboardView>
+}
+
+/** Methods to use when ordering `GameEstimationNumericLeaderboardView`. */
+export enum GameEstimationNumericLeaderboardViewsOrderBy {
+  GameIdAsc = 'GAME_ID_ASC',
+  GameIdDesc = 'GAME_ID_DESC',
+  Natural = 'NATURAL',
+  PlayerNameAsc = 'PLAYER_NAME_ASC',
+  PlayerNameDesc = 'PLAYER_NAME_DESC',
+  TotalPointsAsc = 'TOTAL_POINTS_ASC',
+  TotalPointsDesc = 'TOTAL_POINTS_DESC',
+}
+
 /** A round of a numeric estimation game. */
 export type GameEstimationNumericRound = Node & {
   __typename?: 'GameEstimationNumericRound'
   /** The round's correct answer. */
-  answerCorrect?: Maybe<Scalars['Int']['output']>
+  answerCorrect?: Maybe<Scalars['Float']['output']>
   /** The round's element name */
   elementName: Scalars['String']['output']
   /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
@@ -1444,7 +1496,6 @@ export type GameEstimationNumericRound = Node & {
   gameEstimationNumericVotesByRoundId: GameEstimationNumericVotesConnection
   /** The round's internal game id */
   gameId: Scalars['Int']['output']
-  /** The round's internal id. */
   id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output']
@@ -1468,7 +1519,7 @@ export type GameEstimationNumericRoundGameEstimationNumericVotesByRoundIdArgs =
  */
 export type GameEstimationNumericRoundCondition = {
   /** Checks for equality with the object’s `answerCorrect` field. */
-  answerCorrect?: InputMaybe<Scalars['Int']['input']>
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
   /** Checks for equality with the object’s `elementName` field. */
   elementName?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `gameId` field. */
@@ -1480,24 +1531,22 @@ export type GameEstimationNumericRoundCondition = {
 /** An input for mutations affecting `GameEstimationNumericRound` */
 export type GameEstimationNumericRoundInput = {
   /** The round's correct answer. */
-  answerCorrect?: InputMaybe<Scalars['Int']['input']>
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
   /** The round's element name */
   elementName: Scalars['String']['input']
   /** The round's internal game id */
   gameId: Scalars['Int']['input']
-  /** The round's internal id. */
   id?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Represents an update to a `GameEstimationNumericRound`. Fields that are set will be updated. */
 export type GameEstimationNumericRoundPatch = {
   /** The round's correct answer. */
-  answerCorrect?: InputMaybe<Scalars['Int']['input']>
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
   /** The round's element name */
   elementName?: InputMaybe<Scalars['String']['input']>
   /** The round's internal game id */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  /** The round's internal id. */
   id?: InputMaybe<Scalars['Int']['input']>
 }
 
@@ -1545,7 +1594,6 @@ export type GameEstimationNumericVote = Node & {
   answer: Scalars['Float']['output']
   /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
   gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
-  /** The vote's internal id. */
   id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
   nodeId: Scalars['ID']['output']
@@ -1576,7 +1624,6 @@ export type GameEstimationNumericVoteCondition = {
 export type GameEstimationNumericVoteInput = {
   /** The vote's answer. */
   answer: Scalars['Float']['input']
-  /** The vote's internal id. */
   id?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal player id */
   playerId: Scalars['Int']['input']
@@ -1588,7 +1635,6 @@ export type GameEstimationNumericVoteInput = {
 export type GameEstimationNumericVotePatch = {
   /** The vote's answer. */
   answer?: InputMaybe<Scalars['Float']['input']>
-  /** The vote's internal id. */
   id?: InputMaybe<Scalars['Int']['input']>
   /** The vote's internal player id */
   playerId?: InputMaybe<Scalars['Int']['input']>
@@ -2745,6 +2791,8 @@ export type Query = Node & {
   allCharityOrganizations?: Maybe<CharityOrganizationsConnection>
   /** Reads and enables pagination through a set of `Event`. */
   allEvents?: Maybe<EventsConnection>
+  /** Reads and enables pagination through a set of `GameEstimationNumericLeaderboardView`. */
+  allGameEstimationNumericLeaderboardViews?: Maybe<GameEstimationNumericLeaderboardViewsConnection>
   /** Reads and enables pagination through a set of `GameEstimationNumericRound`. */
   allGameEstimationNumericRounds?: Maybe<GameEstimationNumericRoundsConnection>
   /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
@@ -2844,6 +2892,17 @@ export type QueryAllEventsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<EventsOrderBy>>
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryAllGameEstimationNumericLeaderboardViewsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericLeaderboardViewCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericLeaderboardViewsOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3587,7 +3646,6 @@ export type UpdateGameEstimationNumericRoundByIdInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameEstimationNumericRound` being updated. */
   gameEstimationNumericRoundPatch: GameEstimationNumericRoundPatch
-  /** The round's internal id. */
   id: Scalars['Int']['input']
 }
 
@@ -3637,7 +3695,6 @@ export type UpdateGameEstimationNumericVoteByIdInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
   gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
-  /** The vote's internal id. */
   id: Scalars['Int']['input']
 }
 
@@ -4184,6 +4241,15 @@ export type GraphCacheKeysConfig = {
   EventsConnection?: (data: WithTypename<EventsConnection>) => null | string
   EventsEdge?: (data: WithTypename<EventsEdge>) => null | string
   Game?: (data: WithTypename<Game>) => null | string
+  GameEstimationNumericLeaderboardView?: (
+    data: WithTypename<GameEstimationNumericLeaderboardView>,
+  ) => null | string
+  GameEstimationNumericLeaderboardViewsConnection?: (
+    data: WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+  ) => null | string
+  GameEstimationNumericLeaderboardViewsEdge?: (
+    data: WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+  ) => null | string
   GameEstimationNumericRound?: (
     data: WithTypename<GameEstimationNumericRound>,
   ) => null | string
@@ -4292,6 +4358,11 @@ export type GraphCacheResolvers = {
       WithTypename<Query>,
       QueryAllEventsArgs,
       WithTypename<EventsConnection> | string
+    >
+    allGameEstimationNumericLeaderboardViews?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryAllGameEstimationNumericLeaderboardViewsArgs,
+      WithTypename<GameEstimationNumericLeaderboardViewsConnection> | string
     >
     allGameEstimationNumericRounds?: GraphCacheResolver<
       WithTypename<Query>,
@@ -5483,11 +5554,62 @@ export type GraphCacheResolvers = {
       GameType | string
     >
   }
+  GameEstimationNumericLeaderboardView?: {
+    gameId?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardView>,
+      Record<string, never>,
+      Scalars['Int'] | string
+    >
+    playerName?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardView>,
+      Record<string, never>,
+      Scalars['String'] | string
+    >
+    totalPoints?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardView>,
+      Record<string, never>,
+      Scalars['Int'] | string
+    >
+  }
+  GameEstimationNumericLeaderboardViewsConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEstimationNumericLeaderboardViewsEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEstimationNumericLeaderboardView> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      Record<string, never>,
+      Scalars['Int'] | string
+    >
+  }
+  GameEstimationNumericLeaderboardViewsEdge?: {
+    cursor?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+      Record<string, never>,
+      Scalars['Cursor'] | string
+    >
+    node?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+      Record<string, never>,
+      WithTypename<GameEstimationNumericLeaderboardView> | string
+    >
+  }
   GameEstimationNumericRound?: {
     answerCorrect?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Float'] | string
     >
     elementName?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
@@ -6877,6 +6999,14 @@ export type GraphCacheUpdaters = {
     allEvents?: GraphCacheUpdateResolver<
       { allEvents: Maybe<WithTypename<EventsConnection>> },
       QueryAllEventsArgs
+    >
+    allGameEstimationNumericLeaderboardViews?: GraphCacheUpdateResolver<
+      {
+        allGameEstimationNumericLeaderboardViews: Maybe<
+          WithTypename<GameEstimationNumericLeaderboardViewsConnection>
+        >
+      },
+      QueryAllGameEstimationNumericLeaderboardViewsArgs
     >
     allGameEstimationNumericRounds?: GraphCacheUpdateResolver<
       {
@@ -8332,6 +8462,48 @@ export type GraphCacheUpdaters = {
     >
     type?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+  }
+  GameEstimationNumericLeaderboardView?: {
+    gameId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardView>>,
+      Record<string, never>
+    >
+    playerName?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardView>>,
+      Record<string, never>
+    >
+    totalPoints?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardView>>,
+      Record<string, never>
+    >
+  }
+  GameEstimationNumericLeaderboardViewsConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Record<string, never>
+    >
+  }
+  GameEstimationNumericLeaderboardViewsEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsEdge>>,
       Record<string, never>
     >
   }

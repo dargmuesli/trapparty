@@ -12,6 +12,11 @@ export const EventItem = graphql(`
     commonDonationUrl
     commonDonationIsLive
     commonDonationAmount
+    gamesByEventId {
+      nodes {
+        ...GameItem
+      }
+    }
   }
 `)
 

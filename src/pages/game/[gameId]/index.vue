@@ -26,6 +26,10 @@
         </VioButtonColored>
       </div>
       <GameRandomFacts v-if="game.type === 'RANDOM_FACTS'" :game-id="game.id" />
+      <GameEstimationNumeric
+        v-if="game.type === 'ESTIMATION_NUMERIC'"
+        :game-id="game.id"
+      />
       <div v-else>
         {{ t('gameTypeUnexpected') }}
       </div>
