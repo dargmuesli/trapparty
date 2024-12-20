@@ -1,5 +1,0 @@
-BEGIN;
-
-DROP EXTENSION "uuid-ossp";
-
-COMMIT;
