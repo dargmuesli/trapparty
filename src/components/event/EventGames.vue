@@ -1,20 +1,20 @@
 <template>
   <VioLoader :api="api">
-    <div class="text-center">
+    <div class="flex flex-col gap-4 text-center">
       <h1>
         {{ title }}
       </h1>
-      <div v-if="games.length">
-        <h2>
+      <div v-if="games.length" class="flex flex-col gap-2">
+        <h2 class="text-left">
           {{ t('games') }}
         </h2>
         <ul class="flex flex-col gap-4">
           <li
             v-for="game in games"
             :key="game.id"
-            class="rounded border border-gray-900 px-8 py-4 md:px-16 md:py-8 dark:border-white"
+            class="flex flex-col gap-4 border-x border-gray-900 px-8 py-4 md:px-16 md:py-8 lg:flex-row dark:border-white"
           >
-            <GameTitle :game="game" />
+            <GameTitle :game="game" class="flex-grow" />
             <div class="flex gap-4">
               <VioButtonColored
                 v-if="
@@ -23,6 +23,7 @@
                 :aria-label="t('gameLink')"
                 :to="localePath(`/game/${game.id}`)"
               >
+                <IHeroiconsPlay16Solid />
                 {{ t('gameLink') }}
               </VioButtonColored>
               <VioButtonColored
@@ -30,6 +31,7 @@
                 :is-primary="false"
                 :to="localePath(`/game/${game.id}/statistic`)"
               >
+                <IHeroiconsChartBarSquare16Solid />
                 {{ t('gameLinkStatistic') }}
               </VioButtonColored>
             </div>
@@ -44,15 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import { consola } from 'consola'
-import type { UnwrapRef } from 'vue'
-
 import { getEventItem } from '~/gql/documents/fragments/eventItem'
 import { getGameItem } from '~/gql/documents/fragments/gameItem'
 import { useEventByNameQuery } from '~/gql/documents/queries/event/eventByName'
-import type { GameItemFragment } from '~/gql/generated/graphql'
 import { useStore } from '~/store'
-import { allGamesQuery } from '~/gql/documents/queries/game/allGames'
 
 interface Props {
   eventName: string
@@ -60,7 +57,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const eventNameProp = toRef(() => props.eventName)
 
-const { $urql } = useNuxtApp()
 const localePath = useLocalePath()
 const { t } = useI18n()
 const store = useStore()
@@ -82,44 +78,17 @@ const api = computed(() =>
 const trapPartyEvent = computed(() =>
   getEventItem(eventByNameQuery.data.value?.eventByName),
 )
+const games = computed(() =>
+  arrayRemoveNulls(
+    trapPartyEvent.value?.gamesByEventId.nodes.map((x) => getGameItem(x)),
+  ),
+)
 
 // data
-const games = ref<GameItemFragment[]>([])
 const title = t('title', { name: eventNameProp.value })
-
-// methods
-const fetchGames = async (
-  trapPartyEventLocal: UnwrapRef<typeof trapPartyEvent>,
-) => {
-  if (!trapPartyEventLocal?.id) return
-
-  const result = await $urql.value
-    .query(allGamesQuery, {
-      eventId: trapPartyEventLocal.id,
-    })
-    .toPromise()
-
-  if (result.error) {
-    api.value.errors.push(result.error)
-    consola.error(result.error)
-  }
-
-  const allGames = arrayRemoveNulls(
-    result.data?.allGames?.nodes.map((x) => getGameItem(x)),
-  )
-
-  games.value = allGames
-}
-
-// lifecycle
-watch(
-  trapPartyEvent,
-  async (currentValue, _oldValue) => await fetchGames(currentValue),
-)
 
 // initialization
 useHeadDefault({ title })
-fetchGames(trapPartyEvent.value)
 </script>
 
 <script lang="ts">
@@ -132,13 +101,13 @@ export default {
 de:
   games: Spiele
   gamesNone: Keine Spiele vorhanden.
-  gameLink: Zum Spiel
-  gameLinkStatistic: Zur Statistik
+  gameLink: Jetzt mitspielen
+  gameLinkStatistic: Statistiken
   title: TrapParty {name}
 en:
   games: Games
   gamesNone: No games available.
-  gameLink: To the game
-  gameLinkStatistic: To the statistics
+  gameLink: Join the game
+  gameLinkStatistic: Game statistics
   title: TrapParty {name}
 </i18n>

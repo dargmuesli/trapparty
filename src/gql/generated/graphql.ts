@@ -212,6 +212,78 @@ export type CreateEventPayloadEventEdgeArgs = {
   orderBy?: InputMaybe<Array<EventsOrderBy>>
 }
 
+/** All input for the create `GameEstimationNumericRound` mutation. */
+export type CreateGameEstimationNumericRoundInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The `GameEstimationNumericRound` to be created by this mutation. */
+  gameEstimationNumericRound: GameEstimationNumericRoundInput
+}
+
+/** The output of our create `GameEstimationNumericRound` mutation. */
+export type CreateGameEstimationNumericRoundPayload = {
+  __typename?: 'CreateGameEstimationNumericRoundPayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
+  gameByGameId?: Maybe<Game>
+  /** The `GameEstimationNumericRound` that was created by this mutation. */
+  gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
+  /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our create `GameEstimationNumericRound` mutation. */
+export type CreateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+  }
+
+/** All input for the create `GameEstimationNumericVote` mutation. */
+export type CreateGameEstimationNumericVoteInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The `GameEstimationNumericVote` to be created by this mutation. */
+  gameEstimationNumericVote: GameEstimationNumericVoteInput
+}
+
+/** The output of our create `GameEstimationNumericVote` mutation. */
+export type CreateGameEstimationNumericVotePayload = {
+  __typename?: 'CreateGameEstimationNumericVotePayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
+  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
+  /** The `GameEstimationNumericVote` that was created by this mutation. */
+  gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
+  /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
+  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
+  playerByPlayerId?: Maybe<Player>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our create `GameEstimationNumericVote` mutation. */
+export type CreateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  }
+
 /** All input for the create `Game` mutation. */
 export type CreateGameInput = {
   /**
@@ -633,6 +705,113 @@ export type DeleteGameByIdInput = {
   /** The games's internal id. */
   id: Scalars['Int']['input']
 }
+
+/** All input for the `deleteGameEstimationNumericRoundById` mutation. */
+export type DeleteGameEstimationNumericRoundByIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  id: Scalars['Int']['input']
+}
+
+/** All input for the `deleteGameEstimationNumericRound` mutation. */
+export type DeleteGameEstimationNumericRoundInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The globally unique `ID` which will identify a single `GameEstimationNumericRound` to be deleted. */
+  nodeId: Scalars['ID']['input']
+}
+
+/** The output of our delete `GameEstimationNumericRound` mutation. */
+export type DeleteGameEstimationNumericRoundPayload = {
+  __typename?: 'DeleteGameEstimationNumericRoundPayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameEstimationNumericRoundId?: Maybe<Scalars['ID']['output']>
+  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
+  gameByGameId?: Maybe<Game>
+  /** The `GameEstimationNumericRound` that was deleted by this mutation. */
+  gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
+  /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our delete `GameEstimationNumericRound` mutation. */
+export type DeleteGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+  }
+
+/** All input for the `deleteGameEstimationNumericVoteById` mutation. */
+export type DeleteGameEstimationNumericVoteByIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  id: Scalars['Int']['input']
+}
+
+/** All input for the `deleteGameEstimationNumericVoteByPlayerIdAndRoundId` mutation. */
+export type DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['input']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['input']
+}
+
+/** All input for the `deleteGameEstimationNumericVote` mutation. */
+export type DeleteGameEstimationNumericVoteInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The globally unique `ID` which will identify a single `GameEstimationNumericVote` to be deleted. */
+  nodeId: Scalars['ID']['input']
+}
+
+/** The output of our delete `GameEstimationNumericVote` mutation. */
+export type DeleteGameEstimationNumericVotePayload = {
+  __typename?: 'DeleteGameEstimationNumericVotePayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  deletedGameEstimationNumericVoteId?: Maybe<Scalars['ID']['output']>
+  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
+  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
+  /** The `GameEstimationNumericVote` that was deleted by this mutation. */
+  gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
+  /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
+  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
+  playerByPlayerId?: Maybe<Player>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our delete `GameEstimationNumericVote` mutation. */
+export type DeleteGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  }
 
 /** All input for the `deleteGame` mutation. */
 export type DeleteGameInput = {
@@ -1191,6 +1370,8 @@ export type Game = Node & {
   eventByEventId?: Maybe<Event>
   /** The game's internal event id */
   eventId: Scalars['Int']['output']
+  /** Reads and enables pagination through a set of `GameEstimationNumericRound`. */
+  gameEstimationNumericRoundsByGameId: GameEstimationNumericRoundsConnection
   /** Reads and enables pagination through a set of `GameRandomFactsRound`. */
   gameRandomFactsRoundsByGameId: GameRandomFactsRoundsConnection
   /** Reads and enables pagination through a set of `GameTeamScore`. */
@@ -1205,6 +1386,17 @@ export type Game = Node & {
   nodeId: Scalars['ID']['output']
   /** The game's type */
   type: GameType
+}
+
+/** Games. */
+export type GameGameEstimationNumericRoundsByGameIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericRoundCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
 }
 
 /** Games. */
@@ -1241,6 +1433,256 @@ export type GameCondition = {
   name?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `type` field. */
   type?: InputMaybe<GameType>
+}
+
+/** Retrieves the leaderboard for a numeric estimation game. */
+export type GameEstimationNumericLeaderboardView = {
+  __typename?: 'GameEstimationNumericLeaderboardView'
+  gameId?: Maybe<Scalars['Int']['output']>
+  playerName?: Maybe<Scalars['String']['output']>
+  totalPoints?: Maybe<Scalars['Int']['output']>
+}
+
+/**
+ * A condition to be used against `GameEstimationNumericLeaderboardView` object
+ * types. All fields are tested for equality and combined with a logical ‘and.’
+ */
+export type GameEstimationNumericLeaderboardViewCondition = {
+  /** Checks for equality with the object’s `gameId` field. */
+  gameId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `playerName` field. */
+  playerName?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `totalPoints` field. */
+  totalPoints?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameEstimationNumericLeaderboardView` values. */
+export type GameEstimationNumericLeaderboardViewsConnection = {
+  __typename?: 'GameEstimationNumericLeaderboardViewsConnection'
+  /** A list of edges which contains the `GameEstimationNumericLeaderboardView` and cursor to aid in pagination. */
+  edges: Array<GameEstimationNumericLeaderboardViewsEdge>
+  /** A list of `GameEstimationNumericLeaderboardView` objects. */
+  nodes: Array<Maybe<GameEstimationNumericLeaderboardView>>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameEstimationNumericLeaderboardView` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameEstimationNumericLeaderboardView` edge in the connection. */
+export type GameEstimationNumericLeaderboardViewsEdge = {
+  __typename?: 'GameEstimationNumericLeaderboardViewsEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameEstimationNumericLeaderboardView` at the end of the edge. */
+  node?: Maybe<GameEstimationNumericLeaderboardView>
+}
+
+/** Methods to use when ordering `GameEstimationNumericLeaderboardView`. */
+export enum GameEstimationNumericLeaderboardViewsOrderBy {
+  GameIdAsc = 'GAME_ID_ASC',
+  GameIdDesc = 'GAME_ID_DESC',
+  Natural = 'NATURAL',
+  PlayerNameAsc = 'PLAYER_NAME_ASC',
+  PlayerNameDesc = 'PLAYER_NAME_DESC',
+  TotalPointsAsc = 'TOTAL_POINTS_ASC',
+  TotalPointsDesc = 'TOTAL_POINTS_DESC',
+}
+
+/** A round of a numeric estimation game. */
+export type GameEstimationNumericRound = Node & {
+  __typename?: 'GameEstimationNumericRound'
+  /** The round's correct answer. */
+  answerCorrect?: Maybe<Scalars['Float']['output']>
+  /** The round's element name */
+  elementName: Scalars['String']['output']
+  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
+  gameByGameId?: Maybe<Game>
+  /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
+  gameEstimationNumericVotesByRoundId: GameEstimationNumericVotesConnection
+  /** The round's internal game id */
+  gameId: Scalars['Int']['output']
+  id: Scalars['Int']['output']
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID']['output']
+}
+
+/** A round of a numeric estimation game. */
+export type GameEstimationNumericRoundGameEstimationNumericVotesByRoundIdArgs =
+  {
+    after?: InputMaybe<Scalars['Cursor']['input']>
+    before?: InputMaybe<Scalars['Cursor']['input']>
+    condition?: InputMaybe<GameEstimationNumericVoteCondition>
+    first?: InputMaybe<Scalars['Int']['input']>
+    last?: InputMaybe<Scalars['Int']['input']>
+    offset?: InputMaybe<Scalars['Int']['input']>
+    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  }
+
+/**
+ * A condition to be used against `GameEstimationNumericRound` object types. All
+ * fields are tested for equality and combined with a logical ‘and.’
+ */
+export type GameEstimationNumericRoundCondition = {
+  /** Checks for equality with the object’s `answerCorrect` field. */
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
+  /** Checks for equality with the object’s `elementName` field. */
+  elementName?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `gameId` field. */
+  gameId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** An input for mutations affecting `GameEstimationNumericRound` */
+export type GameEstimationNumericRoundInput = {
+  /** The round's correct answer. */
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
+  /** The round's element name */
+  elementName: Scalars['String']['input']
+  /** The round's internal game id */
+  gameId: Scalars['Int']['input']
+  id?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** Represents an update to a `GameEstimationNumericRound`. Fields that are set will be updated. */
+export type GameEstimationNumericRoundPatch = {
+  /** The round's correct answer. */
+  answerCorrect?: InputMaybe<Scalars['Float']['input']>
+  /** The round's element name */
+  elementName?: InputMaybe<Scalars['String']['input']>
+  /** The round's internal game id */
+  gameId?: InputMaybe<Scalars['Int']['input']>
+  id?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameEstimationNumericRound` values. */
+export type GameEstimationNumericRoundsConnection = {
+  __typename?: 'GameEstimationNumericRoundsConnection'
+  /** A list of edges which contains the `GameEstimationNumericRound` and cursor to aid in pagination. */
+  edges: Array<GameEstimationNumericRoundsEdge>
+  /** A list of `GameEstimationNumericRound` objects. */
+  nodes: Array<Maybe<GameEstimationNumericRound>>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameEstimationNumericRound` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameEstimationNumericRound` edge in the connection. */
+export type GameEstimationNumericRoundsEdge = {
+  __typename?: 'GameEstimationNumericRoundsEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameEstimationNumericRound` at the end of the edge. */
+  node?: Maybe<GameEstimationNumericRound>
+}
+
+/** Methods to use when ordering `GameEstimationNumericRound`. */
+export enum GameEstimationNumericRoundsOrderBy {
+  AnswerCorrectAsc = 'ANSWER_CORRECT_ASC',
+  AnswerCorrectDesc = 'ANSWER_CORRECT_DESC',
+  ElementNameAsc = 'ELEMENT_NAME_ASC',
+  ElementNameDesc = 'ELEMENT_NAME_DESC',
+  GameIdAsc = 'GAME_ID_ASC',
+  GameIdDesc = 'GAME_ID_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+}
+
+/** A vote of a numeric estimation game round. */
+export type GameEstimationNumericVote = Node & {
+  __typename?: 'GameEstimationNumericVote'
+  /** The vote's answer. */
+  answer: Scalars['Float']['output']
+  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
+  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
+  id: Scalars['Int']['output']
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  nodeId: Scalars['ID']['output']
+  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
+  playerByPlayerId?: Maybe<Player>
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['output']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['output']
+}
+
+/**
+ * A condition to be used against `GameEstimationNumericVote` object types. All
+ * fields are tested for equality and combined with a logical ‘and.’
+ */
+export type GameEstimationNumericVoteCondition = {
+  /** Checks for equality with the object’s `answer` field. */
+  answer?: InputMaybe<Scalars['Float']['input']>
+  /** Checks for equality with the object’s `id` field. */
+  id?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `playerId` field. */
+  playerId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `roundId` field. */
+  roundId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** An input for mutations affecting `GameEstimationNumericVote` */
+export type GameEstimationNumericVoteInput = {
+  /** The vote's answer. */
+  answer: Scalars['Float']['input']
+  id?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['input']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['input']
+}
+
+/** Represents an update to a `GameEstimationNumericVote`. Fields that are set will be updated. */
+export type GameEstimationNumericVotePatch = {
+  /** The vote's answer. */
+  answer?: InputMaybe<Scalars['Float']['input']>
+  id?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal player id */
+  playerId?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal round id. */
+  roundId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameEstimationNumericVote` values. */
+export type GameEstimationNumericVotesConnection = {
+  __typename?: 'GameEstimationNumericVotesConnection'
+  /** A list of edges which contains the `GameEstimationNumericVote` and cursor to aid in pagination. */
+  edges: Array<GameEstimationNumericVotesEdge>
+  /** A list of `GameEstimationNumericVote` objects. */
+  nodes: Array<Maybe<GameEstimationNumericVote>>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameEstimationNumericVote` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameEstimationNumericVote` edge in the connection. */
+export type GameEstimationNumericVotesEdge = {
+  __typename?: 'GameEstimationNumericVotesEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameEstimationNumericVote` at the end of the edge. */
+  node?: Maybe<GameEstimationNumericVote>
+}
+
+/** Methods to use when ordering `GameEstimationNumericVote`. */
+export enum GameEstimationNumericVotesOrderBy {
+  AnswerAsc = 'ANSWER_ASC',
+  AnswerDesc = 'ANSWER_DESC',
+  IdAsc = 'ID_ASC',
+  IdDesc = 'ID_DESC',
+  Natural = 'NATURAL',
+  PlayerIdAsc = 'PLAYER_ID_ASC',
+  PlayerIdDesc = 'PLAYER_ID_DESC',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RoundIdAsc = 'ROUND_ID_ASC',
+  RoundIdDesc = 'ROUND_ID_DESC',
 }
 
 /** An input for mutations affecting `Game` */
@@ -1567,8 +2009,9 @@ export enum GameTeamScoresOrderBy {
   TeamIdDesc = 'TEAM_ID_DESC',
 }
 
-/** Available game types: random_facts, team_score. */
+/** Available game types: estimation_numeric, random_facts, team_score. */
 export enum GameType {
+  EstimationNumeric = 'ESTIMATION_NUMERIC',
   RandomFacts = 'RANDOM_FACTS',
   TeamScore = 'TEAM_SCORE',
 }
@@ -1685,6 +2128,10 @@ export type Mutation = {
   createEvent?: Maybe<CreateEventPayload>
   /** Creates a single `Game`. */
   createGame?: Maybe<CreateGamePayload>
+  /** Creates a single `GameEstimationNumericRound`. */
+  createGameEstimationNumericRound?: Maybe<CreateGameEstimationNumericRoundPayload>
+  /** Creates a single `GameEstimationNumericVote`. */
+  createGameEstimationNumericVote?: Maybe<CreateGameEstimationNumericVotePayload>
   /** Creates a single `GameRandomFactsRound`. */
   createGameRandomFactsRound?: Maybe<CreateGameRandomFactsRoundPayload>
   /** Creates a single `GameRandomFactsVote`. */
@@ -1719,6 +2166,16 @@ export type Mutation = {
   deleteGameByEventIdAndName?: Maybe<DeleteGamePayload>
   /** Deletes a single `Game` using a unique key. */
   deleteGameById?: Maybe<DeleteGamePayload>
+  /** Deletes a single `GameEstimationNumericRound` using its globally unique id. */
+  deleteGameEstimationNumericRound?: Maybe<DeleteGameEstimationNumericRoundPayload>
+  /** Deletes a single `GameEstimationNumericRound` using a unique key. */
+  deleteGameEstimationNumericRoundById?: Maybe<DeleteGameEstimationNumericRoundPayload>
+  /** Deletes a single `GameEstimationNumericVote` using its globally unique id. */
+  deleteGameEstimationNumericVote?: Maybe<DeleteGameEstimationNumericVotePayload>
+  /** Deletes a single `GameEstimationNumericVote` using a unique key. */
+  deleteGameEstimationNumericVoteById?: Maybe<DeleteGameEstimationNumericVotePayload>
+  /** Deletes a single `GameEstimationNumericVote` using a unique key. */
+  deleteGameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<DeleteGameEstimationNumericVotePayload>
   /** Deletes a single `GameRandomFactsRound` using its globally unique id. */
   deleteGameRandomFactsRound?: Maybe<DeleteGameRandomFactsRoundPayload>
   /** Deletes a single `GameRandomFactsRound` using a unique key. */
@@ -1771,6 +2228,16 @@ export type Mutation = {
   updateGameByEventIdAndName?: Maybe<UpdateGamePayload>
   /** Updates a single `Game` using a unique key and a patch. */
   updateGameById?: Maybe<UpdateGamePayload>
+  /** Updates a single `GameEstimationNumericRound` using its globally unique id and a patch. */
+  updateGameEstimationNumericRound?: Maybe<UpdateGameEstimationNumericRoundPayload>
+  /** Updates a single `GameEstimationNumericRound` using a unique key and a patch. */
+  updateGameEstimationNumericRoundById?: Maybe<UpdateGameEstimationNumericRoundPayload>
+  /** Updates a single `GameEstimationNumericVote` using its globally unique id and a patch. */
+  updateGameEstimationNumericVote?: Maybe<UpdateGameEstimationNumericVotePayload>
+  /** Updates a single `GameEstimationNumericVote` using a unique key and a patch. */
+  updateGameEstimationNumericVoteById?: Maybe<UpdateGameEstimationNumericVotePayload>
+  /** Updates a single `GameEstimationNumericVote` using a unique key and a patch. */
+  updateGameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<UpdateGameEstimationNumericVotePayload>
   /** Updates a single `GameRandomFactsRound` using its globally unique id and a patch. */
   updateGameRandomFactsRound?: Maybe<UpdateGameRandomFactsRoundPayload>
   /** Updates a single `GameRandomFactsRound` using a unique key and a patch. */
@@ -1818,6 +2285,16 @@ export type MutationCreateEventArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateGameArgs = {
   input: CreateGameInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateGameEstimationNumericRoundArgs = {
+  input: CreateGameEstimationNumericRoundInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateGameEstimationNumericVoteArgs = {
+  input: CreateGameEstimationNumericVoteInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -1903,6 +2380,31 @@ export type MutationDeleteGameByEventIdAndNameArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteGameByIdArgs = {
   input: DeleteGameByIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGameEstimationNumericRoundArgs = {
+  input: DeleteGameEstimationNumericRoundInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGameEstimationNumericRoundByIdArgs = {
+  input: DeleteGameEstimationNumericRoundByIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGameEstimationNumericVoteArgs = {
+  input: DeleteGameEstimationNumericVoteInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGameEstimationNumericVoteByIdArgs = {
+  input: DeleteGameEstimationNumericVoteByIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
+  input: DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2036,6 +2538,31 @@ export type MutationUpdateGameByIdArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGameEstimationNumericRoundArgs = {
+  input: UpdateGameEstimationNumericRoundInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGameEstimationNumericRoundByIdArgs = {
+  input: UpdateGameEstimationNumericRoundByIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGameEstimationNumericVoteArgs = {
+  input: UpdateGameEstimationNumericVoteInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGameEstimationNumericVoteByIdArgs = {
+  input: UpdateGameEstimationNumericVoteByIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
+  input: UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput
+}
+
+/** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateGameRandomFactsRoundArgs = {
   input: UpdateGameRandomFactsRoundInput
 }
@@ -2137,6 +2664,8 @@ export type PageInfo = {
 /** Players. */
 export type Player = Node & {
   __typename?: 'Player'
+  /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
+  gameEstimationNumericVotesByPlayerId: GameEstimationNumericVotesConnection
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
   gameRandomFactsVotesByPlayerId: GameRandomFactsVotesConnection
   /** The players's internal id. */
@@ -2153,6 +2682,17 @@ export type Player = Node & {
   teamId?: Maybe<Scalars['Int']['output']>
   /** Reads and enables pagination through a set of `TeamLeader`. */
   teamLeadersByPlayerId: TeamLeadersConnection
+}
+
+/** Players. */
+export type PlayerGameEstimationNumericVotesByPlayerIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericVoteCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
 }
 
 /** Players. */
@@ -2257,6 +2797,12 @@ export type Query = Node & {
   allCharityOrganizations?: Maybe<CharityOrganizationsConnection>
   /** Reads and enables pagination through a set of `Event`. */
   allEvents?: Maybe<EventsConnection>
+  /** Reads and enables pagination through a set of `GameEstimationNumericLeaderboardView`. */
+  allGameEstimationNumericLeaderboardViews?: Maybe<GameEstimationNumericLeaderboardViewsConnection>
+  /** Reads and enables pagination through a set of `GameEstimationNumericRound`. */
+  allGameEstimationNumericRounds?: Maybe<GameEstimationNumericRoundsConnection>
+  /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
+  allGameEstimationNumericVotes?: Maybe<GameEstimationNumericVotesConnection>
   /** Reads and enables pagination through a set of `GameRandomFactsRound`. */
   allGameRandomFactsRounds?: Maybe<GameRandomFactsRoundsConnection>
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
@@ -2286,6 +2832,13 @@ export type Query = Node & {
   game?: Maybe<Game>
   gameByEventIdAndName?: Maybe<Game>
   gameById?: Maybe<Game>
+  /** Reads a single `GameEstimationNumericRound` using its globally unique `ID`. */
+  gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
+  gameEstimationNumericRoundById?: Maybe<GameEstimationNumericRound>
+  /** Reads a single `GameEstimationNumericVote` using its globally unique `ID`. */
+  gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
+  gameEstimationNumericVoteById?: Maybe<GameEstimationNumericVote>
+  gameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<GameEstimationNumericVote>
   /** Reads a single `GameRandomFactsRound` using its globally unique `ID`. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
   gameRandomFactsRoundById?: Maybe<GameRandomFactsRound>
@@ -2345,6 +2898,39 @@ export type QueryAllEventsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
   orderBy?: InputMaybe<Array<EventsOrderBy>>
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryAllGameEstimationNumericLeaderboardViewsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericLeaderboardViewCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericLeaderboardViewsOrderBy>>
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryAllGameEstimationNumericRoundsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericRoundCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryAllGameEstimationNumericVotesArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>
+  before?: InputMaybe<Scalars['Cursor']['input']>
+  condition?: InputMaybe<GameEstimationNumericVoteCondition>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  offset?: InputMaybe<Scalars['Int']['input']>
+  orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2484,6 +3070,32 @@ export type QueryGameByEventIdAndNameArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryGameByIdArgs = {
   id: Scalars['Int']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameEstimationNumericRoundArgs = {
+  nodeId: Scalars['ID']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameEstimationNumericRoundByIdArgs = {
+  id: Scalars['Int']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameEstimationNumericVoteArgs = {
+  nodeId: Scalars['ID']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameEstimationNumericVoteByIdArgs = {
+  id: Scalars['Int']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
+  playerId: Scalars['Int']['input']
+  roundId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3031,6 +3643,121 @@ export type UpdateGameByIdInput = {
   id: Scalars['Int']['input']
 }
 
+/** All input for the `updateGameEstimationNumericRoundById` mutation. */
+export type UpdateGameEstimationNumericRoundByIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericRound` being updated. */
+  gameEstimationNumericRoundPatch: GameEstimationNumericRoundPatch
+  id: Scalars['Int']['input']
+}
+
+/** All input for the `updateGameEstimationNumericRound` mutation. */
+export type UpdateGameEstimationNumericRoundInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericRound` being updated. */
+  gameEstimationNumericRoundPatch: GameEstimationNumericRoundPatch
+  /** The globally unique `ID` which will identify a single `GameEstimationNumericRound` to be updated. */
+  nodeId: Scalars['ID']['input']
+}
+
+/** The output of our update `GameEstimationNumericRound` mutation. */
+export type UpdateGameEstimationNumericRoundPayload = {
+  __typename?: 'UpdateGameEstimationNumericRoundPayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
+  gameByGameId?: Maybe<Game>
+  /** The `GameEstimationNumericRound` that was updated by this mutation. */
+  gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
+  /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our update `GameEstimationNumericRound` mutation. */
+export type UpdateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+  }
+
+/** All input for the `updateGameEstimationNumericVoteById` mutation. */
+export type UpdateGameEstimationNumericVoteByIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
+  gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
+  id: Scalars['Int']['input']
+}
+
+/** All input for the `updateGameEstimationNumericVoteByPlayerIdAndRoundId` mutation. */
+export type UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
+  gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['input']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['input']
+}
+
+/** All input for the `updateGameEstimationNumericVote` mutation. */
+export type UpdateGameEstimationNumericVoteInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
+  gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
+  /** The globally unique `ID` which will identify a single `GameEstimationNumericVote` to be updated. */
+  nodeId: Scalars['ID']['input']
+}
+
+/** The output of our update `GameEstimationNumericVote` mutation. */
+export type UpdateGameEstimationNumericVotePayload = {
+  __typename?: 'UpdateGameEstimationNumericVotePayload'
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>
+  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
+  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
+  /** The `GameEstimationNumericVote` that was updated by this mutation. */
+  gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
+  /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
+  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
+  playerByPlayerId?: Maybe<Player>
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>
+}
+
+/** The output of our update `GameEstimationNumericVote` mutation. */
+export type UpdateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
+  {
+    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  }
+
 /** All input for the `updateGame` mutation. */
 export type UpdateGameInput = {
   /**
@@ -3466,7 +4193,34 @@ export type EventItemFragment = {
   commonDonationUrl?: string | null
   commonDonationIsLive?: boolean | null
   commonDonationAmount?: number | null
+  gamesByEventId: {
+    __typename?: 'GamesConnection'
+    nodes: Array<
+      | ({ __typename?: 'Game' } & {
+          ' $fragmentRefs'?: { GameItemFragment: GameItemFragment }
+        })
+      | null
+    >
+  }
 } & { ' $fragmentName'?: 'EventItemFragment' }
+
+export type GameEstimationNumericRoundItemFragment = {
+  __typename?: 'GameEstimationNumericRound'
+  nodeId: string
+  id: number
+  answerCorrect?: number | null
+  elementName: string
+  gameId: number
+} & { ' $fragmentName'?: 'GameEstimationNumericRoundItemFragment' }
+
+export type GameEstimationNumericVoteItemFragment = {
+  __typename?: 'GameEstimationNumericVote'
+  nodeId: string
+  id: number
+  answer: number
+  playerId: number
+  roundId: number
+} & { ' $fragmentName'?: 'GameEstimationNumericVoteItemFragment' }
 
 export type GameItemFragment = {
   __typename?: 'Game'
@@ -3523,6 +4277,24 @@ export type TeamItemFragment = {
       })
     | null
 } & { ' $fragmentName'?: 'TeamItemFragment' }
+
+export type CreateGameEstimationNumericVoteMutationVariables = Exact<{
+  gameEstimationNumericVoteInput: GameEstimationNumericVoteInput
+}>
+
+export type CreateGameEstimationNumericVoteMutation = {
+  __typename?: 'Mutation'
+  createGameEstimationNumericVote?: {
+    __typename?: 'CreateGameEstimationNumericVotePayload'
+    gameEstimationNumericVote?:
+      | ({ __typename?: 'GameEstimationNumericVote' } & {
+          ' $fragmentRefs'?: {
+            GameEstimationNumericVoteItemFragment: GameEstimationNumericVoteItemFragment
+          }
+        })
+      | null
+  } | null
+}
 
 export type CreateGameRandomFactsRoundMutationVariables = Exact<{
   gameRandomFactsRoundInput: GameRandomFactsRoundInput
@@ -3603,6 +4375,17 @@ export type EventByNameQuery = {
   eventByName?:
     | ({
         __typename?: 'Event'
+        gamesByEventId: {
+          __typename?: 'GamesConnection'
+          nodes: Array<{
+            __typename?: 'Game'
+            nodeId: string
+            id: number
+            isActive: boolean
+            name: string
+            type: GameType
+          } | null>
+        }
         teamsByEventId: {
           __typename?: 'TeamsConnection'
           nodes: Array<
@@ -3614,6 +4397,42 @@ export type EventByNameQuery = {
         }
       } & { ' $fragmentRefs'?: { EventItemFragment: EventItemFragment } })
     | null
+}
+
+export type AllGameEstimationNumericLeaderboardViewsQueryVariables = Exact<{
+  gameId: Scalars['Int']['input']
+}>
+
+export type AllGameEstimationNumericLeaderboardViewsQuery = {
+  __typename?: 'Query'
+  allGameEstimationNumericLeaderboardViews?: {
+    __typename?: 'GameEstimationNumericLeaderboardViewsConnection'
+    nodes: Array<{
+      __typename?: 'GameEstimationNumericLeaderboardView'
+      gameId?: number | null
+      playerName?: string | null
+      totalPoints?: number | null
+    } | null>
+  } | null
+}
+
+export type AllGameEstimationNumericRoundsQueryVariables = Exact<{
+  gameId: Scalars['Int']['input']
+}>
+
+export type AllGameEstimationNumericRoundsQuery = {
+  __typename?: 'Query'
+  allGameEstimationNumericRounds?: {
+    __typename?: 'GameEstimationNumericRoundsConnection'
+    nodes: Array<
+      | ({ __typename?: 'GameEstimationNumericRound' } & {
+          ' $fragmentRefs'?: {
+            GameEstimationNumericRoundItemFragment: GameEstimationNumericRoundItemFragment
+          }
+        })
+      | null
+    >
+  } | null
 }
 
 export type AllGameRandomFactsRoundsQueryVariables = Exact<{
@@ -3681,6 +4500,23 @@ export type GameByIdQuery = {
   gameById?:
     | ({ __typename?: 'Game' } & {
         ' $fragmentRefs'?: { GameItemFragment: GameItemFragment }
+      })
+    | null
+}
+
+export type GameEstimationNumericVoteByPlayerIdAndRoundIdQueryVariables =
+  Exact<{
+    playerId: Scalars['Int']['input']
+    roundId: Scalars['Int']['input']
+  }>
+
+export type GameEstimationNumericVoteByPlayerIdAndRoundIdQuery = {
+  __typename?: 'Query'
+  gameEstimationNumericVoteByPlayerIdAndRoundId?:
+    | ({ __typename?: 'GameEstimationNumericVote' } & {
+        ' $fragmentRefs'?: {
+          GameEstimationNumericVoteItemFragment: GameEstimationNumericVoteItemFragment
+        }
       })
     | null
 }
@@ -3793,6 +4629,30 @@ export type StatsQuery = {
   } | null
 }
 
+export const GameItemFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'Game' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'type' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GameItemFragment, unknown>
 export const EventItemFragmentDoc = {
   kind: 'Document',
   definitions: [
@@ -3822,14 +4682,31 @@ export const EventItemFragmentDoc = {
             kind: 'Field',
             name: { kind: 'Name', value: 'commonDonationAmount' },
           },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'gamesByEventId' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'FragmentSpread',
+                        name: { kind: 'Name', value: 'GameItem' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
         ],
       },
     },
-  ],
-} as unknown as DocumentNode<EventItemFragment, unknown>
-export const GameItemFragmentDoc = {
-  kind: 'Document',
-  definitions: [
     {
       kind: 'FragmentDefinition',
       name: { kind: 'Name', value: 'GameItem' },
@@ -3850,7 +4727,53 @@ export const GameItemFragmentDoc = {
       },
     },
   ],
-} as unknown as DocumentNode<GameItemFragment, unknown>
+} as unknown as DocumentNode<EventItemFragment, unknown>
+export const GameEstimationNumericRoundItemFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameEstimationNumericRoundItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'GameEstimationNumericRound' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'elementName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GameEstimationNumericRoundItemFragment, unknown>
+export const GameEstimationNumericVoteItemFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameEstimationNumericVoteItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'GameEstimationNumericVote' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GameEstimationNumericVoteItemFragment, unknown>
 export const GameRandomFactsRoundItemFragmentDoc = {
   kind: 'Document',
   definitions: [
@@ -4004,6 +4927,108 @@ export const TeamItemFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<TeamItemFragment, unknown>
+export const CreateGameEstimationNumericVoteDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'createGameEstimationNumericVote' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'gameEstimationNumericVoteInput' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'GameEstimationNumericVoteInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'createGameEstimationNumericVote' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'input' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: {
+                        kind: 'Name',
+                        value: 'gameEstimationNumericVote',
+                      },
+                      value: {
+                        kind: 'Variable',
+                        name: {
+                          kind: 'Name',
+                          value: 'gameEstimationNumericVoteInput',
+                        },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'gameEstimationNumericVote' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'FragmentSpread',
+                        name: {
+                          kind: 'Name',
+                          value: 'GameEstimationNumericVoteItem',
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameEstimationNumericVoteItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'GameEstimationNumericVote' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  CreateGameEstimationNumericVoteMutation,
+  CreateGameEstimationNumericVoteMutationVariables
+>
 export const CreateGameRandomFactsRoundDocument = {
   kind: 'Document',
   definitions: [
@@ -4364,6 +5389,25 @@ export const AllEventsDocument = {
     },
     {
       kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'Game' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'type' } },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
       name: { kind: 'Name', value: 'EventItem' },
       typeCondition: {
         kind: 'NamedType',
@@ -4387,6 +5431,28 @@ export const AllEventsDocument = {
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'commonDonationAmount' },
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'gamesByEventId' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'FragmentSpread',
+                        name: { kind: 'Name', value: 'GameItem' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
           },
         ],
       },
@@ -4441,6 +5507,44 @@ export const EventByNameDocument = {
                 },
                 {
                   kind: 'Field',
+                  name: { kind: 'Name', value: 'gamesByEventId' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'nodes' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'nodeId' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'id' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'isActive' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'name' },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'type' },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
                   name: { kind: 'Name', value: 'teamsByEventId' },
                   selectionSet: {
                     kind: 'SelectionSet',
@@ -4464,6 +5568,25 @@ export const EventByNameDocument = {
               ],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'Game' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'type' } },
         ],
       },
     },
@@ -4510,6 +5633,28 @@ export const EventByNameDocument = {
             kind: 'Field',
             name: { kind: 'Name', value: 'commonDonationAmount' },
           },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'gamesByEventId' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'FragmentSpread',
+                        name: { kind: 'Name', value: 'GameItem' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
         ],
       },
     },
@@ -4555,6 +5700,187 @@ export const EventByNameDocument = {
     },
   ],
 } as unknown as DocumentNode<EventByNameQuery, EventByNameQueryVariables>
+export const AllGameEstimationNumericLeaderboardViewsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'allGameEstimationNumericLeaderboardViews' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'gameId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: {
+              kind: 'Name',
+              value: 'allGameEstimationNumericLeaderboardViews',
+            },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'condition' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'gameId' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'gameId' },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'gameId' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'playerName' },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'totalPoints' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  AllGameEstimationNumericLeaderboardViewsQuery,
+  AllGameEstimationNumericLeaderboardViewsQueryVariables
+>
+export const AllGameEstimationNumericRoundsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'allGameEstimationNumericRounds' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'gameId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'allGameEstimationNumericRounds' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'condition' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'gameId' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'gameId' },
+                      },
+                    },
+                  ],
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: { kind: 'EnumValue', value: 'ID_DESC' },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'nodes' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'FragmentSpread',
+                        name: {
+                          kind: 'Name',
+                          value: 'GameEstimationNumericRoundItem',
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameEstimationNumericRoundItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'GameEstimationNumericRound' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'elementName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  AllGameEstimationNumericRoundsQuery,
+  AllGameEstimationNumericRoundsQueryVariables
+>
 export const AllGameRandomFactsRoundsDocument = {
   kind: 'Document',
   definitions: [
@@ -4925,6 +6251,106 @@ export const GameByIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GameByIdQuery, GameByIdQueryVariables>
+export const GameEstimationNumericVoteByPlayerIdAndRoundIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: {
+        kind: 'Name',
+        value: 'gameEstimationNumericVoteByPlayerIdAndRoundId',
+      },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'playerId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'roundId' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: {
+              kind: 'Name',
+              value: 'gameEstimationNumericVoteByPlayerIdAndRoundId',
+            },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'playerId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'playerId' },
+                },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'roundId' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'roundId' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: {
+                    kind: 'Name',
+                    value: 'GameEstimationNumericVoteItem',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'GameEstimationNumericVoteItem' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'GameEstimationNumericVote' },
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GameEstimationNumericVoteByPlayerIdAndRoundIdQuery,
+  GameEstimationNumericVoteByPlayerIdAndRoundIdQueryVariables
+>
 export const GameRandomFactsVoteByPlayerIdAndRoundIdDocument = {
   kind: 'Document',
   definitions: [

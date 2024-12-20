@@ -1,6 +1,3 @@
--- Deploy trapparty:role_anonymous to pg
--- requires: role_postgraphile
-
 BEGIN;
 
 DROP ROLE IF EXISTS trapparty_anonymous;

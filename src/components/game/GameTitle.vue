@@ -4,8 +4,12 @@
   >
     <h1 class="m-0">{{ game.name }}</h1>
     <span
-      class="rounded-full px-2 py-1 text-gray-900"
-      :class="game.isActive ? 'bg-green-400' : 'bg-white'"
+      class="rounded-full border px-2 py-1 text-sm"
+      :class="
+        game.isActive
+          ? 'border-green-400 text-green-400'
+          : 'border-gray-400 text-gray-400'
+      "
     >
       {{ game.isActive ? t('isActiveTrue') : t('isActiveFalse') }}
     </span>
