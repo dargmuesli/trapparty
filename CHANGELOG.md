@@ -1,3 +1,23 @@
+## [4.0.0](https://github.com/dargmuesli/trapparty/compare/3.16.6...4.0.0) (2024-12-20)
+
+### ⚠ BREAKING CHANGES
+
+* **uuid:** remove extension
+
+### Features
+
+* **app:** add route announcer ([a61bdfb](https://github.com/dargmuesli/trapparty/commit/a61bdfb2928355af0d224d33c1e34b5be8b9b6b0))
+* **event:** add 2024 ([ede875e](https://github.com/dargmuesli/trapparty/commit/ede875e28459c9f6d4761b4f287e6eb1dcba12de))
+* **game:** add type for numeric estimation ([310e32f](https://github.com/dargmuesli/trapparty/commit/310e32ff8d37901c803e456735b11aa2fc1ddd92))
+* **game:** complete numeric estimation ([1d8d2e1](https://github.com/dargmuesli/trapparty/commit/1d8d2e1c0b8a360f497aa3b20fac5b48170bd0eb))
+* **sqitch:** add tables for numeric estimation game ([ea77044](https://github.com/dargmuesli/trapparty/commit/ea770440751989419c554eae3968a96eb362d1af))
+* **uuid:** remove extension ([9c7a5f0](https://github.com/dargmuesli/trapparty/commit/9c7a5f0f884508e2d7567243287d12f001044ff2))
+
+### Bug Fixes
+
+* **game:** add gap under title ([7efe4da](https://github.com/dargmuesli/trapparty/commit/7efe4daf5263f53a6bdfd8d6fbfa88450f9b5385))
+* **seo:** update open graph image and `schema.org` usage ([39cf226](https://github.com/dargmuesli/trapparty/commit/39cf22658ae3aaf8bcb2aa19502330b475baaf31))
+
 ## [3.16.6](https://github.com/dargmuesli/trapparty/compare/3.16.5...3.16.6) (2024-12-09)
 
 ### Bug Fixes
