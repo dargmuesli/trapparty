@@ -42,11 +42,5 @@
     "test:e2e:server:node": "pnpm --dir src run test:e2e:server:node",
     "test:e2e:server:static": "pnpm --dir src run test:e2e:server:static"
   },
-  "pnpm": {
-    "overrides": {
-      "@pinia/nuxt": "0.5.5",
-      "typescript": "5.6.3"
-    }
-  },
   "type": "module"
 }
