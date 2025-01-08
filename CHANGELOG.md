@@ -1,3 +1,9 @@
+## [4.0.2](https://github.com/dargmuesli/trapparty/compare/4.0.1...4.0.2) (2025-01-08)
+
+### Bug Fixes
+
+* **open-graph:** correct image template name ([a251a79](https://github.com/dargmuesli/trapparty/commit/a251a7931448e455416874f8e8330582f9373aeb))
+
 ## [4.0.1](https://github.com/dargmuesli/trapparty/compare/4.0.0...4.0.1) (2024-12-30)
 
 ### Bug Fixes
