@@ -29,7 +29,7 @@
       <h1 class="text-center">{{ t('titleDistribution') }}</h1>
       <div class="overflow-auto">
         <table class="m-auto">
-          <thead>
+          <VioLayoutThead>
             <tr>
               <td />
               <th
@@ -42,8 +42,8 @@
               </th>
               <td />
             </tr>
-          </thead>
-          <tbody>
+          </VioLayoutThead>
+          <VioLayoutTbody>
             <tr
               v-for="(team, teamIndex) in [
                 ...teams,
@@ -100,7 +100,7 @@
                 {{ numberFormat(donationAmountSum) }}
               </td>
             </tr>
-          </tbody>
+          </VioLayoutTbody>
         </table>
       </div>
     </section>
