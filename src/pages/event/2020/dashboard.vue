@@ -26,212 +26,212 @@
         </span>
         <h1>{{ title }}</h1>
       </section>
-      <section
-        v-if="store.participationData.role === 'player'"
-        class="vio-prose"
-      >
-        <h2>{{ t('teamTitle') }}</h2>
-        <section>
-          <h3>{{ t('teamCommunicationTitle') }}</h3>
-          <p>
-            {{ t('teamCommunicationDescription1') }}
+      <section v-if="store.participationData.role === 'player'">
+        <VioLayoutProse>
+          <h2>{{ t('teamTitle') }}</h2>
+          <section>
+            <h3>{{ t('teamCommunicationTitle') }}</h3>
+            <p>
+              {{ t('teamCommunicationDescription1') }}
+              <i18n-t
+                v-if="participationDataPlayer?.teamByTeamId?.name"
+                keypath="teamDataName"
+              >
+                <span class="font-bold">
+                  {{ participationDataPlayer.teamByTeamId.name }}
+                </span>
+              </i18n-t>
+              <span v-else class="unready inline-block">
+                {{ t('teamDataNameDataless') }}
+              </span>
+            </p>
+            <p>
+              <VioButtonColored
+                :aria-label="t('discordInstall')"
+                class="mr-4"
+                to="https://discord.com/download"
+              >
+                {{ t('discordInstall') }}
+                <template #prefix>
+                  <VioIconDownload />
+                </template>
+              </VioButtonColored>
+              <VioButtonColored
+                v-if="
+                  participationDataPlayer?.teamByTeamId?.eventByEventId
+                    ?.discordInviteCode
+                "
+                :aria-label="t('discordJoin')"
+                class="ml-4"
+                :to="`https://discord.gg/${participationDataPlayer.teamByTeamId.eventByEventId.discordInviteCode}`"
+              >
+                {{ t('discordJoin') }}
+                <template #prefix>
+                  <VioIconSignIn />
+                </template>
+              </VioButtonColored>
+              <span v-else class="unready inline-block">
+                {{ t('dataless', { what: t('datalessDiscordCode') }) }}
+              </span>
+            </p>
+            <p v-if="participationDataPlayer?.teamByTeamId?.emoji">
+              {{
+                t('teamCommunicationDescription2', {
+                  emojiPrefix: participationDataPlayer.teamByTeamId.emoji
+                    ? participationDataPlayer.teamByTeamId.emoji + '-'
+                    : '',
+                })
+              }}
+            </p>
+            <VioButtonColored
+              :aria-label="t('discordTutorial')"
+              class="ml-4"
+              :icon-id="['fab', 'youtube']"
+              to="https://youtu.be/NJijHNL4yEo"
+            >
+              {{ t('discordTutorial') }}
+            </VioButtonColored>
+          </section>
+          <section>
+            <h3>{{ t('donationTitle') }}</h3>
+            <p>
+              {{ t('donationDescription') }}
+              {{ t('donationDescriptionTeam') }}
+            </p>
             <i18n-t
-              v-if="participationDataPlayer?.teamByTeamId?.name"
-              keypath="teamDataName"
+              v-if="
+                participationDataPlayer?.teamByTeamId
+                  ?.charityOrganizationByCharityOrganizationId?.name
+              "
+              keypath="teamDataCharityOrganisation"
+              tag="p"
             >
               <span class="font-bold">
-                {{ participationDataPlayer.teamByTeamId.name }}
+                <a
+                  v-if="
+                    participationDataPlayer.teamByTeamId
+                      .charityOrganizationByCharityOrganizationId.url
+                  "
+                  :href="
+                    participationDataPlayer.teamByTeamId
+                      .charityOrganizationByCharityOrganizationId.url
+                  "
+                >
+                  {{
+                    participationDataPlayer.teamByTeamId
+                      .charityOrganizationByCharityOrganizationId.name
+                  }}
+                </a>
+                <span v-else class="inline-block">
+                  {{
+                    participationDataPlayer.teamByTeamId
+                      .charityOrganizationByCharityOrganizationId.name
+                  }}
+                </span>
               </span>
             </i18n-t>
-            <span v-else class="unready inline-block">
-              {{ t('teamDataNameDataless') }}
-            </span>
-          </p>
-          <p>
-            <VioButtonColored
-              :aria-label="t('discordInstall')"
-              class="mr-4"
-              to="https://discord.com/download"
-            >
-              {{ t('discordInstall') }}
-              <template #prefix>
-                <VioIconDownload />
-              </template>
-            </VioButtonColored>
-            <VioButtonColored
-              v-if="
-                participationDataPlayer?.teamByTeamId?.eventByEventId
-                  ?.discordInviteCode
-              "
-              :aria-label="t('discordJoin')"
-              class="ml-4"
-              :to="`https://discord.gg/${participationDataPlayer.teamByTeamId.eventByEventId.discordInviteCode}`"
-            >
-              {{ t('discordJoin') }}
-              <template #prefix>
-                <VioIconSignIn />
-              </template>
-            </VioButtonColored>
-            <span v-else class="unready inline-block">
-              {{ t('dataless', { what: t('datalessDiscordCode') }) }}
-            </span>
-          </p>
-          <p v-if="participationDataPlayer?.teamByTeamId?.emoji">
-            {{
-              t('teamCommunicationDescription2', {
-                emojiPrefix: participationDataPlayer.teamByTeamId.emoji
-                  ? participationDataPlayer.teamByTeamId.emoji + '-'
-                  : '',
-              })
-            }}
-          </p>
-          <VioButtonColored
-            :aria-label="t('discordTutorial')"
-            class="ml-4"
-            :icon-id="['fab', 'youtube']"
-            to="https://youtu.be/NJijHNL4yEo"
-          >
-            {{ t('discordTutorial') }}
-          </VioButtonColored>
-        </section>
-        <section>
-          <h3>{{ t('donationTitle') }}</h3>
+            <p v-else>
+              <span class="unready inline-block">
+                {{ t('teamDataCharityOrganisationDataless') }}
+              </span>
+            </p>
+            <p v-if="participationDataPlayer?.teamByTeamId?.donationUrl">
+              <VioButtonShare
+                :url="participationDataPlayer.teamByTeamId.donationUrl"
+              >
+                <VioButtonColored
+                  :aria-label="t('donationButtonTeam')"
+                  :to="participationDataPlayer.teamByTeamId.donationUrl"
+                >
+                  {{ t('donationButtonTeam') }}
+                  <template #prefix>
+                    <VioIconHeart />
+                  </template>
+                </VioButtonColored>
+                <template #unready>
+                  {{ t('dataless', { what: t('datalessDonationTeam') }) }}
+                </template>
+              </VioButtonShare>
+            </p>
+          </section>
+        </VioLayoutProse>
+      </section>
+      <section v-if="store.participationData.role === 'watcher'">
+        <VioLayoutProse>
+          <h2>{{ t('donationTitle') }}</h2>
           <p>
             {{ t('donationDescription') }}
-            {{ t('donationDescriptionTeam') }}
+            {{ t('donationDescriptionCommon') }}
           </p>
-          <i18n-t
-            v-if="
-              participationDataPlayer?.teamByTeamId
-                ?.charityOrganizationByCharityOrganizationId?.name
-            "
-            keypath="teamDataCharityOrganisation"
-            tag="p"
-          >
-            <span class="font-bold">
-              <a
-                v-if="
-                  participationDataPlayer.teamByTeamId
-                    .charityOrganizationByCharityOrganizationId.url
-                "
-                :href="
-                  participationDataPlayer.teamByTeamId
-                    .charityOrganizationByCharityOrganizationId.url
-                "
-              >
-                {{
-                  participationDataPlayer.teamByTeamId
-                    .charityOrganizationByCharityOrganizationId.name
-                }}
-              </a>
-              <span v-else class="inline-block">
-                {{
-                  participationDataPlayer.teamByTeamId
-                    .charityOrganizationByCharityOrganizationId.name
-                }}
-              </span>
-            </span>
-          </i18n-t>
-          <p v-else>
-            <span class="unready inline-block">
-              {{ t('teamDataCharityOrganisationDataless') }}
-            </span>
-          </p>
-          <p v-if="participationDataPlayer?.teamByTeamId?.donationUrl">
-            <VioButtonShare
-              :url="participationDataPlayer.teamByTeamId.donationUrl"
-            >
+          <p v-if="trapPartyEvent?.commonDonationUrl">
+            <VioButtonShare :url="trapPartyEvent.commonDonationUrl">
               <VioButtonColored
-                :aria-label="t('donationButtonTeam')"
-                :to="participationDataPlayer.teamByTeamId.donationUrl"
+                :aria-label="t('donationButtonCommon')"
+                :to="trapPartyEvent.commonDonationUrl"
               >
-                {{ t('donationButtonTeam') }}
+                {{ t('donationButtonCommon') }}
                 <template #prefix>
                   <VioIconHeart />
                 </template>
               </VioButtonColored>
               <template #unready>
-                {{ t('dataless', { what: t('datalessDonationTeam') }) }}
+                {{ t('dataless', { what: t('datalessDonationCommon') }) }}
               </template>
             </VioButtonShare>
           </p>
-        </section>
+        </VioLayoutProse>
       </section>
-      <section
-        v-if="store.participationData.role === 'watcher'"
-        class="vio-prose"
-      >
-        <h2>{{ t('donationTitle') }}</h2>
-        <p>
-          {{ t('donationDescription') }}
-          {{ t('donationDescriptionCommon') }}
-        </p>
-        <p v-if="trapPartyEvent?.commonDonationUrl">
-          <VioButtonShare :url="trapPartyEvent.commonDonationUrl">
+      <section>
+        <VioLayoutProse>
+          <h2>{{ t('streamTitle') }}</h2>
+          <p>
+            {{ t('streamDescription') }}
+            <span v-if="store.participationData.role === 'player'">
+              {{ t('streamDescriptionPlayer') }}
+            </span>
+          </p>
+          <p>
+            <span v-if="trapPartyEvent?.streamUrl">
+              <VioButtonColored
+                :aria-label="t('streamGoto')"
+                class="mr-4"
+                :to="trapPartyEvent.streamUrl"
+              >
+                {{ t('streamGoto') }}
+                <template #prefix>
+                  <VioIconTv />
+                </template>
+              </VioButtonColored>
+              <i18n-t
+                v-if="trapPartyEvent.start"
+                keypath="streamDescriptionStart"
+              >
+                <span class="font-bold">
+                  {{
+                    t('startDuration', {
+                      start: $dayjs(trapPartyEvent.start).format('lll'),
+                      duration: $dayjs(trapPartyEvent.start).fromNow(),
+                    })
+                  }}
+                </span>
+              </i18n-t>
+            </span>
+            <span v-else class="unready inline-block">
+              {{ t('dataless', { what: t('datalessStream') }) }}
+            </span>
+          </p>
+          <p>
             <VioButtonColored
-              :aria-label="t('donationButtonCommon')"
-              :to="trapPartyEvent.commonDonationUrl"
+              :aria-label="t('statisticsGoTo')"
+              :to="localePath('/event/2020/statistics')"
             >
-              {{ t('donationButtonCommon') }}
+              {{ t('statisticsGoTo') }}
               <template #prefix>
-                <VioIconHeart />
+                <VioIconChartBar />
               </template>
             </VioButtonColored>
-            <template #unready>
-              {{ t('dataless', { what: t('datalessDonationCommon') }) }}
-            </template>
-          </VioButtonShare>
-        </p>
-      </section>
-      <section class="vio-prose">
-        <h2>{{ t('streamTitle') }}</h2>
-        <p>
-          {{ t('streamDescription') }}
-          <span v-if="store.participationData.role === 'player'">
-            {{ t('streamDescriptionPlayer') }}
-          </span>
-        </p>
-        <p>
-          <span v-if="trapPartyEvent?.streamUrl">
-            <VioButtonColored
-              :aria-label="t('streamGoto')"
-              class="mr-4"
-              :to="trapPartyEvent.streamUrl"
-            >
-              {{ t('streamGoto') }}
-              <template #prefix>
-                <VioIconTv />
-              </template>
-            </VioButtonColored>
-            <i18n-t
-              v-if="trapPartyEvent.start"
-              keypath="streamDescriptionStart"
-            >
-              <span class="font-bold">
-                {{
-                  t('startDuration', {
-                    start: $dayjs(trapPartyEvent.start).format('lll'),
-                    duration: $dayjs(trapPartyEvent.start).fromNow(),
-                  })
-                }}
-              </span>
-            </i18n-t>
-          </span>
-          <span v-else class="unready inline-block">
-            {{ t('dataless', { what: t('datalessStream') }) }}
-          </span>
-        </p>
-        <p>
-          <VioButtonColored
-            :aria-label="t('statisticsGoTo')"
-            :to="localePath('/event/2020/statistics')"
-          >
-            {{ t('statisticsGoTo') }}
-            <template #prefix>
-              <VioIconChartBar />
-            </template>
-          </VioButtonColored>
-        </p>
+          </p>
+        </VioLayoutProse>
       </section>
     </div>
     <VioCardStateAlert v-else>
