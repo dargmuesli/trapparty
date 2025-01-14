@@ -1,29 +1,11 @@
-import { test, expect } from '@playwright/test'
+import {
+  testOgImage,
+  testPageLoad,
+  testVisualRegression,
+} from '#tests/e2e/utils/tests'
 
-import { COOKIE_CONTROL_DEFAULT, PAGE_READY } from '../../../utils/constants'
+const PAGE_PATH = '/privacy-policy'
 
-test.beforeEach(async ({ context }) => {
-  await context.addCookies([
-    {
-      name: 'ncc_c',
-      value: COOKIE_CONTROL_DEFAULT,
-      domain: 'localhost',
-      path: '/',
-    },
-  ])
-})
-
-test.describe('page load', () => {
-  test('loads the page successfully', async ({ request }) => {
-    const resp = await request.get('/privacy-policy')
-    expect(resp.status()).toBe(200)
-  })
-})
-
-test.describe('visual regression', () => {
-  test('looks as before', async ({ page }) => {
-    await page.goto('/privacy-policy')
-    await PAGE_READY({ page })
-    await expect(page).toHaveScreenshot({ fullPage: true })
-  })
-})
+testPageLoad(PAGE_PATH)
+testOgImage(PAGE_PATH)
+testVisualRegression(PAGE_PATH)

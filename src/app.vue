@@ -39,7 +39,7 @@ onMounted(() => indicateLoadingDone())
 
 // initialization
 defineOgImageComponent(
-  'NuxtSeo',
+  'Default',
   {
     description: siteConfig.description,
   },
