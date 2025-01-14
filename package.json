@@ -16,11 +16,6 @@
     "node": "22"
   },
   "packageManager": "pnpm@9.15.4",
-  "pnpm": {
-    "overrides": {
-      "nuxt-og-image": "4.0.1"
-    }
-  },
   "private": true,
   "scripts": {
     "build": "pnpm --dir src run build",
