@@ -1,3 +1,9 @@
+## [4.1.0](https://github.com/dargmuesli/trapparty/compare/4.0.2...4.1.0) (2025-01-14)
+
+### Features
+
+* **open-graph:** add image ([9266e1e](https://github.com/dargmuesli/trapparty/commit/9266e1e65cf9f34e548495f31c518c886eac1d22))
+
 ## [4.0.2](https://github.com/dargmuesli/trapparty/compare/4.0.1...4.0.2) (2025-01-08)
 
 ### Bug Fixes
