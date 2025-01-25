@@ -3,7 +3,7 @@
   "description": "TrapParty's website.",
   "devDependencies": {
     "@dargmuesli/nuxt-cookie-control": "8.5.0",
-    "@dargmuesli/nuxt-vio": "16.0.2",
+    "@dargmuesli/nuxt-vio": "16.0.3",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/client-preset": "4.5.1",
     "@graphql-codegen/typescript": "4.1.2",
@@ -27,7 +27,7 @@
     "defu": "6.1.4",
     "graphql": "16.10.0",
     "lodash-es": "4.17.21",
-    "nuxt": "3.15.2",
+    "nuxt": "3.15.3",
     "nuxt-security": "2.1.5",
     "pinia": "2.3.1",
     "prettier-plugin-tailwindcss": "0.6.11",
