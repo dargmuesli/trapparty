@@ -30,7 +30,7 @@
     "lodash-es": "4.17.21",
     "nuxt": "3.15.4",
     "nuxt-security": "2.1.5",
-    "pinia": "2.3.1",
+    "pinia": "3.0.0",
     "prettier-plugin-tailwindcss": "0.6.11",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.4",
