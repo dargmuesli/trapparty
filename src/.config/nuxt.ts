@@ -32,6 +32,11 @@ export default defineNuxtConfig(
             '@dargmuesli/nuxt-vio/utils/constants',
             '@vuelidate/core',
             '@vuelidate/validators',
+            'color',
+            'rainbowvis.js',
+            'chart.js',
+            'lodash-es',
+            'vue-chartjs',
           ],
         },
         plugins: [
