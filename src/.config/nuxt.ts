@@ -11,6 +11,7 @@ import { GET_CSP } from '../server/utils/constants'
 export default defineNuxtConfig(
   defu(
     {
+      css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
       modules: [
         '@pinia-plugin-persistedstate/nuxt',
