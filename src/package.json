@@ -43,7 +43,7 @@
     "tailwindcss": "3.4.17",
     "unhead": "1.11.19",
     "unplugin-icons": "22.0.0",
-    "unplugin-vue-components": "28.1.0",
+    "unplugin-vue-components": "28.2.0",
     "vue": "3.5.13",
     "vue-chartjs": "5.3.2",
     "vue-router": "4.5.0"
