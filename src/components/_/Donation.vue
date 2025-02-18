@@ -5,19 +5,19 @@
       <div
         class="grid grid-cols-1 place-content-center gap-4 text-white lg:grid-cols-2"
       >
-        <div class="flex-col rounded bg-gray-700 p-2">
+        <div class="flex-col rounded-sm bg-gray-700 p-2">
           <div class="text-4xl">
             {{ numberFormat(donationAmountTeamSum) }}
           </div>
           <div class="font-bold">{{ t('donationTeam') }}</div>
         </div>
-        <div class="flex-col rounded bg-gray-700 p-2">
+        <div class="flex-col rounded-sm bg-gray-700 p-2">
           <div class="text-4xl">
             {{ numberFormat(trapPartyEvent.commonDonationAmount || 0) }}
           </div>
           <div class="font-bold">{{ t('donationCommon') }}</div>
         </div>
-        <div class="flex-col rounded bg-gray-700 p-4 lg:col-span-2">
+        <div class="flex-col rounded-sm bg-gray-700 p-4 lg:col-span-2">
           <div class="text-6xl">
             {{ numberFormat(donationAmountSum) }}
           </div>
