@@ -22,10 +22,7 @@
       "esbuild",
       "sharp",
       "vue-demi"
-    ],
-    "patchedDependencies": {
-      "nuxt": "patches/nuxt.patch"
-    }
+    ]
   },
   "private": true,
   "scripts": {
