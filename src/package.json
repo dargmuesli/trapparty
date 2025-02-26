@@ -2,7 +2,7 @@
   "author": "Jonas Thelemann",
   "description": "TrapParty's website.",
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "8.5.2",
+    "@dargmuesli/nuxt-cookie-control": "8.5.3",
     "@dargmuesli/nuxt-vio": "17.0.2",
     "@graphql-codegen/cli": "5.0.5",
     "@graphql-codegen/client-preset": "4.6.4",
@@ -41,7 +41,7 @@
     "stylelint-no-unsupported-browser-features": "8.0.4",
     "sweetalert2": "11.17.2",
     "tailwindcss": "4.0.9",
-    "unhead": "1.11.19",
+    "unhead": "1.11.20",
     "unplugin-icons": "22.1.0",
     "unplugin-vue-components": "28.4.0",
     "vue": "3.5.13",
