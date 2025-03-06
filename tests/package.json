@@ -23,7 +23,7 @@
     "@dargmuesli/nuxt-vio": "17.0.2",
     "@dargmuesli/nuxt-vio-testing": "17.0.2",
     "@eslint/js": "9.21.0",
-    "@playwright/test": "1.50.1",
+    "@playwright/test": "1.51.0",
     "@types/node": "22.13.9",
     "cross-env": "7.0.3",
     "eslint": "9.21.0",
@@ -37,7 +37,7 @@
     "vite": "6.2.0"
   },
   "peerDependencies": {
-    "playwright-core": "1.50.1"
+    "playwright-core": "1.51.0"
   },
   "type": "module",
   "engines": {
