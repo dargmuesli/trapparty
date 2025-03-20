@@ -49,7 +49,7 @@ importers:
         version: 8.5.4(magicast@0.3.5)(webpack@5.98.0(esbuild@0.25.1))
       '@dargmuesli/nuxt-vio':
         specifier: 18.2.0
-        version: 18.2.0(2b05fd848550848edda3c2a88dc9d17a)
+        version: 18.2.0(e1cd41ac365be0c73147c53580c021c3)
       '@graphql-codegen/cli':
         specifier: 5.0.5
         version: 5.0.5(@parcel/watcher@2.5.1)(@types/node@22.13.10)(graphql@16.10.0)(typescript@5.8.2)
@@ -159,8 +159,8 @@ importers:
         specifier: 11.17.2
         version: 11.17.2
       tailwindcss:
-        specifier: 4.0.14
-        version: 4.0.14
+        specifier: 4.0.15
+        version: 4.0.15
       unplugin-icons:
         specifier: 22.1.0
         version: 22.1.0(@vue/compiler-sfc@3.5.13)
@@ -188,7 +188,7 @@ importers:
         version: 4.10.1(playwright-core@1.51.1)
       '@dargmuesli/nuxt-vio':
         specifier: 18.2.0
-        version: 18.2.0(2b05fd848550848edda3c2a88dc9d17a)
+        version: 18.2.0(e1cd41ac365be0c73147c53580c021c3)
       '@dargmuesli/nuxt-vio-testing':
         specifier: 18.2.0
         version: 18.2.0(playwright-core@1.51.1)
@@ -217,8 +217,8 @@ importers:
         specifier: 2.4.2
         version: 2.4.2
       tailwindcss:
-        specifier: 4.0.14
-        version: 4.0.14
+        specifier: 4.0.15
+        version: 4.0.15
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -6964,6 +6964,9 @@ packages:
   tailwindcss@4.0.14:
     resolution: {integrity: sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==}
 
+  tailwindcss@4.0.15:
+    resolution: {integrity: sha512-6ZMg+hHdMJpjpeCCFasX7K+U615U9D+7k5/cDK/iRwl6GptF24+I/AbKgOnXhVKePzrEyIXutLv36n4cRsq3Sg==}
+
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
@@ -8319,7 +8322,7 @@ snapshots:
     dependencies:
       playwright-core: 1.51.1
 
-  '@dargmuesli/nuxt-vio@18.2.0(2b05fd848550848edda3c2a88dc9d17a)':
+  '@dargmuesli/nuxt-vio@18.2.0(e1cd41ac365be0c73147c53580c021c3)':
     dependencies:
       '@dargmuesli/nuxt-cookie-control': 8.5.4(magicast@0.3.5)(webpack@5.98.0(esbuild@0.25.1))
       '@eslint/compat': 1.2.7(eslint@9.22.0(jiti@2.4.2))
@@ -8334,8 +8337,8 @@ snapshots:
       '@nuxtjs/i18n': 9.3.2(@vue/compiler-dom@3.5.13)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(rollup@4.36.0)(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
       '@nuxtjs/seo': 3.0.1(@unhead/vue@2.0.0-rc.13(vue@3.5.13(typescript@5.8.2)))(h3@1.15.1)(magicast@0.3.5)(rollup@4.36.0)(unstorage@1.15.0(db0@0.3.1)(ioredis@5.6.0))(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
       '@pinia/nuxt': 0.10.1(magicast@0.3.5)(pinia@3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2)))
-      '@tailwindcss/forms': 0.5.10(tailwindcss@4.0.14)
-      '@tailwindcss/typography': 0.5.16(tailwindcss@4.0.14)
+      '@tailwindcss/forms': 0.5.10(tailwindcss@4.0.15)
+      '@tailwindcss/typography': 0.5.16(tailwindcss@4.0.15)
       '@tailwindcss/vite': 4.0.14(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.0))
       '@types/lodash-es': 4.17.12
       '@urql/core': 5.1.1(graphql@16.10.0)
@@ -10458,10 +10461,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@tailwindcss/forms@0.5.10(tailwindcss@4.0.14)':
+  '@tailwindcss/forms@0.5.10(tailwindcss@4.0.15)':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 4.0.14
+      tailwindcss: 4.0.15
 
   '@tailwindcss/node@4.0.14':
     dependencies:
@@ -10516,13 +10519,13 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.14
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.14
 
-  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.14)':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.15)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.14
+      tailwindcss: 4.0.15
 
   '@tailwindcss/vite@4.0.14(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.0))':
     dependencies:
@@ -15732,6 +15735,8 @@ snapshots:
       strip-ansi: 6.0.1
 
   tailwindcss@4.0.14: {}
+
+  tailwindcss@4.0.15: {}
 
   tapable@2.2.1: {}
 
