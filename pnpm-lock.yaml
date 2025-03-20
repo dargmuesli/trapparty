@@ -193,8 +193,8 @@ importers:
         specifier: 17.0.4
         version: 17.0.4(@types/eslint@9.6.1)(@unhead/vue@1.11.20(vue@3.5.13(typescript@5.8.2)))(@vue/compiler-dom@3.5.13)(@vue/compiler-sfc@3.5.13)(db0@0.3.1)(h3@1.15.1)(ioredis@5.6.0)(jsonc-eslint-parser@2.4.0)(magicast@0.3.5)(nuxt@3.15.4(@parcel/watcher@2.5.1)(@types/node@22.13.10)(db0@0.3.1)(eslint@9.22.0(jiti@2.4.2))(ioredis@5.6.0)(lightningcss@1.29.3)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.35.0)(terser@5.39.0)(typescript@5.8.2)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0))(pinia@3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2)))(prettier@3.5.3)(rollup@4.35.0)(tailwindcss@4.0.14)(typescript@5.8.2)(unstorage@1.15.0(db0@0.3.1)(ioredis@5.6.0))(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(yaml@2.7.0))(vue-eslint-parser@9.4.3(eslint@9.22.0(jiti@2.4.2)))(vue-router@4.5.0(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))(webpack@5.98.0)(yaml-eslint-parser@1.3.0)
       '@dargmuesli/nuxt-vio-testing':
-        specifier: 17.0.4
-        version: 17.0.4(playwright-core@1.51.1)
+        specifier: 18.2.0
+        version: 18.2.0(playwright-core@1.51.1)
       '@eslint/js':
         specifier: 9.22.0
         version: 9.22.0
@@ -693,11 +693,11 @@ packages:
     resolution: {integrity: sha512-fZ/SK7z7rydFxMYhxe+2LaYqeMOTsVXay4PgKrJwGRVbKKxmJ8ZG9BpULmKJRiiBeifklEZ7ibNxTtqZUYH2rA==}
     engines: {node: '>=16'}
 
-  '@dargmuesli/nuxt-vio-testing@17.0.4':
-    resolution: {integrity: sha512-lwVVxazlf0X2xrUqMzaob6mScrCtV2OGlyOq2AGtdUCbsB3Rs0wF9Ox6kJVikhH/e17k1ewq8IHhEbN6BSBj7g==}
+  '@dargmuesli/nuxt-vio-testing@18.2.0':
+    resolution: {integrity: sha512-PSqGGWAZmEkpfJlAR0BzpYPztpR2UbwsxQS2lMtayUIxXSE6l0KdMYGeWBtc+JujLJoqhn0LaHu/czHgYqHJVg==}
     engines: {node: '22'}
     peerDependencies:
-      playwright-core: 1.51.0
+      playwright-core: 1.51.1
 
   '@dargmuesli/nuxt-vio@17.0.4':
     resolution: {integrity: sha512-KDlARtXBZBmHq5xZAECfyc1Ze6OScaKh8BHB+DmubtRmmZEwMFoTgBXS8tDPpczfO+YfhUdboRo6IEGfivu9sw==}
@@ -1560,8 +1560,8 @@ packages:
     resolution: {integrity: sha512-T/xbNDzi+Yv0Qn2Dfz2CWCAJiwNgU5d95EhhAEf4YmOgjCKktpfpiUSmLcBvK1CtLpPQ85AMMQk/2NCcXnNj1g==}
     engines: {node: '>= 16'}
 
-  '@intlify/message-compiler@12.0.0-alpha.1':
-    resolution: {integrity: sha512-rS1Lc99D2uaGqWxlrpGPWdgkq2Jox8xxOS9gdIRhuF2CsuJISWQmwd/TjMnWNhwv9olE0aPEBh1323a61Tfp+g==}
+  '@intlify/message-compiler@12.0.0-alpha.2':
+    resolution: {integrity: sha512-PD9C+oQbb7BF52hec0+vLnScaFkvnfX+R7zSbODYuRo/E2niAtGmHd0wPvEMsDhf9Z9b8f/qyDsVeZnD/ya9Ug==}
     engines: {node: '>= 16'}
 
   '@intlify/shared@10.0.6':
@@ -1572,8 +1572,8 @@ packages:
     resolution: {integrity: sha512-dF2iMMy8P9uKVHV/20LA1ulFLL+MKSbfMiixSmn6fpwqzvix38OIc7ebgnFbBqElvghZCW9ACtzKTGKsTGTWGA==}
     engines: {node: '>= 16'}
 
-  '@intlify/shared@12.0.0-alpha.1':
-    resolution: {integrity: sha512-ZZ5rtlUcEnhhFS+MTrl0V1UoN3yRninGawP3f1YituJN9217xJvpqCSLa9t8NLaVwVIxsRcq4lQe48D0SigmBg==}
+  '@intlify/shared@12.0.0-alpha.2':
+    resolution: {integrity: sha512-P2DULVX9nz3y8zKNqLw9Es1aAgQ1JGC+kgpx5q7yLmrnAKkPR5MybQWoEhxanefNJgUY5ehsgo+GKif59SrncA==}
     engines: {node: '>= 16'}
 
   '@intlify/unplugin-vue-i18n@6.0.3':
@@ -8761,7 +8761,7 @@ snapshots:
       - magicast
       - webpack
 
-  '@dargmuesli/nuxt-vio-testing@17.0.4(playwright-core@1.51.1)':
+  '@dargmuesli/nuxt-vio-testing@18.2.0(playwright-core@1.51.1)':
     dependencies:
       playwright-core: 1.51.1
 
@@ -9860,8 +9860,8 @@ snapshots:
 
   '@intlify/bundle-utils@10.0.0(vue-i18n@10.0.6(vue@3.5.13(typescript@5.8.2)))':
     dependencies:
-      '@intlify/message-compiler': 12.0.0-alpha.1
-      '@intlify/shared': 12.0.0-alpha.1
+      '@intlify/message-compiler': 12.0.0-alpha.2
+      '@intlify/shared': 12.0.0-alpha.2
       acorn: 8.14.1
       escodegen: 2.1.0
       estree-walker: 2.0.2
@@ -9927,16 +9927,16 @@ snapshots:
       '@intlify/shared': 11.1.2
       source-map-js: 1.2.1
 
-  '@intlify/message-compiler@12.0.0-alpha.1':
+  '@intlify/message-compiler@12.0.0-alpha.2':
     dependencies:
-      '@intlify/shared': 12.0.0-alpha.1
+      '@intlify/shared': 12.0.0-alpha.2
       source-map-js: 1.2.1
 
   '@intlify/shared@10.0.6': {}
 
   '@intlify/shared@11.1.2': {}
 
-  '@intlify/shared@12.0.0-alpha.1': {}
+  '@intlify/shared@12.0.0-alpha.2': {}
 
   '@intlify/unplugin-vue-i18n@6.0.3(@vue/compiler-dom@3.5.13)(eslint@9.21.0(jiti@2.4.2))(rollup@4.35.0)(typescript@5.8.2)(vue-i18n@10.0.6(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
