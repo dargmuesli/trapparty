@@ -3,12 +3,17 @@
     "short_name": "TrapParty",
     "icons": [
         {
-            "src": "/assets/static/favicon/android-chrome-192x192.png?v=MSnhWw3hXS",
+            "src": "/assets/static/favicon/pwa-64x64.png?v=Wzs6v81fAS",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/static/favicon/pwa-192x192.png?v=Wzs6v81fAS",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/assets/static/favicon/android-chrome-512x512.png?v=MSnhWw3hXS",
+            "src": "/assets/static/favicon/pwa-512x512.png?v=Wzs6v81fAS",
             "sizes": "512x512",
             "type": "image/png"
         }

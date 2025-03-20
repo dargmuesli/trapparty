@@ -1,6 +1,6 @@
 import { useQuery } from '@urql/vue'
 
-import { graphql } from '~/gql/generated'
+import { graphql } from '~~/gql/generated'
 
 export const useStatsQuery = (variables: { eventId: number }) =>
   useQuery({
