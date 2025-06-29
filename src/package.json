@@ -39,7 +39,7 @@
     "stylelint-config-recommended-vue": "1.6.1",
     "stylelint-config-standard": "38.0.0",
     "stylelint-no-unsupported-browser-features": "8.0.4",
-    "sweetalert2": "11.22.1",
+    "sweetalert2": "11.22.2",
     "tailwindcss": "4.1.11",
     "unplugin-icons": "22.1.0",
     "unplugin-vue-components": "28.8.0",
