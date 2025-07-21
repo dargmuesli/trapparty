@@ -28,7 +28,7 @@
     "eslint": "9.31.0",
     "graphql": "16.11.0",
     "lodash-es": "4.17.21",
-    "nuxt": "4.0.0",
+    "nuxt": "4.0.1",
     "nuxt-security": "2.2.0",
     "pinia": "3.0.3",
     "prettier-plugin-tailwindcss": "0.6.14",
