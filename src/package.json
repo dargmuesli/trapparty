@@ -3,7 +3,7 @@
   "description": "TrapParty's website.",
   "devDependencies": {
     "@dargmuesli/nuxt-cookie-control": "9.0.8",
-    "@dargmuesli/nuxt-vio": "18.3.5",
+    "@dargmuesli/nuxt-vio": "18.3.6",
     "@graphql-codegen/cli": "5.0.7",
     "@graphql-codegen/client-preset": "4.8.3",
     "@graphql-codegen/typescript": "4.1.6",
