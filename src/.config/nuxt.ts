@@ -13,9 +13,6 @@ export default defineNuxtConfig(
     {
       css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
-      future: {
-        compatibilityVersion: 4,
-      },
       modules: [
         '@pinia-plugin-persistedstate/nuxt',
         // nuxt-security: apply content security policy at build time
