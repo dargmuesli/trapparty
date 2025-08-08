@@ -34,7 +34,7 @@
     "typescript": "5.9.2",
     "typescript-eslint": "8.39.0",
     "ufo": "1.6.1",
-    "vite": "7.1.0"
+    "vite": "7.1.1"
   },
   "peerDependencies": {
     "playwright-core": "1.54.2"
