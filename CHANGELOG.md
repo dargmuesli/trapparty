@@ -1,3 +1,9 @@
+## [4.1.16](https://github.com/dargmuesli/trapparty/compare/4.1.15...4.1.16) (2025-08-11)
+
+### Bug Fixes
+
+* **urql:** prefer post method ([fe703ac](https://github.com/dargmuesli/trapparty/commit/fe703aca39952ced8ee21b1ebe32315794ebfd8c))
+
 ## [4.1.15](https://github.com/dargmuesli/trapparty/compare/4.1.14...4.1.15) (2025-08-04)
 
 ### Bug Fixes
