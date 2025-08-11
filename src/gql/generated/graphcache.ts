@@ -1,8 +1,11 @@
-import { cacheExchange } from '@urql/exchange-graphcache'
-import {
-  type Resolver as GraphCacheResolver,
-  type UpdateResolver as GraphCacheUpdateResolver,
-  type OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import type {
+  cacheExchange,
+  Resolver as GraphCacheResolver,
+  UpdateResolver as GraphCacheUpdateResolver,
+  OptimisticMutationResolver as GraphCacheOptimisticMutationResolver,
 } from '@urql/exchange-graphcache'
 
 export type Maybe<T> = T | null
