@@ -18,6 +18,7 @@ import schema from '~~/gql/generated/introspection'
 const SSR_KEY = '__URQL_DATA__'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
+  const store = useVioAuthStore()
   const runtimeConfig = useRuntimeConfig()
   const getServiceHref = useGetServiceHref()
 
@@ -52,7 +53,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       fetchExchange,
     ],
     fetchOptions: () => {
-      const store = useVioAuthStore()
       const headers = {} as Record<string, string>
 
       if (store.jwt) {
