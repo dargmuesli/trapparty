@@ -1,3 +1,9 @@
+## [4.1.18](https://github.com/dargmuesli/trapparty/compare/4.1.17...4.1.18) (2025-09-01)
+
+### Bug Fixes
+
+* schedule release ([a251d87](https://github.com/dargmuesli/trapparty/commit/a251d8728a5192acf1a1e259c9a875c1f89730d6))
+
 ## [4.1.17](https://github.com/dargmuesli/trapparty/compare/4.1.16...4.1.17) (2025-08-25)
 
 ### Bug Fixes
