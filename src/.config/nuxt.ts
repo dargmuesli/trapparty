@@ -32,7 +32,13 @@ export default defineNuxtConfig(
           include: [
             '@dargmuesli/nuxt-vio/app/stores/auth',
             '@dargmuesli/nuxt-vio/shared/utils/constants',
+            '@urql/core',
+            '@urql/devtools',
+            '@urql/exchange-graphcache',
+            '@urql/exchange-graphcache/default-storage',
+            '@urql/vue',
             '@vuelidate/core',
+            '@vuelidate/validators',
             'color',
             'rainbowvis.js',
             'chart.js',
