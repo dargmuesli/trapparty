@@ -14,7 +14,7 @@ export default defineNuxtConfig(
       css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
       modules: [
-        '@pinia-plugin-persistedstate/nuxt',
+        'pinia-plugin-persistedstate/nuxt',
         // nuxt-security: apply content security policy at build time
         (_options, nuxt) => {
           if (nuxt.options.nitro.static) {
@@ -32,7 +32,13 @@ export default defineNuxtConfig(
           include: [
             '@dargmuesli/nuxt-vio/app/stores/auth',
             '@dargmuesli/nuxt-vio/shared/utils/constants',
+            '@urql/core',
+            '@urql/devtools',
+            '@urql/exchange-graphcache',
+            '@urql/exchange-graphcache/default-storage',
+            '@urql/vue',
             '@vuelidate/core',
+            '@vuelidate/validators',
             'color',
             'rainbowvis.js',
             'chart.js',
