@@ -14,7 +14,7 @@ export default defineNuxtConfig(
       css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
       modules: [
-        '@pinia-plugin-persistedstate/nuxt',
+        'pinia-plugin-persistedstate/nuxt',
         // nuxt-security: apply content security policy at build time
         (_options, nuxt) => {
           if (nuxt.options.nitro.static) {
