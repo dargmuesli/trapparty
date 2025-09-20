@@ -10,7 +10,7 @@
     "@graphql-codegen/typescript-urql-graphcache": "3.1.1",
     "@graphql-codegen/urql-introspection": "3.0.1",
     "@graphql-typed-document-node/core": "3.2.0",
-    "@iconify-json/heroicons": "1.2.2",
+    "@iconify-json/heroicons": "1.2.3",
     "@pinia/nuxt": "0.11.2",
     "@types/color": "4.2.0",
     "@types/lodash-es": "4.17.12",
