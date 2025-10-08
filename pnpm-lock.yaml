@@ -159,8 +159,8 @@ importers:
         specifier: 8.0.4
         version: 8.0.4(stylelint@16.25.0(typescript@5.9.3))
       sweetalert2:
-        specifier: 11.24.1
-        version: 11.24.1
+        specifier: 11.25.0
+        version: 11.25.0
       tailwindcss:
         specifier: 4.1.14
         version: 4.1.14
@@ -7628,8 +7628,8 @@ packages:
   sweetalert2@11.23.0:
     resolution: {integrity: sha512-cKzzbC3C1sIs7o9XAMw4E8F9kBtGXsBDUsd2JZ8JM/dqa+nzWwSGM+9LLYILZWzWHzX9W+HJNHyBlbHPVS/krw==}
 
-  sweetalert2@11.24.1:
-    resolution: {integrity: sha512-V1PM/vXjAydKsEFrHgrfkWs+IKn8YPzmqc7eU2UaukO3K758MaLN8NC5kXnXPoKpTqNc430vYajoNKUOP9NtSA==}
+  sweetalert2@11.25.0:
+    resolution: {integrity: sha512-9eDRscWO7SpuTsaFJ1Q0hd3e7MYhYjAE6RmK/cVj3utPekr5ZKLNkV3OWiTmkWJpfaK8LMbx1aYuCoUPPxDVNQ==}
 
   sync-fetch@0.6.0-2:
     resolution: {integrity: sha512-c7AfkZ9udatCuAy9RSfiGPpeOKKUAUK5e1cXadLOGUjasdxqYqAK0jTNkM/FSEyJ3a5Ra27j/tw/PS0qLmaF/A==}
@@ -17142,7 +17142,7 @@ snapshots:
 
   sweetalert2@11.23.0: {}
 
-  sweetalert2@11.24.1: {}
+  sweetalert2@11.25.0: {}
 
   sync-fetch@0.6.0-2:
     dependencies:
