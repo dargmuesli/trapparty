@@ -1,3 +1,9 @@
+## [4.2.1](https://github.com/dargmuesli/trapparty/compare/4.2.0...4.2.1) (2025-11-25)
+
+### Bug Fixes
+
+* **docker:** correct sqitch secret name ([9676d65](https://github.com/dargmuesli/trapparty/commit/9676d65bee0de8a2364759959382af01777b0a4c))
+
 ## [4.2.0](https://github.com/dargmuesli/trapparty/compare/4.1.24...4.2.0) (2025-11-25)
 
 ### Features
