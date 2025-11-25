@@ -1,3 +1,9 @@
+## [4.2.0](https://github.com/dargmuesli/trapparty/compare/4.1.24...4.2.0) (2025-11-25)
+
+### Features
+
+* **docker:** allow to load secrets from environment variables ([9966c93](https://github.com/dargmuesli/trapparty/commit/9966c9327a80672f0a29c8d69ee6b25e0e991fee))
+
 ## [4.1.24](https://github.com/dargmuesli/trapparty/compare/4.1.23...4.1.24) (2025-11-24)
 
 ### Bug Fixes
