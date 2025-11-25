@@ -11,6 +11,7 @@
 <script setup lang="ts">
 const { $dayjs } = useNuxtApp()
 const { t, locale } = useI18n()
+const siteConfig = useSiteConfig()
 
 const { loadingIds, indicateLoadingDone } = useLoadingDoneIndicator('app')
 
@@ -39,7 +40,11 @@ onMounted(() => indicateLoadingDone())
 // initialization
 defineOgImageComponent(
   'Default',
-  {},
+  {
+    headline: t('headline'),
+    name: t('name'),
+    siteConfigName: siteConfig.name,
+  },
   {
     alt: t('globalSeoOgImageAlt'),
   },
@@ -50,3 +55,12 @@ useSchemaOrg([defineWebSite()])
 useVioGtag()
 init()
 </script>
+
+<i18n lang="yaml">
+de:
+  headline: Jonas Thelemanns
+  name: Geburtstagsfeier
+en:
+  headline: Jonas Thelemann's
+  name: Birthday Bash
+</i18n>
