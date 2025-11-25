@@ -15,6 +15,8 @@ RUN corepack enable \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 
 #############
 # Serve Nuxt in development mode.
@@ -28,8 +30,6 @@ RUN apt-get update \
         libdbd-pg-perl postgresql-client sqitch \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-COPY ./docker/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 VOLUME /srv/.pnpm-store
 VOLUME /srv/app
@@ -108,6 +108,8 @@ WORKDIR /srv/app/
 RUN corepack enable \
   && apt update && apt install mkcert
 
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 
 ########################
 # Nuxt: test (e2e)
@@ -118,8 +120,6 @@ ARG UNAME=e2e
 ARG UID=1000
 ARG GID=1000
 
-COPY ./docker/entrypoint.dev.sh /usr/local/bin/docker-entrypoint.dev.sh
-
 RUN groupadd -g $GID -o $UNAME \
     && useradd -m -l -u $UID -g $GID -o -s /bin/bash $UNAME
 
@@ -128,7 +128,7 @@ USER $UNAME
 VOLUME /srv/.pnpm-store
 VOLUME /srv/app
 
-ENTRYPOINT ["docker-entrypoint.dev.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 
 ########################
@@ -229,9 +229,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./sqitch/ ./sqitch/
-COPY ./docker/entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["pnpm", "run", "start:node"]
 HEALTHCHECK --interval=10s CMD wget -O /dev/null http://localhost:3000/api/healthcheck || exit 1
 EXPOSE 3000
