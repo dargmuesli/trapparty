@@ -13,7 +13,7 @@ import { playerByInvitationCodeFnQuery } from '~~/gql/documents/queries/player/p
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const route = useRoute()
-const fireError = useFireError()
+const alertError = useAlertError()
 const createGameRandomFactsRoundMutation =
   useCreateGameRandomFactsRoundMutation()
 
@@ -78,11 +78,12 @@ const gameRandomFactsRoundCreate = async ({
     },
   })
 
-  if (result.error) fireError({ error: result.error }, api)
+  if (result.error)
+    alertError({ error: result.error, messageI18n: t('errorRoundCreate') })
 
   if (!result.data) return
 
-  showToast({ title: t('roundCreateSuccess') })
+  toast.success(t('roundCreateSuccess'))
 }
 const nfcScan = async () => {
   if (!route.params.gameId) return
@@ -111,11 +112,10 @@ const nfcScan = async () => {
       })
     }
   } catch (error) {
-    if (error instanceof Error) {
-      fireError({ error })
-    } else {
-      alert(`Unexpected error: ${error}`)
-    }
+    alertError({
+      ...(error instanceof Error ? { error } : {}),
+      messageI18n: t('errorNfcScan'),
+    })
   }
 }
 
@@ -135,9 +135,13 @@ export default {
 
 <i18n lang="yaml">
 de:
+  errorNfcScan: Es gab einen Fehler beim Scannen des NFC-Tags.
+  errorRoundCreate: Es gab einen Fehler beim Erstellen der Runde.
   nfcRead: NFC scannen
   roundCreateSuccess: Neue Runde erstellt
 en:
+  errorNfcScan: There was an error scanning the NFC tag.
+  errorRoundCreate: There was an error creating the round.
   nfcRead: Scan NFC
   roundCreateSuccess: New round created
 </i18n>

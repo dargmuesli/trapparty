@@ -207,12 +207,14 @@
                 keypath="streamDescriptionStart"
               >
                 <span class="font-bold">
-                  {{
-                    t('startDuration', {
-                      start: $dayjs(trapPartyEvent.start).format('lll'),
-                      duration: $dayjs(trapPartyEvent.start).fromNow(),
-                    })
-                  }}
+                  <i18n-t keypath="startDuration">
+                    <template #duration>
+                      {{ fromNow(new Date(trapPartyEvent.start)) }}
+                    </template>
+                    <template #start>
+                      <VioTime :datetime="trapPartyEvent.start" />
+                    </template>
+                  </i18n-t>
                 </span>
               </i18n-t>
             </span>
@@ -260,10 +262,10 @@ definePageMeta({
   ],
 })
 
-const { $dayjs } = useNuxtApp()
 const localePath = useLocalePath()
 const store = useStore()
 const { t } = useI18n()
+const fromNow = useFromNow()
 
 // queries
 const playerByInvitationCodeFnQuery =

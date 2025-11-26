@@ -83,7 +83,6 @@
 import { useAllEventsQuery } from '~~/gql/documents/queries/event/allEvents'
 import { getEventItem } from '~~/gql/documents/fragments/eventItem'
 
-const { $dayjs } = useNuxtApp()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
@@ -103,30 +102,43 @@ const allEvents = computed(() => allEventsQuery.data.value?.allEvents?.nodes)
 
 // data
 const title = t('title')
+const now = useNow()
+const typicalPartyDurationMilliseconds = 12 * 60 * 60 * 1000 // 12h
 
 // computations
-const eventCurrent = computed(() => {
-  return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
-    (event) =>
-      $dayjs().isAfter($dayjs(event.start)) &&
-      $dayjs().isBefore(
-        event.end ? $dayjs(event.end) : $dayjs(event.start).add(1, 'day'),
-      ),
-  )[0]
-})
+const eventCurrent = computed(
+  () =>
+    arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
+      (event) => {
+        const eventStart = new Date(event.start)
+        const eventStartPlusDuration = new Date(
+          eventStart.getTime() + typicalPartyDurationMilliseconds,
+        )
+
+        return (
+          eventStart < now.value &&
+          now.value < (event.end ? new Date(event.end) : eventStartPlusDuration)
+        )
+      },
+    )[0],
+)
 const eventsPast = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
-    (event) =>
-      $dayjs().isAfter(
-        $dayjs(
-          event.end ? $dayjs(event.end) : $dayjs(event.start).add(1, 'day'),
-        ),
-      ),
+    (event) => {
+      const eventStart = new Date(event.start)
+      const eventStartPlusDuration = new Date(
+        eventStart.getTime() + typicalPartyDurationMilliseconds,
+      )
+
+      return (
+        (event.end ? new Date(event.end) : eventStartPlusDuration) < now.value
+      )
+    },
   )
 })
 const eventsUpcoming = computed(() => {
   return arrayRemoveNulls(allEvents.value?.map((x) => getEventItem(x))).filter(
-    (event) => $dayjs().isBefore($dayjs(event.start)),
+    (event) => now.value < new Date(event.start),
   )
 })
 

@@ -5,31 +5,30 @@
       <!-- `NuxtLayout` can't have mulitple child nodes (https://github.com/nuxt/nuxt/issues/21759) -->
       <NuxtPage />
     </NuxtLayout>
+    <VioSonner />
   </div>
 </template>
 
 <script setup lang="ts">
-const { $dayjs } = useNuxtApp()
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const siteConfig = useSiteConfig()
+const timeZone = useTimeZone()
 
 const { loadingIds, indicateLoadingDone } = useLoadingDoneIndicator('app')
 
 // methods
-const init = () => {
-  $dayjs.locale(locale.value)
-
+const initialize = () => {
   if (import.meta.client) {
-    const cookieTimezone = useCookie(TIMEZONE_COOKIE_NAME, {
-      // default: () => undefined, // setting `default` on the client side only does not write the cookie
-      httpOnly: false,
-      sameSite: 'strict',
-      secure: true,
-    })
-    // @ts-expect-error `tz` should be part of `$dayjs` (https://github.com/iamkun/dayjs/issues/2106)
-    cookieTimezone.value = $dayjs.tz.guess()
+    saveTimeZoneAsCookie()
   }
 }
+const saveTimeZoneAsCookie = () =>
+  (useCookie(TIMEZONE_COOKIE_NAME, {
+    // default: () => undefined, // setting `default` on the client side only does not write the cookie
+    httpOnly: false,
+    sameSite: 'strict',
+    secure: true,
+  }).value = timeZone)
 
 // computations
 const isLoading = computed(() => !!loadingIds.value.length)
@@ -53,7 +52,7 @@ useAppLayout()
 usePolyfills()
 useSchemaOrg([defineWebSite()])
 useVioGtag()
-init()
+initialize()
 </script>
 
 <i18n lang="yaml">
