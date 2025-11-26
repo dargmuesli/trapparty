@@ -65,7 +65,7 @@ const gameIdProp = toRef(() => props.gameId)
 // const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
-const fireError = useFireError()
+const alertError = useAlertError()
 const createGameEstimationNumericVoteMutation =
   useCreateGameEstimationNumericVoteMutation()
 // const updateGameEstimationNumericRoundByIdMutation =
@@ -152,7 +152,7 @@ const round = computed(() => {
 //     )
 //     .toPromise()
 
-//   if (result.error) fireError({ error: result.error }, api)
+//   if (result.error) alertError({ error: result.error })
 
 //   if (!result) return
 
@@ -179,14 +179,14 @@ const submit = async () => {
   })
 
   if (result.error) {
-    fireError({ error: result.error }, api)
+    alertError({ error: result.error, messageI18n: t('errorGameCreate') })
     await allGameEstimationNumericRoundsQuery.executeQuery()
   }
 
   if (!result.data?.createGameEstimationNumericVote) return
 
   // if (player.value.name !== round.value.questionerName) {
-  showToast({ title: t('saved') })
+  toast.success(t('saved'))
   //   await voteFetch()
   // }
 
@@ -199,11 +199,11 @@ const submit = async () => {
   //       id: round.value.id,
   //     })
 
-  //   if (result.error) fireError({ error: result.error }, api)
+  //   if (result.error) alertError({ error: result.error })
 
   //   if (!result.data) return
 
-  //   showToast({ title: t('saved') })
+  //   toast.success(t('saved'))
   //   await voteFetch()
   // }
 }
@@ -234,18 +234,20 @@ const v$ = useVuelidate(rules, form)
 
 <i18n lang="yaml">
 de:
+  errorGameCreate: Es gab einen Fehler beim Erstellen des Spiels.
   estimation: Schätzung
   estimationPlaceholder: 13,37
-  question: Wie hoch oder niedrig ist {element} aktuell? 🤔
   playerNone: Spielerdaten konnten nicht gefunden werden.
+  question: Wie hoch oder niedrig ist {element} aktuell? 🤔
   saved: Gespeichert.
   voteNone: keine Abstimmung
   voteNoneSentence: Aktuell gibt es {voteNone}.
 en:
+  errorGameCreate: There was an error creating the game.
   estimation: Estimation
   estimationPlaceholder: '13.37'
-  question: How much is {element} currently? 🤔
   playerNone: Player data could not be found.
+  question: How much is {element} currently? 🤔
   saved: Saved.
   voteNone: no vote
   voteNoneSentence: Currently there is {voteNone}.

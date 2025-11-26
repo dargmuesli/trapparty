@@ -81,7 +81,7 @@ const gameIdProp = toRef(() => props.gameId)
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
 const store = useStore()
-const fireError = useFireError()
+const alertError = useAlertError()
 const createGameRandomFactsVoteMutation = useCreateGameRandomFactsVoteMutation()
 const updateGameRandomFactsRoundByIdMutation =
   useUpdateGameRandomFactsRoundByIdMutation()
@@ -158,12 +158,13 @@ const choose = async (answer: number) => {
     },
   })
 
-  if (result.error) fireError({ error: result.error }, api)
+  if (result.error)
+    alertError({ error: result.error, messageI18n: t('errorVoteCreate') })
 
   if (!result.data) return
 
   if (player.value.name !== round.value.questionerName) {
-    showToast({ title: t('saved') })
+    toast.success(t('saved'))
     await voteFetch()
   }
 
@@ -177,11 +178,12 @@ const choose = async (answer: number) => {
       },
     )
 
-    if (result.error) fireError({ error: result.error }, api)
+    if (result.error)
+      alertError({ error: result.error, messageI18n: t('errorRoundUpdate') })
 
     if (!result.data) return
 
-    showToast({ title: t('saved') })
+    toast.success(t('saved'))
     await voteFetch()
   }
 }
@@ -201,7 +203,8 @@ const voteFetch = async () => {
     )
     .toPromise()
 
-  if (result.error) fireError({ error: result.error }, api)
+  if (result.error)
+    alertError({ error: result.error, messageI18n: t('errorVoteRead') })
 
   if (!result) return
 
@@ -224,21 +227,27 @@ await voteFetch()
 
 <i18n lang="yaml">
 de:
+  errorRoundUpdate: Es gab eien Fehler beim Aktualisieren der Runde.
+  errorVoteCreate: Es gab einen Fehler beim Erstellen der Abstimmung.
+  errorVoteRead: Es gab einene Fehler beim Laden der Abstimmung.
   factA: Fakt A
   factB: Fakt B
-  question: Vor dir steht {name}. Welcher {randomFact} ist wahr? 🤔
   nobody: niemand
   playerNone: Spielerdaten konnten nicht gefunden werden.
+  question: Vor dir steht {name}. Welcher {randomFact} ist wahr? 🤔
   randomFact: random fact
   saved: Gespeichert.
   voteNone: keine Abstimmung
   voteNoneSentence: Aktuell gibt es {voteNone}.
 en:
+  errorRoundUpdate: There was an error updating the round.
+  errorVoteCreate: There was an error creating the vote.
+  errorVoteRead: There was an error fetching the vote.
   factA: Fact A
   factB: Fact B
-  question: In front of you is {name}. Which {randomFact} is true? 🤔
   nobody: nobody
   playerNone: Player data could not be found.
+  question: In front of you is {name}. Which {randomFact} is true? 🤔
   randomFact: random fact
   saved: Saved.
   voteNone: no vote
