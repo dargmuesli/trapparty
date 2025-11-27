@@ -49,7 +49,7 @@ importers:
         version: 9.1.9(magicast@0.5.1)(webpack@5.103.0(esbuild@0.27.0))
       '@dargmuesli/nuxt-vio':
         specifier: 20.0.0
-        version: 20.0.0(d31d099fc7048134b98b1463daf8d916)
+        version: 20.0.0(5dca0a43cbbda8e651928daf1e21ad03)
       '@graphql-codegen/cli':
         specifier: 6.1.0
         version: 6.1.0(@parcel/watcher@2.5.1)(@types/node@24.10.1)(crossws@0.3.5)(graphql@16.12.0)(typescript@5.9.3)
@@ -132,11 +132,11 @@ importers:
         specifier: 4.7.1
         version: 4.7.1(@nuxt/kit@4.2.1(magicast@0.5.1))(@pinia/nuxt@0.11.3(magicast@0.5.1)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3)))
       prettier:
-        specifier: 3.6.2
-        version: 3.6.2
+        specifier: 3.7.1
+        version: 3.7.1
       prettier-plugin-tailwindcss:
         specifier: 0.7.1
-        version: 0.7.1(prettier@3.6.2)
+        version: 0.7.1(prettier@3.7.1)
       rainbowvis.js:
         specifier: 1.1.1
         version: 1.1.1
@@ -191,7 +191,7 @@ importers:
         version: 4.11.0(playwright-core@1.57.0)
       '@dargmuesli/nuxt-vio':
         specifier: 20.0.0
-        version: 20.0.0(212fa4de838e8fd0b71d114d26d1d971)
+        version: 20.0.0(357dae8dbaa679fafcf02a53daec598d)
       '@dargmuesli/nuxt-vio-testing':
         specifier: 20.0.0
         version: 20.0.0(playwright-core@1.57.0)
@@ -215,7 +215,7 @@ importers:
         version: 10.1.8(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-prettier:
         specifier: 5.5.4
-        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.6.2)
+        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.7.1)
       jiti:
         specifier: 2.6.1
         version: 2.6.1
@@ -7242,8 +7242,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.1:
+    resolution: {integrity: sha512-RWKXE4qB3u5Z6yz7omJkjWwmTfLdcbv44jUVHC5NpfXwFGzvpQM798FGv/6WNK879tc+Cn0AAyherCl1KjbyZQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -9316,7 +9316,7 @@ snapshots:
     dependencies:
       playwright-core: 1.57.0
 
-  '@dargmuesli/nuxt-vio@20.0.0(212fa4de838e8fd0b71d114d26d1d971)':
+  '@dargmuesli/nuxt-vio@20.0.0(357dae8dbaa679fafcf02a53daec598d)':
     dependencies:
       '@dargmuesli/nuxt-cookie-control': 9.1.9(magicast@0.5.1)(webpack@5.103.0(esbuild@0.27.0))
       '@eslint/compat': 2.0.0(eslint@9.39.1(jiti@2.6.1))
@@ -9346,7 +9346,7 @@ snapshots:
       eslint: 9.39.1(jiti@2.6.1)
       eslint-config-prettier: 10.1.8(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-compat: 6.0.2(eslint@9.39.1(jiti@2.6.1))
-      eslint-plugin-prettier: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.6.2)
+      eslint-plugin-prettier: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.7.1)
       eslint-plugin-yml: 1.19.0(eslint@9.39.1(jiti@2.6.1))
       globals: 16.5.0
       jiti: 2.6.1
@@ -9423,7 +9423,7 @@ snapshots:
       - webpack
       - yaml-eslint-parser
 
-  '@dargmuesli/nuxt-vio@20.0.0(d31d099fc7048134b98b1463daf8d916)':
+  '@dargmuesli/nuxt-vio@20.0.0(5dca0a43cbbda8e651928daf1e21ad03)':
     dependencies:
       '@dargmuesli/nuxt-cookie-control': 9.1.9(magicast@0.5.1)(webpack@5.103.0(esbuild@0.27.0))
       '@eslint/compat': 2.0.0(eslint@9.39.1(jiti@2.6.1))
@@ -9453,7 +9453,7 @@ snapshots:
       eslint: 9.39.1(jiti@2.6.1)
       eslint-config-prettier: 10.1.8(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-compat: 6.0.2(eslint@9.39.1(jiti@2.6.1))
-      eslint-plugin-prettier: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.6.2)
+      eslint-plugin-prettier: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.7.1)
       eslint-plugin-yml: 1.19.0(eslint@9.39.1(jiti@2.6.1))
       globals: 16.5.0
       jiti: 2.6.1
@@ -11514,7 +11514,7 @@ snapshots:
       html-validate: 9.4.2
       knitwork: 1.3.0
       pathe: 2.0.3
-      prettier: 3.6.2
+      prettier: 3.7.1
       std-env: 3.10.0
     transitivePeerDependencies:
       - jest
@@ -14390,10 +14390,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-prettier@5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.6.2):
+  eslint-plugin-prettier@5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(prettier@3.7.1):
     dependencies:
       eslint: 9.39.1(jiti@2.6.1)
-      prettier: 3.6.2
+      prettier: 3.7.1
       prettier-linter-helpers: 1.0.0
       synckit: 0.11.11
     optionalDependencies:
@@ -17072,11 +17072,11 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-tailwindcss@0.7.1(prettier@3.6.2):
+  prettier-plugin-tailwindcss@0.7.1(prettier@3.7.1):
     dependencies:
-      prettier: 3.6.2
+      prettier: 3.7.1
 
-  prettier@3.6.2: {}
+  prettier@3.7.1: {}
 
   pretty-bytes@7.1.0: {}
 
