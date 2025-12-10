@@ -2,7 +2,7 @@
   "author": "Jonas Thelemann",
   "description": "TrapParty's website.",
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "9.1.9",
+    "@dargmuesli/nuxt-cookie-control": "9.1.10",
     "@dargmuesli/nuxt-vio": "20.1.1",
     "@graphql-codegen/cli": "6.1.0",
     "@graphql-codegen/client-preset": "5.2.1",
@@ -27,7 +27,7 @@
     "eslint": "9.39.1",
     "graphql": "16.12.0",
     "lodash-es": "4.17.21",
-    "nuxt": "4.2.1",
+    "nuxt": "4.2.2",
     "nuxt-security": "2.5.0",
     "pinia": "3.0.4",
     "pinia-plugin-persistedstate": "4.7.1",
