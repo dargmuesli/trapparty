@@ -26,7 +26,7 @@
     "defu": "6.1.4",
     "eslint": "9.39.2",
     "graphql": "16.12.0",
-    "lodash-es": "4.17.21",
+    "lodash-es": "4.17.22",
     "nuxt": "4.2.2",
     "nuxt-security": "2.5.0",
     "pinia": "3.0.4",
