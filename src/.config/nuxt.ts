@@ -13,6 +13,21 @@ export default defineNuxtConfig(
       css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
       modules: ['pinia-plugin-persistedstate/nuxt'],
+      nitro: {
+        storage: {
+          fs: {
+            driver: 'fs',
+            base: './.data/db',
+          },
+        },
+      },
+      runtimeConfig: {
+        trapparty: {
+          admin: {
+            token: '',
+          },
+        },
+      },
       vite: {
         optimizeDeps: {
           include: [
