@@ -1,3 +1,9 @@
+## [4.2.3](https://github.com/dargmuesli/trapparty/compare/4.2.2...4.2.3) (2025-12-20)
+
+### Performance Improvements
+
+* **docker:** mount cache for pnpm ([b95cf89](https://github.com/dargmuesli/trapparty/commit/b95cf89633a420c8c1cb4b52706caff11dde2a26))
+
 ## [4.2.2](https://github.com/dargmuesli/trapparty/compare/4.2.1...4.2.2) (2025-12-08)
 
 ### Bug Fixes
