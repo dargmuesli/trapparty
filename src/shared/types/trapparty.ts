@@ -4,6 +4,7 @@ export interface ParticipationDataWatcher {
 
 export interface ParticipationDataPlayer {
   invitationCode: string
+  playerId: string
   role: 'player'
 }
 

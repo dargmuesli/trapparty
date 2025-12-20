@@ -175,6 +175,7 @@ const saveCode = async () => {
   store.participationDataSet({
     role: 'player',
     invitationCode: form.invitationCode,
+    playerId: form.invitationCode,
   })
   router.push({
     path: append(route.path, 'dashboard'),
