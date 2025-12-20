@@ -130,12 +130,15 @@ ARG UID=1000
 ARG GID=1000
 
 RUN groupadd -g $GID -o $UNAME \
-    && useradd -m -l -u $UID -g $GID -o -s /bin/bash $UNAME
+    && useradd -m -l -u $UID -g $GID -o -s /bin/bash $UNAME \
+    && mkdir /srv/app/node_modules \
+    && chown $UID:$GID /srv/app/node_modules
 
 USER $UNAME
 
 VOLUME /srv/.pnpm-store
 VOLUME /srv/app
+VOLUME /srv/app/node_modules
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
