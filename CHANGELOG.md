@@ -1,3 +1,9 @@
+## [4.3.0](https://github.com/dargmuesli/trapparty/compare/4.2.3...4.3.0) (2025-12-20)
+
+### Features
+
+* **event:** add 2025 ([145198e](https://github.com/dargmuesli/trapparty/commit/145198e4ab53e880bc0b504295592e8612b58961))
+
 ## [4.2.3](https://github.com/dargmuesli/trapparty/compare/4.2.2...4.2.3) (2025-12-20)
 
 ### Performance Improvements
