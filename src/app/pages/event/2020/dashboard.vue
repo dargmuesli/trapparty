@@ -207,9 +207,9 @@
                 keypath="streamDescriptionStart"
               >
                 <span class="font-bold">
-                  <i18n-t keypath="startDuration">
-                    <template #duration>
-                      {{ fromNow(new Date(trapPartyEvent.start)) }}
+                  <i18n-t keypath="startRelative">
+                    <template #relative>
+                      <VioTime :datetime="trapPartyEvent.start" relative />
                     </template>
                     <template #start>
                       <VioTime :datetime="trapPartyEvent.start" />
@@ -265,7 +265,6 @@ definePageMeta({
 const localePath = useLocalePath()
 const store = useStore()
 const { t } = useI18n()
-const fromNow = useFromNow()
 
 // queries
 const playerByInvitationCodeFnQuery =
@@ -392,7 +391,7 @@ de:
   intentionRolePlayer: mitzumachen
   participationDataless: Konnte keine Teilnahmedaten laden.
   roleChange: Wahl ändern
-  startDuration: '{start} ({duration})'
+  startRelative: '{start} ({relative})'
   statisticsGoTo: Zu den Statistiken
   streamTitle: Zuschauen 📺
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'
@@ -430,7 +429,7 @@ en:
   intentionRolePlayer: participate
   participationDataless: Could not load participation data.
   roleChange: Change choice
-  startDuration: '{start} ({duration})'
+  startRelative: '{start} ({relative})'
   statisticsGoTo: To the statistics
   streamTitle: Watch 📺
   streamDescription: 'You can expect a late-night show with games, fun and excitement 🥳'
