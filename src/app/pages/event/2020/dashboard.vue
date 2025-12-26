@@ -207,9 +207,9 @@
                 keypath="streamDescriptionStart"
               >
                 <span class="font-bold">
-                  <i18n-t keypath="startDuration">
-                    <template #duration>
-                      {{ fromNow(new Date(trapPartyEvent.start)) }}
+                  <i18n-t keypath="startRelative">
+                    <template #relative>
+                      <VioTime :datetime="trapPartyEvent.start" relative />
                     </template>
                     <template #start>
                       <VioTime :datetime="trapPartyEvent.start" />
@@ -265,7 +265,6 @@ definePageMeta({
 const localePath = useLocalePath()
 const store = useStore()
 const { t } = useI18n()
-const fromNow = useFromNow()
 
 // queries
 const playerByInvitationCodeFnQuery =
@@ -381,10 +380,10 @@ de:
   discordTutorial: Videoanleitung vom Weihnachtsmann
   donationButtonCommon: Für alle Organisationen spenden
   donationButtonTeam: Zum Spendenkonto deines Teams
-  donationTitle: Gutes Tun ❤️
   donationDescription: In diesem Jahr spenden wir gemeinsam für mehrere Organisationen.
   donationDescriptionCommon: 'Da du angeklickt hast, dass du nur zuschauen möchtest, wird deine Spende gleichmäßig auf alle Organisationen verteilt, für die die verschiedenen Teams im Stream kämpfen!'
   donationDescriptionTeam: 'Im Stream könnt ihr mehr Spenden für die von euch gewählte wohltätige Organisation sammeln und müsst den von euch gesammelten Spendenbetrag verteidigen. Der von euch gesammelte Betrag kann also auch zu Teilen wohltätigen Organisationen zugutekommen, die anderen Teams am Herzen liegen.'
+  donationTitle: Gutes Tun ❤️
   errorUnexpectedParticipationRole: 'Fehler: Unerwartete Teilnehmerrolle!'
   hello: Hallo {name}!
   intentionDescription: 'Du hast dich entschieden, bei der kommenden TrapParty {0}.'
@@ -392,21 +391,21 @@ de:
   intentionRolePlayer: mitzumachen
   participationDataless: Konnte keine Teilnahmedaten laden.
   roleChange: Wahl ändern
-  startDuration: '{start} ({duration})'
+  startRelative: '{start} ({relative})'
   statisticsGoTo: Zu den Statistiken
-  streamTitle: Zuschauen 📺
   streamDescription: 'Es erwartet dich eine Late-Night-Show mit Spiel, Spaß und Spannung 🥳'
   streamDescriptionPlayer: Als Spieler schaust du den Stream während du gleichzeitig mit deinen Teammitgliedern auf Discord bist.
   streamDescriptionStart: 'Geplanter Start: {0}'
   streamGoto: Zum Stream
-  teamCommunicationTitle: Kommunikation 📞
+  streamTitle: Zuschauen 📺
   teamCommunicationDescription1: 'Für diese Veranstaltung wurde ein Discord-Server eingerichtet, über den alle Gäste mit ihren Teammitgliedern und anderen Teilnehmenden kommunizieren können.'
   teamCommunicationDescription2: 'Wenn du dem Server beigetreten bist, musst du im Textkanal "wähle-eine-gruppe" unter der einzigen Nachricht dort auf das {emojiPrefix}Emoji deines Teams klicken. Damit erhältst du Zugriff auf den Text- & Sprachkanal deines Teams, in denen du dich mit deinem Team austauschen kannst.'
-  teamTitle: Dein Team 👪
-  teamDataName: 'Du bist im Team "{0}"!'
-  teamDataNameDataless: Ihr müsst euch noch auf einen eigenen Teamnamen einigen.
+  teamCommunicationTitle: Kommunikation 📞
   teamDataCharityOrganisation: 'Ihr spendet für {0}.'
   teamDataCharityOrganisationDataless: 'Ihr müsst euch noch auf eine Wohltätigkeitsorganisation einigen, für die ihr Spenden sammeln wollt.'
+  teamDataName: 'Du bist im Team "{0}"!'
+  teamDataNameDataless: Ihr müsst euch noch auf einen eigenen Teamnamen einigen.
+  teamTitle: Dein Team 👪
   title: "So funktioniert's"
 en:
   dataless: '{what} is not yet available.'
@@ -419,10 +418,10 @@ en:
   discordTutorial: Video tutorial by Santa Claus
   donationButtonCommon: Donate to all organizations
   donationButtonTeam: To the donation account of your team
-  donationTitle: Do good ❤️
   donationDescription: This year we are donating to several organizations together.
   donationDescriptionCommon: 'Since you clicked that you just want to watch, your donation will be split evenly between all the organizations that the different teams in the stream are fighting for!'
   donationDescriptionTeam: 'In the stream, you will be able to collect more donations for your chosen charity and you will have to defend the amount of money you have collected. So the amount you raise can also be divided to benefit charities that other teams care about.'
+  donationTitle: Do good ❤️
   errorUnexpectedParticipationRole: 'Error: Unexpected participation role!'
   hello: Hello {name}!
   intentionDescription: 'You have decided to {0} at the upcoming TrapParty.'
@@ -430,20 +429,20 @@ en:
   intentionRolePlayer: participate
   participationDataless: Could not load participation data.
   roleChange: Change choice
-  startDuration: '{start} ({duration})'
+  startRelative: '{start} ({relative})'
   statisticsGoTo: To the statistics
-  streamTitle: Watch 📺
   streamDescription: 'You can expect a late-night show with games, fun and excitement 🥳'
   streamDescriptionPlayer: As a player, you watch the stream while on Discord with your teammates at the same time.
   streamDescriptionStart: 'Planned start: {0}'
   streamGoto: To the stream
-  teamCommunicationTitle: Communication 📞
+  streamTitle: Watch 📺
   teamCommunicationDescription1: 'A Discord server has been set up for this event, allowing all guests to communicate with their team members and other participants.'
   teamCommunicationDescription2: 'Once you have joined the server, you will need to click on your team''s {emojiPrefix} emoji in the "choose-a-group" text channel under the only message there. This will give you access to your team''s text & voice channel where you can interact with your team.'
-  teamTitle: Your team 👪
-  teamDataName: 'You are in team "{0}"!'
-  teamDataNameDataless: You still need to agree on your own team name.
+  teamCommunicationTitle: Communication 📞
   teamDataCharityOrganisation: 'You are donating to {0}.'
   teamDataCharityOrganisationDataless: You still need to agree on a charity to fundraise for.
+  teamDataName: 'You are in team "{0}"!'
+  teamDataNameDataless: You still need to agree on your own team name.
+  teamTitle: Your team 👪
   title: This is how it works
 </i18n>
