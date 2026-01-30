@@ -1,9 +1,9 @@
 <template>
-  <EventWelcome event-name="2020">
+  <TrEventWelcome event-name="2020">
     <template #disclaimer>
       {{ t('disclaimer') }}
     </template>
-  </EventWelcome>
+  </TrEventWelcome>
 </template>
 
 <script setup lang="ts">

@@ -14,7 +14,7 @@
             :key="game.id"
             class="flex flex-col gap-4 border-x border-gray-900 px-8 py-4 md:px-16 md:py-8 lg:flex-row dark:border-white"
           >
-            <GameTitle :game="game" class="grow" />
+            <TrGameTitle :game="game" class="grow" />
             <div class="flex gap-4">
               <VioButtonColored
                 v-if="

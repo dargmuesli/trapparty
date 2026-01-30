@@ -3,7 +3,7 @@
     <div class="flex min-h-screen flex-col pb-32">
       <header class="relative mb-4 flex items-center justify-between">
         <VioLink :aria-label="t('home')" :to="localePath('/')">
-          <IconLogo class="h-16 w-16" />
+          <TrIconLogo class="h-16 w-16" />
         </VioLink>
         <VioLink
           :aria-label="t('home')"

@@ -16,7 +16,7 @@
       <div
         class="flex flex-col items-start justify-between md:flex-row md:items-center"
       >
-        <GameTitle :game="game" />
+        <TrGameTitle :game="game" />
         <VioButtonColored
           :aria-label="t('gameLinkStatistic')"
           :is-primary="false"
@@ -25,8 +25,11 @@
           {{ t('gameLinkStatistic') }}
         </VioButtonColored>
       </div>
-      <GameRandomFacts v-if="game.type === 'RANDOM_FACTS'" :game-id="game.id" />
-      <GameEstimationNumeric
+      <TrGameRandomFacts
+        v-if="game.type === 'RANDOM_FACTS'"
+        :game-id="game.id"
+      />
+      <TrGameEstimationNumeric
         v-if="game.type === 'ESTIMATION_NUMERIC'"
         :game-id="game.id"
       />
