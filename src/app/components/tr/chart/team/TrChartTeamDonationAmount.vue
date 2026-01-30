@@ -1,6 +1,6 @@
 <template>
   <VioLoader :api="api">
-    <ChartBaseBar
+    <TrChartBaseBar
       v-if="data"
       id="chart-team-donation-amount"
       :data="data"

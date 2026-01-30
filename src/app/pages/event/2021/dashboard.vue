@@ -1,5 +1,5 @@
 <template>
-  <EventGames event-name="2021" />
+  <TrEventGames event-name="2021" />
 </template>
 
 <script lang="ts">

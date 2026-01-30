@@ -8,8 +8,8 @@
         <p class="text-center">
           {{ t('eventName', { name: trapPartyEvent.name }) }}
         </p>
-        <Donation class="mb-8" :trap-party-event="trapPartyEvent" />
-        <ChartScoring class="mb-8" :event-id="trapPartyEvent.id" />
+        <TrDonation class="mb-8" :trap-party-event="trapPartyEvent" />
+        <TrChartScoring class="mb-8" :event-id="trapPartyEvent.id" />
       </div>
       <VioCardStateAlert v-else>
         {{ t('datalessEvent') }}

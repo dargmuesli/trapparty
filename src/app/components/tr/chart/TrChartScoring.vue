@@ -3,9 +3,9 @@
     <h1 class="text-center">
       {{ t('title') }}
     </h1>
-    <ChartTeamScore :event-id="eventId" />
-    <ChartTeamDonationAmount :event-id="eventId" />
-    <ChartTeamScoreTotal :event-id="eventId" />
+    <TrChartTeamScore :event-id="eventId" />
+    <TrChartTeamDonationAmount :event-id="eventId" />
+    <TrChartTeamScoreTotal :event-id="eventId" />
   </section>
 </template>
 

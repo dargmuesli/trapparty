@@ -1,3 +1,3 @@
 <template>
-  <EventWelcome event-name="2022" />
+  <TrEventWelcome event-name="2022" />
 </template>

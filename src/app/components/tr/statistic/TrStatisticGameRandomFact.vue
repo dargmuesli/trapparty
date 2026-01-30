@@ -4,7 +4,7 @@
       v-if="leaderboard.length"
       class="flex flex-col gap-2 sm:text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-6xl"
     >
-      <StatisticGameRandomFactEntry
+      <TrStatisticGameRandomFactEntry
         v-for="(array, index) in leaderboard"
         :key="index"
         :highscores="highscores"

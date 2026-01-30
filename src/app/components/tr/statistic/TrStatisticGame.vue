@@ -1,11 +1,11 @@
 <template>
   <li v-if="game" class="flex flex-col gap-8">
-    <GameTitle :game="game" />
-    <StatisticGameRandomFact
+    <TrGameTitle :game="game" />
+    <TrStatisticGameRandomFact
       v-if="game.type === 'RANDOM_FACTS'"
       :game-id="+game.id"
     />
-    <StatisticGameEstimationNumeric
+    <TrStatisticGameEstimationNumeric
       v-if="game.type === 'ESTIMATION_NUMERIC'"
       :game-id="+game.id"
     />
