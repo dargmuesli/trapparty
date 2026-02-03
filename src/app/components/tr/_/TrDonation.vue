@@ -121,17 +121,15 @@ import { useStatsQuery } from '~~/gql/documents/queries/stats'
 import { getTeamItem } from '~~/gql/documents/fragments/teamItem'
 import { getCharityOrganizationItem } from '~~/gql/documents/fragments/charityOrganizationItem'
 
-interface Props {
+const { trapPartyEvent } = defineProps<{
   trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
-}
-const props = withDefaults(defineProps<Props>(), {})
-const trapPartyEventIdProp = toRef(() => props.trapPartyEvent.id)
+}>()
 
 const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  eventId: trapPartyEventIdProp.value,
+  eventId: trapPartyEvent.id,
 })
 
 // api data
@@ -238,7 +236,7 @@ const init = () => {
     ...teams.value,
     {
       name: 'Stream',
-      donationAmount: props.trapPartyEvent.commonDonationAmount,
+      donationAmount: trapPartyEvent.commonDonationAmount,
     } as TeamItemFragment,
   ]
 
@@ -287,8 +285,7 @@ const numberFormat = (n?: number) => (n ? numberFormatter.format(n) : undefined)
 // computations
 const donationAmountSum = computed(() => {
   return (
-    (props.trapPartyEvent.commonDonationAmount || 0) +
-    donationAmountTeamSum.value
+    (trapPartyEvent.commonDonationAmount || 0) + donationAmountTeamSum.value
   )
 })
 const donationAmountTeamSum = computed(() => {

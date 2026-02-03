@@ -112,11 +112,9 @@ import { consola } from 'consola'
 import { useEventByNameQuery } from '~~/gql/documents/queries/event/eventByName'
 import { getEventItem } from '~~/gql/documents/fragments/eventItem'
 
-interface Props {
+const { eventName } = defineProps<{
   eventName: string
-}
-const props = withDefaults(defineProps<Props>(), {})
-const eventNameProp = toRef(() => props.eventName)
+}>()
 
 const route = useRoute()
 const { t } = useI18n()
@@ -126,7 +124,7 @@ const localePath = useLocalePath()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  eventName: eventNameProp.value,
+  eventName,
 })
 
 // api data

@@ -56,11 +56,9 @@ import { getGameEstimationNumericRoundItem } from '~~/gql/documents/fragments/ga
 // import { getGameEstimationNumericVoteItem } from '~~/gql/documents/fragments/gameEstimationNumericVoteItem'
 // import { gameEstimationNumericVoteByPlayerIdAndRoundIdQuery } from '~~/gql/documents/queries/game/gameEstimationNumericVoteByPlayerIdAndRoundId'
 
-interface Props {
+const { gameId } = defineProps<{
   gameId: number
-}
-const props = withDefaults(defineProps<Props>(), {})
-const gameIdProp = toRef(() => props.gameId)
+}>()
 
 // const { $urql } = useNuxtApp()
 const { t } = useI18n()
@@ -74,7 +72,7 @@ const createGameEstimationNumericVoteMutation =
 // queries
 const allGameEstimationNumericRoundsQuery =
   await useAllGameEstimationNumericRoundsQuery({
-    gameId: gameIdProp.value,
+    gameId,
   })
 const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
   invitationCode:

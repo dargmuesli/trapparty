@@ -82,10 +82,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+const { backgroundFill = '#161616' } = defineProps<{
   backgroundFill?: string
-}
-withDefaults(defineProps<Props>(), {
-  backgroundFill: '#161616',
-})
+}>()
 </script>

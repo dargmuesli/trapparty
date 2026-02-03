@@ -20,25 +20,23 @@ import Rainbow from 'rainbowvis.js'
 import { useStatsQuery } from '~~/gql/documents/queries/stats'
 import { getTeamItem } from '~~/gql/documents/fragments/teamItem'
 
-interface Props {
+const {
+  eventId,
+  height = undefined,
+  // options = undefined,
+  title = undefined,
+} = defineProps<{
   eventId: number
   height?: number
-  options?: ChartOptions<'bar'>
+  // options?: ChartOptions<'bar'>
   title?: string
-}
-const props = withDefaults(defineProps<Props>(), {
-  height: undefined,
-  options: undefined,
-  title: undefined,
-})
-const eventIdProp = toRef(() => props.eventId)
-const titleProp = toRef(() => props.title)
+}>()
 
 const { t } = useI18n()
 
 // queries
 const statsQuery = await useStatsQuery({
-  eventId: eventIdProp.value,
+  eventId,
 })
 
 // api data
@@ -59,7 +57,7 @@ const horizontal = ref(true)
 const optionsDefault = ref<ChartOptions<'bar'>>({
   plugins: {
     title: {
-      text: titleProp.value || t('title'),
+      text: title || t('title'),
     },
   },
 })

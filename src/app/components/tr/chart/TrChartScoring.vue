@@ -10,10 +10,9 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+const { eventId } = defineProps<{
   eventId: number
-}
-withDefaults(defineProps<Props>(), {})
+}>()
 
 const { t } = useI18n()
 </script>

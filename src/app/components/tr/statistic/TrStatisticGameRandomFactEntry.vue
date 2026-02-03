@@ -22,19 +22,17 @@ import { consola } from 'consola'
 
 import { usePlayerNameByIdQuery } from '~~/gql/documents/queries/player/playerNameById'
 
-interface Props {
+const { highscores, playerId, value } = defineProps<{
   highscores: number[]
   playerId: number
   value: number
-}
-const props = withDefaults(defineProps<Props>(), {})
-const playerIdProp = toRef(() => props.playerId)
+}>()
 
 const { t } = useI18n()
 
 // queries
 const playerNameByIdQuery = await usePlayerNameByIdQuery({
-  id: playerIdProp.value,
+  id: playerId,
 })
 
 // api data
