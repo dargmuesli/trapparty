@@ -28,18 +28,16 @@
 <script setup lang="ts">
 import { useAllGameEstimationNumericLeaderboardViewsQuery } from '~~/gql/documents/queries/game/allGameEstimationNumericLeaderboardViews'
 
-interface Props {
+const { gameId } = defineProps<{
   gameId: number
-}
-const props = withDefaults(defineProps<Props>(), {})
-const gameIdProp = toRef(() => props.gameId)
+}>()
 
 const { t } = useI18n()
 
 // queries
 const allGameEstimationNumericLeaderboardViewsQuery =
   await useAllGameEstimationNumericLeaderboardViewsQuery({
-    gameId: gameIdProp.value,
+    gameId,
   })
 
 // api data

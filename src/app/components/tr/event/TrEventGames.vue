@@ -50,11 +50,9 @@ import { getEventItem } from '~~/gql/documents/fragments/eventItem'
 import { getGameItem } from '~~/gql/documents/fragments/gameItem'
 import { useEventByNameQuery } from '~~/gql/documents/queries/event/eventByName'
 
-interface Props {
+const { eventName } = defineProps<{
   eventName: string
-}
-const props = withDefaults(defineProps<Props>(), {})
-const eventNameProp = toRef(() => props.eventName)
+}>()
 
 const localePath = useLocalePath()
 const { t } = useI18n()
@@ -62,7 +60,7 @@ const store = useStore()
 
 // queries
 const eventByNameQuery = await useEventByNameQuery({
-  eventName: eventNameProp.value,
+  eventName,
 })
 
 // api data
@@ -84,7 +82,7 @@ const games = computed(() =>
 )
 
 // data
-const title = t('title', { name: eventNameProp.value })
+const title = t('title', { name: eventName })
 
 // initialization
 useHeadDefault({ title })

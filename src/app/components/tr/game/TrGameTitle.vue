@@ -19,10 +19,9 @@
 <script setup lang="ts">
 import type { GameItemFragment } from '~~/gql/generated/graphql'
 
-interface Props {
+const { game } = defineProps<{
   game: GameItemFragment
-}
-withDefaults(defineProps<Props>(), {})
+}>()
 
 const { t } = useI18n()
 </script>

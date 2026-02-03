@@ -30,11 +30,9 @@ import type {
 import { getGameRandomFactsVoteItem } from '~~/gql/documents/fragments/gameRandomFactsVoteItem'
 import { gameRandomFactsVotesQuery } from '~~/gql/documents/queries/game/allGameRandomFactsVotes'
 
-interface Props {
+const { gameId } = defineProps<{
   gameId: number
-}
-const props = withDefaults(defineProps<Props>(), {})
-const gameIdProp = toRef(() => props.gameId)
+}>()
 
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
@@ -47,7 +45,7 @@ const votes = ref<GameRandomFactsVoteItemFragment[]>([])
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  gameId: gameIdProp.value,
+  gameId,
 })
 
 // api data

@@ -72,11 +72,9 @@ import { getGameRandomFactsRoundItem } from '~~/gql/documents/fragments/gameRand
 import { getGameRandomFactsVoteItem } from '~~/gql/documents/fragments/gameRandomFactsVoteItem'
 import { gameRandomFactsVoteByPlayerIdAndRoundIdQuery } from '~~/gql/documents/queries/game/gameRandomFactsVoteByPlayerIdAndRoundId'
 
-interface Props {
+const { gameId } = defineProps<{
   gameId: number
-}
-const props = withDefaults(defineProps<Props>(), {})
-const gameIdProp = toRef(() => props.gameId)
+}>()
 
 const { $urql } = useNuxtApp()
 const { t } = useI18n()
@@ -88,7 +86,7 @@ const updateGameRandomFactsRoundByIdMutation =
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
-  gameId: gameIdProp.value,
+  gameId,
 })
 const playerByInvitationCodeFnQuery = await usePlayerByInvitationCodeFnQuery({
   invitationCode:

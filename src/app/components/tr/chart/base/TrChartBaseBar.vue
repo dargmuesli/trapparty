@@ -16,23 +16,24 @@ import type { ChartData, ChartOptions } from 'chart.js'
 import { merge } from 'lodash-es'
 import { Bar } from 'vue-chartjs'
 
-interface Props {
+const {
+  id,
+  data,
+  height = 150,
+  horizontal = true,
+  optionsAdditional = undefined,
+} = defineProps<{
   id: string
   data: ChartData<'bar', number[], unknown>
   height?: number
   horizontal?: boolean
   optionsAdditional?: ChartOptions<'bar'>
-}
-const props = withDefaults(defineProps<Props>(), {
-  height: 150,
-  horizontal: true,
-  optionsAdditional: undefined,
-})
+}>()
 
 // computations
 const options = computed((): ChartOptions<'bar'> => {
   const optionsDefault: ChartOptions<'bar'> = {
-    indexAxis: props.horizontal ? 'y' : 'x',
+    indexAxis: horizontal ? 'y' : 'x',
     plugins: {
       legend: {
         display: false,
@@ -70,7 +71,7 @@ const options = computed((): ChartOptions<'bar'> => {
       },
     },
   }
-  return merge(optionsDefault, props.optionsAdditional) // TODO: replace with defu
+  return merge(optionsDefault, optionsAdditional) // TODO: replace with defu
 })
 
 // initialization

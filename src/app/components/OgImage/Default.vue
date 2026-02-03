@@ -26,13 +26,12 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+const { headline, name, siteConfigName, title } = defineProps<{
   headline: string
   name: string
   siteConfigName: string
   title: string
-}
-withDefaults(defineProps<Props>(), {})
+}>()
 </script>
 
 <script lang="ts">

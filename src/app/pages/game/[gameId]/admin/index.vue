@@ -73,7 +73,7 @@ const gameRandomFactsRoundCreate = async ({
 
   const result = await createGameRandomFactsRoundMutation.executeMutation({
     gameRandomFactsRoundInput: {
-      gameId: gameId,
+      gameId,
       questionerName: player.name,
     },
   })
