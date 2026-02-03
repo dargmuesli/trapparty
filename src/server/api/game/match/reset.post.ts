@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
   const provided = token ?? playerId ?? ''
   if (!adminToken || provided !== adminToken) {
     throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized: invalid admin credentials',
+      status: 401,
+      statusText: 'Unauthorized: invalid admin credentials',
     })
   }
 

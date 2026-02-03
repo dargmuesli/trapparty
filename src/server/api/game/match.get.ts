@@ -23,7 +23,7 @@ export default defineEventHandler(async () => {
   const storage = useStorage('fs')
   const cfg = (await storage.getItem<GameConfig>('game:match:config')) || null
   if (!cfg) {
-    throw createError({ statusCode: 404, statusMessage: 'Game not configured' })
+    throw createError({ status: 404, statusText: 'Game not configured' })
   }
 
   const tries = (await storage.getItem<MatchTry[]>('game:match:tries')) || []

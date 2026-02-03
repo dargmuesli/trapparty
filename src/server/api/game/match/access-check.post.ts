@@ -9,15 +9,15 @@ export default defineEventHandler(async (event) => {
 
   if (!adminToken) {
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Admin token not configured',
+      status: 500,
+      statusText: 'Admin token not configured',
     })
   }
 
   if (!token || typeof token !== 'string') {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'playerId is required',
+      status: 400,
+      statusText: 'playerId is required',
     })
   }
 

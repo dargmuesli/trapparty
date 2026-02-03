@@ -2,7 +2,7 @@
   "author": "Jonas Thelemann",
   "description": "TrapParty's website.",
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "9.1.13",
+    "@dargmuesli/nuxt-cookie-control": "9.1.14",
     "@dargmuesli/nuxt-vio": "20.5.1",
     "@graphql-codegen/cli": "6.1.1",
     "@graphql-codegen/client-preset": "5.2.2",
@@ -27,7 +27,7 @@
     "eslint": "9.39.2",
     "graphql": "16.12.0",
     "lodash-es": "4.17.23",
-    "nuxt": "4.2.2",
+    "nuxt": "https://pkg.pr.new/nuxt@34210",
     "nuxt-security": "2.5.1",
     "pinia": "3.0.4",
     "pinia-plugin-persistedstate": "4.7.1",
@@ -36,7 +36,7 @@
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.5",
     "sharp": "0.34.5",
-    "stylelint": "17.0.0",
+    "stylelint": "17.1.0",
     "stylelint-config-recommended-vue": "1.6.1",
     "stylelint-config-standard": "40.0.0",
     "stylelint-no-unsupported-browser-features": "8.0.5",
@@ -46,7 +46,7 @@
     "vue": "3.5.27",
     "vue-chartjs": "5.3.3",
     "vue-router": "4.6.4",
-    "vue-tsc": "3.2.2"
+    "vue-tsc": "3.2.4"
   },
   "engines": {
     "node": "24"
