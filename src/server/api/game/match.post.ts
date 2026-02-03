@@ -85,8 +85,8 @@ export default defineEventHandler(async (event) => {
     const provided = hasToken ? body.token : body.playerId
     if (!adminToken || provided !== adminToken) {
       throw createError({
-        statusCode: 401,
-        statusMessage: 'Unauthorized: invalid admin credentials',
+        status: 401,
+        statusText: 'Unauthorized: invalid admin credentials',
       })
     }
 
@@ -106,8 +106,8 @@ export default defineEventHandler(async (event) => {
       const startMs = parseIso(body.startAt)
       if (!Number.isFinite(startMs)) {
         throw createError({
-          statusCode: 400,
-          statusMessage: 'Invalid startAt ISO timestamp',
+          status: 400,
+          statusText: 'Invalid startAt ISO timestamp',
         })
       }
       next.startAt = new Date(startMs).toISOString()
@@ -117,8 +117,8 @@ export default defineEventHandler(async (event) => {
       const endMs = parseIso(body.endAt)
       if (!Number.isFinite(endMs)) {
         throw createError({
-          statusCode: 400,
-          statusMessage: 'Invalid endAt ISO timestamp',
+          status: 400,
+          statusText: 'Invalid endAt ISO timestamp',
         })
       }
       next.endAt = new Date(endMs).toISOString()
@@ -132,8 +132,8 @@ export default defineEventHandler(async (event) => {
       startMs >= endMs
     ) {
       throw createError({
-        statusCode: 400,
-        statusMessage: 'startAt must be before endAt',
+        status: 400,
+        statusText: 'startAt must be before endAt',
       })
     }
 
@@ -141,8 +141,8 @@ export default defineEventHandler(async (event) => {
       const uuids = body.players.filter((p) => isUuid(p))
       if (uuids.length !== body.players.length) {
         throw createError({
-          statusCode: 400,
-          statusMessage: 'players must be UUIDs',
+          status: 400,
+          statusText: 'players must be UUIDs',
         })
       }
       // De-duplicate while preserving order
@@ -157,8 +157,8 @@ export default defineEventHandler(async (event) => {
     if (typeof body.targetMatches === 'number') {
       if (!Number.isFinite(body.targetMatches) || body.targetMatches < 0) {
         throw createError({
-          statusCode: 400,
-          statusMessage: 'targetMatches must be a non-negative number',
+          status: 400,
+          statusText: 'targetMatches must be a non-negative number',
         })
       }
       next.targetMatches = Math.floor(body.targetMatches)
@@ -180,7 +180,7 @@ export default defineEventHandler(async (event) => {
   // Player try flow
   const cfg = await getConfig()
   if (!cfg) {
-    throw createError({ statusCode: 404, statusMessage: 'Game not configured' })
+    throw createError({ status: 404, statusText: 'Game not configured' })
   }
 
   const nowMs = Date.now()
@@ -188,8 +188,8 @@ export default defineEventHandler(async (event) => {
   const endMs = parseIso(cfg.endAt)
   if (!Number.isFinite(startMs) || !Number.isFinite(endMs)) {
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Game configuration timestamps invalid',
+      status: 500,
+      statusText: 'Game configuration timestamps invalid',
     })
   }
 
@@ -212,8 +212,8 @@ export default defineEventHandler(async (event) => {
   const otherPlayerId = body.otherPlayerId
   if (!isUuid(playerId) || !isUuid(otherPlayerId)) {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'playerId and otherPlayerId must be UUIDs',
+      status: 400,
+      statusText: 'playerId and otherPlayerId must be UUIDs',
     })
   }
   if (playerId === otherPlayerId) {

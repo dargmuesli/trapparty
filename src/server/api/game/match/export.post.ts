@@ -27,15 +27,15 @@ export default defineEventHandler(async (event) => {
   const provided = token ?? playerId ?? ''
   if (!adminToken || provided !== adminToken) {
     throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized: invalid admin credentials',
+      status: 401,
+      statusText: 'Unauthorized: invalid admin credentials',
     })
   }
 
   if (!['all', 'success', 'failed'].includes(filterType)) {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Invalid filterType. Must be all, success, or failed',
+      status: 400,
+      statusText: 'Invalid filterType. Must be all, success, or failed',
     })
   }
 
@@ -46,8 +46,8 @@ export default defineEventHandler(async (event) => {
 
   if (!config) {
     throw createError({
-      statusCode: 404,
-      statusMessage: 'Game not configured',
+      status: 404,
+      statusText: 'Game not configured',
     })
   }
 

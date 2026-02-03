@@ -28,7 +28,7 @@ const route = useRoute()
 
 if (!route.params.gameId) {
   throw createError({
-    statusCode: 500,
+    status: 500,
   })
 }
 
