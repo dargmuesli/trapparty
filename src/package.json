@@ -27,7 +27,7 @@
     "eslint": "9.39.2",
     "graphql": "16.12.0",
     "lodash-es": "4.17.23",
-    "nuxt": "https://pkg.pr.new/nuxt@34210",
+    "nuxt": "4.3.1",
     "nuxt-security": "2.5.1",
     "pinia": "3.0.4",
     "pinia-plugin-persistedstate": "4.7.1",
@@ -55,8 +55,10 @@
   "private": true,
   "scripts": {
     "build": "pnpm run build:node",
-    "build:node": "nuxt build",
-    "build:static": "nuxt generate",
+    "build:node": "NUXT_PUBLIC_SITE_URL=https://localhost:3001 nuxt build",
+    "build:static": "NUXT_PUBLIC_SITE_URL=https://localhost:3002 nuxt generate",
+    "build:static:test": "NUXT_PUBLIC_VIO_IS_TESTING=true pnpm run build:static",
+    "certificates": ".config/certificates/mkcert.sh",
     "dev": "pnpm run start:dev",
     "generate": "pnpm run build:static",
     "gql:codegen": "NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config .codegenrc.ts",
@@ -66,11 +68,12 @@
     "lint:staged": "lint-staged",
     "lint:style": "stylelint --cache \"**/*.{vue,css}\" --ignore-path .gitignore",
     "lint:ts": "nuxt typecheck",
-    "prepare": "nuxt prepare && ./.config/certificates/mkcert.sh",
+    "postinstall": "nuxt prepare",
     "preview": "nuxt preview",
-    "start:dev": "nuxt dev",
-    "start:node": "node .output/server/index.mjs",
-    "start:static": "serve .output/public --ssl-cert ./.config/certificates/ssl.crt --ssl-key ./.config/certificates/ssl.key"
+    "start": "pnpm run start:node",
+    "start:dev": "pnpm run certificates && nuxt dev",
+    "start:node": "node node/server/node.mjs",
+    "start:static": "node node/server/static.mjs"
   },
   "type": "module",
   "version": "4.3.4"

@@ -14,10 +14,9 @@
           <VioIconHome />
         </VioLink>
       </header>
-      <div class="flex flex-1 flex-col">
-        <NuxtLoadingIndicator color="#fff" />
+      <main class="flex flex-1 flex-col">
         <slot />
-      </div>
+      </main>
     </div>
     <VioLayoutFooter>
       <VioLayoutFooterCategory :heading="t('legal')">

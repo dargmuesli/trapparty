@@ -47,14 +47,15 @@ export default defineNuxtConfig(
             'vue-chartjs',
           ],
         },
+        // TODO: remove `as never` when plugin types are fixed
         plugins: [
           Components({
             dts: '.nuxt/components-icons.d.ts',
             resolvers: [IconsResolver()],
-          }),
+          }) as never,
           Icons({
             scale: 1.5,
-          }),
+          }) as never,
         ],
       },
 
