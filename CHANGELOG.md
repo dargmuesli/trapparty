@@ -1,3 +1,9 @@
+## [4.3.5](https://github.com/dargmuesli/trapparty/compare/4.3.4...4.3.5) (2026-02-09)
+
+### Bug Fixes
+
+* **docker:** include node server script ([daab30d](https://github.com/dargmuesli/trapparty/commit/daab30d3707bb8993f9742f598fabdce5306ecd3))
+
 ## [4.3.4](https://github.com/dargmuesli/trapparty/compare/4.3.3...4.3.4) (2026-02-02)
 
 ### Bug Fixes
