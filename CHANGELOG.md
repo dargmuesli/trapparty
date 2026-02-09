@@ -1,3 +1,9 @@
+## [4.3.6](https://github.com/dargmuesli/trapparty/compare/4.3.5...4.3.6) (2026-02-09)
+
+### Bug Fixes
+
+* **docker:** correct production environment ([2e73279](https://github.com/dargmuesli/trapparty/commit/2e7327958ea70d2fbc91b9c551389e86c66ca60a))
+
 ## [4.3.5](https://github.com/dargmuesli/trapparty/compare/4.3.4...4.3.5) (2026-02-09)
 
 ### Bug Fixes
