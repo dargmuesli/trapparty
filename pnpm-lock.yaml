@@ -12,11 +12,11 @@ importers:
   .:
     devDependencies:
       '@commitlint/cli':
-        specifier: 20.4.1
-        version: 20.4.1(@types/node@24.10.13)(typescript@5.9.3)
+        specifier: 20.4.2
+        version: 20.4.2(@types/node@24.10.13)(typescript@5.9.3)
       '@commitlint/config-conventional':
-        specifier: 20.4.1
-        version: 20.4.1
+        specifier: 20.4.2
+        version: 20.4.2
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -31,16 +31,16 @@ importers:
         version: 9.1.16(magicast@0.5.2)(webpack@5.105.2(esbuild@0.27.3))
       '@dargmuesli/nuxt-vio':
         specifier: 20.7.2
-        version: 20.7.2(9452f21ec7d8d0778ca2c628418fa9f8)
+        version: 20.7.2(85c859f8dae64ebcee0b33c04ca2c80c)
       '@graphql-codegen/cli':
         specifier: 6.1.1
         version: 6.1.1(@parcel/watcher@2.5.6)(@types/node@24.10.13)(crossws@0.3.5)(graphql@16.12.0)(typescript@5.9.3)
       '@graphql-codegen/client-preset':
-        specifier: 5.2.2
-        version: 5.2.2(graphql@16.12.0)
+        specifier: 5.2.3
+        version: 5.2.3(graphql@16.12.0)
       '@graphql-codegen/typescript':
-        specifier: 5.0.7
-        version: 5.0.7(graphql@16.12.0)
+        specifier: 5.0.8
+        version: 5.0.8(graphql@16.12.0)
       '@graphql-codegen/typescript-urql-graphcache':
         specifier: 3.1.1
         version: 3.1.1(@urql/exchange-graphcache@9.0.0(@urql/core@6.0.1(graphql@16.12.0))(graphql@16.12.0))(graphql-tag@2.12.6(graphql@16.12.0))(graphql@16.12.0)
@@ -141,8 +141,8 @@ importers:
         specifier: 8.1.1
         version: 8.1.1(stylelint@17.3.0(typescript@5.9.3))
       tailwindcss:
-        specifier: 4.1.18
-        version: 4.1.18
+        specifier: 4.2.0
+        version: 4.2.0
       unplugin-icons:
         specifier: 23.0.1
         version: 23.0.1(@vue/compiler-sfc@3.5.28)
@@ -156,8 +156,8 @@ importers:
         specifier: 5.3.3
         version: 5.3.3(chart.js@4.5.1)(vue@3.5.28(typescript@5.9.3))
       vue-router:
-        specifier: 5.0.2
-        version: 5.0.2(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
+        specifier: 5.0.3
+        version: 5.0.3(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
       vue-tsc:
         specifier: 3.2.4
         version: 3.2.4(typescript@5.9.3)
@@ -173,7 +173,7 @@ importers:
         version: 4.11.1(playwright-core@1.58.2)
       '@dargmuesli/nuxt-vio':
         specifier: 20.7.2
-        version: 20.7.2(21e038df824fc550d734b1905cc675cb)
+        version: 20.7.2(52c29769425b0d9e2c25823bd67a4b05)
       '@dargmuesli/nuxt-vio-testing':
         specifier: 20.7.2
         version: 20.7.2(@axe-core/playwright@4.11.1(playwright-core@1.58.2))(@playwright/test@1.58.2)(lodash-es@4.17.23)(playwright-core@1.58.2)(ufo@1.6.3)
@@ -199,8 +199,8 @@ importers:
         specifier: 5.5.5
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(prettier@3.8.1)
       tailwindcss:
-        specifier: 4.1.18
-        version: 4.1.18
+        specifier: 4.2.0
+        version: 4.2.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -555,13 +555,13 @@ packages:
     resolution: {integrity: sha512-SIOD2DxrRRwQ+jgzlXCqoEFiKOFqaPjhnNTGKXSRLvp1HiOvapLaFG2kEr9dYQTYe8rKrd9uvDUzmAITeNyaHQ==}
     engines: {node: '>=18.0.0'}
 
-  '@commitlint/cli@20.4.1':
-    resolution: {integrity: sha512-uuFKKpc7OtQM+6SRqT+a4kV818o1pS+uvv/gsRhyX7g4x495jg+Q7P0+O9VNGyLXBYP0syksS7gMRDJKcekr6A==}
+  '@commitlint/cli@20.4.2':
+    resolution: {integrity: sha512-YjYSX2yj/WsVoxh9mNiymfFS2ADbg2EK4+1WAsMuckwKMCqJ5PDG0CJU/8GvmHWcv4VRB2V02KqSiecRksWqZQ==}
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-conventional@20.4.1':
-    resolution: {integrity: sha512-0YUvIeBtpi86XriqrR+TCULVFiyYTIOEPjK7tTRMxjcBm1qlzb+kz7IF2WxL6Fq5DaundG8VO37BNgMkMTBwqA==}
+  '@commitlint/config-conventional@20.4.2':
+    resolution: {integrity: sha512-rwkTF55q7Q+6dpSKUmJoScV0f3EpDlWKw2UPzklkLS4o5krMN1tPWAVOgHRtyUTMneIapLeQwaCjn44Td6OzBQ==}
     engines: {node: '>=v18'}
 
   '@commitlint/config-validator@20.4.0':
@@ -1145,8 +1145,8 @@ packages:
       '@parcel/watcher':
         optional: true
 
-  '@graphql-codegen/client-preset@5.2.2':
-    resolution: {integrity: sha512-1xufIJZr04ylx0Dnw49m8Jrx1s1kujUNVm+Tp5cPRsQmgPN9VjB7wWY7CGD8ArStv6Vjb0a31Xnm5I+VzZM+Rw==}
+  '@graphql-codegen/client-preset@5.2.3':
+    resolution: {integrity: sha512-zgbk0dTY+KC/8TG00RGct6HnXWJU6jQaty3wAXKl1CvCXTKO73pW8Npph+RSJMTEEXb+QuJL3vyaPiGM1gw8sw==}
     engines: {node: '>=16'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -1161,8 +1161,8 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
 
-  '@graphql-codegen/gql-tag-operations@5.1.2':
-    resolution: {integrity: sha512-BIv66VJ2bKlpfXBeVakJxihBSKnBIdGFLMaFdnGPxqYlKIzaGffjsGbhViPwwBinmBChW4Se6PU4Py7eysYEiA==}
+  '@graphql-codegen/gql-tag-operations@5.1.3':
+    resolution: {integrity: sha512-yh/GTGW5Nf8f/zaCHZwWb04ItWAm+UfUJf7pb6n4SrqRxvWOSJk36LJ4l8UuDW1tmAOobjeXB8HSKSJsUjmA1g==}
     engines: {node: '>=16'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -1208,12 +1208,6 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
       graphql-tag: ^2.0.0
 
-  '@graphql-codegen/typescript@5.0.7':
-    resolution: {integrity: sha512-kZwcu9Iat5RWXxLGPnDbG6qVbGTigF25/aGqCG/DCQ1Al8RufSjVXhIOkJBp7QWAqXn3AupHXL1WTMXP7xs4dQ==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-
   '@graphql-codegen/typescript@5.0.8':
     resolution: {integrity: sha512-lUW6ari+rXP6tz5B0LXjmV9rEMOphoCZAkt+SJGObLQ6w6544ZsXSsRga/EJiSvZ1fRfm9yaFoErOZ56IVThyg==}
     engines: {node: '>=16'}
@@ -1228,12 +1222,6 @@ packages:
 
   '@graphql-codegen/visitor-plugin-common@2.13.8':
     resolution: {integrity: sha512-IQWu99YV4wt8hGxIbBQPtqRuaWZhkQRG2IZKbMoSvh0vGeWb3dB0n0hSgKaOOxDY+tljtOf9MTcUYvJslQucMQ==}
-    peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-
-  '@graphql-codegen/visitor-plugin-common@6.2.2':
-    resolution: {integrity: sha512-wEJ4zJj58PKlXISItZfr0xIHyM1lAuRfoflPegsb1L17Mx5+YzNOy0WAlLele3yzyV89WvCiprFKMcVQ7KfDXg==}
-    engines: {node: '>=16'}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
 
@@ -7757,9 +7745,6 @@ packages:
   tailwind-merge@3.5.0:
     resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
 
-  tailwindcss@4.1.18:
-    resolution: {integrity: sha512-4+Z+0yiYyEtUVCScyfHCxOYP06L5Ne+JiHhY2IjR2KWMIWhJOYZKLSGZaP5HkZ8+bY0cxfzwDE5uOmzFXyIwxw==}
-
   tailwindcss@4.2.0:
     resolution: {integrity: sha512-yYzTZ4++b7fNYxFfpnberEEKu43w44aqDMNM9MHMmcKuCH7lL8jJ4yJ7LGHv7rSwiqM0nkiobF9I6cLlpS2P7Q==}
 
@@ -8313,8 +8298,8 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  vue-router@5.0.2:
-    resolution: {integrity: sha512-YFhwaE5c5JcJpNB1arpkl4/GnO32wiUWRB+OEj1T0DlDxEZoOfbltl2xEwktNU/9o1sGcGburIXSpbLpPFe/6w==}
+  vue-router@5.0.3:
+    resolution: {integrity: sha512-nG1c7aAFac7NYj8Hluo68WyWfc41xkEjaR0ViLHCa3oDvTQ/nIuLJlXJX1NUPw/DXzx/8+OKMng045HHQKQKWw==}
     peerDependencies:
       '@pinia/colada': '>=0.21.2'
       '@vue/compiler-sfc': ^3.5.17
@@ -8981,7 +8966,7 @@ snapshots:
 
   '@cloudflare/kv-asset-handler@0.4.2': {}
 
-  '@commitlint/cli@20.4.1(@types/node@24.10.13)(typescript@5.9.3)':
+  '@commitlint/cli@20.4.2(@types/node@24.10.13)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.4.0
       '@commitlint/lint': 20.4.2
@@ -8994,7 +8979,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-conventional@20.4.1':
+  '@commitlint/config-conventional@20.4.2':
     dependencies:
       '@commitlint/types': 20.4.0
       conventional-changelog-conventionalcommits: 9.1.0
@@ -9134,7 +9119,7 @@ snapshots:
       playwright-core: 1.58.2
       ufo: 1.6.3
 
-  '@dargmuesli/nuxt-vio@20.7.2(21e038df824fc550d734b1905cc675cb)':
+  '@dargmuesli/nuxt-vio@20.7.2(52c29769425b0d9e2c25823bd67a4b05)':
     dependencies:
       '@dargmuesli/nuxt-cookie-control': 9.1.16(magicast@0.5.2)(webpack@5.105.2(esbuild@0.27.3))
       '@eslint/compat': 2.0.2(eslint@9.39.2(jiti@2.6.1))
@@ -9150,8 +9135,8 @@ snapshots:
       '@nuxtjs/seo': 3.4.0(@unhead/vue@2.1.4(vue@3.5.28(typescript@5.9.3)))(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)(rollup@4.57.1)(unhead@2.1.4)(unstorage@1.17.4(db0@0.3.4)(ioredis@5.9.3))(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue@3.5.28(typescript@5.9.3))
       '@nuxtjs/turnstile': 1.1.1(@nuxt/scripts@0.12.2(@googlemaps/markerclusterer@2.6.2)(@unhead/vue@2.1.4(vue@3.5.28(typescript@5.9.3)))(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(magicast@0.5.2)
       '@pinia/nuxt': 0.11.3(magicast@0.5.2)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))
-      '@tailwindcss/forms': 0.5.11(tailwindcss@4.1.18)
-      '@tailwindcss/typography': 0.5.19(tailwindcss@4.1.18)
+      '@tailwindcss/forms': 0.5.11(tailwindcss@4.2.0)
+      '@tailwindcss/typography': 0.5.19(tailwindcss@4.2.0)
       '@tailwindcss/vite': 4.2.0(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))
       '@types/lodash-es': 4.17.12
       '@types/nodemailer': 7.0.10
@@ -9181,7 +9166,7 @@ snapshots:
       tailwind-merge: 3.5.0
       tw-animate-css: 1.4.0
       vue: 3.5.28(typescript@5.9.3)
-      vue-router: 5.0.2(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
+      vue-router: 5.0.3(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
       vue-sonner: 2.0.9(@nuxt/kit@4.3.1(magicast@0.5.2))(@nuxt/schema@4.3.1)(nuxt@4.3.1(@parcel/watcher@2.5.6)(@types/node@24.10.13)(@vue/compiler-sfc@3.5.28)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.2(jiti@2.6.1))(ioredis@5.9.3)(lightningcss@1.31.1)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(rollup@4.57.1)(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(yaml@2.8.2))
       vue-tsc: 3.2.4(typescript@5.9.3)
     transitivePeerDependencies:
@@ -9246,7 +9231,7 @@ snapshots:
       - yaml-eslint-parser
       - zod
 
-  '@dargmuesli/nuxt-vio@20.7.2(9452f21ec7d8d0778ca2c628418fa9f8)':
+  '@dargmuesli/nuxt-vio@20.7.2(85c859f8dae64ebcee0b33c04ca2c80c)':
     dependencies:
       '@dargmuesli/nuxt-cookie-control': 9.1.16(magicast@0.5.2)(webpack@5.105.2(esbuild@0.27.3))
       '@eslint/compat': 2.0.2(eslint@9.39.2(jiti@2.6.1))
@@ -9262,8 +9247,8 @@ snapshots:
       '@nuxtjs/seo': 3.4.0(@unhead/vue@2.1.4(vue@3.5.28(typescript@5.9.3)))(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)(rollup@4.57.1)(unhead@2.1.4)(unstorage@1.17.4(db0@0.3.4)(ioredis@5.9.3))(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue@3.5.28(typescript@5.9.3))
       '@nuxtjs/turnstile': 1.1.1(@nuxt/scripts@0.12.2(@googlemaps/markerclusterer@2.6.2)(@unhead/vue@2.1.4(vue@3.5.28(typescript@5.9.3)))(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(magicast@0.5.2)
       '@pinia/nuxt': 0.11.3(magicast@0.5.2)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))
-      '@tailwindcss/forms': 0.5.11(tailwindcss@4.1.18)
-      '@tailwindcss/typography': 0.5.19(tailwindcss@4.1.18)
+      '@tailwindcss/forms': 0.5.11(tailwindcss@4.2.0)
+      '@tailwindcss/typography': 0.5.19(tailwindcss@4.2.0)
       '@tailwindcss/vite': 4.2.0(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))
       '@types/lodash-es': 4.17.12
       '@types/nodemailer': 7.0.10
@@ -9293,7 +9278,7 @@ snapshots:
       tailwind-merge: 3.5.0
       tw-animate-css: 1.4.0
       vue: 3.5.28(typescript@5.9.3)
-      vue-router: 5.0.2(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
+      vue-router: 5.0.3(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
       vue-sonner: 2.0.9(@nuxt/kit@4.3.1(magicast@0.5.2))(@nuxt/schema@4.3.1)(nuxt@4.3.1(@parcel/watcher@2.5.6)(@types/node@24.10.13)(@vue/compiler-sfc@3.5.28)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.2(jiti@2.6.1))(ioredis@5.9.3)(lightningcss@1.31.1)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(rollup@4.57.1)(stylelint@17.3.0(typescript@5.9.3))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vue-tsc@3.2.4(typescript@5.9.3))(yaml@2.8.2))
       vue-tsc: 3.2.4(typescript@5.9.3)
     transitivePeerDependencies:
@@ -9709,7 +9694,7 @@ snapshots:
       '@babel/generator': 7.29.1
       '@babel/template': 7.28.6
       '@babel/types': 7.29.0
-      '@graphql-codegen/client-preset': 5.2.2(graphql@16.12.0)
+      '@graphql-codegen/client-preset': 5.2.3(graphql@16.12.0)
       '@graphql-codegen/core': 5.0.0(graphql@16.12.0)
       '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
       '@graphql-tools/apollo-engine-loader': 8.0.28(graphql@16.12.0)
@@ -9755,15 +9740,15 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@graphql-codegen/client-preset@5.2.2(graphql@16.12.0)':
+  '@graphql-codegen/client-preset@5.2.3(graphql@16.12.0)':
     dependencies:
       '@babel/helper-plugin-utils': 7.28.6
       '@babel/template': 7.28.6
       '@graphql-codegen/add': 6.0.0(graphql@16.12.0)
-      '@graphql-codegen/gql-tag-operations': 5.1.2(graphql@16.12.0)
+      '@graphql-codegen/gql-tag-operations': 5.1.3(graphql@16.12.0)
       '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
       '@graphql-codegen/typed-document-node': 6.1.6(graphql@16.12.0)
-      '@graphql-codegen/typescript': 5.0.7(graphql@16.12.0)
+      '@graphql-codegen/typescript': 5.0.8(graphql@16.12.0)
       '@graphql-codegen/typescript-operations': 5.0.8(graphql@16.12.0)
       '@graphql-codegen/visitor-plugin-common': 6.2.3(graphql@16.12.0)
       '@graphql-tools/documents': 1.0.1(graphql@16.12.0)
@@ -9782,10 +9767,10 @@ snapshots:
       graphql: 16.12.0
       tslib: 2.6.3
 
-  '@graphql-codegen/gql-tag-operations@5.1.2(graphql@16.12.0)':
+  '@graphql-codegen/gql-tag-operations@5.1.3(graphql@16.12.0)':
     dependencies:
       '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
-      '@graphql-codegen/visitor-plugin-common': 6.2.2(graphql@16.12.0)
+      '@graphql-codegen/visitor-plugin-common': 6.2.3(graphql@16.12.0)
       '@graphql-tools/utils': 10.11.0(graphql@16.12.0)
       auto-bind: 4.0.0
       graphql: 16.12.0
@@ -9856,17 +9841,6 @@ snapshots:
       - encoding
       - supports-color
 
-  '@graphql-codegen/typescript@5.0.7(graphql@16.12.0)':
-    dependencies:
-      '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
-      '@graphql-codegen/schema-ast': 5.0.0(graphql@16.12.0)
-      '@graphql-codegen/visitor-plugin-common': 6.2.2(graphql@16.12.0)
-      auto-bind: 4.0.0
-      graphql: 16.12.0
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - encoding
-
   '@graphql-codegen/typescript@5.0.8(graphql@16.12.0)':
     dependencies:
       '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
@@ -9901,22 +9875,6 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
-
-  '@graphql-codegen/visitor-plugin-common@6.2.2(graphql@16.12.0)':
-    dependencies:
-      '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
-      '@graphql-tools/optimize': 2.0.0(graphql@16.12.0)
-      '@graphql-tools/relay-operation-optimizer': 7.0.27(graphql@16.12.0)
-      '@graphql-tools/utils': 10.11.0(graphql@16.12.0)
-      auto-bind: 4.0.0
-      change-case-all: 1.0.15
-      dependency-graph: 1.0.0
-      graphql: 16.12.0
-      graphql-tag: 2.12.6(graphql@16.12.0)
-      parse-filepath: 1.0.2
-      tslib: 2.6.3
-    transitivePeerDependencies:
-      - encoding
 
   '@graphql-codegen/visitor-plugin-common@6.2.3(graphql@16.12.0)':
     dependencies:
@@ -10002,7 +9960,7 @@ snapshots:
     dependencies:
       graphql: 16.12.0
       lodash.sortby: 4.7.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/executor-common@0.0.4(graphql@16.12.0)':
     dependencies:
@@ -10196,7 +10154,7 @@ snapshots:
   '@graphql-tools/optimize@2.0.0(graphql@16.12.0)':
     dependencies:
       graphql: 16.12.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/relay-operation-optimizer@6.5.18(graphql@16.12.0)':
     dependencies:
@@ -10213,7 +10171,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.3(graphql@16.12.0)
       '@graphql-tools/utils': 11.0.0(graphql@16.12.0)
       graphql: 16.12.0
-      tslib: 2.6.3
+      tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
@@ -12196,10 +12154,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tailwindcss/forms@0.5.11(tailwindcss@4.1.18)':
+  '@tailwindcss/forms@0.5.11(tailwindcss@4.2.0)':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 4.1.18
+      tailwindcss: 4.2.0
 
   '@tailwindcss/node@4.2.0':
     dependencies:
@@ -12262,10 +12220,10 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.2.0
       '@tailwindcss/oxide-win32-x64-msvc': 4.2.0
 
-  '@tailwindcss/typography@0.5.19(tailwindcss@4.1.18)':
+  '@tailwindcss/typography@0.5.19(tailwindcss@4.2.0)':
     dependencies:
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.1.18
+      tailwindcss: 4.2.0
 
   '@tailwindcss/vite@4.2.0(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
@@ -17561,8 +17519,6 @@ snapshots:
 
   tailwind-merge@3.5.0: {}
 
-  tailwindcss@4.1.18: {}
-
   tailwindcss@4.2.0: {}
 
   tapable@2.3.0: {}
@@ -18130,7 +18086,7 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.28(typescript@5.9.3)
 
-  vue-router@5.0.2(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3)):
+  vue-router@5.0.3(@vue/compiler-sfc@3.5.28)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3)):
     dependencies:
       '@babel/generator': 7.29.1
       '@vue-macros/common': 3.1.2(vue@3.5.28(typescript@5.9.3))
