@@ -76,5 +76,5 @@
     "start:static": "node node/server/static.mjs"
   },
   "type": "module",
-  "version": "4.3.6"
+  "version": "4.3.7"
 }
