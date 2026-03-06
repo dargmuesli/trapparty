@@ -108,6 +108,7 @@
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import { consola } from 'consola'
+import { joinURL } from 'ufo'
 
 import { useEventByNameQuery } from '~~/gql/documents/queries/event/eventByName'
 import { getEventItem } from '~~/gql/documents/fragments/eventItem'
@@ -118,7 +119,6 @@ const { eventName } = defineProps<{
 
 const route = useRoute()
 const { t } = useI18n()
-const router = useRouter()
 const store = useStore()
 const localePath = useLocalePath()
 
@@ -154,10 +154,10 @@ const isFormAnonymousSent = ref(false)
 const title = t('title')
 
 // methods
-const anonymous = () => {
+const anonymous = async () => {
   store.participationDataSet({ role: 'watcher' })
-  router.push({
-    path: append(route.path, 'dashboard'),
+  await navigateTo({
+    path: joinURL(route.path, 'dashboard'),
   })
 }
 const saveCode = async () => {
@@ -175,8 +175,8 @@ const saveCode = async () => {
     invitationCode: form.invitationCode,
     playerId: form.invitationCode,
   })
-  router.push({
-    path: append(route.path, 'dashboard'),
+  await navigateTo({
+    path: joinURL(route.path, 'dashboard'),
   })
 }
 
