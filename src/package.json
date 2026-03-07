@@ -25,7 +25,7 @@
     "consola": "3.4.2",
     "defu": "6.1.4",
     "eslint": "10.0.2",
-    "graphql": "16.13.0",
+    "graphql": "16.13.1",
     "lodash-es": "4.17.23",
     "nuxt": "4.3.1",
     "nuxt-security": "2.5.1",
