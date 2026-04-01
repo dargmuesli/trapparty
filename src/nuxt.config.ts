@@ -1,5 +1,5 @@
 import { JWT_NAME } from '@dargmuesli/nuxt-vio/shared/utils/constants'
-import { VIO_NUXT_BASE_CONFIG } from '@dargmuesli/nuxt-vio/shared/utils/nuxt'
+import { VIO_NUXT_BASE_CONFIG } from '@dargmuesli/nuxt-vio/node/static'
 import { defu } from 'defu'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
@@ -12,7 +12,7 @@ export default defineNuxtConfig(
     {
       css: ['~/assets/css/trapparty.css'],
       extends: ['@dargmuesli/nuxt-vio'],
-      modules: ['pinia-plugin-persistedstate/nuxt'],
+      modules: ['@nuxt/fonts', 'pinia-plugin-persistedstate/nuxt'],
       nitro: {
         storage: {
           fs: {
@@ -78,6 +78,16 @@ export default defineNuxtConfig(
           ],
           optional: [],
         },
+      },
+      fonts: {
+        families: [
+          {
+            name: 'Inter',
+            weights: [600, 700],
+            global: true,
+            formats: ['ttf'],
+          },
+        ],
       },
       gtag: {
         id: 'G-K4R41W62BR',

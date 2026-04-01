@@ -4,7 +4,7 @@
 
 TrapParty's online version: [trapparty.jonas-thelemann.de](https://trapparty.jonas-thelemann.de/).
 
-![Welcome](https://trapparty.jonas-thelemann.de/__og-image__/image/og.png "TrapParty")
+![Welcome](https://trapparty.jonas-thelemann.de/_og/d/a_TrapParty's+logo.,c_Default.takumi,description_TrapParty's+online+version.,title_Privacy+Policy,p_Ii9wcml2YWN5LXBvbGljeSI.png "TrapParty")
 
 ## Table of Contents
 1. **[Development](#development)**

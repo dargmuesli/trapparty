@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
-const siteConfig = useSiteConfig()
 const timeZone = useTimeZone()
 
 const { loadingIds, indicateLoadingDone } = useLoadingDoneIndicator('app')
@@ -38,29 +36,9 @@ const isLoading = computed(() => !!loadingIds.value.length)
 onMounted(() => indicateLoadingDone())
 
 // initialization
-defineOgImageComponent(
-  'Default',
-  {
-    headline: t('headline'),
-    name: t('name'),
-    siteConfigName: siteConfig.name,
-  },
-  {
-    alt: t('globalSeoOgImageAlt'),
-  },
-)
 useAppLayout()
 usePolyfills()
 useSchemaOrg([defineWebSite()])
 useVioGtag()
 initialize()
 </script>
-
-<i18n lang="yaml">
-de:
-  headline: Jonas Thelemanns
-  name: Geburtstagsfeier
-en:
-  headline: Jonas Thelemann's
-  name: Birthday Bash
-</i18n>
