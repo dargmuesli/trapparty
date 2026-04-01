@@ -143,7 +143,7 @@ const eventsUpcoming = computed(() => {
 })
 
 // initialization
-useHeadDefault({ title })
+useHeadDefault({ title }, { headline: t('headline'), title: t('name') })
 </script>
 
 <script lang="ts">
@@ -157,6 +157,8 @@ de:
   authorLinkTitle: Jonas Webseite
   authorName: Jonas Thelemann
   description: 'Die TrapParty ist eine große Feier, die seit 2017 jährlich von {author} zum Anlass seines Geburtstags veranstaltet wird. Sie hat das Ziel, den Gästen Freude zu bereiten und ein wohliges Gemeinschaftsgefühl zu schaffen. Auf dieser Seite findest du alle Informationen über diese Feier, die von einigen auch "beste Party des Jahres" genannt wird. Naja, Jonas veranstaltet die Feier ja auch immer kurz vor Weihnachten, wie soll denn da auch noch eine andere Feier diesen Titel strittig machen.'
+  headline: Jonas Thelemanns
+  name: Geburtstagsfeier
   title: TrapParty
   titleEventCurrent: Aktuelle TrapParty
   titleEventsPast: Vergangene TrapParties
@@ -166,6 +168,8 @@ en:
   authorLinkTitle: Jonas' website
   authorName: Jonas Thelemann
   description: 'The TrapParty is a big celebration hosted annually by {author} since 2017 to mark his birthday. Its goal is to bring joy to the guests and create a comfortable sense of community. On this page you can find all the information about this celebration, which is also called "best party of the year" by some. Well, Jonas always organizes the party just before Christmas, so how can any other party dispute this title.'
+  headline: Jonas Thelemann's
+  name: Birthday Bash
   title: TrapParty
   titleEventCurrent: Current TrapParty
   titleEventsPast: Past TrapParties

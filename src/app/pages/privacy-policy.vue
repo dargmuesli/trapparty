@@ -55,3 +55,17 @@
     }"
   />
 </template>
+
+<script setup lang="ts">
+// seo
+const { t } = useI18n()
+const title = t('title')
+useHeadDefault({ title })
+</script>
+
+<i18n lang="yaml">
+de:
+  title: Datenschutzerklärung
+en:
+  title: Privacy Policy
+</i18n>
