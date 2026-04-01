@@ -1,3 +1,9 @@
+## [4.4.0](https://github.com/dargmuesli/trapparty/compare/4.3.10...4.4.0) (2026-04-01)
+
+### Features
+
+* **deps:** upgrade @dargmuesli/nuxt-vio to v21 ([1ab695a](https://github.com/dargmuesli/trapparty/commit/1ab695a6f1493db51308eebbeeb1aee5f635bd6d))
+
 ## [4.3.10](https://github.com/dargmuesli/trapparty/compare/4.3.9...4.3.10) (2026-03-30)
 
 ### Bug Fixes
