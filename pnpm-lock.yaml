@@ -24,8 +24,8 @@ importers:
   src:
     devDependencies:
       '@dargmuesli/nuxt-cookie-control':
-        specifier: 9.1.21
-        version: 9.1.21(magicast@0.5.2)(webpack@5.106.2(esbuild@0.27.7))
+        specifier: 9.1.22
+        version: 9.1.22(magicast@0.5.2)(webpack@5.106.2(esbuild@0.27.7))
       '@dargmuesli/nuxt-vio':
         specifier: 21.0.4
         version: 21.0.4(de49ba069604ef67a6fbed160ceee8e0)
@@ -542,6 +542,10 @@ packages:
 
   '@dargmuesli/nuxt-cookie-control@9.1.21':
     resolution: {integrity: sha512-KYVAC4C0n9rg53OHxGPzFavJo1Ues4TEK/G9161KVIuza55Ku0Q3Cuc2b4lppw5Y3kL3xCKwPRAyeH3fbaJ9Jw==}
+    engines: {node: '>=16'}
+
+  '@dargmuesli/nuxt-cookie-control@9.1.22':
+    resolution: {integrity: sha512-GEer90LScNfBpwBdsc1DmyWJ1FY0UHu/l6vV3FvKZzmJ43FNBywRBu0zbYnQb4eBKZfzjIND9eYc8Jnw1Egcpg==}
     engines: {node: '>=16'}
 
   '@dargmuesli/nuxt-vio-testing@21.0.4':
@@ -9630,6 +9634,16 @@ snapshots:
       postcss-selector-parser: 7.1.1
 
   '@dargmuesli/nuxt-cookie-control@9.1.21(magicast@0.5.2)(webpack@5.106.2(esbuild@0.27.7))':
+    dependencies:
+      '@nuxt/kit': 4.4.2(magicast@0.5.2)
+      css-vars-ponyfill: 2.4.9
+      defu: 6.1.7
+      string-replace-loader: 3.3.0(webpack@5.106.2(esbuild@0.27.7))
+    transitivePeerDependencies:
+      - magicast
+      - webpack
+
+  '@dargmuesli/nuxt-cookie-control@9.1.22(magicast@0.5.2)(webpack@5.106.2(esbuild@0.27.7))':
     dependencies:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       css-vars-ponyfill: 2.4.9
