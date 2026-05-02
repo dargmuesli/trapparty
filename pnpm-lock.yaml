@@ -147,8 +147,8 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
       ufo:
-        specifier: 1.6.3
-        version: 1.6.3
+        specifier: 1.6.4
+        version: 1.6.4
       unplugin-icons:
         specifier: 23.0.1
         version: 23.0.1(@vue/compiler-sfc@3.5.33)
@@ -182,7 +182,7 @@ importers:
         version: 21.0.4(491a2b2d714018008c10d74d20690f3f)
       '@dargmuesli/nuxt-vio-testing':
         specifier: 21.0.4
-        version: 21.0.4(@axe-core/playwright@4.11.2(playwright-core@1.59.1))(@playwright/test@1.59.1)(lodash-es@4.18.1)(playwright-core@1.59.1)(ufo@1.6.3)
+        version: 21.0.4(@axe-core/playwright@4.11.2(playwright-core@1.59.1))(@playwright/test@1.59.1)(lodash-es@4.18.1)(playwright-core@1.59.1)(ufo@1.6.4)
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.2.1(jiti@2.6.1))
@@ -214,8 +214,8 @@ importers:
         specifier: 8.59.1
         version: 8.59.1(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
       ufo:
-        specifier: 1.6.3
-        version: 1.6.3
+        specifier: 1.6.4
+        version: 1.6.4
 
 packages:
 
@@ -8585,8 +8585,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ufo@1.6.3:
-    resolution: {integrity: sha512-yDJTmhydvl5lJzBmy/hyOAA0d+aqCBuwl818haVdYCRrWV84o7YyeVm4QlVHStqNrrJSTb6jKuFAVqAFsr+K3Q==}
+  ufo@1.6.4:
+    resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
   ultrahtml@1.6.0:
     resolution: {integrity: sha512-R9fBn90VTJrqqLDwyMph+HGne8eqY1iPfYhPzZrvKpIfwkWZbcYlfpsb8B9dTvBfpy1/hqAD7Wi8EKfP9e8zdw==}
@@ -9653,13 +9653,13 @@ snapshots:
       - magicast
       - webpack
 
-  '@dargmuesli/nuxt-vio-testing@21.0.4(@axe-core/playwright@4.11.2(playwright-core@1.59.1))(@playwright/test@1.59.1)(lodash-es@4.18.1)(playwright-core@1.59.1)(ufo@1.6.3)':
+  '@dargmuesli/nuxt-vio-testing@21.0.4(@axe-core/playwright@4.11.2(playwright-core@1.59.1))(@playwright/test@1.59.1)(lodash-es@4.18.1)(playwright-core@1.59.1)(ufo@1.6.4)':
     dependencies:
       '@axe-core/playwright': 4.11.2(playwright-core@1.59.1)
       '@playwright/test': 1.59.1
       lodash-es: 4.18.1
       playwright-core: 1.59.1
-      ufo: 1.6.3
+      ufo: 1.6.4
 
   '@dargmuesli/nuxt-vio@21.0.4(491a2b2d714018008c10d74d20690f3f)':
     dependencies:
@@ -11238,7 +11238,7 @@ snapshots:
       std-env: 3.10.0
       tinyclip: 0.1.12
       tinyexec: 1.1.1
-      ufo: 1.6.3
+      ufo: 1.6.4
       youch: 4.1.1
     optionalDependencies:
       '@nuxt/schema': 4.4.2
@@ -11399,7 +11399,7 @@ snapshots:
       pathe: 2.0.3
       sirv: 3.0.2
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       unifont: 0.7.4
       unplugin: 3.0.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
@@ -11458,7 +11458,7 @@ snapshots:
       ohash: 2.0.11
       pathe: 2.0.3
       std-env: 3.10.0
-      ufo: 1.6.3
+      ufo: 1.6.4
     optionalDependencies:
       ipx: 3.1.1(db0@0.3.4)(ioredis@5.10.1)(srvx@0.11.15)
     transitivePeerDependencies:
@@ -11504,7 +11504,7 @@ snapshots:
       scule: 1.3.0
       semver: 7.7.4
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       unctx: 2.5.0
       untyped: 2.0.0
     transitivePeerDependencies:
@@ -11529,7 +11529,7 @@ snapshots:
       scule: 1.3.0
       semver: 7.7.4
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       unctx: 2.5.0
       untyped: 2.0.0
     transitivePeerDependencies:
@@ -11561,7 +11561,7 @@ snapshots:
       pkg-types: 2.3.0
       rou3: 0.8.1
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       unctx: 2.5.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
       vue: 3.5.33(typescript@6.0.3)
@@ -11631,7 +11631,7 @@ snapshots:
       pkg-types: 2.3.0
       rou3: 0.8.1
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       unctx: 2.5.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
       vue: 3.5.33(typescript@6.0.3)
@@ -11698,7 +11698,7 @@ snapshots:
       pkg-types: 2.3.0
       sirv: 3.0.2
       std-env: 3.10.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 2.3.11
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
       valibot: 1.3.1(typescript@6.0.3)
@@ -11795,7 +11795,7 @@ snapshots:
       tailwindcss: 4.2.4
       tinyglobby: 0.2.16
       typescript: 6.0.3
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 3.0.0
       unplugin-auto-import: 21.0.0(@nuxt/kit@4.4.2(magicast@0.5.2))(@vueuse/core@14.2.1(vue@3.5.33(typescript@6.0.3)))
       unplugin-vue-components: 32.0.0(@nuxt/kit@4.4.2(magicast@0.5.2))(vue@3.5.33(typescript@6.0.3))
@@ -11873,7 +11873,7 @@ snapshots:
       postcss: 8.5.12
       seroval: 1.5.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       unenv: 2.0.0-rc.24
       vite: 7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3)
       vite-node: 5.3.0(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3)
@@ -11933,7 +11933,7 @@ snapshots:
       postcss: 8.5.12
       seroval: 1.5.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       unenv: 2.0.0-rc.24
       vite: 7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3)
       vite-node: 5.3.0(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3)
@@ -12026,7 +12026,7 @@ snapshots:
       oxc-transform: 0.112.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       oxc-walker: 0.7.0(oxc-parser@0.112.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0))
       pathe: 2.0.3
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 2.3.11
       unrouting: 0.1.7
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
@@ -12077,7 +12077,7 @@ snapshots:
       nuxtseo-shared: 5.1.3(2f6abfb2c32941a98681f6c3ce530354)
       pathe: 2.0.3
       pkg-types: 2.3.0
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@nuxt/schema'
       - magicast
@@ -12096,7 +12096,7 @@ snapshots:
       nuxtseo-shared: 5.1.3(7bec160b35d394dd126ffd53d5864950)
       pathe: 2.0.3
       pkg-types: 2.3.0
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@nuxt/schema'
       - magicast
@@ -12296,7 +12296,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       radix3: 1.1.2
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
     transitivePeerDependencies:
       - '@nuxt/schema'
@@ -12317,7 +12317,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       radix3: 1.1.2
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
     transitivePeerDependencies:
       - '@nuxt/schema'
@@ -13920,7 +13920,7 @@ snapshots:
       magic-string: 0.30.21
       oxc-parser: 0.127.0
       oxc-walker: 0.7.0(oxc-parser@0.127.0)
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 3.0.0
     optionalDependencies:
       esbuild: 0.27.7
@@ -13934,7 +13934,7 @@ snapshots:
 
   '@unhead/schema-org@2.1.13(@unhead/vue@2.1.13(vue@3.5.33(typescript@6.0.3)))':
     dependencies:
-      ufo: 1.6.3
+      ufo: 1.6.4
       unhead: 2.1.13
     optionalDependencies:
       '@unhead/vue': 2.1.13(vue@3.5.33(typescript@6.0.3))
@@ -15882,7 +15882,7 @@ snapshots:
       magic-regexp: 0.10.0
       magic-string: 0.30.21
       pathe: 2.0.3
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 2.3.11
 
   fontkitten@1.0.3:
@@ -15901,7 +15901,7 @@ snapshots:
       magic-string: 0.30.21
       ohash: 2.0.11
       pathe: 2.0.3
-      ufo: 1.6.3
+      ufo: 1.6.4
       unifont: 0.7.4
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
     optionalDependencies:
@@ -16110,7 +16110,7 @@ snapshots:
       iron-webcrypto: 1.2.1
       node-mock-http: 1.0.4
       radix3: 1.1.2
-      ufo: 1.6.3
+      ufo: 1.6.4
       uncrypto: 0.1.3
 
   has-flag@4.0.0: {}
@@ -16285,7 +16285,7 @@ snapshots:
       pathe: 2.0.3
       sharp: 0.34.5
       svgo: 4.0.1
-      ufo: 1.6.3
+      ufo: 1.6.4
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
       xss: 1.0.15
     transitivePeerDependencies:
@@ -16610,7 +16610,7 @@ snapshots:
       pathe: 2.0.3
       std-env: 4.1.0
       tinyclip: 0.1.12
-      ufo: 1.6.3
+      ufo: 1.6.4
       untun: 0.1.3
       uqr: 0.1.3
     transitivePeerDependencies:
@@ -16717,7 +16717,7 @@ snapshots:
       mlly: 1.8.2
       regexp-tree: 0.1.27
       type-level-regexp: 0.1.17
-      ufo: 1.6.3
+      ufo: 1.6.4
       unplugin: 2.3.11
 
   magic-string-ast@1.0.3:
@@ -16845,7 +16845,7 @@ snapshots:
       acorn: 8.16.0
       pathe: 2.0.3
       pkg-types: 1.3.1
-      ufo: 1.6.3
+      ufo: 1.6.4
 
   mocked-exports@0.1.1: {}
 
@@ -16958,7 +16958,7 @@ snapshots:
       serve-static: 2.2.1
       source-map: 0.7.6
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       uncrypto: 0.1.3
       unctx: 2.5.0
@@ -17075,7 +17075,7 @@ snapshots:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       defu: 6.1.7
       pathe: 2.0.3
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - magicast
 
@@ -17094,7 +17094,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       radix3: 1.1.2
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
     transitivePeerDependencies:
@@ -17138,7 +17138,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       radix3: 1.1.2
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
     transitivePeerDependencies:
@@ -17197,7 +17197,7 @@ snapshots:
       strip-literal: 3.1.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       unplugin: 3.0.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
@@ -17246,7 +17246,7 @@ snapshots:
       strip-literal: 3.1.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       unplugin: 3.0.0
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
@@ -17432,7 +17432,7 @@ snapshots:
       pkg-types: 2.3.0
       scule: 1.3.0
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
     optionalDependencies:
       esbuild: 0.27.7
       lightningcss: 1.32.0
@@ -17466,7 +17466,7 @@ snapshots:
       pkg-types: 2.3.0
       scule: 1.3.0
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
     optionalDependencies:
       esbuild: 0.27.7
       lightningcss: 1.32.0
@@ -17489,7 +17489,7 @@ snapshots:
       '@nuxt/kit': 4.4.2(magicast@0.5.2)
       site-config-stack: 4.0.8(vue@3.5.33(typescript@6.0.3))
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - magicast
       - vue
@@ -17503,7 +17503,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       site-config-stack: 4.0.8(vue@3.5.33(typescript@6.0.3))
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@nuxt/schema'
       - magicast
@@ -17521,7 +17521,7 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 2.3.0
       site-config-stack: 4.0.8(vue@3.5.33(typescript@6.0.3))
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@nuxt/schema'
       - magicast
@@ -17578,7 +17578,7 @@ snapshots:
       semver: 7.7.4
       std-env: 4.1.0
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       uncrypto: 0.1.3
       unctx: 2.5.0
@@ -17711,7 +17711,7 @@ snapshots:
       semver: 7.7.4
       std-env: 4.1.0
       tinyglobby: 0.2.16
-      ufo: 1.6.3
+      ufo: 1.6.4
       ultrahtml: 1.6.0
       uncrypto: 0.1.3
       unctx: 2.5.0
@@ -17807,7 +17807,7 @@ snapshots:
       nuxtseo-shared: 0.9.0(7bec160b35d394dd126ffd53d5864950)
       ofetch: 1.5.1
       shiki: 4.0.2
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -17876,7 +17876,7 @@ snapshots:
       nuxtseo-shared: 0.9.0(2f6abfb2c32941a98681f6c3ce530354)
       ofetch: 1.5.1
       shiki: 4.0.2
-      ufo: 1.6.3
+      ufo: 1.6.4
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -17950,7 +17950,7 @@ snapshots:
       radix3: 1.1.2
       sirv: 3.0.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
       nuxt-site-config: 4.0.8(@nuxt/schema@4.4.2)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.33)(cac@6.7.14)(db0@0.3.4)(eslint@10.2.1(jiti@2.6.1))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3)))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(srvx@0.11.15)(stylelint@17.9.1(typescript@6.0.3))(terser@5.46.2)(typescript@6.0.3)(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue-tsc@3.2.7(typescript@6.0.3))(yaml@2.8.3))(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue@3.5.33(typescript@6.0.3))
@@ -17974,7 +17974,7 @@ snapshots:
       radix3: 1.1.2
       sirv: 3.0.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
       nuxt-site-config: 4.0.8(@nuxt/schema@4.4.2)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.33)(cac@6.7.14)(db0@0.3.4)(eslint@10.2.1(jiti@2.6.1))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3)))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.46.2)(typescript@6.0.3)(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(yaml@2.8.3))(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue@3.5.33(typescript@6.0.3))
@@ -17998,7 +17998,7 @@ snapshots:
       radix3: 1.1.2
       sirv: 3.0.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
       nuxt-site-config: 4.0.8(@nuxt/schema@4.4.2)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.33)(cac@6.7.14)(db0@0.3.4)(eslint@10.2.1(jiti@2.6.1))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3)))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(srvx@0.11.15)(stylelint@17.9.1(typescript@6.0.3))(terser@5.46.2)(typescript@6.0.3)(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue-tsc@3.2.7(typescript@6.0.3))(yaml@2.8.3))(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue@3.5.33(typescript@6.0.3))
@@ -18022,7 +18022,7 @@ snapshots:
       radix3: 1.1.2
       sirv: 3.0.2
       std-env: 4.1.0
-      ufo: 1.6.3
+      ufo: 1.6.4
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
       nuxt-site-config: 4.0.8(@nuxt/schema@4.4.2)(magicast@0.5.2)(nuxt@4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.33)(cac@6.7.14)(db0@0.3.4)(eslint@10.2.1(jiti@2.6.1))(ioredis@5.10.1)(lightningcss@1.32.0)(magicast@0.5.2)(meow@13.2.0)(optionator@0.9.4)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3)))(rollup-plugin-visualizer@7.0.1(rollup@4.60.2))(rollup@4.60.2)(terser@5.46.2)(typescript@6.0.3)(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(yaml@2.8.3))(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.2)(yaml@2.8.3))(vue@3.5.33(typescript@6.0.3))
@@ -18044,7 +18044,7 @@ snapshots:
     dependencies:
       destr: 2.0.5
       node-fetch-native: 1.6.7
-      ufo: 1.6.3
+      ufo: 1.6.4
 
   ofetch@2.0.0-alpha.3: {}
 
@@ -19152,7 +19152,7 @@ snapshots:
 
   site-config-stack@4.0.8(vue@3.5.33(typescript@6.0.3)):
     dependencies:
-      ufo: 1.6.3
+      ufo: 1.6.4
       vue: 3.5.33(typescript@6.0.3)
 
   slash@3.0.0: {}
@@ -19576,7 +19576,7 @@ snapshots:
 
   typescript@6.0.3: {}
 
-  ufo@1.6.3: {}
+  ufo@1.6.4: {}
 
   ultrahtml@1.6.0: {}
 
@@ -19750,7 +19750,7 @@ snapshots:
   unrouting@0.1.7:
     dependencies:
       escape-string-regexp: 5.0.0
-      ufo: 1.6.3
+      ufo: 1.6.4
 
   unrs-resolver@1.11.1:
     dependencies:
@@ -19785,7 +19785,7 @@ snapshots:
       lru-cache: 11.3.5
       node-fetch-native: 1.6.7
       ofetch: 1.5.1
-      ufo: 1.6.3
+      ufo: 1.6.4
     optionalDependencies:
       db0: 0.3.4
       ioredis: 5.10.1
@@ -19962,7 +19962,7 @@ snapshots:
 
   vue-bundle-renderer@2.2.0:
     dependencies:
-      ufo: 1.6.3
+      ufo: 1.6.4
 
   vue-chartjs@5.3.3(chart.js@4.5.1)(vue@3.5.33(typescript@6.0.3)):
     dependencies:
