@@ -20,7 +20,7 @@
     "test:e2e:ui": "pnpm run test:e2e --ui"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.11.2",
+    "@axe-core/playwright": "4.11.3",
     "@dargmuesli/nuxt-vio": "21.0.4",
     "@dargmuesli/nuxt-vio-testing": "21.0.4",
     "@eslint/js": "10.0.1",
