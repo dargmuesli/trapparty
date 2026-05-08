@@ -79,7 +79,7 @@ const init = () => {
       !team ||
       team.donationAmount === null ||
       team.donationAmount === undefined ||
-      !teamPlayerCountObject
+      !teamPlayerCountObject?.playerCount
     )
       continue
 

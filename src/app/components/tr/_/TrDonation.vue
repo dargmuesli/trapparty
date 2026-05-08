@@ -114,7 +114,7 @@ import { consola } from 'consola'
 
 import type {
   CharityOrganizationItemFragment,
-  Event as TrapPartyEvent,
+  EventItemFragment,
   TeamItemFragment,
 } from '~~/gql/generated/graphql'
 import { useStatsQuery } from '~~/gql/documents/queries/stats'
@@ -122,7 +122,7 @@ import { getTeamItem } from '~~/gql/documents/fragments/teamItem'
 import { getCharityOrganizationItem } from '~~/gql/documents/fragments/charityOrganizationItem'
 
 const { trapPartyEvent } = defineProps<{
-  trapPartyEvent: Pick<TrapPartyEvent, 'id' | 'commonDonationAmount'>
+  trapPartyEvent: Pick<EventItemFragment, 'id' | 'commonDonationAmount'>
 }>()
 
 const { t } = useI18n()
@@ -172,7 +172,8 @@ const init = () => {
       team.charityOrganizationByCharityOrganizationId,
     )
 
-    if (!team || !charityOrganization || !teamPlayerCountObject) continue
+    if (!team || !charityOrganization || !teamPlayerCountObject?.playerCount)
+      continue
 
     teams.value.push(team)
     charityOrganizations.value.push(charityOrganization)
