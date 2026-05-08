@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type {
   cacheExchange,
   Resolver as GraphCacheResolver,
@@ -10,24 +8,6 @@ import type {
 
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
-}
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
-}
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
-}
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = { [_ in K]?: never }
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
-    }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string }
@@ -35,10 +15,10 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean }
   Int: { input: number; output: number }
   Float: { input: number; output: number }
-  BigInt: { input: any; output: any }
-  Cursor: { input: any; output: any }
-  Datetime: { input: any; output: any }
-  UUID: { input: any; output: any }
+  BigInt: { input: number; output: number }
+  Cursor: { input: string; output: string }
+  Datetime: { input: string; output: string }
+  UUID: { input: string; output: string }
 }
 
 /** Charity organizations. */
@@ -4552,7 +4532,7 @@ export type GraphCacheResolvers = {
     nodeId?: GraphCacheResolver<
       WithTypename<Query>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     player?: GraphCacheResolver<
       WithTypename<Query>,
@@ -4582,7 +4562,7 @@ export type GraphCacheResolvers = {
     playerNameById?: GraphCacheResolver<
       WithTypename<Query>,
       QueryPlayerNameByIdArgs,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     query?: GraphCacheResolver<
       WithTypename<Query>,
@@ -4619,22 +4599,22 @@ export type GraphCacheResolvers = {
     department?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     id?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     teamsByCharityOrganizationId?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
@@ -4644,7 +4624,7 @@ export type GraphCacheResolvers = {
     url?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
   }
   CharityOrganizationsConnection?: {
@@ -4666,14 +4646,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<CharityOrganizationsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   CharityOrganizationsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<CharityOrganizationsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<CharityOrganizationsEdge>,
@@ -4695,7 +4675,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateCharityOrganizationPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateCharityOrganizationPayload>,
@@ -4707,7 +4687,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateEventPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     event?: GraphCacheResolver<
       WithTypename<CreateEventPayload>,
@@ -4729,7 +4709,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericRoundPayload>,
@@ -4756,7 +4736,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericVotePayload>,
@@ -4788,7 +4768,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGamePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<CreateGamePayload>,
@@ -4815,7 +4795,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsRoundPayload>,
@@ -4842,7 +4822,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameRandomFactsRoundByRoundId?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsVotePayload>,
@@ -4874,7 +4854,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateGameTeamScorePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<CreateGameTeamScorePayload>,
@@ -4906,7 +4886,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateKvPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     kv?: GraphCacheResolver<
       WithTypename<CreateKvPayload>,
@@ -4928,7 +4908,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreatePlayerPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     player?: GraphCacheResolver<
       WithTypename<CreatePlayerPayload>,
@@ -4955,7 +4935,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateTeamLeaderPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<CreateTeamLeaderPayload>,
@@ -4992,7 +4972,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateTeamPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<CreateTeamPayload>,
@@ -5029,12 +5009,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteCharityOrganizationPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedCharityOrganizationId?: GraphCacheResolver<
       WithTypename<DeleteCharityOrganizationPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteCharityOrganizationPayload>,
@@ -5046,12 +5026,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteEventPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedEventId?: GraphCacheResolver<
       WithTypename<DeleteEventPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     event?: GraphCacheResolver<
       WithTypename<DeleteEventPayload>,
@@ -5073,12 +5053,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameEstimationNumericRoundId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
@@ -5105,12 +5085,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameEstimationNumericVoteId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
@@ -5142,12 +5122,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameId?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
@@ -5174,12 +5154,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameRandomFactsRoundId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
@@ -5206,12 +5186,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameRandomFactsVoteId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     gameRandomFactsRoundByRoundId?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
@@ -5243,12 +5223,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedGameTeamScoreId?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
@@ -5280,12 +5260,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteKvPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedKvId?: GraphCacheResolver<
       WithTypename<DeleteKvPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     kv?: GraphCacheResolver<
       WithTypename<DeleteKvPayload>,
@@ -5307,12 +5287,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeletePlayerPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedPlayerId?: GraphCacheResolver<
       WithTypename<DeletePlayerPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     player?: GraphCacheResolver<
       WithTypename<DeletePlayerPayload>,
@@ -5339,12 +5319,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedTeamLeaderId?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
@@ -5381,12 +5361,12 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     deletedTeamId?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
@@ -5413,27 +5393,27 @@ export type GraphCacheResolvers = {
     commonDonationAmount?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Float'] | string
+      Scalars['Float']['output'] | string
     >
     commonDonationIsLive?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Boolean'] | string
+      Scalars['Boolean']['output'] | string
     >
     commonDonationUrl?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     discordInviteCode?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     end?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Datetime'] | string
+      Scalars['Datetime']['output'] | string
     >
     gamesByEventId?: GraphCacheResolver<
       WithTypename<Event>,
@@ -5443,27 +5423,27 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     start?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Datetime'] | string
+      Scalars['Datetime']['output'] | string
     >
     streamUrl?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     teamsByEventId?: GraphCacheResolver<
       WithTypename<Event>,
@@ -5490,14 +5470,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<EventsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   EventsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<EventsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<EventsEdge>,
@@ -5514,7 +5494,7 @@ export type GraphCacheResolvers = {
     eventId?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     gameEstimationNumericRoundsByGameId?: GraphCacheResolver<
       WithTypename<Game>,
@@ -5534,22 +5514,22 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     isActive?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['Boolean'] | string
+      Scalars['Boolean']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     type?: GraphCacheResolver<
       WithTypename<Game>,
@@ -5561,17 +5541,17 @@ export type GraphCacheResolvers = {
     gameId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardView>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     playerName?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardView>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     totalPoints?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardView>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameEstimationNumericLeaderboardViewsConnection?: {
@@ -5593,14 +5573,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameEstimationNumericLeaderboardViewsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
@@ -5612,12 +5592,12 @@ export type GraphCacheResolvers = {
     answerCorrect?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['Float'] | string
+      Scalars['Float']['output'] | string
     >
     elementName?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
@@ -5632,17 +5612,17 @@ export type GraphCacheResolvers = {
     gameId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     id?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
   }
   GameEstimationNumericRoundsConnection?: {
@@ -5664,14 +5644,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRoundsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameEstimationNumericRoundsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRoundsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRoundsEdge>,
@@ -5683,7 +5663,7 @@ export type GraphCacheResolvers = {
     answer?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
-      Scalars['Float'] | string
+      Scalars['Float']['output'] | string
     >
     gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
@@ -5693,12 +5673,12 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
@@ -5708,12 +5688,12 @@ export type GraphCacheResolvers = {
     playerId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     roundId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameEstimationNumericVotesConnection?: {
@@ -5735,14 +5715,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVotesConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameEstimationNumericVotesEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVotesEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVotesEdge>,
@@ -5754,7 +5734,7 @@ export type GraphCacheResolvers = {
     answerCorrect?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
@@ -5764,7 +5744,7 @@ export type GraphCacheResolvers = {
     gameId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     gameRandomFactsVotesByRoundId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
@@ -5774,17 +5754,17 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     questionerName?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
   }
   GameRandomFactsRoundsConnection?: {
@@ -5806,14 +5786,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameRandomFactsRoundsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameRandomFactsRoundsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameRandomFactsRoundsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameRandomFactsRoundsEdge>,
@@ -5825,7 +5805,7 @@ export type GraphCacheResolvers = {
     answer?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     gameRandomFactsRoundByRoundId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
@@ -5835,12 +5815,12 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
@@ -5850,12 +5830,12 @@ export type GraphCacheResolvers = {
     playerId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     roundId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameRandomFactsVotesConnection?: {
@@ -5877,14 +5857,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameRandomFactsVotesConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameRandomFactsVotesEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameRandomFactsVotesEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameRandomFactsVotesEdge>,
@@ -5901,22 +5881,22 @@ export type GraphCacheResolvers = {
     gameId?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     id?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     score?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     teamByTeamId?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
@@ -5926,7 +5906,7 @@ export type GraphCacheResolvers = {
     teamId?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameTeamScoresConnection?: {
@@ -5948,14 +5928,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GameTeamScoresConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GameTeamScoresEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GameTeamScoresEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GameTeamScoresEdge>,
@@ -5982,14 +5962,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<GamesConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   GamesEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<GamesEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<GamesEdge>,
@@ -6001,12 +5981,12 @@ export type GraphCacheResolvers = {
     key?: GraphCacheResolver<
       WithTypename<Kv>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     value?: GraphCacheResolver<
       WithTypename<Kv>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
   }
   KvsConnection?: {
@@ -6028,14 +6008,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<KvsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   KvsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<KvsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<KvsEdge>,
@@ -6047,22 +6027,22 @@ export type GraphCacheResolvers = {
     endCursor?: GraphCacheResolver<
       WithTypename<PageInfo>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     hasNextPage?: GraphCacheResolver<
       WithTypename<PageInfo>,
       Record<string, never>,
-      Scalars['Boolean'] | string
+      Scalars['Boolean']['output'] | string
     >
     hasPreviousPage?: GraphCacheResolver<
       WithTypename<PageInfo>,
       Record<string, never>,
-      Scalars['Boolean'] | string
+      Scalars['Boolean']['output'] | string
     >
     startCursor?: GraphCacheResolver<
       WithTypename<PageInfo>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
   }
   Player?: {
@@ -6079,22 +6059,22 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     invitationCode?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['UUID'] | string
+      Scalars['UUID']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     teamByTeamId?: GraphCacheResolver<
       WithTypename<Player>,
@@ -6104,7 +6084,7 @@ export type GraphCacheResolvers = {
     teamId?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     teamLeadersByPlayerId?: GraphCacheResolver<
       WithTypename<Player>,
@@ -6131,14 +6111,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<PlayersConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   PlayersEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<PlayersEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<PlayersEdge>,
@@ -6155,22 +6135,22 @@ export type GraphCacheResolvers = {
     charityOrganizationId?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     donationAmount?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['Float'] | string
+      Scalars['Float']['output'] | string
     >
     donationUrl?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     emoji?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<Team>,
@@ -6180,7 +6160,7 @@ export type GraphCacheResolvers = {
     eventId?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     gameTeamScoresByTeamId?: GraphCacheResolver<
       WithTypename<Team>,
@@ -6190,17 +6170,17 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     playersByTeamId?: GraphCacheResolver<
       WithTypename<Team>,
@@ -6217,12 +6197,12 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     nodeId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
-      Scalars['ID'] | string
+      Scalars['ID']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
@@ -6232,7 +6212,7 @@ export type GraphCacheResolvers = {
     playerId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     teamByTeamId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
@@ -6242,7 +6222,7 @@ export type GraphCacheResolvers = {
     teamId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   TeamLeadersConnection?: {
@@ -6264,14 +6244,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<TeamLeadersConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   TeamLeadersEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<TeamLeadersEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<TeamLeadersEdge>,
@@ -6293,14 +6273,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<TeamPlayerCountConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   TeamPlayerCountEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<TeamPlayerCountEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<TeamPlayerCountEdge>,
@@ -6312,12 +6292,12 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<TeamPlayerCountRecord>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
     playerCount?: GraphCacheResolver<
       WithTypename<TeamPlayerCountRecord>,
       Record<string, never>,
-      Scalars['BigInt'] | string
+      Scalars['BigInt']['output'] | string
     >
   }
   TeamsConnection?: {
@@ -6339,14 +6319,14 @@ export type GraphCacheResolvers = {
     totalCount?: GraphCacheResolver<
       WithTypename<TeamsConnection>,
       Record<string, never>,
-      Scalars['Int'] | string
+      Scalars['Int']['output'] | string
     >
   }
   TeamsEdge?: {
     cursor?: GraphCacheResolver<
       WithTypename<TeamsEdge>,
       Record<string, never>,
-      Scalars['Cursor'] | string
+      Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
       WithTypename<TeamsEdge>,
@@ -6368,7 +6348,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateCharityOrganizationPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateCharityOrganizationPayload>,
@@ -6380,7 +6360,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateEventPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     event?: GraphCacheResolver<
       WithTypename<UpdateEventPayload>,
@@ -6402,7 +6382,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericRoundPayload>,
@@ -6429,7 +6409,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericVotePayload>,
@@ -6461,7 +6441,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGamePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<UpdateGamePayload>,
@@ -6488,7 +6468,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsRoundPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsRoundPayload>,
@@ -6515,7 +6495,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsVotePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameRandomFactsRoundByRoundId?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsVotePayload>,
@@ -6547,7 +6527,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateGameTeamScorePayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     gameByGameId?: GraphCacheResolver<
       WithTypename<UpdateGameTeamScorePayload>,
@@ -6579,7 +6559,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateKvPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     kv?: GraphCacheResolver<
       WithTypename<UpdateKvPayload>,
@@ -6601,7 +6581,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdatePlayerPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     player?: GraphCacheResolver<
       WithTypename<UpdatePlayerPayload>,
@@ -6628,7 +6608,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateTeamLeaderPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     playerByPlayerId?: GraphCacheResolver<
       WithTypename<UpdateTeamLeaderPayload>,
@@ -6665,7 +6645,7 @@ export type GraphCacheResolvers = {
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateTeamPayload>,
       Record<string, never>,
-      Scalars['String'] | string
+      Scalars['String']['output'] | string
     >
     eventByEventId?: GraphCacheResolver<
       WithTypename<UpdateTeamPayload>,
@@ -7203,7 +7183,7 @@ export type GraphCacheUpdaters = {
       QueryNodeArgs
     >
     nodeId?: GraphCacheUpdateResolver<
-      { nodeId: Scalars['ID'] },
+      { nodeId: Scalars['ID']['output'] },
       Record<string, never>
     >
     player?: GraphCacheUpdateResolver<
@@ -7227,7 +7207,7 @@ export type GraphCacheUpdaters = {
       QueryPlayerByTeamIdAndInvitationCodeArgs
     >
     playerNameById?: GraphCacheUpdateResolver<
-      { playerNameById: Maybe<Scalars['String']> },
+      { playerNameById: Maybe<Scalars['String']['output']> },
       QueryPlayerNameByIdArgs
     >
     query?: GraphCacheUpdateResolver<
@@ -7701,7 +7681,7 @@ export type GraphCacheUpdaters = {
       MutationUpdateTeamLeaderByIdArgs
     >
   }
-  Subscription?: {}
+  Subscription?: object
   CharityOrganization?: {
     department?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CharityOrganization>>,
