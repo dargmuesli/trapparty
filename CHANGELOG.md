@@ -1,3 +1,9 @@
+## [4.4.5](https://github.com/dargmuesli/trapparty/compare/4.4.4...4.4.5) (2026-05-21)
+
+### Bug Fixes
+
+* **docker:** change app directory owner ([9c80855](https://github.com/dargmuesli/trapparty/commit/9c80855e207b010c8a3ddb91e9882bf045347a6d))
+
 ## [4.4.4](https://github.com/dargmuesli/trapparty/compare/4.4.3...4.4.4) (2026-05-18)
 
 ### Bug Fixes
