@@ -1,3 +1,9 @@
+## [4.4.8](https://github.com/dargmuesli/trapparty/compare/4.4.7...4.4.8) (2026-05-28)
+
+### Bug Fixes
+
+* **docker:** set url argument in dockerfile ([d66a653](https://github.com/dargmuesli/trapparty/commit/d66a65302f08e039f8f61bee6ec7488423a28628))
+
 ## [4.4.7](https://github.com/dargmuesli/trapparty/compare/4.4.6...4.4.7) (2026-05-28)
 
 ### Bug Fixes
