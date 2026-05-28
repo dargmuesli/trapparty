@@ -1,3 +1,9 @@
+## [4.4.9](https://github.com/dargmuesli/trapparty/compare/4.4.8...4.4.9) (2026-05-28)
+
+### Bug Fixes
+
+* **docker:** correct entrypoint inclusion ([3aef342](https://github.com/dargmuesli/trapparty/commit/3aef3425cb477cb7d1ae95accabf1b949f4847f9))
+
 ## [4.4.8](https://github.com/dargmuesli/trapparty/compare/4.4.7...4.4.8) (2026-05-28)
 
 ### Bug Fixes
