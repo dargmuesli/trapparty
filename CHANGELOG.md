@@ -1,3 +1,9 @@
+## [4.4.6](https://github.com/dargmuesli/trapparty/compare/4.4.5...4.4.6) (2026-05-28)
+
+### Bug Fixes
+
+* **ci:** add static domain ([fb91e57](https://github.com/dargmuesli/trapparty/commit/fb91e57d7605395982f685b3f8e0fdd5d7403803))
+
 ## [4.4.5](https://github.com/dargmuesli/trapparty/compare/4.4.4...4.4.5) (2026-05-21)
 
 ### Bug Fixes
