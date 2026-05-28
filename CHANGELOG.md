@@ -1,3 +1,9 @@
+## [4.4.7](https://github.com/dargmuesli/trapparty/compare/4.4.6...4.4.7) (2026-05-28)
+
+### Bug Fixes
+
+* **deps:** update dargmuesli/github-actions to v5.4.0 ([5b82b28](https://github.com/dargmuesli/trapparty/commit/5b82b28ff4917c461352cc82d97ef9c04c77b91b))
+
 ## [4.4.6](https://github.com/dargmuesli/trapparty/compare/4.4.5...4.4.6) (2026-05-28)
 
 ### Bug Fixes
