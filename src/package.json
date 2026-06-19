@@ -4,7 +4,7 @@
   "devDependencies": {
     "@dargmuesli/nuxt-cookie-control": "9.1.29",
     "@dargmuesli/nuxt-vio": "21.0.11",
-    "@graphql-codegen/cli": "7.1.2",
+    "@graphql-codegen/cli": "7.1.3",
     "@graphql-codegen/client-preset": "6.0.1",
     "@graphql-codegen/typescript": "6.0.2",
     "@graphql-codegen/typescript-urql-graphcache": "4.0.2",
