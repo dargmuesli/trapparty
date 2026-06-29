@@ -80,5 +80,5 @@
     "start:static": "node node/server/static.mjs"
   },
   "type": "module",
-  "version": "4.4.11"
+  "version": "4.4.12"
 }

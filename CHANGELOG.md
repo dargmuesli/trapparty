@@ -1,3 +1,5 @@
+## [4.4.12](https://github.com/dargmuesli/trapparty/compare/4.4.11...4.4.12) (2026-06-29)
+
 ## [4.4.11](https://github.com/dargmuesli/trapparty/compare/4.4.10...4.4.11) (2026-06-15)
 
 ### Bug Fixes
