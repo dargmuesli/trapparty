@@ -290,8 +290,7 @@ const exportData = async (filterType: 'all' | 'success' | 'failed') => {
     }
   } catch (err) {
     const error_data = (err as Record<string, unknown>)?.data as
-      | Record<string, unknown>
-      | undefined
+      Record<string, unknown> | undefined
     error.value =
       (error_data?.statusMessage as string) || 'Failed to export data'
   }
@@ -341,8 +340,7 @@ const loadStats = async () => {
     }
   } catch (err) {
     const error_data = (err as Record<string, unknown>)?.data as
-      | Record<string, unknown>
-      | undefined
+      Record<string, unknown> | undefined
     error.value =
       (error_data?.statusMessage as string) || 'Failed to load game status'
   }
@@ -373,8 +371,7 @@ const handleResetTries = async () => {
     await loadStats()
   } catch (err) {
     const errorData = (err as Record<string, unknown>)?.data as
-      | Record<string, unknown>
-      | undefined
+      Record<string, unknown> | undefined
     error.value =
       (errorData?.statusMessage as string) || 'Failed to reset tries'
   } finally {
@@ -424,8 +421,7 @@ const handleSubmit = async () => {
     }
   } catch (err) {
     const error_data = (err as Record<string, unknown>)?.data as
-      | Record<string, unknown>
-      | undefined
+      Record<string, unknown> | undefined
     error.value =
       (error_data?.statusMessage as string) || 'Failed to update configuration'
   } finally {

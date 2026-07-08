@@ -109,8 +109,7 @@ const tryMatch = async (otherPlayerId: string) => {
     }
   } catch (err) {
     const errorData = (err as Record<string, unknown>)?.data as
-      | Record<string, unknown>
-      | undefined
+      Record<string, unknown> | undefined
     matchResult.value = {
       success: false,
       value: 0,

@@ -4,8 +4,7 @@ export default defineEventHandler(async (event) => {
 
   const token = body.token as string | undefined
   const adminToken = runtimeConfig?.trapparty?.admin?.token as
-    | string
-    | undefined
+    string | undefined
 
   if (!adminToken) {
     throw createError({
