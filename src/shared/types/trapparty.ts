@@ -9,5 +9,4 @@ export interface ParticipationDataPlayer {
 }
 
 export type ParticipationData =
-  | ParticipationDataWatcher
-  | ParticipationDataPlayer
+  ParticipationDataWatcher | ParticipationDataPlayer

@@ -77,8 +77,7 @@ export default defineEventHandler(async (event) => {
 
   // Admin update flow when authorized via token
   const adminToken = runtimeConfig?.trapparty?.admin?.token as
-    | string
-    | undefined
+    string | undefined
   const hasToken = typeof body.token === 'string'
 
   if (hasToken) {
