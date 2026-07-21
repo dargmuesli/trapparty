@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="flex flex-col justify-center bg-[#161616] px-16 text-gray-50"
-    style="font-family: Inter, sans-serif"
-  >
+  <div class="flex flex-col justify-center bg-[#161616] px-16 text-gray-50">
     <img
       alt="TrapParty"
       class="absolute right-0 opacity-[0.025]"
