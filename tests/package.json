@@ -23,7 +23,7 @@
     "@axe-core/playwright": "4.12.1",
     "@dargmuesli/nuxt-vio-testing": "21.0.14",
     "@eslint/js": "10.0.1",
-    "@playwright/test": "1.61.1",
+    "@playwright/test": "1.62.0",
     "@types/node": "24.13.3",
     "cross-env": "10.1.0",
     "eslint": "10.7.0",
@@ -38,7 +38,7 @@
     "node": "24"
   },
   "peerDependencies": {
-    "playwright-core": "1.61.1"
+    "playwright-core": "1.62.0"
   },
   "type": "module"
 }
