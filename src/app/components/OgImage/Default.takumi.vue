@@ -3,9 +3,9 @@
     <img
       alt="TrapParty"
       class="absolute right-0 opacity-[0.025]"
+      height="700"
       src="/assets/static/favicon/pwa-512x512.png"
       width="700"
-      height="700"
     />
     <div
       v-if="headline"

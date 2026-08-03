@@ -25,55 +25,55 @@
 
           <!-- Start Date -->
           <div class="flex flex-col gap-2">
-            <label for="startAt" class="font-semibold text-gray-100">
+            <label class="font-semibold text-gray-100" for="startAt">
               {{ t('startAt') }}
             </label>
             <input
               id="startAt"
               v-model="form.startAt"
-              type="datetime-local"
               class="rounded border border-gray-600 bg-gray-800 px-3 py-2 text-gray-100"
+              type="datetime-local"
             />
           </div>
 
           <!-- End Date -->
           <div class="flex flex-col gap-2">
-            <label for="endAt" class="font-semibold text-gray-100">
+            <label class="font-semibold text-gray-100" for="endAt">
               {{ t('endAt') }}
             </label>
             <input
               id="endAt"
               v-model="form.endAt"
-              type="datetime-local"
               class="rounded border border-gray-600 bg-gray-800 px-3 py-2 text-gray-100"
+              type="datetime-local"
             />
           </div>
 
           <!-- Target Matches -->
           <div class="flex flex-col gap-2">
-            <label for="targetMatches" class="font-semibold text-gray-100">
+            <label class="font-semibold text-gray-100" for="targetMatches">
               {{ t('targetMatches') }}
             </label>
             <input
               id="targetMatches"
               v-model.number="form.targetMatches"
-              type="number"
               class="rounded border border-gray-600 bg-gray-800 px-3 py-2 text-gray-100"
               min="0"
+              type="number"
             />
           </div>
 
           <!-- Players -->
           <div class="flex flex-col gap-2">
-            <label for="players" class="font-semibold text-gray-100">
+            <label class="font-semibold text-gray-100" for="players">
               {{ t('players') }}
             </label>
             <textarea
               id="players"
               v-model="form.playersText"
               class="rounded border border-gray-600 bg-gray-800 px-3 py-2 font-mono text-sm text-gray-100 placeholder-gray-500"
-              rows="6"
               :placeholder="t('enterPlayerUUIDs')"
+              rows="6"
             />
             <p class="text-xs text-gray-400">
               {{ form.parsedPlayers.length }} {{ t('validUUIDs') }}
@@ -83,16 +83,16 @@
           <!-- Submit Button -->
           <div class="flex gap-4">
             <button
-              type="submit"
-              :disabled="loading"
               class="rounded bg-blue-700 px-6 py-2 font-semibold text-white disabled:opacity-50"
+              :disabled="loading"
+              type="submit"
             >
               {{ loading ? t('updating') : t('updateConfig') }}
             </button>
             <button
-              type="button"
-              :disabled="loading"
               class="rounded bg-gray-700 px-6 py-2 font-semibold text-white disabled:opacity-50"
+              :disabled="loading"
+              type="button"
               @click="handleRefresh"
             >
               {{ t('refresh') }}
@@ -156,33 +156,33 @@
         </h2>
         <div class="flex flex-wrap gap-3">
           <button
-            type="button"
-            :disabled="loading || !stats"
             class="rounded bg-green-700 px-4 py-2 font-semibold text-white disabled:opacity-50"
+            :disabled="loading || !stats"
+            type="button"
             @click="exportData('all')"
           >
             {{ t('exportAll') }}
           </button>
           <button
-            type="button"
-            :disabled="loading || !stats"
             class="rounded bg-green-600 px-4 py-2 font-semibold text-white disabled:opacity-50"
+            :disabled="loading || !stats"
+            type="button"
             @click="exportData('success')"
           >
             {{ t('exportSuccessOnly') }}
           </button>
           <button
-            type="button"
-            :disabled="loading || !stats"
             class="rounded bg-yellow-700 px-4 py-2 font-semibold text-white disabled:opacity-50"
+            :disabled="loading || !stats"
+            type="button"
             @click="exportData('failed')"
           >
             {{ t('exportFailedOnly') }}
           </button>
           <button
-            type="button"
-            :disabled="loading || !stats"
             class="rounded bg-red-700 px-4 py-2 font-semibold text-white disabled:opacity-50"
+            :disabled="loading || !stats"
+            type="button"
             @click="handleResetTries"
           >
             {{ t('resetTries') }}

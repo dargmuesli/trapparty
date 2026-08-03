@@ -1,5 +1,5 @@
 <template>
-  <Bar :id="id" :data="data" :options="options" :height="height" />
+  <Bar :id="id" :data="data" :height="height" :options="options" />
 </template>
 
 <script setup lang="ts">
