@@ -35,9 +35,9 @@
             <VioFormInput
               id-label="input-participation-code-trapparty"
               :is-disabled="!!route.query.ic"
+              placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
               :title="t('invitationCode')"
               type="text"
-              placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
               :value="v$.invitationCode"
               @input="form.invitationCode = $event"
             >

@@ -48,8 +48,8 @@
           <template #author>
             <VioLink
               :aria-label="t('authorName')"
-              to="https://jonas-thelemann.de"
               :title="t('authorLinkTitle')"
+              to="https://jonas-thelemann.de"
             >
               {{ t('authorName') }}
             </VioLink>
