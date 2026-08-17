@@ -1,3 +1,5 @@
+## [4.4.16](https://github.com/dargmuesli/trapparty/compare/4.4.15...4.4.16) (2026-08-17)
+
 ## [4.4.15](https://github.com/dargmuesli/trapparty/compare/4.4.14...4.4.15) (2026-08-03)
 
 ## [4.4.14](https://github.com/dargmuesli/trapparty/compare/4.4.13...4.4.14) (2026-07-20)
