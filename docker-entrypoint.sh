@@ -31,7 +31,7 @@ load_environment_variables() {
 load_environment_variables
 
 if [ "${CI:-}" != "true" ]; then
-  sqitch -C /srv/app/sqitch/ deploy "$(cat /run/secrets/trapparty_sqitch-target)"
+  sqitch -C /srv/app/sqitch/ deploy "$(cat /run/secrets/trapparty-sqitch-target)"
 fi
 
 if [ "${NODE_ENV:-}" != "production" ]; then
