@@ -1,3 +1,9 @@
+## [4.4.17](https://github.com/dargmuesli/trapparty/compare/4.4.16...4.4.17) (2026-08-19)
+
+### Performance Improvements
+
+* **git:** track snapshot images with lfs ([#496](https://github.com/dargmuesli/trapparty/issues/496)) ([5d1a6e3](https://github.com/dargmuesli/trapparty/commit/5d1a6e33b65b07d04a1a95158c0748fe04dc519d))
+
 ## [4.4.16](https://github.com/dargmuesli/trapparty/compare/4.4.15...4.4.16) (2026-08-17)
 
 ## [4.4.15](https://github.com/dargmuesli/trapparty/compare/4.4.14...4.4.15) (2026-08-03)
