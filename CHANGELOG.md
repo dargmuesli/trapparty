@@ -1,3 +1,13 @@
+## [5.0.0](https://github.com/dargmuesli/trapparty/compare/4.4.17...5.0.0) (2026-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* **dargstack:** upgrade to v4
+
+### Code Refactoring
+
+* **dargstack:** upgrade to v4 ([f7a49e7](https://github.com/dargmuesli/trapparty/commit/f7a49e72ea6241d64c918877261ee45b02733ba7))
+
 ## [5.0.0-beta.1](https://github.com/dargmuesli/trapparty/compare/4.4.17...5.0.0-beta.1) (2026-08-19)
 
 ### ⚠ BREAKING CHANGES
