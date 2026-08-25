@@ -2,7 +2,6 @@
   <div v-if="api.isFetching">
     <VioLoaderIndicatorSpinner class="h-16 w-16" />
   </div>
-  <!-- s?.length -->
   <div v-else-if="game" class="flex flex-col gap-4">
     <h1 class="m-0">{{ t('game') }}</h1>
     <ol class="list-decimal">
