@@ -1,3 +1,9 @@
+## [5.1.0](https://github.com/dargmuesli/trapparty/compare/5.0.0...5.1.0) (2026-08-27)
+
+### Features
+
+* **sentry:** use vio's built-in Sentry integration ([7b2ab97](https://github.com/dargmuesli/trapparty/commit/7b2ab975ca50df84fd24097a869d0d1c0524037e))
+
 ## [5.0.0](https://github.com/dargmuesli/trapparty/compare/4.4.17...5.0.0) (2026-08-24)
 
 ### ⚠ BREAKING CHANGES
