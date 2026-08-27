@@ -66,9 +66,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     },
     preferGetMethod: false, // TODO: remove with Postgraphile v5
     requestPolicy: 'cache-and-network',
-    url:
-      getServiceHref({ name: 'trapparty_postgraphile', port: 5000 }) +
-      '/graphql',
+    url: getServiceHref({ name: 'trapparty_postgraphile' }) + '/graphql',
   }
   const client = ref(createClient(clientOptions))
 
