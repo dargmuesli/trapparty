@@ -13,7 +13,7 @@
     "@iconify-json/heroicons": "1.2.3",
     "@nuxt/fonts": "0.14.0",
     "@pinia/nuxt": "1.0.2",
-    "@takumi-rs/core": "2.13.4",
+    "@takumi-rs/core": "2.13.5",
     "@types/color": "4.2.1",
     "@types/lodash-es": "4.17.12",
     "@urql/core": "6.0.3",
@@ -52,7 +52,7 @@
     "unplugin-vue-components": "32.1.0",
     "vue": "3.5.42",
     "vue-chartjs": "5.3.4",
-    "vue-router": "5.3.0",
+    "vue-router": "5.3.1",
     "vue-tsc": "3.3.11"
   },
   "engines": {
