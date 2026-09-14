@@ -1,3 +1,9 @@
+## [5.1.2](https://github.com/dargmuesli/trapparty/compare/5.1.1...5.1.2) (2026-09-14)
+
+### Bug Fixes
+
+* schedule release ([64eafaa](https://github.com/dargmuesli/trapparty/commit/64eafaa0c6beece78175ea95f00f11864a36cdca))
+
 ## [5.1.1](https://github.com/dargmuesli/trapparty/compare/5.1.0...5.1.1) (2026-09-07)
 
 ### Bug Fixes
