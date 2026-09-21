@@ -34,7 +34,7 @@
     "pinia": "4.0.3",
     "pinia-plugin-persistedstate": "4.7.1",
     "postcss-html": "2.0.0",
-    "prettier": "3.9.7",
+    "prettier": "3.9.8",
     "prettier-plugin-tailwindcss": "0.8.1",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.6",
