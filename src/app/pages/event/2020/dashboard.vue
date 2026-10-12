@@ -8,7 +8,7 @@
           </i18n-t>
           <VioButtonColored
             :aria-label="t('roleChange')"
-            :to="localePath('/event/2020')"
+            :to="localePath({ path: '/event/2020' })"
           >
             {{ t('roleChange') }}
           </VioButtonColored>
@@ -225,7 +225,7 @@
           <p>
             <VioButtonColored
               :aria-label="t('statisticsGoTo')"
-              :to="localePath('/event/2020/statistics')"
+              :to="localePath({ path: '/event/2020/statistics' })"
             >
               {{ t('statisticsGoTo') }}
               <template #prefix>
@@ -256,7 +256,7 @@ definePageMeta({
       const store = useStore()
 
       if (store.participationData === null) {
-        return navigateTo(localePath('/'))
+        return navigateTo(localePath({ path: '/' }))
       }
     },
   ],

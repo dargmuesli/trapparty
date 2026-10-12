@@ -1,3 +1,11 @@
+import { useStorage } from 'nitropack/runtime'
+import {
+  createError,
+  defineEventHandler,
+  readBody,
+  useRuntimeConfig,
+} from 'nuxt/server'
+
 export default defineEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig()
   const body = (await readBody(event)) as Record<string, unknown>
