@@ -13,7 +13,7 @@
           >
             <VioLink
               :aria-label="`${t('title')} ${eventUpcoming.name}`"
-              :to="localePath(`/event/${eventUpcoming.name}`)"
+              :to="localePath({ path: `/event/${eventUpcoming.name}` })"
             >
               {{ `${t('title')} ${eventUpcoming.name}` }}
             </VioLink>
@@ -27,7 +27,7 @@
         <span class="text-xl">
           <VioLink
             :aria-label="`${t('title')} ${eventCurrent.name}`"
-            :to="localePath(`/event/${eventCurrent.name}`)"
+            :to="localePath({ path: `/event/${eventCurrent.name}` })"
           >
             {{ `${t('title')} ${eventCurrent.name}` }}
           </VioLink>
@@ -68,7 +68,7 @@
           >
             <VioLink
               :aria-label="`${t('title')} ${eventPast.name}`"
-              :to="localePath(`/event/${eventPast.name}`)"
+              :to="localePath({ path: `/event/${eventPast.name}` })"
             >
               {{ `${t('title')} ${eventPast.name}` }}
             </VioLink>

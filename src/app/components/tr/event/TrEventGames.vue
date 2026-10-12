@@ -21,7 +21,7 @@
                   game.isActive && store.participationData?.role === 'player'
                 "
                 :aria-label="t('gameLink')"
-                :to="localePath(`/game/${game.id}`)"
+                :to="localePath({ path: `/game/${game.id}` })"
               >
                 <IHeroiconsPlay16Solid />
                 {{ t('gameLink') }}
@@ -29,7 +29,7 @@
               <VioButtonColored
                 :aria-label="t('gameLinkStatistic')"
                 :is-primary="false"
-                :to="localePath(`/game/${game.id}/statistic`)"
+                :to="localePath({ path: `/game/${game.id}/statistic` })"
               >
                 <IHeroiconsChartBarSquare16Solid />
                 {{ t('gameLinkStatistic') }}

@@ -2,14 +2,14 @@
   <div class="container mx-auto p-4 md:px-8">
     <div class="flex min-h-screen flex-col pb-32">
       <header class="relative mb-4 flex items-center justify-between">
-        <VioLink :aria-label="t('home')" :to="localePath('/')">
+        <VioLink :aria-label="t('home')" :to="localePath({ path: '/' })">
           <TrIconLogo class="h-16 w-16" />
         </VioLink>
         <VioLink
           :aria-label="t('home')"
           class="text-gray-900 dark:text-white"
           :is-colored="false"
-          :to="localePath('/')"
+          :to="localePath({ path: '/' })"
         >
           <VioIconHome />
         </VioLink>
@@ -22,13 +22,13 @@
       <VioLayoutFooterCategory :heading="t('legal')">
         <VioLink
           :aria-label="t('legalNotice')"
-          :to="localePath('/legal-notice')"
+          :to="localePath({ path: '/legal-notice' })"
         >
           {{ t('legalNotice') }}
         </VioLink>
         <VioLink
           :aria-label="t('privacyPolicy')"
-          :to="localePath('/privacy-policy')"
+          :to="localePath({ path: '/privacy-policy' })"
         >
           {{ t('privacyPolicy') }}
         </VioLink>

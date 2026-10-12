@@ -20,7 +20,7 @@
         <VioButtonColored
           :aria-label="t('gameLinkStatistic')"
           :is-primary="false"
-          :to="localePath(`/game/${game.id}/statistic`)"
+          :to="localePath({ path: `/game/${game.id}/statistic` })"
         >
           {{ t('gameLinkStatistic') }}
         </VioButtonColored>

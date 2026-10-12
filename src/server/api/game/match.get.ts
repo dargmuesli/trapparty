@@ -1,3 +1,6 @@
+import { useStorage } from 'nitropack/runtime'
+import { createError, defineEventHandler } from 'nuxt/server'
+
 export interface GameConfig {
   startAt: string
   endAt: string
