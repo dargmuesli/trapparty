@@ -1,3 +1,9 @@
+## [5.1.6](https://github.com/dargmuesli/trapparty/compare/5.1.5...5.1.6) (2026-10-14)
+
+### Bug Fixes
+
+* **urql:** use hyphenated service name for internal requests ([#508](https://github.com/dargmuesli/trapparty/issues/508)) ([9e56004](https://github.com/dargmuesli/trapparty/commit/9e56004818ff13d2a65fcb434e005abd56ce34ed))
+
 ## [5.1.5](https://github.com/dargmuesli/trapparty/compare/5.1.4...5.1.5) (2026-10-12)
 
 ### Bug Fixes
