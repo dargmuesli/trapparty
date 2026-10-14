@@ -100,7 +100,7 @@ export default defineNuxtConfig(
     },
     VIO_NUXT_BASE_CONFIG({
       services: {
-        trapparty_postgraphile: { hasSubdomain: true, port: 5000 },
+        'trapparty-postgraphile': { hasSubdomain: true, port: 5000 },
       },
       siteName: SITE_NAME,
       stagingHost: PRODUCTION_HOST,
