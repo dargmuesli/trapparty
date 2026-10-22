@@ -13,7 +13,7 @@
     "@iconify-json/heroicons": "1.2.3",
     "@nuxt/fonts": "1.0.1",
     "@pinia/nuxt": "1.0.3",
-    "@takumi-rs/core": "2.16.3",
+    "@takumi-rs/core": "2.17.0",
     "@types/color": "4.2.1",
     "@types/lodash-es": "4.17.12",
     "@urql/core": "6.0.3",
