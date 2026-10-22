@@ -10,9 +10,7 @@ const PAGE_PATH = '/privacy-policy'
 testA11y(PAGE_PATH)
 testPageLoad(PAGE_PATH)
 testOgImage({
-  dynamic: {
-    de: 'a_TrapPartys+Logo.,c_Default.takumi,description_TrapPartys+Online-Version.,title_~RGF0ZW5zY2h1dHplcmtsw6RydW5n,p_Ii9kZS9wcml2YWN5LXBvbGljeSI,s_WsE98I6goitC_ZMg.png',
-    en: `a_TrapParty's+logo.,c_Default.takumi,description_TrapParty's+online+version.,title_Privacy+Policy,p_Ii9wcml2YWN5LXBvbGljeSI,s_ag4ZcFp5hBSuX-0P.png`,
-  },
+  de: `/de${PAGE_PATH}`,
+  en: PAGE_PATH,
 })
 testVisualRegression(PAGE_PATH)
