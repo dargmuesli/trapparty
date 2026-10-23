@@ -1,3 +1,9 @@
+## [6.0.1](https://github.com/dargmuesli/trapparty/compare/6.0.0...6.0.1) (2026-10-23)
+
+### Bug Fixes
+
+* **deps:** update dependency typescript-eslint to v8.72.0 ([#513](https://github.com/dargmuesli/trapparty/issues/513)) ([c596afd](https://github.com/dargmuesli/trapparty/commit/c596afdf0834a62f45ae7d53162b5642a9691290))
+
 ## [6.0.0](https://github.com/dargmuesli/trapparty/compare/5.1.6...6.0.0) (2026-10-14)
 
 ### ⚠ BREAKING CHANGES
