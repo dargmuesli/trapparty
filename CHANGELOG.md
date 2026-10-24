@@ -1,3 +1,13 @@
+## [7.0.0](https://github.com/dargmuesli/trapparty/compare/6.0.1...7.0.0) (2026-10-24)
+
+### ⚠ BREAKING CHANGES
+
+* **postgraphile:** align with the 5 server (#514)
+
+### Features
+
+* **postgraphile:** align with the 5 server ([#514](https://github.com/dargmuesli/trapparty/issues/514)) ([8b432e3](https://github.com/dargmuesli/trapparty/commit/8b432e3a129afb570e4df2a2329d7b24bc7de727))
+
 ## [6.0.1](https://github.com/dargmuesli/trapparty/compare/6.0.0...6.0.1) (2026-10-23)
 
 ### Bug Fixes
