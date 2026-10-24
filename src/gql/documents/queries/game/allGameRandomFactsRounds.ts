@@ -12,7 +12,10 @@ export const useAllGameRandomFactsRoundsQuery = (
 
 export const allGameRandomFactsRoundsQuery = graphql(`
   query allGameRandomFactsRounds($gameId: Int!) {
-    allGameRandomFactsRounds(condition: { gameId: $gameId }, orderBy: ID_DESC) {
+    allGameRandomFactsRounds(
+      condition: { gameId: $gameId }
+      orderBy: ROW_ID_DESC
+    ) {
       nodes {
         ...GameRandomFactsRoundItem
       }

@@ -26,27 +26,14 @@ export type CharityOrganization = Node & {
   __typename?: 'CharityOrganization'
   /** The charity organization's department. */
   department?: Maybe<Scalars['String']['output']>
-  /** The charity organization's internal id. */
-  id: Scalars['Int']['output']
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  id: Scalars['ID']['output']
   /** The charity organization's name. */
   name: Scalars['String']['output']
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
-  /** Reads and enables pagination through a set of `Team`. */
-  teamsByCharityOrganizationId: TeamsConnection
+  /** The charity organization's internal id. */
+  rowId: Scalars['Int']['output']
   /** The charity organization's url. */
   url: Scalars['String']['output']
-}
-
-/** Charity organizations. */
-export type CharityOrganizationTeamsByCharityOrganizationIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>
-  before?: InputMaybe<Scalars['Cursor']['input']>
-  condition?: InputMaybe<TeamCondition>
-  first?: InputMaybe<Scalars['Int']['input']>
-  last?: InputMaybe<Scalars['Int']['input']>
-  offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
 }
 
 /**
@@ -54,47 +41,21 @@ export type CharityOrganizationTeamsByCharityOrganizationIdArgs = {
  * are tested for equality and combined with a logical ‘and.’
  */
 export type CharityOrganizationCondition = {
-  /** Checks for equality with the object’s `department` field. */
-  department?: InputMaybe<Scalars['String']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `name` field. */
   name?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `url` field. */
   url?: InputMaybe<Scalars['String']['input']>
 }
 
-/** An input for mutations affecting `CharityOrganization` */
-export type CharityOrganizationInput = {
-  /** The charity organization's department. */
-  department?: InputMaybe<Scalars['String']['input']>
-  /** The charity organization's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The charity organization's name. */
-  name: Scalars['String']['input']
-  /** The charity organization's url. */
-  url: Scalars['String']['input']
-}
-
-/** Represents an update to a `CharityOrganization`. Fields that are set will be updated. */
-export type CharityOrganizationPatch = {
-  /** The charity organization's department. */
-  department?: InputMaybe<Scalars['String']['input']>
-  /** The charity organization's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The charity organization's name. */
-  name?: InputMaybe<Scalars['String']['input']>
-  /** The charity organization's url. */
-  url?: InputMaybe<Scalars['String']['input']>
-}
-
 /** A connection to a list of `CharityOrganization` values. */
-export type CharityOrganizationsConnection = {
-  __typename?: 'CharityOrganizationsConnection'
+export type CharityOrganizationConnection = {
+  __typename?: 'CharityOrganizationConnection'
   /** A list of edges which contains the `CharityOrganization` and cursor to aid in pagination. */
-  edges: Array<CharityOrganizationsEdge>
+  edges: Array<CharityOrganizationEdge>
   /** A list of `CharityOrganization` objects. */
-  nodes: Array<Maybe<CharityOrganization>>
+  nodes: Array<CharityOrganization>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `CharityOrganization` you could get from the connection. */
@@ -102,27 +63,49 @@ export type CharityOrganizationsConnection = {
 }
 
 /** A `CharityOrganization` edge in the connection. */
-export type CharityOrganizationsEdge = {
-  __typename?: 'CharityOrganizationsEdge'
+export type CharityOrganizationEdge = {
+  __typename?: 'CharityOrganizationEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `CharityOrganization` at the end of the edge. */
-  node?: Maybe<CharityOrganization>
+  node: CharityOrganization
+}
+
+/** An input for mutations affecting `CharityOrganization` */
+export type CharityOrganizationInput = {
+  /** The charity organization's department. */
+  department?: InputMaybe<Scalars['String']['input']>
+  /** The charity organization's name. */
+  name: Scalars['String']['input']
+  /** The charity organization's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The charity organization's url. */
+  url: Scalars['String']['input']
 }
 
 /** Methods to use when ordering `CharityOrganization`. */
-export enum CharityOrganizationsOrderBy {
-  DepartmentAsc = 'DEPARTMENT_ASC',
-  DepartmentDesc = 'DEPARTMENT_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
+export enum CharityOrganizationOrderBy {
   NameAsc = 'NAME_ASC',
   NameDesc = 'NAME_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
   UrlAsc = 'URL_ASC',
   UrlDesc = 'URL_DESC',
+}
+
+/** Represents an update to a `CharityOrganization`. Fields that are set will be updated. */
+export type CharityOrganizationPatch = {
+  /** The charity organization's department. */
+  department?: InputMaybe<Scalars['String']['input']>
+  /** The charity organization's name. */
+  name?: InputMaybe<Scalars['String']['input']>
+  /** The charity organization's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The charity organization's url. */
+  url?: InputMaybe<Scalars['String']['input']>
 }
 
 /** All input for the create `CharityOrganization` mutation. */
@@ -142,7 +125,7 @@ export type CreateCharityOrganizationPayload = {
   /** The `CharityOrganization` that was created by this mutation. */
   charityOrganization?: Maybe<CharityOrganization>
   /** An edge for our `CharityOrganization`. May be used by Relay 1. */
-  charityOrganizationEdge?: Maybe<CharityOrganizationsEdge>
+  charityOrganizationEdge?: Maybe<CharityOrganizationEdge>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -154,7 +137,7 @@ export type CreateCharityOrganizationPayload = {
 
 /** The output of our create `CharityOrganization` mutation. */
 export type CreateCharityOrganizationPayloadCharityOrganizationEdgeArgs = {
-  orderBy?: InputMaybe<Array<CharityOrganizationsOrderBy>>
+  orderBy?: Array<CharityOrganizationOrderBy>
 }
 
 /** All input for the create `Event` mutation. */
@@ -179,14 +162,14 @@ export type CreateEventPayload = {
   /** The `Event` that was created by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
-  eventEdge?: Maybe<EventsEdge>
+  eventEdge?: Maybe<EventEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our create `Event` mutation. */
 export type CreateEventPayloadEventEdgeArgs = {
-  orderBy?: InputMaybe<Array<EventsOrderBy>>
+  orderBy?: Array<EventOrderBy>
 }
 
 /** All input for the create `GameEstimationNumericRound` mutation. */
@@ -208,12 +191,10 @@ export type CreateGameEstimationNumericRoundPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameEstimationNumericRound` that was created by this mutation. */
   gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
   /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
-  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -221,7 +202,7 @@ export type CreateGameEstimationNumericRoundPayload = {
 /** The output of our create `GameEstimationNumericRound` mutation. */
 export type CreateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+    orderBy?: Array<GameEstimationNumericRoundOrderBy>
   }
 
 /** All input for the create `GameEstimationNumericVote` mutation. */
@@ -243,14 +224,10 @@ export type CreateGameEstimationNumericVotePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
-  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
   /** The `GameEstimationNumericVote` that was created by this mutation. */
   gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
   /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
-  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
-  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -258,7 +235,7 @@ export type CreateGameEstimationNumericVotePayload = {
 /** The output of our create `GameEstimationNumericVote` mutation. */
 export type CreateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+    orderBy?: Array<GameEstimationNumericVoteOrderBy>
   }
 
 /** All input for the create `Game` mutation. */
@@ -280,19 +257,17 @@ export type CreateGamePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Event` that is related to this `Game`. */
-  eventByEventId?: Maybe<Event>
   /** The `Game` that was created by this mutation. */
   game?: Maybe<Game>
   /** An edge for our `Game`. May be used by Relay 1. */
-  gameEdge?: Maybe<GamesEdge>
+  gameEdge?: Maybe<GameEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our create `Game` mutation. */
 export type CreateGamePayloadGameEdgeArgs = {
-  orderBy?: InputMaybe<Array<GamesOrderBy>>
+  orderBy?: Array<GameOrderBy>
 }
 
 /** All input for the create `GameRandomFactsRound` mutation. */
@@ -314,19 +289,17 @@ export type CreateGameRandomFactsRoundPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was created by this mutation. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
   /** An edge for our `GameRandomFactsRound`. May be used by Relay 1. */
-  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundsEdge>
+  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our create `GameRandomFactsRound` mutation. */
 export type CreateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
+  orderBy?: Array<GameRandomFactsRoundOrderBy>
 }
 
 /** All input for the create `GameRandomFactsVote` mutation. */
@@ -348,21 +321,17 @@ export type CreateGameRandomFactsVotePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
-  gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was created by this mutation. */
   gameRandomFactsVote?: Maybe<GameRandomFactsVote>
   /** An edge for our `GameRandomFactsVote`. May be used by Relay 1. */
-  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVotesEdge>
-  /** Reads a single `Player` that is related to this `GameRandomFactsVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our create `GameRandomFactsVote` mutation. */
 export type CreateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
+  orderBy?: Array<GameRandomFactsVoteOrderBy>
 }
 
 /** All input for the create `GameTeamScore` mutation. */
@@ -384,21 +353,17 @@ export type CreateGameTeamScorePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameTeamScore`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was created by this mutation. */
   gameTeamScore?: Maybe<GameTeamScore>
   /** An edge for our `GameTeamScore`. May be used by Relay 1. */
-  gameTeamScoreEdge?: Maybe<GameTeamScoresEdge>
+  gameTeamScoreEdge?: Maybe<GameTeamScoreEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `GameTeamScore`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our create `GameTeamScore` mutation. */
 export type CreateGameTeamScorePayloadGameTeamScoreEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: Array<GameTeamScoreOrderBy>
 }
 
 /** All input for the create `Kv` mutation. */
@@ -422,15 +387,8 @@ export type CreateKvPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Kv` that was created by this mutation. */
   kv?: Maybe<Kv>
-  /** An edge for our `Kv`. May be used by Relay 1. */
-  kvEdge?: Maybe<KvsEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-}
-
-/** The output of our create `Kv` mutation. */
-export type CreateKvPayloadKvEdgeArgs = {
-  orderBy?: InputMaybe<Array<KvsOrderBy>>
 }
 
 /** All input for the create `Player` mutation. */
@@ -455,16 +413,14 @@ export type CreatePlayerPayload = {
   /** The `Player` that was created by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
-  playerEdge?: Maybe<PlayersEdge>
+  playerEdge?: Maybe<PlayerEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `Player`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our create `Player` mutation. */
 export type CreatePlayerPayloadPlayerEdgeArgs = {
-  orderBy?: InputMaybe<Array<PlayersOrderBy>>
+  orderBy?: Array<PlayerOrderBy>
 }
 
 /** All input for the create `Team` mutation. */
@@ -497,57 +453,38 @@ export type CreateTeamLeaderPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Player` that is related to this `TeamLeader`. */
-  playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `TeamLeader`. */
-  teamByTeamId?: Maybe<Team>
   /** The `TeamLeader` that was created by this mutation. */
   teamLeader?: Maybe<TeamLeader>
   /** An edge for our `TeamLeader`. May be used by Relay 1. */
-  teamLeaderEdge?: Maybe<TeamLeadersEdge>
+  teamLeaderEdge?: Maybe<TeamLeaderEdge>
 }
 
 /** The output of our create `TeamLeader` mutation. */
 export type CreateTeamLeaderPayloadTeamLeaderEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: Array<TeamLeaderOrderBy>
 }
 
 /** The output of our create `Team` mutation. */
 export type CreateTeamPayload = {
   __typename?: 'CreateTeamPayload'
-  /** Reads a single `CharityOrganization` that is related to this `Team`. */
-  charityOrganizationByCharityOrganizationId?: Maybe<CharityOrganization>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Event` that is related to this `Team`. */
-  eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
   /** The `Team` that was created by this mutation. */
   team?: Maybe<Team>
   /** An edge for our `Team`. May be used by Relay 1. */
-  teamEdge?: Maybe<TeamsEdge>
+  teamEdge?: Maybe<TeamEdge>
 }
 
 /** The output of our create `Team` mutation. */
 export type CreateTeamPayloadTeamEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
-}
-
-/** All input for the `deleteCharityOrganizationById` mutation. */
-export type DeleteCharityOrganizationByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The charity organization's internal id. */
-  id: Scalars['Int']['input']
+  orderBy?: Array<TeamOrderBy>
 }
 
 /** All input for the `deleteCharityOrganizationByName` mutation. */
@@ -559,6 +496,17 @@ export type DeleteCharityOrganizationByNameInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's name. */
   name: Scalars['String']['input']
+}
+
+/** All input for the `deleteCharityOrganizationByRowId` mutation. */
+export type DeleteCharityOrganizationByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The charity organization's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteCharityOrganizationByUrl` mutation. */
@@ -580,7 +528,7 @@ export type DeleteCharityOrganizationInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `CharityOrganization` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `CharityOrganization` mutation. */
@@ -589,7 +537,7 @@ export type DeleteCharityOrganizationPayload = {
   /** The `CharityOrganization` that was deleted by this mutation. */
   charityOrganization?: Maybe<CharityOrganization>
   /** An edge for our `CharityOrganization`. May be used by Relay 1. */
-  charityOrganizationEdge?: Maybe<CharityOrganizationsEdge>
+  charityOrganizationEdge?: Maybe<CharityOrganizationEdge>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -602,18 +550,7 @@ export type DeleteCharityOrganizationPayload = {
 
 /** The output of our delete `CharityOrganization` mutation. */
 export type DeleteCharityOrganizationPayloadCharityOrganizationEdgeArgs = {
-  orderBy?: InputMaybe<Array<CharityOrganizationsOrderBy>>
-}
-
-/** All input for the `deleteEventById` mutation. */
-export type DeleteEventByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The events's internal id. */
-  id: Scalars['Int']['input']
+  orderBy?: Array<CharityOrganizationOrderBy>
 }
 
 /** All input for the `deleteEventByName` mutation. */
@@ -626,6 +563,17 @@ export type DeleteEventByNameInput = {
   name: Scalars['String']['input']
 }
 
+/** All input for the `deleteEventByRowId` mutation. */
+export type DeleteEventByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The events's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `deleteEvent` mutation. */
 export type DeleteEventInput = {
   /**
@@ -634,7 +582,7 @@ export type DeleteEventInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Event` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `Event` mutation. */
@@ -649,14 +597,14 @@ export type DeleteEventPayload = {
   /** The `Event` that was deleted by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
-  eventEdge?: Maybe<EventsEdge>
+  eventEdge?: Maybe<EventEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our delete `Event` mutation. */
 export type DeleteEventPayloadEventEdgeArgs = {
-  orderBy?: InputMaybe<Array<EventsOrderBy>>
+  orderBy?: Array<EventOrderBy>
 }
 
 /** All input for the `deleteGameByEventIdAndName` mutation. */
@@ -672,25 +620,26 @@ export type DeleteGameByEventIdAndNameInput = {
   name: Scalars['String']['input']
 }
 
-/** All input for the `deleteGameById` mutation. */
-export type DeleteGameByIdInput = {
+/** All input for the `deleteGameByRowId` mutation. */
+export type DeleteGameByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The games's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
-/** All input for the `deleteGameEstimationNumericRoundById` mutation. */
-export type DeleteGameEstimationNumericRoundByIdInput = {
+/** All input for the `deleteGameEstimationNumericRoundByRowId` mutation. */
+export type DeleteGameEstimationNumericRoundByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
-  id: Scalars['Int']['input']
+  /** The round's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameEstimationNumericRound` mutation. */
@@ -701,7 +650,7 @@ export type DeleteGameEstimationNumericRoundInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameEstimationNumericRound` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameEstimationNumericRound` mutation. */
@@ -713,12 +662,10 @@ export type DeleteGameEstimationNumericRoundPayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameEstimationNumericRoundId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameEstimationNumericRound` that was deleted by this mutation. */
   gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
   /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
-  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -726,18 +673,8 @@ export type DeleteGameEstimationNumericRoundPayload = {
 /** The output of our delete `GameEstimationNumericRound` mutation. */
 export type DeleteGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+    orderBy?: Array<GameEstimationNumericRoundOrderBy>
   }
-
-/** All input for the `deleteGameEstimationNumericVoteById` mutation. */
-export type DeleteGameEstimationNumericVoteByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  id: Scalars['Int']['input']
-}
 
 /** All input for the `deleteGameEstimationNumericVoteByPlayerIdAndRoundId` mutation. */
 export type DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
@@ -752,6 +689,17 @@ export type DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
   roundId: Scalars['Int']['input']
 }
 
+/** All input for the `deleteGameEstimationNumericVoteByRowId` mutation. */
+export type DeleteGameEstimationNumericVoteByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `deleteGameEstimationNumericVote` mutation. */
 export type DeleteGameEstimationNumericVoteInput = {
   /**
@@ -760,7 +708,7 @@ export type DeleteGameEstimationNumericVoteInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameEstimationNumericVote` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameEstimationNumericVote` mutation. */
@@ -772,14 +720,10 @@ export type DeleteGameEstimationNumericVotePayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameEstimationNumericVoteId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
-  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
   /** The `GameEstimationNumericVote` that was deleted by this mutation. */
   gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
   /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
-  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
-  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -787,7 +731,7 @@ export type DeleteGameEstimationNumericVotePayload = {
 /** The output of our delete `GameEstimationNumericVote` mutation. */
 export type DeleteGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+    orderBy?: Array<GameEstimationNumericVoteOrderBy>
   }
 
 /** All input for the `deleteGame` mutation. */
@@ -798,7 +742,7 @@ export type DeleteGameInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Game` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `Game` mutation. */
@@ -810,30 +754,28 @@ export type DeleteGamePayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Event` that is related to this `Game`. */
-  eventByEventId?: Maybe<Event>
   /** The `Game` that was deleted by this mutation. */
   game?: Maybe<Game>
   /** An edge for our `Game`. May be used by Relay 1. */
-  gameEdge?: Maybe<GamesEdge>
+  gameEdge?: Maybe<GameEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our delete `Game` mutation. */
 export type DeleteGamePayloadGameEdgeArgs = {
-  orderBy?: InputMaybe<Array<GamesOrderBy>>
+  orderBy?: Array<GameOrderBy>
 }
 
-/** All input for the `deleteGameRandomFactsRoundById` mutation. */
-export type DeleteGameRandomFactsRoundByIdInput = {
+/** All input for the `deleteGameRandomFactsRoundByRowId` mutation. */
+export type DeleteGameRandomFactsRoundByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The round's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameRandomFactsRound` mutation. */
@@ -844,7 +786,7 @@ export type DeleteGameRandomFactsRoundInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameRandomFactsRound` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameRandomFactsRound` mutation. */
@@ -856,30 +798,17 @@ export type DeleteGameRandomFactsRoundPayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameRandomFactsRoundId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was deleted by this mutation. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
   /** An edge for our `GameRandomFactsRound`. May be used by Relay 1. */
-  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundsEdge>
+  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our delete `GameRandomFactsRound` mutation. */
 export type DeleteGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
-}
-
-/** All input for the `deleteGameRandomFactsVoteById` mutation. */
-export type DeleteGameRandomFactsVoteByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The vote's internal id. */
-  id: Scalars['Int']['input']
+  orderBy?: Array<GameRandomFactsRoundOrderBy>
 }
 
 /** All input for the `deleteGameRandomFactsVoteByPlayerIdAndRoundId` mutation. */
@@ -895,6 +824,17 @@ export type DeleteGameRandomFactsVoteByPlayerIdAndRoundIdInput = {
   roundId: Scalars['Int']['input']
 }
 
+/** All input for the `deleteGameRandomFactsVoteByRowId` mutation. */
+export type DeleteGameRandomFactsVoteByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `deleteGameRandomFactsVote` mutation. */
 export type DeleteGameRandomFactsVoteInput = {
   /**
@@ -903,7 +843,7 @@ export type DeleteGameRandomFactsVoteInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameRandomFactsVote` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameRandomFactsVote` mutation. */
@@ -915,32 +855,28 @@ export type DeleteGameRandomFactsVotePayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameRandomFactsVoteId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
-  gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was deleted by this mutation. */
   gameRandomFactsVote?: Maybe<GameRandomFactsVote>
   /** An edge for our `GameRandomFactsVote`. May be used by Relay 1. */
-  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVotesEdge>
-  /** Reads a single `Player` that is related to this `GameRandomFactsVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our delete `GameRandomFactsVote` mutation. */
 export type DeleteGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
+  orderBy?: Array<GameRandomFactsVoteOrderBy>
 }
 
-/** All input for the `deleteGameTeamScoreById` mutation. */
-export type DeleteGameTeamScoreByIdInput = {
+/** All input for the `deleteGameTeamScoreByRowId` mutation. */
+export type DeleteGameTeamScoreByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The game score's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteGameTeamScore` mutation. */
@@ -951,7 +887,7 @@ export type DeleteGameTeamScoreInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `GameTeamScore` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `GameTeamScore` mutation. */
@@ -963,21 +899,17 @@ export type DeleteGameTeamScorePayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedGameTeamScoreId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Game` that is related to this `GameTeamScore`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was deleted by this mutation. */
   gameTeamScore?: Maybe<GameTeamScore>
   /** An edge for our `GameTeamScore`. May be used by Relay 1. */
-  gameTeamScoreEdge?: Maybe<GameTeamScoresEdge>
+  gameTeamScoreEdge?: Maybe<GameTeamScoreEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `GameTeamScore`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our delete `GameTeamScore` mutation. */
 export type DeleteGameTeamScorePayloadGameTeamScoreEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: Array<GameTeamScoreOrderBy>
 }
 
 /** All input for the `deleteKvByKey` mutation. */
@@ -999,29 +931,10 @@ export type DeleteKvPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  deletedKvId?: Maybe<Scalars['ID']['output']>
   /** The `Kv` that was deleted by this mutation. */
   kv?: Maybe<Kv>
-  /** An edge for our `Kv`. May be used by Relay 1. */
-  kvEdge?: Maybe<KvsEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-}
-
-/** The output of our delete `Kv` mutation. */
-export type DeleteKvPayloadKvEdgeArgs = {
-  orderBy?: InputMaybe<Array<KvsOrderBy>>
-}
-
-/** All input for the `deletePlayerById` mutation. */
-export type DeletePlayerByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The players's internal id. */
-  id: Scalars['Int']['input']
 }
 
 /** All input for the `deletePlayerByInvitationCode` mutation. */
@@ -1033,6 +946,17 @@ export type DeletePlayerByInvitationCodeInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The player's invitation code. */
   invitationCode: Scalars['UUID']['input']
+}
+
+/** All input for the `deletePlayerByRowId` mutation. */
+export type DeletePlayerByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The players's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deletePlayerByTeamIdAndInvitationCode` mutation. */
@@ -1056,7 +980,7 @@ export type DeletePlayerInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Player` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `Player` mutation. */
@@ -1071,27 +995,25 @@ export type DeletePlayerPayload = {
   /** The `Player` that was deleted by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
-  playerEdge?: Maybe<PlayersEdge>
+  playerEdge?: Maybe<PlayerEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `Player`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our delete `Player` mutation. */
 export type DeletePlayerPayloadPlayerEdgeArgs = {
-  orderBy?: InputMaybe<Array<PlayersOrderBy>>
+  orderBy?: Array<PlayerOrderBy>
 }
 
-/** All input for the `deleteTeamById` mutation. */
-export type DeleteTeamByIdInput = {
+/** All input for the `deleteTeamByRowId` mutation. */
+export type DeleteTeamByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteTeam` mutation. */
@@ -1102,18 +1024,18 @@ export type DeleteTeamInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Team` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
-/** All input for the `deleteTeamLeaderById` mutation. */
-export type DeleteTeamLeaderByIdInput = {
+/** All input for the `deleteTeamLeaderByRowId` mutation. */
+export type DeleteTeamLeaderByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team leaders's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `deleteTeamLeader` mutation. */
@@ -1124,7 +1046,7 @@ export type DeleteTeamLeaderInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `TeamLeader` to be deleted. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our delete `TeamLeader` mutation. */
@@ -1136,47 +1058,39 @@ export type DeleteTeamLeaderPayload = {
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedTeamLeaderId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Player` that is related to this `TeamLeader`. */
-  playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `TeamLeader`. */
-  teamByTeamId?: Maybe<Team>
   /** The `TeamLeader` that was deleted by this mutation. */
   teamLeader?: Maybe<TeamLeader>
   /** An edge for our `TeamLeader`. May be used by Relay 1. */
-  teamLeaderEdge?: Maybe<TeamLeadersEdge>
+  teamLeaderEdge?: Maybe<TeamLeaderEdge>
 }
 
 /** The output of our delete `TeamLeader` mutation. */
 export type DeleteTeamLeaderPayloadTeamLeaderEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: Array<TeamLeaderOrderBy>
 }
 
 /** The output of our delete `Team` mutation. */
 export type DeleteTeamPayload = {
   __typename?: 'DeleteTeamPayload'
-  /** Reads a single `CharityOrganization` that is related to this `Team`. */
-  charityOrganizationByCharityOrganizationId?: Maybe<CharityOrganization>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
   deletedTeamId?: Maybe<Scalars['ID']['output']>
-  /** Reads a single `Event` that is related to this `Team`. */
-  eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
   /** The `Team` that was deleted by this mutation. */
   team?: Maybe<Team>
   /** An edge for our `Team`. May be used by Relay 1. */
-  teamEdge?: Maybe<TeamsEdge>
+  teamEdge?: Maybe<TeamEdge>
 }
 
 /** The output of our delete `Team` mutation. */
 export type DeleteTeamPayloadTeamEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
+  orderBy?: Array<TeamOrderBy>
 }
 
 /** Events. */
@@ -1193,18 +1107,18 @@ export type Event = Node & {
   /** The event's end timestamp. */
   end?: Maybe<Scalars['Datetime']['output']>
   /** Reads and enables pagination through a set of `Game`. */
-  gamesByEventId: GamesConnection
-  /** The events's internal id. */
-  id: Scalars['Int']['output']
-  name: Scalars['String']['output']
+  gamesByEventId: GameConnection
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
+  name: Scalars['String']['output']
+  /** The events's internal id. */
+  rowId: Scalars['Int']['output']
   /** The event's start timestamp. */
   start: Scalars['Datetime']['output']
   /** The event's stream url. */
   streamUrl?: Maybe<Scalars['String']['output']>
   /** Reads and enables pagination through a set of `Team`. */
-  teamsByEventId: TeamsConnection
+  teamsByEventId: TeamConnection
 }
 
 /** Events. */
@@ -1215,7 +1129,7 @@ export type EventGamesByEventIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GamesOrderBy>>
+  orderBy?: InputMaybe<Array<GameOrderBy>>
 }
 
 /** Events. */
@@ -1226,29 +1140,39 @@ export type EventTeamsByEventIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
+  orderBy?: InputMaybe<Array<TeamOrderBy>>
 }
 
 /** A condition to be used against `Event` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type EventCondition = {
-  /** Checks for equality with the object’s `commonDonationAmount` field. */
-  commonDonationAmount?: InputMaybe<Scalars['Float']['input']>
-  /** Checks for equality with the object’s `commonDonationIsLive` field. */
-  commonDonationIsLive?: InputMaybe<Scalars['Boolean']['input']>
-  /** Checks for equality with the object’s `commonDonationUrl` field. */
-  commonDonationUrl?: InputMaybe<Scalars['String']['input']>
-  /** Checks for equality with the object’s `discordInviteCode` field. */
-  discordInviteCode?: InputMaybe<Scalars['String']['input']>
-  /** Checks for equality with the object’s `end` field. */
-  end?: InputMaybe<Scalars['Datetime']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `name` field. */
   name?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `start` field. */
   start?: InputMaybe<Scalars['Datetime']['input']>
-  /** Checks for equality with the object’s `streamUrl` field. */
-  streamUrl?: InputMaybe<Scalars['String']['input']>
+}
+
+/** A connection to a list of `Event` values. */
+export type EventConnection = {
+  __typename?: 'EventConnection'
+  /** A list of edges which contains the `Event` and cursor to aid in pagination. */
+  edges: Array<EventEdge>
+  /** A list of `Event` objects. */
+  nodes: Array<Event>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `Event` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `Event` edge in the connection. */
+export type EventEdge = {
+  __typename?: 'EventEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `Event` at the end of the edge. */
+  node: Event
 }
 
 /** An input for mutations affecting `Event` */
@@ -1263,13 +1187,26 @@ export type EventInput = {
   discordInviteCode?: InputMaybe<Scalars['String']['input']>
   /** The event's end timestamp. */
   end?: InputMaybe<Scalars['Datetime']['input']>
-  /** The events's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   name: Scalars['String']['input']
+  /** The events's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** The event's start timestamp. */
   start: Scalars['Datetime']['input']
   /** The event's stream url. */
   streamUrl?: InputMaybe<Scalars['String']['input']>
+}
+
+/** Methods to use when ordering `Event`. */
+export enum EventOrderBy {
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
+  StartAsc = 'START_ASC',
+  StartDesc = 'START_DESC',
 }
 
 /** Represents an update to a `Event`. Fields that are set will be updated. */
@@ -1284,60 +1221,13 @@ export type EventPatch = {
   discordInviteCode?: InputMaybe<Scalars['String']['input']>
   /** The event's end timestamp. */
   end?: InputMaybe<Scalars['Datetime']['input']>
-  /** The events's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   name?: InputMaybe<Scalars['String']['input']>
+  /** The events's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** The event's start timestamp. */
   start?: InputMaybe<Scalars['Datetime']['input']>
   /** The event's stream url. */
   streamUrl?: InputMaybe<Scalars['String']['input']>
-}
-
-/** A connection to a list of `Event` values. */
-export type EventsConnection = {
-  __typename?: 'EventsConnection'
-  /** A list of edges which contains the `Event` and cursor to aid in pagination. */
-  edges: Array<EventsEdge>
-  /** A list of `Event` objects. */
-  nodes: Array<Maybe<Event>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `Event` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `Event` edge in the connection. */
-export type EventsEdge = {
-  __typename?: 'EventsEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `Event` at the end of the edge. */
-  node?: Maybe<Event>
-}
-
-/** Methods to use when ordering `Event`. */
-export enum EventsOrderBy {
-  CommonDonationAmountAsc = 'COMMON_DONATION_AMOUNT_ASC',
-  CommonDonationAmountDesc = 'COMMON_DONATION_AMOUNT_DESC',
-  CommonDonationIsLiveAsc = 'COMMON_DONATION_IS_LIVE_ASC',
-  CommonDonationIsLiveDesc = 'COMMON_DONATION_IS_LIVE_DESC',
-  CommonDonationUrlAsc = 'COMMON_DONATION_URL_ASC',
-  CommonDonationUrlDesc = 'COMMON_DONATION_URL_DESC',
-  DiscordInviteCodeAsc = 'DISCORD_INVITE_CODE_ASC',
-  DiscordInviteCodeDesc = 'DISCORD_INVITE_CODE_DESC',
-  EndAsc = 'END_ASC',
-  EndDesc = 'END_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  StartAsc = 'START_ASC',
-  StartDesc = 'START_DESC',
-  StreamUrlAsc = 'STREAM_URL_ASC',
-  StreamUrlDesc = 'STREAM_URL_DESC',
 }
 
 /** Games. */
@@ -1348,19 +1238,19 @@ export type Game = Node & {
   /** The game's internal event id */
   eventId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameEstimationNumericRound`. */
-  gameEstimationNumericRoundsByGameId: GameEstimationNumericRoundsConnection
+  gameEstimationNumericRoundsByGameId: GameEstimationNumericRoundConnection
   /** Reads and enables pagination through a set of `GameRandomFactsRound`. */
-  gameRandomFactsRoundsByGameId: GameRandomFactsRoundsConnection
+  gameRandomFactsRoundsByGameId: GameRandomFactsRoundConnection
   /** Reads and enables pagination through a set of `GameTeamScore`. */
-  gameTeamScoresByGameId: GameTeamScoresConnection
-  /** The games's internal id. */
-  id: Scalars['Int']['output']
+  gameTeamScoresByGameId: GameTeamScoreConnection
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  id: Scalars['ID']['output']
   /** The games's activeness. */
   isActive: Scalars['Boolean']['output']
   /** The games's name. */
   name: Scalars['String']['output']
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  /** The games's internal id. */
+  rowId: Scalars['Int']['output']
   /** The game's type */
   type: GameType
 }
@@ -1373,7 +1263,7 @@ export type GameGameEstimationNumericRoundsByGameIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+  orderBy?: InputMaybe<Array<GameEstimationNumericRoundOrderBy>>
 }
 
 /** Games. */
@@ -1384,7 +1274,7 @@ export type GameGameRandomFactsRoundsByGameIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
+  orderBy?: InputMaybe<Array<GameRandomFactsRoundOrderBy>>
 }
 
 /** Games. */
@@ -1395,21 +1285,41 @@ export type GameGameTeamScoresByGameIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: InputMaybe<Array<GameTeamScoreOrderBy>>
 }
 
 /** A condition to be used against `Game` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type GameCondition = {
   /** Checks for equality with the object’s `eventId` field. */
   eventId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `isActive` field. */
-  isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** Checks for equality with the object’s `name` field. */
   name?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `type` field. */
   type?: InputMaybe<GameType>
+}
+
+/** A connection to a list of `Game` values. */
+export type GameConnection = {
+  __typename?: 'GameConnection'
+  /** A list of edges which contains the `Game` and cursor to aid in pagination. */
+  edges: Array<GameEdge>
+  /** A list of `Game` objects. */
+  nodes: Array<Game>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `Game` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `Game` edge in the connection. */
+export type GameEdge = {
+  __typename?: 'GameEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `Game` at the end of the edge. */
+  node: Game
 }
 
 /** Retrieves the leaderboard for a numeric estimation game. */
@@ -1434,12 +1344,12 @@ export type GameEstimationNumericLeaderboardViewCondition = {
 }
 
 /** A connection to a list of `GameEstimationNumericLeaderboardView` values. */
-export type GameEstimationNumericLeaderboardViewsConnection = {
-  __typename?: 'GameEstimationNumericLeaderboardViewsConnection'
+export type GameEstimationNumericLeaderboardViewConnection = {
+  __typename?: 'GameEstimationNumericLeaderboardViewConnection'
   /** A list of edges which contains the `GameEstimationNumericLeaderboardView` and cursor to aid in pagination. */
-  edges: Array<GameEstimationNumericLeaderboardViewsEdge>
+  edges: Array<GameEstimationNumericLeaderboardViewEdge>
   /** A list of `GameEstimationNumericLeaderboardView` objects. */
-  nodes: Array<Maybe<GameEstimationNumericLeaderboardView>>
+  nodes: Array<GameEstimationNumericLeaderboardView>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameEstimationNumericLeaderboardView` you could get from the connection. */
@@ -1447,16 +1357,16 @@ export type GameEstimationNumericLeaderboardViewsConnection = {
 }
 
 /** A `GameEstimationNumericLeaderboardView` edge in the connection. */
-export type GameEstimationNumericLeaderboardViewsEdge = {
-  __typename?: 'GameEstimationNumericLeaderboardViewsEdge'
+export type GameEstimationNumericLeaderboardViewEdge = {
+  __typename?: 'GameEstimationNumericLeaderboardViewEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameEstimationNumericLeaderboardView` at the end of the edge. */
-  node?: Maybe<GameEstimationNumericLeaderboardView>
+  node: GameEstimationNumericLeaderboardView
 }
 
 /** Methods to use when ordering `GameEstimationNumericLeaderboardView`. */
-export enum GameEstimationNumericLeaderboardViewsOrderBy {
+export enum GameEstimationNumericLeaderboardViewOrderBy {
   GameIdAsc = 'GAME_ID_ASC',
   GameIdDesc = 'GAME_ID_DESC',
   Natural = 'NATURAL',
@@ -1476,12 +1386,13 @@ export type GameEstimationNumericRound = Node & {
   /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
   gameByGameId?: Maybe<Game>
   /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
-  gameEstimationNumericVotesByRoundId: GameEstimationNumericVotesConnection
+  gameEstimationNumericVotesByRoundId: GameEstimationNumericVoteConnection
   /** The round's internal game id */
   gameId: Scalars['Int']['output']
-  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
+  /** The round's internal id. */
+  rowId: Scalars['Int']['output']
 }
 
 /** A round of a numeric estimation game. */
@@ -1493,7 +1404,7 @@ export type GameEstimationNumericRoundGameEstimationNumericVotesByRoundIdArgs =
     first?: InputMaybe<Scalars['Int']['input']>
     last?: InputMaybe<Scalars['Int']['input']>
     offset?: InputMaybe<Scalars['Int']['input']>
-    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+    orderBy?: InputMaybe<Array<GameEstimationNumericVoteOrderBy>>
   }
 
 /**
@@ -1501,14 +1412,32 @@ export type GameEstimationNumericRoundGameEstimationNumericVotesByRoundIdArgs =
  * fields are tested for equality and combined with a logical ‘and.’
  */
 export type GameEstimationNumericRoundCondition = {
-  /** Checks for equality with the object’s `answerCorrect` field. */
-  answerCorrect?: InputMaybe<Scalars['Float']['input']>
-  /** Checks for equality with the object’s `elementName` field. */
-  elementName?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `gameId` field. */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameEstimationNumericRound` values. */
+export type GameEstimationNumericRoundConnection = {
+  __typename?: 'GameEstimationNumericRoundConnection'
+  /** A list of edges which contains the `GameEstimationNumericRound` and cursor to aid in pagination. */
+  edges: Array<GameEstimationNumericRoundEdge>
+  /** A list of `GameEstimationNumericRound` objects. */
+  nodes: Array<GameEstimationNumericRound>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameEstimationNumericRound` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameEstimationNumericRound` edge in the connection. */
+export type GameEstimationNumericRoundEdge = {
+  __typename?: 'GameEstimationNumericRoundEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameEstimationNumericRound` at the end of the edge. */
+  node: GameEstimationNumericRound
 }
 
 /** An input for mutations affecting `GameEstimationNumericRound` */
@@ -1519,7 +1448,17 @@ export type GameEstimationNumericRoundInput = {
   elementName: Scalars['String']['input']
   /** The round's internal game id */
   gameId: Scalars['Int']['input']
-  id?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** Methods to use when ordering `GameEstimationNumericRound`. */
+export enum GameEstimationNumericRoundOrderBy {
+  GameIdAsc = 'GAME_ID_ASC',
+  GameIdDesc = 'GAME_ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
 }
 
 /** Represents an update to a `GameEstimationNumericRound`. Fields that are set will be updated. */
@@ -1530,44 +1469,8 @@ export type GameEstimationNumericRoundPatch = {
   elementName?: InputMaybe<Scalars['String']['input']>
   /** The round's internal game id */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  id?: InputMaybe<Scalars['Int']['input']>
-}
-
-/** A connection to a list of `GameEstimationNumericRound` values. */
-export type GameEstimationNumericRoundsConnection = {
-  __typename?: 'GameEstimationNumericRoundsConnection'
-  /** A list of edges which contains the `GameEstimationNumericRound` and cursor to aid in pagination. */
-  edges: Array<GameEstimationNumericRoundsEdge>
-  /** A list of `GameEstimationNumericRound` objects. */
-  nodes: Array<Maybe<GameEstimationNumericRound>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `GameEstimationNumericRound` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `GameEstimationNumericRound` edge in the connection. */
-export type GameEstimationNumericRoundsEdge = {
-  __typename?: 'GameEstimationNumericRoundsEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `GameEstimationNumericRound` at the end of the edge. */
-  node?: Maybe<GameEstimationNumericRound>
-}
-
-/** Methods to use when ordering `GameEstimationNumericRound`. */
-export enum GameEstimationNumericRoundsOrderBy {
-  AnswerCorrectAsc = 'ANSWER_CORRECT_ASC',
-  AnswerCorrectDesc = 'ANSWER_CORRECT_DESC',
-  ElementNameAsc = 'ELEMENT_NAME_ASC',
-  ElementNameDesc = 'ELEMENT_NAME_DESC',
-  GameIdAsc = 'GAME_ID_ASC',
-  GameIdDesc = 'GAME_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  /** The round's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A vote of a numeric estimation game round. */
@@ -1577,15 +1480,16 @@ export type GameEstimationNumericVote = Node & {
   answer: Scalars['Float']['output']
   /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
   gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
-  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
   /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
   playerByPlayerId?: Maybe<Player>
   /** The vote's internal player id */
   playerId: Scalars['Int']['output']
   /** The vote's internal round id. */
   roundId: Scalars['Int']['output']
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['output']
 }
 
 /**
@@ -1593,45 +1497,21 @@ export type GameEstimationNumericVote = Node & {
  * fields are tested for equality and combined with a logical ‘and.’
  */
 export type GameEstimationNumericVoteCondition = {
-  /** Checks for equality with the object’s `answer` field. */
-  answer?: InputMaybe<Scalars['Float']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `playerId` field. */
   playerId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `roundId` field. */
   roundId?: InputMaybe<Scalars['Int']['input']>
-}
-
-/** An input for mutations affecting `GameEstimationNumericVote` */
-export type GameEstimationNumericVoteInput = {
-  /** The vote's answer. */
-  answer: Scalars['Float']['input']
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal player id */
-  playerId: Scalars['Int']['input']
-  /** The vote's internal round id. */
-  roundId: Scalars['Int']['input']
-}
-
-/** Represents an update to a `GameEstimationNumericVote`. Fields that are set will be updated. */
-export type GameEstimationNumericVotePatch = {
-  /** The vote's answer. */
-  answer?: InputMaybe<Scalars['Float']['input']>
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal player id */
-  playerId?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal round id. */
-  roundId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `GameEstimationNumericVote` values. */
-export type GameEstimationNumericVotesConnection = {
-  __typename?: 'GameEstimationNumericVotesConnection'
+export type GameEstimationNumericVoteConnection = {
+  __typename?: 'GameEstimationNumericVoteConnection'
   /** A list of edges which contains the `GameEstimationNumericVote` and cursor to aid in pagination. */
-  edges: Array<GameEstimationNumericVotesEdge>
+  edges: Array<GameEstimationNumericVoteEdge>
   /** A list of `GameEstimationNumericVote` objects. */
-  nodes: Array<Maybe<GameEstimationNumericVote>>
+  nodes: Array<GameEstimationNumericVote>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameEstimationNumericVote` you could get from the connection. */
@@ -1639,20 +1519,26 @@ export type GameEstimationNumericVotesConnection = {
 }
 
 /** A `GameEstimationNumericVote` edge in the connection. */
-export type GameEstimationNumericVotesEdge = {
-  __typename?: 'GameEstimationNumericVotesEdge'
+export type GameEstimationNumericVoteEdge = {
+  __typename?: 'GameEstimationNumericVoteEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameEstimationNumericVote` at the end of the edge. */
-  node?: Maybe<GameEstimationNumericVote>
+  node: GameEstimationNumericVote
+}
+
+/** An input for mutations affecting `GameEstimationNumericVote` */
+export type GameEstimationNumericVoteInput = {
+  /** The vote's answer. */
+  answer: Scalars['Float']['input']
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['input']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['input']
 }
 
 /** Methods to use when ordering `GameEstimationNumericVote`. */
-export enum GameEstimationNumericVotesOrderBy {
-  AnswerAsc = 'ANSWER_ASC',
-  AnswerDesc = 'ANSWER_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
+export enum GameEstimationNumericVoteOrderBy {
   Natural = 'NATURAL',
   PlayerIdAsc = 'PLAYER_ID_ASC',
   PlayerIdDesc = 'PLAYER_ID_DESC',
@@ -1660,32 +1546,59 @@ export enum GameEstimationNumericVotesOrderBy {
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   RoundIdAsc = 'ROUND_ID_ASC',
   RoundIdDesc = 'ROUND_ID_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
+}
+
+/** Represents an update to a `GameEstimationNumericVote`. Fields that are set will be updated. */
+export type GameEstimationNumericVotePatch = {
+  /** The vote's answer. */
+  answer?: InputMaybe<Scalars['Float']['input']>
+  /** The vote's internal player id */
+  playerId?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal round id. */
+  roundId?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** An input for mutations affecting `Game` */
 export type GameInput = {
   /** The game's internal event id */
   eventId: Scalars['Int']['input']
-  /** The games's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The games's activeness. */
   isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** The games's name. */
   name: Scalars['String']['input']
+  /** The games's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** The game's type */
   type: GameType
+}
+
+/** Methods to use when ordering `Game`. */
+export enum GameOrderBy {
+  EventIdAsc = 'EVENT_ID_ASC',
+  EventIdDesc = 'EVENT_ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
 }
 
 /** Represents an update to a `Game`. Fields that are set will be updated. */
 export type GamePatch = {
   /** The game's internal event id */
   eventId?: InputMaybe<Scalars['Int']['input']>
-  /** The games's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The games's activeness. */
   isActive?: InputMaybe<Scalars['Boolean']['input']>
   /** The games's name. */
   name?: InputMaybe<Scalars['String']['input']>
+  /** The games's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** The game's type */
   type?: InputMaybe<GameType>
 }
@@ -1700,13 +1613,13 @@ export type GameRandomFactsRound = Node & {
   /** The round's internal game id */
   gameId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
-  gameRandomFactsVotesByRoundId: GameRandomFactsVotesConnection
-  /** The round's internal id. */
-  id: Scalars['Int']['output']
+  gameRandomFactsVotesByRoundId: GameRandomFactsVoteConnection
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
   /** The round's questioner name */
   questionerName: Scalars['String']['output']
+  /** The round's internal id. */
+  rowId: Scalars['Int']['output']
 }
 
 /** A round of a random facts game. */
@@ -1717,7 +1630,7 @@ export type GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
+  orderBy?: InputMaybe<Array<GameRandomFactsVoteOrderBy>>
 }
 
 /**
@@ -1725,14 +1638,32 @@ export type GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs = {
  * are tested for equality and combined with a logical ‘and.’
  */
 export type GameRandomFactsRoundCondition = {
-  /** Checks for equality with the object’s `answerCorrect` field. */
-  answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `gameId` field. */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `questionerName` field. */
-  questionerName?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `GameRandomFactsRound` values. */
+export type GameRandomFactsRoundConnection = {
+  __typename?: 'GameRandomFactsRoundConnection'
+  /** A list of edges which contains the `GameRandomFactsRound` and cursor to aid in pagination. */
+  edges: Array<GameRandomFactsRoundEdge>
+  /** A list of `GameRandomFactsRound` objects. */
+  nodes: Array<GameRandomFactsRound>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `GameRandomFactsRound` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `GameRandomFactsRound` edge in the connection. */
+export type GameRandomFactsRoundEdge = {
+  __typename?: 'GameRandomFactsRoundEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `GameRandomFactsRound` at the end of the edge. */
+  node: GameRandomFactsRound
 }
 
 /** An input for mutations affecting `GameRandomFactsRound` */
@@ -1741,10 +1672,21 @@ export type GameRandomFactsRoundInput = {
   answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** The round's internal game id */
   gameId: Scalars['Int']['input']
-  /** The round's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The round's questioner name */
   questionerName: Scalars['String']['input']
+  /** The round's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** Methods to use when ordering `GameRandomFactsRound`. */
+export enum GameRandomFactsRoundOrderBy {
+  GameIdAsc = 'GAME_ID_ASC',
+  GameIdDesc = 'GAME_ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
 }
 
 /** Represents an update to a `GameRandomFactsRound`. Fields that are set will be updated. */
@@ -1753,47 +1695,10 @@ export type GameRandomFactsRoundPatch = {
   answerCorrect?: InputMaybe<Scalars['Int']['input']>
   /** The round's internal game id */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  /** The round's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The round's questioner name */
   questionerName?: InputMaybe<Scalars['String']['input']>
-}
-
-/** A connection to a list of `GameRandomFactsRound` values. */
-export type GameRandomFactsRoundsConnection = {
-  __typename?: 'GameRandomFactsRoundsConnection'
-  /** A list of edges which contains the `GameRandomFactsRound` and cursor to aid in pagination. */
-  edges: Array<GameRandomFactsRoundsEdge>
-  /** A list of `GameRandomFactsRound` objects. */
-  nodes: Array<Maybe<GameRandomFactsRound>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `GameRandomFactsRound` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `GameRandomFactsRound` edge in the connection. */
-export type GameRandomFactsRoundsEdge = {
-  __typename?: 'GameRandomFactsRoundsEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `GameRandomFactsRound` at the end of the edge. */
-  node?: Maybe<GameRandomFactsRound>
-}
-
-/** Methods to use when ordering `GameRandomFactsRound`. */
-export enum GameRandomFactsRoundsOrderBy {
-  AnswerCorrectAsc = 'ANSWER_CORRECT_ASC',
-  AnswerCorrectDesc = 'ANSWER_CORRECT_DESC',
-  GameIdAsc = 'GAME_ID_ASC',
-  GameIdDesc = 'GAME_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  QuestionerNameAsc = 'QUESTIONER_NAME_ASC',
-  QuestionerNameDesc = 'QUESTIONER_NAME_DESC',
+  /** The round's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A vote of a random facts game round. */
@@ -1803,16 +1708,16 @@ export type GameRandomFactsVote = Node & {
   answer: Scalars['Int']['output']
   /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
   gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
-  /** The vote's internal id. */
-  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
   /** Reads a single `Player` that is related to this `GameRandomFactsVote`. */
   playerByPlayerId?: Maybe<Player>
   /** The vote's internal player id */
   playerId: Scalars['Int']['output']
   /** The vote's internal round id. */
   roundId: Scalars['Int']['output']
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['output']
 }
 
 /**
@@ -1820,47 +1725,21 @@ export type GameRandomFactsVote = Node & {
  * are tested for equality and combined with a logical ‘and.’
  */
 export type GameRandomFactsVoteCondition = {
-  /** Checks for equality with the object’s `answer` field. */
-  answer?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `playerId` field. */
   playerId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `roundId` field. */
   roundId?: InputMaybe<Scalars['Int']['input']>
-}
-
-/** An input for mutations affecting `GameRandomFactsVote` */
-export type GameRandomFactsVoteInput = {
-  /** The vote's answer. */
-  answer: Scalars['Int']['input']
-  /** The vote's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal player id */
-  playerId: Scalars['Int']['input']
-  /** The vote's internal round id. */
-  roundId: Scalars['Int']['input']
-}
-
-/** Represents an update to a `GameRandomFactsVote`. Fields that are set will be updated. */
-export type GameRandomFactsVotePatch = {
-  /** The vote's answer. */
-  answer?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal player id */
-  playerId?: InputMaybe<Scalars['Int']['input']>
-  /** The vote's internal round id. */
-  roundId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `GameRandomFactsVote` values. */
-export type GameRandomFactsVotesConnection = {
-  __typename?: 'GameRandomFactsVotesConnection'
+export type GameRandomFactsVoteConnection = {
+  __typename?: 'GameRandomFactsVoteConnection'
   /** A list of edges which contains the `GameRandomFactsVote` and cursor to aid in pagination. */
-  edges: Array<GameRandomFactsVotesEdge>
+  edges: Array<GameRandomFactsVoteEdge>
   /** A list of `GameRandomFactsVote` objects. */
-  nodes: Array<Maybe<GameRandomFactsVote>>
+  nodes: Array<GameRandomFactsVote>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameRandomFactsVote` you could get from the connection. */
@@ -1868,20 +1747,28 @@ export type GameRandomFactsVotesConnection = {
 }
 
 /** A `GameRandomFactsVote` edge in the connection. */
-export type GameRandomFactsVotesEdge = {
-  __typename?: 'GameRandomFactsVotesEdge'
+export type GameRandomFactsVoteEdge = {
+  __typename?: 'GameRandomFactsVoteEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameRandomFactsVote` at the end of the edge. */
-  node?: Maybe<GameRandomFactsVote>
+  node: GameRandomFactsVote
+}
+
+/** An input for mutations affecting `GameRandomFactsVote` */
+export type GameRandomFactsVoteInput = {
+  /** The vote's answer. */
+  answer: Scalars['Int']['input']
+  /** The vote's internal player id */
+  playerId: Scalars['Int']['input']
+  /** The vote's internal round id. */
+  roundId: Scalars['Int']['input']
+  /** The vote's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Methods to use when ordering `GameRandomFactsVote`. */
-export enum GameRandomFactsVotesOrderBy {
-  AnswerAsc = 'ANSWER_ASC',
-  AnswerDesc = 'ANSWER_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
+export enum GameRandomFactsVoteOrderBy {
   Natural = 'NATURAL',
   PlayerIdAsc = 'PLAYER_ID_ASC',
   PlayerIdDesc = 'PLAYER_ID_DESC',
@@ -1889,6 +1776,20 @@ export enum GameRandomFactsVotesOrderBy {
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   RoundIdAsc = 'ROUND_ID_ASC',
   RoundIdDesc = 'ROUND_ID_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
+}
+
+/** Represents an update to a `GameRandomFactsVote`. Fields that are set will be updated. */
+export type GameRandomFactsVotePatch = {
+  /** The vote's answer. */
+  answer?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal player id */
+  playerId?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal round id. */
+  roundId?: InputMaybe<Scalars['Int']['input']>
+  /** The vote's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Game scores. */
@@ -1898,10 +1799,10 @@ export type GameTeamScore = Node & {
   gameByGameId?: Maybe<Game>
   /** The score's internal game id */
   gameId: Scalars['Int']['output']
-  /** The game score's internal id. */
-  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
+  /** The game score's internal id. */
+  rowId: Scalars['Int']['output']
   /** The score. */
   score: Scalars['Int']['output']
   /** Reads a single `Team` that is related to this `GameTeamScore`. */
@@ -1917,45 +1818,19 @@ export type GameTeamScore = Node & {
 export type GameTeamScoreCondition = {
   /** Checks for equality with the object’s `gameId` field. */
   gameId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `score` field. */
-  score?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `teamId` field. */
   teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
-/** An input for mutations affecting `GameTeamScore` */
-export type GameTeamScoreInput = {
-  /** The score's internal game id */
-  gameId: Scalars['Int']['input']
-  /** The game score's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The score. */
-  score: Scalars['Int']['input']
-  /** The score's internal team id */
-  teamId: Scalars['Int']['input']
-}
-
-/** Represents an update to a `GameTeamScore`. Fields that are set will be updated. */
-export type GameTeamScorePatch = {
-  /** The score's internal game id */
-  gameId?: InputMaybe<Scalars['Int']['input']>
-  /** The game score's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The score. */
-  score?: InputMaybe<Scalars['Int']['input']>
-  /** The score's internal team id */
-  teamId?: InputMaybe<Scalars['Int']['input']>
-}
-
 /** A connection to a list of `GameTeamScore` values. */
-export type GameTeamScoresConnection = {
-  __typename?: 'GameTeamScoresConnection'
+export type GameTeamScoreConnection = {
+  __typename?: 'GameTeamScoreConnection'
   /** A list of edges which contains the `GameTeamScore` and cursor to aid in pagination. */
-  edges: Array<GameTeamScoresEdge>
+  edges: Array<GameTeamScoreEdge>
   /** A list of `GameTeamScore` objects. */
-  nodes: Array<Maybe<GameTeamScore>>
+  nodes: Array<GameTeamScore>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `GameTeamScore` you could get from the connection. */
@@ -1963,73 +1838,56 @@ export type GameTeamScoresConnection = {
 }
 
 /** A `GameTeamScore` edge in the connection. */
-export type GameTeamScoresEdge = {
-  __typename?: 'GameTeamScoresEdge'
+export type GameTeamScoreEdge = {
+  __typename?: 'GameTeamScoreEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `GameTeamScore` at the end of the edge. */
-  node?: Maybe<GameTeamScore>
+  node: GameTeamScore
+}
+
+/** An input for mutations affecting `GameTeamScore` */
+export type GameTeamScoreInput = {
+  /** The score's internal game id */
+  gameId: Scalars['Int']['input']
+  /** The game score's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The score. */
+  score: Scalars['Int']['input']
+  /** The score's internal team id */
+  teamId: Scalars['Int']['input']
 }
 
 /** Methods to use when ordering `GameTeamScore`. */
-export enum GameTeamScoresOrderBy {
+export enum GameTeamScoreOrderBy {
   GameIdAsc = 'GAME_ID_ASC',
   GameIdDesc = 'GAME_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  ScoreAsc = 'SCORE_ASC',
-  ScoreDesc = 'SCORE_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
   TeamIdAsc = 'TEAM_ID_ASC',
   TeamIdDesc = 'TEAM_ID_DESC',
 }
 
+/** Represents an update to a `GameTeamScore`. Fields that are set will be updated. */
+export type GameTeamScorePatch = {
+  /** The score's internal game id */
+  gameId?: InputMaybe<Scalars['Int']['input']>
+  /** The game score's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The score. */
+  score?: InputMaybe<Scalars['Int']['input']>
+  /** The score's internal team id */
+  teamId?: InputMaybe<Scalars['Int']['input']>
+}
+
 /** Available game types: estimation_numeric, random_facts, team_score. */
 export enum GameType {
-  EstimationNumeric = 'ESTIMATION_NUMERIC',
-  RandomFacts = 'RANDOM_FACTS',
-  TeamScore = 'TEAM_SCORE',
-}
-
-/** A connection to a list of `Game` values. */
-export type GamesConnection = {
-  __typename?: 'GamesConnection'
-  /** A list of edges which contains the `Game` and cursor to aid in pagination. */
-  edges: Array<GamesEdge>
-  /** A list of `Game` objects. */
-  nodes: Array<Maybe<Game>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `Game` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `Game` edge in the connection. */
-export type GamesEdge = {
-  __typename?: 'GamesEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `Game` at the end of the edge. */
-  node?: Maybe<Game>
-}
-
-/** Methods to use when ordering `Game`. */
-export enum GamesOrderBy {
-  EventIdAsc = 'EVENT_ID_ASC',
-  EventIdDesc = 'EVENT_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  IsActiveAsc = 'IS_ACTIVE_ASC',
-  IsActiveDesc = 'IS_ACTIVE_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  TypeAsc = 'TYPE_ASC',
-  TypeDesc = 'TYPE_DESC',
+  EstimationNumeric = 'estimation_numeric',
+  RandomFacts = 'random_facts',
+  TeamScore = 'team_score',
 }
 
 /** A key value store. */
@@ -2045,8 +1903,28 @@ export type Kv = {
 export type KvCondition = {
   /** Checks for equality with the object’s `key` field. */
   key?: InputMaybe<Scalars['String']['input']>
-  /** Checks for equality with the object’s `value` field. */
-  value?: InputMaybe<Scalars['String']['input']>
+}
+
+/** A connection to a list of `Kv` values. */
+export type KvConnection = {
+  __typename?: 'KvConnection'
+  /** A list of edges which contains the `Kv` and cursor to aid in pagination. */
+  edges: Array<KvEdge>
+  /** A list of `Kv` objects. */
+  nodes: Array<Kv>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `Kv` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `Kv` edge in the connection. */
+export type KvEdge = {
+  __typename?: 'KvEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `Kv` at the end of the edge. */
+  node: Kv
 }
 
 /** An input for mutations affecting `Kv` */
@@ -2057,43 +1935,19 @@ export type KvInput = {
   value?: InputMaybe<Scalars['String']['input']>
 }
 
+/** Methods to use when ordering `Kv`. */
+export enum KvOrderBy {
+  KeyAsc = 'KEY_ASC',
+  KeyDesc = 'KEY_DESC',
+  Natural = 'NATURAL',
+}
+
 /** Represents an update to a `Kv`. Fields that are set will be updated. */
 export type KvPatch = {
   /** The key. */
   key?: InputMaybe<Scalars['String']['input']>
   /** A value. */
   value?: InputMaybe<Scalars['String']['input']>
-}
-
-/** A connection to a list of `Kv` values. */
-export type KvsConnection = {
-  __typename?: 'KvsConnection'
-  /** A list of edges which contains the `Kv` and cursor to aid in pagination. */
-  edges: Array<KvsEdge>
-  /** A list of `Kv` objects. */
-  nodes: Array<Maybe<Kv>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `Kv` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `Kv` edge in the connection. */
-export type KvsEdge = {
-  __typename?: 'KvsEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `Kv` at the end of the edge. */
-  node?: Maybe<Kv>
-}
-
-/** Methods to use when ordering `Kv`. */
-export enum KvsOrderBy {
-  KeyAsc = 'KEY_ASC',
-  KeyDesc = 'KEY_DESC',
-  Natural = 'NATURAL',
-  ValueAsc = 'VALUE_ASC',
-  ValueDesc = 'VALUE_DESC',
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2126,127 +1980,127 @@ export type Mutation = {
   /** Deletes a single `CharityOrganization` using its globally unique id. */
   deleteCharityOrganization?: Maybe<DeleteCharityOrganizationPayload>
   /** Deletes a single `CharityOrganization` using a unique key. */
-  deleteCharityOrganizationById?: Maybe<DeleteCharityOrganizationPayload>
-  /** Deletes a single `CharityOrganization` using a unique key. */
   deleteCharityOrganizationByName?: Maybe<DeleteCharityOrganizationPayload>
+  /** Deletes a single `CharityOrganization` using a unique key. */
+  deleteCharityOrganizationByRowId?: Maybe<DeleteCharityOrganizationPayload>
   /** Deletes a single `CharityOrganization` using a unique key. */
   deleteCharityOrganizationByUrl?: Maybe<DeleteCharityOrganizationPayload>
   /** Deletes a single `Event` using its globally unique id. */
   deleteEvent?: Maybe<DeleteEventPayload>
   /** Deletes a single `Event` using a unique key. */
-  deleteEventById?: Maybe<DeleteEventPayload>
-  /** Deletes a single `Event` using a unique key. */
   deleteEventByName?: Maybe<DeleteEventPayload>
+  /** Deletes a single `Event` using a unique key. */
+  deleteEventByRowId?: Maybe<DeleteEventPayload>
   /** Deletes a single `Game` using its globally unique id. */
   deleteGame?: Maybe<DeleteGamePayload>
   /** Deletes a single `Game` using a unique key. */
   deleteGameByEventIdAndName?: Maybe<DeleteGamePayload>
   /** Deletes a single `Game` using a unique key. */
-  deleteGameById?: Maybe<DeleteGamePayload>
+  deleteGameByRowId?: Maybe<DeleteGamePayload>
   /** Deletes a single `GameEstimationNumericRound` using its globally unique id. */
   deleteGameEstimationNumericRound?: Maybe<DeleteGameEstimationNumericRoundPayload>
   /** Deletes a single `GameEstimationNumericRound` using a unique key. */
-  deleteGameEstimationNumericRoundById?: Maybe<DeleteGameEstimationNumericRoundPayload>
+  deleteGameEstimationNumericRoundByRowId?: Maybe<DeleteGameEstimationNumericRoundPayload>
   /** Deletes a single `GameEstimationNumericVote` using its globally unique id. */
   deleteGameEstimationNumericVote?: Maybe<DeleteGameEstimationNumericVotePayload>
   /** Deletes a single `GameEstimationNumericVote` using a unique key. */
-  deleteGameEstimationNumericVoteById?: Maybe<DeleteGameEstimationNumericVotePayload>
-  /** Deletes a single `GameEstimationNumericVote` using a unique key. */
   deleteGameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<DeleteGameEstimationNumericVotePayload>
+  /** Deletes a single `GameEstimationNumericVote` using a unique key. */
+  deleteGameEstimationNumericVoteByRowId?: Maybe<DeleteGameEstimationNumericVotePayload>
   /** Deletes a single `GameRandomFactsRound` using its globally unique id. */
   deleteGameRandomFactsRound?: Maybe<DeleteGameRandomFactsRoundPayload>
   /** Deletes a single `GameRandomFactsRound` using a unique key. */
-  deleteGameRandomFactsRoundById?: Maybe<DeleteGameRandomFactsRoundPayload>
+  deleteGameRandomFactsRoundByRowId?: Maybe<DeleteGameRandomFactsRoundPayload>
   /** Deletes a single `GameRandomFactsVote` using its globally unique id. */
   deleteGameRandomFactsVote?: Maybe<DeleteGameRandomFactsVotePayload>
   /** Deletes a single `GameRandomFactsVote` using a unique key. */
-  deleteGameRandomFactsVoteById?: Maybe<DeleteGameRandomFactsVotePayload>
-  /** Deletes a single `GameRandomFactsVote` using a unique key. */
   deleteGameRandomFactsVoteByPlayerIdAndRoundId?: Maybe<DeleteGameRandomFactsVotePayload>
+  /** Deletes a single `GameRandomFactsVote` using a unique key. */
+  deleteGameRandomFactsVoteByRowId?: Maybe<DeleteGameRandomFactsVotePayload>
   /** Deletes a single `GameTeamScore` using its globally unique id. */
   deleteGameTeamScore?: Maybe<DeleteGameTeamScorePayload>
   /** Deletes a single `GameTeamScore` using a unique key. */
-  deleteGameTeamScoreById?: Maybe<DeleteGameTeamScorePayload>
+  deleteGameTeamScoreByRowId?: Maybe<DeleteGameTeamScorePayload>
   /** Deletes a single `Kv` using a unique key. */
   deleteKvByKey?: Maybe<DeleteKvPayload>
   /** Deletes a single `Player` using its globally unique id. */
   deletePlayer?: Maybe<DeletePlayerPayload>
   /** Deletes a single `Player` using a unique key. */
-  deletePlayerById?: Maybe<DeletePlayerPayload>
-  /** Deletes a single `Player` using a unique key. */
   deletePlayerByInvitationCode?: Maybe<DeletePlayerPayload>
+  /** Deletes a single `Player` using a unique key. */
+  deletePlayerByRowId?: Maybe<DeletePlayerPayload>
   /** Deletes a single `Player` using a unique key. */
   deletePlayerByTeamIdAndInvitationCode?: Maybe<DeletePlayerPayload>
   /** Deletes a single `Team` using its globally unique id. */
   deleteTeam?: Maybe<DeleteTeamPayload>
   /** Deletes a single `Team` using a unique key. */
-  deleteTeamById?: Maybe<DeleteTeamPayload>
+  deleteTeamByRowId?: Maybe<DeleteTeamPayload>
   /** Deletes a single `TeamLeader` using its globally unique id. */
   deleteTeamLeader?: Maybe<DeleteTeamLeaderPayload>
   /** Deletes a single `TeamLeader` using a unique key. */
-  deleteTeamLeaderById?: Maybe<DeleteTeamLeaderPayload>
+  deleteTeamLeaderByRowId?: Maybe<DeleteTeamLeaderPayload>
   /** Updates a single `CharityOrganization` using its globally unique id and a patch. */
   updateCharityOrganization?: Maybe<UpdateCharityOrganizationPayload>
   /** Updates a single `CharityOrganization` using a unique key and a patch. */
-  updateCharityOrganizationById?: Maybe<UpdateCharityOrganizationPayload>
-  /** Updates a single `CharityOrganization` using a unique key and a patch. */
   updateCharityOrganizationByName?: Maybe<UpdateCharityOrganizationPayload>
+  /** Updates a single `CharityOrganization` using a unique key and a patch. */
+  updateCharityOrganizationByRowId?: Maybe<UpdateCharityOrganizationPayload>
   /** Updates a single `CharityOrganization` using a unique key and a patch. */
   updateCharityOrganizationByUrl?: Maybe<UpdateCharityOrganizationPayload>
   /** Updates a single `Event` using its globally unique id and a patch. */
   updateEvent?: Maybe<UpdateEventPayload>
   /** Updates a single `Event` using a unique key and a patch. */
-  updateEventById?: Maybe<UpdateEventPayload>
-  /** Updates a single `Event` using a unique key and a patch. */
   updateEventByName?: Maybe<UpdateEventPayload>
+  /** Updates a single `Event` using a unique key and a patch. */
+  updateEventByRowId?: Maybe<UpdateEventPayload>
   /** Updates a single `Game` using its globally unique id and a patch. */
   updateGame?: Maybe<UpdateGamePayload>
   /** Updates a single `Game` using a unique key and a patch. */
   updateGameByEventIdAndName?: Maybe<UpdateGamePayload>
   /** Updates a single `Game` using a unique key and a patch. */
-  updateGameById?: Maybe<UpdateGamePayload>
+  updateGameByRowId?: Maybe<UpdateGamePayload>
   /** Updates a single `GameEstimationNumericRound` using its globally unique id and a patch. */
   updateGameEstimationNumericRound?: Maybe<UpdateGameEstimationNumericRoundPayload>
   /** Updates a single `GameEstimationNumericRound` using a unique key and a patch. */
-  updateGameEstimationNumericRoundById?: Maybe<UpdateGameEstimationNumericRoundPayload>
+  updateGameEstimationNumericRoundByRowId?: Maybe<UpdateGameEstimationNumericRoundPayload>
   /** Updates a single `GameEstimationNumericVote` using its globally unique id and a patch. */
   updateGameEstimationNumericVote?: Maybe<UpdateGameEstimationNumericVotePayload>
   /** Updates a single `GameEstimationNumericVote` using a unique key and a patch. */
-  updateGameEstimationNumericVoteById?: Maybe<UpdateGameEstimationNumericVotePayload>
-  /** Updates a single `GameEstimationNumericVote` using a unique key and a patch. */
   updateGameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<UpdateGameEstimationNumericVotePayload>
+  /** Updates a single `GameEstimationNumericVote` using a unique key and a patch. */
+  updateGameEstimationNumericVoteByRowId?: Maybe<UpdateGameEstimationNumericVotePayload>
   /** Updates a single `GameRandomFactsRound` using its globally unique id and a patch. */
   updateGameRandomFactsRound?: Maybe<UpdateGameRandomFactsRoundPayload>
   /** Updates a single `GameRandomFactsRound` using a unique key and a patch. */
-  updateGameRandomFactsRoundById?: Maybe<UpdateGameRandomFactsRoundPayload>
+  updateGameRandomFactsRoundByRowId?: Maybe<UpdateGameRandomFactsRoundPayload>
   /** Updates a single `GameRandomFactsVote` using its globally unique id and a patch. */
   updateGameRandomFactsVote?: Maybe<UpdateGameRandomFactsVotePayload>
   /** Updates a single `GameRandomFactsVote` using a unique key and a patch. */
-  updateGameRandomFactsVoteById?: Maybe<UpdateGameRandomFactsVotePayload>
-  /** Updates a single `GameRandomFactsVote` using a unique key and a patch. */
   updateGameRandomFactsVoteByPlayerIdAndRoundId?: Maybe<UpdateGameRandomFactsVotePayload>
+  /** Updates a single `GameRandomFactsVote` using a unique key and a patch. */
+  updateGameRandomFactsVoteByRowId?: Maybe<UpdateGameRandomFactsVotePayload>
   /** Updates a single `GameTeamScore` using its globally unique id and a patch. */
   updateGameTeamScore?: Maybe<UpdateGameTeamScorePayload>
   /** Updates a single `GameTeamScore` using a unique key and a patch. */
-  updateGameTeamScoreById?: Maybe<UpdateGameTeamScorePayload>
+  updateGameTeamScoreByRowId?: Maybe<UpdateGameTeamScorePayload>
   /** Updates a single `Kv` using a unique key and a patch. */
   updateKvByKey?: Maybe<UpdateKvPayload>
   /** Updates a single `Player` using its globally unique id and a patch. */
   updatePlayer?: Maybe<UpdatePlayerPayload>
   /** Updates a single `Player` using a unique key and a patch. */
-  updatePlayerById?: Maybe<UpdatePlayerPayload>
-  /** Updates a single `Player` using a unique key and a patch. */
   updatePlayerByInvitationCode?: Maybe<UpdatePlayerPayload>
+  /** Updates a single `Player` using a unique key and a patch. */
+  updatePlayerByRowId?: Maybe<UpdatePlayerPayload>
   /** Updates a single `Player` using a unique key and a patch. */
   updatePlayerByTeamIdAndInvitationCode?: Maybe<UpdatePlayerPayload>
   /** Updates a single `Team` using its globally unique id and a patch. */
   updateTeam?: Maybe<UpdateTeamPayload>
   /** Updates a single `Team` using a unique key and a patch. */
-  updateTeamById?: Maybe<UpdateTeamPayload>
+  updateTeamByRowId?: Maybe<UpdateTeamPayload>
   /** Updates a single `TeamLeader` using its globally unique id and a patch. */
   updateTeamLeader?: Maybe<UpdateTeamLeaderPayload>
   /** Updates a single `TeamLeader` using a unique key and a patch. */
-  updateTeamLeaderById?: Maybe<UpdateTeamLeaderPayload>
+  updateTeamLeaderByRowId?: Maybe<UpdateTeamLeaderPayload>
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2315,13 +2169,13 @@ export type MutationDeleteCharityOrganizationArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteCharityOrganizationByIdArgs = {
-  input: DeleteCharityOrganizationByIdInput
+export type MutationDeleteCharityOrganizationByNameArgs = {
+  input: DeleteCharityOrganizationByNameInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteCharityOrganizationByNameArgs = {
-  input: DeleteCharityOrganizationByNameInput
+export type MutationDeleteCharityOrganizationByRowIdArgs = {
+  input: DeleteCharityOrganizationByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2335,13 +2189,13 @@ export type MutationDeleteEventArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteEventByIdArgs = {
-  input: DeleteEventByIdInput
+export type MutationDeleteEventByNameArgs = {
+  input: DeleteEventByNameInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteEventByNameArgs = {
-  input: DeleteEventByNameInput
+export type MutationDeleteEventByRowIdArgs = {
+  input: DeleteEventByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2355,8 +2209,8 @@ export type MutationDeleteGameByEventIdAndNameArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameByIdArgs = {
-  input: DeleteGameByIdInput
+export type MutationDeleteGameByRowIdArgs = {
+  input: DeleteGameByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2365,8 +2219,8 @@ export type MutationDeleteGameEstimationNumericRoundArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameEstimationNumericRoundByIdArgs = {
-  input: DeleteGameEstimationNumericRoundByIdInput
+export type MutationDeleteGameEstimationNumericRoundByRowIdArgs = {
+  input: DeleteGameEstimationNumericRoundByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2375,13 +2229,13 @@ export type MutationDeleteGameEstimationNumericVoteArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameEstimationNumericVoteByIdArgs = {
-  input: DeleteGameEstimationNumericVoteByIdInput
+export type MutationDeleteGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
+  input: DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
-  input: DeleteGameEstimationNumericVoteByPlayerIdAndRoundIdInput
+export type MutationDeleteGameEstimationNumericVoteByRowIdArgs = {
+  input: DeleteGameEstimationNumericVoteByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2390,8 +2244,8 @@ export type MutationDeleteGameRandomFactsRoundArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameRandomFactsRoundByIdArgs = {
-  input: DeleteGameRandomFactsRoundByIdInput
+export type MutationDeleteGameRandomFactsRoundByRowIdArgs = {
+  input: DeleteGameRandomFactsRoundByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2400,13 +2254,13 @@ export type MutationDeleteGameRandomFactsVoteArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameRandomFactsVoteByIdArgs = {
-  input: DeleteGameRandomFactsVoteByIdInput
+export type MutationDeleteGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
+  input: DeleteGameRandomFactsVoteByPlayerIdAndRoundIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
-  input: DeleteGameRandomFactsVoteByPlayerIdAndRoundIdInput
+export type MutationDeleteGameRandomFactsVoteByRowIdArgs = {
+  input: DeleteGameRandomFactsVoteByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2415,8 +2269,8 @@ export type MutationDeleteGameTeamScoreArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteGameTeamScoreByIdArgs = {
-  input: DeleteGameTeamScoreByIdInput
+export type MutationDeleteGameTeamScoreByRowIdArgs = {
+  input: DeleteGameTeamScoreByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2430,13 +2284,13 @@ export type MutationDeletePlayerArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeletePlayerByIdArgs = {
-  input: DeletePlayerByIdInput
+export type MutationDeletePlayerByInvitationCodeArgs = {
+  input: DeletePlayerByInvitationCodeInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeletePlayerByInvitationCodeArgs = {
-  input: DeletePlayerByInvitationCodeInput
+export type MutationDeletePlayerByRowIdArgs = {
+  input: DeletePlayerByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2450,8 +2304,8 @@ export type MutationDeleteTeamArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteTeamByIdArgs = {
-  input: DeleteTeamByIdInput
+export type MutationDeleteTeamByRowIdArgs = {
+  input: DeleteTeamByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2460,8 +2314,8 @@ export type MutationDeleteTeamLeaderArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteTeamLeaderByIdArgs = {
-  input: DeleteTeamLeaderByIdInput
+export type MutationDeleteTeamLeaderByRowIdArgs = {
+  input: DeleteTeamLeaderByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2470,13 +2324,13 @@ export type MutationUpdateCharityOrganizationArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateCharityOrganizationByIdArgs = {
-  input: UpdateCharityOrganizationByIdInput
+export type MutationUpdateCharityOrganizationByNameArgs = {
+  input: UpdateCharityOrganizationByNameInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateCharityOrganizationByNameArgs = {
-  input: UpdateCharityOrganizationByNameInput
+export type MutationUpdateCharityOrganizationByRowIdArgs = {
+  input: UpdateCharityOrganizationByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2490,13 +2344,13 @@ export type MutationUpdateEventArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateEventByIdArgs = {
-  input: UpdateEventByIdInput
+export type MutationUpdateEventByNameArgs = {
+  input: UpdateEventByNameInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateEventByNameArgs = {
-  input: UpdateEventByNameInput
+export type MutationUpdateEventByRowIdArgs = {
+  input: UpdateEventByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2510,8 +2364,8 @@ export type MutationUpdateGameByEventIdAndNameArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameByIdArgs = {
-  input: UpdateGameByIdInput
+export type MutationUpdateGameByRowIdArgs = {
+  input: UpdateGameByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2520,8 +2374,8 @@ export type MutationUpdateGameEstimationNumericRoundArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameEstimationNumericRoundByIdArgs = {
-  input: UpdateGameEstimationNumericRoundByIdInput
+export type MutationUpdateGameEstimationNumericRoundByRowIdArgs = {
+  input: UpdateGameEstimationNumericRoundByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2530,13 +2384,13 @@ export type MutationUpdateGameEstimationNumericVoteArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameEstimationNumericVoteByIdArgs = {
-  input: UpdateGameEstimationNumericVoteByIdInput
+export type MutationUpdateGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
+  input: UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
-  input: UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput
+export type MutationUpdateGameEstimationNumericVoteByRowIdArgs = {
+  input: UpdateGameEstimationNumericVoteByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2545,8 +2399,8 @@ export type MutationUpdateGameRandomFactsRoundArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameRandomFactsRoundByIdArgs = {
-  input: UpdateGameRandomFactsRoundByIdInput
+export type MutationUpdateGameRandomFactsRoundByRowIdArgs = {
+  input: UpdateGameRandomFactsRoundByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2555,13 +2409,13 @@ export type MutationUpdateGameRandomFactsVoteArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameRandomFactsVoteByIdArgs = {
-  input: UpdateGameRandomFactsVoteByIdInput
+export type MutationUpdateGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
+  input: UpdateGameRandomFactsVoteByPlayerIdAndRoundIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
-  input: UpdateGameRandomFactsVoteByPlayerIdAndRoundIdInput
+export type MutationUpdateGameRandomFactsVoteByRowIdArgs = {
+  input: UpdateGameRandomFactsVoteByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2570,8 +2424,8 @@ export type MutationUpdateGameTeamScoreArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateGameTeamScoreByIdArgs = {
-  input: UpdateGameTeamScoreByIdInput
+export type MutationUpdateGameTeamScoreByRowIdArgs = {
+  input: UpdateGameTeamScoreByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2585,13 +2439,13 @@ export type MutationUpdatePlayerArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdatePlayerByIdArgs = {
-  input: UpdatePlayerByIdInput
+export type MutationUpdatePlayerByInvitationCodeArgs = {
+  input: UpdatePlayerByInvitationCodeInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdatePlayerByInvitationCodeArgs = {
-  input: UpdatePlayerByInvitationCodeInput
+export type MutationUpdatePlayerByRowIdArgs = {
+  input: UpdatePlayerByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2605,8 +2459,8 @@ export type MutationUpdateTeamArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateTeamByIdArgs = {
-  input: UpdateTeamByIdInput
+export type MutationUpdateTeamByRowIdArgs = {
+  input: UpdateTeamByRowIdInput
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
@@ -2615,14 +2469,14 @@ export type MutationUpdateTeamLeaderArgs = {
 }
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateTeamLeaderByIdArgs = {
-  input: UpdateTeamLeaderByIdInput
+export type MutationUpdateTeamLeaderByRowIdArgs = {
+  input: UpdateTeamLeaderByRowIdInput
 }
 
 /** An object with a globally unique `ID`. */
 export type Node = {
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
 }
 
 /** Information about pagination in a connection. */
@@ -2642,23 +2496,21 @@ export type PageInfo = {
 export type Player = Node & {
   __typename?: 'Player'
   /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
-  gameEstimationNumericVotesByPlayerId: GameEstimationNumericVotesConnection
+  gameEstimationNumericVotesByPlayerId: GameEstimationNumericVoteConnection
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
-  gameRandomFactsVotesByPlayerId: GameRandomFactsVotesConnection
-  /** The players's internal id. */
-  id: Scalars['Int']['output']
+  gameRandomFactsVotesByPlayerId: GameRandomFactsVoteConnection
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  id: Scalars['ID']['output']
   /** The player's invitation code. */
   invitationCode: Scalars['UUID']['output']
   /** The player's name. */
   name: Scalars['String']['output']
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  /** The players's internal id. */
+  rowId: Scalars['Int']['output']
   /** Reads a single `Team` that is related to this `Player`. */
   teamByTeamId?: Maybe<Team>
   /** The player's internal team id. */
   teamId?: Maybe<Scalars['Int']['output']>
-  /** Reads and enables pagination through a set of `TeamLeader`. */
-  teamLeadersByPlayerId: TeamLeadersConnection
 }
 
 /** Players. */
@@ -2669,7 +2521,7 @@ export type PlayerGameEstimationNumericVotesByPlayerIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  orderBy?: InputMaybe<Array<GameEstimationNumericVoteOrderBy>>
 }
 
 /** Players. */
@@ -2680,63 +2532,26 @@ export type PlayerGameRandomFactsVotesByPlayerIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
-}
-
-/** Players. */
-export type PlayerTeamLeadersByPlayerIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>
-  before?: InputMaybe<Scalars['Cursor']['input']>
-  condition?: InputMaybe<TeamLeaderCondition>
-  first?: InputMaybe<Scalars['Int']['input']>
-  last?: InputMaybe<Scalars['Int']['input']>
-  offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: InputMaybe<Array<GameRandomFactsVoteOrderBy>>
 }
 
 /** A condition to be used against `Player` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type PlayerCondition = {
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `invitationCode` field. */
   invitationCode?: InputMaybe<Scalars['UUID']['input']>
-  /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
   /** Checks for equality with the object’s `teamId` field. */
   teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
-/** An input for mutations affecting `Player` */
-export type PlayerInput = {
-  /** The players's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The player's invitation code. */
-  invitationCode?: InputMaybe<Scalars['UUID']['input']>
-  /** The player's name. */
-  name: Scalars['String']['input']
-  /** The player's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']['input']>
-}
-
-/** Represents an update to a `Player`. Fields that are set will be updated. */
-export type PlayerPatch = {
-  /** The players's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The player's invitation code. */
-  invitationCode?: InputMaybe<Scalars['UUID']['input']>
-  /** The player's name. */
-  name?: InputMaybe<Scalars['String']['input']>
-  /** The player's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']['input']>
-}
-
 /** A connection to a list of `Player` values. */
-export type PlayersConnection = {
-  __typename?: 'PlayersConnection'
+export type PlayerConnection = {
+  __typename?: 'PlayerConnection'
   /** A list of edges which contains the `Player` and cursor to aid in pagination. */
-  edges: Array<PlayersEdge>
+  edges: Array<PlayerEdge>
   /** A list of `Player` objects. */
-  nodes: Array<Maybe<Player>>
+  nodes: Array<Player>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `Player` you could get from the connection. */
@@ -2744,99 +2559,139 @@ export type PlayersConnection = {
 }
 
 /** A `Player` edge in the connection. */
-export type PlayersEdge = {
-  __typename?: 'PlayersEdge'
+export type PlayerEdge = {
+  __typename?: 'PlayerEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `Player` at the end of the edge. */
-  node?: Maybe<Player>
+  node: Player
+}
+
+/** An input for mutations affecting `Player` */
+export type PlayerInput = {
+  /** The player's invitation code. */
+  invitationCode?: InputMaybe<Scalars['UUID']['input']>
+  /** The player's name. */
+  name: Scalars['String']['input']
+  /** The players's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The player's internal team id. */
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Methods to use when ordering `Player`. */
-export enum PlayersOrderBy {
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
+export enum PlayerOrderBy {
   InvitationCodeAsc = 'INVITATION_CODE_ASC',
   InvitationCodeDesc = 'INVITATION_CODE_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
   TeamIdAsc = 'TEAM_ID_ASC',
   TeamIdDesc = 'TEAM_ID_DESC',
+}
+
+/** Represents an update to a `Player`. Fields that are set will be updated. */
+export type PlayerPatch = {
+  /** The player's invitation code. */
+  invitationCode?: InputMaybe<Scalars['UUID']['input']>
+  /** The player's name. */
+  name?: InputMaybe<Scalars['String']['input']>
+  /** The players's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The player's internal team id. */
+  teamId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type Query = Node & {
   __typename?: 'Query'
   /** Reads and enables pagination through a set of `CharityOrganization`. */
-  allCharityOrganizations?: Maybe<CharityOrganizationsConnection>
+  allCharityOrganizations?: Maybe<CharityOrganizationConnection>
   /** Reads and enables pagination through a set of `Event`. */
-  allEvents?: Maybe<EventsConnection>
+  allEvents?: Maybe<EventConnection>
   /** Reads and enables pagination through a set of `GameEstimationNumericLeaderboardView`. */
-  allGameEstimationNumericLeaderboardViews?: Maybe<GameEstimationNumericLeaderboardViewsConnection>
+  allGameEstimationNumericLeaderboardViews?: Maybe<GameEstimationNumericLeaderboardViewConnection>
   /** Reads and enables pagination through a set of `GameEstimationNumericRound`. */
-  allGameEstimationNumericRounds?: Maybe<GameEstimationNumericRoundsConnection>
+  allGameEstimationNumericRounds?: Maybe<GameEstimationNumericRoundConnection>
   /** Reads and enables pagination through a set of `GameEstimationNumericVote`. */
-  allGameEstimationNumericVotes?: Maybe<GameEstimationNumericVotesConnection>
+  allGameEstimationNumericVotes?: Maybe<GameEstimationNumericVoteConnection>
   /** Reads and enables pagination through a set of `GameRandomFactsRound`. */
-  allGameRandomFactsRounds?: Maybe<GameRandomFactsRoundsConnection>
+  allGameRandomFactsRounds?: Maybe<GameRandomFactsRoundConnection>
   /** Reads and enables pagination through a set of `GameRandomFactsVote`. */
-  allGameRandomFactsVotes?: Maybe<GameRandomFactsVotesConnection>
+  allGameRandomFactsVotes?: Maybe<GameRandomFactsVoteConnection>
   /** Reads and enables pagination through a set of `GameTeamScore`. */
-  allGameTeamScores?: Maybe<GameTeamScoresConnection>
+  allGameTeamScores?: Maybe<GameTeamScoreConnection>
   /** Reads and enables pagination through a set of `Game`. */
-  allGames?: Maybe<GamesConnection>
+  allGames?: Maybe<GameConnection>
   /** Reads and enables pagination through a set of `Kv`. */
-  allKvs?: Maybe<KvsConnection>
+  allKvs?: Maybe<KvConnection>
   /** Reads and enables pagination through a set of `Player`. */
-  allPlayers?: Maybe<PlayersConnection>
+  allPlayers?: Maybe<PlayerConnection>
   /** Reads and enables pagination through a set of `TeamLeader`. */
-  allTeamLeaders?: Maybe<TeamLeadersConnection>
+  allTeamLeaders?: Maybe<TeamLeaderConnection>
   /** Reads and enables pagination through a set of `Team`. */
-  allTeams?: Maybe<TeamsConnection>
+  allTeams?: Maybe<TeamConnection>
   /** Reads a single `CharityOrganization` using its globally unique `ID`. */
   charityOrganization?: Maybe<CharityOrganization>
-  charityOrganizationById?: Maybe<CharityOrganization>
+  /** Get a single `CharityOrganization`. */
   charityOrganizationByName?: Maybe<CharityOrganization>
+  /** Get a single `CharityOrganization`. */
+  charityOrganizationByRowId?: Maybe<CharityOrganization>
+  /** Get a single `CharityOrganization`. */
   charityOrganizationByUrl?: Maybe<CharityOrganization>
   /** Reads a single `Event` using its globally unique `ID`. */
   event?: Maybe<Event>
-  eventById?: Maybe<Event>
+  /** Get a single `Event`. */
   eventByName?: Maybe<Event>
+  /** Get a single `Event`. */
+  eventByRowId?: Maybe<Event>
   /** Reads a single `Game` using its globally unique `ID`. */
   game?: Maybe<Game>
+  /** Get a single `Game`. */
   gameByEventIdAndName?: Maybe<Game>
-  gameById?: Maybe<Game>
+  /** Get a single `Game`. */
+  gameByRowId?: Maybe<Game>
   /** Reads a single `GameEstimationNumericRound` using its globally unique `ID`. */
   gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
-  gameEstimationNumericRoundById?: Maybe<GameEstimationNumericRound>
+  /** Get a single `GameEstimationNumericRound`. */
+  gameEstimationNumericRoundByRowId?: Maybe<GameEstimationNumericRound>
   /** Reads a single `GameEstimationNumericVote` using its globally unique `ID`. */
   gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
-  gameEstimationNumericVoteById?: Maybe<GameEstimationNumericVote>
+  /** Get a single `GameEstimationNumericVote`. */
   gameEstimationNumericVoteByPlayerIdAndRoundId?: Maybe<GameEstimationNumericVote>
+  /** Get a single `GameEstimationNumericVote`. */
+  gameEstimationNumericVoteByRowId?: Maybe<GameEstimationNumericVote>
   /** Reads a single `GameRandomFactsRound` using its globally unique `ID`. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
-  gameRandomFactsRoundById?: Maybe<GameRandomFactsRound>
+  /** Get a single `GameRandomFactsRound`. */
+  gameRandomFactsRoundByRowId?: Maybe<GameRandomFactsRound>
   /** Reads a single `GameRandomFactsVote` using its globally unique `ID`. */
   gameRandomFactsVote?: Maybe<GameRandomFactsVote>
-  gameRandomFactsVoteById?: Maybe<GameRandomFactsVote>
+  /** Get a single `GameRandomFactsVote`. */
   gameRandomFactsVoteByPlayerIdAndRoundId?: Maybe<GameRandomFactsVote>
+  /** Get a single `GameRandomFactsVote`. */
+  gameRandomFactsVoteByRowId?: Maybe<GameRandomFactsVote>
   /** Reads a single `GameTeamScore` using its globally unique `ID`. */
   gameTeamScore?: Maybe<GameTeamScore>
-  gameTeamScoreById?: Maybe<GameTeamScore>
+  /** Get a single `GameTeamScore`. */
+  gameTeamScoreByRowId?: Maybe<GameTeamScore>
+  /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
+  id: Scalars['ID']['output']
+  /** Get a single `Kv`. */
   kvByKey?: Maybe<Kv>
   /** Fetches an object given its globally unique `ID`. */
   node?: Maybe<Node>
-  /** The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`. */
-  nodeId: Scalars['ID']['output']
   /** Reads a single `Player` using its globally unique `ID`. */
   player?: Maybe<Player>
-  playerById?: Maybe<Player>
+  /** Get a single `Player`. */
   playerByInvitationCode?: Maybe<Player>
   /** Retrieves player data by invitation code. */
-  playerByInvitationCodeFn?: Maybe<PlayersConnection>
+  playerByInvitationCodeFn?: Maybe<PlayerConnection>
+  /** Get a single `Player`. */
+  playerByRowId?: Maybe<Player>
+  /** Get a single `Player`. */
   playerByTeamIdAndInvitationCode?: Maybe<Player>
   /** Retrieves player name by player id. */
   playerNameById?: Maybe<Scalars['String']['output']>
@@ -2847,10 +2702,12 @@ export type Query = Node & {
   query: Query
   /** Reads a single `Team` using its globally unique `ID`. */
   team?: Maybe<Team>
-  teamById?: Maybe<Team>
+  /** Get a single `Team`. */
+  teamByRowId?: Maybe<Team>
   /** Reads a single `TeamLeader` using its globally unique `ID`. */
   teamLeader?: Maybe<TeamLeader>
-  teamLeaderById?: Maybe<TeamLeader>
+  /** Get a single `TeamLeader`. */
+  teamLeaderByRowId?: Maybe<TeamLeader>
   /** Retrieves the player count of each team. */
   teamPlayerCount?: Maybe<TeamPlayerCountConnection>
 }
@@ -2863,7 +2720,7 @@ export type QueryAllCharityOrganizationsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<CharityOrganizationsOrderBy>>
+  orderBy?: InputMaybe<Array<CharityOrganizationOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2874,7 +2731,7 @@ export type QueryAllEventsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<EventsOrderBy>>
+  orderBy?: InputMaybe<Array<EventOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2885,7 +2742,7 @@ export type QueryAllGameEstimationNumericLeaderboardViewsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameEstimationNumericLeaderboardViewsOrderBy>>
+  orderBy?: InputMaybe<Array<GameEstimationNumericLeaderboardViewOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2896,7 +2753,7 @@ export type QueryAllGameEstimationNumericRoundsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+  orderBy?: InputMaybe<Array<GameEstimationNumericRoundOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2907,7 +2764,7 @@ export type QueryAllGameEstimationNumericVotesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+  orderBy?: InputMaybe<Array<GameEstimationNumericVoteOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2918,7 +2775,7 @@ export type QueryAllGameRandomFactsRoundsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
+  orderBy?: InputMaybe<Array<GameRandomFactsRoundOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2929,7 +2786,7 @@ export type QueryAllGameRandomFactsVotesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
+  orderBy?: InputMaybe<Array<GameRandomFactsVoteOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2940,7 +2797,7 @@ export type QueryAllGameTeamScoresArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: InputMaybe<Array<GameTeamScoreOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2951,7 +2808,7 @@ export type QueryAllGamesArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GamesOrderBy>>
+  orderBy?: InputMaybe<Array<GameOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2962,7 +2819,7 @@ export type QueryAllKvsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<KvsOrderBy>>
+  orderBy?: InputMaybe<Array<KvOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2973,7 +2830,7 @@ export type QueryAllPlayersArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<PlayersOrderBy>>
+  orderBy?: InputMaybe<Array<PlayerOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2984,7 +2841,7 @@ export type QueryAllTeamLeadersArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: InputMaybe<Array<TeamLeaderOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2995,22 +2852,22 @@ export type QueryAllTeamsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
+  orderBy?: InputMaybe<Array<TeamOrderBy>>
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationArgs = {
-  nodeId: Scalars['ID']['input']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryCharityOrganizationByIdArgs = {
-  id: Scalars['Int']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCharityOrganizationByNameArgs = {
   name: Scalars['String']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryCharityOrganizationByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3020,12 +2877,7 @@ export type QueryCharityOrganizationByUrlArgs = {
 
 /** The root query type which gives access points into the data universe. */
 export type QueryEventArgs = {
-  nodeId: Scalars['ID']['input']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryEventByIdArgs = {
-  id: Scalars['Int']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3034,8 +2886,13 @@ export type QueryEventByNameArgs = {
 }
 
 /** The root query type which gives access points into the data universe. */
+export type QueryEventByRowIdArgs = {
+  rowId: Scalars['Int']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
 export type QueryGameArgs = {
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3045,28 +2902,23 @@ export type QueryGameByEventIdAndNameArgs = {
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryGameByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameEstimationNumericRoundArgs = {
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameEstimationNumericRoundByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryGameEstimationNumericRoundByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameEstimationNumericVoteArgs = {
-  nodeId: Scalars['ID']['input']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryGameEstimationNumericVoteByIdArgs = {
-  id: Scalars['Int']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3076,23 +2928,23 @@ export type QueryGameEstimationNumericVoteByPlayerIdAndRoundIdArgs = {
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameRandomFactsRoundArgs = {
-  nodeId: Scalars['ID']['input']
+export type QueryGameEstimationNumericVoteByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameRandomFactsRoundByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryGameRandomFactsRoundArgs = {
+  id: Scalars['ID']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameRandomFactsRoundByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryGameRandomFactsVoteArgs = {
-  nodeId: Scalars['ID']['input']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryGameRandomFactsVoteByIdArgs = {
-  id: Scalars['Int']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3102,13 +2954,18 @@ export type QueryGameRandomFactsVoteByPlayerIdAndRoundIdArgs = {
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameTeamScoreArgs = {
-  nodeId: Scalars['ID']['input']
+export type QueryGameRandomFactsVoteByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryGameTeamScoreByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryGameTeamScoreArgs = {
+  id: Scalars['ID']['input']
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryGameTeamScoreByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3118,17 +2975,12 @@ export type QueryKvByKeyArgs = {
 
 /** The root query type which gives access points into the data universe. */
 export type QueryNodeArgs = {
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerArgs = {
-  nodeId: Scalars['ID']['input']
-}
-
-/** The root query type which gives access points into the data universe. */
-export type QueryPlayerByIdArgs = {
-  id: Scalars['Int']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3139,11 +2991,14 @@ export type QueryPlayerByInvitationCodeArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryPlayerByInvitationCodeFnArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>
-  before?: InputMaybe<Scalars['Cursor']['input']>
   first?: InputMaybe<Scalars['Int']['input']>
   invitationCode: Scalars['UUID']['input']
-  last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** The root query type which gives access points into the data universe. */
+export type QueryPlayerByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -3159,31 +3014,29 @@ export type QueryPlayerNameByIdArgs = {
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamArgs = {
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryTeamByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryTeamByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamLeaderArgs = {
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
-export type QueryTeamLeaderByIdArgs = {
-  id: Scalars['Int']['input']
+export type QueryTeamLeaderByRowIdArgs = {
+  rowId: Scalars['Int']['input']
 }
 
 /** The root query type which gives access points into the data universe. */
 export type QueryTeamPlayerCountArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>
-  before?: InputMaybe<Scalars['Cursor']['input']>
   eventId: Scalars['Int']['input']
   first?: InputMaybe<Scalars['Int']['input']>
-  last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
 }
 
@@ -3205,17 +3058,15 @@ export type Team = Node & {
   /** The team's internal event reference. */
   eventId: Scalars['Int']['output']
   /** Reads and enables pagination through a set of `GameTeamScore`. */
-  gameTeamScoresByTeamId: GameTeamScoresConnection
-  /** The team's internal id. */
-  id: Scalars['Int']['output']
+  gameTeamScoresByTeamId: GameTeamScoreConnection
+  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
+  id: Scalars['ID']['output']
   /** The team's name. */
   name: Scalars['String']['output']
-  /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
   /** Reads and enables pagination through a set of `Player`. */
-  playersByTeamId: PlayersConnection
-  /** Reads and enables pagination through a set of `TeamLeader`. */
-  teamLeadersByTeamId: TeamLeadersConnection
+  playersByTeamId: PlayerConnection
+  /** The team's internal id. */
+  rowId: Scalars['Int']['output']
 }
 
 /** Teams. */
@@ -3226,7 +3077,7 @@ export type TeamGameTeamScoresByTeamIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: InputMaybe<Array<GameTeamScoreOrderBy>>
 }
 
 /** Teams. */
@@ -3237,36 +3088,37 @@ export type TeamPlayersByTeamIdArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<PlayersOrderBy>>
-}
-
-/** Teams. */
-export type TeamTeamLeadersByTeamIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>
-  before?: InputMaybe<Scalars['Cursor']['input']>
-  condition?: InputMaybe<TeamLeaderCondition>
-  first?: InputMaybe<Scalars['Int']['input']>
-  last?: InputMaybe<Scalars['Int']['input']>
-  offset?: InputMaybe<Scalars['Int']['input']>
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: InputMaybe<Array<PlayerOrderBy>>
 }
 
 /** A condition to be used against `Team` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type TeamCondition = {
-  /** Checks for equality with the object’s `charityOrganizationId` field. */
-  charityOrganizationId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `donationAmount` field. */
-  donationAmount?: InputMaybe<Scalars['Float']['input']>
-  /** Checks for equality with the object’s `donationUrl` field. */
-  donationUrl?: InputMaybe<Scalars['String']['input']>
-  /** Checks for equality with the object’s `emoji` field. */
-  emoji?: InputMaybe<Scalars['String']['input']>
   /** Checks for equality with the object’s `eventId` field. */
   eventId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `name` field. */
-  name?: InputMaybe<Scalars['String']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** A connection to a list of `Team` values. */
+export type TeamConnection = {
+  __typename?: 'TeamConnection'
+  /** A list of edges which contains the `Team` and cursor to aid in pagination. */
+  edges: Array<TeamEdge>
+  /** A list of `Team` objects. */
+  nodes: Array<Team>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** The count of *all* `Team` you could get from the connection. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** A `Team` edge in the connection. */
+export type TeamEdge = {
+  __typename?: 'TeamEdge'
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>
+  /** The `Team` at the end of the edge. */
+  node: Team
 }
 
 /** An input for mutations affecting `Team` */
@@ -3281,23 +3133,23 @@ export type TeamInput = {
   emoji: Scalars['String']['input']
   /** The team's internal event reference. */
   eventId: Scalars['Int']['input']
-  /** The team's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The team's name. */
   name: Scalars['String']['input']
+  /** The team's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** Leaders. */
 export type TeamLeader = Node & {
   __typename?: 'TeamLeader'
-  /** The team leaders's internal id. */
-  id: Scalars['Int']['output']
   /** A globally unique identifier. Can be used in various places throughout the system to identify this single value. */
-  nodeId: Scalars['ID']['output']
+  id: Scalars['ID']['output']
   /** Reads a single `Player` that is related to this `TeamLeader`. */
   playerByPlayerId?: Maybe<Player>
   /** The team leader's internal player id. */
   playerId: Scalars['Int']['output']
+  /** The team leaders's internal id. */
+  rowId: Scalars['Int']['output']
   /** Reads a single `Team` that is related to this `TeamLeader`. */
   teamByTeamId?: Maybe<Team>
   /** The team leader's internal team id. */
@@ -3309,41 +3161,17 @@ export type TeamLeader = Node & {
  * for equality and combined with a logical ‘and.’
  */
 export type TeamLeaderCondition = {
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `playerId` field. */
-  playerId?: InputMaybe<Scalars['Int']['input']>
-  /** Checks for equality with the object’s `teamId` field. */
-  teamId?: InputMaybe<Scalars['Int']['input']>
-}
-
-/** An input for mutations affecting `TeamLeader` */
-export type TeamLeaderInput = {
-  /** The team leaders's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The team leader's internal player id. */
-  playerId: Scalars['Int']['input']
-  /** The team leader's internal team id. */
-  teamId: Scalars['Int']['input']
-}
-
-/** Represents an update to a `TeamLeader`. Fields that are set will be updated. */
-export type TeamLeaderPatch = {
-  /** The team leaders's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
-  /** The team leader's internal player id. */
-  playerId?: InputMaybe<Scalars['Int']['input']>
-  /** The team leader's internal team id. */
-  teamId?: InputMaybe<Scalars['Int']['input']>
+  /** Checks for equality with the object’s `rowId` field. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `TeamLeader` values. */
-export type TeamLeadersConnection = {
-  __typename?: 'TeamLeadersConnection'
+export type TeamLeaderConnection = {
+  __typename?: 'TeamLeaderConnection'
   /** A list of edges which contains the `TeamLeader` and cursor to aid in pagination. */
-  edges: Array<TeamLeadersEdge>
+  edges: Array<TeamLeaderEdge>
   /** A list of `TeamLeader` objects. */
-  nodes: Array<Maybe<TeamLeader>>
+  nodes: Array<TeamLeader>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** The count of *all* `TeamLeader` you could get from the connection. */
@@ -3351,25 +3179,52 @@ export type TeamLeadersConnection = {
 }
 
 /** A `TeamLeader` edge in the connection. */
-export type TeamLeadersEdge = {
-  __typename?: 'TeamLeadersEdge'
+export type TeamLeaderEdge = {
+  __typename?: 'TeamLeaderEdge'
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `TeamLeader` at the end of the edge. */
-  node?: Maybe<TeamLeader>
+  node: TeamLeader
+}
+
+/** An input for mutations affecting `TeamLeader` */
+export type TeamLeaderInput = {
+  /** The team leader's internal player id. */
+  playerId: Scalars['Int']['input']
+  /** The team leaders's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The team leader's internal team id. */
+  teamId: Scalars['Int']['input']
 }
 
 /** Methods to use when ordering `TeamLeader`. */
-export enum TeamLeadersOrderBy {
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
+export enum TeamLeaderOrderBy {
   Natural = 'NATURAL',
-  PlayerIdAsc = 'PLAYER_ID_ASC',
-  PlayerIdDesc = 'PLAYER_ID_DESC',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  TeamIdAsc = 'TEAM_ID_ASC',
-  TeamIdDesc = 'TEAM_ID_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
+}
+
+/** Represents an update to a `TeamLeader`. Fields that are set will be updated. */
+export type TeamLeaderPatch = {
+  /** The team leader's internal player id. */
+  playerId?: InputMaybe<Scalars['Int']['input']>
+  /** The team leaders's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
+  /** The team leader's internal team id. */
+  teamId?: InputMaybe<Scalars['Int']['input']>
+}
+
+/** Methods to use when ordering `Team`. */
+export enum TeamOrderBy {
+  EventIdAsc = 'EVENT_ID_ASC',
+  EventIdDesc = 'EVENT_ID_DESC',
+  Natural = 'NATURAL',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  RowIdAsc = 'ROW_ID_ASC',
+  RowIdDesc = 'ROW_ID_DESC',
 }
 
 /** Represents an update to a `Team`. Fields that are set will be updated. */
@@ -3384,10 +3239,10 @@ export type TeamPatch = {
   emoji?: InputMaybe<Scalars['String']['input']>
   /** The team's internal event reference. */
   eventId?: InputMaybe<Scalars['Int']['input']>
-  /** The team's internal id. */
-  id?: InputMaybe<Scalars['Int']['input']>
   /** The team's name. */
   name?: InputMaybe<Scalars['String']['input']>
+  /** The team's internal id. */
+  rowId?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** A connection to a list of `TeamPlayerCountRecord` values. */
@@ -3396,7 +3251,9 @@ export type TeamPlayerCountConnection = {
   /** A list of edges which contains the `TeamPlayerCountRecord` and cursor to aid in pagination. */
   edges: Array<TeamPlayerCountEdge>
   /** A list of `TeamPlayerCountRecord` objects. */
-  nodes: Array<Maybe<TeamPlayerCountRecord>>
+  nodes: Array<TeamPlayerCountRecord>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
   /** The count of *all* `TeamPlayerCountRecord` you could get from the connection. */
   totalCount: Scalars['Int']['output']
 }
@@ -3407,70 +3264,13 @@ export type TeamPlayerCountEdge = {
   /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['Cursor']['output']>
   /** The `TeamPlayerCountRecord` at the end of the edge. */
-  node?: Maybe<TeamPlayerCountRecord>
+  node: TeamPlayerCountRecord
 }
 
-/** The return type of our `teamPlayerCount` query. */
 export type TeamPlayerCountRecord = {
   __typename?: 'TeamPlayerCountRecord'
   id?: Maybe<Scalars['Int']['output']>
   playerCount?: Maybe<Scalars['BigInt']['output']>
-}
-
-/** A connection to a list of `Team` values. */
-export type TeamsConnection = {
-  __typename?: 'TeamsConnection'
-  /** A list of edges which contains the `Team` and cursor to aid in pagination. */
-  edges: Array<TeamsEdge>
-  /** A list of `Team` objects. */
-  nodes: Array<Maybe<Team>>
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo
-  /** The count of *all* `Team` you could get from the connection. */
-  totalCount: Scalars['Int']['output']
-}
-
-/** A `Team` edge in the connection. */
-export type TeamsEdge = {
-  __typename?: 'TeamsEdge'
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>
-  /** The `Team` at the end of the edge. */
-  node?: Maybe<Team>
-}
-
-/** Methods to use when ordering `Team`. */
-export enum TeamsOrderBy {
-  CharityOrganizationIdAsc = 'CHARITY_ORGANIZATION_ID_ASC',
-  CharityOrganizationIdDesc = 'CHARITY_ORGANIZATION_ID_DESC',
-  DonationAmountAsc = 'DONATION_AMOUNT_ASC',
-  DonationAmountDesc = 'DONATION_AMOUNT_DESC',
-  DonationUrlAsc = 'DONATION_URL_ASC',
-  DonationUrlDesc = 'DONATION_URL_DESC',
-  EmojiAsc = 'EMOJI_ASC',
-  EmojiDesc = 'EMOJI_DESC',
-  EventIdAsc = 'EVENT_ID_ASC',
-  EventIdDesc = 'EVENT_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-}
-
-/** All input for the `updateCharityOrganizationById` mutation. */
-export type UpdateCharityOrganizationByIdInput = {
-  /** An object where the defined keys will be set on the `CharityOrganization` being updated. */
-  charityOrganizationPatch: CharityOrganizationPatch
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The charity organization's internal id. */
-  id: Scalars['Int']['input']
 }
 
 /** All input for the `updateCharityOrganizationByName` mutation. */
@@ -3484,6 +3284,19 @@ export type UpdateCharityOrganizationByNameInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The charity organization's name. */
   name: Scalars['String']['input']
+}
+
+/** All input for the `updateCharityOrganizationByRowId` mutation. */
+export type UpdateCharityOrganizationByRowIdInput = {
+  /** An object where the defined keys will be set on the `CharityOrganization` being updated. */
+  charityOrganizationPatch: CharityOrganizationPatch
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** The charity organization's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `updateCharityOrganizationByUrl` mutation. */
@@ -3509,7 +3322,7 @@ export type UpdateCharityOrganizationInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `CharityOrganization` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `CharityOrganization` mutation. */
@@ -3518,7 +3331,7 @@ export type UpdateCharityOrganizationPayload = {
   /** The `CharityOrganization` that was updated by this mutation. */
   charityOrganization?: Maybe<CharityOrganization>
   /** An edge for our `CharityOrganization`. May be used by Relay 1. */
-  charityOrganizationEdge?: Maybe<CharityOrganizationsEdge>
+  charityOrganizationEdge?: Maybe<CharityOrganizationEdge>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -3530,20 +3343,7 @@ export type UpdateCharityOrganizationPayload = {
 
 /** The output of our update `CharityOrganization` mutation. */
 export type UpdateCharityOrganizationPayloadCharityOrganizationEdgeArgs = {
-  orderBy?: InputMaybe<Array<CharityOrganizationsOrderBy>>
-}
-
-/** All input for the `updateEventById` mutation. */
-export type UpdateEventByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** An object where the defined keys will be set on the `Event` being updated. */
-  eventPatch: EventPatch
-  /** The events's internal id. */
-  id: Scalars['Int']['input']
+  orderBy?: Array<CharityOrganizationOrderBy>
 }
 
 /** All input for the `updateEventByName` mutation. */
@@ -3558,6 +3358,19 @@ export type UpdateEventByNameInput = {
   name: Scalars['String']['input']
 }
 
+/** All input for the `updateEventByRowId` mutation. */
+export type UpdateEventByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `Event` being updated. */
+  eventPatch: EventPatch
+  /** The events's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `updateEvent` mutation. */
 export type UpdateEventInput = {
   /**
@@ -3568,7 +3381,7 @@ export type UpdateEventInput = {
   /** An object where the defined keys will be set on the `Event` being updated. */
   eventPatch: EventPatch
   /** The globally unique `ID` which will identify a single `Event` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `Event` mutation. */
@@ -3582,14 +3395,14 @@ export type UpdateEventPayload = {
   /** The `Event` that was updated by this mutation. */
   event?: Maybe<Event>
   /** An edge for our `Event`. May be used by Relay 1. */
-  eventEdge?: Maybe<EventsEdge>
+  eventEdge?: Maybe<EventEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our update `Event` mutation. */
 export type UpdateEventPayloadEventEdgeArgs = {
-  orderBy?: InputMaybe<Array<EventsOrderBy>>
+  orderBy?: Array<EventOrderBy>
 }
 
 /** All input for the `updateGameByEventIdAndName` mutation. */
@@ -3607,8 +3420,8 @@ export type UpdateGameByEventIdAndNameInput = {
   name: Scalars['String']['input']
 }
 
-/** All input for the `updateGameById` mutation. */
-export type UpdateGameByIdInput = {
+/** All input for the `updateGameByRowId` mutation. */
+export type UpdateGameByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -3617,11 +3430,11 @@ export type UpdateGameByIdInput = {
   /** An object where the defined keys will be set on the `Game` being updated. */
   gamePatch: GamePatch
   /** The games's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
-/** All input for the `updateGameEstimationNumericRoundById` mutation. */
-export type UpdateGameEstimationNumericRoundByIdInput = {
+/** All input for the `updateGameEstimationNumericRoundByRowId` mutation. */
+export type UpdateGameEstimationNumericRoundByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -3629,7 +3442,8 @@ export type UpdateGameEstimationNumericRoundByIdInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** An object where the defined keys will be set on the `GameEstimationNumericRound` being updated. */
   gameEstimationNumericRoundPatch: GameEstimationNumericRoundPatch
-  id: Scalars['Int']['input']
+  /** The round's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameEstimationNumericRound` mutation. */
@@ -3642,7 +3456,7 @@ export type UpdateGameEstimationNumericRoundInput = {
   /** An object where the defined keys will be set on the `GameEstimationNumericRound` being updated. */
   gameEstimationNumericRoundPatch: GameEstimationNumericRoundPatch
   /** The globally unique `ID` which will identify a single `GameEstimationNumericRound` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `GameEstimationNumericRound` mutation. */
@@ -3653,12 +3467,10 @@ export type UpdateGameEstimationNumericRoundPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameEstimationNumericRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameEstimationNumericRound` that was updated by this mutation. */
   gameEstimationNumericRound?: Maybe<GameEstimationNumericRound>
   /** An edge for our `GameEstimationNumericRound`. May be used by Relay 1. */
-  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundsEdge>
+  gameEstimationNumericRoundEdge?: Maybe<GameEstimationNumericRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -3666,20 +3478,8 @@ export type UpdateGameEstimationNumericRoundPayload = {
 /** The output of our update `GameEstimationNumericRound` mutation. */
 export type UpdateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericRoundsOrderBy>>
+    orderBy?: Array<GameEstimationNumericRoundOrderBy>
   }
-
-/** All input for the `updateGameEstimationNumericVoteById` mutation. */
-export type UpdateGameEstimationNumericVoteByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
-  gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
-  id: Scalars['Int']['input']
-}
 
 /** All input for the `updateGameEstimationNumericVoteByPlayerIdAndRoundId` mutation. */
 export type UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
@@ -3696,6 +3496,19 @@ export type UpdateGameEstimationNumericVoteByPlayerIdAndRoundIdInput = {
   roundId: Scalars['Int']['input']
 }
 
+/** All input for the `updateGameEstimationNumericVoteByRowId` mutation. */
+export type UpdateGameEstimationNumericVoteByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
+  gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `updateGameEstimationNumericVote` mutation. */
 export type UpdateGameEstimationNumericVoteInput = {
   /**
@@ -3706,7 +3519,7 @@ export type UpdateGameEstimationNumericVoteInput = {
   /** An object where the defined keys will be set on the `GameEstimationNumericVote` being updated. */
   gameEstimationNumericVotePatch: GameEstimationNumericVotePatch
   /** The globally unique `ID` which will identify a single `GameEstimationNumericVote` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `GameEstimationNumericVote` mutation. */
@@ -3717,14 +3530,10 @@ export type UpdateGameEstimationNumericVotePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `GameEstimationNumericRound` that is related to this `GameEstimationNumericVote`. */
-  gameEstimationNumericRoundByRoundId?: Maybe<GameEstimationNumericRound>
   /** The `GameEstimationNumericVote` that was updated by this mutation. */
   gameEstimationNumericVote?: Maybe<GameEstimationNumericVote>
   /** An edge for our `GameEstimationNumericVote`. May be used by Relay 1. */
-  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVotesEdge>
-  /** Reads a single `Player` that is related to this `GameEstimationNumericVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameEstimationNumericVoteEdge?: Maybe<GameEstimationNumericVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
@@ -3732,7 +3541,7 @@ export type UpdateGameEstimationNumericVotePayload = {
 /** The output of our update `GameEstimationNumericVote` mutation. */
 export type UpdateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs =
   {
-    orderBy?: InputMaybe<Array<GameEstimationNumericVotesOrderBy>>
+    orderBy?: Array<GameEstimationNumericVoteOrderBy>
   }
 
 /** All input for the `updateGame` mutation. */
@@ -3745,7 +3554,7 @@ export type UpdateGameInput = {
   /** An object where the defined keys will be set on the `Game` being updated. */
   gamePatch: GamePatch
   /** The globally unique `ID` which will identify a single `Game` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `Game` mutation. */
@@ -3756,23 +3565,21 @@ export type UpdateGamePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Event` that is related to this `Game`. */
-  eventByEventId?: Maybe<Event>
   /** The `Game` that was updated by this mutation. */
   game?: Maybe<Game>
   /** An edge for our `Game`. May be used by Relay 1. */
-  gameEdge?: Maybe<GamesEdge>
+  gameEdge?: Maybe<GameEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our update `Game` mutation. */
 export type UpdateGamePayloadGameEdgeArgs = {
-  orderBy?: InputMaybe<Array<GamesOrderBy>>
+  orderBy?: Array<GameOrderBy>
 }
 
-/** All input for the `updateGameRandomFactsRoundById` mutation. */
-export type UpdateGameRandomFactsRoundByIdInput = {
+/** All input for the `updateGameRandomFactsRoundByRowId` mutation. */
+export type UpdateGameRandomFactsRoundByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -3781,7 +3588,7 @@ export type UpdateGameRandomFactsRoundByIdInput = {
   /** An object where the defined keys will be set on the `GameRandomFactsRound` being updated. */
   gameRandomFactsRoundPatch: GameRandomFactsRoundPatch
   /** The round's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameRandomFactsRound` mutation. */
@@ -3794,7 +3601,7 @@ export type UpdateGameRandomFactsRoundInput = {
   /** An object where the defined keys will be set on the `GameRandomFactsRound` being updated. */
   gameRandomFactsRoundPatch: GameRandomFactsRoundPatch
   /** The globally unique `ID` which will identify a single `GameRandomFactsRound` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `GameRandomFactsRound` mutation. */
@@ -3805,32 +3612,17 @@ export type UpdateGameRandomFactsRoundPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameRandomFactsRound`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameRandomFactsRound` that was updated by this mutation. */
   gameRandomFactsRound?: Maybe<GameRandomFactsRound>
   /** An edge for our `GameRandomFactsRound`. May be used by Relay 1. */
-  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundsEdge>
+  gameRandomFactsRoundEdge?: Maybe<GameRandomFactsRoundEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our update `GameRandomFactsRound` mutation. */
 export type UpdateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsRoundsOrderBy>>
-}
-
-/** All input for the `updateGameRandomFactsVoteById` mutation. */
-export type UpdateGameRandomFactsVoteByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
-  gameRandomFactsVotePatch: GameRandomFactsVotePatch
-  /** The vote's internal id. */
-  id: Scalars['Int']['input']
+  orderBy?: Array<GameRandomFactsRoundOrderBy>
 }
 
 /** All input for the `updateGameRandomFactsVoteByPlayerIdAndRoundId` mutation. */
@@ -3848,6 +3640,19 @@ export type UpdateGameRandomFactsVoteByPlayerIdAndRoundIdInput = {
   roundId: Scalars['Int']['input']
 }
 
+/** All input for the `updateGameRandomFactsVoteByRowId` mutation. */
+export type UpdateGameRandomFactsVoteByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
+  gameRandomFactsVotePatch: GameRandomFactsVotePatch
+  /** The vote's internal id. */
+  rowId: Scalars['Int']['input']
+}
+
 /** All input for the `updateGameRandomFactsVote` mutation. */
 export type UpdateGameRandomFactsVoteInput = {
   /**
@@ -3858,7 +3663,7 @@ export type UpdateGameRandomFactsVoteInput = {
   /** An object where the defined keys will be set on the `GameRandomFactsVote` being updated. */
   gameRandomFactsVotePatch: GameRandomFactsVotePatch
   /** The globally unique `ID` which will identify a single `GameRandomFactsVote` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `GameRandomFactsVote` mutation. */
@@ -3869,25 +3674,21 @@ export type UpdateGameRandomFactsVotePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `GameRandomFactsRound` that is related to this `GameRandomFactsVote`. */
-  gameRandomFactsRoundByRoundId?: Maybe<GameRandomFactsRound>
   /** The `GameRandomFactsVote` that was updated by this mutation. */
   gameRandomFactsVote?: Maybe<GameRandomFactsVote>
   /** An edge for our `GameRandomFactsVote`. May be used by Relay 1. */
-  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVotesEdge>
-  /** Reads a single `Player` that is related to this `GameRandomFactsVote`. */
-  playerByPlayerId?: Maybe<Player>
+  gameRandomFactsVoteEdge?: Maybe<GameRandomFactsVoteEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
 }
 
 /** The output of our update `GameRandomFactsVote` mutation. */
 export type UpdateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameRandomFactsVotesOrderBy>>
+  orderBy?: Array<GameRandomFactsVoteOrderBy>
 }
 
-/** All input for the `updateGameTeamScoreById` mutation. */
-export type UpdateGameTeamScoreByIdInput = {
+/** All input for the `updateGameTeamScoreByRowId` mutation. */
+export type UpdateGameTeamScoreByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
@@ -3896,7 +3697,7 @@ export type UpdateGameTeamScoreByIdInput = {
   /** An object where the defined keys will be set on the `GameTeamScore` being updated. */
   gameTeamScorePatch: GameTeamScorePatch
   /** The game score's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `updateGameTeamScore` mutation. */
@@ -3909,7 +3710,7 @@ export type UpdateGameTeamScoreInput = {
   /** An object where the defined keys will be set on the `GameTeamScore` being updated. */
   gameTeamScorePatch: GameTeamScorePatch
   /** The globally unique `ID` which will identify a single `GameTeamScore` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
 }
 
 /** The output of our update `GameTeamScore` mutation. */
@@ -3920,21 +3721,17 @@ export type UpdateGameTeamScorePayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Game` that is related to this `GameTeamScore`. */
-  gameByGameId?: Maybe<Game>
   /** The `GameTeamScore` that was updated by this mutation. */
   gameTeamScore?: Maybe<GameTeamScore>
   /** An edge for our `GameTeamScore`. May be used by Relay 1. */
-  gameTeamScoreEdge?: Maybe<GameTeamScoresEdge>
+  gameTeamScoreEdge?: Maybe<GameTeamScoreEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `GameTeamScore`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our update `GameTeamScore` mutation. */
 export type UpdateGameTeamScorePayloadGameTeamScoreEdgeArgs = {
-  orderBy?: InputMaybe<Array<GameTeamScoresOrderBy>>
+  orderBy?: Array<GameTeamScoreOrderBy>
 }
 
 /** All input for the `updateKvByKey` mutation. */
@@ -3960,28 +3757,8 @@ export type UpdateKvPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>
   /** The `Kv` that was updated by this mutation. */
   kv?: Maybe<Kv>
-  /** An edge for our `Kv`. May be used by Relay 1. */
-  kvEdge?: Maybe<KvsEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-}
-
-/** The output of our update `Kv` mutation. */
-export type UpdateKvPayloadKvEdgeArgs = {
-  orderBy?: InputMaybe<Array<KvsOrderBy>>
-}
-
-/** All input for the `updatePlayerById` mutation. */
-export type UpdatePlayerByIdInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>
-  /** The players's internal id. */
-  id: Scalars['Int']['input']
-  /** An object where the defined keys will be set on the `Player` being updated. */
-  playerPatch: PlayerPatch
 }
 
 /** All input for the `updatePlayerByInvitationCode` mutation. */
@@ -3995,6 +3772,19 @@ export type UpdatePlayerByInvitationCodeInput = {
   invitationCode: Scalars['UUID']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
+}
+
+/** All input for the `updatePlayerByRowId` mutation. */
+export type UpdatePlayerByRowIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>
+  /** An object where the defined keys will be set on the `Player` being updated. */
+  playerPatch: PlayerPatch
+  /** The players's internal id. */
+  rowId: Scalars['Int']['input']
 }
 
 /** All input for the `updatePlayerByTeamIdAndInvitationCode` mutation. */
@@ -4020,7 +3810,7 @@ export type UpdatePlayerInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Player` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `Player` being updated. */
   playerPatch: PlayerPatch
 }
@@ -4036,27 +3826,25 @@ export type UpdatePlayerPayload = {
   /** The `Player` that was updated by this mutation. */
   player?: Maybe<Player>
   /** An edge for our `Player`. May be used by Relay 1. */
-  playerEdge?: Maybe<PlayersEdge>
+  playerEdge?: Maybe<PlayerEdge>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `Player`. */
-  teamByTeamId?: Maybe<Team>
 }
 
 /** The output of our update `Player` mutation. */
 export type UpdatePlayerPayloadPlayerEdgeArgs = {
-  orderBy?: InputMaybe<Array<PlayersOrderBy>>
+  orderBy?: Array<PlayerOrderBy>
 }
 
-/** All input for the `updateTeamById` mutation. */
-export type UpdateTeamByIdInput = {
+/** All input for the `updateTeamByRowId` mutation. */
+export type UpdateTeamByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `Team` being updated. */
   teamPatch: TeamPatch
 }
@@ -4069,20 +3857,20 @@ export type UpdateTeamInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `Team` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `Team` being updated. */
   teamPatch: TeamPatch
 }
 
-/** All input for the `updateTeamLeaderById` mutation. */
-export type UpdateTeamLeaderByIdInput = {
+/** All input for the `updateTeamLeaderByRowId` mutation. */
+export type UpdateTeamLeaderByRowIdInput = {
   /**
    * An arbitrary string value with no semantic meaning. Will be included in the
    * payload verbatim. May be used to track mutations by the client.
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The team leaders's internal id. */
-  id: Scalars['Int']['input']
+  rowId: Scalars['Int']['input']
   /** An object where the defined keys will be set on the `TeamLeader` being updated. */
   teamLeaderPatch: TeamLeaderPatch
 }
@@ -4095,7 +3883,7 @@ export type UpdateTeamLeaderInput = {
    */
   clientMutationId?: InputMaybe<Scalars['String']['input']>
   /** The globally unique `ID` which will identify a single `TeamLeader` to be updated. */
-  nodeId: Scalars['ID']['input']
+  id: Scalars['ID']['input']
   /** An object where the defined keys will be set on the `TeamLeader` being updated. */
   teamLeaderPatch: TeamLeaderPatch
 }
@@ -4108,46 +3896,38 @@ export type UpdateTeamLeaderPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Player` that is related to this `TeamLeader`. */
-  playerByPlayerId?: Maybe<Player>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
-  /** Reads a single `Team` that is related to this `TeamLeader`. */
-  teamByTeamId?: Maybe<Team>
   /** The `TeamLeader` that was updated by this mutation. */
   teamLeader?: Maybe<TeamLeader>
   /** An edge for our `TeamLeader`. May be used by Relay 1. */
-  teamLeaderEdge?: Maybe<TeamLeadersEdge>
+  teamLeaderEdge?: Maybe<TeamLeaderEdge>
 }
 
 /** The output of our update `TeamLeader` mutation. */
 export type UpdateTeamLeaderPayloadTeamLeaderEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamLeadersOrderBy>>
+  orderBy?: Array<TeamLeaderOrderBy>
 }
 
 /** The output of our update `Team` mutation. */
 export type UpdateTeamPayload = {
   __typename?: 'UpdateTeamPayload'
-  /** Reads a single `CharityOrganization` that is related to this `Team`. */
-  charityOrganizationByCharityOrganizationId?: Maybe<CharityOrganization>
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>
-  /** Reads a single `Event` that is related to this `Team`. */
-  eventByEventId?: Maybe<Event>
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>
   /** The `Team` that was updated by this mutation. */
   team?: Maybe<Team>
   /** An edge for our `Team`. May be used by Relay 1. */
-  teamEdge?: Maybe<TeamsEdge>
+  teamEdge?: Maybe<TeamEdge>
 }
 
 /** The output of our update `Team` mutation. */
 export type UpdateTeamPayloadTeamEdgeArgs = {
-  orderBy?: InputMaybe<Array<TeamsOrderBy>>
+  orderBy?: Array<TeamOrderBy>
 }
 
 export type WithTypename<T extends { __typename?: any }> = Partial<T> & {
@@ -4158,11 +3938,11 @@ export type GraphCacheKeysConfig = {
   CharityOrganization?: (
     data: WithTypename<CharityOrganization>,
   ) => null | string
-  CharityOrganizationsConnection?: (
-    data: WithTypename<CharityOrganizationsConnection>,
+  CharityOrganizationConnection?: (
+    data: WithTypename<CharityOrganizationConnection>,
   ) => null | string
-  CharityOrganizationsEdge?: (
-    data: WithTypename<CharityOrganizationsEdge>,
+  CharityOrganizationEdge?: (
+    data: WithTypename<CharityOrganizationEdge>,
   ) => null | string
   CreateCharityOrganizationPayload?: (
     data: WithTypename<CreateCharityOrganizationPayload>,
@@ -4221,74 +4001,76 @@ export type GraphCacheKeysConfig = {
   ) => null | string
   DeleteTeamPayload?: (data: WithTypename<DeleteTeamPayload>) => null | string
   Event?: (data: WithTypename<Event>) => null | string
-  EventsConnection?: (data: WithTypename<EventsConnection>) => null | string
-  EventsEdge?: (data: WithTypename<EventsEdge>) => null | string
+  EventConnection?: (data: WithTypename<EventConnection>) => null | string
+  EventEdge?: (data: WithTypename<EventEdge>) => null | string
   Game?: (data: WithTypename<Game>) => null | string
+  GameConnection?: (data: WithTypename<GameConnection>) => null | string
+  GameEdge?: (data: WithTypename<GameEdge>) => null | string
   GameEstimationNumericLeaderboardView?: (
     data: WithTypename<GameEstimationNumericLeaderboardView>,
   ) => null | string
-  GameEstimationNumericLeaderboardViewsConnection?: (
-    data: WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+  GameEstimationNumericLeaderboardViewConnection?: (
+    data: WithTypename<GameEstimationNumericLeaderboardViewConnection>,
   ) => null | string
-  GameEstimationNumericLeaderboardViewsEdge?: (
-    data: WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+  GameEstimationNumericLeaderboardViewEdge?: (
+    data: WithTypename<GameEstimationNumericLeaderboardViewEdge>,
   ) => null | string
   GameEstimationNumericRound?: (
     data: WithTypename<GameEstimationNumericRound>,
   ) => null | string
-  GameEstimationNumericRoundsConnection?: (
-    data: WithTypename<GameEstimationNumericRoundsConnection>,
+  GameEstimationNumericRoundConnection?: (
+    data: WithTypename<GameEstimationNumericRoundConnection>,
   ) => null | string
-  GameEstimationNumericRoundsEdge?: (
-    data: WithTypename<GameEstimationNumericRoundsEdge>,
+  GameEstimationNumericRoundEdge?: (
+    data: WithTypename<GameEstimationNumericRoundEdge>,
   ) => null | string
   GameEstimationNumericVote?: (
     data: WithTypename<GameEstimationNumericVote>,
   ) => null | string
-  GameEstimationNumericVotesConnection?: (
-    data: WithTypename<GameEstimationNumericVotesConnection>,
+  GameEstimationNumericVoteConnection?: (
+    data: WithTypename<GameEstimationNumericVoteConnection>,
   ) => null | string
-  GameEstimationNumericVotesEdge?: (
-    data: WithTypename<GameEstimationNumericVotesEdge>,
+  GameEstimationNumericVoteEdge?: (
+    data: WithTypename<GameEstimationNumericVoteEdge>,
   ) => null | string
   GameRandomFactsRound?: (
     data: WithTypename<GameRandomFactsRound>,
   ) => null | string
-  GameRandomFactsRoundsConnection?: (
-    data: WithTypename<GameRandomFactsRoundsConnection>,
+  GameRandomFactsRoundConnection?: (
+    data: WithTypename<GameRandomFactsRoundConnection>,
   ) => null | string
-  GameRandomFactsRoundsEdge?: (
-    data: WithTypename<GameRandomFactsRoundsEdge>,
+  GameRandomFactsRoundEdge?: (
+    data: WithTypename<GameRandomFactsRoundEdge>,
   ) => null | string
   GameRandomFactsVote?: (
     data: WithTypename<GameRandomFactsVote>,
   ) => null | string
-  GameRandomFactsVotesConnection?: (
-    data: WithTypename<GameRandomFactsVotesConnection>,
+  GameRandomFactsVoteConnection?: (
+    data: WithTypename<GameRandomFactsVoteConnection>,
   ) => null | string
-  GameRandomFactsVotesEdge?: (
-    data: WithTypename<GameRandomFactsVotesEdge>,
+  GameRandomFactsVoteEdge?: (
+    data: WithTypename<GameRandomFactsVoteEdge>,
   ) => null | string
   GameTeamScore?: (data: WithTypename<GameTeamScore>) => null | string
-  GameTeamScoresConnection?: (
-    data: WithTypename<GameTeamScoresConnection>,
+  GameTeamScoreConnection?: (
+    data: WithTypename<GameTeamScoreConnection>,
   ) => null | string
-  GameTeamScoresEdge?: (data: WithTypename<GameTeamScoresEdge>) => null | string
-  GamesConnection?: (data: WithTypename<GamesConnection>) => null | string
-  GamesEdge?: (data: WithTypename<GamesEdge>) => null | string
+  GameTeamScoreEdge?: (data: WithTypename<GameTeamScoreEdge>) => null | string
   Kv?: (data: WithTypename<Kv>) => null | string
-  KvsConnection?: (data: WithTypename<KvsConnection>) => null | string
-  KvsEdge?: (data: WithTypename<KvsEdge>) => null | string
+  KvConnection?: (data: WithTypename<KvConnection>) => null | string
+  KvEdge?: (data: WithTypename<KvEdge>) => null | string
   PageInfo?: (data: WithTypename<PageInfo>) => null | string
   Player?: (data: WithTypename<Player>) => null | string
-  PlayersConnection?: (data: WithTypename<PlayersConnection>) => null | string
-  PlayersEdge?: (data: WithTypename<PlayersEdge>) => null | string
+  PlayerConnection?: (data: WithTypename<PlayerConnection>) => null | string
+  PlayerEdge?: (data: WithTypename<PlayerEdge>) => null | string
   Team?: (data: WithTypename<Team>) => null | string
+  TeamConnection?: (data: WithTypename<TeamConnection>) => null | string
+  TeamEdge?: (data: WithTypename<TeamEdge>) => null | string
   TeamLeader?: (data: WithTypename<TeamLeader>) => null | string
-  TeamLeadersConnection?: (
-    data: WithTypename<TeamLeadersConnection>,
+  TeamLeaderConnection?: (
+    data: WithTypename<TeamLeaderConnection>,
   ) => null | string
-  TeamLeadersEdge?: (data: WithTypename<TeamLeadersEdge>) => null | string
+  TeamLeaderEdge?: (data: WithTypename<TeamLeaderEdge>) => null | string
   TeamPlayerCountConnection?: (
     data: WithTypename<TeamPlayerCountConnection>,
   ) => null | string
@@ -4298,8 +4080,6 @@ export type GraphCacheKeysConfig = {
   TeamPlayerCountRecord?: (
     data: WithTypename<TeamPlayerCountRecord>,
   ) => null | string
-  TeamsConnection?: (data: WithTypename<TeamsConnection>) => null | string
-  TeamsEdge?: (data: WithTypename<TeamsEdge>) => null | string
   UpdateCharityOrganizationPayload?: (
     data: WithTypename<UpdateCharityOrganizationPayload>,
   ) => null | string
@@ -4335,81 +4115,81 @@ export type GraphCacheResolvers = {
     allCharityOrganizations?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllCharityOrganizationsArgs,
-      WithTypename<CharityOrganizationsConnection> | string
+      WithTypename<CharityOrganizationConnection> | string
     >
     allEvents?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllEventsArgs,
-      WithTypename<EventsConnection> | string
+      WithTypename<EventConnection> | string
     >
     allGameEstimationNumericLeaderboardViews?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameEstimationNumericLeaderboardViewsArgs,
-      WithTypename<GameEstimationNumericLeaderboardViewsConnection> | string
+      WithTypename<GameEstimationNumericLeaderboardViewConnection> | string
     >
     allGameEstimationNumericRounds?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameEstimationNumericRoundsArgs,
-      WithTypename<GameEstimationNumericRoundsConnection> | string
+      WithTypename<GameEstimationNumericRoundConnection> | string
     >
     allGameEstimationNumericVotes?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameEstimationNumericVotesArgs,
-      WithTypename<GameEstimationNumericVotesConnection> | string
+      WithTypename<GameEstimationNumericVoteConnection> | string
     >
     allGameRandomFactsRounds?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameRandomFactsRoundsArgs,
-      WithTypename<GameRandomFactsRoundsConnection> | string
+      WithTypename<GameRandomFactsRoundConnection> | string
     >
     allGameRandomFactsVotes?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameRandomFactsVotesArgs,
-      WithTypename<GameRandomFactsVotesConnection> | string
+      WithTypename<GameRandomFactsVoteConnection> | string
     >
     allGameTeamScores?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGameTeamScoresArgs,
-      WithTypename<GameTeamScoresConnection> | string
+      WithTypename<GameTeamScoreConnection> | string
     >
     allGames?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllGamesArgs,
-      WithTypename<GamesConnection> | string
+      WithTypename<GameConnection> | string
     >
     allKvs?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllKvsArgs,
-      WithTypename<KvsConnection> | string
+      WithTypename<KvConnection> | string
     >
     allPlayers?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllPlayersArgs,
-      WithTypename<PlayersConnection> | string
+      WithTypename<PlayerConnection> | string
     >
     allTeamLeaders?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllTeamLeadersArgs,
-      WithTypename<TeamLeadersConnection> | string
+      WithTypename<TeamLeaderConnection> | string
     >
     allTeams?: GraphCacheResolver<
       WithTypename<Query>,
       QueryAllTeamsArgs,
-      WithTypename<TeamsConnection> | string
+      WithTypename<TeamConnection> | string
     >
     charityOrganization?: GraphCacheResolver<
       WithTypename<Query>,
       QueryCharityOrganizationArgs,
       WithTypename<CharityOrganization> | string
     >
-    charityOrganizationById?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryCharityOrganizationByIdArgs,
-      WithTypename<CharityOrganization> | string
-    >
     charityOrganizationByName?: GraphCacheResolver<
       WithTypename<Query>,
       QueryCharityOrganizationByNameArgs,
+      WithTypename<CharityOrganization> | string
+    >
+    charityOrganizationByRowId?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryCharityOrganizationByRowIdArgs,
       WithTypename<CharityOrganization> | string
     >
     charityOrganizationByUrl?: GraphCacheResolver<
@@ -4422,14 +4202,14 @@ export type GraphCacheResolvers = {
       QueryEventArgs,
       WithTypename<Event> | string
     >
-    eventById?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryEventByIdArgs,
-      WithTypename<Event> | string
-    >
     eventByName?: GraphCacheResolver<
       WithTypename<Query>,
       QueryEventByNameArgs,
+      WithTypename<Event> | string
+    >
+    eventByRowId?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryEventByRowIdArgs,
       WithTypename<Event> | string
     >
     game?: GraphCacheResolver<
@@ -4442,9 +4222,9 @@ export type GraphCacheResolvers = {
       QueryGameByEventIdAndNameArgs,
       WithTypename<Game> | string
     >
-    gameById?: GraphCacheResolver<
+    gameByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryGameByIdArgs,
+      QueryGameByRowIdArgs,
       WithTypename<Game> | string
     >
     gameEstimationNumericRound?: GraphCacheResolver<
@@ -4452,9 +4232,9 @@ export type GraphCacheResolvers = {
       QueryGameEstimationNumericRoundArgs,
       WithTypename<GameEstimationNumericRound> | string
     >
-    gameEstimationNumericRoundById?: GraphCacheResolver<
+    gameEstimationNumericRoundByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryGameEstimationNumericRoundByIdArgs,
+      QueryGameEstimationNumericRoundByRowIdArgs,
       WithTypename<GameEstimationNumericRound> | string
     >
     gameEstimationNumericVote?: GraphCacheResolver<
@@ -4462,14 +4242,14 @@ export type GraphCacheResolvers = {
       QueryGameEstimationNumericVoteArgs,
       WithTypename<GameEstimationNumericVote> | string
     >
-    gameEstimationNumericVoteById?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryGameEstimationNumericVoteByIdArgs,
-      WithTypename<GameEstimationNumericVote> | string
-    >
     gameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheResolver<
       WithTypename<Query>,
       QueryGameEstimationNumericVoteByPlayerIdAndRoundIdArgs,
+      WithTypename<GameEstimationNumericVote> | string
+    >
+    gameEstimationNumericVoteByRowId?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryGameEstimationNumericVoteByRowIdArgs,
       WithTypename<GameEstimationNumericVote> | string
     >
     gameRandomFactsRound?: GraphCacheResolver<
@@ -4477,9 +4257,9 @@ export type GraphCacheResolvers = {
       QueryGameRandomFactsRoundArgs,
       WithTypename<GameRandomFactsRound> | string
     >
-    gameRandomFactsRoundById?: GraphCacheResolver<
+    gameRandomFactsRoundByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryGameRandomFactsRoundByIdArgs,
+      QueryGameRandomFactsRoundByRowIdArgs,
       WithTypename<GameRandomFactsRound> | string
     >
     gameRandomFactsVote?: GraphCacheResolver<
@@ -4487,14 +4267,14 @@ export type GraphCacheResolvers = {
       QueryGameRandomFactsVoteArgs,
       WithTypename<GameRandomFactsVote> | string
     >
-    gameRandomFactsVoteById?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryGameRandomFactsVoteByIdArgs,
-      WithTypename<GameRandomFactsVote> | string
-    >
     gameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheResolver<
       WithTypename<Query>,
       QueryGameRandomFactsVoteByPlayerIdAndRoundIdArgs,
+      WithTypename<GameRandomFactsVote> | string
+    >
+    gameRandomFactsVoteByRowId?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryGameRandomFactsVoteByRowIdArgs,
       WithTypename<GameRandomFactsVote> | string
     >
     gameTeamScore?: GraphCacheResolver<
@@ -4502,10 +4282,15 @@ export type GraphCacheResolvers = {
       QueryGameTeamScoreArgs,
       WithTypename<GameTeamScore> | string
     >
-    gameTeamScoreById?: GraphCacheResolver<
+    gameTeamScoreByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryGameTeamScoreByIdArgs,
+      QueryGameTeamScoreByRowIdArgs,
       WithTypename<GameTeamScore> | string
+    >
+    id?: GraphCacheResolver<
+      WithTypename<Query>,
+      Record<string, never>,
+      Scalars['ID']['output'] | string
     >
     kvByKey?: GraphCacheResolver<
       WithTypename<Query>,
@@ -4529,19 +4314,9 @@ export type GraphCacheResolvers = {
       | WithTypename<TeamLeader>
       | string
     >
-    nodeId?: GraphCacheResolver<
-      WithTypename<Query>,
-      Record<string, never>,
-      Scalars['ID']['output'] | string
-    >
     player?: GraphCacheResolver<
       WithTypename<Query>,
       QueryPlayerArgs,
-      WithTypename<Player> | string
-    >
-    playerById?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryPlayerByIdArgs,
       WithTypename<Player> | string
     >
     playerByInvitationCode?: GraphCacheResolver<
@@ -4552,7 +4327,12 @@ export type GraphCacheResolvers = {
     playerByInvitationCodeFn?: GraphCacheResolver<
       WithTypename<Query>,
       QueryPlayerByInvitationCodeFnArgs,
-      WithTypename<PlayersConnection> | string
+      WithTypename<PlayerConnection> | string
+    >
+    playerByRowId?: GraphCacheResolver<
+      WithTypename<Query>,
+      QueryPlayerByRowIdArgs,
+      WithTypename<Player> | string
     >
     playerByTeamIdAndInvitationCode?: GraphCacheResolver<
       WithTypename<Query>,
@@ -4574,9 +4354,9 @@ export type GraphCacheResolvers = {
       QueryTeamArgs,
       WithTypename<Team> | string
     >
-    teamById?: GraphCacheResolver<
+    teamByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryTeamByIdArgs,
+      QueryTeamByRowIdArgs,
       WithTypename<Team> | string
     >
     teamLeader?: GraphCacheResolver<
@@ -4584,9 +4364,9 @@ export type GraphCacheResolvers = {
       QueryTeamLeaderArgs,
       WithTypename<TeamLeader> | string
     >
-    teamLeaderById?: GraphCacheResolver<
+    teamLeaderByRowId?: GraphCacheResolver<
       WithTypename<Query>,
-      QueryTeamLeaderByIdArgs,
+      QueryTeamLeaderByRowIdArgs,
       WithTypename<TeamLeader> | string
     >
     teamPlayerCount?: GraphCacheResolver<
@@ -4604,22 +4384,17 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
       Record<string, never>,
-      Scalars['ID']['output'] | string
-    >
-    teamsByCharityOrganizationId?: GraphCacheResolver<
-      WithTypename<CharityOrganization>,
-      CharityOrganizationTeamsByCharityOrganizationIdArgs,
-      WithTypename<TeamsConnection> | string
+      Scalars['Int']['output'] | string
     >
     url?: GraphCacheResolver<
       WithTypename<CharityOrganization>,
@@ -4627,36 +4402,36 @@ export type GraphCacheResolvers = {
       Scalars['String']['output'] | string
     >
   }
-  CharityOrganizationsConnection?: {
+  CharityOrganizationConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsConnection>,
+      WithTypename<CharityOrganizationConnection>,
       Record<string, never>,
-      Array<WithTypename<CharityOrganizationsEdge> | string>
+      Array<WithTypename<CharityOrganizationEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsConnection>,
+      WithTypename<CharityOrganizationConnection>,
       Record<string, never>,
       Array<WithTypename<CharityOrganization> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsConnection>,
+      WithTypename<CharityOrganizationConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsConnection>,
+      WithTypename<CharityOrganizationConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  CharityOrganizationsEdge?: {
+  CharityOrganizationEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsEdge>,
+      WithTypename<CharityOrganizationEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<CharityOrganizationsEdge>,
+      WithTypename<CharityOrganizationEdge>,
       Record<string, never>,
       WithTypename<CharityOrganization> | string
     >
@@ -4670,7 +4445,7 @@ export type GraphCacheResolvers = {
     charityOrganizationEdge?: GraphCacheResolver<
       WithTypename<CreateCharityOrganizationPayload>,
       CreateCharityOrganizationPayloadCharityOrganizationEdgeArgs,
-      WithTypename<CharityOrganizationsEdge> | string
+      WithTypename<CharityOrganizationEdge> | string
     >
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateCharityOrganizationPayload>,
@@ -4697,7 +4472,7 @@ export type GraphCacheResolvers = {
     eventEdge?: GraphCacheResolver<
       WithTypename<CreateEventPayload>,
       CreateEventPayloadEventEdgeArgs,
-      WithTypename<EventsEdge> | string
+      WithTypename<EventEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateEventPayload>,
@@ -4711,11 +4486,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<CreateGameEstimationNumericRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameEstimationNumericRound?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericRoundPayload>,
       Record<string, never>,
@@ -4724,7 +4494,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericRoundEdge?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericRoundPayload>,
       CreateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs,
-      WithTypename<GameEstimationNumericRoundsEdge> | string
+      WithTypename<GameEstimationNumericRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericRoundPayload>,
@@ -4738,11 +4508,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
-      WithTypename<CreateGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<GameEstimationNumericRound> | string
-    >
     gameEstimationNumericVote?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericVotePayload>,
       Record<string, never>,
@@ -4751,12 +4516,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericVoteEdge?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericVotePayload>,
       CreateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs,
-      WithTypename<GameEstimationNumericVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<CreateGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameEstimationNumericVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGameEstimationNumericVotePayload>,
@@ -4770,11 +4530,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<CreateGamePayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
-    >
     game?: GraphCacheResolver<
       WithTypename<CreateGamePayload>,
       Record<string, never>,
@@ -4783,7 +4538,7 @@ export type GraphCacheResolvers = {
     gameEdge?: GraphCacheResolver<
       WithTypename<CreateGamePayload>,
       CreateGamePayloadGameEdgeArgs,
-      WithTypename<GamesEdge> | string
+      WithTypename<GameEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGamePayload>,
@@ -4797,11 +4552,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<CreateGameRandomFactsRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameRandomFactsRound?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsRoundPayload>,
       Record<string, never>,
@@ -4810,7 +4560,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsRoundEdge?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsRoundPayload>,
       CreateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs,
-      WithTypename<GameRandomFactsRoundsEdge> | string
+      WithTypename<GameRandomFactsRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsRoundPayload>,
@@ -4824,11 +4574,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheResolver<
-      WithTypename<CreateGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<GameRandomFactsRound> | string
-    >
     gameRandomFactsVote?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsVotePayload>,
       Record<string, never>,
@@ -4837,12 +4582,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsVoteEdge?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsVotePayload>,
       CreateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs,
-      WithTypename<GameRandomFactsVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<CreateGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameRandomFactsVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGameRandomFactsVotePayload>,
@@ -4856,11 +4596,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<CreateGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameTeamScore?: GraphCacheResolver<
       WithTypename<CreateGameTeamScorePayload>,
       Record<string, never>,
@@ -4869,17 +4604,12 @@ export type GraphCacheResolvers = {
     gameTeamScoreEdge?: GraphCacheResolver<
       WithTypename<CreateGameTeamScorePayload>,
       CreateGameTeamScorePayloadGameTeamScoreEdgeArgs,
-      WithTypename<GameTeamScoresEdge> | string
+      WithTypename<GameTeamScoreEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateGameTeamScorePayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<CreateGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   CreateKvPayload?: {
@@ -4892,11 +4622,6 @@ export type GraphCacheResolvers = {
       WithTypename<CreateKvPayload>,
       Record<string, never>,
       WithTypename<Kv> | string
-    >
-    kvEdge?: GraphCacheResolver<
-      WithTypename<CreateKvPayload>,
-      CreateKvPayloadKvEdgeArgs,
-      WithTypename<KvsEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateKvPayload>,
@@ -4918,17 +4643,12 @@ export type GraphCacheResolvers = {
     playerEdge?: GraphCacheResolver<
       WithTypename<CreatePlayerPayload>,
       CreatePlayerPayloadPlayerEdgeArgs,
-      WithTypename<PlayersEdge> | string
+      WithTypename<PlayerEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreatePlayerPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<CreatePlayerPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   CreateTeamLeaderPayload?: {
@@ -4937,20 +4657,10 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<CreateTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
-    >
     query?: GraphCacheResolver<
       WithTypename<CreateTeamLeaderPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<CreateTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
     teamLeader?: GraphCacheResolver<
       WithTypename<CreateTeamLeaderPayload>,
@@ -4960,24 +4670,14 @@ export type GraphCacheResolvers = {
     teamLeaderEdge?: GraphCacheResolver<
       WithTypename<CreateTeamLeaderPayload>,
       CreateTeamLeaderPayloadTeamLeaderEdgeArgs,
-      WithTypename<TeamLeadersEdge> | string
+      WithTypename<TeamLeaderEdge> | string
     >
   }
   CreateTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheResolver<
-      WithTypename<CreateTeamPayload>,
-      Record<string, never>,
-      WithTypename<CharityOrganization> | string
-    >
     clientMutationId?: GraphCacheResolver<
       WithTypename<CreateTeamPayload>,
       Record<string, never>,
       Scalars['String']['output'] | string
-    >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<CreateTeamPayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
     >
     query?: GraphCacheResolver<
       WithTypename<CreateTeamPayload>,
@@ -4992,7 +4692,7 @@ export type GraphCacheResolvers = {
     teamEdge?: GraphCacheResolver<
       WithTypename<CreateTeamPayload>,
       CreateTeamPayloadTeamEdgeArgs,
-      WithTypename<TeamsEdge> | string
+      WithTypename<TeamEdge> | string
     >
   }
   DeleteCharityOrganizationPayload?: {
@@ -5004,7 +4704,7 @@ export type GraphCacheResolvers = {
     charityOrganizationEdge?: GraphCacheResolver<
       WithTypename<DeleteCharityOrganizationPayload>,
       DeleteCharityOrganizationPayloadCharityOrganizationEdgeArgs,
-      WithTypename<CharityOrganizationsEdge> | string
+      WithTypename<CharityOrganizationEdge> | string
     >
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteCharityOrganizationPayload>,
@@ -5041,7 +4741,7 @@ export type GraphCacheResolvers = {
     eventEdge?: GraphCacheResolver<
       WithTypename<DeleteEventPayload>,
       DeleteEventPayloadEventEdgeArgs,
-      WithTypename<EventsEdge> | string
+      WithTypename<EventEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteEventPayload>,
@@ -5060,11 +4760,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<DeleteGameEstimationNumericRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameEstimationNumericRound?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
       Record<string, never>,
@@ -5073,7 +4768,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericRoundEdge?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
       DeleteGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs,
-      WithTypename<GameEstimationNumericRoundsEdge> | string
+      WithTypename<GameEstimationNumericRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericRoundPayload>,
@@ -5092,11 +4787,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
-      WithTypename<DeleteGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<GameEstimationNumericRound> | string
-    >
     gameEstimationNumericVote?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
       Record<string, never>,
@@ -5105,12 +4795,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericVoteEdge?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
       DeleteGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs,
-      WithTypename<GameEstimationNumericVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<DeleteGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameEstimationNumericVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGameEstimationNumericVotePayload>,
@@ -5129,11 +4814,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<DeleteGamePayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
-    >
     game?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
       Record<string, never>,
@@ -5142,7 +4822,7 @@ export type GraphCacheResolvers = {
     gameEdge?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
       DeleteGamePayloadGameEdgeArgs,
-      WithTypename<GamesEdge> | string
+      WithTypename<GameEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGamePayload>,
@@ -5161,11 +4841,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<DeleteGameRandomFactsRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameRandomFactsRound?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
       Record<string, never>,
@@ -5174,7 +4849,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsRoundEdge?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
       DeleteGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs,
-      WithTypename<GameRandomFactsRoundsEdge> | string
+      WithTypename<GameRandomFactsRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsRoundPayload>,
@@ -5193,11 +4868,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheResolver<
-      WithTypename<DeleteGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<GameRandomFactsRound> | string
-    >
     gameRandomFactsVote?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
       Record<string, never>,
@@ -5206,12 +4876,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsVoteEdge?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
       DeleteGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs,
-      WithTypename<GameRandomFactsVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<DeleteGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameRandomFactsVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGameRandomFactsVotePayload>,
@@ -5230,11 +4895,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<DeleteGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameTeamScore?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
       Record<string, never>,
@@ -5243,17 +4903,12 @@ export type GraphCacheResolvers = {
     gameTeamScoreEdge?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
       DeleteGameTeamScorePayloadGameTeamScoreEdgeArgs,
-      WithTypename<GameTeamScoresEdge> | string
+      WithTypename<GameTeamScoreEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteGameTeamScorePayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<DeleteGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   DeleteKvPayload?: {
@@ -5262,20 +4917,10 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    deletedKvId?: GraphCacheResolver<
-      WithTypename<DeleteKvPayload>,
-      Record<string, never>,
-      Scalars['ID']['output'] | string
-    >
     kv?: GraphCacheResolver<
       WithTypename<DeleteKvPayload>,
       Record<string, never>,
       WithTypename<Kv> | string
-    >
-    kvEdge?: GraphCacheResolver<
-      WithTypename<DeleteKvPayload>,
-      DeleteKvPayloadKvEdgeArgs,
-      WithTypename<KvsEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteKvPayload>,
@@ -5302,17 +4947,12 @@ export type GraphCacheResolvers = {
     playerEdge?: GraphCacheResolver<
       WithTypename<DeletePlayerPayload>,
       DeletePlayerPayloadPlayerEdgeArgs,
-      WithTypename<PlayersEdge> | string
+      WithTypename<PlayerEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeletePlayerPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<DeletePlayerPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   DeleteTeamLeaderPayload?: {
@@ -5326,20 +4966,10 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['ID']['output'] | string
     >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<DeleteTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
-    >
     query?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<DeleteTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
     teamLeader?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
@@ -5349,15 +4979,10 @@ export type GraphCacheResolvers = {
     teamLeaderEdge?: GraphCacheResolver<
       WithTypename<DeleteTeamLeaderPayload>,
       DeleteTeamLeaderPayloadTeamLeaderEdgeArgs,
-      WithTypename<TeamLeadersEdge> | string
+      WithTypename<TeamLeaderEdge> | string
     >
   }
   DeleteTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheResolver<
-      WithTypename<DeleteTeamPayload>,
-      Record<string, never>,
-      WithTypename<CharityOrganization> | string
-    >
     clientMutationId?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
       Record<string, never>,
@@ -5367,11 +4992,6 @@ export type GraphCacheResolvers = {
       WithTypename<DeleteTeamPayload>,
       Record<string, never>,
       Scalars['ID']['output'] | string
-    >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<DeleteTeamPayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
     >
     query?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
@@ -5386,7 +5006,7 @@ export type GraphCacheResolvers = {
     teamEdge?: GraphCacheResolver<
       WithTypename<DeleteTeamPayload>,
       DeleteTeamPayloadTeamEdgeArgs,
-      WithTypename<TeamsEdge> | string
+      WithTypename<TeamEdge> | string
     >
   }
   Event?: {
@@ -5418,22 +5038,22 @@ export type GraphCacheResolvers = {
     gamesByEventId?: GraphCacheResolver<
       WithTypename<Event>,
       EventGamesByEventIdArgs,
-      WithTypename<GamesConnection> | string
+      WithTypename<GameConnection> | string
     >
     id?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<Event>,
       Record<string, never>,
-      Scalars['ID']['output'] | string
+      Scalars['Int']['output'] | string
     >
     start?: GraphCacheResolver<
       WithTypename<Event>,
@@ -5448,39 +5068,39 @@ export type GraphCacheResolvers = {
     teamsByEventId?: GraphCacheResolver<
       WithTypename<Event>,
       EventTeamsByEventIdArgs,
-      WithTypename<TeamsConnection> | string
+      WithTypename<TeamConnection> | string
     >
   }
-  EventsConnection?: {
+  EventConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<EventsConnection>,
+      WithTypename<EventConnection>,
       Record<string, never>,
-      Array<WithTypename<EventsEdge> | string>
+      Array<WithTypename<EventEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<EventsConnection>,
+      WithTypename<EventConnection>,
       Record<string, never>,
       Array<WithTypename<Event> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<EventsConnection>,
+      WithTypename<EventConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<EventsConnection>,
+      WithTypename<EventConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  EventsEdge?: {
+  EventEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<EventsEdge>,
+      WithTypename<EventEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<EventsEdge>,
+      WithTypename<EventEdge>,
       Record<string, never>,
       WithTypename<Event> | string
     >
@@ -5499,22 +5119,22 @@ export type GraphCacheResolvers = {
     gameEstimationNumericRoundsByGameId?: GraphCacheResolver<
       WithTypename<Game>,
       GameGameEstimationNumericRoundsByGameIdArgs,
-      WithTypename<GameEstimationNumericRoundsConnection> | string
+      WithTypename<GameEstimationNumericRoundConnection> | string
     >
     gameRandomFactsRoundsByGameId?: GraphCacheResolver<
       WithTypename<Game>,
       GameGameRandomFactsRoundsByGameIdArgs,
-      WithTypename<GameRandomFactsRoundsConnection> | string
+      WithTypename<GameRandomFactsRoundConnection> | string
     >
     gameTeamScoresByGameId?: GraphCacheResolver<
       WithTypename<Game>,
       GameGameTeamScoresByGameIdArgs,
-      WithTypename<GameTeamScoresConnection> | string
+      WithTypename<GameTeamScoreConnection> | string
     >
     id?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
     isActive?: GraphCacheResolver<
       WithTypename<Game>,
@@ -5526,15 +5146,49 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
-      Scalars['ID']['output'] | string
+      Scalars['Int']['output'] | string
     >
     type?: GraphCacheResolver<
       WithTypename<Game>,
       Record<string, never>,
       GameType | string
+    >
+  }
+  GameConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<GameConnection>,
+      Record<string, never>,
+      Array<WithTypename<Game> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<GameConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<GameConnection>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  GameEdge?: {
+    cursor?: GraphCacheResolver<
+      WithTypename<GameEdge>,
+      Record<string, never>,
+      Scalars['Cursor']['output'] | string
+    >
+    node?: GraphCacheResolver<
+      WithTypename<GameEdge>,
+      Record<string, never>,
+      WithTypename<Game> | string
     >
   }
   GameEstimationNumericLeaderboardView?: {
@@ -5554,36 +5208,36 @@ export type GraphCacheResolvers = {
       Scalars['Int']['output'] | string
     >
   }
-  GameEstimationNumericLeaderboardViewsConnection?: {
+  GameEstimationNumericLeaderboardViewConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      WithTypename<GameEstimationNumericLeaderboardViewConnection>,
       Record<string, never>,
-      Array<WithTypename<GameEstimationNumericLeaderboardViewsEdge> | string>
+      Array<WithTypename<GameEstimationNumericLeaderboardViewEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      WithTypename<GameEstimationNumericLeaderboardViewConnection>,
       Record<string, never>,
       Array<WithTypename<GameEstimationNumericLeaderboardView> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      WithTypename<GameEstimationNumericLeaderboardViewConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsConnection>,
+      WithTypename<GameEstimationNumericLeaderboardViewConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameEstimationNumericLeaderboardViewsEdge?: {
+  GameEstimationNumericLeaderboardViewEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+      WithTypename<GameEstimationNumericLeaderboardViewEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericLeaderboardViewsEdge>,
+      WithTypename<GameEstimationNumericLeaderboardViewEdge>,
       Record<string, never>,
       WithTypename<GameEstimationNumericLeaderboardView> | string
     >
@@ -5607,7 +5261,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericVotesByRoundId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       GameEstimationNumericRoundGameEstimationNumericVotesByRoundIdArgs,
-      WithTypename<GameEstimationNumericVotesConnection> | string
+      WithTypename<GameEstimationNumericVoteConnection> | string
     >
     gameId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
@@ -5617,44 +5271,44 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-    nodeId?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRound>,
-      Record<string, never>,
       Scalars['ID']['output'] | string
     >
-  }
-  GameEstimationNumericRoundsConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsConnection>,
+    rowId?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericRound>,
       Record<string, never>,
-      Array<WithTypename<GameEstimationNumericRoundsEdge> | string>
+      Scalars['Int']['output'] | string
+    >
+  }
+  GameEstimationNumericRoundConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericRoundConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEstimationNumericRoundEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsConnection>,
+      WithTypename<GameEstimationNumericRoundConnection>,
       Record<string, never>,
       Array<WithTypename<GameEstimationNumericRound> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsConnection>,
+      WithTypename<GameEstimationNumericRoundConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsConnection>,
+      WithTypename<GameEstimationNumericRoundConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameEstimationNumericRoundsEdge?: {
+  GameEstimationNumericRoundEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsEdge>,
+      WithTypename<GameEstimationNumericRoundEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericRoundsEdge>,
+      WithTypename<GameEstimationNumericRoundEdge>,
       Record<string, never>,
       WithTypename<GameEstimationNumericRound> | string
     >
@@ -5671,11 +5325,6 @@ export type GraphCacheResolvers = {
       WithTypename<GameEstimationNumericRound> | string
     >
     id?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVote>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-    nodeId?: GraphCacheResolver<
       WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
       Scalars['ID']['output'] | string
@@ -5695,37 +5344,42 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
-  }
-  GameEstimationNumericVotesConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameEstimationNumericVotesEdge> | string>
-    >
-    nodes?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameEstimationNumericVote> | string>
-    >
-    pageInfo?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesConnection>,
-      Record<string, never>,
-      WithTypename<PageInfo> | string
-    >
-    totalCount?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesConnection>,
+    rowId?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericVote>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameEstimationNumericVotesEdge?: {
+  GameEstimationNumericVoteConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericVoteConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEstimationNumericVoteEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericVoteConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameEstimationNumericVote> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericVoteConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<GameEstimationNumericVoteConnection>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  GameEstimationNumericVoteEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesEdge>,
+      WithTypename<GameEstimationNumericVoteEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameEstimationNumericVotesEdge>,
+      WithTypename<GameEstimationNumericVoteEdge>,
       Record<string, never>,
       WithTypename<GameEstimationNumericVote> | string
     >
@@ -5749,14 +5403,9 @@ export type GraphCacheResolvers = {
     gameRandomFactsVotesByRoundId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       GameRandomFactsRoundGameRandomFactsVotesByRoundIdArgs,
-      WithTypename<GameRandomFactsVotesConnection> | string
+      WithTypename<GameRandomFactsVoteConnection> | string
     >
     id?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRound>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-    nodeId?: GraphCacheResolver<
       WithTypename<GameRandomFactsRound>,
       Record<string, never>,
       Scalars['ID']['output'] | string
@@ -5766,37 +5415,42 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-  }
-  GameRandomFactsRoundsConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameRandomFactsRoundsEdge> | string>
-    >
-    nodes?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameRandomFactsRound> | string>
-    >
-    pageInfo?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsConnection>,
-      Record<string, never>,
-      WithTypename<PageInfo> | string
-    >
-    totalCount?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsConnection>,
+    rowId?: GraphCacheResolver<
+      WithTypename<GameRandomFactsRound>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameRandomFactsRoundsEdge?: {
+  GameRandomFactsRoundConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameRandomFactsRoundConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameRandomFactsRoundEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<GameRandomFactsRoundConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameRandomFactsRound> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<GameRandomFactsRoundConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<GameRandomFactsRoundConnection>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  GameRandomFactsRoundEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsEdge>,
+      WithTypename<GameRandomFactsRoundEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameRandomFactsRoundsEdge>,
+      WithTypename<GameRandomFactsRoundEdge>,
       Record<string, never>,
       WithTypename<GameRandomFactsRound> | string
     >
@@ -5813,11 +5467,6 @@ export type GraphCacheResolvers = {
       WithTypename<GameRandomFactsRound> | string
     >
     id?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVote>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-    nodeId?: GraphCacheResolver<
       WithTypename<GameRandomFactsVote>,
       Record<string, never>,
       Scalars['ID']['output'] | string
@@ -5837,37 +5486,42 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
-  }
-  GameRandomFactsVotesConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameRandomFactsVotesEdge> | string>
-    >
-    nodes?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesConnection>,
-      Record<string, never>,
-      Array<WithTypename<GameRandomFactsVote> | string>
-    >
-    pageInfo?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesConnection>,
-      Record<string, never>,
-      WithTypename<PageInfo> | string
-    >
-    totalCount?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesConnection>,
+    rowId?: GraphCacheResolver<
+      WithTypename<GameRandomFactsVote>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameRandomFactsVotesEdge?: {
+  GameRandomFactsVoteConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<GameRandomFactsVoteConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameRandomFactsVoteEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<GameRandomFactsVoteConnection>,
+      Record<string, never>,
+      Array<WithTypename<GameRandomFactsVote> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<GameRandomFactsVoteConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<GameRandomFactsVoteConnection>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  GameRandomFactsVoteEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesEdge>,
+      WithTypename<GameRandomFactsVoteEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameRandomFactsVotesEdge>,
+      WithTypename<GameRandomFactsVoteEdge>,
       Record<string, never>,
       WithTypename<GameRandomFactsVote> | string
     >
@@ -5886,12 +5540,12 @@ export type GraphCacheResolvers = {
     id?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
       Record<string, never>,
-      Scalars['ID']['output'] | string
+      Scalars['Int']['output'] | string
     >
     score?: GraphCacheResolver<
       WithTypename<GameTeamScore>,
@@ -5909,72 +5563,38 @@ export type GraphCacheResolvers = {
       Scalars['Int']['output'] | string
     >
   }
-  GameTeamScoresConnection?: {
+  GameTeamScoreConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<GameTeamScoresConnection>,
+      WithTypename<GameTeamScoreConnection>,
       Record<string, never>,
-      Array<WithTypename<GameTeamScoresEdge> | string>
+      Array<WithTypename<GameTeamScoreEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<GameTeamScoresConnection>,
+      WithTypename<GameTeamScoreConnection>,
       Record<string, never>,
       Array<WithTypename<GameTeamScore> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<GameTeamScoresConnection>,
+      WithTypename<GameTeamScoreConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<GameTeamScoresConnection>,
+      WithTypename<GameTeamScoreConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  GameTeamScoresEdge?: {
+  GameTeamScoreEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<GameTeamScoresEdge>,
+      WithTypename<GameTeamScoreEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<GameTeamScoresEdge>,
+      WithTypename<GameTeamScoreEdge>,
       Record<string, never>,
       WithTypename<GameTeamScore> | string
-    >
-  }
-  GamesConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<GamesConnection>,
-      Record<string, never>,
-      Array<WithTypename<GamesEdge> | string>
-    >
-    nodes?: GraphCacheResolver<
-      WithTypename<GamesConnection>,
-      Record<string, never>,
-      Array<WithTypename<Game> | string>
-    >
-    pageInfo?: GraphCacheResolver<
-      WithTypename<GamesConnection>,
-      Record<string, never>,
-      WithTypename<PageInfo> | string
-    >
-    totalCount?: GraphCacheResolver<
-      WithTypename<GamesConnection>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-  }
-  GamesEdge?: {
-    cursor?: GraphCacheResolver<
-      WithTypename<GamesEdge>,
-      Record<string, never>,
-      Scalars['Cursor']['output'] | string
-    >
-    node?: GraphCacheResolver<
-      WithTypename<GamesEdge>,
-      Record<string, never>,
-      WithTypename<Game> | string
     >
   }
   Kv?: {
@@ -5989,36 +5609,36 @@ export type GraphCacheResolvers = {
       Scalars['String']['output'] | string
     >
   }
-  KvsConnection?: {
+  KvConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<KvsConnection>,
+      WithTypename<KvConnection>,
       Record<string, never>,
-      Array<WithTypename<KvsEdge> | string>
+      Array<WithTypename<KvEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<KvsConnection>,
+      WithTypename<KvConnection>,
       Record<string, never>,
       Array<WithTypename<Kv> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<KvsConnection>,
+      WithTypename<KvConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<KvsConnection>,
+      WithTypename<KvConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  KvsEdge?: {
+  KvEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<KvsEdge>,
+      WithTypename<KvEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<KvsEdge>,
+      WithTypename<KvEdge>,
       Record<string, never>,
       WithTypename<Kv> | string
     >
@@ -6049,17 +5669,17 @@ export type GraphCacheResolvers = {
     gameEstimationNumericVotesByPlayerId?: GraphCacheResolver<
       WithTypename<Player>,
       PlayerGameEstimationNumericVotesByPlayerIdArgs,
-      WithTypename<GameEstimationNumericVotesConnection> | string
+      WithTypename<GameEstimationNumericVoteConnection> | string
     >
     gameRandomFactsVotesByPlayerId?: GraphCacheResolver<
       WithTypename<Player>,
       PlayerGameRandomFactsVotesByPlayerIdArgs,
-      WithTypename<GameRandomFactsVotesConnection> | string
+      WithTypename<GameRandomFactsVoteConnection> | string
     >
     id?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
     invitationCode?: GraphCacheResolver<
       WithTypename<Player>,
@@ -6071,10 +5691,10 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<Player>,
       Record<string, never>,
-      Scalars['ID']['output'] | string
+      Scalars['Int']['output'] | string
     >
     teamByTeamId?: GraphCacheResolver<
       WithTypename<Player>,
@@ -6086,42 +5706,37 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
-    teamLeadersByPlayerId?: GraphCacheResolver<
-      WithTypename<Player>,
-      PlayerTeamLeadersByPlayerIdArgs,
-      WithTypename<TeamLeadersConnection> | string
-    >
   }
-  PlayersConnection?: {
+  PlayerConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<PlayersConnection>,
+      WithTypename<PlayerConnection>,
       Record<string, never>,
-      Array<WithTypename<PlayersEdge> | string>
+      Array<WithTypename<PlayerEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<PlayersConnection>,
+      WithTypename<PlayerConnection>,
       Record<string, never>,
       Array<WithTypename<Player> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<PlayersConnection>,
+      WithTypename<PlayerConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<PlayersConnection>,
+      WithTypename<PlayerConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  PlayersEdge?: {
+  PlayerEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<PlayersEdge>,
+      WithTypename<PlayerEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<PlayersEdge>,
+      WithTypename<PlayerEdge>,
       Record<string, never>,
       WithTypename<Player> | string
     >
@@ -6165,41 +5780,65 @@ export type GraphCacheResolvers = {
     gameTeamScoresByTeamId?: GraphCacheResolver<
       WithTypename<Team>,
       TeamGameTeamScoresByTeamIdArgs,
-      WithTypename<GameTeamScoresConnection> | string
+      WithTypename<GameTeamScoreConnection> | string
     >
     id?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
-      Scalars['Int']['output'] | string
+      Scalars['ID']['output'] | string
     >
     name?: GraphCacheResolver<
       WithTypename<Team>,
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    nodeId?: GraphCacheResolver<
-      WithTypename<Team>,
-      Record<string, never>,
-      Scalars['ID']['output'] | string
-    >
     playersByTeamId?: GraphCacheResolver<
       WithTypename<Team>,
       TeamPlayersByTeamIdArgs,
-      WithTypename<PlayersConnection> | string
+      WithTypename<PlayerConnection> | string
     >
-    teamLeadersByTeamId?: GraphCacheResolver<
+    rowId?: GraphCacheResolver<
       WithTypename<Team>,
-      TeamTeamLeadersByTeamIdArgs,
-      WithTypename<TeamLeadersConnection> | string
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  TeamConnection?: {
+    edges?: GraphCacheResolver<
+      WithTypename<TeamConnection>,
+      Record<string, never>,
+      Array<WithTypename<TeamEdge> | string>
+    >
+    nodes?: GraphCacheResolver<
+      WithTypename<TeamConnection>,
+      Record<string, never>,
+      Array<WithTypename<Team> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<TeamConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
+    >
+    totalCount?: GraphCacheResolver<
+      WithTypename<TeamConnection>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+  }
+  TeamEdge?: {
+    cursor?: GraphCacheResolver<
+      WithTypename<TeamEdge>,
+      Record<string, never>,
+      Scalars['Cursor']['output'] | string
+    >
+    node?: GraphCacheResolver<
+      WithTypename<TeamEdge>,
+      Record<string, never>,
+      WithTypename<Team> | string
     >
   }
   TeamLeader?: {
     id?: GraphCacheResolver<
-      WithTypename<TeamLeader>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-    nodeId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
       Scalars['ID']['output'] | string
@@ -6210,6 +5849,11 @@ export type GraphCacheResolvers = {
       WithTypename<Player> | string
     >
     playerId?: GraphCacheResolver<
+      WithTypename<TeamLeader>,
+      Record<string, never>,
+      Scalars['Int']['output'] | string
+    >
+    rowId?: GraphCacheResolver<
       WithTypename<TeamLeader>,
       Record<string, never>,
       Scalars['Int']['output'] | string
@@ -6225,36 +5869,36 @@ export type GraphCacheResolvers = {
       Scalars['Int']['output'] | string
     >
   }
-  TeamLeadersConnection?: {
+  TeamLeaderConnection?: {
     edges?: GraphCacheResolver<
-      WithTypename<TeamLeadersConnection>,
+      WithTypename<TeamLeaderConnection>,
       Record<string, never>,
-      Array<WithTypename<TeamLeadersEdge> | string>
+      Array<WithTypename<TeamLeaderEdge> | string>
     >
     nodes?: GraphCacheResolver<
-      WithTypename<TeamLeadersConnection>,
+      WithTypename<TeamLeaderConnection>,
       Record<string, never>,
       Array<WithTypename<TeamLeader> | string>
     >
     pageInfo?: GraphCacheResolver<
-      WithTypename<TeamLeadersConnection>,
+      WithTypename<TeamLeaderConnection>,
       Record<string, never>,
       WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
-      WithTypename<TeamLeadersConnection>,
+      WithTypename<TeamLeaderConnection>,
       Record<string, never>,
       Scalars['Int']['output'] | string
     >
   }
-  TeamLeadersEdge?: {
+  TeamLeaderEdge?: {
     cursor?: GraphCacheResolver<
-      WithTypename<TeamLeadersEdge>,
+      WithTypename<TeamLeaderEdge>,
       Record<string, never>,
       Scalars['Cursor']['output'] | string
     >
     node?: GraphCacheResolver<
-      WithTypename<TeamLeadersEdge>,
+      WithTypename<TeamLeaderEdge>,
       Record<string, never>,
       WithTypename<TeamLeader> | string
     >
@@ -6269,6 +5913,11 @@ export type GraphCacheResolvers = {
       WithTypename<TeamPlayerCountConnection>,
       Record<string, never>,
       Array<WithTypename<TeamPlayerCountRecord> | string>
+    >
+    pageInfo?: GraphCacheResolver<
+      WithTypename<TeamPlayerCountConnection>,
+      Record<string, never>,
+      WithTypename<PageInfo> | string
     >
     totalCount?: GraphCacheResolver<
       WithTypename<TeamPlayerCountConnection>,
@@ -6300,40 +5949,6 @@ export type GraphCacheResolvers = {
       Scalars['BigInt']['output'] | string
     >
   }
-  TeamsConnection?: {
-    edges?: GraphCacheResolver<
-      WithTypename<TeamsConnection>,
-      Record<string, never>,
-      Array<WithTypename<TeamsEdge> | string>
-    >
-    nodes?: GraphCacheResolver<
-      WithTypename<TeamsConnection>,
-      Record<string, never>,
-      Array<WithTypename<Team> | string>
-    >
-    pageInfo?: GraphCacheResolver<
-      WithTypename<TeamsConnection>,
-      Record<string, never>,
-      WithTypename<PageInfo> | string
-    >
-    totalCount?: GraphCacheResolver<
-      WithTypename<TeamsConnection>,
-      Record<string, never>,
-      Scalars['Int']['output'] | string
-    >
-  }
-  TeamsEdge?: {
-    cursor?: GraphCacheResolver<
-      WithTypename<TeamsEdge>,
-      Record<string, never>,
-      Scalars['Cursor']['output'] | string
-    >
-    node?: GraphCacheResolver<
-      WithTypename<TeamsEdge>,
-      Record<string, never>,
-      WithTypename<Team> | string
-    >
-  }
   UpdateCharityOrganizationPayload?: {
     charityOrganization?: GraphCacheResolver<
       WithTypename<UpdateCharityOrganizationPayload>,
@@ -6343,7 +5958,7 @@ export type GraphCacheResolvers = {
     charityOrganizationEdge?: GraphCacheResolver<
       WithTypename<UpdateCharityOrganizationPayload>,
       UpdateCharityOrganizationPayloadCharityOrganizationEdgeArgs,
-      WithTypename<CharityOrganizationsEdge> | string
+      WithTypename<CharityOrganizationEdge> | string
     >
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateCharityOrganizationPayload>,
@@ -6370,7 +5985,7 @@ export type GraphCacheResolvers = {
     eventEdge?: GraphCacheResolver<
       WithTypename<UpdateEventPayload>,
       UpdateEventPayloadEventEdgeArgs,
-      WithTypename<EventsEdge> | string
+      WithTypename<EventEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateEventPayload>,
@@ -6384,11 +5999,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<UpdateGameEstimationNumericRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameEstimationNumericRound?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericRoundPayload>,
       Record<string, never>,
@@ -6397,7 +6007,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericRoundEdge?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericRoundPayload>,
       UpdateGameEstimationNumericRoundPayloadGameEstimationNumericRoundEdgeArgs,
-      WithTypename<GameEstimationNumericRoundsEdge> | string
+      WithTypename<GameEstimationNumericRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericRoundPayload>,
@@ -6411,11 +6021,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheResolver<
-      WithTypename<UpdateGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<GameEstimationNumericRound> | string
-    >
     gameEstimationNumericVote?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericVotePayload>,
       Record<string, never>,
@@ -6424,12 +6029,7 @@ export type GraphCacheResolvers = {
     gameEstimationNumericVoteEdge?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericVotePayload>,
       UpdateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs,
-      WithTypename<GameEstimationNumericVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<UpdateGameEstimationNumericVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameEstimationNumericVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGameEstimationNumericVotePayload>,
@@ -6443,11 +6043,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<UpdateGamePayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
-    >
     game?: GraphCacheResolver<
       WithTypename<UpdateGamePayload>,
       Record<string, never>,
@@ -6456,7 +6051,7 @@ export type GraphCacheResolvers = {
     gameEdge?: GraphCacheResolver<
       WithTypename<UpdateGamePayload>,
       UpdateGamePayloadGameEdgeArgs,
-      WithTypename<GamesEdge> | string
+      WithTypename<GameEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGamePayload>,
@@ -6470,11 +6065,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<UpdateGameRandomFactsRoundPayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameRandomFactsRound?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsRoundPayload>,
       Record<string, never>,
@@ -6483,7 +6073,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsRoundEdge?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsRoundPayload>,
       UpdateGameRandomFactsRoundPayloadGameRandomFactsRoundEdgeArgs,
-      WithTypename<GameRandomFactsRoundsEdge> | string
+      WithTypename<GameRandomFactsRoundEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsRoundPayload>,
@@ -6497,11 +6087,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheResolver<
-      WithTypename<UpdateGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<GameRandomFactsRound> | string
-    >
     gameRandomFactsVote?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsVotePayload>,
       Record<string, never>,
@@ -6510,12 +6095,7 @@ export type GraphCacheResolvers = {
     gameRandomFactsVoteEdge?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsVotePayload>,
       UpdateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs,
-      WithTypename<GameRandomFactsVotesEdge> | string
-    >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<UpdateGameRandomFactsVotePayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
+      WithTypename<GameRandomFactsVoteEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGameRandomFactsVotePayload>,
@@ -6529,11 +6109,6 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    gameByGameId?: GraphCacheResolver<
-      WithTypename<UpdateGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Game> | string
-    >
     gameTeamScore?: GraphCacheResolver<
       WithTypename<UpdateGameTeamScorePayload>,
       Record<string, never>,
@@ -6542,17 +6117,12 @@ export type GraphCacheResolvers = {
     gameTeamScoreEdge?: GraphCacheResolver<
       WithTypename<UpdateGameTeamScorePayload>,
       UpdateGameTeamScorePayloadGameTeamScoreEdgeArgs,
-      WithTypename<GameTeamScoresEdge> | string
+      WithTypename<GameTeamScoreEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateGameTeamScorePayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<UpdateGameTeamScorePayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   UpdateKvPayload?: {
@@ -6565,11 +6135,6 @@ export type GraphCacheResolvers = {
       WithTypename<UpdateKvPayload>,
       Record<string, never>,
       WithTypename<Kv> | string
-    >
-    kvEdge?: GraphCacheResolver<
-      WithTypename<UpdateKvPayload>,
-      UpdateKvPayloadKvEdgeArgs,
-      WithTypename<KvsEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateKvPayload>,
@@ -6591,17 +6156,12 @@ export type GraphCacheResolvers = {
     playerEdge?: GraphCacheResolver<
       WithTypename<UpdatePlayerPayload>,
       UpdatePlayerPayloadPlayerEdgeArgs,
-      WithTypename<PlayersEdge> | string
+      WithTypename<PlayerEdge> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdatePlayerPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<UpdatePlayerPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
   }
   UpdateTeamLeaderPayload?: {
@@ -6610,20 +6170,10 @@ export type GraphCacheResolvers = {
       Record<string, never>,
       Scalars['String']['output'] | string
     >
-    playerByPlayerId?: GraphCacheResolver<
-      WithTypename<UpdateTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Player> | string
-    >
     query?: GraphCacheResolver<
       WithTypename<UpdateTeamLeaderPayload>,
       Record<string, never>,
       WithTypename<Query> | string
-    >
-    teamByTeamId?: GraphCacheResolver<
-      WithTypename<UpdateTeamLeaderPayload>,
-      Record<string, never>,
-      WithTypename<Team> | string
     >
     teamLeader?: GraphCacheResolver<
       WithTypename<UpdateTeamLeaderPayload>,
@@ -6633,24 +6183,14 @@ export type GraphCacheResolvers = {
     teamLeaderEdge?: GraphCacheResolver<
       WithTypename<UpdateTeamLeaderPayload>,
       UpdateTeamLeaderPayloadTeamLeaderEdgeArgs,
-      WithTypename<TeamLeadersEdge> | string
+      WithTypename<TeamLeaderEdge> | string
     >
   }
   UpdateTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheResolver<
-      WithTypename<UpdateTeamPayload>,
-      Record<string, never>,
-      WithTypename<CharityOrganization> | string
-    >
     clientMutationId?: GraphCacheResolver<
       WithTypename<UpdateTeamPayload>,
       Record<string, never>,
       Scalars['String']['output'] | string
-    >
-    eventByEventId?: GraphCacheResolver<
-      WithTypename<UpdateTeamPayload>,
-      Record<string, never>,
-      WithTypename<Event> | string
     >
     query?: GraphCacheResolver<
       WithTypename<UpdateTeamPayload>,
@@ -6665,7 +6205,7 @@ export type GraphCacheResolvers = {
     teamEdge?: GraphCacheResolver<
       WithTypename<UpdateTeamPayload>,
       UpdateTeamPayloadTeamEdgeArgs,
-      WithTypename<TeamsEdge> | string
+      WithTypename<TeamEdge> | string
     >
   }
 }
@@ -6723,12 +6263,12 @@ export type GraphCacheOptimisticUpdaters = {
     MutationDeleteCharityOrganizationArgs,
     Maybe<WithTypename<DeleteCharityOrganizationPayload>>
   >
-  deleteCharityOrganizationById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteCharityOrganizationByIdArgs,
-    Maybe<WithTypename<DeleteCharityOrganizationPayload>>
-  >
   deleteCharityOrganizationByName?: GraphCacheOptimisticMutationResolver<
     MutationDeleteCharityOrganizationByNameArgs,
+    Maybe<WithTypename<DeleteCharityOrganizationPayload>>
+  >
+  deleteCharityOrganizationByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteCharityOrganizationByRowIdArgs,
     Maybe<WithTypename<DeleteCharityOrganizationPayload>>
   >
   deleteCharityOrganizationByUrl?: GraphCacheOptimisticMutationResolver<
@@ -6739,12 +6279,12 @@ export type GraphCacheOptimisticUpdaters = {
     MutationDeleteEventArgs,
     Maybe<WithTypename<DeleteEventPayload>>
   >
-  deleteEventById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteEventByIdArgs,
-    Maybe<WithTypename<DeleteEventPayload>>
-  >
   deleteEventByName?: GraphCacheOptimisticMutationResolver<
     MutationDeleteEventByNameArgs,
+    Maybe<WithTypename<DeleteEventPayload>>
+  >
+  deleteEventByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteEventByRowIdArgs,
     Maybe<WithTypename<DeleteEventPayload>>
   >
   deleteGame?: GraphCacheOptimisticMutationResolver<
@@ -6755,56 +6295,56 @@ export type GraphCacheOptimisticUpdaters = {
     MutationDeleteGameByEventIdAndNameArgs,
     Maybe<WithTypename<DeleteGamePayload>>
   >
-  deleteGameById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameByIdArgs,
+  deleteGameByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameByRowIdArgs,
     Maybe<WithTypename<DeleteGamePayload>>
   >
   deleteGameEstimationNumericRound?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameEstimationNumericRoundArgs,
     Maybe<WithTypename<DeleteGameEstimationNumericRoundPayload>>
   >
-  deleteGameEstimationNumericRoundById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameEstimationNumericRoundByIdArgs,
+  deleteGameEstimationNumericRoundByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameEstimationNumericRoundByRowIdArgs,
     Maybe<WithTypename<DeleteGameEstimationNumericRoundPayload>>
   >
   deleteGameEstimationNumericVote?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameEstimationNumericVoteArgs,
     Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>
   >
-  deleteGameEstimationNumericVoteById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameEstimationNumericVoteByIdArgs,
-    Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>
-  >
   deleteGameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameEstimationNumericVoteByPlayerIdAndRoundIdArgs,
+    Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>
+  >
+  deleteGameEstimationNumericVoteByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameEstimationNumericVoteByRowIdArgs,
     Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>
   >
   deleteGameRandomFactsRound?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameRandomFactsRoundArgs,
     Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>
   >
-  deleteGameRandomFactsRoundById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameRandomFactsRoundByIdArgs,
+  deleteGameRandomFactsRoundByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameRandomFactsRoundByRowIdArgs,
     Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>
   >
   deleteGameRandomFactsVote?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameRandomFactsVoteArgs,
     Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>
   >
-  deleteGameRandomFactsVoteById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameRandomFactsVoteByIdArgs,
-    Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>
-  >
   deleteGameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameRandomFactsVoteByPlayerIdAndRoundIdArgs,
+    Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>
+  >
+  deleteGameRandomFactsVoteByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameRandomFactsVoteByRowIdArgs,
     Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>
   >
   deleteGameTeamScore?: GraphCacheOptimisticMutationResolver<
     MutationDeleteGameTeamScoreArgs,
     Maybe<WithTypename<DeleteGameTeamScorePayload>>
   >
-  deleteGameTeamScoreById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteGameTeamScoreByIdArgs,
+  deleteGameTeamScoreByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteGameTeamScoreByRowIdArgs,
     Maybe<WithTypename<DeleteGameTeamScorePayload>>
   >
   deleteKvByKey?: GraphCacheOptimisticMutationResolver<
@@ -6815,12 +6355,12 @@ export type GraphCacheOptimisticUpdaters = {
     MutationDeletePlayerArgs,
     Maybe<WithTypename<DeletePlayerPayload>>
   >
-  deletePlayerById?: GraphCacheOptimisticMutationResolver<
-    MutationDeletePlayerByIdArgs,
-    Maybe<WithTypename<DeletePlayerPayload>>
-  >
   deletePlayerByInvitationCode?: GraphCacheOptimisticMutationResolver<
     MutationDeletePlayerByInvitationCodeArgs,
+    Maybe<WithTypename<DeletePlayerPayload>>
+  >
+  deletePlayerByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeletePlayerByRowIdArgs,
     Maybe<WithTypename<DeletePlayerPayload>>
   >
   deletePlayerByTeamIdAndInvitationCode?: GraphCacheOptimisticMutationResolver<
@@ -6831,28 +6371,28 @@ export type GraphCacheOptimisticUpdaters = {
     MutationDeleteTeamArgs,
     Maybe<WithTypename<DeleteTeamPayload>>
   >
-  deleteTeamById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteTeamByIdArgs,
+  deleteTeamByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteTeamByRowIdArgs,
     Maybe<WithTypename<DeleteTeamPayload>>
   >
   deleteTeamLeader?: GraphCacheOptimisticMutationResolver<
     MutationDeleteTeamLeaderArgs,
     Maybe<WithTypename<DeleteTeamLeaderPayload>>
   >
-  deleteTeamLeaderById?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteTeamLeaderByIdArgs,
+  deleteTeamLeaderByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationDeleteTeamLeaderByRowIdArgs,
     Maybe<WithTypename<DeleteTeamLeaderPayload>>
   >
   updateCharityOrganization?: GraphCacheOptimisticMutationResolver<
     MutationUpdateCharityOrganizationArgs,
     Maybe<WithTypename<UpdateCharityOrganizationPayload>>
   >
-  updateCharityOrganizationById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateCharityOrganizationByIdArgs,
-    Maybe<WithTypename<UpdateCharityOrganizationPayload>>
-  >
   updateCharityOrganizationByName?: GraphCacheOptimisticMutationResolver<
     MutationUpdateCharityOrganizationByNameArgs,
+    Maybe<WithTypename<UpdateCharityOrganizationPayload>>
+  >
+  updateCharityOrganizationByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateCharityOrganizationByRowIdArgs,
     Maybe<WithTypename<UpdateCharityOrganizationPayload>>
   >
   updateCharityOrganizationByUrl?: GraphCacheOptimisticMutationResolver<
@@ -6863,12 +6403,12 @@ export type GraphCacheOptimisticUpdaters = {
     MutationUpdateEventArgs,
     Maybe<WithTypename<UpdateEventPayload>>
   >
-  updateEventById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateEventByIdArgs,
-    Maybe<WithTypename<UpdateEventPayload>>
-  >
   updateEventByName?: GraphCacheOptimisticMutationResolver<
     MutationUpdateEventByNameArgs,
+    Maybe<WithTypename<UpdateEventPayload>>
+  >
+  updateEventByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateEventByRowIdArgs,
     Maybe<WithTypename<UpdateEventPayload>>
   >
   updateGame?: GraphCacheOptimisticMutationResolver<
@@ -6879,56 +6419,56 @@ export type GraphCacheOptimisticUpdaters = {
     MutationUpdateGameByEventIdAndNameArgs,
     Maybe<WithTypename<UpdateGamePayload>>
   >
-  updateGameById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameByIdArgs,
+  updateGameByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameByRowIdArgs,
     Maybe<WithTypename<UpdateGamePayload>>
   >
   updateGameEstimationNumericRound?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameEstimationNumericRoundArgs,
     Maybe<WithTypename<UpdateGameEstimationNumericRoundPayload>>
   >
-  updateGameEstimationNumericRoundById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameEstimationNumericRoundByIdArgs,
+  updateGameEstimationNumericRoundByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameEstimationNumericRoundByRowIdArgs,
     Maybe<WithTypename<UpdateGameEstimationNumericRoundPayload>>
   >
   updateGameEstimationNumericVote?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameEstimationNumericVoteArgs,
     Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>
   >
-  updateGameEstimationNumericVoteById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameEstimationNumericVoteByIdArgs,
-    Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>
-  >
   updateGameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameEstimationNumericVoteByPlayerIdAndRoundIdArgs,
+    Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>
+  >
+  updateGameEstimationNumericVoteByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameEstimationNumericVoteByRowIdArgs,
     Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>
   >
   updateGameRandomFactsRound?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameRandomFactsRoundArgs,
     Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>
   >
-  updateGameRandomFactsRoundById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameRandomFactsRoundByIdArgs,
+  updateGameRandomFactsRoundByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameRandomFactsRoundByRowIdArgs,
     Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>
   >
   updateGameRandomFactsVote?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameRandomFactsVoteArgs,
     Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>
   >
-  updateGameRandomFactsVoteById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameRandomFactsVoteByIdArgs,
-    Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>
-  >
   updateGameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameRandomFactsVoteByPlayerIdAndRoundIdArgs,
+    Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>
+  >
+  updateGameRandomFactsVoteByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameRandomFactsVoteByRowIdArgs,
     Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>
   >
   updateGameTeamScore?: GraphCacheOptimisticMutationResolver<
     MutationUpdateGameTeamScoreArgs,
     Maybe<WithTypename<UpdateGameTeamScorePayload>>
   >
-  updateGameTeamScoreById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateGameTeamScoreByIdArgs,
+  updateGameTeamScoreByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateGameTeamScoreByRowIdArgs,
     Maybe<WithTypename<UpdateGameTeamScorePayload>>
   >
   updateKvByKey?: GraphCacheOptimisticMutationResolver<
@@ -6939,12 +6479,12 @@ export type GraphCacheOptimisticUpdaters = {
     MutationUpdatePlayerArgs,
     Maybe<WithTypename<UpdatePlayerPayload>>
   >
-  updatePlayerById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdatePlayerByIdArgs,
-    Maybe<WithTypename<UpdatePlayerPayload>>
-  >
   updatePlayerByInvitationCode?: GraphCacheOptimisticMutationResolver<
     MutationUpdatePlayerByInvitationCodeArgs,
+    Maybe<WithTypename<UpdatePlayerPayload>>
+  >
+  updatePlayerByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdatePlayerByRowIdArgs,
     Maybe<WithTypename<UpdatePlayerPayload>>
   >
   updatePlayerByTeamIdAndInvitationCode?: GraphCacheOptimisticMutationResolver<
@@ -6955,16 +6495,16 @@ export type GraphCacheOptimisticUpdaters = {
     MutationUpdateTeamArgs,
     Maybe<WithTypename<UpdateTeamPayload>>
   >
-  updateTeamById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateTeamByIdArgs,
+  updateTeamByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateTeamByRowIdArgs,
     Maybe<WithTypename<UpdateTeamPayload>>
   >
   updateTeamLeader?: GraphCacheOptimisticMutationResolver<
     MutationUpdateTeamLeaderArgs,
     Maybe<WithTypename<UpdateTeamLeaderPayload>>
   >
-  updateTeamLeaderById?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateTeamLeaderByIdArgs,
+  updateTeamLeaderByRowId?: GraphCacheOptimisticMutationResolver<
+    MutationUpdateTeamLeaderByRowIdArgs,
     Maybe<WithTypename<UpdateTeamLeaderPayload>>
   >
 }
@@ -6974,19 +6514,19 @@ export type GraphCacheUpdaters = {
     allCharityOrganizations?: GraphCacheUpdateResolver<
       {
         allCharityOrganizations: Maybe<
-          WithTypename<CharityOrganizationsConnection>
+          WithTypename<CharityOrganizationConnection>
         >
       },
       QueryAllCharityOrganizationsArgs
     >
     allEvents?: GraphCacheUpdateResolver<
-      { allEvents: Maybe<WithTypename<EventsConnection>> },
+      { allEvents: Maybe<WithTypename<EventConnection>> },
       QueryAllEventsArgs
     >
     allGameEstimationNumericLeaderboardViews?: GraphCacheUpdateResolver<
       {
         allGameEstimationNumericLeaderboardViews: Maybe<
-          WithTypename<GameEstimationNumericLeaderboardViewsConnection>
+          WithTypename<GameEstimationNumericLeaderboardViewConnection>
         >
       },
       QueryAllGameEstimationNumericLeaderboardViewsArgs
@@ -6994,7 +6534,7 @@ export type GraphCacheUpdaters = {
     allGameEstimationNumericRounds?: GraphCacheUpdateResolver<
       {
         allGameEstimationNumericRounds: Maybe<
-          WithTypename<GameEstimationNumericRoundsConnection>
+          WithTypename<GameEstimationNumericRoundConnection>
         >
       },
       QueryAllGameEstimationNumericRoundsArgs
@@ -7002,7 +6542,7 @@ export type GraphCacheUpdaters = {
     allGameEstimationNumericVotes?: GraphCacheUpdateResolver<
       {
         allGameEstimationNumericVotes: Maybe<
-          WithTypename<GameEstimationNumericVotesConnection>
+          WithTypename<GameEstimationNumericVoteConnection>
         >
       },
       QueryAllGameEstimationNumericVotesArgs
@@ -7010,7 +6550,7 @@ export type GraphCacheUpdaters = {
     allGameRandomFactsRounds?: GraphCacheUpdateResolver<
       {
         allGameRandomFactsRounds: Maybe<
-          WithTypename<GameRandomFactsRoundsConnection>
+          WithTypename<GameRandomFactsRoundConnection>
         >
       },
       QueryAllGameRandomFactsRoundsArgs
@@ -7018,46 +6558,46 @@ export type GraphCacheUpdaters = {
     allGameRandomFactsVotes?: GraphCacheUpdateResolver<
       {
         allGameRandomFactsVotes: Maybe<
-          WithTypename<GameRandomFactsVotesConnection>
+          WithTypename<GameRandomFactsVoteConnection>
         >
       },
       QueryAllGameRandomFactsVotesArgs
     >
     allGameTeamScores?: GraphCacheUpdateResolver<
-      { allGameTeamScores: Maybe<WithTypename<GameTeamScoresConnection>> },
+      { allGameTeamScores: Maybe<WithTypename<GameTeamScoreConnection>> },
       QueryAllGameTeamScoresArgs
     >
     allGames?: GraphCacheUpdateResolver<
-      { allGames: Maybe<WithTypename<GamesConnection>> },
+      { allGames: Maybe<WithTypename<GameConnection>> },
       QueryAllGamesArgs
     >
     allKvs?: GraphCacheUpdateResolver<
-      { allKvs: Maybe<WithTypename<KvsConnection>> },
+      { allKvs: Maybe<WithTypename<KvConnection>> },
       QueryAllKvsArgs
     >
     allPlayers?: GraphCacheUpdateResolver<
-      { allPlayers: Maybe<WithTypename<PlayersConnection>> },
+      { allPlayers: Maybe<WithTypename<PlayerConnection>> },
       QueryAllPlayersArgs
     >
     allTeamLeaders?: GraphCacheUpdateResolver<
-      { allTeamLeaders: Maybe<WithTypename<TeamLeadersConnection>> },
+      { allTeamLeaders: Maybe<WithTypename<TeamLeaderConnection>> },
       QueryAllTeamLeadersArgs
     >
     allTeams?: GraphCacheUpdateResolver<
-      { allTeams: Maybe<WithTypename<TeamsConnection>> },
+      { allTeams: Maybe<WithTypename<TeamConnection>> },
       QueryAllTeamsArgs
     >
     charityOrganization?: GraphCacheUpdateResolver<
       { charityOrganization: Maybe<WithTypename<CharityOrganization>> },
       QueryCharityOrganizationArgs
     >
-    charityOrganizationById?: GraphCacheUpdateResolver<
-      { charityOrganizationById: Maybe<WithTypename<CharityOrganization>> },
-      QueryCharityOrganizationByIdArgs
-    >
     charityOrganizationByName?: GraphCacheUpdateResolver<
       { charityOrganizationByName: Maybe<WithTypename<CharityOrganization>> },
       QueryCharityOrganizationByNameArgs
+    >
+    charityOrganizationByRowId?: GraphCacheUpdateResolver<
+      { charityOrganizationByRowId: Maybe<WithTypename<CharityOrganization>> },
+      QueryCharityOrganizationByRowIdArgs
     >
     charityOrganizationByUrl?: GraphCacheUpdateResolver<
       { charityOrganizationByUrl: Maybe<WithTypename<CharityOrganization>> },
@@ -7067,13 +6607,13 @@ export type GraphCacheUpdaters = {
       { event: Maybe<WithTypename<Event>> },
       QueryEventArgs
     >
-    eventById?: GraphCacheUpdateResolver<
-      { eventById: Maybe<WithTypename<Event>> },
-      QueryEventByIdArgs
-    >
     eventByName?: GraphCacheUpdateResolver<
       { eventByName: Maybe<WithTypename<Event>> },
       QueryEventByNameArgs
+    >
+    eventByRowId?: GraphCacheUpdateResolver<
+      { eventByRowId: Maybe<WithTypename<Event>> },
+      QueryEventByRowIdArgs
     >
     game?: GraphCacheUpdateResolver<
       { game: Maybe<WithTypename<Game>> },
@@ -7083,9 +6623,9 @@ export type GraphCacheUpdaters = {
       { gameByEventIdAndName: Maybe<WithTypename<Game>> },
       QueryGameByEventIdAndNameArgs
     >
-    gameById?: GraphCacheUpdateResolver<
-      { gameById: Maybe<WithTypename<Game>> },
-      QueryGameByIdArgs
+    gameByRowId?: GraphCacheUpdateResolver<
+      { gameByRowId: Maybe<WithTypename<Game>> },
+      QueryGameByRowIdArgs
     >
     gameEstimationNumericRound?: GraphCacheUpdateResolver<
       {
@@ -7095,13 +6635,13 @@ export type GraphCacheUpdaters = {
       },
       QueryGameEstimationNumericRoundArgs
     >
-    gameEstimationNumericRoundById?: GraphCacheUpdateResolver<
+    gameEstimationNumericRoundByRowId?: GraphCacheUpdateResolver<
       {
-        gameEstimationNumericRoundById: Maybe<
+        gameEstimationNumericRoundByRowId: Maybe<
           WithTypename<GameEstimationNumericRound>
         >
       },
-      QueryGameEstimationNumericRoundByIdArgs
+      QueryGameEstimationNumericRoundByRowIdArgs
     >
     gameEstimationNumericVote?: GraphCacheUpdateResolver<
       {
@@ -7111,14 +6651,6 @@ export type GraphCacheUpdaters = {
       },
       QueryGameEstimationNumericVoteArgs
     >
-    gameEstimationNumericVoteById?: GraphCacheUpdateResolver<
-      {
-        gameEstimationNumericVoteById: Maybe<
-          WithTypename<GameEstimationNumericVote>
-        >
-      },
-      QueryGameEstimationNumericVoteByIdArgs
-    >
     gameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
         gameEstimationNumericVoteByPlayerIdAndRoundId: Maybe<
@@ -7127,21 +6659,27 @@ export type GraphCacheUpdaters = {
       },
       QueryGameEstimationNumericVoteByPlayerIdAndRoundIdArgs
     >
+    gameEstimationNumericVoteByRowId?: GraphCacheUpdateResolver<
+      {
+        gameEstimationNumericVoteByRowId: Maybe<
+          WithTypename<GameEstimationNumericVote>
+        >
+      },
+      QueryGameEstimationNumericVoteByRowIdArgs
+    >
     gameRandomFactsRound?: GraphCacheUpdateResolver<
       { gameRandomFactsRound: Maybe<WithTypename<GameRandomFactsRound>> },
       QueryGameRandomFactsRoundArgs
     >
-    gameRandomFactsRoundById?: GraphCacheUpdateResolver<
-      { gameRandomFactsRoundById: Maybe<WithTypename<GameRandomFactsRound>> },
-      QueryGameRandomFactsRoundByIdArgs
+    gameRandomFactsRoundByRowId?: GraphCacheUpdateResolver<
+      {
+        gameRandomFactsRoundByRowId: Maybe<WithTypename<GameRandomFactsRound>>
+      },
+      QueryGameRandomFactsRoundByRowIdArgs
     >
     gameRandomFactsVote?: GraphCacheUpdateResolver<
       { gameRandomFactsVote: Maybe<WithTypename<GameRandomFactsVote>> },
       QueryGameRandomFactsVoteArgs
-    >
-    gameRandomFactsVoteById?: GraphCacheUpdateResolver<
-      { gameRandomFactsVoteById: Maybe<WithTypename<GameRandomFactsVote>> },
-      QueryGameRandomFactsVoteByIdArgs
     >
     gameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
@@ -7151,13 +6689,21 @@ export type GraphCacheUpdaters = {
       },
       QueryGameRandomFactsVoteByPlayerIdAndRoundIdArgs
     >
+    gameRandomFactsVoteByRowId?: GraphCacheUpdateResolver<
+      { gameRandomFactsVoteByRowId: Maybe<WithTypename<GameRandomFactsVote>> },
+      QueryGameRandomFactsVoteByRowIdArgs
+    >
     gameTeamScore?: GraphCacheUpdateResolver<
       { gameTeamScore: Maybe<WithTypename<GameTeamScore>> },
       QueryGameTeamScoreArgs
     >
-    gameTeamScoreById?: GraphCacheUpdateResolver<
-      { gameTeamScoreById: Maybe<WithTypename<GameTeamScore>> },
-      QueryGameTeamScoreByIdArgs
+    gameTeamScoreByRowId?: GraphCacheUpdateResolver<
+      { gameTeamScoreByRowId: Maybe<WithTypename<GameTeamScore>> },
+      QueryGameTeamScoreByRowIdArgs
+    >
+    id?: GraphCacheUpdateResolver<
+      { id: Scalars['ID']['output'] },
+      Record<string, never>
     >
     kvByKey?: GraphCacheUpdateResolver<
       { kvByKey: Maybe<WithTypename<Kv>> },
@@ -7182,25 +6728,21 @@ export type GraphCacheUpdaters = {
       },
       QueryNodeArgs
     >
-    nodeId?: GraphCacheUpdateResolver<
-      { nodeId: Scalars['ID']['output'] },
-      Record<string, never>
-    >
     player?: GraphCacheUpdateResolver<
       { player: Maybe<WithTypename<Player>> },
       QueryPlayerArgs
-    >
-    playerById?: GraphCacheUpdateResolver<
-      { playerById: Maybe<WithTypename<Player>> },
-      QueryPlayerByIdArgs
     >
     playerByInvitationCode?: GraphCacheUpdateResolver<
       { playerByInvitationCode: Maybe<WithTypename<Player>> },
       QueryPlayerByInvitationCodeArgs
     >
     playerByInvitationCodeFn?: GraphCacheUpdateResolver<
-      { playerByInvitationCodeFn: Maybe<WithTypename<PlayersConnection>> },
+      { playerByInvitationCodeFn: Maybe<WithTypename<PlayerConnection>> },
       QueryPlayerByInvitationCodeFnArgs
+    >
+    playerByRowId?: GraphCacheUpdateResolver<
+      { playerByRowId: Maybe<WithTypename<Player>> },
+      QueryPlayerByRowIdArgs
     >
     playerByTeamIdAndInvitationCode?: GraphCacheUpdateResolver<
       { playerByTeamIdAndInvitationCode: Maybe<WithTypename<Player>> },
@@ -7218,17 +6760,17 @@ export type GraphCacheUpdaters = {
       { team: Maybe<WithTypename<Team>> },
       QueryTeamArgs
     >
-    teamById?: GraphCacheUpdateResolver<
-      { teamById: Maybe<WithTypename<Team>> },
-      QueryTeamByIdArgs
+    teamByRowId?: GraphCacheUpdateResolver<
+      { teamByRowId: Maybe<WithTypename<Team>> },
+      QueryTeamByRowIdArgs
     >
     teamLeader?: GraphCacheUpdateResolver<
       { teamLeader: Maybe<WithTypename<TeamLeader>> },
       QueryTeamLeaderArgs
     >
-    teamLeaderById?: GraphCacheUpdateResolver<
-      { teamLeaderById: Maybe<WithTypename<TeamLeader>> },
-      QueryTeamLeaderByIdArgs
+    teamLeaderByRowId?: GraphCacheUpdateResolver<
+      { teamLeaderByRowId: Maybe<WithTypename<TeamLeader>> },
+      QueryTeamLeaderByRowIdArgs
     >
     teamPlayerCount?: GraphCacheUpdateResolver<
       { teamPlayerCount: Maybe<WithTypename<TeamPlayerCountConnection>> },
@@ -7312,14 +6854,6 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteCharityOrganizationArgs
     >
-    deleteCharityOrganizationById?: GraphCacheUpdateResolver<
-      {
-        deleteCharityOrganizationById: Maybe<
-          WithTypename<DeleteCharityOrganizationPayload>
-        >
-      },
-      MutationDeleteCharityOrganizationByIdArgs
-    >
     deleteCharityOrganizationByName?: GraphCacheUpdateResolver<
       {
         deleteCharityOrganizationByName: Maybe<
@@ -7327,6 +6861,14 @@ export type GraphCacheUpdaters = {
         >
       },
       MutationDeleteCharityOrganizationByNameArgs
+    >
+    deleteCharityOrganizationByRowId?: GraphCacheUpdateResolver<
+      {
+        deleteCharityOrganizationByRowId: Maybe<
+          WithTypename<DeleteCharityOrganizationPayload>
+        >
+      },
+      MutationDeleteCharityOrganizationByRowIdArgs
     >
     deleteCharityOrganizationByUrl?: GraphCacheUpdateResolver<
       {
@@ -7340,13 +6882,13 @@ export type GraphCacheUpdaters = {
       { deleteEvent: Maybe<WithTypename<DeleteEventPayload>> },
       MutationDeleteEventArgs
     >
-    deleteEventById?: GraphCacheUpdateResolver<
-      { deleteEventById: Maybe<WithTypename<DeleteEventPayload>> },
-      MutationDeleteEventByIdArgs
-    >
     deleteEventByName?: GraphCacheUpdateResolver<
       { deleteEventByName: Maybe<WithTypename<DeleteEventPayload>> },
       MutationDeleteEventByNameArgs
+    >
+    deleteEventByRowId?: GraphCacheUpdateResolver<
+      { deleteEventByRowId: Maybe<WithTypename<DeleteEventPayload>> },
+      MutationDeleteEventByRowIdArgs
     >
     deleteGame?: GraphCacheUpdateResolver<
       { deleteGame: Maybe<WithTypename<DeleteGamePayload>> },
@@ -7356,9 +6898,9 @@ export type GraphCacheUpdaters = {
       { deleteGameByEventIdAndName: Maybe<WithTypename<DeleteGamePayload>> },
       MutationDeleteGameByEventIdAndNameArgs
     >
-    deleteGameById?: GraphCacheUpdateResolver<
-      { deleteGameById: Maybe<WithTypename<DeleteGamePayload>> },
-      MutationDeleteGameByIdArgs
+    deleteGameByRowId?: GraphCacheUpdateResolver<
+      { deleteGameByRowId: Maybe<WithTypename<DeleteGamePayload>> },
+      MutationDeleteGameByRowIdArgs
     >
     deleteGameEstimationNumericRound?: GraphCacheUpdateResolver<
       {
@@ -7368,13 +6910,13 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteGameEstimationNumericRoundArgs
     >
-    deleteGameEstimationNumericRoundById?: GraphCacheUpdateResolver<
+    deleteGameEstimationNumericRoundByRowId?: GraphCacheUpdateResolver<
       {
-        deleteGameEstimationNumericRoundById: Maybe<
+        deleteGameEstimationNumericRoundByRowId: Maybe<
           WithTypename<DeleteGameEstimationNumericRoundPayload>
         >
       },
-      MutationDeleteGameEstimationNumericRoundByIdArgs
+      MutationDeleteGameEstimationNumericRoundByRowIdArgs
     >
     deleteGameEstimationNumericVote?: GraphCacheUpdateResolver<
       {
@@ -7384,14 +6926,6 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteGameEstimationNumericVoteArgs
     >
-    deleteGameEstimationNumericVoteById?: GraphCacheUpdateResolver<
-      {
-        deleteGameEstimationNumericVoteById: Maybe<
-          WithTypename<DeleteGameEstimationNumericVotePayload>
-        >
-      },
-      MutationDeleteGameEstimationNumericVoteByIdArgs
-    >
     deleteGameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
         deleteGameEstimationNumericVoteByPlayerIdAndRoundId: Maybe<
@@ -7399,6 +6933,14 @@ export type GraphCacheUpdaters = {
         >
       },
       MutationDeleteGameEstimationNumericVoteByPlayerIdAndRoundIdArgs
+    >
+    deleteGameEstimationNumericVoteByRowId?: GraphCacheUpdateResolver<
+      {
+        deleteGameEstimationNumericVoteByRowId: Maybe<
+          WithTypename<DeleteGameEstimationNumericVotePayload>
+        >
+      },
+      MutationDeleteGameEstimationNumericVoteByRowIdArgs
     >
     deleteGameRandomFactsRound?: GraphCacheUpdateResolver<
       {
@@ -7408,13 +6950,13 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteGameRandomFactsRoundArgs
     >
-    deleteGameRandomFactsRoundById?: GraphCacheUpdateResolver<
+    deleteGameRandomFactsRoundByRowId?: GraphCacheUpdateResolver<
       {
-        deleteGameRandomFactsRoundById: Maybe<
+        deleteGameRandomFactsRoundByRowId: Maybe<
           WithTypename<DeleteGameRandomFactsRoundPayload>
         >
       },
-      MutationDeleteGameRandomFactsRoundByIdArgs
+      MutationDeleteGameRandomFactsRoundByRowIdArgs
     >
     deleteGameRandomFactsVote?: GraphCacheUpdateResolver<
       {
@@ -7424,14 +6966,6 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteGameRandomFactsVoteArgs
     >
-    deleteGameRandomFactsVoteById?: GraphCacheUpdateResolver<
-      {
-        deleteGameRandomFactsVoteById: Maybe<
-          WithTypename<DeleteGameRandomFactsVotePayload>
-        >
-      },
-      MutationDeleteGameRandomFactsVoteByIdArgs
-    >
     deleteGameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
         deleteGameRandomFactsVoteByPlayerIdAndRoundId: Maybe<
@@ -7440,15 +6974,25 @@ export type GraphCacheUpdaters = {
       },
       MutationDeleteGameRandomFactsVoteByPlayerIdAndRoundIdArgs
     >
+    deleteGameRandomFactsVoteByRowId?: GraphCacheUpdateResolver<
+      {
+        deleteGameRandomFactsVoteByRowId: Maybe<
+          WithTypename<DeleteGameRandomFactsVotePayload>
+        >
+      },
+      MutationDeleteGameRandomFactsVoteByRowIdArgs
+    >
     deleteGameTeamScore?: GraphCacheUpdateResolver<
       { deleteGameTeamScore: Maybe<WithTypename<DeleteGameTeamScorePayload>> },
       MutationDeleteGameTeamScoreArgs
     >
-    deleteGameTeamScoreById?: GraphCacheUpdateResolver<
+    deleteGameTeamScoreByRowId?: GraphCacheUpdateResolver<
       {
-        deleteGameTeamScoreById: Maybe<WithTypename<DeleteGameTeamScorePayload>>
+        deleteGameTeamScoreByRowId: Maybe<
+          WithTypename<DeleteGameTeamScorePayload>
+        >
       },
-      MutationDeleteGameTeamScoreByIdArgs
+      MutationDeleteGameTeamScoreByRowIdArgs
     >
     deleteKvByKey?: GraphCacheUpdateResolver<
       { deleteKvByKey: Maybe<WithTypename<DeleteKvPayload>> },
@@ -7458,15 +7002,15 @@ export type GraphCacheUpdaters = {
       { deletePlayer: Maybe<WithTypename<DeletePlayerPayload>> },
       MutationDeletePlayerArgs
     >
-    deletePlayerById?: GraphCacheUpdateResolver<
-      { deletePlayerById: Maybe<WithTypename<DeletePlayerPayload>> },
-      MutationDeletePlayerByIdArgs
-    >
     deletePlayerByInvitationCode?: GraphCacheUpdateResolver<
       {
         deletePlayerByInvitationCode: Maybe<WithTypename<DeletePlayerPayload>>
       },
       MutationDeletePlayerByInvitationCodeArgs
+    >
+    deletePlayerByRowId?: GraphCacheUpdateResolver<
+      { deletePlayerByRowId: Maybe<WithTypename<DeletePlayerPayload>> },
+      MutationDeletePlayerByRowIdArgs
     >
     deletePlayerByTeamIdAndInvitationCode?: GraphCacheUpdateResolver<
       {
@@ -7480,17 +7024,17 @@ export type GraphCacheUpdaters = {
       { deleteTeam: Maybe<WithTypename<DeleteTeamPayload>> },
       MutationDeleteTeamArgs
     >
-    deleteTeamById?: GraphCacheUpdateResolver<
-      { deleteTeamById: Maybe<WithTypename<DeleteTeamPayload>> },
-      MutationDeleteTeamByIdArgs
+    deleteTeamByRowId?: GraphCacheUpdateResolver<
+      { deleteTeamByRowId: Maybe<WithTypename<DeleteTeamPayload>> },
+      MutationDeleteTeamByRowIdArgs
     >
     deleteTeamLeader?: GraphCacheUpdateResolver<
       { deleteTeamLeader: Maybe<WithTypename<DeleteTeamLeaderPayload>> },
       MutationDeleteTeamLeaderArgs
     >
-    deleteTeamLeaderById?: GraphCacheUpdateResolver<
-      { deleteTeamLeaderById: Maybe<WithTypename<DeleteTeamLeaderPayload>> },
-      MutationDeleteTeamLeaderByIdArgs
+    deleteTeamLeaderByRowId?: GraphCacheUpdateResolver<
+      { deleteTeamLeaderByRowId: Maybe<WithTypename<DeleteTeamLeaderPayload>> },
+      MutationDeleteTeamLeaderByRowIdArgs
     >
     updateCharityOrganization?: GraphCacheUpdateResolver<
       {
@@ -7500,14 +7044,6 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateCharityOrganizationArgs
     >
-    updateCharityOrganizationById?: GraphCacheUpdateResolver<
-      {
-        updateCharityOrganizationById: Maybe<
-          WithTypename<UpdateCharityOrganizationPayload>
-        >
-      },
-      MutationUpdateCharityOrganizationByIdArgs
-    >
     updateCharityOrganizationByName?: GraphCacheUpdateResolver<
       {
         updateCharityOrganizationByName: Maybe<
@@ -7515,6 +7051,14 @@ export type GraphCacheUpdaters = {
         >
       },
       MutationUpdateCharityOrganizationByNameArgs
+    >
+    updateCharityOrganizationByRowId?: GraphCacheUpdateResolver<
+      {
+        updateCharityOrganizationByRowId: Maybe<
+          WithTypename<UpdateCharityOrganizationPayload>
+        >
+      },
+      MutationUpdateCharityOrganizationByRowIdArgs
     >
     updateCharityOrganizationByUrl?: GraphCacheUpdateResolver<
       {
@@ -7528,13 +7072,13 @@ export type GraphCacheUpdaters = {
       { updateEvent: Maybe<WithTypename<UpdateEventPayload>> },
       MutationUpdateEventArgs
     >
-    updateEventById?: GraphCacheUpdateResolver<
-      { updateEventById: Maybe<WithTypename<UpdateEventPayload>> },
-      MutationUpdateEventByIdArgs
-    >
     updateEventByName?: GraphCacheUpdateResolver<
       { updateEventByName: Maybe<WithTypename<UpdateEventPayload>> },
       MutationUpdateEventByNameArgs
+    >
+    updateEventByRowId?: GraphCacheUpdateResolver<
+      { updateEventByRowId: Maybe<WithTypename<UpdateEventPayload>> },
+      MutationUpdateEventByRowIdArgs
     >
     updateGame?: GraphCacheUpdateResolver<
       { updateGame: Maybe<WithTypename<UpdateGamePayload>> },
@@ -7544,9 +7088,9 @@ export type GraphCacheUpdaters = {
       { updateGameByEventIdAndName: Maybe<WithTypename<UpdateGamePayload>> },
       MutationUpdateGameByEventIdAndNameArgs
     >
-    updateGameById?: GraphCacheUpdateResolver<
-      { updateGameById: Maybe<WithTypename<UpdateGamePayload>> },
-      MutationUpdateGameByIdArgs
+    updateGameByRowId?: GraphCacheUpdateResolver<
+      { updateGameByRowId: Maybe<WithTypename<UpdateGamePayload>> },
+      MutationUpdateGameByRowIdArgs
     >
     updateGameEstimationNumericRound?: GraphCacheUpdateResolver<
       {
@@ -7556,13 +7100,13 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateGameEstimationNumericRoundArgs
     >
-    updateGameEstimationNumericRoundById?: GraphCacheUpdateResolver<
+    updateGameEstimationNumericRoundByRowId?: GraphCacheUpdateResolver<
       {
-        updateGameEstimationNumericRoundById: Maybe<
+        updateGameEstimationNumericRoundByRowId: Maybe<
           WithTypename<UpdateGameEstimationNumericRoundPayload>
         >
       },
-      MutationUpdateGameEstimationNumericRoundByIdArgs
+      MutationUpdateGameEstimationNumericRoundByRowIdArgs
     >
     updateGameEstimationNumericVote?: GraphCacheUpdateResolver<
       {
@@ -7572,14 +7116,6 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateGameEstimationNumericVoteArgs
     >
-    updateGameEstimationNumericVoteById?: GraphCacheUpdateResolver<
-      {
-        updateGameEstimationNumericVoteById: Maybe<
-          WithTypename<UpdateGameEstimationNumericVotePayload>
-        >
-      },
-      MutationUpdateGameEstimationNumericVoteByIdArgs
-    >
     updateGameEstimationNumericVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
         updateGameEstimationNumericVoteByPlayerIdAndRoundId: Maybe<
@@ -7587,6 +7123,14 @@ export type GraphCacheUpdaters = {
         >
       },
       MutationUpdateGameEstimationNumericVoteByPlayerIdAndRoundIdArgs
+    >
+    updateGameEstimationNumericVoteByRowId?: GraphCacheUpdateResolver<
+      {
+        updateGameEstimationNumericVoteByRowId: Maybe<
+          WithTypename<UpdateGameEstimationNumericVotePayload>
+        >
+      },
+      MutationUpdateGameEstimationNumericVoteByRowIdArgs
     >
     updateGameRandomFactsRound?: GraphCacheUpdateResolver<
       {
@@ -7596,13 +7140,13 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateGameRandomFactsRoundArgs
     >
-    updateGameRandomFactsRoundById?: GraphCacheUpdateResolver<
+    updateGameRandomFactsRoundByRowId?: GraphCacheUpdateResolver<
       {
-        updateGameRandomFactsRoundById: Maybe<
+        updateGameRandomFactsRoundByRowId: Maybe<
           WithTypename<UpdateGameRandomFactsRoundPayload>
         >
       },
-      MutationUpdateGameRandomFactsRoundByIdArgs
+      MutationUpdateGameRandomFactsRoundByRowIdArgs
     >
     updateGameRandomFactsVote?: GraphCacheUpdateResolver<
       {
@@ -7612,14 +7156,6 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateGameRandomFactsVoteArgs
     >
-    updateGameRandomFactsVoteById?: GraphCacheUpdateResolver<
-      {
-        updateGameRandomFactsVoteById: Maybe<
-          WithTypename<UpdateGameRandomFactsVotePayload>
-        >
-      },
-      MutationUpdateGameRandomFactsVoteByIdArgs
-    >
     updateGameRandomFactsVoteByPlayerIdAndRoundId?: GraphCacheUpdateResolver<
       {
         updateGameRandomFactsVoteByPlayerIdAndRoundId: Maybe<
@@ -7628,15 +7164,25 @@ export type GraphCacheUpdaters = {
       },
       MutationUpdateGameRandomFactsVoteByPlayerIdAndRoundIdArgs
     >
+    updateGameRandomFactsVoteByRowId?: GraphCacheUpdateResolver<
+      {
+        updateGameRandomFactsVoteByRowId: Maybe<
+          WithTypename<UpdateGameRandomFactsVotePayload>
+        >
+      },
+      MutationUpdateGameRandomFactsVoteByRowIdArgs
+    >
     updateGameTeamScore?: GraphCacheUpdateResolver<
       { updateGameTeamScore: Maybe<WithTypename<UpdateGameTeamScorePayload>> },
       MutationUpdateGameTeamScoreArgs
     >
-    updateGameTeamScoreById?: GraphCacheUpdateResolver<
+    updateGameTeamScoreByRowId?: GraphCacheUpdateResolver<
       {
-        updateGameTeamScoreById: Maybe<WithTypename<UpdateGameTeamScorePayload>>
+        updateGameTeamScoreByRowId: Maybe<
+          WithTypename<UpdateGameTeamScorePayload>
+        >
       },
-      MutationUpdateGameTeamScoreByIdArgs
+      MutationUpdateGameTeamScoreByRowIdArgs
     >
     updateKvByKey?: GraphCacheUpdateResolver<
       { updateKvByKey: Maybe<WithTypename<UpdateKvPayload>> },
@@ -7646,15 +7192,15 @@ export type GraphCacheUpdaters = {
       { updatePlayer: Maybe<WithTypename<UpdatePlayerPayload>> },
       MutationUpdatePlayerArgs
     >
-    updatePlayerById?: GraphCacheUpdateResolver<
-      { updatePlayerById: Maybe<WithTypename<UpdatePlayerPayload>> },
-      MutationUpdatePlayerByIdArgs
-    >
     updatePlayerByInvitationCode?: GraphCacheUpdateResolver<
       {
         updatePlayerByInvitationCode: Maybe<WithTypename<UpdatePlayerPayload>>
       },
       MutationUpdatePlayerByInvitationCodeArgs
+    >
+    updatePlayerByRowId?: GraphCacheUpdateResolver<
+      { updatePlayerByRowId: Maybe<WithTypename<UpdatePlayerPayload>> },
+      MutationUpdatePlayerByRowIdArgs
     >
     updatePlayerByTeamIdAndInvitationCode?: GraphCacheUpdateResolver<
       {
@@ -7668,17 +7214,17 @@ export type GraphCacheUpdaters = {
       { updateTeam: Maybe<WithTypename<UpdateTeamPayload>> },
       MutationUpdateTeamArgs
     >
-    updateTeamById?: GraphCacheUpdateResolver<
-      { updateTeamById: Maybe<WithTypename<UpdateTeamPayload>> },
-      MutationUpdateTeamByIdArgs
+    updateTeamByRowId?: GraphCacheUpdateResolver<
+      { updateTeamByRowId: Maybe<WithTypename<UpdateTeamPayload>> },
+      MutationUpdateTeamByRowIdArgs
     >
     updateTeamLeader?: GraphCacheUpdateResolver<
       { updateTeamLeader: Maybe<WithTypename<UpdateTeamLeaderPayload>> },
       MutationUpdateTeamLeaderArgs
     >
-    updateTeamLeaderById?: GraphCacheUpdateResolver<
-      { updateTeamLeaderById: Maybe<WithTypename<UpdateTeamLeaderPayload>> },
-      MutationUpdateTeamLeaderByIdArgs
+    updateTeamLeaderByRowId?: GraphCacheUpdateResolver<
+      { updateTeamLeaderByRowId: Maybe<WithTypename<UpdateTeamLeaderPayload>> },
+      MutationUpdateTeamLeaderByRowIdArgs
     >
   }
   Subscription?: object
@@ -7695,44 +7241,40 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CharityOrganization>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CharityOrganization>>,
       Record<string, never>
-    >
-    teamsByCharityOrganizationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganization>>,
-      CharityOrganizationTeamsByCharityOrganizationIdArgs
     >
     url?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CharityOrganization>>,
       Record<string, never>
     >
   }
-  CharityOrganizationsConnection?: {
+  CharityOrganizationConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Maybe<WithTypename<CharityOrganizationConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Maybe<WithTypename<CharityOrganizationConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Maybe<WithTypename<CharityOrganizationConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsConnection>>,
+      Maybe<WithTypename<CharityOrganizationConnection>>,
       Record<string, never>
     >
   }
-  CharityOrganizationsEdge?: {
+  CharityOrganizationEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsEdge>>,
+      Maybe<WithTypename<CharityOrganizationEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CharityOrganizationsEdge>>,
+      Maybe<WithTypename<CharityOrganizationEdge>>,
       Record<string, never>
     >
   }
@@ -7777,10 +7319,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameEstimationNumericRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameEstimationNumericRoundPayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameEstimationNumericRoundPayload>>,
       Record<string, never>
@@ -7799,10 +7337,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
       Record<string, never>
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
       Record<string, never>
@@ -7811,10 +7345,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
       CreateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameEstimationNumericVotePayload>>,
       Record<string, never>
@@ -7822,10 +7352,6 @@ export type GraphCacheUpdaters = {
   }
   CreateGamePayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGamePayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGamePayload>>,
       Record<string, never>
     >
@@ -7847,10 +7373,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
-      Record<string, never>
-    >
     gameRandomFactsRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameRandomFactsRoundPayload>>,
       Record<string, never>
@@ -7869,10 +7391,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
       Record<string, never>
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
-      Record<string, never>
-    >
     gameRandomFactsVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
       Record<string, never>
@@ -7881,10 +7399,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
       CreateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameRandomFactsVotePayload>>,
       Record<string, never>
@@ -7892,10 +7406,6 @@ export type GraphCacheUpdaters = {
   }
   CreateGameTeamScorePayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameTeamScorePayload>>,
-      Record<string, never>
-    >
-    gameByGameId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateGameTeamScorePayload>>,
       Record<string, never>
     >
@@ -7911,10 +7421,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreateGameTeamScorePayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateGameTeamScorePayload>>,
-      Record<string, never>
-    >
   }
   CreateKvPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
@@ -7924,10 +7430,6 @@ export type GraphCacheUpdaters = {
     kv?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateKvPayload>>,
       Record<string, never>
-    >
-    kvEdge?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateKvPayload>>,
-      CreateKvPayloadKvEdgeArgs
     >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateKvPayload>>,
@@ -7951,25 +7453,13 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<CreatePlayerPayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreatePlayerPayload>>,
-      Record<string, never>
-    >
   }
   CreateTeamLeaderPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateTeamLeaderPayload>>,
       Record<string, never>
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateTeamLeaderPayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateTeamLeaderPayload>>,
-      Record<string, never>
-    >
-    teamByTeamId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateTeamLeaderPayload>>,
       Record<string, never>
     >
@@ -7983,15 +7473,7 @@ export type GraphCacheUpdaters = {
     >
   }
   CreateTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateTeamPayload>>,
-      Record<string, never>
-    >
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<CreateTeamPayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<CreateTeamPayload>>,
       Record<string, never>
     >
@@ -8061,10 +7543,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameEstimationNumericRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameEstimationNumericRoundPayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameEstimationNumericRoundPayload>>,
       Record<string, never>
@@ -8087,10 +7565,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
       Record<string, never>
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
       Record<string, never>
@@ -8098,10 +7572,6 @@ export type GraphCacheUpdaters = {
     gameEstimationNumericVoteEdge?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
       DeleteGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs
-    >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
-      Record<string, never>
     >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameEstimationNumericVotePayload>>,
@@ -8114,10 +7584,6 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
     deletedGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGamePayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGamePayload>>,
       Record<string, never>
     >
@@ -8143,10 +7609,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
-      Record<string, never>
-    >
     gameRandomFactsRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameRandomFactsRoundPayload>>,
       Record<string, never>
@@ -8169,10 +7631,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
       Record<string, never>
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
-      Record<string, never>
-    >
     gameRandomFactsVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
       Record<string, never>
@@ -8180,10 +7638,6 @@ export type GraphCacheUpdaters = {
     gameRandomFactsVoteEdge?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
       DeleteGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
-    >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
-      Record<string, never>
     >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameRandomFactsVotePayload>>,
@@ -8199,10 +7653,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameTeamScorePayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
-      Record<string, never>
-    >
     gameTeamScore?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteGameTeamScorePayload>>,
       Record<string, never>
@@ -8215,27 +7665,15 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteGameTeamScorePayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteGameTeamScorePayload>>,
-      Record<string, never>
-    >
   }
   DeleteKvPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteKvPayload>>,
       Record<string, never>
     >
-    deletedKvId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteKvPayload>>,
-      Record<string, never>
-    >
     kv?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteKvPayload>>,
       Record<string, never>
-    >
-    kvEdge?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteKvPayload>>,
-      DeleteKvPayloadKvEdgeArgs
     >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteKvPayload>>,
@@ -8263,10 +7701,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeletePlayerPayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeletePlayerPayload>>,
-      Record<string, never>
-    >
   }
   DeleteTeamLeaderPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
@@ -8277,15 +7711,7 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<DeleteTeamLeaderPayload>>,
       Record<string, never>
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteTeamLeaderPayload>>,
-      Record<string, never>
-    >
-    teamByTeamId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteTeamLeaderPayload>>,
       Record<string, never>
     >
@@ -8299,19 +7725,11 @@ export type GraphCacheUpdaters = {
     >
   }
   DeleteTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteTeamPayload>>,
-      Record<string, never>
-    >
     clientMutationId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteTeamPayload>>,
       Record<string, never>
     >
     deletedTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<DeleteTeamPayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<DeleteTeamPayload>>,
       Record<string, never>
     >
@@ -8361,7 +7779,7 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<Event>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Event>>,
       Record<string, never>
     >
@@ -8378,31 +7796,31 @@ export type GraphCacheUpdaters = {
       EventTeamsByEventIdArgs
     >
   }
-  EventsConnection?: {
+  EventConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsConnection>>,
+      Maybe<WithTypename<EventConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsConnection>>,
+      Maybe<WithTypename<EventConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsConnection>>,
+      Maybe<WithTypename<EventConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsConnection>>,
+      Maybe<WithTypename<EventConnection>>,
       Record<string, never>
     >
   }
-  EventsEdge?: {
+  EventEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsEdge>>,
+      Maybe<WithTypename<EventEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<EventsEdge>>,
+      Maybe<WithTypename<EventEdge>>,
       Record<string, never>
     >
   }
@@ -8439,12 +7857,40 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<Game>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Game>>,
       Record<string, never>
     >
     type?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Game>>,
+      Record<string, never>
+    >
+  }
+  GameConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameConnection>>,
+      Record<string, never>
+    >
+  }
+  GameEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEdge>>,
       Record<string, never>
     >
   }
@@ -8462,31 +7908,31 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
   }
-  GameEstimationNumericLeaderboardViewsConnection?: {
+  GameEstimationNumericLeaderboardViewConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewConnection>>,
       Record<string, never>
     >
   }
-  GameEstimationNumericLeaderboardViewsEdge?: {
+  GameEstimationNumericLeaderboardViewEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsEdge>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericLeaderboardViewsEdge>>,
+      Maybe<WithTypename<GameEstimationNumericLeaderboardViewEdge>>,
       Record<string, never>
     >
   }
@@ -8515,36 +7961,36 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameEstimationNumericRound>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<GameEstimationNumericRound>>,
       Record<string, never>
     >
   }
-  GameEstimationNumericRoundsConnection?: {
+  GameEstimationNumericRoundConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericRoundConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericRoundConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericRoundConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsConnection>>,
+      Maybe<WithTypename<GameEstimationNumericRoundConnection>>,
       Record<string, never>
     >
   }
-  GameEstimationNumericRoundsEdge?: {
+  GameEstimationNumericRoundEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsEdge>>,
+      Maybe<WithTypename<GameEstimationNumericRoundEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericRoundsEdge>>,
+      Maybe<WithTypename<GameEstimationNumericRoundEdge>>,
       Record<string, never>
     >
   }
@@ -8561,10 +8007,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameEstimationNumericVote>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVote>>,
-      Record<string, never>
-    >
     playerByPlayerId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<GameEstimationNumericVote>>,
       Record<string, never>
@@ -8577,32 +8019,36 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameEstimationNumericVote>>,
       Record<string, never>
     >
+    rowId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameEstimationNumericVote>>,
+      Record<string, never>
+    >
   }
-  GameEstimationNumericVotesConnection?: {
+  GameEstimationNumericVoteConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesConnection>>,
+      Maybe<WithTypename<GameEstimationNumericVoteConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesConnection>>,
+      Maybe<WithTypename<GameEstimationNumericVoteConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesConnection>>,
+      Maybe<WithTypename<GameEstimationNumericVoteConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesConnection>>,
+      Maybe<WithTypename<GameEstimationNumericVoteConnection>>,
       Record<string, never>
     >
   }
-  GameEstimationNumericVotesEdge?: {
+  GameEstimationNumericVoteEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesEdge>>,
+      Maybe<WithTypename<GameEstimationNumericVoteEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameEstimationNumericVotesEdge>>,
+      Maybe<WithTypename<GameEstimationNumericVoteEdge>>,
       Record<string, never>
     >
   }
@@ -8627,40 +8073,40 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameRandomFactsRound>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRound>>,
-      Record<string, never>
-    >
     questionerName?: GraphCacheUpdateResolver<
       Maybe<WithTypename<GameRandomFactsRound>>,
       Record<string, never>
     >
+    rowId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsRound>>,
+      Record<string, never>
+    >
   }
-  GameRandomFactsRoundsConnection?: {
+  GameRandomFactsRoundConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Maybe<WithTypename<GameRandomFactsRoundConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Maybe<WithTypename<GameRandomFactsRoundConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Maybe<WithTypename<GameRandomFactsRoundConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsConnection>>,
+      Maybe<WithTypename<GameRandomFactsRoundConnection>>,
       Record<string, never>
     >
   }
-  GameRandomFactsRoundsEdge?: {
+  GameRandomFactsRoundEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsEdge>>,
+      Maybe<WithTypename<GameRandomFactsRoundEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsRoundsEdge>>,
+      Maybe<WithTypename<GameRandomFactsRoundEdge>>,
       Record<string, never>
     >
   }
@@ -8677,10 +8123,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameRandomFactsVote>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVote>>,
-      Record<string, never>
-    >
     playerByPlayerId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<GameRandomFactsVote>>,
       Record<string, never>
@@ -8693,32 +8135,36 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameRandomFactsVote>>,
       Record<string, never>
     >
+    rowId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<GameRandomFactsVote>>,
+      Record<string, never>
+    >
   }
-  GameRandomFactsVotesConnection?: {
+  GameRandomFactsVoteConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Maybe<WithTypename<GameRandomFactsVoteConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Maybe<WithTypename<GameRandomFactsVoteConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Maybe<WithTypename<GameRandomFactsVoteConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesConnection>>,
+      Maybe<WithTypename<GameRandomFactsVoteConnection>>,
       Record<string, never>
     >
   }
-  GameRandomFactsVotesEdge?: {
+  GameRandomFactsVoteEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesEdge>>,
+      Maybe<WithTypename<GameRandomFactsVoteEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameRandomFactsVotesEdge>>,
+      Maybe<WithTypename<GameRandomFactsVoteEdge>>,
       Record<string, never>
     >
   }
@@ -8735,7 +8181,7 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<GameTeamScore>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<GameTeamScore>>,
       Record<string, never>
     >
@@ -8752,59 +8198,31 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
   }
-  GameTeamScoresConnection?: {
+  GameTeamScoreConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Maybe<WithTypename<GameTeamScoreConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Maybe<WithTypename<GameTeamScoreConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Maybe<WithTypename<GameTeamScoreConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresConnection>>,
+      Maybe<WithTypename<GameTeamScoreConnection>>,
       Record<string, never>
     >
   }
-  GameTeamScoresEdge?: {
+  GameTeamScoreEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresEdge>>,
+      Maybe<WithTypename<GameTeamScoreEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GameTeamScoresEdge>>,
-      Record<string, never>
-    >
-  }
-  GamesConnection?: {
-    edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesConnection>>,
-      Record<string, never>
-    >
-    nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesConnection>>,
-      Record<string, never>
-    >
-    pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesConnection>>,
-      Record<string, never>
-    >
-    totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesConnection>>,
-      Record<string, never>
-    >
-  }
-  GamesEdge?: {
-    cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesEdge>>,
-      Record<string, never>
-    >
-    node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<GamesEdge>>,
+      Maybe<WithTypename<GameTeamScoreEdge>>,
       Record<string, never>
     >
   }
@@ -8818,31 +8236,31 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
   }
-  KvsConnection?: {
+  KvConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsConnection>>,
+      Maybe<WithTypename<KvConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsConnection>>,
+      Maybe<WithTypename<KvConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsConnection>>,
+      Maybe<WithTypename<KvConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsConnection>>,
+      Maybe<WithTypename<KvConnection>>,
       Record<string, never>
     >
   }
-  KvsEdge?: {
+  KvEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsEdge>>,
+      Maybe<WithTypename<KvEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<KvsEdge>>,
+      Maybe<WithTypename<KvEdge>>,
       Record<string, never>
     >
   }
@@ -8885,7 +8303,7 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<Player>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Player>>,
       Record<string, never>
     >
@@ -8897,36 +8315,32 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<Player>>,
       Record<string, never>
     >
-    teamLeadersByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<Player>>,
-      PlayerTeamLeadersByPlayerIdArgs
-    >
   }
-  PlayersConnection?: {
+  PlayerConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersConnection>>,
+      Maybe<WithTypename<PlayerConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersConnection>>,
+      Maybe<WithTypename<PlayerConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersConnection>>,
+      Maybe<WithTypename<PlayerConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersConnection>>,
+      Maybe<WithTypename<PlayerConnection>>,
       Record<string, never>
     >
   }
-  PlayersEdge?: {
+  PlayerEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersEdge>>,
+      Maybe<WithTypename<PlayerEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<PlayersEdge>>,
+      Maybe<WithTypename<PlayerEdge>>,
       Record<string, never>
     >
   }
@@ -8971,25 +8385,45 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<Team>>,
       Record<string, never>
     >
-    nodeId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<Team>>,
-      Record<string, never>
-    >
     playersByTeamId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Team>>,
       TeamPlayersByTeamIdArgs
     >
-    teamLeadersByTeamId?: GraphCacheUpdateResolver<
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<Team>>,
-      TeamTeamLeadersByTeamIdArgs
+      Record<string, never>
+    >
+  }
+  TeamConnection?: {
+    edges?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamConnection>>,
+      Record<string, never>
+    >
+    nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamConnection>>,
+      Record<string, never>
+    >
+    totalCount?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamConnection>>,
+      Record<string, never>
+    >
+  }
+  TeamEdge?: {
+    cursor?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamEdge>>,
+      Record<string, never>
+    >
+    node?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamEdge>>,
+      Record<string, never>
     >
   }
   TeamLeader?: {
     id?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeader>>,
-      Record<string, never>
-    >
-    nodeId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<TeamLeader>>,
       Record<string, never>
     >
@@ -8998,6 +8432,10 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
     playerId?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamLeader>>,
+      Record<string, never>
+    >
+    rowId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<TeamLeader>>,
       Record<string, never>
     >
@@ -9010,31 +8448,31 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
   }
-  TeamLeadersConnection?: {
+  TeamLeaderConnection?: {
     edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersConnection>>,
+      Maybe<WithTypename<TeamLeaderConnection>>,
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersConnection>>,
+      Maybe<WithTypename<TeamLeaderConnection>>,
       Record<string, never>
     >
     pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersConnection>>,
+      Maybe<WithTypename<TeamLeaderConnection>>,
       Record<string, never>
     >
     totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersConnection>>,
+      Maybe<WithTypename<TeamLeaderConnection>>,
       Record<string, never>
     >
   }
-  TeamLeadersEdge?: {
+  TeamLeaderEdge?: {
     cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersEdge>>,
+      Maybe<WithTypename<TeamLeaderEdge>>,
       Record<string, never>
     >
     node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamLeadersEdge>>,
+      Maybe<WithTypename<TeamLeaderEdge>>,
       Record<string, never>
     >
   }
@@ -9044,6 +8482,10 @@ export type GraphCacheUpdaters = {
       Record<string, never>
     >
     nodes?: GraphCacheUpdateResolver<
+      Maybe<WithTypename<TeamPlayerCountConnection>>,
+      Record<string, never>
+    >
+    pageInfo?: GraphCacheUpdateResolver<
       Maybe<WithTypename<TeamPlayerCountConnection>>,
       Record<string, never>
     >
@@ -9069,34 +8511,6 @@ export type GraphCacheUpdaters = {
     >
     playerCount?: GraphCacheUpdateResolver<
       Maybe<WithTypename<TeamPlayerCountRecord>>,
-      Record<string, never>
-    >
-  }
-  TeamsConnection?: {
-    edges?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsConnection>>,
-      Record<string, never>
-    >
-    nodes?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsConnection>>,
-      Record<string, never>
-    >
-    pageInfo?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsConnection>>,
-      Record<string, never>
-    >
-    totalCount?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsConnection>>,
-      Record<string, never>
-    >
-  }
-  TeamsEdge?: {
-    cursor?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsEdge>>,
-      Record<string, never>
-    >
-    node?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<TeamsEdge>>,
       Record<string, never>
     >
   }
@@ -9141,10 +8555,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameEstimationNumericRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameEstimationNumericRoundPayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameEstimationNumericRoundPayload>>,
       Record<string, never>
@@ -9163,10 +8573,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
       Record<string, never>
     >
-    gameEstimationNumericRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
-      Record<string, never>
-    >
     gameEstimationNumericVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
       Record<string, never>
@@ -9175,10 +8581,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
       UpdateGameEstimationNumericVotePayloadGameEstimationNumericVoteEdgeArgs
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameEstimationNumericVotePayload>>,
       Record<string, never>
@@ -9186,10 +8588,6 @@ export type GraphCacheUpdaters = {
   }
   UpdateGamePayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGamePayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGamePayload>>,
       Record<string, never>
     >
@@ -9211,10 +8609,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
       Record<string, never>
     >
-    gameByGameId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
-      Record<string, never>
-    >
     gameRandomFactsRound?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameRandomFactsRoundPayload>>,
       Record<string, never>
@@ -9233,10 +8627,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
       Record<string, never>
     >
-    gameRandomFactsRoundByRoundId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
-      Record<string, never>
-    >
     gameRandomFactsVote?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
       Record<string, never>
@@ -9245,10 +8635,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
       UpdateGameRandomFactsVotePayloadGameRandomFactsVoteEdgeArgs
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameRandomFactsVotePayload>>,
       Record<string, never>
@@ -9256,10 +8642,6 @@ export type GraphCacheUpdaters = {
   }
   UpdateGameTeamScorePayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
-      Record<string, never>
-    >
-    gameByGameId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateGameTeamScorePayload>>,
       Record<string, never>
     >
@@ -9275,10 +8657,6 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdateGameTeamScorePayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateGameTeamScorePayload>>,
-      Record<string, never>
-    >
   }
   UpdateKvPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
@@ -9288,10 +8666,6 @@ export type GraphCacheUpdaters = {
     kv?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateKvPayload>>,
       Record<string, never>
-    >
-    kvEdge?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateKvPayload>>,
-      UpdateKvPayloadKvEdgeArgs
     >
     query?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateKvPayload>>,
@@ -9315,25 +8689,13 @@ export type GraphCacheUpdaters = {
       Maybe<WithTypename<UpdatePlayerPayload>>,
       Record<string, never>
     >
-    teamByTeamId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdatePlayerPayload>>,
-      Record<string, never>
-    >
   }
   UpdateTeamLeaderPayload?: {
     clientMutationId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateTeamLeaderPayload>>,
       Record<string, never>
     >
-    playerByPlayerId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
-      Record<string, never>
-    >
     query?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateTeamLeaderPayload>>,
-      Record<string, never>
-    >
-    teamByTeamId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateTeamLeaderPayload>>,
       Record<string, never>
     >
@@ -9347,15 +8709,7 @@ export type GraphCacheUpdaters = {
     >
   }
   UpdateTeamPayload?: {
-    charityOrganizationByCharityOrganizationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateTeamPayload>>,
-      Record<string, never>
-    >
     clientMutationId?: GraphCacheUpdateResolver<
-      Maybe<WithTypename<UpdateTeamPayload>>,
-      Record<string, never>
-    >
-    eventByEventId?: GraphCacheUpdateResolver<
       Maybe<WithTypename<UpdateTeamPayload>>,
       Record<string, never>
     >

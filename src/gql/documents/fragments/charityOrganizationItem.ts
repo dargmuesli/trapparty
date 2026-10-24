@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const CharityOrganizationItem = graphql(`
   fragment CharityOrganizationItem on CharityOrganization {
-    nodeId
-    id
+    id: rowId
     name
     url
   }

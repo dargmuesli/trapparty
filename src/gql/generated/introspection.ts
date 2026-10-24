@@ -46,7 +46,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -55,74 +55,6 @@ export default {
               },
             },
             args: [],
-          },
-          {
-            name: 'teamsByCharityOrganizationId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'OBJECT',
-                name: 'TeamsConnection',
-                ofType: null,
-              },
-            },
-            args: [
-              {
-                name: 'after',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'before',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'condition',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'first',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'last',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'offset',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
           },
           {
             name: 'url',
@@ -145,7 +77,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'CharityOrganizationsConnection',
+        name: 'CharityOrganizationConnection',
         fields: [
           {
             name: 'edges',
@@ -156,8 +88,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'CharityOrganizationEdge',
                     kind: 'OBJECT',
-                    name: 'CharityOrganizationsEdge',
                     ofType: null,
                   },
                 },
@@ -172,9 +104,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'CharityOrganization',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'CharityOrganization',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -185,8 +120,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -208,7 +143,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'CharityOrganizationsEdge',
+        name: 'CharityOrganizationEdge',
         fields: [
           {
             name: 'cursor',
@@ -221,9 +156,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'CharityOrganization',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'CharityOrganization',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -247,19 +185,22 @@ export default {
             name: 'charityOrganizationEdge',
             type: {
               kind: 'OBJECT',
-              name: 'CharityOrganizationsEdge',
+              name: 'CharityOrganizationEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -311,19 +252,22 @@ export default {
             name: 'eventEdge',
             type: {
               kind: 'OBJECT',
-              name: 'EventsEdge',
+              name: 'EventEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -355,15 +299,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericRound',
             type: {
               kind: 'OBJECT',
@@ -376,19 +311,22 @@ export default {
             name: 'gameEstimationNumericRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericRoundsEdge',
+              name: 'GameEstimationNumericRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -420,15 +358,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameEstimationNumericRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericVote',
             type: {
               kind: 'OBJECT',
@@ -441,33 +370,27 @@ export default {
             name: 'gameEstimationNumericVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericVotesEdge',
+              name: 'GameEstimationNumericVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -494,15 +417,6 @@ export default {
             args: [],
           },
           {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'game',
             type: {
               kind: 'OBJECT',
@@ -515,19 +429,22 @@ export default {
             name: 'gameEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GamesEdge',
+              name: 'GameEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -559,15 +476,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsRound',
             type: {
               kind: 'OBJECT',
@@ -580,19 +488,22 @@ export default {
             name: 'gameRandomFactsRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsRoundsEdge',
+              name: 'GameRandomFactsRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -624,15 +535,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameRandomFactsRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameRandomFactsRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsVote',
             type: {
               kind: 'OBJECT',
@@ -645,33 +547,27 @@ export default {
             name: 'gameRandomFactsVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsVotesEdge',
+              name: 'GameRandomFactsVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -698,15 +594,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameTeamScore',
             type: {
               kind: 'OBJECT',
@@ -719,19 +606,22 @@ export default {
             name: 'gameTeamScoreEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameTeamScoresEdge',
+              name: 'GameTeamScoreEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -743,15 +633,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -779,29 +660,6 @@ export default {
               ofType: null,
             },
             args: [],
-          },
-          {
-            name: 'kvEdge',
-            type: {
-              kind: 'OBJECT',
-              name: 'KvsEdge',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
           },
           {
             name: 'query',
@@ -840,19 +698,22 @@ export default {
             name: 'playerEdge',
             type: {
               kind: 'OBJECT',
-              name: 'PlayersEdge',
+              name: 'PlayerEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -864,15 +725,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -893,28 +745,10 @@ export default {
             args: [],
           },
           {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'query',
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -932,19 +766,22 @@ export default {
             name: 'teamLeaderEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamLeadersEdge',
+              name: 'TeamLeaderEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -959,28 +796,10 @@ export default {
         name: 'CreateTeamPayload',
         fields: [
           {
-            name: 'charityOrganizationByCharityOrganizationId',
-            type: {
-              kind: 'OBJECT',
-              name: 'CharityOrganization',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'clientMutationId',
             type: {
               kind: 'SCALAR',
               name: 'Any',
-            },
-            args: [],
-          },
-          {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
             },
             args: [],
           },
@@ -1006,19 +825,22 @@ export default {
             name: 'teamEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamsEdge',
+              name: 'TeamEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1045,19 +867,22 @@ export default {
             name: 'charityOrganizationEdge',
             type: {
               kind: 'OBJECT',
-              name: 'CharityOrganizationsEdge',
+              name: 'CharityOrganizationEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1125,19 +950,22 @@ export default {
             name: 'eventEdge',
             type: {
               kind: 'OBJECT',
-              name: 'EventsEdge',
+              name: 'EventEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1177,15 +1005,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericRound',
             type: {
               kind: 'OBJECT',
@@ -1198,19 +1017,22 @@ export default {
             name: 'gameEstimationNumericRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericRoundsEdge',
+              name: 'GameEstimationNumericRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1250,15 +1072,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameEstimationNumericRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericVote',
             type: {
               kind: 'OBJECT',
@@ -1271,33 +1084,27 @@ export default {
             name: 'gameEstimationNumericVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericVotesEdge',
+              name: 'GameEstimationNumericVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -1332,15 +1139,6 @@ export default {
             args: [],
           },
           {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'game',
             type: {
               kind: 'OBJECT',
@@ -1353,19 +1151,22 @@ export default {
             name: 'gameEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GamesEdge',
+              name: 'GameEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1405,15 +1206,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsRound',
             type: {
               kind: 'OBJECT',
@@ -1426,19 +1218,22 @@ export default {
             name: 'gameRandomFactsRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsRoundsEdge',
+              name: 'GameRandomFactsRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1478,15 +1273,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameRandomFactsRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameRandomFactsRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsVote',
             type: {
               kind: 'OBJECT',
@@ -1499,33 +1285,27 @@ export default {
             name: 'gameRandomFactsVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsVotesEdge',
+              name: 'GameRandomFactsVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -1560,15 +1340,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameTeamScore',
             type: {
               kind: 'OBJECT',
@@ -1581,19 +1352,22 @@ export default {
             name: 'gameTeamScoreEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameTeamScoresEdge',
+              name: 'GameTeamScoreEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1605,15 +1379,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -1634,14 +1399,6 @@ export default {
             args: [],
           },
           {
-            name: 'deletedKvId',
-            type: {
-              kind: 'SCALAR',
-              name: 'Any',
-            },
-            args: [],
-          },
-          {
             name: 'kv',
             type: {
               kind: 'OBJECT',
@@ -1649,29 +1406,6 @@ export default {
               ofType: null,
             },
             args: [],
-          },
-          {
-            name: 'kvEdge',
-            type: {
-              kind: 'OBJECT',
-              name: 'KvsEdge',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
           },
           {
             name: 'query',
@@ -1718,19 +1452,22 @@ export default {
             name: 'playerEdge',
             type: {
               kind: 'OBJECT',
-              name: 'PlayersEdge',
+              name: 'PlayerEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1742,15 +1479,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -1779,28 +1507,10 @@ export default {
             args: [],
           },
           {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'query',
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -1818,19 +1528,22 @@ export default {
             name: 'teamLeaderEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamLeadersEdge',
+              name: 'TeamLeaderEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1845,15 +1558,6 @@ export default {
         name: 'DeleteTeamPayload',
         fields: [
           {
-            name: 'charityOrganizationByCharityOrganizationId',
-            type: {
-              kind: 'OBJECT',
-              name: 'CharityOrganization',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'clientMutationId',
             type: {
               kind: 'SCALAR',
@@ -1866,15 +1570,6 @@ export default {
             type: {
               kind: 'SCALAR',
               name: 'Any',
-            },
-            args: [],
-          },
-          {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
             },
             args: [],
           },
@@ -1900,19 +1595,22 @@ export default {
             name: 'teamEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamsEdge',
+              name: 'TeamEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -1971,8 +1669,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameConnection',
                 kind: 'OBJECT',
-                name: 'GamesConnection',
                 ofType: null,
               },
             },
@@ -2057,7 +1755,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -2091,8 +1789,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'TeamConnection',
                 kind: 'OBJECT',
-                name: 'TeamsConnection',
                 ofType: null,
               },
             },
@@ -2164,7 +1862,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'EventsConnection',
+        name: 'EventConnection',
         fields: [
           {
             name: 'edges',
@@ -2175,8 +1873,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'EventEdge',
                     kind: 'OBJECT',
-                    name: 'EventsEdge',
                     ofType: null,
                   },
                 },
@@ -2191,9 +1889,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'Event',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'Event',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -2204,8 +1905,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -2227,7 +1928,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'EventsEdge',
+        name: 'EventEdge',
         fields: [
           {
             name: 'cursor',
@@ -2240,9 +1941,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'Event',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -2278,8 +1982,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameEstimationNumericRoundConnection',
                 kind: 'OBJECT',
-                name: 'GameEstimationNumericRoundsConnection',
                 ofType: null,
               },
             },
@@ -2346,8 +2050,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameRandomFactsRoundConnection',
                 kind: 'OBJECT',
-                name: 'GameRandomFactsRoundsConnection',
                 ofType: null,
               },
             },
@@ -2414,8 +2118,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameTeamScoreConnection',
                 kind: 'OBJECT',
-                name: 'GameTeamScoresConnection',
                 ofType: null,
               },
             },
@@ -2511,7 +2215,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -2539,6 +2243,99 @@ export default {
             name: 'Node',
           },
         ],
+      },
+      {
+        kind: 'OBJECT',
+        name: 'GameConnection',
+        fields: [
+          {
+            name: 'edges',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameEdge',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
+                },
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'nodes',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'Game',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
+                },
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'pageInfo',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'PageInfo',
+                kind: 'OBJECT',
+                ofType: null,
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'totalCount',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'SCALAR',
+                name: 'Any',
+              },
+            },
+            args: [],
+          },
+        ],
+        interfaces: [],
+      },
+      {
+        kind: 'OBJECT',
+        name: 'GameEdge',
+        fields: [
+          {
+            name: 'cursor',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any',
+            },
+            args: [],
+          },
+          {
+            name: 'node',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'Game',
+                kind: 'OBJECT',
+                ofType: null,
+              },
+            },
+            args: [],
+          },
+        ],
+        interfaces: [],
       },
       {
         kind: 'OBJECT',
@@ -2573,7 +2370,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericLeaderboardViewsConnection',
+        name: 'GameEstimationNumericLeaderboardViewConnection',
         fields: [
           {
             name: 'edges',
@@ -2584,8 +2381,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameEstimationNumericLeaderboardViewEdge',
                     kind: 'OBJECT',
-                    name: 'GameEstimationNumericLeaderboardViewsEdge',
                     ofType: null,
                   },
                 },
@@ -2600,9 +2397,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameEstimationNumericLeaderboardView',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameEstimationNumericLeaderboardView',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -2613,8 +2413,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -2636,7 +2436,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericLeaderboardViewsEdge',
+        name: 'GameEstimationNumericLeaderboardViewEdge',
         fields: [
           {
             name: 'cursor',
@@ -2649,9 +2449,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericLeaderboardView',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'GameEstimationNumericLeaderboardView',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -2695,8 +2498,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameEstimationNumericVoteConnection',
                 kind: 'OBJECT',
-                name: 'GameEstimationNumericVotesConnection',
                 ofType: null,
               },
             },
@@ -2781,7 +2584,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -2801,7 +2604,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericRoundsConnection',
+        name: 'GameEstimationNumericRoundConnection',
         fields: [
           {
             name: 'edges',
@@ -2812,8 +2615,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameEstimationNumericRoundEdge',
                     kind: 'OBJECT',
-                    name: 'GameEstimationNumericRoundsEdge',
                     ofType: null,
                   },
                 },
@@ -2828,9 +2631,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameEstimationNumericRound',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameEstimationNumericRound',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -2841,8 +2647,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -2864,7 +2670,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericRoundsEdge',
+        name: 'GameEstimationNumericRoundEdge',
         fields: [
           {
             name: 'cursor',
@@ -2877,9 +2683,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericRound',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'GameEstimationNumericRound',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -2922,17 +2731,6 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'SCALAR',
-                name: 'Any',
-              },
-            },
-            args: [],
-          },
-          {
             name: 'playerByPlayerId',
             type: {
               kind: 'OBJECT',
@@ -2963,6 +2761,17 @@ export default {
             },
             args: [],
           },
+          {
+            name: 'rowId',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'SCALAR',
+                name: 'Any',
+              },
+            },
+            args: [],
+          },
         ],
         interfaces: [
           {
@@ -2973,7 +2782,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericVotesConnection',
+        name: 'GameEstimationNumericVoteConnection',
         fields: [
           {
             name: 'edges',
@@ -2984,8 +2793,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameEstimationNumericVoteEdge',
                     kind: 'OBJECT',
-                    name: 'GameEstimationNumericVotesEdge',
                     ofType: null,
                   },
                 },
@@ -3000,9 +2809,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameEstimationNumericVote',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameEstimationNumericVote',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -3013,8 +2825,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -3036,7 +2848,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameEstimationNumericVotesEdge',
+        name: 'GameEstimationNumericVoteEdge',
         fields: [
           {
             name: 'cursor',
@@ -3049,9 +2861,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericVote',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'GameEstimationNumericVote',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -3095,8 +2910,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameRandomFactsVoteConnection',
                 kind: 'OBJECT',
-                name: 'GameRandomFactsVotesConnection',
                 ofType: null,
               },
             },
@@ -3170,7 +2985,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'questionerName',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -3181,7 +2996,7 @@ export default {
             args: [],
           },
           {
-            name: 'questionerName',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -3201,7 +3016,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameRandomFactsRoundsConnection',
+        name: 'GameRandomFactsRoundConnection',
         fields: [
           {
             name: 'edges',
@@ -3212,8 +3027,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameRandomFactsRoundEdge',
                     kind: 'OBJECT',
-                    name: 'GameRandomFactsRoundsEdge',
                     ofType: null,
                   },
                 },
@@ -3228,9 +3043,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameRandomFactsRound',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameRandomFactsRound',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -3241,8 +3059,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -3264,7 +3082,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameRandomFactsRoundsEdge',
+        name: 'GameRandomFactsRoundEdge',
         fields: [
           {
             name: 'cursor',
@@ -3277,9 +3095,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameRandomFactsRound',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'GameRandomFactsRound',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -3322,17 +3143,6 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'SCALAR',
-                name: 'Any',
-              },
-            },
-            args: [],
-          },
-          {
             name: 'playerByPlayerId',
             type: {
               kind: 'OBJECT',
@@ -3363,6 +3173,17 @@ export default {
             },
             args: [],
           },
+          {
+            name: 'rowId',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'SCALAR',
+                name: 'Any',
+              },
+            },
+            args: [],
+          },
         ],
         interfaces: [
           {
@@ -3373,7 +3194,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameRandomFactsVotesConnection',
+        name: 'GameRandomFactsVoteConnection',
         fields: [
           {
             name: 'edges',
@@ -3384,8 +3205,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameRandomFactsVoteEdge',
                     kind: 'OBJECT',
-                    name: 'GameRandomFactsVotesEdge',
                     ofType: null,
                   },
                 },
@@ -3400,9 +3221,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameRandomFactsVote',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameRandomFactsVote',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -3413,8 +3237,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -3436,7 +3260,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameRandomFactsVotesEdge',
+        name: 'GameRandomFactsVoteEdge',
         fields: [
           {
             name: 'cursor',
@@ -3449,9 +3273,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameRandomFactsVote',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'GameRandomFactsVote',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -3494,7 +3321,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -3545,7 +3372,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameTeamScoresConnection',
+        name: 'GameTeamScoreConnection',
         fields: [
           {
             name: 'edges',
@@ -3556,8 +3383,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'GameTeamScoreEdge',
                     kind: 'OBJECT',
-                    name: 'GameTeamScoresEdge',
                     ofType: null,
                   },
                 },
@@ -3572,9 +3399,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'GameTeamScore',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'GameTeamScore',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -3585,8 +3415,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -3608,7 +3438,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'GameTeamScoresEdge',
+        name: 'GameTeamScoreEdge',
         fields: [
           {
             name: 'cursor',
@@ -3621,96 +3451,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'GameTeamScore',
-              ofType: null,
-            },
-            args: [],
-          },
-        ],
-        interfaces: [],
-      },
-      {
-        kind: 'OBJECT',
-        name: 'GamesConnection',
-        fields: [
-          {
-            name: 'edges',
-            type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'LIST',
-                ofType: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'OBJECT',
-                    name: 'GamesEdge',
-                    ofType: null,
-                  },
-                },
-              },
-            },
-            args: [],
-          },
-          {
-            name: 'nodes',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'LIST',
-                ofType: {
-                  kind: 'OBJECT',
-                  name: 'Game',
-                  ofType: null,
-                },
-              },
-            },
-            args: [],
-          },
-          {
-            name: 'pageInfo',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
+                name: 'GameTeamScore',
                 kind: 'OBJECT',
-                name: 'PageInfo',
                 ofType: null,
               },
-            },
-            args: [],
-          },
-          {
-            name: 'totalCount',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'SCALAR',
-                name: 'Any',
-              },
-            },
-            args: [],
-          },
-        ],
-        interfaces: [],
-      },
-      {
-        kind: 'OBJECT',
-        name: 'GamesEdge',
-        fields: [
-          {
-            name: 'cursor',
-            type: {
-              kind: 'SCALAR',
-              name: 'Any',
-            },
-            args: [],
-          },
-          {
-            name: 'node',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
             },
             args: [],
           },
@@ -3742,7 +3488,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'KvsConnection',
+        name: 'KvConnection',
         fields: [
           {
             name: 'edges',
@@ -3753,8 +3499,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'KvEdge',
                     kind: 'OBJECT',
-                    name: 'KvsEdge',
                     ofType: null,
                   },
                 },
@@ -3769,9 +3515,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'Kv',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'Kv',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -3782,8 +3531,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -3805,7 +3554,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'KvsEdge',
+        name: 'KvEdge',
         fields: [
           {
             name: 'cursor',
@@ -3818,9 +3567,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'Kv',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'Kv',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -4092,7 +3844,7 @@ export default {
             ],
           },
           {
-            name: 'deleteCharityOrganizationById',
+            name: 'deleteCharityOrganizationByName',
             type: {
               kind: 'OBJECT',
               name: 'DeleteCharityOrganizationPayload',
@@ -4112,7 +3864,7 @@ export default {
             ],
           },
           {
-            name: 'deleteCharityOrganizationByName',
+            name: 'deleteCharityOrganizationByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteCharityOrganizationPayload',
@@ -4172,7 +3924,7 @@ export default {
             ],
           },
           {
-            name: 'deleteEventById',
+            name: 'deleteEventByName',
             type: {
               kind: 'OBJECT',
               name: 'DeleteEventPayload',
@@ -4192,7 +3944,7 @@ export default {
             ],
           },
           {
-            name: 'deleteEventByName',
+            name: 'deleteEventByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteEventPayload',
@@ -4252,7 +4004,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameById',
+            name: 'deleteGameByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGamePayload',
@@ -4292,7 +4044,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameEstimationNumericRoundById',
+            name: 'deleteGameEstimationNumericRoundByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameEstimationNumericRoundPayload',
@@ -4332,7 +4084,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameEstimationNumericVoteById',
+            name: 'deleteGameEstimationNumericVoteByPlayerIdAndRoundId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameEstimationNumericVotePayload',
@@ -4352,7 +4104,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameEstimationNumericVoteByPlayerIdAndRoundId',
+            name: 'deleteGameEstimationNumericVoteByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameEstimationNumericVotePayload',
@@ -4392,7 +4144,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameRandomFactsRoundById',
+            name: 'deleteGameRandomFactsRoundByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameRandomFactsRoundPayload',
@@ -4432,7 +4184,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameRandomFactsVoteById',
+            name: 'deleteGameRandomFactsVoteByPlayerIdAndRoundId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameRandomFactsVotePayload',
@@ -4452,7 +4204,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameRandomFactsVoteByPlayerIdAndRoundId',
+            name: 'deleteGameRandomFactsVoteByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameRandomFactsVotePayload',
@@ -4492,7 +4244,7 @@ export default {
             ],
           },
           {
-            name: 'deleteGameTeamScoreById',
+            name: 'deleteGameTeamScoreByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteGameTeamScorePayload',
@@ -4552,7 +4304,7 @@ export default {
             ],
           },
           {
-            name: 'deletePlayerById',
+            name: 'deletePlayerByInvitationCode',
             type: {
               kind: 'OBJECT',
               name: 'DeletePlayerPayload',
@@ -4572,7 +4324,7 @@ export default {
             ],
           },
           {
-            name: 'deletePlayerByInvitationCode',
+            name: 'deletePlayerByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeletePlayerPayload',
@@ -4632,7 +4384,7 @@ export default {
             ],
           },
           {
-            name: 'deleteTeamById',
+            name: 'deleteTeamByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteTeamPayload',
@@ -4672,7 +4424,7 @@ export default {
             ],
           },
           {
-            name: 'deleteTeamLeaderById',
+            name: 'deleteTeamLeaderByRowId',
             type: {
               kind: 'OBJECT',
               name: 'DeleteTeamLeaderPayload',
@@ -4712,7 +4464,7 @@ export default {
             ],
           },
           {
-            name: 'updateCharityOrganizationById',
+            name: 'updateCharityOrganizationByName',
             type: {
               kind: 'OBJECT',
               name: 'UpdateCharityOrganizationPayload',
@@ -4732,7 +4484,7 @@ export default {
             ],
           },
           {
-            name: 'updateCharityOrganizationByName',
+            name: 'updateCharityOrganizationByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateCharityOrganizationPayload',
@@ -4792,7 +4544,7 @@ export default {
             ],
           },
           {
-            name: 'updateEventById',
+            name: 'updateEventByName',
             type: {
               kind: 'OBJECT',
               name: 'UpdateEventPayload',
@@ -4812,7 +4564,7 @@ export default {
             ],
           },
           {
-            name: 'updateEventByName',
+            name: 'updateEventByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateEventPayload',
@@ -4872,7 +4624,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameById',
+            name: 'updateGameByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGamePayload',
@@ -4912,7 +4664,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameEstimationNumericRoundById',
+            name: 'updateGameEstimationNumericRoundByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameEstimationNumericRoundPayload',
@@ -4952,7 +4704,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameEstimationNumericVoteById',
+            name: 'updateGameEstimationNumericVoteByPlayerIdAndRoundId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameEstimationNumericVotePayload',
@@ -4972,7 +4724,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameEstimationNumericVoteByPlayerIdAndRoundId',
+            name: 'updateGameEstimationNumericVoteByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameEstimationNumericVotePayload',
@@ -5012,7 +4764,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameRandomFactsRoundById',
+            name: 'updateGameRandomFactsRoundByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameRandomFactsRoundPayload',
@@ -5052,7 +4804,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameRandomFactsVoteById',
+            name: 'updateGameRandomFactsVoteByPlayerIdAndRoundId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameRandomFactsVotePayload',
@@ -5072,7 +4824,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameRandomFactsVoteByPlayerIdAndRoundId',
+            name: 'updateGameRandomFactsVoteByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameRandomFactsVotePayload',
@@ -5112,7 +4864,7 @@ export default {
             ],
           },
           {
-            name: 'updateGameTeamScoreById',
+            name: 'updateGameTeamScoreByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateGameTeamScorePayload',
@@ -5172,7 +4924,7 @@ export default {
             ],
           },
           {
-            name: 'updatePlayerById',
+            name: 'updatePlayerByInvitationCode',
             type: {
               kind: 'OBJECT',
               name: 'UpdatePlayerPayload',
@@ -5192,7 +4944,7 @@ export default {
             ],
           },
           {
-            name: 'updatePlayerByInvitationCode',
+            name: 'updatePlayerByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdatePlayerPayload',
@@ -5252,7 +5004,7 @@ export default {
             ],
           },
           {
-            name: 'updateTeamById',
+            name: 'updateTeamByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateTeamPayload',
@@ -5292,7 +5044,7 @@ export default {
             ],
           },
           {
-            name: 'updateTeamLeaderById',
+            name: 'updateTeamLeaderByRowId',
             type: {
               kind: 'OBJECT',
               name: 'UpdateTeamLeaderPayload',
@@ -5319,7 +5071,7 @@ export default {
         name: 'Node',
         fields: [
           {
-            name: 'nodeId',
+            name: 'id',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -5436,8 +5188,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameEstimationNumericVoteConnection',
                 kind: 'OBJECT',
-                name: 'GameEstimationNumericVotesConnection',
                 ofType: null,
               },
             },
@@ -5504,8 +5256,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameRandomFactsVoteConnection',
                 kind: 'OBJECT',
-                name: 'GameRandomFactsVotesConnection',
                 ofType: null,
               },
             },
@@ -5601,7 +5353,7 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -5628,74 +5380,6 @@ export default {
             },
             args: [],
           },
-          {
-            name: 'teamLeadersByPlayerId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'OBJECT',
-                name: 'TeamLeadersConnection',
-                ofType: null,
-              },
-            },
-            args: [
-              {
-                name: 'after',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'before',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'condition',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'first',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'last',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'offset',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
-          },
         ],
         interfaces: [
           {
@@ -5706,7 +5390,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'PlayersConnection',
+        name: 'PlayerConnection',
         fields: [
           {
             name: 'edges',
@@ -5717,8 +5401,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'PlayerEdge',
                     kind: 'OBJECT',
-                    name: 'PlayersEdge',
                     ofType: null,
                   },
                 },
@@ -5733,9 +5417,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'Player',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'Player',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -5746,8 +5433,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -5769,7 +5456,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'PlayersEdge',
+        name: 'PlayerEdge',
         fields: [
           {
             name: 'cursor',
@@ -5782,9 +5469,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'Player',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -5799,7 +5489,7 @@ export default {
             name: 'allCharityOrganizations',
             type: {
               kind: 'OBJECT',
-              name: 'CharityOrganizationsConnection',
+              name: 'CharityOrganizationConnection',
               ofType: null,
             },
             args: [
@@ -5864,7 +5554,7 @@ export default {
             name: 'allEvents',
             type: {
               kind: 'OBJECT',
-              name: 'EventsConnection',
+              name: 'EventConnection',
               ofType: null,
             },
             args: [
@@ -5929,7 +5619,7 @@ export default {
             name: 'allGameEstimationNumericLeaderboardViews',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericLeaderboardViewsConnection',
+              name: 'GameEstimationNumericLeaderboardViewConnection',
               ofType: null,
             },
             args: [
@@ -5994,7 +5684,7 @@ export default {
             name: 'allGameEstimationNumericRounds',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericRoundsConnection',
+              name: 'GameEstimationNumericRoundConnection',
               ofType: null,
             },
             args: [
@@ -6059,7 +5749,7 @@ export default {
             name: 'allGameEstimationNumericVotes',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericVotesConnection',
+              name: 'GameEstimationNumericVoteConnection',
               ofType: null,
             },
             args: [
@@ -6124,7 +5814,7 @@ export default {
             name: 'allGameRandomFactsRounds',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsRoundsConnection',
+              name: 'GameRandomFactsRoundConnection',
               ofType: null,
             },
             args: [
@@ -6189,7 +5879,7 @@ export default {
             name: 'allGameRandomFactsVotes',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsVotesConnection',
+              name: 'GameRandomFactsVoteConnection',
               ofType: null,
             },
             args: [
@@ -6254,7 +5944,7 @@ export default {
             name: 'allGameTeamScores',
             type: {
               kind: 'OBJECT',
-              name: 'GameTeamScoresConnection',
+              name: 'GameTeamScoreConnection',
               ofType: null,
             },
             args: [
@@ -6319,7 +6009,7 @@ export default {
             name: 'allGames',
             type: {
               kind: 'OBJECT',
-              name: 'GamesConnection',
+              name: 'GameConnection',
               ofType: null,
             },
             args: [
@@ -6384,7 +6074,7 @@ export default {
             name: 'allKvs',
             type: {
               kind: 'OBJECT',
-              name: 'KvsConnection',
+              name: 'KvConnection',
               ofType: null,
             },
             args: [
@@ -6449,7 +6139,7 @@ export default {
             name: 'allPlayers',
             type: {
               kind: 'OBJECT',
-              name: 'PlayersConnection',
+              name: 'PlayerConnection',
               ofType: null,
             },
             args: [
@@ -6514,7 +6204,7 @@ export default {
             name: 'allTeamLeaders',
             type: {
               kind: 'OBJECT',
-              name: 'TeamLeadersConnection',
+              name: 'TeamLeaderConnection',
               ofType: null,
             },
             args: [
@@ -6579,7 +6269,7 @@ export default {
             name: 'allTeams',
             type: {
               kind: 'OBJECT',
-              name: 'TeamsConnection',
+              name: 'TeamConnection',
               ofType: null,
             },
             args: [
@@ -6649,26 +6339,6 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'charityOrganizationById',
-            type: {
-              kind: 'OBJECT',
-              name: 'CharityOrganization',
-              ofType: null,
-            },
-            args: [
-              {
                 name: 'id',
                 type: {
                   kind: 'NON_NULL',
@@ -6690,6 +6360,26 @@ export default {
             args: [
               {
                 name: 'name',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any',
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: 'charityOrganizationByRowId',
+            type: {
+              kind: 'OBJECT',
+              name: 'CharityOrganization',
+              ofType: null,
+            },
+            args: [
+              {
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -6729,26 +6419,6 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'eventById',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
-            },
-            args: [
-              {
                 name: 'id',
                 type: {
                   kind: 'NON_NULL',
@@ -6781,6 +6451,26 @@ export default {
             ],
           },
           {
+            name: 'eventByRowId',
+            type: {
+              kind: 'OBJECT',
+              name: 'Event',
+              ofType: null,
+            },
+            args: [
+              {
+                name: 'rowId',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any',
+                  },
+                },
+              },
+            ],
+          },
+          {
             name: 'game',
             type: {
               kind: 'OBJECT',
@@ -6789,7 +6479,7 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'id',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -6831,7 +6521,7 @@ export default {
             ],
           },
           {
-            name: 'gameById',
+            name: 'gameByRowId',
             type: {
               kind: 'OBJECT',
               name: 'Game',
@@ -6839,7 +6529,7 @@ export default {
             },
             args: [
               {
-                name: 'id',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -6859,26 +6549,6 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'gameEstimationNumericRoundById',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericRound',
-              ofType: null,
-            },
-            args: [
-              {
                 name: 'id',
                 type: {
                   kind: 'NON_NULL',
@@ -6891,15 +6561,15 @@ export default {
             ],
           },
           {
-            name: 'gameEstimationNumericVote',
+            name: 'gameEstimationNumericRoundByRowId',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericVote',
+              name: 'GameEstimationNumericRound',
               ofType: null,
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -6911,7 +6581,7 @@ export default {
             ],
           },
           {
-            name: 'gameEstimationNumericVoteById',
+            name: 'gameEstimationNumericVote',
             type: {
               kind: 'OBJECT',
               name: 'GameEstimationNumericVote',
@@ -6961,15 +6631,15 @@ export default {
             ],
           },
           {
-            name: 'gameRandomFactsRound',
+            name: 'gameEstimationNumericVoteByRowId',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsRound',
+              name: 'GameEstimationNumericVote',
               ofType: null,
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -6981,7 +6651,7 @@ export default {
             ],
           },
           {
-            name: 'gameRandomFactsRoundById',
+            name: 'gameRandomFactsRound',
             type: {
               kind: 'OBJECT',
               name: 'GameRandomFactsRound',
@@ -7001,15 +6671,15 @@ export default {
             ],
           },
           {
-            name: 'gameRandomFactsVote',
+            name: 'gameRandomFactsRoundByRowId',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsVote',
+              name: 'GameRandomFactsRound',
               ofType: null,
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7021,7 +6691,7 @@ export default {
             ],
           },
           {
-            name: 'gameRandomFactsVoteById',
+            name: 'gameRandomFactsVote',
             type: {
               kind: 'OBJECT',
               name: 'GameRandomFactsVote',
@@ -7071,15 +6741,15 @@ export default {
             ],
           },
           {
-            name: 'gameTeamScore',
+            name: 'gameRandomFactsVoteByRowId',
             type: {
               kind: 'OBJECT',
-              name: 'GameTeamScore',
+              name: 'GameRandomFactsVote',
               ofType: null,
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7091,7 +6761,7 @@ export default {
             ],
           },
           {
-            name: 'gameTeamScoreById',
+            name: 'gameTeamScore',
             type: {
               kind: 'OBJECT',
               name: 'GameTeamScore',
@@ -7109,6 +6779,37 @@ export default {
                 },
               },
             ],
+          },
+          {
+            name: 'gameTeamScoreByRowId',
+            type: {
+              kind: 'OBJECT',
+              name: 'GameTeamScore',
+              ofType: null,
+            },
+            args: [
+              {
+                name: 'rowId',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any',
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: 'id',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'SCALAR',
+                name: 'Any',
+              },
+            },
+            args: [],
           },
           {
             name: 'kvByKey',
@@ -7139,7 +6840,7 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'id',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7149,40 +6850,9 @@ export default {
                 },
               },
             ],
-          },
-          {
-            name: 'nodeId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'SCALAR',
-                name: 'Any',
-              },
-            },
-            args: [],
           },
           {
             name: 'player',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'nodeId',
-                type: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'SCALAR',
-                    name: 'Any',
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'playerById',
             type: {
               kind: 'OBJECT',
               name: 'Player',
@@ -7225,19 +6895,12 @@ export default {
             name: 'playerByInvitationCodeFn',
             type: {
               kind: 'OBJECT',
-              name: 'PlayersConnection',
+              name: 'PlayerConnection',
               ofType: null,
             },
             args: [
               {
                 name: 'after',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'before',
                 type: {
                   kind: 'SCALAR',
                   name: 'Any',
@@ -7261,17 +6924,30 @@ export default {
                 },
               },
               {
-                name: 'last',
+                name: 'offset',
                 type: {
                   kind: 'SCALAR',
                   name: 'Any',
                 },
               },
+            ],
+          },
+          {
+            name: 'playerByRowId',
+            type: {
+              kind: 'OBJECT',
+              name: 'Player',
+              ofType: null,
+            },
+            args: [
               {
-                name: 'offset',
+                name: 'rowId',
                 type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any',
+                  },
                 },
               },
             ],
@@ -7330,8 +7006,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'Query',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -7346,7 +7022,7 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'id',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7358,7 +7034,7 @@ export default {
             ],
           },
           {
-            name: 'teamById',
+            name: 'teamByRowId',
             type: {
               kind: 'OBJECT',
               name: 'Team',
@@ -7366,7 +7042,7 @@ export default {
             },
             args: [
               {
-                name: 'id',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7386,7 +7062,7 @@ export default {
             },
             args: [
               {
-                name: 'nodeId',
+                name: 'id',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7398,7 +7074,7 @@ export default {
             ],
           },
           {
-            name: 'teamLeaderById',
+            name: 'teamLeaderByRowId',
             type: {
               kind: 'OBJECT',
               name: 'TeamLeader',
@@ -7406,7 +7082,7 @@ export default {
             },
             args: [
               {
-                name: 'id',
+                name: 'rowId',
                 type: {
                   kind: 'NON_NULL',
                   ofType: {
@@ -7433,13 +7109,6 @@ export default {
                 },
               },
               {
-                name: 'before',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
                 name: 'eventId',
                 type: {
                   kind: 'NON_NULL',
@@ -7451,13 +7120,6 @@ export default {
               },
               {
                 name: 'first',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'last',
                 type: {
                   kind: 'SCALAR',
                   name: 'Any',
@@ -7553,8 +7215,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
+                name: 'GameTeamScoreConnection',
                 kind: 'OBJECT',
-                name: 'GameTeamScoresConnection',
                 ofType: null,
               },
             },
@@ -7639,7 +7301,75 @@ export default {
             args: [],
           },
           {
-            name: 'nodeId',
+            name: 'playersByTeamId',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'PlayerConnection',
+                kind: 'OBJECT',
+                ofType: null,
+              },
+            },
+            args: [
+              {
+                name: 'after',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'before',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'condition',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'first',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'last',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'offset',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any',
+                },
+              },
+              {
+                name: 'orderBy',
+                type: {
+                  kind: 'LIST',
+                  ofType: {
+                    kind: 'NON_NULL',
+                    ofType: {
+                      kind: 'SCALAR',
+                      name: 'Any',
+                    },
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -7648,142 +7378,6 @@ export default {
               },
             },
             args: [],
-          },
-          {
-            name: 'playersByTeamId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'OBJECT',
-                name: 'PlayersConnection',
-                ofType: null,
-              },
-            },
-            args: [
-              {
-                name: 'after',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'before',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'condition',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'first',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'last',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'offset',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
-          },
-          {
-            name: 'teamLeadersByTeamId',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'OBJECT',
-                name: 'TeamLeadersConnection',
-                ofType: null,
-              },
-            },
-            args: [
-              {
-                name: 'after',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'before',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'condition',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'first',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'last',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'offset',
-                type: {
-                  kind: 'SCALAR',
-                  name: 'Any',
-                },
-              },
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
           },
         ],
         interfaces: [
@@ -7795,10 +7389,58 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'TeamLeader',
+        name: 'TeamConnection',
         fields: [
           {
-            name: 'id',
+            name: 'edges',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'TeamEdge',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
+                },
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'nodes',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'Team',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
+                },
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'pageInfo',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'PageInfo',
+                kind: 'OBJECT',
+                ofType: null,
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'totalCount',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -7808,8 +7450,42 @@ export default {
             },
             args: [],
           },
+        ],
+        interfaces: [],
+      },
+      {
+        kind: 'OBJECT',
+        name: 'TeamEdge',
+        fields: [
           {
-            name: 'nodeId',
+            name: 'cursor',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any',
+            },
+            args: [],
+          },
+          {
+            name: 'node',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'Team',
+                kind: 'OBJECT',
+                ofType: null,
+              },
+            },
+            args: [],
+          },
+        ],
+        interfaces: [],
+      },
+      {
+        kind: 'OBJECT',
+        name: 'TeamLeader',
+        fields: [
+          {
+            name: 'id',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -7830,6 +7506,17 @@ export default {
           },
           {
             name: 'playerId',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'SCALAR',
+                name: 'Any',
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'rowId',
             type: {
               kind: 'NON_NULL',
               ofType: {
@@ -7869,7 +7556,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'TeamLeadersConnection',
+        name: 'TeamLeaderConnection',
         fields: [
           {
             name: 'edges',
@@ -7880,8 +7567,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
+                    name: 'TeamLeaderEdge',
                     kind: 'OBJECT',
-                    name: 'TeamLeadersEdge',
                     ofType: null,
                   },
                 },
@@ -7896,9 +7583,12 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'TeamLeader',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'TeamLeader',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
               },
             },
@@ -7909,8 +7599,8 @@ export default {
             type: {
               kind: 'NON_NULL',
               ofType: {
-                kind: 'OBJECT',
                 name: 'PageInfo',
+                kind: 'OBJECT',
                 ofType: null,
               },
             },
@@ -7932,7 +7622,7 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'TeamLeadersEdge',
+        name: 'TeamLeaderEdge',
         fields: [
           {
             name: 'cursor',
@@ -7945,9 +7635,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'TeamLeader',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'TeamLeader',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -7967,8 +7660,8 @@ export default {
                 ofType: {
                   kind: 'NON_NULL',
                   ofType: {
-                    kind: 'OBJECT',
                     name: 'TeamPlayerCountEdge',
+                    kind: 'OBJECT',
                     ofType: null,
                   },
                 },
@@ -7983,10 +7676,25 @@ export default {
               ofType: {
                 kind: 'LIST',
                 ofType: {
-                  kind: 'OBJECT',
-                  name: 'TeamPlayerCountRecord',
-                  ofType: null,
+                  kind: 'NON_NULL',
+                  ofType: {
+                    name: 'TeamPlayerCountRecord',
+                    kind: 'OBJECT',
+                    ofType: null,
+                  },
                 },
+              },
+            },
+            args: [],
+          },
+          {
+            name: 'pageInfo',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'PageInfo',
+                kind: 'OBJECT',
+                ofType: null,
               },
             },
             args: [],
@@ -8020,9 +7728,12 @@ export default {
           {
             name: 'node',
             type: {
-              kind: 'OBJECT',
-              name: 'TeamPlayerCountRecord',
-              ofType: null,
+              kind: 'NON_NULL',
+              ofType: {
+                name: 'TeamPlayerCountRecord',
+                kind: 'OBJECT',
+                ofType: null,
+              },
             },
             args: [],
           },
@@ -8054,93 +7765,6 @@ export default {
       },
       {
         kind: 'OBJECT',
-        name: 'TeamsConnection',
-        fields: [
-          {
-            name: 'edges',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'LIST',
-                ofType: {
-                  kind: 'NON_NULL',
-                  ofType: {
-                    kind: 'OBJECT',
-                    name: 'TeamsEdge',
-                    ofType: null,
-                  },
-                },
-              },
-            },
-            args: [],
-          },
-          {
-            name: 'nodes',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'LIST',
-                ofType: {
-                  kind: 'OBJECT',
-                  name: 'Team',
-                  ofType: null,
-                },
-              },
-            },
-            args: [],
-          },
-          {
-            name: 'pageInfo',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'OBJECT',
-                name: 'PageInfo',
-                ofType: null,
-              },
-            },
-            args: [],
-          },
-          {
-            name: 'totalCount',
-            type: {
-              kind: 'NON_NULL',
-              ofType: {
-                kind: 'SCALAR',
-                name: 'Any',
-              },
-            },
-            args: [],
-          },
-        ],
-        interfaces: [],
-      },
-      {
-        kind: 'OBJECT',
-        name: 'TeamsEdge',
-        fields: [
-          {
-            name: 'cursor',
-            type: {
-              kind: 'SCALAR',
-              name: 'Any',
-            },
-            args: [],
-          },
-          {
-            name: 'node',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
-              ofType: null,
-            },
-            args: [],
-          },
-        ],
-        interfaces: [],
-      },
-      {
-        kind: 'OBJECT',
         name: 'UpdateCharityOrganizationPayload',
         fields: [
           {
@@ -8156,19 +7780,22 @@ export default {
             name: 'charityOrganizationEdge',
             type: {
               kind: 'OBJECT',
-              name: 'CharityOrganizationsEdge',
+              name: 'CharityOrganizationEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8220,19 +7847,22 @@ export default {
             name: 'eventEdge',
             type: {
               kind: 'OBJECT',
-              name: 'EventsEdge',
+              name: 'EventEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8264,15 +7894,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericRound',
             type: {
               kind: 'OBJECT',
@@ -8285,19 +7906,22 @@ export default {
             name: 'gameEstimationNumericRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericRoundsEdge',
+              name: 'GameEstimationNumericRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8329,15 +7953,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameEstimationNumericRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameEstimationNumericRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameEstimationNumericVote',
             type: {
               kind: 'OBJECT',
@@ -8350,33 +7965,27 @@ export default {
             name: 'gameEstimationNumericVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameEstimationNumericVotesEdge',
+              name: 'GameEstimationNumericVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -8403,15 +8012,6 @@ export default {
             args: [],
           },
           {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'game',
             type: {
               kind: 'OBJECT',
@@ -8424,19 +8024,22 @@ export default {
             name: 'gameEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GamesEdge',
+              name: 'GameEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8468,15 +8071,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsRound',
             type: {
               kind: 'OBJECT',
@@ -8489,19 +8083,22 @@ export default {
             name: 'gameRandomFactsRoundEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsRoundsEdge',
+              name: 'GameRandomFactsRoundEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8533,15 +8130,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameRandomFactsRoundByRoundId',
-            type: {
-              kind: 'OBJECT',
-              name: 'GameRandomFactsRound',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameRandomFactsVote',
             type: {
               kind: 'OBJECT',
@@ -8554,33 +8142,27 @@ export default {
             name: 'gameRandomFactsVoteEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameRandomFactsVotesEdge',
+              name: 'GameRandomFactsVoteEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
               },
             ],
-          },
-          {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
           },
           {
             name: 'query',
@@ -8607,15 +8189,6 @@ export default {
             args: [],
           },
           {
-            name: 'gameByGameId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Game',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'gameTeamScore',
             type: {
               kind: 'OBJECT',
@@ -8628,19 +8201,22 @@ export default {
             name: 'gameTeamScoreEdge',
             type: {
               kind: 'OBJECT',
-              name: 'GameTeamScoresEdge',
+              name: 'GameTeamScoreEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8652,15 +8228,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -8688,29 +8255,6 @@ export default {
               ofType: null,
             },
             args: [],
-          },
-          {
-            name: 'kvEdge',
-            type: {
-              kind: 'OBJECT',
-              name: 'KvsEdge',
-              ofType: null,
-            },
-            args: [
-              {
-                name: 'orderBy',
-                type: {
-                  kind: 'LIST',
-                  ofType: {
-                    kind: 'NON_NULL',
-                    ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
-                    },
-                  },
-                },
-              },
-            ],
           },
           {
             name: 'query',
@@ -8749,19 +8293,22 @@ export default {
             name: 'playerEdge',
             type: {
               kind: 'OBJECT',
-              name: 'PlayersEdge',
+              name: 'PlayerEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8773,15 +8320,6 @@ export default {
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -8802,28 +8340,10 @@ export default {
             args: [],
           },
           {
-            name: 'playerByPlayerId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Player',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'query',
             type: {
               kind: 'OBJECT',
               name: 'Query',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
-            name: 'teamByTeamId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Team',
               ofType: null,
             },
             args: [],
@@ -8841,19 +8361,22 @@ export default {
             name: 'teamLeaderEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamLeadersEdge',
+              name: 'TeamLeaderEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },
@@ -8868,28 +8391,10 @@ export default {
         name: 'UpdateTeamPayload',
         fields: [
           {
-            name: 'charityOrganizationByCharityOrganizationId',
-            type: {
-              kind: 'OBJECT',
-              name: 'CharityOrganization',
-              ofType: null,
-            },
-            args: [],
-          },
-          {
             name: 'clientMutationId',
             type: {
               kind: 'SCALAR',
               name: 'Any',
-            },
-            args: [],
-          },
-          {
-            name: 'eventByEventId',
-            type: {
-              kind: 'OBJECT',
-              name: 'Event',
-              ofType: null,
             },
             args: [],
           },
@@ -8915,19 +8420,22 @@ export default {
             name: 'teamEdge',
             type: {
               kind: 'OBJECT',
-              name: 'TeamsEdge',
+              name: 'TeamEdge',
               ofType: null,
             },
             args: [
               {
                 name: 'orderBy',
                 type: {
-                  kind: 'LIST',
+                  kind: 'NON_NULL',
                   ofType: {
-                    kind: 'NON_NULL',
+                    kind: 'LIST',
                     ofType: {
-                      kind: 'SCALAR',
-                      name: 'Any',
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any',
+                      },
                     },
                   },
                 },

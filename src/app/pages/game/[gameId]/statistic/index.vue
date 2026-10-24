@@ -45,7 +45,7 @@ const api = computed(() =>
     ...getApiMeta([gameByIdQuery]),
   }),
 )
-const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
+const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameByRowId))
 
 // data
 // const games = ref<GameItemFragment[]>()

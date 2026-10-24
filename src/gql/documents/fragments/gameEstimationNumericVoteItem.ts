@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const GameEstimationNumericVoteItem = graphql(`
   fragment GameEstimationNumericVoteItem on GameEstimationNumericVote {
-    nodeId
-    id
+    id: rowId
     answer
     playerId
     roundId

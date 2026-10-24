@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const GameItem = graphql(`
   fragment GameItem on Game {
-    nodeId
-    id
+    id: rowId
     eventId
     isActive
     name

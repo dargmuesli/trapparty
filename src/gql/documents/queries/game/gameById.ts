@@ -11,7 +11,7 @@ export const useGameByIdQuery = (variables: GameByIdQueryVariables) =>
 
 export const gameByIdQuery = graphql(`
   query gameById($gameId: Int!) {
-    gameById(id: $gameId) {
+    gameByRowId(rowId: $gameId) {
       ...GameItem
     }
   }

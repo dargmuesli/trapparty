@@ -11,7 +11,10 @@ export const useAllGamesQuery = (variables: AllGamesQueryVariables) =>
 
 export const allGamesQuery = graphql(`
   query allGames($eventId: Int!, $type: GameType) {
-    allGames(condition: { eventId: $eventId, type: $type }, orderBy: ID_ASC) {
+    allGames(
+      condition: { eventId: $eventId, type: $type }
+      orderBy: ROW_ID_ASC
+    ) {
       nodes {
         ...GameItem
       }

@@ -12,7 +12,6 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
 export type GameEstimationNumericVoteInput = {
   /** The vote's answer. */
   answer: number
-  id?: number | null | undefined
   /** The vote's internal player id */
   playerId: number
   /** The vote's internal round id. */
@@ -25,10 +24,10 @@ export type GameRandomFactsRoundInput = {
   answerCorrect?: number | null | undefined
   /** The round's internal game id */
   gameId: number
-  /** The round's internal id. */
-  id?: number | null | undefined
   /** The round's questioner name */
   questionerName: string
+  /** The round's internal id. */
+  rowId?: number | null | undefined
 }
 
 /** Represents an update to a `GameRandomFactsRound`. Fields that are set will be updated. */
@@ -37,37 +36,34 @@ export type GameRandomFactsRoundPatch = {
   answerCorrect?: number | null | undefined
   /** The round's internal game id */
   gameId?: number | null | undefined
-  /** The round's internal id. */
-  id?: number | null | undefined
   /** The round's questioner name */
   questionerName?: string | null | undefined
+  /** The round's internal id. */
+  rowId?: number | null | undefined
 }
 
 /** An input for mutations affecting `GameRandomFactsVote` */
 export type GameRandomFactsVoteInput = {
   /** The vote's answer. */
   answer: number
-  /** The vote's internal id. */
-  id?: number | null | undefined
   /** The vote's internal player id */
   playerId: number
   /** The vote's internal round id. */
   roundId: number
+  /** The vote's internal id. */
+  rowId?: number | null | undefined
 }
 
 /** Available game types: estimation_numeric, random_facts, team_score. */
-export type GameType = 'ESTIMATION_NUMERIC' | 'RANDOM_FACTS' | 'TEAM_SCORE'
+export type GameType = 'estimation_numeric' | 'random_facts' | 'team_score'
 
 export type CharityOrganizationItemFragment = {
-  nodeId: string
-  id: number
   name: string
   url: string
+  id: number
 } & { ' $fragmentName'?: 'CharityOrganizationItemFragment' }
 
 export type EventItemFragment = {
-  nodeId: string
-  id: number
   name: string
   start: string
   end: string | null
@@ -76,71 +72,63 @@ export type EventItemFragment = {
   commonDonationUrl: string | null
   commonDonationIsLive: boolean | null
   commonDonationAmount: number | null
+  id: number
   gamesByEventId: {
-    nodes: Array<{
-      ' $fragmentRefs'?: { GameItemFragment: GameItemFragment }
-    } | null>
+    nodes: Array<{ ' $fragmentRefs'?: { GameItemFragment: GameItemFragment } }>
   }
 } & { ' $fragmentName'?: 'EventItemFragment' }
 
 export type GameEstimationNumericRoundItemFragment = {
-  nodeId: string
-  id: number
   answerCorrect: number | null
   elementName: string
   gameId: number
+  id: number
 } & { ' $fragmentName'?: 'GameEstimationNumericRoundItemFragment' }
 
 export type GameEstimationNumericVoteItemFragment = {
-  nodeId: string
-  id: number
   answer: number
   playerId: number
   roundId: number
+  id: number
 } & { ' $fragmentName'?: 'GameEstimationNumericVoteItemFragment' }
 
 export type GameItemFragment = {
-  nodeId: string
-  id: number
   eventId: number
   isActive: boolean
   name: string
   type: GameType
+  id: number
 } & { ' $fragmentName'?: 'GameItemFragment' }
 
 export type GameRandomFactsRoundItemFragment = {
-  nodeId: string
-  id: number
   answerCorrect: number | null
   gameId: number
   questionerName: string
+  id: number
 } & { ' $fragmentName'?: 'GameRandomFactsRoundItemFragment' }
 
 export type GameRandomFactsVoteItemFragment = {
-  nodeId: string
-  id: number
   answer: number
   playerId: number
   roundId: number
+  id: number
 } & { ' $fragmentName'?: 'GameRandomFactsVoteItemFragment' }
 
 export type PlayerItemFragment = {
-  nodeId: string
-  id: number
   invitationCode: string
   name: string
   teamId: number | null
+  id: number
 } & { ' $fragmentName'?: 'PlayerItemFragment' }
 
 export type TeamItemFragment = {
-  nodeId: string
-  id: number
   eventId: number
   name: string
   emoji: string
   charityOrganizationId: number | null
   donationUrl: string | null
   donationAmount: number | null
+  id: number
   charityOrganizationByCharityOrganizationId: {
     ' $fragmentRefs'?: {
       CharityOrganizationItemFragment: CharityOrganizationItemFragment
@@ -190,13 +178,13 @@ export type CreateGameRandomFactsVoteMutation = {
   } | null
 }
 
-export type UpdateGameRandomFactsRoundByIdMutationVariables = Exact<{
+export type UpdateGameRandomFactsRoundByRowIdMutationVariables = Exact<{
   gameRandomFactsRoundPatch: GameRandomFactsRoundPatch
-  id: number
+  rowId: number
 }>
 
-export type UpdateGameRandomFactsRoundByIdMutation = {
-  updateGameRandomFactsRoundById: {
+export type UpdateGameRandomFactsRoundByRowIdMutation = {
+  updateGameRandomFactsRoundByRowId: {
     gameRandomFactsRound: {
       ' $fragmentRefs'?: {
         GameRandomFactsRoundItemFragment: GameRandomFactsRoundItemFragment
@@ -211,7 +199,7 @@ export type AllEventsQuery = {
   allEvents: {
     nodes: Array<{
       ' $fragmentRefs'?: { EventItemFragment: EventItemFragment }
-    } | null>
+    }>
   } | null
 }
 
@@ -224,17 +212,16 @@ export type EventByNameQuery = {
     | ({
         gamesByEventId: {
           nodes: Array<{
-            nodeId: string
-            id: number
             isActive: boolean
             name: string
             type: GameType
-          } | null>
+            id: number
+          }>
         }
         teamsByEventId: {
           nodes: Array<{
             ' $fragmentRefs'?: { TeamItemFragment: TeamItemFragment }
-          } | null>
+          }>
         }
       } & { ' $fragmentRefs'?: { EventItemFragment: EventItemFragment } })
     | null
@@ -250,7 +237,7 @@ export type AllGameEstimationNumericLeaderboardViewsQuery = {
       gameId: number | null
       playerName: string | null
       totalPoints: number | null
-    } | null>
+    }>
   } | null
 }
 
@@ -264,7 +251,7 @@ export type AllGameEstimationNumericRoundsQuery = {
       ' $fragmentRefs'?: {
         GameEstimationNumericRoundItemFragment: GameEstimationNumericRoundItemFragment
       }
-    } | null>
+    }>
   } | null
 }
 
@@ -278,7 +265,7 @@ export type AllGameRandomFactsRoundsQuery = {
       ' $fragmentRefs'?: {
         GameRandomFactsRoundItemFragment: GameRandomFactsRoundItemFragment
       }
-    } | null>
+    }>
   } | null
 }
 
@@ -292,7 +279,7 @@ export type GameRandomFactsVotesQuery = {
       ' $fragmentRefs'?: {
         GameRandomFactsVoteItemFragment: GameRandomFactsVoteItemFragment
       }
-    } | null>
+    }>
   } | null
 }
 
@@ -303,9 +290,7 @@ export type AllGamesQueryVariables = Exact<{
 
 export type AllGamesQuery = {
   allGames: {
-    nodes: Array<{
-      ' $fragmentRefs'?: { GameItemFragment: GameItemFragment }
-    } | null>
+    nodes: Array<{ ' $fragmentRefs'?: { GameItemFragment: GameItemFragment } }>
   } | null
 }
 
@@ -314,7 +299,9 @@ export type GameByIdQueryVariables = Exact<{
 }>
 
 export type GameByIdQuery = {
-  gameById: { ' $fragmentRefs'?: { GameItemFragment: GameItemFragment } } | null
+  gameByRowId: {
+    ' $fragmentRefs'?: { GameItemFragment: GameItemFragment }
+  } | null
 }
 
 export type GameEstimationNumericVoteByPlayerIdAndRoundIdQueryVariables =
@@ -351,29 +338,29 @@ export type PlayerByInvitationCodeFnQueryVariables = Exact<{
 export type PlayerByInvitationCodeFnQuery = {
   playerByInvitationCodeFn: {
     nodes: Array<{
-      id: number
       name: string
+      id: number
       teamByTeamId: {
-        id: number
         name: string
         emoji: string
         donationUrl: string | null
+        id: number
         charityOrganizationByCharityOrganizationId: {
-          id: number
           name: string
           url: string
+          id: number
         } | null
         eventByEventId: {
-          id: number
           name: string
           start: string
           end: string | null
           discordInviteCode: string | null
           streamUrl: string | null
           commonDonationUrl: string | null
+          id: number
         } | null
       } | null
-    } | null>
+    }>
   } | null
 }
 
@@ -389,24 +376,19 @@ export type StatsQueryVariables = Exact<{
 
 export type StatsQuery = {
   teamPlayerCount: {
-    nodes: Array<{ id: number | null; playerCount: number | null } | null>
+    nodes: Array<{ id: number | null; playerCount: number | null }>
   } | null
   allTeams: {
     totalCount: number
-    nodes: Array<{
-      ' $fragmentRefs'?: { TeamItemFragment: TeamItemFragment }
-    } | null>
+    nodes: Array<{ ' $fragmentRefs'?: { TeamItemFragment: TeamItemFragment } }>
   } | null
   allGames: {
     totalCount: number
     nodes: Array<{
-      nodeId: string
-      id: number
       name: string
-      gameTeamScoresByGameId: {
-        nodes: Array<{ id: number; score: number } | null>
-      }
-    } | null>
+      id: number
+      gameTeamScoresByGameId: { nodes: Array<{ score: number; id: number }> }
+    }>
   } | null
 }
 
@@ -423,8 +405,11 @@ export const GameItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -447,8 +432,11 @@ export const EventItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'start' } },
           { kind: 'Field', name: { kind: 'Name', value: 'end' } },
@@ -498,8 +486,11 @@ export const EventItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -522,8 +513,11 @@ export const GameEstimationNumericRoundItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'elementName' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
@@ -545,8 +539,11 @@ export const GameEstimationNumericVoteItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -568,8 +565,11 @@ export const GameRandomFactsRoundItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'questionerName' } },
@@ -591,8 +591,11 @@ export const GameRandomFactsVoteItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -614,8 +617,11 @@ export const PlayerItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'invitationCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'teamId' } },
@@ -637,8 +643,11 @@ export const CharityOrganizationItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'url' } },
         ],
@@ -659,8 +668,11 @@ export const TeamItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
@@ -699,8 +711,11 @@ export const TeamItemFragmentDoc = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'url' } },
         ],
@@ -797,8 +812,11 @@ export const CreateGameEstimationNumericVoteDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -896,8 +914,11 @@ export const CreateGameRandomFactsRoundDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'questionerName' } },
@@ -995,8 +1016,11 @@ export const CreateGameRandomFactsVoteDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -1008,13 +1032,13 @@ export const CreateGameRandomFactsVoteDocument = {
   CreateGameRandomFactsVoteMutation,
   CreateGameRandomFactsVoteMutationVariables
 >
-export const UpdateGameRandomFactsRoundByIdDocument = {
+export const UpdateGameRandomFactsRoundByRowIdDocument = {
   kind: 'Document',
   definitions: [
     {
       kind: 'OperationDefinition',
       operation: 'mutation',
-      name: { kind: 'Name', value: 'updateGameRandomFactsRoundById' },
+      name: { kind: 'Name', value: 'updateGameRandomFactsRoundByRowId' },
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
@@ -1032,7 +1056,10 @@ export const UpdateGameRandomFactsRoundByIdDocument = {
         },
         {
           kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'rowId' },
+          },
           type: {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
@@ -1044,7 +1071,7 @@ export const UpdateGameRandomFactsRoundByIdDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'updateGameRandomFactsRoundById' },
+            name: { kind: 'Name', value: 'updateGameRandomFactsRoundByRowId' },
             arguments: [
               {
                 kind: 'Argument',
@@ -1068,10 +1095,10 @@ export const UpdateGameRandomFactsRoundByIdDocument = {
                     },
                     {
                       kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'id' },
+                      name: { kind: 'Name', value: 'rowId' },
                       value: {
                         kind: 'Variable',
-                        name: { kind: 'Name', value: 'id' },
+                        name: { kind: 'Name', value: 'rowId' },
                       },
                     },
                   ],
@@ -1113,8 +1140,11 @@ export const UpdateGameRandomFactsRoundByIdDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'questionerName' } },
@@ -1123,8 +1153,8 @@ export const UpdateGameRandomFactsRoundByIdDocument = {
     },
   ],
 } as unknown as DocumentNode<
-  UpdateGameRandomFactsRoundByIdMutation,
-  UpdateGameRandomFactsRoundByIdMutationVariables
+  UpdateGameRandomFactsRoundByRowIdMutation,
+  UpdateGameRandomFactsRoundByRowIdMutationVariables
 >
 export const AllEventsDocument = {
   kind: 'Document',
@@ -1178,8 +1208,11 @@ export const AllEventsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -1197,8 +1230,11 @@ export const AllEventsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'start' } },
           { kind: 'Field', name: { kind: 'Name', value: 'end' } },
@@ -1300,11 +1336,8 @@ export const EventByNameDocument = {
                           selections: [
                             {
                               kind: 'Field',
-                              name: { kind: 'Name', value: 'nodeId' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'id' },
+                              alias: { kind: 'Name', value: 'id' },
+                              name: { kind: 'Name', value: 'rowId' },
                             },
                             {
                               kind: 'Field',
@@ -1362,8 +1395,11 @@ export const EventByNameDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -1381,8 +1417,11 @@ export const EventByNameDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'url' } },
         ],
@@ -1398,8 +1437,11 @@ export const EventByNameDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'start' } },
           { kind: 'Field', name: { kind: 'Name', value: 'end' } },
@@ -1449,8 +1491,11 @@ export const EventByNameDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
@@ -1611,7 +1656,7 @@ export const AllGameEstimationNumericRoundsDocument = {
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'orderBy' },
-                value: { kind: 'EnumValue', value: 'ID_DESC' },
+                value: { kind: 'EnumValue', value: 'ROW_ID_DESC' },
               },
             ],
             selectionSet: {
@@ -1649,8 +1694,11 @@ export const AllGameEstimationNumericRoundsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'elementName' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
@@ -1709,7 +1757,7 @@ export const AllGameRandomFactsRoundsDocument = {
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'orderBy' },
-                value: { kind: 'EnumValue', value: 'ID_DESC' },
+                value: { kind: 'EnumValue', value: 'ROW_ID_DESC' },
               },
             ],
             selectionSet: {
@@ -1747,8 +1795,11 @@ export const AllGameRandomFactsRoundsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answerCorrect' } },
           { kind: 'Field', name: { kind: 'Name', value: 'gameId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'questionerName' } },
@@ -1840,8 +1891,11 @@ export const GameRandomFactsVotesDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -1916,7 +1970,7 @@ export const AllGamesDocument = {
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'orderBy' },
-                value: { kind: 'EnumValue', value: 'ID_ASC' },
+                value: { kind: 'EnumValue', value: 'ROW_ID_ASC' },
               },
             ],
             selectionSet: {
@@ -1951,8 +2005,11 @@ export const AllGamesDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -1987,11 +2044,11 @@ export const GameByIdDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'gameById' },
+            name: { kind: 'Name', value: 'gameByRowId' },
             arguments: [
               {
                 kind: 'Argument',
-                name: { kind: 'Name', value: 'id' },
+                name: { kind: 'Name', value: 'rowId' },
                 value: {
                   kind: 'Variable',
                   name: { kind: 'Name', value: 'gameId' },
@@ -2021,8 +2078,11 @@ export const GameByIdDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'isActive' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
@@ -2119,8 +2179,11 @@ export const GameEstimationNumericVoteByPlayerIdAndRoundIdDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -2213,8 +2276,11 @@ export const GameRandomFactsVoteByPlayerIdAndRoundIdDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'answer' } },
           { kind: 'Field', name: { kind: 'Name', value: 'playerId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'roundId' } },
@@ -2271,7 +2337,11 @@ export const PlayerByInvitationCodeFnDocument = {
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        alias: { kind: 'Name', value: 'id' },
+                        name: { kind: 'Name', value: 'rowId' },
+                      },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                       {
                         kind: 'Field',
@@ -2281,7 +2351,8 @@ export const PlayerByInvitationCodeFnDocument = {
                           selections: [
                             {
                               kind: 'Field',
-                              name: { kind: 'Name', value: 'id' },
+                              alias: { kind: 'Name', value: 'id' },
+                              name: { kind: 'Name', value: 'rowId' },
                             },
                             {
                               kind: 'Field',
@@ -2303,7 +2374,8 @@ export const PlayerByInvitationCodeFnDocument = {
                                 selections: [
                                   {
                                     kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
+                                    alias: { kind: 'Name', value: 'id' },
+                                    name: { kind: 'Name', value: 'rowId' },
                                   },
                                   {
                                     kind: 'Field',
@@ -2328,7 +2400,8 @@ export const PlayerByInvitationCodeFnDocument = {
                                 selections: [
                                   {
                                     kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
+                                    alias: { kind: 'Name', value: 'id' },
+                                    name: { kind: 'Name', value: 'rowId' },
                                   },
                                   {
                                     kind: 'Field',
@@ -2499,7 +2572,7 @@ export const StatsDocument = {
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'orderBy' },
-                value: { kind: 'EnumValue', value: 'ID_ASC' },
+                value: { kind: 'EnumValue', value: 'ROW_ID_ASC' },
               },
             ],
             selectionSet: {
@@ -2555,9 +2628,9 @@ export const StatsDocument = {
                     selections: [
                       {
                         kind: 'Field',
-                        name: { kind: 'Name', value: 'nodeId' },
+                        alias: { kind: 'Name', value: 'id' },
+                        name: { kind: 'Name', value: 'rowId' },
                       },
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                       {
                         kind: 'Field',
@@ -2580,7 +2653,8 @@ export const StatsDocument = {
                                 selections: [
                                   {
                                     kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
+                                    alias: { kind: 'Name', value: 'id' },
+                                    name: { kind: 'Name', value: 'rowId' },
                                   },
                                   {
                                     kind: 'Field',
@@ -2612,8 +2686,11 @@ export const StatsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'url' } },
         ],
@@ -2629,8 +2706,11 @@ export const StatsDocument = {
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          { kind: 'Field', name: { kind: 'Name', value: 'nodeId' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'id' },
+            name: { kind: 'Name', value: 'rowId' },
+          },
           { kind: 'Field', name: { kind: 'Name', value: 'eventId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },

@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const TeamItem = graphql(`
   fragment TeamItem on Team {
-    nodeId
-    id
+    id: rowId
     eventId
     name
     emoji

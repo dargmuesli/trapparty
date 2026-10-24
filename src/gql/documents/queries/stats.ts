@@ -12,7 +12,7 @@ export const useStatsQuery = (variables: { eventId: number }) =>
             playerCount
           }
         }
-        allTeams(condition: { eventId: $eventId }, orderBy: ID_ASC) {
+        allTeams(condition: { eventId: $eventId }, orderBy: ROW_ID_ASC) {
           nodes {
             ...TeamItem
           }
@@ -20,12 +20,11 @@ export const useStatsQuery = (variables: { eventId: number }) =>
         }
         allGames(condition: { eventId: $eventId }) {
           nodes {
-            nodeId
-            id
+            id: rowId
             name
             gameTeamScoresByGameId(orderBy: TEAM_ID_ASC) {
               nodes {
-                id
+                id: rowId
                 score
               }
             }

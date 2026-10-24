@@ -26,11 +26,11 @@
         </VioButtonColored>
       </div>
       <TrGameRandomFacts
-        v-if="game.type === 'RANDOM_FACTS'"
+        v-if="game.type === 'random_facts'"
         :game-id="game.id"
       />
       <TrGameEstimationNumeric
-        v-if="game.type === 'ESTIMATION_NUMERIC'"
+        v-if="game.type === 'estimation_numeric'"
         :game-id="game.id"
       />
       <div v-else>
@@ -71,7 +71,7 @@ const api = computed(() =>
     ...getApiMeta([gameByIdQuery]),
   }),
 )
-const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameById))
+const game = computed(() => getGameItem(gameByIdQuery.data.value?.gameByRowId))
 
 // data
 // questionerName: 'Jonas Thelemann',

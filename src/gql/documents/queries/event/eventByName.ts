@@ -15,8 +15,7 @@ export const eventByNameQuery = graphql(`
       ...EventItem
       gamesByEventId {
         nodes {
-          nodeId
-          id
+          id: rowId
           isActive
           name
           type

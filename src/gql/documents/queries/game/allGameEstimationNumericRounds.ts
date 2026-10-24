@@ -14,7 +14,7 @@ export const allGameEstimationNumericRoundsQuery = graphql(`
   query allGameEstimationNumericRounds($gameId: Int!) {
     allGameEstimationNumericRounds(
       condition: { gameId: $gameId }
-      orderBy: ID_DESC
+      orderBy: ROW_ID_DESC
     ) {
       nodes {
         ...GameEstimationNumericRoundItem
