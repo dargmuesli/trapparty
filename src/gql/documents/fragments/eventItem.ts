@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const EventItem = graphql(`
   fragment EventItem on Event {
-    nodeId
-    id
+    id: rowId
     name
     start
     end

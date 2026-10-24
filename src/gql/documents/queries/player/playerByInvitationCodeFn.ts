@@ -14,20 +14,20 @@ export const playerByInvitationCodeFnQuery = graphql(`
   query playerByInvitationCodeFn($invitationCode: UUID!) {
     playerByInvitationCodeFn(invitationCode: $invitationCode) {
       nodes {
-        id
+        id: rowId
         name
         teamByTeamId {
-          id
+          id: rowId
           name
           emoji
           charityOrganizationByCharityOrganizationId {
-            id
+            id: rowId
             name
             url
           }
           donationUrl
           eventByEventId {
-            id
+            id: rowId
             name
             start
             end

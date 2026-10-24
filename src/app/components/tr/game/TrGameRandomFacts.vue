@@ -65,7 +65,7 @@
 import { consola } from 'consola'
 
 import { useCreateGameRandomFactsVoteMutation } from '~~/gql/documents/mutations/game/createGameRandomFactsVote'
-import { useUpdateGameRandomFactsRoundByIdMutation } from '~~/gql/documents/mutations/game/updateGameRandomFactsRoundById'
+import { useUpdateGameRandomFactsRoundByRowIdMutation } from '~~/gql/documents/mutations/game/updateGameRandomFactsRoundByRowId'
 import { useAllGameRandomFactsRoundsQuery } from '~~/gql/documents/queries/game/allGameRandomFactsRounds'
 import { usePlayerByInvitationCodeFnQuery } from '~~/gql/documents/queries/player/playerByInvitationCodeFn'
 import { getGameRandomFactsRoundItem } from '~~/gql/documents/fragments/gameRandomFactsRoundItem'
@@ -81,8 +81,8 @@ const { t } = useI18n()
 const store = useStore()
 const alertError = useAlertError()
 const createGameRandomFactsVoteMutation = useCreateGameRandomFactsVoteMutation()
-const updateGameRandomFactsRoundByIdMutation =
-  useUpdateGameRandomFactsRoundByIdMutation()
+const updateGameRandomFactsRoundByRowIdMutation =
+  useUpdateGameRandomFactsRoundByRowIdMutation()
 
 // queries
 const allGameRandomFactsRoundsQuery = await useAllGameRandomFactsRoundsQuery({
@@ -167,14 +167,13 @@ const choose = async (answer: number) => {
   }
 
   if (player.value.name === round.value.questionerName) {
-    const result = await updateGameRandomFactsRoundByIdMutation.executeMutation(
-      {
+    const result =
+      await updateGameRandomFactsRoundByRowIdMutation.executeMutation({
         gameRandomFactsRoundPatch: {
           answerCorrect: answer,
         },
-        id: round.value.id,
-      },
-    )
+        rowId: round.value.id,
+      })
 
     if (result.error)
       alertError({ error: result.error, messageI18n: t('errorRoundUpdate') })

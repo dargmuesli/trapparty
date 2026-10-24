@@ -1,17 +1,17 @@
 import { useMutation } from '@urql/vue'
 import { graphql } from '~~/gql/generated'
 
-export const useUpdateGameRandomFactsRoundByIdMutation = () =>
+export const useUpdateGameRandomFactsRoundByRowIdMutation = () =>
   useMutation(
     graphql(`
-      mutation updateGameRandomFactsRoundById(
+      mutation updateGameRandomFactsRoundByRowId(
         $gameRandomFactsRoundPatch: GameRandomFactsRoundPatch!
-        $id: Int!
+        $rowId: Int!
       ) {
-        updateGameRandomFactsRoundById(
+        updateGameRandomFactsRoundByRowId(
           input: {
             gameRandomFactsRoundPatch: $gameRandomFactsRoundPatch
-            id: $id
+            rowId: $rowId
           }
         ) {
           gameRandomFactsRound {

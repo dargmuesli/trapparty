@@ -3,8 +3,7 @@ import type { FragmentType } from '~~/gql/generated'
 
 export const GameRandomFactsRoundItem = graphql(`
   fragment GameRandomFactsRoundItem on GameRandomFactsRound {
-    nodeId
-    id
+    id: rowId
     answerCorrect
     gameId
     questionerName
