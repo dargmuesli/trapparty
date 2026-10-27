@@ -29,7 +29,7 @@
     "graphql": "17.0.2",
     "lodash-es": "4.18.1",
     "nuxt": "4.6.2",
-    "nuxt-security": "2.6.0",
+    "nuxt-security": "2.7.0",
     "pinia": "4.1.0",
     "pinia-plugin-persistedstate": "4.7.1",
     "postcss-html": "2.0.0",
