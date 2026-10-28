@@ -10,7 +10,7 @@ ENV CI=true
 
 WORKDIR /srv/app/
 
-RUN corepack enable \
+RUN npm i -g corepack && corepack enable \
   && apt-get update \
   && apt-get install --no-install-recommends -y \
       mkcert \
