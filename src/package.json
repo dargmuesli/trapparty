@@ -11,7 +11,7 @@
     "@graphql-codegen/urql-introspection": "4.0.1",
     "@graphql-typed-document-node/core": "3.2.0",
     "@iconify-json/heroicons": "1.2.3",
-    "@nuxt/fonts": "1.1.0",
+    "@nuxt/fonts": "1.2.0",
     "@pinia/nuxt": "1.0.3",
     "@types/color": "4.2.1",
     "@types/lodash-es": "4.17.12",
