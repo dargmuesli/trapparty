@@ -1,3 +1,9 @@
+## [7.0.1](https://github.com/dargmuesli/trapparty/compare/7.0.0...7.0.1) (2026-11-02)
+
+### Bug Fixes
+
+* schedule release ([e4bb469](https://github.com/dargmuesli/trapparty/commit/e4bb4698c79e78432f45ecda3e850714034dccb4))
+
 ## [7.0.0](https://github.com/dargmuesli/trapparty/compare/6.0.1...7.0.0) (2026-10-24)
 
 ### ⚠ BREAKING CHANGES
