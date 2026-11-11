@@ -97,6 +97,7 @@ export default defineNuxtConfig(
           sameSite: 'strict',
         },
       },
+      skewProtection: {}, // vio disables it, the dockerfile carries its storage from image to image
     },
     VIO_NUXT_BASE_CONFIG({
       services: {
