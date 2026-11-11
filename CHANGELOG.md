@@ -1,3 +1,9 @@
+## [7.1.0](https://github.com/dargmuesli/trapparty/compare/7.0.1...7.1.0) (2026-11-11)
+
+### Features
+
+* **seo:** enable skew protection ([#525](https://github.com/dargmuesli/trapparty/issues/525)) ([fc67ac2](https://github.com/dargmuesli/trapparty/commit/fc67ac2f1730be65f413f9cde668937a7287507b))
+
 ## [7.0.1](https://github.com/dargmuesli/trapparty/compare/7.0.0...7.0.1) (2026-11-02)
 
 ### Bug Fixes
