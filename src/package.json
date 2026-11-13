@@ -6,7 +6,7 @@
     "@dargmuesli/nuxt-vio": "23.1.8",
     "@graphql-codegen/cli": "8.0.0",
     "@graphql-codegen/client-preset": "7.0.0",
-    "@graphql-codegen/typescript": "7.0.0",
+    "@graphql-codegen/typescript": "7.0.1",
     "@graphql-codegen/typescript-urql-graphcache": "5.0.0",
     "@graphql-codegen/urql-introspection": "5.0.0",
     "@graphql-typed-document-node/core": "3.2.0",
@@ -51,7 +51,7 @@
     "unplugin-vue-components": "32.1.0",
     "vue": "3.5.45",
     "vue-chartjs": "5.3.4",
-    "vue-router": "5.4.0",
+    "vue-router": "5.5.0",
     "vue-tsc": "3.3.11"
   },
   "engines": {
