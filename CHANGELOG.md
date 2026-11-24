@@ -1,3 +1,9 @@
+## [7.1.3](https://github.com/dargmuesli/trapparty/compare/7.1.2...7.1.3) (2026-11-24)
+
+### Bug Fixes
+
+* **docker:** apply debian security updates ([#532](https://github.com/dargmuesli/trapparty/issues/532)) ([49c90d8](https://github.com/dargmuesli/trapparty/commit/49c90d8a620516f07eb09d7e670d2ba060d162fd))
+
 ## [7.1.2](https://github.com/dargmuesli/trapparty/compare/7.1.1...7.1.2) (2026-11-24)
 
 ### Bug Fixes
