@@ -2,7 +2,7 @@
   "author": "Jonas Thelemann",
   "description": "TrapParty's website.",
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "10.0.0",
+    "@dargmuesli/nuxt-cookie-control": "10.0.1",
     "@dargmuesli/nuxt-vio": "23.1.9",
     "@graphql-codegen/cli": "8.0.0",
     "@graphql-codegen/client-preset": "7.0.0",
@@ -32,25 +32,25 @@
     "nuxt-security": "2.7.0",
     "pinia": "4.1.0",
     "pinia-plugin-persistedstate": "4.7.1",
-    "postcss-html": "2.0.0",
+    "postcss-html": "2.0.1",
     "prettier": "3.10.1",
     "prettier-plugin-tailwindcss": "0.8.1",
     "rainbowvis.js": "1.1.1",
     "serve": "14.2.8",
     "sharp": "0.35.5",
-    "stylelint": "18.0.0",
+    "stylelint": "18.1.0",
     "stylelint-config-html": "2.0.0",
-    "stylelint-config-recommended": "19.0.0",
+    "stylelint-config-recommended": "19.1.0",
     "stylelint-config-recommended-vue": "2.0.0",
-    "stylelint-config-standard": "41.0.0",
+    "stylelint-config-standard": "41.1.0",
     "stylelint-no-unsupported-browser-features": "8.1.2",
     "tailwindcss": "4.3.5",
     "typescript": "6.0.3",
     "ufo": "1.6.4",
     "unplugin-icons": "24.0.0",
     "unplugin-vue-components": "32.1.0",
-    "vue": "3.5.45",
-    "vue-chartjs": "5.3.4",
+    "vue": "3.5.46",
+    "vue-chartjs": "5.3.7",
     "vue-router": "5.5.1",
     "vue-tsc": "3.3.11"
   },
@@ -82,5 +82,5 @@
     "start:static": "node node/server/static.mjs"
   },
   "type": "module",
-  "version": "7.1.1"
+  "version": "7.1.2"
 }
