@@ -1,3 +1,9 @@
+## [7.1.2](https://github.com/dargmuesli/trapparty/compare/7.1.1...7.1.2) (2026-11-24)
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([abd3797](https://github.com/dargmuesli/trapparty/commit/abd379798fa70b73aae75a680f9c8d14a52259f4))
+
 ## [7.1.1](https://github.com/dargmuesli/trapparty/compare/7.1.0...7.1.1) (2026-11-23)
 
 ### Bug Fixes
