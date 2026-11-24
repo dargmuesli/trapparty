@@ -22,3 +22,8 @@ minimumReleaseAgeExclude:
 packages:
   - src
   - tests
+# the image builds on musl, but the e2e stage runs the build on glibc
+supportedArchitectures:
+  libc:
+    - glibc
+    - musl
