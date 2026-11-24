@@ -15,12 +15,26 @@ ENV CI=true
 
 WORKDIR /srv/app/
 
+# `mkcert` is only packaged in Alpine's edge/testing repository
 RUN npm i -g pnpm \
-  && apt-get update \
-  && apt-get install --no-install-recommends -y \
-      mkcert \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && apk add --no-cache \
+      --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+      mkcert
+
+
+#############
+# Build sqitch, which Alpine does not package.
+
+FROM base-image AS sqitch
+
+RUN apk add --no-cache \
+      build-base \
+      perl \
+      perl-app-cpanminus \
+      perl-dbd-pg \
+      perl-dev \
+  && cpanm --notest --local-lib /opt/sqitch App::Sqitch \
+  && rm -rf /root/.cpanm
 
 
 
@@ -32,18 +46,18 @@ FROM base-image AS development
 ENV CI=false
 
 # Update and install dependencies.
-# - `libdbd-pg-perl postgresql-client sqitch` is required by the entrypoint
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        libdbd-pg-perl postgresql-client sqitch \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
+# - `perl perl-dbd-pg postgresql-client` and sqitch are required by the entrypoint
+RUN apk add --no-cache \
+        perl perl-dbd-pg postgresql-client \
     && mkdir \
         /srv/.pnpm-store \
         /srv/app/node_modules \
     && chown node:node \
         /srv/.pnpm-store \
         /srv/app/node_modules
+
+COPY --from=sqitch /opt/sqitch /opt/sqitch
+ENV PATH=/opt/sqitch/bin:$PATH PERL5LIB=/opt/sqitch/lib/perl5 TZ=UTC
 
 VOLUME /srv/.pnpm-store
 VOLUME /srv/app
@@ -259,14 +273,12 @@ ENV CI=false
 ENV NODE_ENV=production
 
 # Update and install dependencies.
-# - `libdbd-pg-perl postgresql-client sqitch` is required by the entrypoint
-# - `wget` is required by the healthcheck
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        libdbd-pg-perl postgresql-client sqitch \
-        wget \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# - `perl perl-dbd-pg postgresql-client` and sqitch are required by the entrypoint
+RUN apk add --no-cache \
+        perl perl-dbd-pg postgresql-client
+
+COPY --from=sqitch /opt/sqitch /opt/sqitch
+ENV PATH=/opt/sqitch/bin:$PATH PERL5LIB=/opt/sqitch/lib/perl5 TZ=UTC
 
 COPY ./sqitch/ ./sqitch/
 
