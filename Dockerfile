@@ -1,14 +1,14 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
 
 # the image whose skew protection storage seeds this build
-ARG SKEW_PROTECTION_SOURCE_IMAGE=ghcr.io/dargmuesli/trapparty:latest
+ARG SKEW_PROTECTION_SOURCE_IMAGE=ghcr.io/dargmuesli/trapparty:latest@sha256:29819660f1f861ae3a9cd6a0b737bcc80358e3ff9d10a5777f87203df3bdd5f0
 
 FROM ${SKEW_PROTECTION_SOURCE_IMAGE} AS skew-protection-source
 
 #############
 # Create base image.
 
-FROM node:26.13.1-slim AS base-image
+FROM node:26.13.1-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS base-image
 
 # The `CI` environment variable must be set for pnpm to run in headless mode
 ENV CI=true
